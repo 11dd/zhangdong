@@ -262,27 +262,22 @@
     
 </code></pre>
 
-<h5 id="toc_8">插入索引为几的位置</h5>
+<h5 id="toc_8">数组的简单操作</h5>
 
-<pre><code>    [tempArr insertObject:@&quot;two&quot; atIndex:1];
+<pre><code>//插入索引为几的位置
+[tempArr insertObject:@&quot;two&quot; atIndex:1];
+
+//修改数组中第2个元素的内容
+[tempArr replaceObjectAtIndex:2 withObject:@&quot;aaa&quot;];
+
+//交换数组中得内容
+[tempArr exchangeObjectAtIndex:1 withObjectAtIndex:3];
+
+//取出连续范围的元素作为子集内容
+NSArray *sub1 = [tempArr subarrayWithRange:NSMakeRange(1, 3)];
 </code></pre>
 
-<h5 id="toc_9">修改数组中第2个元素的内容</h5>
-
-<pre><code>    [tempArr replaceObjectAtIndex:2 withObject:@&quot;aaa&quot;];
-</code></pre>
-
-<h5 id="toc_10">交换数组中得内容</h5>
-
-<pre><code>    [tempArr exchangeObjectAtIndex:1 withObjectAtIndex:3];
-</code></pre>
-
-<h5 id="toc_11">取出连续范围的元素作为子集内容</h5>
-
-<pre><code>    NSArray *sub1 = [tempArr subarrayWithRange:NSMakeRange(1, 3)];
-</code></pre>
-
-<h5 id="toc_12">数组的删除操作</h5>
+<h5 id="toc_9">数组的删除操作</h5>
 
 <pre><code>//1.删除最后一个元素
  [array removeLastObject];

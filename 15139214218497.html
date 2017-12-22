@@ -172,35 +172,22 @@
  <div class="markdown-body">
 <h1>ios 字符串操作方法说明</h1>
 
-<h5 id="toc_0">从字符串的开头一直截取到指定的位置，但不包括该位置的字符</h5>
+<h5 id="toc_0">属性字符串常用操作</h5>
 
-<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
-    NSString *string2 = [string1 substringToIndex:3];
-    NSLog(@&quot;string2:%@&quot;,string2);
+<pre><code>- (NSMutableAttributedString *)stringToAttributedString:(NSString*)tempStr NSMakeRange:(int)num
+{
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:tempStr];
+    //颜色
+    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0,num)];
+    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(num,tempStr.length-num)];
+    //字体
+    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:kh(14)] range:NSMakeRange(0,num)];
+    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:kh(16)] range:NSMakeRange(num,tempStr.length-num)];  
+    return attrString;
+}
 </code></pre>
 
-<h5 id="toc_1">以指定位置开始（包括指定位置的字符），并包括之后的全部字符</h5>
-
-<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
-    NSString *string2 = [string1 substringFromIndex:3];
-    NSLog(@&quot;string2:%@&quot;,string2);
-</code></pre>
-
-<h5 id="toc_2">按照所给出的位置，长度（截取几位而不是到哪），任意地从字符串中截取子串</h5>
-
-<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
-    NSString *string2 = [string1 substringWithRange:NSMakeRange(0, 4)];
-    NSLog(@&quot;string2:%@&quot;,string2);
-</code></pre>
-
-<h5 id="toc_3">替换字符串中字符,该方法做了copy操作，原字符串没变，需要重新赋值给原字符串</h5>
-
-<pre><code>    NSString* tempstr4 = [tempstr3 stringByReplacingOccurrencesOfString:@&quot;:&quot; withString:@&quot;&quot;];
-    NSString* tempstr5 = [tempstr4 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;];
-    NSString* tempstr6 = [tempstr5 stringByReplacingOccurrencesOfString:@&quot;/&quot; withString:@&quot;&quot;];
-</code></pre>
-
-<h5 id="toc_4">将字符串分隔成数组</h5>
+<h5 id="toc_1">将字符串分隔成数组</h5>
 
 <pre><code>    NSString* str = @&quot;one,two,three,four,five&quot;;
     //分割字符创为数组，下例以“，”分割
@@ -213,6 +200,88 @@
     //链接字符串,下例以空格连接
     str = [array componentsJoinedByString:@&quot; &quot;];
     NSLog(@&quot;%@&quot;, str);
+</code></pre>
+
+<h5 id="toc_2">判断字符串是否包含另一个字符串</h5>
+
+<pre><code>//判断”abcd” 是否含有@&quot;ab&quot;
+ NSString *tempStr = @&quot;abcd&quot;;
+    if([tempStr rangeOfString:@&quot;ab&quot;].location !=NSNotFound){
+        NSLog(@&quot;yes&quot;);
+    }else {
+        NSLog(@&quot;no&quot;);
+    }
+</code></pre>
+
+<h5 id="toc_3">字符串去掉特殊符号或改成去除数字/字母的笨方法</h5>
+
+<pre><code>NSString * string111 = @&quot;1234、[]{}#%-*+=_\\|~＜&quot;;
+NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@&quot;@／：；（）¥「」＂、[]{}#%-*+=_\\|~＜＞$€^•&#39;@#$%^&amp;*()_+&#39;\&quot;&quot;];
+NSString *string222 = [string111 stringByTrimmingCharactersInSet:set];
+</code></pre>
+
+<h5 id="toc_4">从字符串的开头一直截取到指定的位置，但不包括该位置的字符</h5>
+
+<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
+    NSString *string2 = [string1 substringToIndex:3];
+    NSLog(@&quot;string2:%@&quot;,string2);
+</code></pre>
+
+<h5 id="toc_5">以指定位置开始（包括指定位置的字符），并包括之后的全部字符</h5>
+
+<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
+    NSString *string2 = [string1 substringFromIndex:3];
+    NSLog(@&quot;string2:%@&quot;,string2);
+</code></pre>
+
+<h5 id="toc_6">按照所给出的位置，长度（截取几位而不是到哪），任意地从字符串中截取子串</h5>
+
+<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
+    NSString *string2 = [string1 substringWithRange:NSMakeRange(0, 4)];
+    NSLog(@&quot;string2:%@&quot;,string2);
+</code></pre>
+
+<h5 id="toc_7">替换字符串中字符,该方法做了copy操作，原字符串没变，需要重新赋值给原字符串</h5>
+
+<pre><code>    NSString* tempstr4 = [tempstr3 stringByReplacingOccurrencesOfString:@&quot;:&quot; withString:@&quot;&quot;];
+    NSString* tempstr5 = [tempstr4 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;];
+    NSString* tempstr6 = [tempstr5 stringByReplacingOccurrencesOfString:@&quot;/&quot; withString:@&quot;&quot;];
+</code></pre>
+
+<h5 id="toc_8">字符串大小写</h5>
+
+<pre><code>//   将字符串中的英文字符由小写转换为大写
+    NSString *bigString = [string uppercaseString];
+    NSLog(@&quot;string = %@, bigstring = %@&quot;, string, bigString); 
+       
+//   将字符串中的英文字符由大写转换为小写
+    NSString *smallString = [string lowercaseString];
+    NSLog(@&quot;string = %@, smallString = %@&quot;, string, smallString);
+    
+//  将字符串的首字母改为大写
+    NSString *firstBigString = [string capitalizedString];
+    NSLog(@&quot;%@&quot;, firstBigString);
+</code></pre>
+
+<h5 id="toc_9">字符串拼接</h5>
+
+<pre><code>//  字符串拼接:将两个字符串拼在一起后形成一个新的字符串,原来两个字符串并未发生改变
+    NSString *string1 = @&quot;abc&quot;;
+    NSString *string2 = @&quot;123&quot;;
+    NSString *addString = [string1 stringByAppendingString:string2];
+    NSLog(@&quot;%@&quot;, addString);
+</code></pre>
+
+<h4 id="toc_10">字符串查找</h4>
+
+<pre><code>    NSString * string = @&quot;1234&quot;;
+    //  字符串查找：判断是否以参数给定的字符串开头。是，返回真 1 ；否，返回假 0。
+    BOOL result1 = [string hasPrefix:@&quot;1&quot;];
+    NSLog(@&quot;%d&quot;, result1);
+    
+    //  字符串查找：判断是否以参数给定的字符串结尾。是，返回真 1 ；否，返回假 0。
+    BOOL result2 = [string hasSuffix:@&quot;4&quot;];
+    NSLog(@&quot;%d&quot;, result2);
 </code></pre>
 
 
