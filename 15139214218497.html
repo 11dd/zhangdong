@@ -172,6 +172,48 @@
  <div class="markdown-body">
 <h1>ios 字符串操作方法说明</h1>
 
+<h5 id="toc_0">从字符串的开头一直截取到指定的位置，但不包括该位置的字符</h5>
+
+<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
+    NSString *string2 = [string1 substringToIndex:3];
+    NSLog(@&quot;string2:%@&quot;,string2);
+</code></pre>
+
+<h5 id="toc_1">以指定位置开始（包括指定位置的字符），并包括之后的全部字符</h5>
+
+<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
+    NSString *string2 = [string1 substringFromIndex:3];
+    NSLog(@&quot;string2:%@&quot;,string2);
+</code></pre>
+
+<h5 id="toc_2">按照所给出的位置，长度（截取几位而不是到哪），任意地从字符串中截取子串</h5>
+
+<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
+    NSString *string2 = [string1 substringWithRange:NSMakeRange(0, 4)];
+    NSLog(@&quot;string2:%@&quot;,string2);
+</code></pre>
+
+<h5 id="toc_3">替换字符串中字符,该方法做了copy操作，原字符串没变，需要重新赋值给原字符串</h5>
+
+<pre><code>    NSString* tempstr4 = [tempstr3 stringByReplacingOccurrencesOfString:@&quot;:&quot; withString:@&quot;&quot;];
+    NSString* tempstr5 = [tempstr4 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;];
+    NSString* tempstr6 = [tempstr5 stringByReplacingOccurrencesOfString:@&quot;/&quot; withString:@&quot;&quot;];
+</code></pre>
+
+<h5 id="toc_4">将字符串分隔成数组</h5>
+
+<pre><code>    NSString* str = @&quot;one,two,three,four,five&quot;;
+    //分割字符创为数组，下例以“，”分割
+    NSArray* array = [str componentsSeparatedByString:@&quot;,&quot;];
+    for(NSString* obj in array)
+    {
+        NSLog(@&quot;%@&quot;, obj);
+    }
+
+    //链接字符串,下例以空格连接
+    str = [array componentsJoinedByString:@&quot; &quot;];
+    NSLog(@&quot;%@&quot;, str);
+</code></pre>
 
 
 </div>
