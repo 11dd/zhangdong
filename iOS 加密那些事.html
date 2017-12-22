@@ -300,106 +300,103 @@ NSData * aesDecryptData(NSData *data, NSData *key);
 
 </code></pre>
 
-<p>.m文件如下:<br/>
-```</p>
+<p>.m文件如下:</p>
 
-<h1 id="toc_0">import &quot;AESCipher.h&quot;</h1>
+<pre><code>#import &quot;AESCipher.h&quot;
+#import &lt;CommonCrypto/CommonCryptor.h&gt;
 
-<h1 id="toc_1">import <CommonCrypto/CommonCryptor.h></h1>
+//注意:初始向量,默认16个0(]前后端保持统一)
+NSString const *kInitVector = @&quot;0000000000000000&quot;;
 
-<p>//注意:初始向量,默认16个0(]前后端保持统一)<br/>
-NSString const *kInitVector = @&quot;0000000000000000&quot;;</p>
 
-<p>size_t const kKeySize = kCCKeySizeAES128;</p>
+size_t const kKeySize = kCCKeySizeAES128;
 
-<p>NSData * cipherOperation(NSData *contentData, NSData *keyData, CCOperation operation) {<br/>
-    NSUInteger dataLength = contentData.length;</p>
-
-<pre><code>void const *initVectorBytes = [kInitVector dataUsingEncoding:NSUTF8StringEncoding].bytes;
-void const *contentBytes = contentData.bytes;
-void const *keyBytes = keyData.bytes;
-
-size_t operationSize = dataLength + kCCBlockSizeAES128;
-void *operationBytes = malloc(operationSize);
-size_t actualOutSize = 0;
-
-CCCryptorStatus cryptStatus = CCCrypt(operation,
-                                      kCCAlgorithmAES,
-                                      kCCOptionPKCS7Padding,
-                                      keyBytes,
-                                      kKeySize,
-                                      initVectorBytes,
-                                      contentBytes,
-                                      dataLength,
-                                      operationBytes,
-                                      operationSize,
-                                      &amp;actualOutSize);
-
-if (cryptStatus == kCCSuccess) {
-    return [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
+NSData * cipherOperation(NSData *contentData, NSData *keyData, CCOperation operation) {
+    NSUInteger dataLength = contentData.length;
+    
+    void const *initVectorBytes = [kInitVector dataUsingEncoding:NSUTF8StringEncoding].bytes;
+    void const *contentBytes = contentData.bytes;
+    void const *keyBytes = keyData.bytes;
+    
+    size_t operationSize = dataLength + kCCBlockSizeAES128;
+    void *operationBytes = malloc(operationSize);
+    size_t actualOutSize = 0;
+    
+    CCCryptorStatus cryptStatus = CCCrypt(operation,
+                                          kCCAlgorithmAES,
+                                          kCCOptionPKCS7Padding,
+                                          keyBytes,
+                                          kKeySize,
+                                          initVectorBytes,
+                                          contentBytes,
+                                          dataLength,
+                                          operationBytes,
+                                          operationSize,
+                                          &amp;actualOutSize);
+    
+    if (cryptStatus == kCCSuccess) {
+        return [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
+    }
+    free(operationBytes);
+    return nil;
 }
-free(operationBytes);
-return nil;
+
+NSString * aesEncryptString(NSString *content, NSString *key) {
+    NSData *contentData = [content dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *encrptedData = aesEncryptData(contentData, keyData);
+    return [encrptedData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+}
+
+NSString * aesDecryptString(NSString *content, NSString *key) {
+    NSData *contentData = [[NSData alloc] initWithBase64EncodedString:content options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *decryptedData = aesDecryptData(contentData, keyData);
+    return [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
+}
+
+NSData * aesEncryptData(NSData *contentData, NSData *keyData) {
+    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];
+    NSCAssert(keyData.length == kKeySize, hint);
+    return cipherOperation(contentData, keyData, kCCEncrypt);
+}
+
+NSData * aesDecryptData(NSData *contentData, NSData *keyData) {
+    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];
+    NSCAssert(keyData.length == kKeySize, hint);
+    return cipherOperation(contentData, keyData, kCCDecrypt);
+}
 </code></pre>
 
-<p>}</p>
+<p>使用方法如下:</p>
 
-<p>NSString * aesEncryptString(NSString *content, NSString *key) {<br/>
-    NSData *contentData = [content dataUsingEncoding:NSUTF8StringEncoding];<br/>
-    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];<br/>
-    NSData *encrptedData = aesEncryptData(contentData, keyData);<br/>
-    return [encrptedData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];<br/>
-}</p>
+<pre><code>/*
+ 使用案例:
+ 
+ 第一: 导入头文件
+ #import &quot;AESCipher.h&quot;
 
-<p>NSString * aesDecryptString(NSString *content, NSString *key) {<br/>
-    NSData *contentData = [[NSData alloc] initWithBase64EncodedString:content options:NSDataBase64DecodingIgnoreUnknownCharacters];<br/>
-    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];<br/>
-    NSData *decryptedData = aesDecryptData(contentData, keyData);<br/>
-    return [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];<br/>
-}</p>
-
-<p>NSData * aesEncryptData(NSData *contentData, NSData *keyData) {<br/>
-    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];<br/>
-    NSCAssert(keyData.length == kKeySize, hint);<br/>
-    return cipherOperation(contentData, keyData, kCCEncrypt);<br/>
-}</p>
-
-<p>NSData * aesDecryptData(NSData *contentData, NSData *keyData) {<br/>
-    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];<br/>
-    NSCAssert(keyData.length == kKeySize, hint);<br/>
-    return cipherOperation(contentData, keyData, kCCDecrypt);<br/>
-}<br/>
-```</p>
-
-<p>使用方法如下:<br/>
-```<br/>
-/*<br/>
- 使用案例:</p>
-
-<p>第一: 导入头文件<br/>
- #import &quot;AESCipher.h&quot;</p>
-
-<p>测试字符串<br/>
- NSString *TestStr = @&quot;abc&quot;;<br/>
- 设置key<br/>
- NSString *key = @&quot;1234567812345678&quot;;</p>
-
-<p>NSString *cipherText = aesEncryptString(TestStr, key);</p>
-
-<p>NSLog(@&quot;加密==%@&quot;, cipherText);</p>
-
-<p>NSString *decryptedText = aesDecryptString(cipherText, key);</p>
-
-<p>NSLog(@&quot;解密==%@&quot;, decryptedText);</p>
-
-<p>*/</p>
-
-<pre><code>
- 原文查看:
- http://blog.csdn.net/u013749540/article/details/70225594
- http://www.cnblogs.com/dcb3688/p/4608007.html
-
+ 测试字符串
+ NSString *TestStr = @&quot;abc&quot;;
+ 设置key
+ NSString *key = @&quot;1234567812345678&quot;;
+ 
+ NSString *cipherText = aesEncryptString(TestStr, key);
+ 
+ NSLog(@&quot;加密==%@&quot;, cipherText);
+ 
+ NSString *decryptedText = aesDecryptString(cipherText, key);
+ 
+ NSLog(@&quot;解密==%@&quot;, decryptedText);
+ 
+ 
+ */
+ 
 </code></pre>
+
+<p>原文查看:<br/>
+ <a href="http://blog.csdn.net/u013749540/article/details/70225594">http://blog.csdn.net/u013749540/article/details/70225594</a><br/>
+ <a href="http://www.cnblogs.com/dcb3688/p/4608007.html">http://www.cnblogs.com/dcb3688/p/4608007.html</a></p>
 
 
 		</div>
