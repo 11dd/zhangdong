@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  iOS上传头像 - zhangdong
+  iOS  【从头建项三】那些.pch里写了些什么？ - zhangdong
   
   </title>
  <meta name="description" content="">
@@ -49,25 +49,21 @@
           
             <li><a title="iOS开发说明" href="15139213651453.html">iOS开发说明</a></li>
           
-            <li><a title="iOS 使用三方工具cocoaPods" href="15139117675584.html">iOS 使用三方工具cocoaPods</a></li>
+            <li><a title="项目问题汇总" href="15139392949146.html">项目问题汇总</a></li>
           
-            <li><a title="iOS   创建.pch文件" href="15139119793020.html">iOS   创建.pch文件</a></li>
+            <li><a title="iOS 【从头建项一】使用三方管理工具cocoaPods" href="15139117675584.html">iOS 【从头建项一】使用三方管理工具cocoaPods</a></li>
+          
+            <li><a title="iOS   【从头建项二】创建.pch文件" href="15139119793020.html">iOS   【从头建项二】创建.pch文件</a></li>
+          
+            <li><a title="iOS  【从头建项三】那些.pch里写了些什么？" href="15139368877787.html">iOS  【从头建项三】那些.pch里写了些什么？</a></li>
+          
+            <li><a title="iOS 【从头建项四】权限、网络问题" href="15139219822825.html">iOS 【从头建项四】权限、网络问题</a></li>
           
             <li><a title="ios 字符串操作方法说明" href="15139214218497.html">ios 字符串操作方法说明</a></li>
           
             <li><a title="iOS 数组操作方法说明" href="15139214500331.html">iOS 数组操作方法说明</a></li>
           
-            <li><a title="iOS tableview 简单使用说明" href="15139214660338.html">iOS tableview 简单使用说明</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>iOS功能小结</label></li>
-
-          
-            <li><a title="iOS 权限问题" href="15139219822825.html">iOS 权限问题</a></li>
-          
-            <li><a title="iOS上传头像" href="15139215980098.html">iOS上传头像</a></li>
+            <li><a title="iOS tableview 基础使用说明" href="15139214660338.html">iOS tableview 基础使用说明</a></li>
           
 
       
@@ -118,23 +114,21 @@
                         
                           <li><a title="iOS开发说明" href="15139213651453.html">iOS开发说明</a></li>
                         
-                          <li><a title="iOS 使用三方工具cocoaPods" href="15139117675584.html">iOS 使用三方工具cocoaPods</a></li>
+                          <li><a title="项目问题汇总" href="15139392949146.html">项目问题汇总</a></li>
                         
-                          <li><a title="iOS   创建.pch文件" href="15139119793020.html">iOS   创建.pch文件</a></li>
+                          <li><a title="iOS 【从头建项一】使用三方管理工具cocoaPods" href="15139117675584.html">iOS 【从头建项一】使用三方管理工具cocoaPods</a></li>
+                        
+                          <li><a title="iOS   【从头建项二】创建.pch文件" href="15139119793020.html">iOS   【从头建项二】创建.pch文件</a></li>
+                        
+                          <li><a title="iOS  【从头建项三】那些.pch里写了些什么？" href="15139368877787.html">iOS  【从头建项三】那些.pch里写了些什么？</a></li>
+                        
+                          <li><a title="iOS 【从头建项四】权限、网络问题" href="15139219822825.html">iOS 【从头建项四】权限、网络问题</a></li>
                         
                           <li><a title="ios 字符串操作方法说明" href="15139214218497.html">ios 字符串操作方法说明</a></li>
                         
                           <li><a title="iOS 数组操作方法说明" href="15139214500331.html">iOS 数组操作方法说明</a></li>
                         
-                          <li><a title="iOS tableview 简单使用说明" href="15139214660338.html">iOS tableview 简单使用说明</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>iOS功能小结</span></li>
-                        
-                          <li><a title="iOS 权限问题" href="15139219822825.html">iOS 权限问题</a></li>
-                        
-                          <li><a title="iOS上传头像" href="15139215980098.html">iOS上传头像</a></li>
+                          <li><a title="iOS tableview 基础使用说明" href="15139214660338.html">iOS tableview 基础使用说明</a></li>
                         
 
                     
@@ -170,8 +164,74 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>iOS上传头像</h1>
+<h1>iOS  【从头建项三】那些.pch里写了些什么？</h1>
 
+<h5 id="toc_0">解决打印信息不全的问题</h5>
+
+<pre><code>#if DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,&quot;[%s:%d行] %s\n&quot;,[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(FORMAT, ...) nil
+#endif
+</code></pre>
+
+<h5 id="toc_1">获取屏幕宽高</h5>
+
+<pre><code>#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+</code></pre>
+
+<h5 id="toc_2">下面这句话你是不是写的特别多。。。</h5>
+
+<pre><code>//转换字符串
+#define KCHANGE_STR(string)     [[NSString alloc]initWithFormat:@&quot;%@&quot;,string]
+</code></pre>
+
+<h5 id="toc_3">还在用NSUserDefaults数据持久化吗？？？</h5>
+
+<pre><code>//为NSUserDefaults 添加object和key
+#define Kuserdefaultsave(object,key) [[NSUserDefaults standardUserDefaults] setObject:object forKey:key]
+//读取NSUserDefaults中key的元素
+#define Kuserdefaultread(key) [[NSUserDefaults standardUserDefaults] objectForKey:key]
+//删除NSUserDefaults中key的元素
+#define Kuserdefaultdelete(key) [[NSUserDefaults standardUserDefaults] removeObjectForKey:key]
+
+记得用NSUserDefaults时写同步这句话啊。。。
+[[NSUserDefaults standardUserDefaults]synchronize];
+</code></pre>
+
+<h5 id="toc_4">获取沙盒地址</h5>
+
+<pre><code>//获取沙盒 Document
+#define kPathDocument [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+//获取沙盒 Cache
+#define kPathCache [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
+//获取temp
+#define kPathTemp NSTemporaryDirectory()
+</code></pre>
+
+<h5 id="toc_5">各处判断的难忘时光。。。</h5>
+
+<pre><code>/****************判空****************/
+//字符串是否为空
+#define kStringIsEmpty(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] &lt; 1 ? YES : NO )
+
+//数组是否为空
+#define kArrayIsEmpty(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0)
+
+//字典是否为空
+#define kDictIsEmpty(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0)
+
+//是否是空对象
+#define kObjectIsEmpty(_object) (_object == nil \
+|| [_object isKindOfClass:[NSNull class]] \
+|| ([_object respondsToSelector:@selector(length)] &amp;&amp; [(NSData *)_object length] == 0) \
+|| ([_object respondsToSelector:@selector(count)] &amp;&amp; [(NSArray *)_object count] == 0))
+
+字典判空用count也很好用哈。
+</code></pre>
+
+<pre><code></code></pre>
 
 
 </div>
@@ -183,15 +243,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15139217121225.html"  title="Previous Post: 正则表达式简单说明">&laquo; 正则表达式简单说明</a>
+	        <a href="15139119793020.html"  title="Previous Post: iOS   【从头建项二】创建.pch文件">&laquo; iOS   【从头建项二】创建.pch文件</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15139213651453.html" 
-	        title="Next Post: iOS开发说明">iOS开发说明 &raquo;</a>
+	        <a href="15139219822825.html" 
+	        title="Next Post: iOS 【从头建项四】权限、网络问题">iOS 【从头建项四】权限、网络问题 &raquo;</a>
 	    
 	</div>
   </div>
@@ -204,7 +264,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15139215980098.html';
+		var currentURL = '15139368877787.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

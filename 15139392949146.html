@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  iOS功能小结 - zhangdong
+  项目问题汇总 - zhangdong
   
   </title>
  <meta name="description" content="">
@@ -49,25 +49,21 @@
           
             <li><a title="iOS开发说明" href="15139213651453.html">iOS开发说明</a></li>
           
-            <li><a title="iOS 使用三方工具cocoaPods" href="15139117675584.html">iOS 使用三方工具cocoaPods</a></li>
+            <li><a title="项目问题汇总" href="15139392949146.html">项目问题汇总</a></li>
           
-            <li><a title="iOS   创建.pch文件" href="15139119793020.html">iOS   创建.pch文件</a></li>
+            <li><a title="iOS 【从头建项一】使用三方管理工具cocoaPods" href="15139117675584.html">iOS 【从头建项一】使用三方管理工具cocoaPods</a></li>
+          
+            <li><a title="iOS   【从头建项二】创建.pch文件" href="15139119793020.html">iOS   【从头建项二】创建.pch文件</a></li>
+          
+            <li><a title="iOS  【从头建项三】那些.pch里写了些什么？" href="15139368877787.html">iOS  【从头建项三】那些.pch里写了些什么？</a></li>
+          
+            <li><a title="iOS 【从头建项四】权限、网络问题" href="15139219822825.html">iOS 【从头建项四】权限、网络问题</a></li>
           
             <li><a title="ios 字符串操作方法说明" href="15139214218497.html">ios 字符串操作方法说明</a></li>
           
             <li><a title="iOS 数组操作方法说明" href="15139214500331.html">iOS 数组操作方法说明</a></li>
           
-            <li><a title="iOS tableview 简单使用说明" href="15139214660338.html">iOS tableview 简单使用说明</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>iOS功能小结</label></li>
-
-          
-            <li><a title="iOS 权限问题" href="15139219822825.html">iOS 权限问题</a></li>
-          
-            <li><a title="iOS上传头像" href="15139215980098.html">iOS上传头像</a></li>
+            <li><a title="iOS tableview 基础使用说明" href="15139214660338.html">iOS tableview 基础使用说明</a></li>
           
 
       
@@ -118,23 +114,21 @@
                         
                           <li><a title="iOS开发说明" href="15139213651453.html">iOS开发说明</a></li>
                         
-                          <li><a title="iOS 使用三方工具cocoaPods" href="15139117675584.html">iOS 使用三方工具cocoaPods</a></li>
+                          <li><a title="项目问题汇总" href="15139392949146.html">项目问题汇总</a></li>
                         
-                          <li><a title="iOS   创建.pch文件" href="15139119793020.html">iOS   创建.pch文件</a></li>
+                          <li><a title="iOS 【从头建项一】使用三方管理工具cocoaPods" href="15139117675584.html">iOS 【从头建项一】使用三方管理工具cocoaPods</a></li>
+                        
+                          <li><a title="iOS   【从头建项二】创建.pch文件" href="15139119793020.html">iOS   【从头建项二】创建.pch文件</a></li>
+                        
+                          <li><a title="iOS  【从头建项三】那些.pch里写了些什么？" href="15139368877787.html">iOS  【从头建项三】那些.pch里写了些什么？</a></li>
+                        
+                          <li><a title="iOS 【从头建项四】权限、网络问题" href="15139219822825.html">iOS 【从头建项四】权限、网络问题</a></li>
                         
                           <li><a title="ios 字符串操作方法说明" href="15139214218497.html">ios 字符串操作方法说明</a></li>
                         
                           <li><a title="iOS 数组操作方法说明" href="15139214500331.html">iOS 数组操作方法说明</a></li>
                         
-                          <li><a title="iOS tableview 简单使用说明" href="15139214660338.html">iOS tableview 简单使用说明</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>iOS功能小结</span></li>
-                        
-                          <li><a title="iOS 权限问题" href="15139219822825.html">iOS 权限问题</a></li>
-                        
-                          <li><a title="iOS上传头像" href="15139215980098.html">iOS上传头像</a></li>
+                          <li><a title="iOS tableview 基础使用说明" href="15139214660338.html">iOS tableview 基础使用说明</a></li>
                         
 
                     
@@ -169,51 +163,94 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>项目问题汇总</h1>
+
+<h5 id="toc_0">遇到的小问题却忽略的必然问题项如下：</h5>
+
+<h6 id="toc_1">不明确问题：</h6>
+
+<ol>
+<li>项目都有哪些功能？不明确？</li>
+<li>是否需要检测网络，无网络或者无数据页面如何处理？</li>
+<li>例如：显示无数据页面，点击按钮重新请求？</li>
+<li>某些数据内容展示不开时：显示一行即可/多行？</li>
+<li>提示语的说明?</li>
+<li>本地数据存储是否多？</li>
+<li>业务复杂逻辑流程图？各端统一，麻烦也要统一做。</li>
+</ol>
+
+<h6 id="toc_2">不明确的功能项：</h6>
+
+<ol>
+<li>列表 tableview 是否有动态行高？</li>
+<li>哪些是必须登录才可看的页面？</li>
+<li>登录后是否有页面乱push 与pop 的情况？</li>
+<li>热点问题是否有适配的价值，例如：京东曾不适配。</li>
+</ol>
+
+<h6 id="toc_3">必须有的功能项：</h6>
+
+<ol>
+<li>网络请求的日志信息，如何处理?和接口人员商议</li>
+<li>需要增加闪退统计例如：集成极光。</li>
+</ol>
+
+<h6 id="toc_4">接口问题：</h6>
+
+<ol>
+<li>有通知功能时登录接口不是必传通知获取的token/channel_id？</li>
+<li>接口返回问题返回数组的时候是空数组，还是空对象？</li>
+</ol>
+
+<h6 id="toc_5">UI问题:</h6>
+
+<ol>
+<li>设计图是根据多大屏幕作图？</li>
+<li>不规则切图用规则型的透明背景切图.</li>
+<li>如tabbar底部选项卡的图，大小统一.</li>
+<li>个人中心等同位置图标 大小统一.</li>
+</ol>
 
 
-	
-		<div class="markdown-body">
-		<h1>iOS 权限问题</h1>
+</div>
 
-		<pre><code>定位要写清楚用途，例如（为您导航, 到您想去的健身门店。）否则会遭拒绝的在水果商店
-定位权限：Privacy - Location When In Use Usage Description         
-定位权限: Privacy - Location Always Usage Description                
-相机权限：Privacy - Camera Usage Description    是否允许此App使用你的相机？
-相册权限： Privacy - Photo Library Usage Description   是否允许此App访问你的媒体资料库？
-通讯录权限： Privacy - Contacts Usage Description                           
-麦克风权限： Privacy - Microphone Usage Description                      
-蓝牙权限： Privacy - Bluetooth Peripheral Usage Description           
-日历权限：Privacy - Calendars Usage Description                         
-语音转文字权限：Privacy - Speech Recognition Usage Description            
-健康数据分享:  Privacy - Health Share Usage Description  
-健康数据更新: Privacy - Health Update Usage Description 
-运动传感器: Privacy - Motion Usage Description  
-音乐:  Privacy - Music Usage Description  
-播放音乐或者视频:  Privacy - Media Library Usage Description  
-Siri:    Privacy - Siri Usage Description  
-智能家具:  Privacy - HomeKit Usage Description  
-电视提供商:   Privacy - TV Provider Usage Description  
-视频订阅:  Privacy - Video Subscriber Account Usage Description 
-备忘录: Privacy - Reminders Usage Description
+<br /><br />
+<hr />
 
-</code></pre>
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15139213651453.html"  title="Previous Post: iOS开发说明">&laquo; iOS开发说明</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15139235853705.html" 
+	        title="Next Post: 联系方式">联系方式 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-<pre><code>网络请求的ATS如下：
-App Transport Security Settings  （Type:Dictionary）
-在添加子项如下：
-Allow Arbitrary Loads            （Type:Boolean）设置为YES
-</code></pre>
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
-
-		</div>
-	
-
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15139392949146.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

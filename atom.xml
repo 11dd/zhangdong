@@ -4,7 +4,7 @@
   <title><![CDATA[zhangdong]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2017-12-22T17:11:18+08:00</updated>
+  <updated>2017-12-22T17:54:07+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://www.mweb.im">MWeb</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS开发说明]]></title>
+    <link href="www.freefook.com/15139213651453.html"/>
+    <updated>2017-12-22T13:42:45+08:00</updated>
+    <id>www.freefook.com/15139213651453.html</id>
+    <content type="html"><![CDATA[
+<pre><code>what？
+因为基础你不会。。。
+
+why?
+因为基础你不会系列。。。
+
+how?
+因为基础你不会系列之说明。。。
+
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[项目问题汇总]]></title>
+    <link href="www.freefook.com/15139392949146.html"/>
+    <updated>2017-12-22T18:41:34+08:00</updated>
+    <id>www.freefook.com/15139392949146.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">遇到的小问题却忽略的必然问题项如下：</h5>
+
+<h6 id="toc_1">不明确问题：</h6>
+
+<ol>
+<li>项目都有哪些功能？不明确？</li>
+<li>是否需要检测网络，无网络或者无数据页面如何处理？</li>
+<li>例如：显示无数据页面，点击按钮重新请求？</li>
+<li>某些数据内容展示不开时：显示一行即可/多行？</li>
+<li>提示语的说明?</li>
+<li>本地数据存储是否多？</li>
+<li>业务复杂逻辑流程图？各端统一，麻烦也要统一做。</li>
+</ol>
+
+<h6 id="toc_2">不明确的功能项：</h6>
+
+<ol>
+<li>列表 tableview 是否有动态行高？</li>
+<li>哪些是必须登录才可看的页面？</li>
+<li>登录后是否有页面乱push 与pop 的情况？</li>
+<li>热点问题是否有适配的价值，例如：京东曾不适配。</li>
+</ol>
+
+<h6 id="toc_3">必须有的功能项：</h6>
+
+<ol>
+<li>网络请求的日志信息，如何处理?和接口人员商议</li>
+<li>需要增加闪退统计例如：集成极光。</li>
+</ol>
+
+<h6 id="toc_4">接口问题：</h6>
+
+<ol>
+<li>有通知功能时登录接口不是必传通知获取的token/channel_id？</li>
+<li>接口返回问题返回数组的时候是空数组，还是空对象？</li>
+</ol>
+
+<h6 id="toc_5">UI问题:</h6>
+
+<ol>
+<li>设计图是根据多大屏幕作图？</li>
+<li>不规则切图用规则型的透明背景切图.</li>
+<li>如tabbar底部选项卡的图，大小统一.</li>
+<li>个人中心等同位置图标 大小统一.</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[联系方式]]></title>
@@ -108,38 +183,82 @@ ARKit的大部分计算都是在CPU上处理的，在A8处理器上的性能损�
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[iOS 权限问题]]></title>
-    <link href="www.freefook.com/15139219822825.html"/>
-    <updated>2017-12-22T13:53:02+08:00</updated>
-    <id>www.freefook.com/15139219822825.html</id>
+    <title type="html"><![CDATA[iOS 【从头建项一】使用三方管理工具cocoaPods]]></title>
+    <link href="www.freefook.com/15139117675584.html"/>
+    <updated>2017-12-22T11:02:47+08:00</updated>
+    <id>www.freefook.com/15139117675584.html</id>
     <content type="html"><![CDATA[
-<pre><code>定位要写清楚用途，例如（为您导航, 到您想去的健身门店。）否则会遭拒绝的在水果商店
-定位权限：Privacy - Location When In Use Usage Description         
-定位权限: Privacy - Location Always Usage Description                
-相机权限：Privacy - Camera Usage Description    是否允许此App使用你的相机？
-相册权限： Privacy - Photo Library Usage Description   是否允许此App访问你的媒体资料库？
-通讯录权限： Privacy - Contacts Usage Description                           
-麦克风权限： Privacy - Microphone Usage Description                      
-蓝牙权限： Privacy - Bluetooth Peripheral Usage Description           
-日历权限：Privacy - Calendars Usage Description                         
-语音转文字权限：Privacy - Speech Recognition Usage Description            
-健康数据分享:  Privacy - Health Share Usage Description  
-健康数据更新: Privacy - Health Update Usage Description 
-运动传感器: Privacy - Motion Usage Description  
-音乐:  Privacy - Music Usage Description  
-播放音乐或者视频:  Privacy - Media Library Usage Description  
-Siri:    Privacy - Siri Usage Description  
-智能家具:  Privacy - HomeKit Usage Description  
-电视提供商:   Privacy - TV Provider Usage Description  
-视频订阅:  Privacy - Video Subscriber Account Usage Description 
-备忘录: Privacy - Reminders Usage Description
+<p>我们都用哪些三方呢？例如：<br/>
+1.  --极光的统计：可查看闪退日志（必须要有首先就要集成）<br/>
+2.  --可能用到的推送，可用极光的推送<br/>
+3.  --网络请求  AFNetWorking<br/>
+4.  --刷新  MJRefresh<br/>
+5.  --图片加载  SDWebImage<br/>
+6.  --用于加载的loading和提示框  MBProgressHUD<br/>
+7.  --用于解决输入框被键盘遮挡的问题  IQKeyBoardManager<br/>
+8.  --用于布局约束  Masonry<br/>
+9.  --加在程序中,解决NUll问题  ullSafe.m</p>
 
+<pre><code>使用三方管理工具cocoapods
+1、Ruby环境搭建
+查看下当前ruby版本：打开终端输入 ruby -v
+
+如果需要更新，进行如下操作更改Ruby镜像：
+
+gem sources --remove https://rubygems.org/ 
+gem sources -a https://gems.ruby-china.org/
+gem sources -l  （用来检查使用替换镜像位置成功与否）
+
+最后 输入  rvm install 2.2.4  更新ruby
+
+
+2、下载安装CocoaPods
+终端输入：sudo gem install cocoapods 
+
+结束之后：
+终端cd 到自己的项目文件下Create a Podfile
+
+终端输入touch Podfile
+       open -a Xcode Podfile
+
+
+写上如下内容：
+target &#39;MyApp的名’ do
+  pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1’
+end
+
+执行 pod install 就OK了
+
+查询三方版本可用 pod search afnetworking  （不区分大小写）
+第一次安装完pod 进行搜索需要多等一段时间，
+会卡在Creating search index for spec repo &#39;master&#39;..    
+
+CocoaPods的基本安装及使用都详细的说明了，
+当需要同时导入多个第三方时候怎么办 ？
+这就需要修改Podfile了，就是用vim编辑的那个保存在项目根目录中的文件，
+修改完了Podfile文件，需要重新执行一次pod install命令。
 </code></pre>
 
-<pre><code>网络请求的ATS如下：
-App Transport Security Settings  （Type:Dictionary）
-在添加子项如下：
-Allow Arbitrary Loads            （Type:Boolean）设置为YES
+<h5 id="toc_0">参考如下：</h5>
+
+<pre><code> iOS安装CocoaPods详细过程
+ 请查看:(http://www.jianshu.com/p/9e4e36ba8574)
+ 
+ cocoapods报错问题You need at least git version 1.8.5 to use CocoaPods
+ 请查看:(http://www.jianshu.com/p/a1ab3b291f55)
+ 
+ 使用cocoapods时常见错误
+ 请查看:(http://www.jianshu.com/p/dfc7b93e67eb)
+ 
+ iOS 下 Podfile 使用方法
+ 请查看:(http://www.cnblogs.com/Kennytian/p/6413734.html)
+ 
+ 如果出现下面问题,请尝试:cocoapods 出现 &quot;_OBJC_CLASS_$--&quot;, 
+ referenced from:的问题target-&gt;build setting
+  -&gt;other link flags 添加一个$(inherited) 
+  
+  
+  
 </code></pre>
 
 ]]></content>
@@ -1286,108 +1405,7 @@ NSString+JKNormalRegex.h</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[iOS上传头像]]></title>
-    <link href="www.freefook.com/15139215980098.html"/>
-    <updated>2017-12-22T13:46:38+08:00</updated>
-    <id>www.freefook.com/15139215980098.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS开发说明]]></title>
-    <link href="www.freefook.com/15139213651453.html"/>
-    <updated>2017-12-22T13:42:45+08:00</updated>
-    <id>www.freefook.com/15139213651453.html</id>
-    <content type="html"><![CDATA[
-<pre><code>what？
-因为基础你不会。。。
-
-why?
-因为基础你不会系列。。。
-
-how?
-因为基础你不会系列之说明。。。
-
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS 使用三方工具cocoaPods]]></title>
-    <link href="www.freefook.com/15139117675584.html"/>
-    <updated>2017-12-22T11:02:47+08:00</updated>
-    <id>www.freefook.com/15139117675584.html</id>
-    <content type="html"><![CDATA[
-<pre><code>使用三方管理工具cocoapods
-1、Ruby环境搭建
-查看下当前ruby版本：打开终端输入 ruby -v
-
-如果需要更新，进行如下操作更改Ruby镜像：
-
-gem sources --remove https://rubygems.org/ 
-gem sources -a https://gems.ruby-china.org/
-gem sources -l  （用来检查使用替换镜像位置成功与否）
-
-最后 输入  rvm install 2.2.4  更新ruby
-
-
-2、下载安装CocoaPods
-终端输入：sudo gem install cocoapods 
-
-结束之后：
-终端cd 到自己的项目文件下Create a Podfile
-
-终端输入touch Podfile
-       open -a Xcode Podfile
-
-
-写上如下内容：
-target &#39;MyApp的名’ do
-  pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1’
-end
-
-执行 pod install 就OK了
-
-查询三方版本可用 pod search afnetworking  （不区分大小写）
-第一次安装完pod 进行搜索需要多等一段时间，
-会卡在Creating search index for spec repo &#39;master&#39;..    
-
-CocoaPods的基本安装及使用都详细的说明了，
-当需要同时导入多个第三方时候怎么办 ？
-这就需要修改Podfile了，就是用vim编辑的那个保存在项目根目录中的文件，
-修改完了Podfile文件，需要重新执行一次pod install命令。
-</code></pre>
-
-<h5 id="toc_0">参考如下：</h5>
-
-<pre><code> iOS安装CocoaPods详细过程
- 请查看:(http://www.jianshu.com/p/9e4e36ba8574)
- 
- cocoapods报错问题You need at least git version 1.8.5 to use CocoaPods
- 请查看:(http://www.jianshu.com/p/a1ab3b291f55)
- 
- 使用cocoapods时常见错误
- 请查看:(http://www.jianshu.com/p/dfc7b93e67eb)
- 
- iOS 下 Podfile 使用方法
- 请查看:(http://www.cnblogs.com/Kennytian/p/6413734.html)
- 
- 如果出现下面问题,请尝试:cocoapods 出现 &quot;_OBJC_CLASS_$--&quot;, 
- referenced from:的问题target-&gt;build setting
-  -&gt;other link flags 添加一个$(inherited) 
-  
-  
-  
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS   创建.pch文件]]></title>
+    <title type="html"><![CDATA[iOS   【从头建项二】创建.pch文件]]></title>
     <link href="www.freefook.com/15139119793020.html"/>
     <updated>2017-12-22T11:06:19+08:00</updated>
     <id>www.freefook.com/15139119793020.html</id>
@@ -1396,6 +1414,130 @@ CocoaPods的基本安装及使用都详细的说明了，
 <img src="http://upload-images.jianshu.io/upload_images/670820-06ec44085a3c68e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="箭头所指三个选中.png"/></p>
 
 <p><img src="http://upload-images.jianshu.io/upload_images/670820-192ddcde4df0a66f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="加粗的两项改动test是项工程名.png"/></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS  【从头建项三】那些.pch里写了些什么？]]></title>
+    <link href="www.freefook.com/15139368877787.html"/>
+    <updated>2017-12-22T18:01:27+08:00</updated>
+    <id>www.freefook.com/15139368877787.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">解决打印信息不全的问题</h5>
+
+<pre><code>#if DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,&quot;[%s:%d行] %s\n&quot;,[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(FORMAT, ...) nil
+#endif
+</code></pre>
+
+<h5 id="toc_1">获取屏幕宽高</h5>
+
+<pre><code>#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+</code></pre>
+
+<h5 id="toc_2">下面这句话你是不是写的特别多。。。</h5>
+
+<pre><code>//转换字符串
+#define KCHANGE_STR(string)     [[NSString alloc]initWithFormat:@&quot;%@&quot;,string]
+</code></pre>
+
+<h5 id="toc_3">还在用NSUserDefaults数据持久化吗？？？</h5>
+
+<pre><code>//为NSUserDefaults 添加object和key
+#define Kuserdefaultsave(object,key) [[NSUserDefaults standardUserDefaults] setObject:object forKey:key]
+//读取NSUserDefaults中key的元素
+#define Kuserdefaultread(key) [[NSUserDefaults standardUserDefaults] objectForKey:key]
+//删除NSUserDefaults中key的元素
+#define Kuserdefaultdelete(key) [[NSUserDefaults standardUserDefaults] removeObjectForKey:key]
+
+记得用NSUserDefaults时写同步这句话啊。。。
+[[NSUserDefaults standardUserDefaults]synchronize];
+</code></pre>
+
+<h5 id="toc_4">获取沙盒地址</h5>
+
+<pre><code>//获取沙盒 Document
+#define kPathDocument [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+//获取沙盒 Cache
+#define kPathCache [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
+//获取temp
+#define kPathTemp NSTemporaryDirectory()
+</code></pre>
+
+<h5 id="toc_5">各处判断的难忘时光。。。</h5>
+
+<pre><code>/****************判空****************/
+//字符串是否为空
+#define kStringIsEmpty(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] &lt; 1 ? YES : NO )
+
+//数组是否为空
+#define kArrayIsEmpty(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0)
+
+//字典是否为空
+#define kDictIsEmpty(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0)
+
+//是否是空对象
+#define kObjectIsEmpty(_object) (_object == nil \
+|| [_object isKindOfClass:[NSNull class]] \
+|| ([_object respondsToSelector:@selector(length)] &amp;&amp; [(NSData *)_object length] == 0) \
+|| ([_object respondsToSelector:@selector(count)] &amp;&amp; [(NSArray *)_object count] == 0))
+
+字典判空用count也很好用哈。
+</code></pre>
+
+<pre><code></code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS 【从头建项四】权限、网络问题]]></title>
+    <link href="www.freefook.com/15139219822825.html"/>
+    <updated>2017-12-22T13:53:02+08:00</updated>
+    <id>www.freefook.com/15139219822825.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">info.plist里你该知道的权限</h5>
+
+<ol>
+<li>定位要写清楚用途，例如（为您导航, 到您想去的健身门店。）否则会遭拒绝的在水果商店</li>
+<li>经常使用的例如：是否允许此App使用你的相机？</li>
+<li>例如：是否允许此App访问你的媒体资料库？</li>
+</ol>
+
+<pre><code>
+定位权限：          Privacy - Location When In Use Usage Description         
+定位权限:           Privacy - Location Always Usage Description                
+相机权限：          Privacy - Camera Usage Description    
+相册权限：          Privacy - Photo Library Usage Description   
+通讯录权限：        Privacy - Contacts Usage Description                           
+麦克风权限：        Privacy - Microphone Usage Description                      
+蓝牙权限：          Privacy - Bluetooth Peripheral Usage Description           
+日历权限：          Privacy - Calendars Usage Description                         
+语音转文字权限：     Privacy - Speech Recognition Usage Description            
+健康数据分享:       Privacy - Health Share Usage Description  
+健康数据更新:       Privacy - Health Update Usage Description 
+运动传感器:         Privacy - Motion Usage Description  
+音乐:              Privacy - Music Usage Description  
+播放音乐或者视频:    Privacy - Media Library Usage Description  
+Siri:              Privacy - Siri Usage Description  
+智能家具:           Privacy - HomeKit Usage Description  
+电视提供商:         Privacy - TV Provider Usage Description  
+视频订阅:           Privacy - Video Subscriber Account Usage Description 
+备忘录:            Privacy - Reminders Usage Description
+
+</code></pre>
+
+<h5 id="toc_1">网络请求时，看看你是不是还需要做此操作啊。。。</h5>
+
+<pre><code>网络请求的ATS如下：
+App Transport Security Settings  （Type:Dictionary）
+在添加子项如下：
+Allow Arbitrary Loads            （Type:Boolean）设置为YES
+</code></pre>
 
 ]]></content>
   </entry>
@@ -1651,7 +1793,7 @@ NSArray *sub1 = [tempArr subarrayWithRange:NSMakeRange(1, 3)];
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[iOS tableview 简单使用说明]]></title>
+    <title type="html"><![CDATA[iOS tableview 基础使用说明]]></title>
     <link href="www.freefook.com/15139214660338.html"/>
     <updated>2017-12-22T13:44:26+08:00</updated>
     <id>www.freefook.com/15139214660338.html</id>
@@ -1678,8 +1820,9 @@ NSArray *sub1 = [tempArr subarrayWithRange:NSMakeRange(1, 3)];
 }
 </code></pre>
 
-<p>tableview 代理方法实现如下：<br/>
-tableview解决常规配置的重复问题。。。</p>
+<h5 id="toc_1">tableview 代理方法实现如下：</h5>
+
+<h6 id="toc_2">tableview解决常规配置的重复问题。。。</h6>
 
 <pre><code>//当页面拉动需要显示新数据的时候，把最后一个cell进行删除 此方案即可避免重复显示，又重用了cell相对内存管理来说是好的方案 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -1710,14 +1853,15 @@ return cell;
 }
 </code></pre>
 
-<p>other</p>
+<h5 id="toc_3">other</h5>
 
-<pre><code>-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+<pre><code>//行
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
     return &lt;#@#&gt;;
 }
-
+//行高
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return &lt;#@#&gt;;
@@ -1731,7 +1875,7 @@ return cell;
 }
 </code></pre>
 
-<p>tableview header与footer</p>
+<h5 id="toc_4">tableview header与footer</h5>
 
 <pre><code>#pragma - mark - tableview_Header and Footer
 
@@ -1760,6 +1904,42 @@ return cell;
     
     return 0;
     
+}
+</code></pre>
+
+<h5 id="toc_5">tableview 常用方法如下：</h5>
+
+<h5 id="toc_6">tableview 选中第几行</h5>
+
+<pre><code>NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
+[self.tableView selectRowAtIndexPath:indexpath animated:YES scrollPosition:UITableViewScrollPositionMiddle];  //选中第5行
+</code></pre>
+
+<h5 id="toc_7">滚动到指定位置</h5>
+
+<pre><code>//滚动到指定位置_偏移量
+[self.rizhiTableView setContentOffset:CGPointMake(0, OffsetY) animated:NO];
+//滚动到第几行
+NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
+[self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+</code></pre>
+
+<h5 id="toc_8">pragma mark  - 滑到最底部</h5>
+
+<pre><code>- (void)scrollTableToFoot
+{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        NSInteger s = [self.tableView numberOfSections];  //有多少组
+        if (s&lt;1) return;  //无数据时不执行 要不会crash
+        NSInteger r = [self.tableView numberOfRowsInSection:s-1]; //最后一组有多少行
+        if (r&lt;1) return;
+        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:r-1 inSection:s-1];  //取最后一行数据
+        [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:NO]; //滚动到最后一行
+        
+    });
+  
 }
 </code></pre>
 

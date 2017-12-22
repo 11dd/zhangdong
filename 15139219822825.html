@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  iOS 权限问题 - zhangdong
+  iOS 【从头建项四】权限、网络问题 - zhangdong
   
   </title>
  <meta name="description" content="">
@@ -49,25 +49,21 @@
           
             <li><a title="iOS开发说明" href="15139213651453.html">iOS开发说明</a></li>
           
-            <li><a title="iOS 使用三方工具cocoaPods" href="15139117675584.html">iOS 使用三方工具cocoaPods</a></li>
+            <li><a title="项目问题汇总" href="15139392949146.html">项目问题汇总</a></li>
           
-            <li><a title="iOS   创建.pch文件" href="15139119793020.html">iOS   创建.pch文件</a></li>
+            <li><a title="iOS 【从头建项一】使用三方管理工具cocoaPods" href="15139117675584.html">iOS 【从头建项一】使用三方管理工具cocoaPods</a></li>
+          
+            <li><a title="iOS   【从头建项二】创建.pch文件" href="15139119793020.html">iOS   【从头建项二】创建.pch文件</a></li>
+          
+            <li><a title="iOS  【从头建项三】那些.pch里写了些什么？" href="15139368877787.html">iOS  【从头建项三】那些.pch里写了些什么？</a></li>
+          
+            <li><a title="iOS 【从头建项四】权限、网络问题" href="15139219822825.html">iOS 【从头建项四】权限、网络问题</a></li>
           
             <li><a title="ios 字符串操作方法说明" href="15139214218497.html">ios 字符串操作方法说明</a></li>
           
             <li><a title="iOS 数组操作方法说明" href="15139214500331.html">iOS 数组操作方法说明</a></li>
           
-            <li><a title="iOS tableview 简单使用说明" href="15139214660338.html">iOS tableview 简单使用说明</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>iOS功能小结</label></li>
-
-          
-            <li><a title="iOS 权限问题" href="15139219822825.html">iOS 权限问题</a></li>
-          
-            <li><a title="iOS上传头像" href="15139215980098.html">iOS上传头像</a></li>
+            <li><a title="iOS tableview 基础使用说明" href="15139214660338.html">iOS tableview 基础使用说明</a></li>
           
 
       
@@ -118,23 +114,21 @@
                         
                           <li><a title="iOS开发说明" href="15139213651453.html">iOS开发说明</a></li>
                         
-                          <li><a title="iOS 使用三方工具cocoaPods" href="15139117675584.html">iOS 使用三方工具cocoaPods</a></li>
+                          <li><a title="项目问题汇总" href="15139392949146.html">项目问题汇总</a></li>
                         
-                          <li><a title="iOS   创建.pch文件" href="15139119793020.html">iOS   创建.pch文件</a></li>
+                          <li><a title="iOS 【从头建项一】使用三方管理工具cocoaPods" href="15139117675584.html">iOS 【从头建项一】使用三方管理工具cocoaPods</a></li>
+                        
+                          <li><a title="iOS   【从头建项二】创建.pch文件" href="15139119793020.html">iOS   【从头建项二】创建.pch文件</a></li>
+                        
+                          <li><a title="iOS  【从头建项三】那些.pch里写了些什么？" href="15139368877787.html">iOS  【从头建项三】那些.pch里写了些什么？</a></li>
+                        
+                          <li><a title="iOS 【从头建项四】权限、网络问题" href="15139219822825.html">iOS 【从头建项四】权限、网络问题</a></li>
                         
                           <li><a title="ios 字符串操作方法说明" href="15139214218497.html">ios 字符串操作方法说明</a></li>
                         
                           <li><a title="iOS 数组操作方法说明" href="15139214500331.html">iOS 数组操作方法说明</a></li>
                         
-                          <li><a title="iOS tableview 简单使用说明" href="15139214660338.html">iOS tableview 简单使用说明</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>iOS功能小结</span></li>
-                        
-                          <li><a title="iOS 权限问题" href="15139219822825.html">iOS 权限问题</a></li>
-                        
-                          <li><a title="iOS上传头像" href="15139215980098.html">iOS上传头像</a></li>
+                          <li><a title="iOS tableview 基础使用说明" href="15139214660338.html">iOS tableview 基础使用说明</a></li>
                         
 
                     
@@ -170,30 +164,40 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>iOS 权限问题</h1>
+<h1>iOS 【从头建项四】权限、网络问题</h1>
 
-<pre><code>定位要写清楚用途，例如（为您导航, 到您想去的健身门店。）否则会遭拒绝的在水果商店
-定位权限：Privacy - Location When In Use Usage Description         
-定位权限: Privacy - Location Always Usage Description                
-相机权限：Privacy - Camera Usage Description    是否允许此App使用你的相机？
-相册权限： Privacy - Photo Library Usage Description   是否允许此App访问你的媒体资料库？
-通讯录权限： Privacy - Contacts Usage Description                           
-麦克风权限： Privacy - Microphone Usage Description                      
-蓝牙权限： Privacy - Bluetooth Peripheral Usage Description           
-日历权限：Privacy - Calendars Usage Description                         
-语音转文字权限：Privacy - Speech Recognition Usage Description            
-健康数据分享:  Privacy - Health Share Usage Description  
-健康数据更新: Privacy - Health Update Usage Description 
-运动传感器: Privacy - Motion Usage Description  
-音乐:  Privacy - Music Usage Description  
-播放音乐或者视频:  Privacy - Media Library Usage Description  
-Siri:    Privacy - Siri Usage Description  
-智能家具:  Privacy - HomeKit Usage Description  
-电视提供商:   Privacy - TV Provider Usage Description  
-视频订阅:  Privacy - Video Subscriber Account Usage Description 
-备忘录: Privacy - Reminders Usage Description
+<h5 id="toc_0">info.plist里你该知道的权限</h5>
+
+<ol>
+<li>定位要写清楚用途，例如（为您导航, 到您想去的健身门店。）否则会遭拒绝的在水果商店</li>
+<li>经常使用的例如：是否允许此App使用你的相机？</li>
+<li>例如：是否允许此App访问你的媒体资料库？</li>
+</ol>
+
+<pre><code>
+定位权限：          Privacy - Location When In Use Usage Description         
+定位权限:           Privacy - Location Always Usage Description                
+相机权限：          Privacy - Camera Usage Description    
+相册权限：          Privacy - Photo Library Usage Description   
+通讯录权限：        Privacy - Contacts Usage Description                           
+麦克风权限：        Privacy - Microphone Usage Description                      
+蓝牙权限：          Privacy - Bluetooth Peripheral Usage Description           
+日历权限：          Privacy - Calendars Usage Description                         
+语音转文字权限：     Privacy - Speech Recognition Usage Description            
+健康数据分享:       Privacy - Health Share Usage Description  
+健康数据更新:       Privacy - Health Update Usage Description 
+运动传感器:         Privacy - Motion Usage Description  
+音乐:              Privacy - Music Usage Description  
+播放音乐或者视频:    Privacy - Media Library Usage Description  
+Siri:              Privacy - Siri Usage Description  
+智能家具:           Privacy - HomeKit Usage Description  
+电视提供商:         Privacy - TV Provider Usage Description  
+视频订阅:           Privacy - Video Subscriber Account Usage Description 
+备忘录:            Privacy - Reminders Usage Description
 
 </code></pre>
+
+<h5 id="toc_1">网络请求时，看看你是不是还需要做此操作啊。。。</h5>
 
 <pre><code>网络请求的ATS如下：
 App Transport Security Settings  （Type:Dictionary）
@@ -211,15 +215,15 @@ Allow Arbitrary Loads            （Type:Boolean）设置为YES
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15139220095625.html"  title="Previous Post: iOS ARKit 看我就受够了">&laquo; iOS ARKit 看我就受够了</a>
+	        <a href="15139368877787.html"  title="Previous Post: iOS  【从头建项三】那些.pch里写了些什么？">&laquo; iOS  【从头建项三】那些.pch里写了些什么？</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15139219514745.html" 
-	        title="Next Post: AES加密打开方式...">AES加密打开方式... &raquo;</a>
+	        <a href="15139214218497.html" 
+	        title="Next Post: ios 字符串操作方法说明">ios 字符串操作方法说明 &raquo;</a>
 	    
 	</div>
   </div>

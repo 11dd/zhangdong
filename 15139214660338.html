@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  iOS tableview 简单使用说明 - zhangdong
+  iOS tableview 基础使用说明 - zhangdong
   
   </title>
  <meta name="description" content="">
@@ -49,25 +49,21 @@
           
             <li><a title="iOS开发说明" href="15139213651453.html">iOS开发说明</a></li>
           
-            <li><a title="iOS 使用三方工具cocoaPods" href="15139117675584.html">iOS 使用三方工具cocoaPods</a></li>
+            <li><a title="项目问题汇总" href="15139392949146.html">项目问题汇总</a></li>
           
-            <li><a title="iOS   创建.pch文件" href="15139119793020.html">iOS   创建.pch文件</a></li>
+            <li><a title="iOS 【从头建项一】使用三方管理工具cocoaPods" href="15139117675584.html">iOS 【从头建项一】使用三方管理工具cocoaPods</a></li>
+          
+            <li><a title="iOS   【从头建项二】创建.pch文件" href="15139119793020.html">iOS   【从头建项二】创建.pch文件</a></li>
+          
+            <li><a title="iOS  【从头建项三】那些.pch里写了些什么？" href="15139368877787.html">iOS  【从头建项三】那些.pch里写了些什么？</a></li>
+          
+            <li><a title="iOS 【从头建项四】权限、网络问题" href="15139219822825.html">iOS 【从头建项四】权限、网络问题</a></li>
           
             <li><a title="ios 字符串操作方法说明" href="15139214218497.html">ios 字符串操作方法说明</a></li>
           
             <li><a title="iOS 数组操作方法说明" href="15139214500331.html">iOS 数组操作方法说明</a></li>
           
-            <li><a title="iOS tableview 简单使用说明" href="15139214660338.html">iOS tableview 简单使用说明</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>iOS功能小结</label></li>
-
-          
-            <li><a title="iOS 权限问题" href="15139219822825.html">iOS 权限问题</a></li>
-          
-            <li><a title="iOS上传头像" href="15139215980098.html">iOS上传头像</a></li>
+            <li><a title="iOS tableview 基础使用说明" href="15139214660338.html">iOS tableview 基础使用说明</a></li>
           
 
       
@@ -118,23 +114,21 @@
                         
                           <li><a title="iOS开发说明" href="15139213651453.html">iOS开发说明</a></li>
                         
-                          <li><a title="iOS 使用三方工具cocoaPods" href="15139117675584.html">iOS 使用三方工具cocoaPods</a></li>
+                          <li><a title="项目问题汇总" href="15139392949146.html">项目问题汇总</a></li>
                         
-                          <li><a title="iOS   创建.pch文件" href="15139119793020.html">iOS   创建.pch文件</a></li>
+                          <li><a title="iOS 【从头建项一】使用三方管理工具cocoaPods" href="15139117675584.html">iOS 【从头建项一】使用三方管理工具cocoaPods</a></li>
+                        
+                          <li><a title="iOS   【从头建项二】创建.pch文件" href="15139119793020.html">iOS   【从头建项二】创建.pch文件</a></li>
+                        
+                          <li><a title="iOS  【从头建项三】那些.pch里写了些什么？" href="15139368877787.html">iOS  【从头建项三】那些.pch里写了些什么？</a></li>
+                        
+                          <li><a title="iOS 【从头建项四】权限、网络问题" href="15139219822825.html">iOS 【从头建项四】权限、网络问题</a></li>
                         
                           <li><a title="ios 字符串操作方法说明" href="15139214218497.html">ios 字符串操作方法说明</a></li>
                         
                           <li><a title="iOS 数组操作方法说明" href="15139214500331.html">iOS 数组操作方法说明</a></li>
                         
-                          <li><a title="iOS tableview 简单使用说明" href="15139214660338.html">iOS tableview 简单使用说明</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>iOS功能小结</span></li>
-                        
-                          <li><a title="iOS 权限问题" href="15139219822825.html">iOS 权限问题</a></li>
-                        
-                          <li><a title="iOS上传头像" href="15139215980098.html">iOS上传头像</a></li>
+                          <li><a title="iOS tableview 基础使用说明" href="15139214660338.html">iOS tableview 基础使用说明</a></li>
                         
 
                     
@@ -170,7 +164,7 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>iOS tableview 简单使用说明</h1>
+<h1>iOS tableview 基础使用说明</h1>
 
 <h5 id="toc_0">pragma - mark - tableview列表初始化</h5>
 
@@ -194,8 +188,9 @@
 }
 </code></pre>
 
-<p>tableview 代理方法实现如下：<br/>
-tableview解决常规配置的重复问题。。。</p>
+<h5 id="toc_1">tableview 代理方法实现如下：</h5>
+
+<h6 id="toc_2">tableview解决常规配置的重复问题。。。</h6>
 
 <pre><code>//当页面拉动需要显示新数据的时候，把最后一个cell进行删除 此方案即可避免重复显示，又重用了cell相对内存管理来说是好的方案 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -226,14 +221,15 @@ return cell;
 }
 </code></pre>
 
-<p>other</p>
+<h5 id="toc_3">other</h5>
 
-<pre><code>-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+<pre><code>//行
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
     return &lt;#@#&gt;;
 }
-
+//行高
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return &lt;#@#&gt;;
@@ -247,7 +243,7 @@ return cell;
 }
 </code></pre>
 
-<p>tableview header与footer</p>
+<h5 id="toc_4">tableview header与footer</h5>
 
 <pre><code>#pragma - mark - tableview_Header and Footer
 
@@ -276,6 +272,42 @@ return cell;
     
     return 0;
     
+}
+</code></pre>
+
+<h5 id="toc_5">tableview 常用方法如下：</h5>
+
+<h5 id="toc_6">tableview 选中第几行</h5>
+
+<pre><code>NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
+[self.tableView selectRowAtIndexPath:indexpath animated:YES scrollPosition:UITableViewScrollPositionMiddle];  //选中第5行
+</code></pre>
+
+<h5 id="toc_7">滚动到指定位置</h5>
+
+<pre><code>//滚动到指定位置_偏移量
+[self.rizhiTableView setContentOffset:CGPointMake(0, OffsetY) animated:NO];
+//滚动到第几行
+NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
+[self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+</code></pre>
+
+<h5 id="toc_8">pragma mark  - 滑到最底部</h5>
+
+<pre><code>- (void)scrollTableToFoot
+{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        NSInteger s = [self.tableView numberOfSections];  //有多少组
+        if (s&lt;1) return;  //无数据时不执行 要不会crash
+        NSInteger r = [self.tableView numberOfRowsInSection:s-1]; //最后一组有多少行
+        if (r&lt;1) return;
+        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:r-1 inSection:s-1];  //取最后一行数据
+        [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:NO]; //滚动到最后一行
+        
+    });
+  
 }
 </code></pre>
 
