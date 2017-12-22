@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Archives - zhangdong
+  iOS 加密那些事 - zhangdong
   
   </title>
  <meta name="description" content="">
@@ -235,251 +235,178 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- <div class="markdown-body">
+ 
+
+
 	
-		 
-		  	<h2>2017</h2>
-		
-		
-			<div>
-				<h3><a href="15139220095625.html">iOS ARKit 看我就受够了</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:53:29+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS_AR%E7%B1%BB%E6%96%87%E7%AB%A0.html'>iOS_AR类文章</a>&nbsp;
-				   
-				  </span>
+		<div class="markdown-body">
+		<h1>AES加密打开方式...</h1>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139219822825.html">iOS 权限问题</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:53:02+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E5%8A%9F%E8%83%BD%E5%B0%8F%E7%BB%93.html'>iOS功能小结</a>&nbsp;
-				   
-				  </span>
+		<p>很久没写博客,Markdown牵出来遛遛</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139219514745.html">AES加密打开方式...</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:52:31+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%20%E5%8A%A0%E5%AF%86%E9%82%A3%E4%BA%9B%E4%BA%8B.html'>iOS 加密那些事</a>&nbsp;
-				   
-				  </span>
+<p>AES加密时需要统一的几个参数。</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139219144104.html">互动直播变身视频会议</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:51:54+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS_%E8%A7%86%E9%A2%91%E7%B1%BB%E6%96%87%E7%AB%A0.html'>iOS_视频类文章</a>&nbsp;
-				   
-				  </span>
+<pre><code>密钥长度（Key Size）
+加密模式（Cipher Mode）
+填充方式（Padding）
+初始向量（Initialization Vector）
+</code></pre>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139218767623.html">Mac电脑清理存储空间</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:51:16+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='%E6%9D%82%E6%96%87.html'>杂文</a>&nbsp;
-				   
-				  </span>
+<blockquote>
+<p>1.本例使用AES-128,</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139218580826.html">iOS  MQTT 接入示例(MQTT 物联套件)</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:50:58+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS_MQ%E7%B1%BB%E6%96%87%E7%AB%A0.html'>iOS_MQ类文章</a>&nbsp;
-				   
-				  </span>
+<p>2.AES属于块加密BlockCipher，块加密中有CBC、ECB、CTR、OFB、CFB等几种工作模式。本例使用CBC模式</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139218050505.html">AR 原理与技术分析</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:50:05+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS_AR%E7%B1%BB%E6%96%87%E7%AB%A0.html'>iOS_AR类文章</a>&nbsp;
-				   
-				  </span>
+<p>3.由于块加密只能对特定长度的数据块进行加密，因此CBC、ECB模式需要在最后一数据块加密前进行数据填充。（CFB，OFB和CTR模式由于与key进行加密操作的是上一块加密后的密文，因此不需要对最后一段明文进行填充）<br/>
+在iOS SDK中提供了PKCS7Padding</p>
+</blockquote>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139217121225.html">正则表达式简单说明</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:48:32+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='%E6%9D%82%E6%96%87.html'>杂文</a>&nbsp;
-				   
-				  </span>
+<p>ECB加密模式（不推荐）：容易被攻击</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139215980098.html">iOS上传头像</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:46:38+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E5%8A%9F%E8%83%BD%E5%B0%8F%E7%BB%93.html'>iOS功能小结</a>&nbsp;
-				   
-				  </span>
+<blockquote>
+<p>1.每次key,明文,密文的长度都必须是64位;<br/><br/>
+2.数据块重复排序不需要检测;<br/><br/>
+3.相同的明文块(使用相同的密钥)产生相同的密文块,容易遭受字典被攻击<br/><br/>
+4.一个错误仅仅会对一个密文块产生影响</p>
+</blockquote>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139214660338.html">iOS tableview 使用说明</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:44:26+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E5%88%97%E8%A1%A8.html'>iOS列表</a>&nbsp;
-				   
-				  </span>
+<p>CBC加密方式(推荐):</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139214500331.html">iOS 数组操作方法说明</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:44:10+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C.html'>iOS数组操作</a>&nbsp;
-				   
-				  </span>
+<blockquote>
+<p>1.每次加密的密文长度为64位(8个字节);<br/><br/>
+2.当相同的明文使用相同的密钥和初始向量的时候CBC模式总是产生相同的密文;<br/><br/>
+3.密文块要依赖以前的操作结果,所以密文块不能进行重新排列;<br/><br/>
+4.可以使用不同的初始化向量来避免相同的明文产生相同的密文,一定程度上抵抗字典攻击<br/>
+5.一个错误发生后,当前和以后的密文都会被影响;</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139214218497.html">ios 字符串操作方法说明</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:43:41+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C.html'>iOS字符串操作</a>&nbsp;
-				   
-				  </span>
+<p>使用PKCS5Padding/PKCS7Padding填充可以兼容多平台语言之间AES加密解密  </p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139213651453.html">iOS开发说明</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:42:45+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%E5%9F%BA%E7%A1%80%E7%AF%87.html'>iOS开发手册基础篇</a>&nbsp;
-				   
-				  </span>
+<p>注意: 这里每次产生的密文是相同的，因为设置了初试向量iv为16位个数的“0”。要产生不同的密文就要使用变化的初试向量iv</p>
+</blockquote>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139119793020.html">iOS   创建.pch文件</a></h3>
-				<p>
-					<time datetime="2017-12-22T11:06:19+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E5%BB%BA%E9%A1%B9.html'>iOS建项</a>&nbsp;
-				   
-				  </span>
+<p>ios使用案例  </p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139117675584.html">iOS 使用三方工具cocoaPods</a></h3>
-				<p>
-					<time datetime="2017-12-22T11:02:47+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E5%BB%BA%E9%A1%B9.html'>iOS建项</a>&nbsp;
-				   
-				  </span>
+<p>创建一个类AESCipher继承NSObject</p>
 
-				</p>
-			</div>
- 	 
-</div>  
+<p>.h文件如下:</p>
+
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+NSString * aesEncryptString(NSString *content, NSString *key);
+NSString * aesDecryptString(NSString *content, NSString *key);
+
+NSData * aesEncryptData(NSData *data, NSData *key);
+NSData * aesDecryptData(NSData *data, NSData *key);
+
+</code></pre>
+
+<p>.m文件如下:<br/>
+```</p>
+
+<h1 id="toc_0">import &quot;AESCipher.h&quot;</h1>
+
+<h1 id="toc_1">import <CommonCrypto/CommonCryptor.h></h1>
+
+<p>//注意:初始向量,默认16个0(]前后端保持统一)<br/>
+NSString const *kInitVector = @&quot;0000000000000000&quot;;</p>
+
+<p>size_t const kKeySize = kCCKeySizeAES128;</p>
+
+<p>NSData * cipherOperation(NSData *contentData, NSData *keyData, CCOperation operation) {<br/>
+    NSUInteger dataLength = contentData.length;</p>
+
+<pre><code>void const *initVectorBytes = [kInitVector dataUsingEncoding:NSUTF8StringEncoding].bytes;
+void const *contentBytes = contentData.bytes;
+void const *keyBytes = keyData.bytes;
+
+size_t operationSize = dataLength + kCCBlockSizeAES128;
+void *operationBytes = malloc(operationSize);
+size_t actualOutSize = 0;
+
+CCCryptorStatus cryptStatus = CCCrypt(operation,
+                                      kCCAlgorithmAES,
+                                      kCCOptionPKCS7Padding,
+                                      keyBytes,
+                                      kKeySize,
+                                      initVectorBytes,
+                                      contentBytes,
+                                      dataLength,
+                                      operationBytes,
+                                      operationSize,
+                                      &amp;actualOutSize);
+
+if (cryptStatus == kCCSuccess) {
+    return [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
+}
+free(operationBytes);
+return nil;
+</code></pre>
+
+<p>}</p>
+
+<p>NSString * aesEncryptString(NSString *content, NSString *key) {<br/>
+    NSData *contentData = [content dataUsingEncoding:NSUTF8StringEncoding];<br/>
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];<br/>
+    NSData *encrptedData = aesEncryptData(contentData, keyData);<br/>
+    return [encrptedData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];<br/>
+}</p>
+
+<p>NSString * aesDecryptString(NSString *content, NSString *key) {<br/>
+    NSData *contentData = [[NSData alloc] initWithBase64EncodedString:content options:NSDataBase64DecodingIgnoreUnknownCharacters];<br/>
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];<br/>
+    NSData *decryptedData = aesDecryptData(contentData, keyData);<br/>
+    return [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];<br/>
+}</p>
+
+<p>NSData * aesEncryptData(NSData *contentData, NSData *keyData) {<br/>
+    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];<br/>
+    NSCAssert(keyData.length == kKeySize, hint);<br/>
+    return cipherOperation(contentData, keyData, kCCEncrypt);<br/>
+}</p>
+
+<p>NSData * aesDecryptData(NSData *contentData, NSData *keyData) {<br/>
+    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];<br/>
+    NSCAssert(keyData.length == kKeySize, hint);<br/>
+    return cipherOperation(contentData, keyData, kCCDecrypt);<br/>
+}<br/>
+```</p>
+
+<p>使用方法如下:<br/>
+```<br/>
+/*<br/>
+ 使用案例:</p>
+
+<p>第一: 导入头文件<br/>
+ #import &quot;AESCipher.h&quot;</p>
+
+<p>测试字符串<br/>
+ NSString *TestStr = @&quot;abc&quot;;<br/>
+ 设置key<br/>
+ NSString *key = @&quot;1234567812345678&quot;;</p>
+
+<p>NSString *cipherText = aesEncryptString(TestStr, key);</p>
+
+<p>NSLog(@&quot;加密==%@&quot;, cipherText);</p>
+
+<p>NSString *decryptedText = aesDecryptString(cipherText, key);</p>
+
+<p>NSLog(@&quot;解密==%@&quot;, decryptedText);</p>
+
+<p>*/</p>
+
+<pre><code>
+ 原文查看:
+ http://blog.csdn.net/u013749540/article/details/70225594
+ http://www.cnblogs.com/dcb3688/p/4608007.html
+
+</code></pre>
+
+
+		</div>
+	
+
+  
+  
 </div></div>
 
 

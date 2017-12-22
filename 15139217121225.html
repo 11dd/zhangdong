@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Archives - zhangdong
+  正则表达式简单说明 - zhangdong
   
   </title>
  <meta name="description" content="">
@@ -236,250 +236,135 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-	
-		 
-		  	<h2>2017</h2>
-		
-		
-			<div>
-				<h3><a href="15139220095625.html">iOS ARKit 看我就受够了</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:53:29+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS_AR%E7%B1%BB%E6%96%87%E7%AB%A0.html'>iOS_AR类文章</a>&nbsp;
-				   
-				  </span>
+<h1>正则表达式简单说明</h1>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139219822825.html">iOS 权限问题</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:53:02+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E5%8A%9F%E8%83%BD%E5%B0%8F%E7%BB%93.html'>iOS功能小结</a>&nbsp;
-				   
-				  </span>
+<p>正则表达式，又称正规表示法，是对字符串操作的一种逻辑公式。<br/>
+正则表达式可以检测给定的字符串是否符合我们定义的逻辑，<br/>
+也可以从字符串中获取我们想要的特定部分。<br/>
+它可以迅速地用极简单的方式达到字符串的复杂控制。</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139219514745.html">AES加密打开方式...</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:52:31+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%20%E5%8A%A0%E5%AF%86%E9%82%A3%E4%BA%9B%E4%BA%8B.html'>iOS 加密那些事</a>&nbsp;
-				   
-				  </span>
+<p>代码显示的部分摘自<br/>
+(摘)<a href="https://github.com/shaojiankui/JKCategories">https://github.com/shaojiankui/JKCategories</a><br/>
+NSString+JKNormalRegex.h</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139219144104.html">互动直播变身视频会议</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:51:54+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS_%E8%A7%86%E9%A2%91%E7%B1%BB%E6%96%87%E7%AB%A0.html'>iOS_视频类文章</a>&nbsp;
-				   
-				  </span>
+<p>iOS开发的时候,Category(扩展),👆这个就是个不错的选择;<br/>
+```<br/>
+/**<br/>
+ *  正则表达式简单说明<br/>
+ *  语法：<br/>
+ .       匹配除换行符以外的任意字符<br/>
+ \w      匹配字母或数字或下划线或汉字<br/>
+ \s      匹配任意的空白符<br/>
+ \d      匹配数字<br/>
+ \b      匹配单词的开始或结束<br/>
+ ^       匹配字符串的开始<br/>
+ \(       匹配字符串的结束<br/>
+ *       重复零次或更多次<br/>
+ +       重复一次或更多次<br/>
+ ?       重复零次或一次<br/>
+ {n}    重复n次<br/>
+ {n,}   重复n次或更多次<br/>
+ {n,m}  重复n到m次<br/>
+ \W      匹配任意不是字母，数字，下划线，汉字的字符<br/>
+ \S      匹配任意不是空白符的字符<br/>
+ \D      匹配任意非数字的字符<br/>
+ \B      匹配不是单词开头或结束的位置<br/>
+ [^x]   匹配除了x以外的任意字符<br/>
+ [^aeiou]匹配除了aeiou这几个字母以外的任意字符<br/>
+ *?      重复任意次，但尽可能少重复<br/>
+ +?      重复1次或更多次，但尽可能少重复<br/>
+ ??      重复0次或1次，但尽可能少重复<br/>
+ {n,m}?     重复n到m次，但尽可能少重复<br/>
+ {n,}?  重复n次以上，但尽可能少重复<br/>
+ \a      报警字符(打印它的效果是电脑嘀一声)<br/>
+ \b      通常是单词分界位置，但如果在字符类里使用代表退格<br/>
+ \t      制表符，Tab<br/>
+ \r      回车<br/>
+ \v      竖向制表符<br/>
+ \f      换页符<br/>
+ \n      换行符<br/>
+ \e      Escape<br/>
+ \0nn   ASCII代码中八进制代码为nn的字符<br/>
+ \xnn   ASCII代码中十六进制代码为nn的字符<br/>
+ \unnnn     Unicode代码中十六进制代码为nnnn的字符<br/>
+ \cN    ASCII控制字符。比如\cC代表Ctrl+C<br/>
+ \A      字符串开头(类似^，但不受处理多行选项的影响)<br/>
+ \Z      字符串结尾或行尾(不受处理多行选项的影响)<br/>
+ \z      字符串结尾(类似\)，但不受处理多行选项的影响)<br/>
+ \G      当前搜索的开头<br/>
+ \p{name}   Unicode中命名为name的字符类，例如\p{IsGreek}<br/>
+ (?&gt;exp)    贪婪子表达式<br/>
+ (?<x>-<y>exp)  平衡组<br/>
+ (?im-nsx:exp)  在子表达式exp中改变处理选项<br/>
+ (?im-nsx)       为表达式后面的部分改变处理选项<br/>
+ (?(exp)yes|no)     把exp当作零宽正向先行断言，如果在这个位置能匹配，使用yes作为此组的表达式；否则使用no<br/>
+ (?(exp)yes)    同上，只是使用空表达式作为no<br/>
+ (?(name)yes|no) 如果命名为name的组捕获到了内容，使用yes作为表达式；否则使用no<br/>
+ (?(name)yes)   同上，只是使用空表达式作为no</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139218767623.html">Mac电脑清理存储空间</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:51:16+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='%E6%9D%82%E6%96%87.html'>杂文</a>&nbsp;
-				   
-				  </span>
+<p>捕获<br/>
+ (exp)               匹配exp,并捕获文本到自动命名的组里<br/>
+ (?<name>exp)        匹配exp,并捕获文本到名称为name的组里，也可以写成(?&#39;name&#39;exp)<br/>
+ (?:exp)             匹配exp,不捕获匹配的文本，也不给此分组分配组号<br/>
+ 零宽断言<br/>
+ (?=exp)             匹配exp前面的位置<br/>
+ (?&lt;=exp)            匹配exp后面的位置<br/>
+ (?!exp)             匹配后面跟的不是exp的位置<br/>
+ (?&lt;!exp)            匹配前面不是exp的位置<br/>
+ 注释<br/>
+ (?#comment)         这种类型的分组不对正则表达式的处理产生任何影响，用于提供注释让人阅读</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139218580826.html">iOS  MQTT 接入示例(MQTT 物联套件)</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:50:58+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS_MQ%E7%B1%BB%E6%96%87%E7%AB%A0.html'>iOS_MQ类文章</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li> 表达式：(?0\d{2}[) -]?\d{8}</li>
+<li> 这个表达式可以匹配几种格式的电话号码，像(010)88886666，或022-22334455，或02912345678等。</li>
+<li> 我们对它进行一些分析吧：</li>
+<li> 首先是一个转义字符(,它能出现0次或1次(?),然后是一个0，后面跟着2个数字(\d{2})，然后是)或-或空格中的一个，它出现1次或不出现(?)，</li>
+<li> 最后是8个数字(\d{8})
+*/
+```
+更多正则相关查看👇这篇文章:
+<a href="http://www.admin10000.com/document/5944.html">http://www.admin10000.com/document/5944.html</a></li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139218050505.html">AR 原理与技术分析</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:50:05+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS_AR%E7%B1%BB%E6%96%87%E7%AB%A0.html'>iOS_AR类文章</a>&nbsp;
-				   
-				  </span>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139217121225.html">正则表达式简单说明</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:48:32+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='%E6%9D%82%E6%96%87.html'>杂文</a>&nbsp;
-				   
-				  </span>
+</div>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139215980098.html">iOS上传头像</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:46:38+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E5%8A%9F%E8%83%BD%E5%B0%8F%E7%BB%93.html'>iOS功能小结</a>&nbsp;
-				   
-				  </span>
+<br /><br />
+<hr />
 
-				</p>
-			</div>
- 	
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
 		
+	        <a href="15139218050505.html"  title="Previous Post: AR 原理与技术分析">&laquo; AR 原理与技术分析</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
 		
-			<div>
-				<h3><a href="15139214660338.html">iOS tableview 使用说明</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:44:26+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E5%88%97%E8%A1%A8.html'>iOS列表</a>&nbsp;
-				   
-				  </span>
+	        <a href="15139215980098.html" 
+	        title="Next Post: iOS上传头像">iOS上传头像 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139214500331.html">iOS 数组操作方法说明</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:44:10+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C.html'>iOS数组操作</a>&nbsp;
-				   
-				  </span>
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139214218497.html">ios 字符串操作方法说明</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:43:41+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C.html'>iOS字符串操作</a>&nbsp;
-				   
-				  </span>
-
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139213651453.html">iOS开发说明</a></h3>
-				<p>
-					<time datetime="2017-12-22T13:42:45+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%E5%9F%BA%E7%A1%80%E7%AF%87.html'>iOS开发手册基础篇</a>&nbsp;
-				   
-				  </span>
-
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139119793020.html">iOS   创建.pch文件</a></h3>
-				<p>
-					<time datetime="2017-12-22T11:06:19+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E5%BB%BA%E9%A1%B9.html'>iOS建项</a>&nbsp;
-				   
-				  </span>
-
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="15139117675584.html">iOS 使用三方工具cocoaPods</a></h3>
-				<p>
-					<time datetime="2017-12-22T11:02:47+08:00" pubdate><span class='month'>12月</span> <span class='day'>22</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='iOS%E5%BB%BA%E9%A1%B9.html'>iOS建项</a>&nbsp;
-				   
-				  </span>
-
-				</p>
-			</div>
- 	 
-</div>  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15139217121225.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 
