@@ -4,7 +4,7 @@
   <title><![CDATA[zhangdong]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2017-12-22T13:56:53+08:00</updated>
+  <updated>2017-12-22T14:02:54+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -694,7 +694,7 @@ sudo rm -rf /private/var/folders/<br/>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[iOS  MQTT 接入示例(MQTT 物联套件)]]></title>
+    <title type="html"><![CDATA[iOS  MQTT 接入示例]]></title>
     <link href="www.freefook.com/15139218580826.html"/>
     <updated>2017-12-22T13:50:58+08:00</updated>
     <id>www.freefook.com/15139218580826.html</id>
