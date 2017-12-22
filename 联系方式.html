@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  iOS 使用三方工具cocoaPods - zhangdong
+  联系方式 - zhangdong
   
   </title>
  <meta name="description" content="">
@@ -249,110 +249,21 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- <div class="markdown-body">
-<h1>iOS 使用三方工具cocoaPods</h1>
-
-<pre><code>使用三方管理工具cocoapods
-1、Ruby环境搭建
-查看下当前ruby版本：打开终端输入 ruby -v
-
-如果需要更新，进行如下操作更改Ruby镜像：
-
-gem sources --remove https://rubygems.org/ 
-gem sources -a https://gems.ruby-china.org/
-gem sources -l  （用来检查使用替换镜像位置成功与否）
-
-最后 输入  rvm install 2.2.4  更新ruby
-
-
-2、下载安装CocoaPods
-终端输入：sudo gem install cocoapods 
-
-结束之后：
-终端cd 到自己的项目文件下Create a Podfile
-
-终端输入touch Podfile
-       open -a Xcode Podfile
-
-
-写上如下内容：
-target &#39;MyApp的名’ do
-  pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1’
-end
-
-执行 pod install 就OK了
-
-查询三方版本可用 pod search afnetworking  （不区分大小写）
-第一次安装完pod 进行搜索需要多等一段时间，
-会卡在Creating search index for spec repo &#39;master&#39;..    
-
-CocoaPods的基本安装及使用都详细的说明了，
-当需要同时导入多个第三方时候怎么办 ？
-这就需要修改Podfile了，就是用vim编辑的那个保存在项目根目录中的文件，
-修改完了Podfile文件，需要重新执行一次pod install命令。
-</code></pre>
-
-<h5 id="toc_0">参考如下：</h5>
-
-<pre><code> iOS安装CocoaPods详细过程
- 请查看:(http://www.jianshu.com/p/9e4e36ba8574)
  
- cocoapods报错问题You need at least git version 1.8.5 to use CocoaPods
- 请查看:(http://www.jianshu.com/p/a1ab3b291f55)
- 
- 使用cocoapods时常见错误
- 请查看:(http://www.jianshu.com/p/dfc7b93e67eb)
- 
- iOS 下 Podfile 使用方法
- 请查看:(http://www.cnblogs.com/Kennytian/p/6413734.html)
- 
- 如果出现下面问题,请尝试:cocoapods 出现 &quot;_OBJC_CLASS_$--&quot;, 
- referenced from:的问题target-&gt;build setting
-  -&gt;other link flags 添加一个$(inherited) 
+
+
+	
+		<div class="markdown-body">
+		<h1>联系方式</h1>
+
+		<p>邮箱：<a href="mailto:jsjzdd_2014@126.com">jsjzdd_2014@126.com</a></p>
+
+
+		</div>
+	
+
   
   
-  
-</code></pre>
-
-
-</div>
-
-<br /><br />
-<hr />
-
-<div class="row clearfix">
-  <div class="large-6 columns">
-	<div class="text-left" style="padding:15px 0px;">
-		
-	        <a href="15139213651453.html"  title="Previous Post: iOS开发说明">&laquo; iOS开发说明</a>
-	    
-	</div>
-  </div>
-  <div class="large-6 columns">
-	<div class="text-right" style="padding:15px 0px;">
-		
-	        <a href="15139119793020.html" 
-	        title="Next Post: iOS   创建.pch文件">iOS   创建.pch文件 &raquo;</a>
-	    
-	</div>
-  </div>
-</div>
-
-<div class="row">
-<div style="padding:0px 0.93em;" class="share-comments">
-
-</div>
-</div>
-<script type="text/javascript">
-	$(function(){
-		var currentURL = '15139117675584.html';
-		$('#side-nav a').each(function(){
-			if($(this).attr('href') == currentURL){
-				$(this).parent().addClass('active');
-			}
-		});
-	});
-</script>  
 </div></div>
 
 
