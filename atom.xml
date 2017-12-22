@@ -4,7 +4,7 @@
   <title><![CDATA[zhangdong]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2017-12-22T16:40:58+08:00</updated>
+  <updated>2017-12-22T17:11:18+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -1651,11 +1651,117 @@ NSArray *sub1 = [tempArr subarrayWithRange:NSMakeRange(1, 3)];
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[iOS tableview 使用说明]]></title>
+    <title type="html"><![CDATA[iOS tableview 简单使用说明]]></title>
     <link href="www.freefook.com/15139214660338.html"/>
     <updated>2017-12-22T13:44:26+08:00</updated>
     <id>www.freefook.com/15139214660338.html</id>
     <content type="html"><![CDATA[
+<h5 id="toc_0">pragma - mark - tableview列表初始化</h5>
+
+<pre><code>-(UITableView *)tableView
+{
+    if (!_tableView) {
+        
+        _tableView = [[UITableView alloc]initWithFrame:
+                      CGRectMake(, , , ) style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.backgroundColor = ;
+        //分割线的颜色
+        _tableView.separatorColor = ;
+        //隐藏滚动条
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.tableFooterView = [[UIView alloc]init];
+        
+    }
+    return _tableView;
+}
+</code></pre>
+
+<p>tableview 代理方法实现如下：<br/>
+tableview解决常规配置的重复问题。。。</p>
+
+<pre><code>//当页面拉动需要显示新数据的时候，把最后一个cell进行删除 此方案即可避免重复显示，又重用了cell相对内存管理来说是好的方案 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 定义唯一标识
+    static NSString *CellIdentifier = @&quot;Cell&quot;;
+    // 通过唯一标识创建cell实例
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    else//当页面拉动的时候 当cell存在并且最后一个存在 把它进行删除就出来一个独特的cell我们在进行数据配置即可避免
+    {
+        while ([cell.contentView.subviews lastObject] != nil) {
+            [(UIView *)[cell.contentView.subviews lastObject] removeFromSuperview];
+        }
+    }
+    
+//点击没有选中状态
+cell.selectionStyle = UITableViewCellSelectionStyleNone;  
+
+// 对cell 进行简单地数据配置
+cell.textLabel.text = @&quot;text&quot;;
+   
+return cell;
+}
+</code></pre>
+
+<p>other</p>
+
+<pre><code>-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return &lt;#@#&gt;;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return &lt;#@#&gt;;
+}
+
+#pragma - mark - 点击cell方法
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+</code></pre>
+
+<p>tableview header与footer</p>
+
+<pre><code>#pragma - mark - tableview_Header and Footer
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView * view = [[UIView alloc]init];
+    
+    return view;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    
+    return 0;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView * view = [[UIView alloc]init];
+    
+    return view;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    
+    return 0;
+    
+}
+</code></pre>
 
 ]]></content>
   </entry>
