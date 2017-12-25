@@ -4,7 +4,7 @@
   <title><![CDATA[zhangdong]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2017-12-25T18:19:53+08:00</updated>
+  <updated>2017-12-25T18:22:50+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -100,11 +100,13 @@ how?
 <li>个人中心等同位置图标 大小统一.</li>
 </ol>
 
+<p>以上问题会在下面 建项的各个阶段给出处理方式；</p>
+
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[建项使用三方管理工具cocoaPods]]></title>
+    <title type="html"><![CDATA[建项-使用三方管理工具cocoaPods]]></title>
     <link href="www.freefook.com/15139117675584.html"/>
     <updated>2017-12-22T11:02:47+08:00</updated>
     <id>www.freefook.com/15139117675584.html</id>
@@ -280,7 +282,7 @@ ARKit的大部分计算都是在CPU上处理的，在A8处理器上的性能损�
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[建项创建.pch文件]]></title>
+    <title type="html"><![CDATA[建项-创建.pch文件]]></title>
     <link href="www.freefook.com/15139119793020.html"/>
     <updated>2017-12-22T11:06:19+08:00</updated>
     <id>www.freefook.com/15139119793020.html</id>
@@ -1434,7 +1436,7 @@ NSString+JKNormalRegex.h</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[建项那些.pch里写了些什么？]]></title>
+    <title type="html"><![CDATA[建项-那些.pch里写了些什么？]]></title>
     <link href="www.freefook.com/15139368877787.html"/>
     <updated>2017-12-22T18:01:27+08:00</updated>
     <id>www.freefook.com/15139368877787.html</id>
@@ -1510,7 +1512,7 @@ NSString+JKNormalRegex.h</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[建项权限、网络问题]]></title>
+    <title type="html"><![CDATA[建项-权限、网络问题]]></title>
     <link href="www.freefook.com/15139219822825.html"/>
     <updated>2017-12-22T13:53:02+08:00</updated>
     <id>www.freefook.com/15139219822825.html</id>
@@ -1558,7 +1560,7 @@ Allow Arbitrary Loads            （Type:Boolean）设置为YES
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[建项iOS屏幕适配的那些坑]]></title>
+    <title type="html"><![CDATA[建项-屏幕适配的那些坑]]></title>
     <link href="www.freefook.com/15141802374458.html"/>
     <updated>2017-12-25T13:37:17+08:00</updated>
     <id>www.freefook.com/15141802374458.html</id>
