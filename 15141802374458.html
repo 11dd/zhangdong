@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Mac电脑清理存储空间 - zhangdong
+  建项iOS屏幕适配的那些坑 - zhangdong
   
   </title>
  <meta name="description" content="">
@@ -168,93 +168,75 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>Mac电脑清理存储空间</h1>
+<h1>建项iOS屏幕适配的那些坑</h1>
 
-<p>由于今天提示空间不足1G不得不来清理一下空间</p>
+<h4 id="toc_0">iOS的尺寸如下：</h4>
 
-<h3 id="toc_0">清理后的空间:</h3>
+<p><img src="media/15141802374458/iOS%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E5%9B%BE.png" alt="iOS屏幕适配图"/></p>
 
-<p><img src="http://upload-images.jianshu.io/upload_images/670820-f0d2bd53eb590038.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/></p>
+<h4 id="toc_1">考虑问题如下：</h4>
 
-<h3 id="toc_1">以下诉说的是120G的悲伤</h3>
+<ol>
+<li>这个项目适配哪些屏幕，哪些系统版本（4寸屏及以上，iOS8/9及以上，强烈建议iOS9及以上）</li>
+<li><p>适配到哪种程度，（看设计出几套图？不存在的，只有一套，那这一套按哪个尺寸出呢？）</p>
 
-<h4 id="toc_2">第一步:先看一下那个文件目录下空间使用</h4>
+<pre><code>1.针对适配的情况，进行说明，原来的项目按照比例做的，所以大屏小屏显示的内容是一样的；  
 
-<p>sudo du -sh /*</p>
+2.按照苹果公司的逻辑与产品的使用中，也能体会到大屏是用来显示更多内容的；
+  设计的时候就应该考虑大屏要不要多显示内容，
+  但是只出一张设计图，意思也很明确按比例适配，减少各方面沟通 设计与开发的时间成本。
 
-<p><img src="http://upload-images.jianshu.io/upload_images/670820-742477290ff2ea3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/></p>
+3.问题来了，iPhone X的特殊性，宽度和4.7寸屏一样，但是高度增加了。
+  坚持继续 按4寸屏320 X 568 或 375 X 667的比例放大，效果是不尽人意的。
+  设计图要考虑高度的差异，iPhoneX 比4.7寸屏 显示内容的区域高了了174像素；
 
-<p>如果你使用xcode 可以做如下操作获得更多的空闲存储空间</p>
+4.根据以上情况，如何选择按哪个尺寸出这一套设计图呢？
+  答案当然是选择中间尺寸 4.7寸屏的（750px/375pt）作为基准。做好一套屏幕的UI
+  这样中间尺寸舒适好看了，向上和向下适配的时候界面调整的幅度最小（不是代码改动最小）
 
-<h4 id="toc_3">操作1 :xcode移除DerivedData</h4>
+5.只有一套设计稿，默认用什么规则来适配？
+  横向调整间距或对齐方式，纵向类列表高度-&gt;是否有需要根据内容自适应高度的硬性要求，
+  如果没有自适应的情况如下：
+    1.按比例让列表高度变高，如果列表里内容较少，会显的很空
+    2.列表高度不变，字号跟随比例放大 如果列表里内容较多，会显得很拥挤
+      如果字号不跟随比例放大，那么整个程序的字号都不应该随比例放大。
 
-<p>可重新生成；会删除build生成的项目索引、build输出以及日志。<br/>
-路径：~/Library/Developer/Xcode/DerivedData</p>
+6.当以上问题开发完，发现为什么设计图好看做出的效果总是差强人意？
 
-<h4 id="toc_4">操作2 :删除DeviceSupport</h4>
+  所以UI要出“设计标注图”，不能差不多了事，这差2像素，那差4像素，最后看起来就不美观了。
 
-<p>如果你是128G的本子,用xcode开发,空间不足时,<br/>
-删除DeviceSupport里的吧,留两个自己经常使用的就够了<br/>
-~/Library/Developer/Xcode/iOS DeviceSupport</p>
+</code></pre>
 
-<h4 id="toc_5">操作3 :清除缓存文件</h4>
+<h4 id="toc_2">iOS 启动页的适配</h4>
 
-<p>cd ~/Library/Caches/<br/>
-rm -rf ~/Library/Caches/*<br/>
-不用命令行方式:<br/>
-<img src="http://upload-images.jianshu.io/upload_images/670820-fe787cb2173e93c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/></p>
+<h5 id="toc_3">不管你是LaunchImage来管理启动页</h5>
 
-<p>点击前往文件夹,输入:~/Library/Caches/<br/>
-就看到文件目录了,删除caches下的文件即可;</p>
+<h5 id="toc_4">还是LaunchScreen来适配的启动页</h5>
 
-<h4 id="toc_6">操作4 :删除所有系统日志</h4>
+<h5 id="toc_5">去找产品负责人要图吧，拉伸了启动图，测试看不出来，测试可不负责</h5>
 
-<p>可以使用下面的命令删除：<br/>
-sudo rm -rf /private/var/log/*<br/>
-也可以在操作6中截图的路径文件夹看到Log文件夹,删除下面的文件就可以;</p>
+<h4 id="toc_6">iOS 适配齐刘海</h4>
 
-<h4 id="toc_7">操作5 :删除临时文件路径</h4>
+<blockquote>
+<p>不要在代码里面看到重复多次的数字、字符串的使用，如果重复多次，抽出来使用常量来表示；<br/>
+代码适配重点：写宏<br/>
+代码适配重点：写宏<br/>
+代码适配重点：写宏</p>
+</blockquote></li>
+</ol>
 
-<p>cd /private/var/tmp/<br/>
-也可以在操作6中截图的路径文件夹看到tmp文件夹,删除下面的文件就可以;</p>
+<pre><code>   #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+   #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+   #define KNavHeight (SCREEN_HEIGHT == 812.0 ? 88 : 64)
+</code></pre>
 
-<h4 id="toc_8">操作6 :禁用SafeSleep休眠模式</h4>
+<pre><code>  // 底部宏，iphoneX 底部留34高度，别写数字到处减34
+  #define KBottomHeight (SCREEN_HEIGHT == 812.0 ? 34 : 0)
+</code></pre>
 
-<p>当升级到OS X 10.9 Mavericks版本之后，显示隐藏文件命令如下：<br/>
-//显示隐藏文件<br/>
-defaults write com.apple.finder AppleShowAllFiles Yes &amp;&amp; killall Finder <br/>
-//不显示隐藏文件<br/>
-defaults write com.apple.finder AppleShowAllFiles No &amp;&amp; killall Finder </p>
-
-<p>显示隐藏文件对照截图目录寻找<br/>
-<img src="http://upload-images.jianshu.io/upload_images/670820-baedb9fac879bcb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/></p>
-
-<p>防止OS X继续创建该文件，所以我们需要下面的命令生成一个无法被替换的空文件<br/>
-1  touch sleepimage<br/>
-2  chmod 000 /private/var/vm/sleepimage<br/>
-如果你想要重新开启SafeSleep功能，只需下面的命令即可<br/>
-1  sudo pmset -a hibernatemode 3<br/>
-2  sudo rm /private/var/vm/sleepimage</p>
-
-<h4 id="toc_9">操作7 :停止TimeMachine本地备份（这个看你个人喜欢）</h4>
-
-<p>sudo tmutil disablelocal</p>
-
-<h4 id="toc_10">操作8 :嗓音文件删除</h4>
-
-<p>如果你不适用文字转语音功能，那么你肯定不会使用到OS X内置的嗓音文件。<br/>
-你可以删除这些文件重新获得硬盘空间。<br/>
-在终端应用中，使用下面的命令即可，首先定位到文件所在文件夹：<br/>
-cd /System/Library/Speech/<br/>
-然后执行删除命令，将所有嗓音文件删除<br/>
-sudo rm -rf Voices/*<br/>
-如果你执行了命令，那么你将无法使用系统的文字转语音功能。</p>
-
-<h4 id="toc_11">操作9 :不建议尝试</h4>
-
-<p>通过下面的命令移除缓存代码：<br/>
-sudo rm -rf /private/var/folders/<br/>
-但是别清除,出错了你又不知道怎么改好;</p>
+<p>xib的适配：齐刘海和圆角苹果不会让我们一个一个约束去拖吧?<br/>
+如果项目要求适配iOS9以下的，还没有好方法，只能一个一个好好拖了;<br/>
+如果不要求适配iOS9以下的，那么你只需要给view打开安全区域即可。</p>
 
 
 </div>
@@ -266,15 +248,15 @@ sudo rm -rf /private/var/folders/<br/>
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15139219144104.html"  title="Previous Post: 互动直播变身视频会议">&laquo; 互动直播变身视频会议</a>
+	        <a href="15139219822825.html"  title="Previous Post: 建项权限、网络问题">&laquo; 建项权限、网络问题</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15139218580826.html" 
-	        title="Next Post: iOS  MQTT 接入示例">iOS  MQTT 接入示例 &raquo;</a>
+	        <a href="15139214218497.html" 
+	        title="Next Post: ios 字符串操作方法说明">ios 字符串操作方法说明 &raquo;</a>
 	    
 	</div>
   </div>
@@ -287,7 +269,7 @@ sudo rm -rf /private/var/folders/<br/>
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15139218767623.html';
+		var currentURL = '15141802374458.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
