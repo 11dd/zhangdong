@@ -4,7 +4,7 @@
   <title><![CDATA[zhangdong]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2017-12-26T17:58:00+08:00</updated>
+  <updated>2017-12-26T17:59:22+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -827,75 +827,7 @@ how?
 6. 建项屏幕适配问题
 </code></pre>
 
-<h4 id="toc_0">简单的编码中规范说明</h4>
-
-<p>程序开始增加说明文件</p>
-
-<pre><code>说明文件，记录项目功能实现的思维说明：
-1.MVC  MVVM MVCS 等放荡不羁的模式
-2.复杂UI的实现说明或使用了他人封装类库，注明使用方法示例；
-3.网络请求方式，加密方式，部数据处理方式；
-4.本地数据的存储方式
-5.复杂业务逻辑的流程说明，与实现后遗留缺陷。
-6.写出你认为程序中还遗留的缺陷， bug，改进，优化的地方
-</code></pre>
-
-<h4 id="toc_1">程序开发过程中命名方式</h4>
-
-<blockquote>
-<p>大家公认无岐义的缩写(比如：nav，bg，btn等)<br/>
-写在哪些命名里都可以</p>
-</blockquote>
-
-<h5 id="toc_2">类命名：前缀+描述+类型</h5>
-
-<pre><code>1.创建一个类时，增加自己名字首字母的简写例如：张东 ZDLoginViewController
-2.ViewController 是处理业务逻辑，UI 代码 数据请求与处理 尽量不要写太多
-3.view的生命周期的几个方法 在类中方法的最上方
-4.类中方法增加Mark（#pragma - mark - 点击登录，请求登录接口 ）
-
-</code></pre>
-
-<h5 id="toc_3">属性命名：描述性单词+变量类型</h5>
-
-<pre><code>UILabel* nameLabel;
-</code></pre>
-
-<h5 id="toc_4">方法命名</h5>
-
-<pre><code>一个规范的方法读起来应该像一句完整的话，读过之后便知函数的作用。
-返回性的方法应该以返回的内容开头，但之前不要加get。
-不要各种缩写，写完猜不出意思。保持完整性
-
-</code></pre>
-
-<h5 id="toc_5">函数命名</h5>
-
-<pre><code>一些典型操作应该使用约定的动词，如initWith,insert,remove,replace,add等等。
-</code></pre>
-
-<h5 id="toc_6">程序中使用的图片命名</h5>
-
-<pre><code>在Assets.xcassets里创建相应使用的功能模块文件夹
-例如：personalCenter 文件里放登录、注册、我的信息用到的图片
-图片命名 类型+模块/功能 例如：btn/bg_login_normal@3x.png 
-</code></pre>
-
-<h5 id="toc_7">代码注释</h5>
-
-<pre><code>代码的注释问题:很多人的注释过于粗糙,有些甚至都没有注释习惯,导致代码可读性差,
-版本迭代或是需求变更的时候不能及时定位到具体代码；
-
-注释方式例如：
-/** 名字 */
-@property(nonatomic,strong)NSString* name;
-
-这样注释的好处是:
-当你调用这个属性时会具有相关备注提示
-
-</code></pre>
-
-<h4 id="toc_8">程序的“通用性”</h4>
+<h4 id="toc_0">程序的“通用性”</h4>
 
 <pre><code>用简单的代码去解决的问题，不要过分的关注了“通用性”，
 “可维护性”和“可扩展性”，被搞得绕来绕去，让人琢磨不透。
@@ -915,6 +847,76 @@ how?
 正确不等于直接，高效，放手写吧。。。
 
 </code></pre>
+
+<h4 id="toc_1">简单的编码中规范说明</h4>
+
+<p>程序开始增加说明文件</p>
+
+<pre><code>说明文件，记录项目功能实现的思维说明：
+1.MVC  MVVM MVCS 等放荡不羁的模式
+2.复杂UI的实现说明或使用了他人封装类库，注明使用方法示例；
+3.网络请求方式，加密方式，部数据处理方式；
+4.本地数据的存储方式
+5.复杂业务逻辑的流程说明，与实现后遗留缺陷。
+6.写出你认为程序中还遗留的缺陷， bug，改进，优化的地方
+</code></pre>
+
+<h4 id="toc_2">程序开发过程中命名方式</h4>
+
+<blockquote>
+<p>大家公认无岐义的缩写(比如：nav，bg，btn等)<br/>
+写在哪些命名里都可以</p>
+</blockquote>
+
+<h5 id="toc_3">类命名：前缀+描述+类型</h5>
+
+<pre><code>1.创建一个类时，增加自己名字首字母的简写例如：张东 ZDLoginViewController
+2.ViewController 是处理业务逻辑，UI 代码 数据请求与处理 尽量不要写太多
+3.view的生命周期的几个方法 在类中方法的最上方
+4.类中方法增加Mark（#pragma - mark - 点击登录，请求登录接口 ）
+
+</code></pre>
+
+<h5 id="toc_4">属性命名：描述性单词+变量类型</h5>
+
+<pre><code>UILabel* nameLabel;
+</code></pre>
+
+<h5 id="toc_5">方法命名</h5>
+
+<pre><code>一个规范的方法读起来应该像一句完整的话，读过之后便知函数的作用。
+返回性的方法应该以返回的内容开头，但之前不要加get。
+不要各种缩写，写完猜不出意思。保持完整性
+
+</code></pre>
+
+<h5 id="toc_6">函数命名</h5>
+
+<pre><code>一些典型操作应该使用约定的动词，如initWith,insert,remove,replace,add等等。
+</code></pre>
+
+<h5 id="toc_7">程序中使用的图片命名</h5>
+
+<pre><code>在Assets.xcassets里创建相应使用的功能模块文件夹
+例如：personalCenter 文件里放登录、注册、我的信息用到的图片
+图片命名 类型+模块/功能 例如：btn/bg_login_normal@3x.png 
+</code></pre>
+
+<h5 id="toc_8">代码注释</h5>
+
+<pre><code>代码的注释问题:很多人的注释过于粗糙,有些甚至都没有注释习惯,导致代码可读性差,
+版本迭代或是需求变更的时候不能及时定位到具体代码；
+
+注释方式例如：
+/** 名字 */
+@property(nonatomic,strong)NSString* name;
+
+这样注释的好处是:
+当你调用这个属性时会具有相关备注提示
+
+</code></pre>
+
+<h5 id="toc_9">代码中的循环与判断</h5>
 
 <pre><code>在任何情况下 for 语句和 if 语句之后必须写花括号，
 即使允许你在其只包含一行代码的时候可以省略
