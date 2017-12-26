@@ -4,7 +4,7 @@
   <title><![CDATA[zhangdong]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2017-12-25T18:23:04+08:00</updated>
+  <updated>2017-12-26T11:34:13+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -162,7 +162,40 @@ CocoaPods的基本安装及使用都详细的说明了，
 修改完了Podfile文件，需要重新执行一次pod install命令。
 </code></pre>
 
-<h5 id="toc_0">参考如下：</h5>
+<h5 id="toc_0">Podfile</h5>
+
+<blockquote>
+<p>The Podfile is a specification that describes the dependencies of the targets of one or more Xcode projects.</p>
+</blockquote>
+
+<p>A Podfile can be very simple:</p>
+
+<pre><code>target &#39;MyApp&#39;
+pod &#39;AFNetworking&#39;, &#39;~&gt; 1.0&#39;
+</code></pre>
+
+<p>An example of a more complex Podfile can be:</p>
+
+<pre><code>platform :ios, &#39;9.0&#39;
+inhibit_all_warnings!
+
+target &#39;MyApp&#39; do
+  pod &#39;ObjectiveSugar&#39;, &#39;~&gt; 0.5&#39;
+
+  target &quot;MyAppTests&quot; do
+    inherit! :search_paths
+    pod &#39;OCMock&#39;, &#39;~&gt; 2.0.1&#39;
+  end
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    puts &quot;#{target.name}&quot;
+  end
+end
+</code></pre>
+
+<h5 id="toc_1">参考如下：</h5>
 
 <pre><code> iOS安装CocoaPods详细过程
  请查看:(http://www.jianshu.com/p/9e4e36ba8574)
