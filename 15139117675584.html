@@ -231,7 +231,25 @@ CocoaPods的基本安装及使用都详细的说明了，
 修改完了Podfile文件，需要重新执行一次pod install命令。
 </code></pre>
 
-<h5 id="toc_0">Podfile</h5>
+<h5 id="toc_0">例如</h5>
+
+<pre><code>target &#39;myApp’ do
+pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1’
+pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.1&#39;
+pod &#39;SDWebImage&#39;, &#39;~&gt; 4.2.2&#39;
+pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
+pod &#39;IQKeyboardManager&#39;, &#39;~&gt; 5.0.7&#39;
+pod &#39;Masonry&#39;, &#39;~&gt; 1.1.0&#39;
+pod &#39;NullSafe&#39;, &#39;~&gt; 1.2.3&#39;
+pod &#39;CYLTabBarController&#39;, &#39;~&gt; 1.17.4&#39;
+pod &#39;SDCycleScrollView&#39;, &#39;~&gt; 1.75&#39;
+pod &#39;MJExtension&#39;, &#39;~&gt; 3.0.13&#39;
+pod &#39;FMDB&#39;, &#39;~&gt; 2.7.2&#39;
+pod &#39;SDAutoLayout&#39;, &#39;~&gt; 2.2.0&#39;
+end
+</code></pre>
+
+<h5 id="toc_1">Podfile 如上简单的写法 会报警告 默认platform：iOS9</h5>
 
 <blockquote>
 <p>The Podfile is a specification that describes the dependencies of the targets of one or more Xcode projects.</p>
@@ -264,7 +282,7 @@ post_install do |installer|
 end
 </code></pre>
 
-<h5 id="toc_1">参考如下：</h5>
+<h5 id="toc_2">参考如下：</h5>
 
 <pre><code> iOS安装CocoaPods详细过程
  请查看:(http://www.jianshu.com/p/9e4e36ba8574)
