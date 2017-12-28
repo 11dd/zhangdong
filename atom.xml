@@ -4,7 +4,7 @@
   <title><![CDATA[zhangdong]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2017-12-27T13:51:20+08:00</updated>
+  <updated>2017-12-27T13:53:45+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -398,6 +398,26 @@ NSLog((@&quot;**start**\n[function name:%s]\n&quot; &quot;[Lines:%d]\n&quot; &qu
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[iOS 设计模式]]></title>
+    <link href="www.freefook.com/15142851754689.html"/>
+    <updated>2017-12-26T18:46:15+08:00</updated>
+    <id>www.freefook.com/15142851754689.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS 传值方式]]></title>
+    <link href="www.freefook.com/15142851753416.html"/>
+    <updated>2017-12-26T18:46:15+08:00</updated>
+    <id>www.freefook.com/15142851753416.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[iOS 从AppDelegate说起]]></title>
     <link href="www.freefook.com/15142851543985.html"/>
     <updated>2017-12-26T18:45:54+08:00</updated>
@@ -777,26 +797,6 @@ if(textField1.text.length != 11 || ![textField1.text hasPrefix:@&quot;1&quot;])
     return [checkBit isEqualToString:[[value substringWithRange:NSMakeRange(17,1)] uppercaseString]];
 }
 </code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS]]></title>
-    <link href="www.freefook.com/15142851754689.html"/>
-    <updated>2017-12-26T18:46:15+08:00</updated>
-    <id>www.freefook.com/15142851754689.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS]]></title>
-    <link href="www.freefook.com/15142851753416.html"/>
-    <updated>2017-12-26T18:46:15+08:00</updated>
-    <id>www.freefook.com/15142851753416.html</id>
-    <content type="html"><![CDATA[
 
 ]]></content>
   </entry>
