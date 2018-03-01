@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  iOS - zhangdong
+  iOS导航 与pop - zhangdong
   
   </title>
  <meta name="description" content="">
@@ -66,8 +66,10 @@
 
       
         <li class="divider"></li>
-        <li><label>iOS功能小结</label></li>
+        <li><label>iOS代码库</label></li>
 
+          
+            <li><a title="排序" href="15198806151662.html">排序</a></li>
           
             <li><a title="OC" href="15142856325027.html">OC</a></li>
           
@@ -91,15 +93,15 @@
           
             <li><a title="iOS UICollectionView使用详解" href="15142851752080.html">iOS UICollectionView使用详解</a></li>
           
+            <li><a title="iOS请求方式" href="15142851750375.html">iOS请求方式</a></li>
+          
+            <li><a title="iOS导航 与pop" href="15142851748774.html">iOS导航 与pop</a></li>
+          
             <li><a title="iOS 计算时间差" href="15142851759902.html">iOS 计算时间差</a></li>
           
             <li><a title="iOS 信息格式验证" href="15142851758481.html">iOS 信息格式验证</a></li>
           
-            <li><a title="iOS" href="15142851750375.html">iOS</a></li>
-          
-            <li><a title="iOS" href="15142851748774.html">iOS</a></li>
-          
-            <li><a title="iOS" href="15142851744703.html">iOS</a></li>
+            <li><a title="iOS  UIAlertController 提示框" href="15142851744703.html">iOS  UIAlertController 提示框</a></li>
           
 
       
@@ -192,7 +194,9 @@
                         
 
                     
-                      <li class="side-title"><span>iOS功能小结</span></li>
+                      <li class="side-title"><span>iOS代码库</span></li>
+                        
+                          <li><a title="排序" href="15198806151662.html">排序</a></li>
                         
                           <li><a title="OC" href="15142856325027.html">OC</a></li>
                         
@@ -216,15 +220,15 @@
                         
                           <li><a title="iOS UICollectionView使用详解" href="15142851752080.html">iOS UICollectionView使用详解</a></li>
                         
+                          <li><a title="iOS请求方式" href="15142851750375.html">iOS请求方式</a></li>
+                        
+                          <li><a title="iOS导航 与pop" href="15142851748774.html">iOS导航 与pop</a></li>
+                        
                           <li><a title="iOS 计算时间差" href="15142851759902.html">iOS 计算时间差</a></li>
                         
                           <li><a title="iOS 信息格式验证" href="15142851758481.html">iOS 信息格式验证</a></li>
                         
-                          <li><a title="iOS" href="15142851750375.html">iOS</a></li>
-                        
-                          <li><a title="iOS" href="15142851748774.html">iOS</a></li>
-                        
-                          <li><a title="iOS" href="15142851744703.html">iOS</a></li>
+                          <li><a title="iOS  UIAlertController 提示框" href="15142851744703.html">iOS  UIAlertController 提示框</a></li>
                         
 
                     
@@ -284,8 +288,53 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>iOS</h1>
+<h1>iOS导航 与pop</h1>
 
+<h5 id="toc_0">BaseVC里写入</h5>
+
+<pre><code>    [self.navigationController.navigationBar setHidden:NO];
+    
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] init];
+    backBtn.title = @&quot;&quot;;//返回
+    self.navigationItem.backBarButtonItem = backBtn;
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[Helper imageWithColor:rgba(246, 246, 246, 1.0)] forBarMetrics:(UIBarMetricsDefault)];
+    
+    //设置字体大小和颜色
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
+    
+</code></pre>
+
+<h5 id="toc_1">移除navigationController.viewControllers 栈里的类</h5>
+
+<pre><code> NSMutableArray*tempMarr =[NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+        NSMutableArray* temp = [[NSMutableArray alloc]init];
+        for (int i = 0; i &lt; tempMarr.count; i++) {
+            
+            if ([tempMarr[i] isKindOfClass:[SubmitOrderViewController class]]) {
+                [tempMarr removeObjectAtIndex:i];
+                
+            }else if ([tempMarr[i] isKindOfClass:[PayOrderViewController class]]) {
+                [tempMarr removeObjectAtIndex:i];
+                
+            }else{
+                [temp addObject:tempMarr[i]];
+            }
+        }
+        [self.navigationController setViewControllers:temp animated:YES];
+</code></pre>
+
+<h5 id="toc_2">pop到navigationController栈里指定的页面</h5>
+
+<pre><code> for (UIViewController *controller in self.navigationController.viewControllers) {
+         if ([controller isKindOfClass:[ShopDetailViewController class]]) {
+                    ShopDetailViewController *A =(ShopDetailViewController *)controller;
+                    [self.navigationController popToViewController:A animated:YES];
+
+         }
+ }
+</code></pre>
 
 
 </div>
@@ -297,15 +346,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15142851750375.html"  title="Previous Post: iOS">&laquo; iOS</a>
+	        <a href="15142851750375.html"  title="Previous Post: iOS请求方式">&laquo; iOS请求方式</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15142851744703.html" 
-	        title="Next Post: iOS">iOS &raquo;</a>
+	        <a href="15139213651453.html" 
+	        title="Next Post: iOS开发说明">iOS开发说明 &raquo;</a>
 	    
 	</div>
   </div>

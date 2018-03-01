@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  iOS - zhangdong
+  iOS  UIAlertController 提示框 - zhangdong
   
   </title>
  <meta name="description" content="">
@@ -66,8 +66,10 @@
 
       
         <li class="divider"></li>
-        <li><label>iOS功能小结</label></li>
+        <li><label>iOS代码库</label></li>
 
+          
+            <li><a title="排序" href="15198806151662.html">排序</a></li>
           
             <li><a title="OC" href="15142856325027.html">OC</a></li>
           
@@ -91,15 +93,15 @@
           
             <li><a title="iOS UICollectionView使用详解" href="15142851752080.html">iOS UICollectionView使用详解</a></li>
           
+            <li><a title="iOS请求方式" href="15142851750375.html">iOS请求方式</a></li>
+          
+            <li><a title="iOS导航 与pop" href="15142851748774.html">iOS导航 与pop</a></li>
+          
             <li><a title="iOS 计算时间差" href="15142851759902.html">iOS 计算时间差</a></li>
           
             <li><a title="iOS 信息格式验证" href="15142851758481.html">iOS 信息格式验证</a></li>
           
-            <li><a title="iOS" href="15142851750375.html">iOS</a></li>
-          
-            <li><a title="iOS" href="15142851748774.html">iOS</a></li>
-          
-            <li><a title="iOS" href="15142851744703.html">iOS</a></li>
+            <li><a title="iOS  UIAlertController 提示框" href="15142851744703.html">iOS  UIAlertController 提示框</a></li>
           
 
       
@@ -192,7 +194,9 @@
                         
 
                     
-                      <li class="side-title"><span>iOS功能小结</span></li>
+                      <li class="side-title"><span>iOS代码库</span></li>
+                        
+                          <li><a title="排序" href="15198806151662.html">排序</a></li>
                         
                           <li><a title="OC" href="15142856325027.html">OC</a></li>
                         
@@ -216,15 +220,15 @@
                         
                           <li><a title="iOS UICollectionView使用详解" href="15142851752080.html">iOS UICollectionView使用详解</a></li>
                         
+                          <li><a title="iOS请求方式" href="15142851750375.html">iOS请求方式</a></li>
+                        
+                          <li><a title="iOS导航 与pop" href="15142851748774.html">iOS导航 与pop</a></li>
+                        
                           <li><a title="iOS 计算时间差" href="15142851759902.html">iOS 计算时间差</a></li>
                         
                           <li><a title="iOS 信息格式验证" href="15142851758481.html">iOS 信息格式验证</a></li>
                         
-                          <li><a title="iOS" href="15142851750375.html">iOS</a></li>
-                        
-                          <li><a title="iOS" href="15142851748774.html">iOS</a></li>
-                        
-                          <li><a title="iOS" href="15142851744703.html">iOS</a></li>
+                          <li><a title="iOS  UIAlertController 提示框" href="15142851744703.html">iOS  UIAlertController 提示框</a></li>
                         
 
                     
@@ -284,8 +288,21 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>iOS</h1>
+<h1>iOS  UIAlertController 提示框</h1>
 
+<h5 id="toc_0">添加提示语</h5>
+
+<pre><code>UIAlertController *confirm = [UIAlertController alertControllerWithTitle:@&quot;是否&quot; message:@&quot;msg&quot; preferredStyle:UIAlertControllerStyleAlert];
+                
+ [confirm addAction:[UIAlertAction actionWithTitle:@&quot;是&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }]];
+[confirm addAction:[UIAlertAction actionWithTitle:@&quot;否&quot; style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }]];
+                
+[self presentViewController:confirm animated:YES completion:nil];
+</code></pre>
 
 
 </div>
@@ -297,7 +314,7 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15142851748774.html"  title="Previous Post: iOS">&laquo; iOS</a>
+	        <a href="15142851758481.html"  title="Previous Post: iOS 信息格式验证">&laquo; iOS 信息格式验证</a>
 	    
 	</div>
   </div>

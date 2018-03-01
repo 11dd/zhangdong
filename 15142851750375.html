@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  iOS - zhangdong
+  iOS请求方式 - zhangdong
   
   </title>
  <meta name="description" content="">
@@ -66,8 +66,10 @@
 
       
         <li class="divider"></li>
-        <li><label>iOS功能小结</label></li>
+        <li><label>iOS代码库</label></li>
 
+          
+            <li><a title="排序" href="15198806151662.html">排序</a></li>
           
             <li><a title="OC" href="15142856325027.html">OC</a></li>
           
@@ -91,15 +93,15 @@
           
             <li><a title="iOS UICollectionView使用详解" href="15142851752080.html">iOS UICollectionView使用详解</a></li>
           
+            <li><a title="iOS请求方式" href="15142851750375.html">iOS请求方式</a></li>
+          
+            <li><a title="iOS导航 与pop" href="15142851748774.html">iOS导航 与pop</a></li>
+          
             <li><a title="iOS 计算时间差" href="15142851759902.html">iOS 计算时间差</a></li>
           
             <li><a title="iOS 信息格式验证" href="15142851758481.html">iOS 信息格式验证</a></li>
           
-            <li><a title="iOS" href="15142851750375.html">iOS</a></li>
-          
-            <li><a title="iOS" href="15142851748774.html">iOS</a></li>
-          
-            <li><a title="iOS" href="15142851744703.html">iOS</a></li>
+            <li><a title="iOS  UIAlertController 提示框" href="15142851744703.html">iOS  UIAlertController 提示框</a></li>
           
 
       
@@ -192,7 +194,9 @@
                         
 
                     
-                      <li class="side-title"><span>iOS功能小结</span></li>
+                      <li class="side-title"><span>iOS代码库</span></li>
+                        
+                          <li><a title="排序" href="15198806151662.html">排序</a></li>
                         
                           <li><a title="OC" href="15142856325027.html">OC</a></li>
                         
@@ -216,15 +220,15 @@
                         
                           <li><a title="iOS UICollectionView使用详解" href="15142851752080.html">iOS UICollectionView使用详解</a></li>
                         
+                          <li><a title="iOS请求方式" href="15142851750375.html">iOS请求方式</a></li>
+                        
+                          <li><a title="iOS导航 与pop" href="15142851748774.html">iOS导航 与pop</a></li>
+                        
                           <li><a title="iOS 计算时间差" href="15142851759902.html">iOS 计算时间差</a></li>
                         
                           <li><a title="iOS 信息格式验证" href="15142851758481.html">iOS 信息格式验证</a></li>
                         
-                          <li><a title="iOS" href="15142851750375.html">iOS</a></li>
-                        
-                          <li><a title="iOS" href="15142851748774.html">iOS</a></li>
-                        
-                          <li><a title="iOS" href="15142851744703.html">iOS</a></li>
+                          <li><a title="iOS  UIAlertController 提示框" href="15142851744703.html">iOS  UIAlertController 提示框</a></li>
                         
 
                     
@@ -284,8 +288,104 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>iOS</h1>
+<h1>iOS请求方式</h1>
 
+<h5 id="toc_0">AFN请求</h5>
+
+<pre><code> AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+ 
+    //向服务器发送JSON形式的二进制数据
+    sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    //设置默认只返回原始的二进制数据,程序猿自己解析
+    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+     //设置非校验证书模式
+     manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+     manager.securityPolicy.allowInvalidCertificates = YES;
+    [manager.securityPolicy setValidatesDomainName:NO];
+           
+    sessionManager.requestSerializer.timeoutInterval = 10.f;
+    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@&quot;application/json&quot;, @&quot;text/json&quot;,@&quot;text/javascript&quot;, @&quot;text/html&quot;, @&quot;text/plain&quot;,  nil];
+    
+   //设置请求头 参数
+    [sessionManager.requestSerializer setValue:@&quot;Token&quot;] forHTTPHeaderField:@&quot;Authorization&quot;];
+    
+    [sessionManager POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+    
+     NSDictionary * dic=[[NetworkTool sharedNetworkTool] changeType: responseObject] ;
+        
+                
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+</code></pre>
+
+<pre><code>-(id)changeType:(id)myObj
+{
+    if ([myObj isKindOfClass:[NSDictionary class]])
+    {
+        return [self nullDic:myObj];
+    }
+    else if([myObj isKindOfClass:[NSArray class]])
+    {
+        return [self nullArr:myObj];
+    }
+    else if([myObj isKindOfClass:[NSString class]])
+    {
+        return [self stringToString:myObj];
+    }
+    else if([myObj isKindOfClass:[NSNull class]])
+    {
+        return [self nullToString];
+    }
+    else
+    {
+        return myObj;
+    }
+}
+
+//将NSDictionary中的Null类型的项目转化成@&quot;&quot;
+-(NSDictionary *)nullDic:(NSDictionary *)myDic
+{
+    NSArray *keyArr = [myDic allKeys];
+    NSMutableDictionary *resDic = [[NSMutableDictionary alloc]init];
+    for (int i = 0; i &lt; keyArr.count; i ++)
+    {
+        id obj = [myDic objectForKey:keyArr[i]];
+        obj = [self changeType:obj];
+        [resDic setObject:obj forKey:keyArr[i]];
+    }
+    return resDic;
+}
+
+//将NSArray中的Null类型的项目转化成@&quot;&quot;
+-(NSArray *)nullArr:(NSArray *)myArr
+{
+    NSMutableArray *resArr = [[NSMutableArray alloc] init];
+    for (int i = 0; i &lt; myArr.count; i ++)
+    {
+        id obj = myArr[i];
+        obj = [self changeType:obj];
+        [resArr addObject:obj];
+    }
+    return resArr;
+}
+
+//将NSString类型的原路返回
+-(NSString *)stringToString:(NSString *)string
+{
+    return string;
+}
+
+//将Null类型的项目转化成@&quot;&quot;
+-(NSString *)nullToString
+{
+    return @&quot;&quot;;
+}
+</code></pre>
 
 
 </div>
@@ -297,7 +397,7 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15141802374458.html"  title="Previous Post: 建项-屏幕适配的这几年">&laquo; 建项-屏幕适配的这几年</a>
+	        <a href="15142851752080.html"  title="Previous Post: iOS UICollectionView使用详解">&laquo; iOS UICollectionView使用详解</a>
 	    
 	</div>
   </div>
@@ -305,7 +405,7 @@
 	<div class="text-right" style="padding:15px 0px;">
 		
 	        <a href="15142851748774.html" 
-	        title="Next Post: iOS">iOS &raquo;</a>
+	        title="Next Post: iOS导航 与pop">iOS导航 与pop &raquo;</a>
 	    
 	</div>
   </div>

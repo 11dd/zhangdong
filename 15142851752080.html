@@ -66,8 +66,10 @@
 
       
         <li class="divider"></li>
-        <li><label>iOS功能小结</label></li>
+        <li><label>iOS代码库</label></li>
 
+          
+            <li><a title="排序" href="15198806151662.html">排序</a></li>
           
             <li><a title="OC" href="15142856325027.html">OC</a></li>
           
@@ -91,15 +93,15 @@
           
             <li><a title="iOS UICollectionView使用详解" href="15142851752080.html">iOS UICollectionView使用详解</a></li>
           
+            <li><a title="iOS请求方式" href="15142851750375.html">iOS请求方式</a></li>
+          
+            <li><a title="iOS导航 与pop" href="15142851748774.html">iOS导航 与pop</a></li>
+          
             <li><a title="iOS 计算时间差" href="15142851759902.html">iOS 计算时间差</a></li>
           
             <li><a title="iOS 信息格式验证" href="15142851758481.html">iOS 信息格式验证</a></li>
           
-            <li><a title="iOS" href="15142851750375.html">iOS</a></li>
-          
-            <li><a title="iOS" href="15142851748774.html">iOS</a></li>
-          
-            <li><a title="iOS" href="15142851744703.html">iOS</a></li>
+            <li><a title="iOS  UIAlertController 提示框" href="15142851744703.html">iOS  UIAlertController 提示框</a></li>
           
 
       
@@ -192,7 +194,9 @@
                         
 
                     
-                      <li class="side-title"><span>iOS功能小结</span></li>
+                      <li class="side-title"><span>iOS代码库</span></li>
+                        
+                          <li><a title="排序" href="15198806151662.html">排序</a></li>
                         
                           <li><a title="OC" href="15142856325027.html">OC</a></li>
                         
@@ -216,15 +220,15 @@
                         
                           <li><a title="iOS UICollectionView使用详解" href="15142851752080.html">iOS UICollectionView使用详解</a></li>
                         
+                          <li><a title="iOS请求方式" href="15142851750375.html">iOS请求方式</a></li>
+                        
+                          <li><a title="iOS导航 与pop" href="15142851748774.html">iOS导航 与pop</a></li>
+                        
                           <li><a title="iOS 计算时间差" href="15142851759902.html">iOS 计算时间差</a></li>
                         
                           <li><a title="iOS 信息格式验证" href="15142851758481.html">iOS 信息格式验证</a></li>
                         
-                          <li><a title="iOS" href="15142851750375.html">iOS</a></li>
-                        
-                          <li><a title="iOS" href="15142851748774.html">iOS</a></li>
-                        
-                          <li><a title="iOS" href="15142851744703.html">iOS</a></li>
+                          <li><a title="iOS  UIAlertController 提示框" href="15142851744703.html">iOS  UIAlertController 提示框</a></li>
                         
 
                     
@@ -286,12 +290,12 @@
  <div class="markdown-body">
 <h1>iOS UICollectionView使用详解</h1>
 
-<p>添加代理</p>
+<h5 id="toc_0">添加代理</h5>
 
 <pre><code>&lt;UICollectionViewDataSource,UICollectionViewDelegate&gt;
 </code></pre>
 
-<p>初始化</p>
+<h5 id="toc_1">初始化</h5>
 
 <pre><code> UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumInteritemSpacing = 0;
@@ -320,7 +324,7 @@ collectionViewLayout:flowLayout];
     }
 </code></pre>
 
-<p>设置_collectionView的组数</p>
+<h5 id="toc_2">设置_collectionView的组数</h5>
 
 <pre><code>-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -328,7 +332,7 @@ collectionViewLayout:flowLayout];
 }
 </code></pre>
 
-<p>设置每组cell的个数</p>
+<h5 id="toc_3">设置每组cell的个数</h5>
 
 <pre><code>//返回每组的个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -345,7 +349,7 @@ collectionViewLayout:flowLayout];
 
 </code></pre>
 
-<p>设置每组cell的大小</p>
+<h5 id="toc_4">设置每组cell的大小</h5>
 
 <pre><code>- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -361,7 +365,7 @@ collectionViewLayout:flowLayout];
 }
 </code></pre>
 
-<p>布局cell</p>
+<h5 id="toc_5">布局cell</h5>
 
 <pre><code>- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -382,7 +386,7 @@ collectionViewLayout:flowLayout];
 }
 </code></pre>
 
-<p>设置_collectionView头部header高度</p>
+<h5 id="toc_6">设置_collectionView头部header高度</h5>
 
 <pre><code>- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     
@@ -402,7 +406,7 @@ collectionViewLayout:flowLayout];
 }
 </code></pre>
 
-<p>布局_collectionView上的头部UI</p>
+<h5 id="toc_7">布局_collectionView上的头部UI</h5>
 
 <pre><code>- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
            viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -443,8 +447,8 @@ collectionViewLayout:flowLayout];
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15142851759902.html" 
-	        title="Next Post: iOS 计算时间差">iOS 计算时间差 &raquo;</a>
+	        <a href="15142851750375.html" 
+	        title="Next Post: iOS请求方式">iOS请求方式 &raquo;</a>
 	    
 	</div>
   </div>
