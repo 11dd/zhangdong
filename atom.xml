@@ -4,7 +4,7 @@
   <title><![CDATA[zhangdong]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-04-09T11:46:52+08:00</updated>
+  <updated>2018-04-09T11:49:07+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -422,26 +422,6 @@ int main()
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[OC]]></title>
-    <link href="www.freefook.com/15142856325027.html"/>
-    <updated>2017-12-26T18:53:52+08:00</updated>
-    <id>www.freefook.com/15142856325027.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[OC]]></title>
-    <link href="www.freefook.com/15142856321781.html"/>
-    <updated>2017-12-26T18:53:52+08:00</updated>
-    <id>www.freefook.com/15142856321781.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[OC 字符串操作方法说明]]></title>
     <link href="www.freefook.com/15139214218497.html"/>
     <updated>2017-12-22T13:43:41+08:00</updated>
@@ -767,26 +747,6 @@ NSMutableDictionary *dataDict1 = [[NSMutableDictionary alloc] initWithContentsOf
 NSLog((@&quot;**start**\n[function name:%s]\n&quot; &quot;[Lines:%d]\n&quot; &quot;data-&gt;%@\n**end**\n\n&quot;), __FUNCTION__, __LINE__,dataDict1);
 
 </code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS 设计模式]]></title>
-    <link href="www.freefook.com/15142851754689.html"/>
-    <updated>2017-12-26T18:46:15+08:00</updated>
-    <id>www.freefook.com/15142851754689.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS 传值方式]]></title>
-    <link href="www.freefook.com/15142851753416.html"/>
-    <updated>2017-12-26T18:46:15+08:00</updated>
-    <id>www.freefook.com/15142851753416.html</id>
-    <content type="html"><![CDATA[
 
 ]]></content>
   </entry>
@@ -2213,31 +2173,482 @@ return YES;
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[建项-快速开发 2 ->]]></title>
-    <link href="www.freefook.com/15142759656625.html"/>
-    <updated>2017-12-26T16:12:45+08:00</updated>
-    <id>www.freefook.com/15142759656625.html</id>
+    <title type="html"><![CDATA[项目问题汇总]]></title>
+    <link href="www.freefook.com/15139392949146.html"/>
+    <updated>2017-12-22T18:41:34+08:00</updated>
+    <id>www.freefook.com/15139392949146.html</id>
     <content type="html"><![CDATA[
+<h5 id="toc_0">遇到的小问题却忽略的必然问题项如下：</h5>
+
+<h6 id="toc_1">不明确问题：</h6>
+
+<ol>
+<li>项目都有哪些功能？不明确？</li>
+<li>适配的系统与屏幕大小？</li>
+<li>是否需要检测网络，无网络或者无数据页面如何处理？</li>
+<li>例如：显示无数据页面，点击按钮重新请求？</li>
+<li>某些数据内容展示不开时：显示一行即可/多行？</li>
+<li>提示语的说明?</li>
+<li>本地数据存储是否多？</li>
+<li>业务复杂逻辑流程图？各端统一，麻烦也要统一做。</li>
+</ol>
+
+<h6 id="toc_2">不明确的功能项：</h6>
+
+<ol>
+<li>列表 tableview 是否有动态行高？</li>
+<li>哪些是必须登录才可看的页面？</li>
+<li>登录后是否有页面乱push 与pop 的情况？</li>
+<li>热点问题是否有适配的价值，例如：京东曾不适配。</li>
+</ol>
+
+<h6 id="toc_3">必须有的功能项：</h6>
+
+<ol>
+<li>网络请求的日志信息，如何处理?和接口人员商议</li>
+<li>需要增加闪退统计例如：集成极光。</li>
+</ol>
+
+<h6 id="toc_4">接口问题：</h6>
+
+<ol>
+<li>有通知功能时登录接口不是必传通知获取的token/channel_id？</li>
+<li>接口返回问题返回数组的时候是空数组，还是空对象？</li>
+</ol>
+
+<h6 id="toc_5">UI问题:</h6>
+
+<ol>
+<li>设计图是根据多大屏幕作图？</li>
+<li>不规则切图用规则型的透明背景切图.</li>
+<li>如tabbar底部选项卡的图，大小统一.</li>
+<li>个人中心等同位置图标 大小统一.</li>
+</ol>
+
+<p>以上问题会在下面 建项的各个阶段给出处理方式；</p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[建项-快速开发 3 ->]]></title>
-    <link href="www.freefook.com/15142759962160.html"/>
-    <updated>2017-12-26T16:13:16+08:00</updated>
-    <id>www.freefook.com/15142759962160.html</id>
+    <title type="html"><![CDATA[开发辅助地址一览]]></title>
+    <link href="www.freefook.com/15142827596143.html"/>
+    <updated>2017-12-26T18:05:59+08:00</updated>
+    <id>www.freefook.com/15142827596143.html</id>
     <content type="html"><![CDATA[
+<p>App Store<br/>
+<a href="https://developer.apple.com/cn/app-store/">https://developer.apple.com/cn/app-store/</a></p>
+
+<p>iTunes Connect 开发者指南<br/>
+<a href="https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide_zh_CN/Chapters/OverviewofiTunesConnect.html#//apple_ref/doc/uid/TP40016325-CH12-SW1">https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide_zh_CN/Chapters/OverviewofiTunesConnect.html#//apple_ref/doc/uid/TP40016325-CH12-SW1</a></p>
+
+<p>在线批量剪裁各种尺寸iOS、Android APP LOGO图标<br/>
+<a href="http://www.atool.org/ios_logo.php">http://www.atool.org/ios_logo.php</a></p>
+
+<p>json验证<br/>
+<a href="http://www.json.cn/">http://www.json.cn/</a></p>
+
+<p>极光推送：<br/>
+<a href="https://docs.jiguang.cn/jpush/client/iOS/ios_sdk/">https://docs.jiguang.cn/jpush/client/iOS/ios_sdk/</a></p>
+
+<p>接入支付宝支付：<br/>
+<a href="https://docs.open.alipay.com/204/105295/">https://docs.open.alipay.com/204/105295/</a></p>
+
+<p>接入微信支付：<br/>
+<a href="https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5">https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5</a></p>
+
+<p>三方发布平台，蒲公英与firim<br/>
+<a href="https://fir.im/">https://fir.im/</a><br/>
+<a href="https://www.pgyer.com/">https://www.pgyer.com/</a></p>
+
+<p>RabbitMQ 中文文档<br/>
+<a href="http://rabbitmq.mr-ping.com/">http://rabbitmq.mr-ping.com/</a></p>
+
+<p>网络请求及各类错误代码含义总结(Errors Code)<br/>
+<a href="http://blog.csdn.net/wangyanchang21/article/details/50932191">http://blog.csdn.net/wangyanchang21/article/details/50932191</a></p>
+
+<p>Mac端socket调试工具<br/>
+<a href="https://www.jianshu.com/p/ca1910ac691a">https://www.jianshu.com/p/ca1910ac691a</a></p>
+
+<p>iOS 系统与xcode Downloads<br/>
+<a href="https://developer.apple.com/download/">https://developer.apple.com/download/</a></p>
+
+<p>个人博客<br/>
+<a href="http://colin1994.github.io/">http://colin1994.github.io/</a></p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[建项-快速开发 4 ->]]></title>
-    <link href="www.freefook.com/15142759959034.html"/>
-    <updated>2017-12-26T16:13:15+08:00</updated>
-    <id>www.freefook.com/15142759959034.html</id>
+    <title type="html"><![CDATA[建项-使用三方管理工具cocoaPods]]></title>
+    <link href="www.freefook.com/15139117675584.html"/>
+    <updated>2017-12-22T11:02:47+08:00</updated>
+    <id>www.freefook.com/15139117675584.html</id>
     <content type="html"><![CDATA[
+<p>我们都用哪些三方呢？例如：<br/>
+1.  --极光的统计：可查看闪退日志（必须要有首先就要集成）<br/>
+2.  --可能用到的推送，可用极光的推送<br/>
+3.  --网络请求  AFNetWorking<br/>
+4.  --刷新  MJRefresh<br/>
+5.  --图片加载  SDWebImage<br/>
+6.  --用于加载的loading和提示框  MBProgressHUD<br/>
+7.  --用于解决输入框被键盘遮挡的问题  IQKeyBoardManager<br/>
+8.  --用于布局约束  Masonry<br/>
+9.  --加在程序中,解决NUll问题  nullSafe.m</p>
+
+<pre><code>使用三方管理工具cocoapods
+1、Ruby环境搭建
+查看下当前ruby版本：打开终端输入 ruby -v
+
+如果需要更新，进行如下操作更改Ruby镜像：
+
+gem sources --remove https://rubygems.org/ 
+gem sources -a https://gems.ruby-china.org/
+gem sources -l  （用来检查使用替换镜像位置成功与否）
+
+最后 输入  rvm install 2.2.4  更新ruby
+
+
+2、下载安装CocoaPods
+终端输入：sudo gem install cocoapods 
+
+结束之后：
+终端cd 到自己的项目文件下Create a Podfile
+
+终端输入touch Podfile
+       open -a Xcode Podfile
+
+
+写上如下内容：
+target &#39;MyApp的名’ do
+  pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1’
+end
+
+执行 pod install 就OK了
+
+查询三方版本可用 pod search afnetworking  （不区分大小写）
+第一次安装完pod 进行搜索需要多等一段时间，
+会卡在Creating search index for spec repo &#39;master&#39;..    
+
+CocoaPods的基本安装及使用都详细的说明了，
+当需要同时导入多个第三方时候怎么办 ？
+这就需要修改Podfile了，就是用vim编辑的那个保存在项目根目录中的文件，
+修改完了Podfile文件，需要重新执行一次pod install命令。
+</code></pre>
+
+<h5 id="toc_0">例如</h5>
+
+<pre><code>target &#39;myApp’ do
+pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1’
+pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.1&#39;
+pod &#39;SDWebImage&#39;, &#39;~&gt; 4.2.2&#39;
+pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
+pod &#39;IQKeyboardManager&#39;, &#39;~&gt; 5.0.7&#39;
+pod &#39;Masonry&#39;, &#39;~&gt; 1.1.0&#39;
+pod &#39;NullSafe&#39;, &#39;~&gt; 1.2.3&#39;
+pod &#39;CYLTabBarController&#39;, &#39;~&gt; 1.17.4&#39;
+pod &#39;SDCycleScrollView&#39;, &#39;~&gt; 1.75&#39;
+pod &#39;MJExtension&#39;, &#39;~&gt; 3.0.13&#39;
+pod &#39;FMDB&#39;, &#39;~&gt; 2.7.2&#39;
+pod &#39;SDAutoLayout&#39;, &#39;~&gt; 2.2.0&#39;
+end
+</code></pre>
+
+<h5 id="toc_1">Podfile 如上简单的写法 会报警告 默认platform：iOS9</h5>
+
+<blockquote>
+<p>The Podfile is a specification that describes the dependencies of the targets of one or more Xcode projects.</p>
+</blockquote>
+
+<p>A Podfile can be very simple:</p>
+
+<pre><code>target &#39;MyApp&#39;
+pod &#39;AFNetworking&#39;, &#39;~&gt; 1.0&#39;
+</code></pre>
+
+<p>An example of a more complex Podfile can be:</p>
+
+<pre><code>platform :ios, &#39;9.0&#39;
+inhibit_all_warnings!
+
+target &#39;MyApp&#39; do
+  pod &#39;ObjectiveSugar&#39;, &#39;~&gt; 0.5&#39;
+
+  target &quot;MyAppTests&quot; do
+    inherit! :search_paths
+    pod &#39;OCMock&#39;, &#39;~&gt; 2.0.1&#39;
+  end
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    puts &quot;#{target.name}&quot;
+  end
+end
+</code></pre>
+
+<h5 id="toc_2">参考如下：</h5>
+
+<pre><code> iOS安装CocoaPods详细过程
+ 请查看:(http://www.jianshu.com/p/9e4e36ba8574)
+ 
+ cocoapods报错问题You need at least git version 1.8.5 to use CocoaPods
+ 请查看:(http://www.jianshu.com/p/a1ab3b291f55)
+ 
+ 使用cocoapods时常见错误
+ 请查看:(http://www.jianshu.com/p/dfc7b93e67eb)
+ 
+ iOS 下 Podfile 使用方法
+ 请查看:(http://www.cnblogs.com/Kennytian/p/6413734.html)
+ 
+ 如果出现下面问题,请尝试:cocoapods 出现 &quot;_OBJC_CLASS_$--&quot;, 
+ referenced from:的问题target-&gt;build setting
+  -&gt;other link flags 添加一个$(inherited) 
+  
+  
+  
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[联系方式]]></title>
+    <link href="www.freefook.com/15139235853705.html"/>
+    <updated>2017-12-22T14:19:45+08:00</updated>
+    <id>www.freefook.com/15139235853705.html</id>
+    <content type="html"><![CDATA[
+<p>邮箱：<a href="mailto:jsjzdd_2014@126.com">jsjzdd_2014@126.com</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS ARKit 看我就受够了]]></title>
+    <link href="www.freefook.com/15139220095625.html"/>
+    <updated>2017-12-22T13:53:29+08:00</updated>
+    <id>www.freefook.com/15139220095625.html</id>
+    <content type="html"><![CDATA[
+<p>因为有项目需求ARKit，查询后反馈的文档<br/>
+现发布出来，还没注明转载出自哪里，见谅，找到地址时补齐；</p>
+
+<p><a href="https://developer.apple.com/documentation/arkit">https://developer.apple.com/documentation/arkit</a><br/>
+<img src="http://upload-images.jianshu.io/upload_images/670820-3bdc5004b7ecbc6c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/>截图</p>
+
+<h3 id="toc_0">AR增强现实技术</h3>
+
+<p>在即将发布的iOS11系统上，ARKit正式成为iOS系统框架，让开发者能够使用OC或swift语言开发AR类型的APP。<br/>
+ARKit的大部分计算都是在CPU上处理的，在A8处理器上的性能损耗在15%~ 25%,<br/>
+在A9处理器上的性能损耗在10% ~ 15%。为了更好的体验，所以苹果仅支持 A9 及以上处理器<br/>
+<img src="http://upload-images.jianshu.io/upload_images/670820-2eaafcbc013d5c9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/>AR支持系列</p>
+
+<h4 id="toc_1">ARKit 实现测量尺功能：</h4>
+
+<p>实现该功能原理:收集相机的视觉信息，以及手机中传感器，包括陀螺仪、罗盘和加速度计来计算并确定设备的位置。<br/>
+当然，这都是基于ARKit开发的，不想深入，想深入，深入，入...</p>
+
+<blockquote>
+<p>•多媒体捕捉现实图像:如摄像头<br/>
+•三维建模:3D立体模型<br/>
+•传感器追踪:主要追踪现实世界动态物体的六轴变化，这六轴分别是X、Y、Z轴位移及旋转。其中位移三轴决定物体的方位和大小，旋转三轴决定物体显示的区域。<br/>
+•坐标识别及转换:3D模型显示在现实图像中不是单纯的坐标点，而是一个三维的矩阵坐标</p>
+</blockquote>
+
+<h4 id="toc_2">注意:</h4>
+
+<ol>
+<li><p>如果手机中的场景越丰富，那么测量的结果也就越精确。如果想要测量一面白墙的长度，暂时还不是很准确。AR应用是通过“特征点”进行识别的,也因为是三维矩阵坐标，要求测量时必须很稳的在同一个 Z 轴高度上测量平面的长度;</p></li>
+<li><p>不要期望 AR检测的平面会完全贴合表面，虽然检测到了平面但角度可能不完全正确，所以如果开发的AR app需要获得非常精确的几何体来提供更好的效果，可能会出现问题</p></li>
+<li><p>边缘检测不是特别好，实际的平面范围有时会太大或太小，所以不要尝试做需要准确边缘的 ARapp</p></li>
+</ol>
+
+<h4 id="toc_3">ARKit还存在一些问题:</h4>
+
+<blockquote>
+<p>ARKit是基于惯性-视觉来做空间定位的，这项技术会将iOS设备的动作感测硬件信息，加上对可见场景的计算机视觉分析功能，然后与设备的摄像头相结合，需要平稳缓慢的移动+转向手机，才能构建更加准确的世界，这对用户来说是一种考验，需要积极提示。</p>
+
+<p>一旦刚开始检测平面失败，出现时间久，飘逸的现象，后期很难再正确检测，要强制重启。</p>
+
+<p>AVFoudation与ARSession之间的切换会有轻微的卡顿，切换后ARSession就停止摄像头采集了，但3D渲染会继续，只是丧失了空间定位与检测识别的能力.</p>
+
+<p>不支持前置摄像头。ARKit并不是一个用于前置摄像头环境的技术，因为空间有限，能提供的信息也非常有限。100米左右是ARKit在保持较好用户体验的最大测量距离。</p>
+
+<p>ARKit没有计划支持连接两个不同ARKit世界。</p>
+</blockquote>
+
+<h4 id="toc_4">要建立高品质的 AR 体验，那么请注意下述这些注意事项和提示:</h4>
+
+<blockquote>
+<p>全局追踪是一项不精确的科学 (inexact science)。<br/>
+尽管在这个过程当中，经常会产生可观的准确度，从而让AR 的体验更加真实。然而，它严重依赖于设备物理环境的相关细节，而这些细节并不总是一致，有些时候也难以实时测量，这也就导致这些物理细节往往都会存在某种程度的错误。</p>
+
+<p>基于可见的照明条件来设计AR场景。<br/>
+全局追踪涉及到了图像分析的相关内容，因此就需要我们提供清晰的图像。如果摄像头没有办法看到相关的物理细节，比如说摄像头拍到的是一面空空如也的墙壁，或者场景的光线实在太暗的话，那么全局追踪的质量就会大大降低。</p>
+
+<p>根据追踪质量的相关信息来给用户进行反馈提示。<br/>
+全局追踪会将图像分析与设备的动作模式关联起来。如果设备正在移动的话，那么ARKit 就可以更好地对场景进行建模，这样即便设备只是略微晃动，也不会影响追踪质量。但是一旦用户的动作过多、过快或者晃动过于激烈，就会导致图像变得模糊，或者导致视频帧中要追踪的特征之间的距离过大，从而致使追踪质量的降低。ARCamera类能够提供追踪状态，此外还能提供导致该状态出现的相关原因，您可以在 UI 上展示这些信息，告诉用户如何解决追踪质量低这个问题。</p>
+
+<p>给水平面检测预留点时间来生成清晰的结果，一旦您获得所需的结果后，就禁用水平面检测。一开始对水平面进行检测的时候，所检测到的水平面位置和范围很可能不准确。不过随着时间的推移，只要水平面仍然保持在场景当中，<br/>
+那么 ARKit 就能够较为精确地估计水平面的位置和范围。当场景中有一个比较大的平坦表面的话，就算您已经使用过这个水平面来放置内容，那么 ARKit 可能还会继续对水平面的锚点位置、范围和变换点进行修正 。</p>
+</blockquote>
+
+<p>综上所述:ARKit 实现测量尺功能，对物理环境要求较高，<br/>
+第一，环境光检测，清晰的获取摄像头的帧图像;<br/>
+第二，平面检测，准确的获取水平面，如果精确测量，需要边缘化检测准确;<br/>
+第三，运动追踪稳定准确等外部因素，对环境和用户操作要求较高;</p>
+
+<h4 id="toc_5">后记补充：</h4>
+
+<p>ARKit是有环境光估计的，这个功能会通过摄像头捕捉并计算捕捉到的场景中的光的总量，来给虚拟物体施加正确的光照条件，渲染效果更加真实。环境光的模拟对于AR出来的画面的真实感，还是有非常大的影响的。</p>
+
+<h5 id="toc_6">在此说一下ARKit没有提供图像识别方面的功能，所以平时可能看到身边有的AR场景是可以识别特定的图像做其他操作类型的App，用ARKit是不能实现的；</h5>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[建项-创建.pch文件]]></title>
+    <link href="www.freefook.com/15139119793020.html"/>
+    <updated>2017-12-22T11:06:19+08:00</updated>
+    <id>www.freefook.com/15139119793020.html</id>
+    <content type="html"><![CDATA[
+<p>command+n 滑动到最底下other 里创建pch文件。<br/>
+<img src="http://upload-images.jianshu.io/upload_images/670820-06ec44085a3c68e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="箭头所指三个选中.png"/></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-192ddcde4df0a66f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="加粗的两项改动test是项工程名.png"/></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[AES加密打开方式...]]></title>
+    <link href="www.freefook.com/15139219514745.html"/>
+    <updated>2017-12-22T13:52:31+08:00</updated>
+    <id>www.freefook.com/15139219514745.html</id>
+    <content type="html"><![CDATA[
+<p>很久没写博客,Markdown牵出来遛遛</p>
+
+<p>AES加密时需要统一的几个参数。</p>
+
+<pre><code>密钥长度（Key Size）
+加密模式（Cipher Mode）
+填充方式（Padding）
+初始向量（Initialization Vector）
+</code></pre>
+
+<blockquote>
+<p>1.本例使用AES-128,</p>
+
+<p>2.AES属于块加密BlockCipher，块加密中有CBC、ECB、CTR、OFB、CFB等几种工作模式。本例使用CBC模式</p>
+
+<p>3.由于块加密只能对特定长度的数据块进行加密，因此CBC、ECB模式需要在最后一数据块加密前进行数据填充。（CFB，OFB和CTR模式由于与key进行加密操作的是上一块加密后的密文，因此不需要对最后一段明文进行填充）<br/>
+在iOS SDK中提供了PKCS7Padding</p>
+</blockquote>
+
+<p>ECB加密模式（不推荐）：容易被攻击</p>
+
+<blockquote>
+<p>1.每次key,明文,密文的长度都必须是64位;<br/><br/>
+2.数据块重复排序不需要检测;<br/><br/>
+3.相同的明文块(使用相同的密钥)产生相同的密文块,容易遭受字典被攻击<br/><br/>
+4.一个错误仅仅会对一个密文块产生影响</p>
+</blockquote>
+
+<p>CBC加密方式(推荐):</p>
+
+<blockquote>
+<p>1.每次加密的密文长度为64位(8个字节);<br/><br/>
+2.当相同的明文使用相同的密钥和初始向量的时候CBC模式总是产生相同的密文;<br/><br/>
+3.密文块要依赖以前的操作结果,所以密文块不能进行重新排列;<br/><br/>
+4.可以使用不同的初始化向量来避免相同的明文产生相同的密文,一定程度上抵抗字典攻击<br/>
+5.一个错误发生后,当前和以后的密文都会被影响;</p>
+
+<p>使用PKCS5Padding/PKCS7Padding填充可以兼容多平台语言之间AES加密解密  </p>
+
+<p>注意: 这里每次产生的密文是相同的，因为设置了初试向量iv为16位个数的“0”。要产生不同的密文就要使用变化的初试向量iv</p>
+</blockquote>
+
+<p>ios使用案例  </p>
+
+<p>创建一个类AESCipher继承NSObject</p>
+
+<p>.h文件如下:</p>
+
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+NSString * aesEncryptString(NSString *content, NSString *key);
+NSString * aesDecryptString(NSString *content, NSString *key);
+NSData * aesEncryptData(NSData *data, NSData *key);
+NSData * aesDecryptData(NSData *data, NSData *key);
+
+</code></pre>
+
+<p>.m文件如下:</p>
+
+<pre><code>#import &quot;AESCipher.h&quot;
+#import &lt;CommonCrypto/CommonCryptor.h&gt;
+//注意:初始向量,默认16个0(]前后端保持统一)
+NSString const *kInitVector = @&quot;0000000000000000&quot;;
+size_t const kKeySize = kCCKeySizeAES128;
+NSData * cipherOperation(NSData *contentData, NSData *keyData, CCOperation operation) {
+    NSUInteger dataLength = contentData.length;
+    void const *initVectorBytes = [kInitVector dataUsingEncoding:NSUTF8StringEncoding].bytes;
+    void const *contentBytes = contentData.bytes;
+    void const *keyBytes = keyData.bytes;
+    size_t operationSize = dataLength + kCCBlockSizeAES128;
+    void *operationBytes = malloc(operationSize);
+    size_t actualOutSize = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(operation,                                   kCCAlgorithmAES,                                   kCCOptionPKCS7Padding,
+ keyBytes,                                      kKeySize,                                     initVectorBytes,                                    contentBytes,                                     dataLength,                                     operationBytes,                                    operationSize,                                   &amp;actualOutSize);
+    if (cryptStatus == kCCSuccess) {
+        return [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
+    }
+    free(operationBytes);
+    return nil;
+}
+NSString * aesEncryptString(NSString *content, NSString *key) {
+    NSData *contentData = [content dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *encrptedData = aesEncryptData(contentData, keyData);
+    return [encrptedData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+}
+NSString * aesDecryptString(NSString *content, NSString *key) {
+    NSData *contentData = [[NSData alloc] initWithBase64EncodedString:content options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *decryptedData = aesDecryptData(contentData, keyData);
+    return [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
+}
+NSData * aesEncryptData(NSData *contentData, NSData *keyData) {
+    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];
+    NSCAssert(keyData.length == kKeySize, hint);
+    return cipherOperation(contentData, keyData, kCCEncrypt);
+}
+NSData * aesDecryptData(NSData *contentData, NSData *keyData) {
+    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];
+    NSCAssert(keyData.length == kKeySize, hint);
+    return cipherOperation(contentData, keyData, kCCDecrypt);
+}
+</code></pre>
+
+<p>使用方法如下:</p>
+
+<pre><code>/*
+ 使用案例:
+ 第一: 导入头文件
+ #import &quot;AESCipher.h&quot;
+ 测试字符串
+ NSString *TestStr = @&quot;abc&quot;;
+ 设置key
+ NSString *key = @&quot;1234567812345678&quot;;
+ NSString *cipherText = aesEncryptString(TestStr, key);
+ NSLog(@&quot;加密==%@&quot;, cipherText);
+ NSString *decryptedText = aesDecryptString(cipherText, key);
+ NSLog(@&quot;解密==%@&quot;, decryptedText);
+ */
+</code></pre>
+
+<p>原文查看:<br/>
+ <a href="http://blog.csdn.net/u013749540/article/details/70225594">http://blog.csdn.net/u013749540/article/details/70225594</a><br/>
+ <a href="http://www.cnblogs.com/dcb3688/p/4608007.html">http://www.cnblogs.com/dcb3688/p/4608007.html</a></p>
 
 ]]></content>
   </entry>
