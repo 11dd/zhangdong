@@ -4,7 +4,7 @@
   <title><![CDATA[zhangdong]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-04-09T11:53:23+08:00</updated>
+  <updated>2018-04-09T11:55:00+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -64,6 +64,9 @@
 
 <p>疑难问题，请浏览👇<br/>
 小程序社区：<a href="http://www.wxapp-union.com/">http://www.wxapp-union.com/</a></p>
+
+<p>使用WePY框架开发小程序请移步👇<br/>
+<a href="https://tencent.github.io/wepy/index.html">https://tencent.github.io/wepy/index.html</a></p>
 
 ]]></content>
   </entry>
