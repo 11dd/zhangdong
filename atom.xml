@@ -4,7 +4,7 @@
   <title><![CDATA[zhangdong]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-04-11T17:19:04+08:00</updated>
+  <updated>2018-04-11T17:20:10+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -143,6 +143,12 @@ openid
 　　　　&quot;appid&quot;:&quot;&quot;
 　　}
 }
+
+在登录小程序之前，既没有关注过公众号，也没有登录过公众号，
+更没有使用微信登录的方式登录过app。
+通过 wx.login 的到的 code 解密后未返回 unionid
+
+
 
 另外，为了应用能校验数据的有效性，会在敏感数据加上数据水印( watermark )
 appid 敏感数据归属appid，开发者可校验此参数与自身appid是否一致
