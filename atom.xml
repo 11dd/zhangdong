@@ -4,7 +4,7 @@
   <title><![CDATA[zhangdong]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-04-11T17:33:32+08:00</updated>
+  <updated>2018-04-11T17:34:22+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -85,14 +85,14 @@
 
 <pre><code>https://api.weixin.qq.com/sns/jscode2session  
 参数{
-appid，
-secret，
-js_code = code，
-grant_type = authorization_code
+    appid，
+    secret，
+    js_code = code，
+    grant_type = authorization_code
 } 
 返回数据{
-session_key，
-openid
+    session_key，
+    openid
 }
 
 会话密钥session_key有效性
