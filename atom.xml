@@ -4,7 +4,7 @@
   <title><![CDATA[zhangdong]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-04-09T16:38:16+08:00</updated>
+  <updated>2018-04-09T16:53:03+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,99 @@
   </author>
   <generator uri="http://www.mweb.im">MWeb</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[小程序登录]]></title>
+    <link href="www.freefook.com/15234367737951.html"/>
+    <updated>2018-04-11T16:52:53+08:00</updated>
+    <id>www.freefook.com/15234367737951.html</id>
+    <content type="html"><![CDATA[
+<ol>
+<li>授权获取用户信息</li>
+<li>得到code,iv,encryptedData,rawData,signature将code，encryptedData传给服务器</li>
+<li>服务器post请求接口<a href="https://api.weixin.qq.com/sns/">https://api.weixin.qq.com/sns/</a></li>
+</ol>
+
+<pre><code>jscode2session  
+参数{
+appid，
+secret，
+js_code = code，
+grant_type = authorization_code
+} 
+返回数据{
+session_key，
+openid
+}
+
+会话密钥session_key有效性
+
+开发者如果遇到因为session_key不正确而校验签名失败或解密失败，请关注下面几个与session_key有关的注意事项。
+
+    1.wx.login()调用时，用户的session_key会被更新而致使旧session_key失效。开发者应该在明确需要重新登录时才调用wx.login()，及时通过登录凭证校验接口更新服务器存储的session_key。
+
+    2.微信不会把session_key的有效期告知开发者。我们会根据用户使用小程序的行为对session_key进行续期。用户越频繁使用小程序，session_key有效期越长。
+
+    3.开发者在session_key失效时，可以通过重新执行登录流程获取有效的session_key。使用接口wx.checkSession()可以校验session_key是否有效，从而避免小程序反复执行登录流程。
+
+    4.当开发者在实现自定义登录态时，可以考虑以session_key有效期作为自身登录态有效期，也可以实现自定义的时效性策略。
+
+
+</code></pre>
+
+<ol>
+<li>服务端解密数据encryptedData</li>
+</ol>
+
+<pre><code>    对称解密使用的算法为 AES-128-CBC，数据采用PKCS#7填充。
+    对称解密的目标密文为 Base64_Decode(encryptedData)。
+    对称解密秘钥 aeskey = Base64_Decode(session_key), aeskey 是16字节。
+    对称解密算法初始向量 为Base64_Decode(iv)，其中iv由数据接口返回。
+    
+解密encryptedData数据
+{
+　　&quot;openId&quot;:&quot;&quot;,
+　　&quot;nickName&quot;:&quot;ZIM東&quot;,
+　　&quot;gender&quot;:1,
+　　&quot;language&quot;:&quot;zh_CN&quot;,
+　　&quot;city&quot;:&quot;&quot;,
+　　&quot;province&quot;:&quot;&quot;,
+　　&quot;country&quot;:&quot;&quot;,
+　　&quot;avatarUrl&quot;:&quot;&quot;,
+　　&quot;unionId&quot;:&quot;&quot;,
+　　&quot;watermark&quot;:{
+　　　　&quot;timestamp&quot;:1523433831,
+　　　　&quot;appid&quot;:&quot;&quot;
+　　}
+}
+
+另外，为了应用能校验数据的有效性，会在敏感数据加上数据水印( watermark )
+appid 敏感数据归属appid，开发者可校验此参数与自身appid是否一致
+timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性校验
+
+</code></pre>
+
+<p><img src="media/15234367737951/%E6%B5%81%E7%A8%8B.png" alt="流程"/></p>
+
+<p>原图地址：</p>
+
+<p>注意：开发者后台拿到开放数据后可以对数据进行校验签名和解密，来保证数据不被篡改。 </p>
+
+<p><img src="media/15234367737951/%E6%95%B0%E6%8D%AE.png" alt="数据"/></p>
+
+<pre><code>签名校验以及数据加解密涉及用户的会话密钥session_key。 开发者应该事先通过 wx.login 登录流程获取会话密钥 session_key 并保存在服务器。为了数据不被篡改，开发者不应该把session_key传到小程序客户端等服务器外的环境。
+
+数据签名校验
+
+为了确保 开放接口 返回用户数据的安全性，微信会对明文数据进行签名。开发者可以根据业务需要对数据包进行签名校验，确保数据的完整性。
+
+    通过调用接口（如 wx.getUserInfo）获取数据时，接口会同时返回 rawData、signature，其中 signature = sha1( rawData + session_key )
+    开发者将 signature、rawData 发送到开发者服务器进行校验。服务器利用用户对应的 session_key 使用相同的算法计算出签名 signature2 ，比对 signature 与 signature2 即可校验数据的完整性。
+
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[小程序]]></title>
@@ -2519,139 +2612,6 @@ ARKit的大部分计算都是在CPU上处理的，在A8处理器上的性能损�
 <img src="http://upload-images.jianshu.io/upload_images/670820-06ec44085a3c68e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="箭头所指三个选中.png"/></p>
 
 <p><img src="http://upload-images.jianshu.io/upload_images/670820-192ddcde4df0a66f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="加粗的两项改动test是项工程名.png"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[AES加密打开方式...]]></title>
-    <link href="www.freefook.com/15139219514745.html"/>
-    <updated>2017-12-22T13:52:31+08:00</updated>
-    <id>www.freefook.com/15139219514745.html</id>
-    <content type="html"><![CDATA[
-<p>很久没写博客,Markdown牵出来遛遛</p>
-
-<p>AES加密时需要统一的几个参数。</p>
-
-<pre><code>密钥长度（Key Size）
-加密模式（Cipher Mode）
-填充方式（Padding）
-初始向量（Initialization Vector）
-</code></pre>
-
-<blockquote>
-<p>1.本例使用AES-128,</p>
-
-<p>2.AES属于块加密BlockCipher，块加密中有CBC、ECB、CTR、OFB、CFB等几种工作模式。本例使用CBC模式</p>
-
-<p>3.由于块加密只能对特定长度的数据块进行加密，因此CBC、ECB模式需要在最后一数据块加密前进行数据填充。（CFB，OFB和CTR模式由于与key进行加密操作的是上一块加密后的密文，因此不需要对最后一段明文进行填充）<br/>
-在iOS SDK中提供了PKCS7Padding</p>
-</blockquote>
-
-<p>ECB加密模式（不推荐）：容易被攻击</p>
-
-<blockquote>
-<p>1.每次key,明文,密文的长度都必须是64位;<br/><br/>
-2.数据块重复排序不需要检测;<br/><br/>
-3.相同的明文块(使用相同的密钥)产生相同的密文块,容易遭受字典被攻击<br/><br/>
-4.一个错误仅仅会对一个密文块产生影响</p>
-</blockquote>
-
-<p>CBC加密方式(推荐):</p>
-
-<blockquote>
-<p>1.每次加密的密文长度为64位(8个字节);<br/><br/>
-2.当相同的明文使用相同的密钥和初始向量的时候CBC模式总是产生相同的密文;<br/><br/>
-3.密文块要依赖以前的操作结果,所以密文块不能进行重新排列;<br/><br/>
-4.可以使用不同的初始化向量来避免相同的明文产生相同的密文,一定程度上抵抗字典攻击<br/>
-5.一个错误发生后,当前和以后的密文都会被影响;</p>
-
-<p>使用PKCS5Padding/PKCS7Padding填充可以兼容多平台语言之间AES加密解密  </p>
-
-<p>注意: 这里每次产生的密文是相同的，因为设置了初试向量iv为16位个数的“0”。要产生不同的密文就要使用变化的初试向量iv</p>
-</blockquote>
-
-<p>ios使用案例  </p>
-
-<p>创建一个类AESCipher继承NSObject</p>
-
-<p>.h文件如下:</p>
-
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-NSString * aesEncryptString(NSString *content, NSString *key);
-NSString * aesDecryptString(NSString *content, NSString *key);
-NSData * aesEncryptData(NSData *data, NSData *key);
-NSData * aesDecryptData(NSData *data, NSData *key);
-
-</code></pre>
-
-<p>.m文件如下:</p>
-
-<pre><code>#import &quot;AESCipher.h&quot;
-#import &lt;CommonCrypto/CommonCryptor.h&gt;
-//注意:初始向量,默认16个0(]前后端保持统一)
-NSString const *kInitVector = @&quot;0000000000000000&quot;;
-size_t const kKeySize = kCCKeySizeAES128;
-NSData * cipherOperation(NSData *contentData, NSData *keyData, CCOperation operation) {
-    NSUInteger dataLength = contentData.length;
-    void const *initVectorBytes = [kInitVector dataUsingEncoding:NSUTF8StringEncoding].bytes;
-    void const *contentBytes = contentData.bytes;
-    void const *keyBytes = keyData.bytes;
-    size_t operationSize = dataLength + kCCBlockSizeAES128;
-    void *operationBytes = malloc(operationSize);
-    size_t actualOutSize = 0;
-    CCCryptorStatus cryptStatus = CCCrypt(operation,                                   kCCAlgorithmAES,                                   kCCOptionPKCS7Padding,
- keyBytes,                                      kKeySize,                                     initVectorBytes,                                    contentBytes,                                     dataLength,                                     operationBytes,                                    operationSize,                                   &amp;actualOutSize);
-    if (cryptStatus == kCCSuccess) {
-        return [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
-    }
-    free(operationBytes);
-    return nil;
-}
-NSString * aesEncryptString(NSString *content, NSString *key) {
-    NSData *contentData = [content dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *encrptedData = aesEncryptData(contentData, keyData);
-    return [encrptedData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
-}
-NSString * aesDecryptString(NSString *content, NSString *key) {
-    NSData *contentData = [[NSData alloc] initWithBase64EncodedString:content options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *decryptedData = aesDecryptData(contentData, keyData);
-    return [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
-}
-NSData * aesEncryptData(NSData *contentData, NSData *keyData) {
-    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];
-    NSCAssert(keyData.length == kKeySize, hint);
-    return cipherOperation(contentData, keyData, kCCEncrypt);
-}
-NSData * aesDecryptData(NSData *contentData, NSData *keyData) {
-    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];
-    NSCAssert(keyData.length == kKeySize, hint);
-    return cipherOperation(contentData, keyData, kCCDecrypt);
-}
-</code></pre>
-
-<p>使用方法如下:</p>
-
-<pre><code>/*
- 使用案例:
- 第一: 导入头文件
- #import &quot;AESCipher.h&quot;
- 测试字符串
- NSString *TestStr = @&quot;abc&quot;;
- 设置key
- NSString *key = @&quot;1234567812345678&quot;;
- NSString *cipherText = aesEncryptString(TestStr, key);
- NSLog(@&quot;加密==%@&quot;, cipherText);
- NSString *decryptedText = aesDecryptString(cipherText, key);
- NSLog(@&quot;解密==%@&quot;, decryptedText);
- */
-</code></pre>
-
-<p>原文查看:<br/>
- <a href="http://blog.csdn.net/u013749540/article/details/70225594">http://blog.csdn.net/u013749540/article/details/70225594</a><br/>
- <a href="http://www.cnblogs.com/dcb3688/p/4608007.html">http://www.cnblogs.com/dcb3688/p/4608007.html</a></p>
 
 ]]></content>
   </entry>
