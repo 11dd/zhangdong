@@ -4,7 +4,7 @@
   <title><![CDATA[zhangdong]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-04-11T17:32:18+08:00</updated>
+  <updated>2018-04-11T17:33:32+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -80,10 +80,10 @@
 <ol>
 <li>授权获取用户信息</li>
 <li>得到code,iv,encryptedData,rawData,signature将code，iv，encryptedData传给服务器</li>
-<li>服务器post请求接口<a href="https://api.weixin.qq.com/sns/">https://api.weixin.qq.com/sns/</a></li>
+<li>服务器post请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
 </ol>
 
-<pre><code>jscode2session  
+<pre><code>https://api.weixin.qq.com/sns/jscode2session  
 参数{
 appid，
 secret，
