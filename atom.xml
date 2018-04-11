@@ -4,7 +4,7 @@
   <title><![CDATA[zhangdong]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-04-11T17:20:10+08:00</updated>
+  <updated>2018-04-11T17:31:18+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -148,7 +148,10 @@ openid
 更没有使用微信登录的方式登录过app。
 通过 wx.login 的到的 code 解密后未返回 unionid
 
-
+划重点：
+     初次尝试小程序登录未拿到unionid
+     小程序里关联了公众号，用微信关注了公众号未获取到unionid
+     小程序关联微信开放平台，再次登录得到了unionid
 
 另外，为了应用能校验数据的有效性，会在敏感数据加上数据水印( watermark )
 appid 敏感数据归属appid，开发者可校验此参数与自身appid是否一致
