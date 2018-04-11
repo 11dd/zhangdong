@@ -47,9 +47,9 @@
         <li><label>小程序</label></li>
 
           
-            <li><a title="小程序登录" href="15234367737951.html">小程序登录</a></li>
-          
             <li><a title="小程序" href="15232437563217.html">小程序</a></li>
+          
+            <li><a title="小程序登录" href="15234367737951.html">小程序登录</a></li>
           
 
       
@@ -162,9 +162,9 @@
                     
                       <li class="side-title"><span>小程序</span></li>
                         
-                          <li><a title="小程序登录" href="15234367737951.html">小程序登录</a></li>
-                        
                           <li><a title="小程序" href="15232437563217.html">小程序</a></li>
+                        
+                          <li><a title="小程序登录" href="15234367737951.html">小程序登录</a></li>
                         
 
                     
@@ -282,13 +282,21 @@ openid
 
 开发者如果遇到因为session_key不正确而校验签名失败或解密失败，请关注下面几个与session_key有关的注意事项。
 
-    1.wx.login()调用时，用户的session_key会被更新而致使旧session_key失效。开发者应该在明确需要重新登录时才调用wx.login()，及时通过登录凭证校验接口更新服务器存储的session_key。
+    1.wx.login()调用时，用户的session_key会被更新而致使旧session_key失效。
+    开发者应该在明确需要重新登录时才调用wx.login()，
+    及时通过登录凭证校验接口更新服务器存储的session_key。
 
-    2.微信不会把session_key的有效期告知开发者。我们会根据用户使用小程序的行为对session_key进行续期。用户越频繁使用小程序，session_key有效期越长。
+    2.微信不会把session_key的有效期告知开发者。
+    我们会根据用户使用小程序的行为对session_key进行续期。
+    用户越频繁使用小程序，session_key有效期越长。
 
-    3.开发者在session_key失效时，可以通过重新执行登录流程获取有效的session_key。使用接口wx.checkSession()可以校验session_key是否有效，从而避免小程序反复执行登录流程。
+    3.开发者在session_key失效时，可以通过重新执行登录流程获取有效的session_key。
+    使用接口wx.checkSession()可以校验session_key是否有效，
+    从而避免小程序反复执行登录流程。
 
-    4.当开发者在实现自定义登录态时，可以考虑以session_key有效期作为自身登录态有效期，也可以实现自定义的时效性策略。
+    4.当开发者在实现自定义登录态时，
+    可以考虑以session_key有效期作为自身登录态有效期，
+    也可以实现自定义的时效性策略。
 
 
 </code></pre>
@@ -327,7 +335,7 @@ timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性�
 
 <p><img src="media/15234367737951/%E6%B5%81%E7%A8%8B.png" alt="流程"/></p>
 
-<p>原图地址：</p>
+<p>👆原图地址：<a href="https://blog.csdn.net/dingjianmin/article/details/75137934">https://blog.csdn.net/dingjianmin/article/details/75137934</a></p>
 
 <p>注意：开发者后台拿到开放数据后可以对数据进行校验签名和解密，来保证数据不被篡改。 </p>
 
@@ -337,10 +345,15 @@ timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性�
 
 数据签名校验
 
-为了确保 开放接口 返回用户数据的安全性，微信会对明文数据进行签名。开发者可以根据业务需要对数据包进行签名校验，确保数据的完整性。
+为了确保 开放接口 返回用户数据的安全性，微信会对明文数据进行签名。
+开发者可以根据业务需要对数据包进行签名校验，确保数据的完整性。
 
-    通过调用接口（如 wx.getUserInfo）获取数据时，接口会同时返回 rawData、signature，其中 signature = sha1( rawData + session_key )
-    开发者将 signature、rawData 发送到开发者服务器进行校验。服务器利用用户对应的 session_key 使用相同的算法计算出签名 signature2 ，比对 signature 与 signature2 即可校验数据的完整性。
+    通过调用接口（如 wx.getUserInfo）获取数据时，接口会同时返回 rawData、signature，
+    其中 signature = sha1( rawData + session_key )
+    
+    开发者将 signature、rawData 发送到开发者服务器进行校验。
+    服务器利用用户对应的 session_key 使用相同的算法计算出签名 signature2 ，
+    比对 signature 与 signature2 即可校验数据的完整性。
 
 </code></pre>
 
@@ -354,13 +367,15 @@ timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性�
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
+	        <a href="15232437563217.html"  title="Previous Post: 小程序">&laquo; 小程序</a>
+	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15232437563217.html" 
-	        title="Next Post: 小程序">小程序 &raquo;</a>
+	        <a href="15198806151662.html" 
+	        title="Next Post: 排序">排序 &raquo;</a>
 	    
 	</div>
   </div>
