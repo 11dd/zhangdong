@@ -87,8 +87,6 @@
         <li><label>iOS代码库</label></li>
 
           
-            <li><a title="排序" href="15198806151662.html">排序</a></li>
-          
             <li><a title="OC 字符串操作方法说明" href="15139214218497.html">OC 字符串操作方法说明</a></li>
           
             <li><a title="OC 数组操作方法说明" href="15139214500331.html">OC 数组操作方法说明</a></li>
@@ -206,8 +204,6 @@
                     
                       <li class="side-title"><span>iOS代码库</span></li>
                         
-                          <li><a title="排序" href="15198806151662.html">排序</a></li>
-                        
                           <li><a title="OC 字符串操作方法说明" href="15139214218497.html">OC 字符串操作方法说明</a></li>
                         
                           <li><a title="OC 数组操作方法说明" href="15139214500331.html">OC 数组操作方法说明</a></li>
@@ -278,357 +274,144 @@
 
 	
 		<div class="markdown-body">
-		<h1>排序</h1>
+		<h1>OC 字符串操作方法说明</h1>
 
-		<pre><code> sizeof 判断数据类型长度符的关键字  简单的说其作用就是返回一个对象或者类型所占的内存字节数
-</code></pre>
+		<h5 id="toc_0">属性字符串常用操作</h5>
 
-<h4 id="toc_0">选择排序</h4>
-
-<pre><code>主要思想：
- 对比数组中前一个元素跟后一个元素的大小，
- 如果后面的元素比前面的元素小则用一个变量k来记住他的位置，
- 接着第二次比较，前面“后一个元素”现变成了“前一个元素”，
- 继续跟他的“后一个元素”进行比较如果后面的元素比他要小则用变量k记住它在  数组中的位置(下标)，
- 等到循环结束的时候，我们应该找到了最小的那个数的下标了，
- 然后进行判断，如果这个元素的下标不是第一个元素的下标，
- 就让第一个元素跟他交换一下值，
- 这样就找到整个数组中最小的数了。
- 然后找到数组中第二小的数，让他跟数组中第二个元素交换一下值，以此类推。
- 
- 总之一句话，拿第一个数和后面的所有数比，谁小记录上下标，用这个小的继续和后面的比，直到比完所有。
- n个乱序-&gt;选择排序可经过n-1趟直接选择排序得到有序结果
-</code></pre>
-
-<pre><code>#include&lt;stdio.h&gt;
-void select_sort(int arr[],int size)
+<pre><code>- (NSMutableAttributedString *)stringToAttributedString:(NSString*)tempStr NSMakeRange:(int)num
 {
-    int i=0,j=0;
-    int k=0;
-    for(i=0;i&lt;size;i++){
-        k=i;
-        for(j=i+1;j&lt;size;j++){
-           //结果输出想从小到大，还是从大到小，改这个&gt; or &lt;;
-            if(arr[k]&lt;arr[j]){
-                k=j;
-            }
-
-        }
-        if(k!=i){
-            int tmp=arr[k];
-            arr[k]=arr[i];
-            arr[i]=tmp;
-        }
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    select_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:tempStr];
+    //颜色
+    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0,num)];
+    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(num,tempStr.length-num)];
+    //字体
+    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:kh(14)] range:NSMakeRange(0,num)];
+    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:kh(16)] range:NSMakeRange(num,tempStr.length-num)];  
+    return attrString;
 }
 </code></pre>
 
-<h4 id="toc_1">冒泡排序</h4>
+<h5 id="toc_1">将字符串分隔成数组</h5>
 
-<pre><code> 比较相邻的元素。如果第一个比第二个大，就交换他们两个。
- 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。
- 针对所有的元素重复以上的步骤，除了最后一个。
- 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
+<pre><code>    NSString* str = @&quot;one,two,three,four,five&quot;;
+    //分割字符创为数组，下例以“，”分割
+    NSArray* array = [str componentsSeparatedByString:@&quot;,&quot;];
+    for(NSString* obj in array)
+    {
+        NSLog(@&quot;%@&quot;, obj);
+    }
+
+    //链接字符串,下例以空格连接
+    str = [array componentsJoinedByString:@&quot; &quot;];
+    NSLog(@&quot;%@&quot;, str);
 </code></pre>
 
-<pre><code>#include&lt;stdio.h&gt;
-void bubble_sort(int arr[],int size)
-{
-    int i=0,j=0;
-    for(i=0;i&lt;size;i++){
-        for(j=0;j&lt;size-i-1;j++){
-            if(arr[j]&gt;arr[j+1]){
-                int tmp=arr[j];
-                arr[j]=arr[j+1];
-                arr[j+1]=tmp;
-            }
-        }
+<h5 id="toc_2">判断字符串是否包含另一个字符串</h5>
+
+<pre><code>//判断”abcd” 是否含有@&quot;ab&quot;
+ NSString *tempStr = @&quot;abcd&quot;;
+    if([tempStr rangeOfString:@&quot;ab&quot;].location !=NSNotFound){
+        NSLog(@&quot;yes&quot;);
+    }else {
+        NSLog(@&quot;no&quot;);
     }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    bubble_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
 </code></pre>
 
-<h4 id="toc_2">快速排序</h4>
+<h5 id="toc_3">字符串去掉特殊符号或改成去除数字/字母的笨方法</h5>
 
-<pre><code> 第一遍快速排序不会直接得到最终结果，
- 只会把比k大和比k小的数分到k的两边。
- 为了得到最后结果，需要再次对下标2两边的数组分别执行此步骤，
- 然后再分解数组，直到数组不能再分解为止（只有一个数据），
- 才能得到正确结果。
- 
- 总结：分别从初始序列两端开始，先从右往左找一个小于“数组第一个”的数，再从左往右找一个大于“数组第一个”的数，然后交换他们；
-
-跳跃式交换，进化了冒泡的相邻交换，数据量多的无序数组排序时才提现出效果
-二分思想
-
+<pre><code>NSString * string111 = @&quot;1234、[]{}#%-*+=_\\|~＜&quot;;
+NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@&quot;@／：；（）¥「」＂、[]{}#%-*+=_\\|~＜＞$€^•&#39;@#$%^&amp;*()_+&#39;\&quot;&quot;];
+NSString *string222 = [string111 stringByTrimmingCharactersInSet:set];
 </code></pre>
 
-<pre><code>#include&lt;stdio.h&gt;
-void quick_sort(int arr[],int left,int right)
-{
-    if(left&gt;=right){
-        return;
-    }
-    int key=arr[left];
-    int begin=left;
-    int end=right;
-    while(begin!=end){
-        while(begin&lt;end &amp;&amp; arr[end]&gt;=key){
-            end--;
-        }
-        if(end&gt;begin){
-            arr[begin]=arr[end];
-        }
-        while(begin&lt;end &amp;&amp; arr[begin]&lt;=key){
-            begin++;
-        }
-        if(begin&lt;end){
-            arr[end]=arr[begin];
-        }
-    }
-    arr[begin]=key;
-    quick_sort(arr,left,begin-1);
-    quick_sort(arr,begin+1,right);
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    quick_sort(arr,0,9);
-    int i=0;
-    for(i=0;i&lt;10;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
+<h5 id="toc_4">从字符串的开头一直截取到指定的位置，但不包括该位置的字符</h5>
+
+<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
+    NSString *string2 = [string1 substringToIndex:3];
+    NSLog(@&quot;string2:%@&quot;,string2);
 </code></pre>
 
-<h4 id="toc_3">插入排序</h4>
+<h5 id="toc_5">以指定位置开始（包括指定位置的字符），并包括之后的全部字符</h5>
 
-<pre><code>插入排序有以下几种方式：直接插入排序，二分插入排序（又称折半插入排序），链表插入排序，希尔排序（又称缩小增量排序）
-
-示例直接插入排序，
-用数组第二个和第一个比，如果小，就插入第一位位置；
-用数组第三个和第二个比，如果小，就插入第二个位置；
-                    如果大，就留在原位置；
-                    依次类推；
+<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
+    NSString *string2 = [string1 substringFromIndex:3];
+    NSLog(@&quot;string2:%@&quot;,string2);
 </code></pre>
 
-<pre><code>#include&lt;stdio.h&gt;
-void insert_sort(int arr[],int size)
-{
-    int i=0,j=0;
-    int tmp=0;
-    for(i=1;i&lt;size;i++){
-        tmp=arr[i];
-        j=i;
-        while(j&gt;0 &amp;&amp; arr[j-1]&gt;tmp){
-            arr[j]=arr[j-1];
-            j--;
-        }
-        arr[j]=tmp;
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    insert_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
+<h5 id="toc_6">按照所给出的位置，长度（截取几位而不是到哪），任意地从字符串中截取子串</h5>
+
+<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
+    NSString *string2 = [string1 substringWithRange:NSMakeRange(0, 4)];
+    NSLog(@&quot;string2:%@&quot;,string2);
 </code></pre>
 
-<h4 id="toc_4">希尔排序</h4>
+<h5 id="toc_7">替换字符串中字符,该方法做了copy操作，原字符串没变，需要重新赋值给原字符串</h5>
 
-<pre><code>#include&lt;stdio.h&gt;
-void shell_insert_sort(int arr[],int size)
-{
-    int gap=0;
-    int i=0,j=0,k=0;
-    for(gap=size/2;gap&gt;0;gap/=2){
-        //for(i=0;i&lt;gap;i++){
-            for(j=gap;j&lt;size;j++){
-                int tmp=arr[j];
-                k=j;
-                while(k-gap&gt;=0 &amp;&amp; arr[k-gap]&gt;tmp){
-                    arr[k]=arr[k-gap];
-                    k-=gap;
-                }
-                arr[k]=tmp;
-            }
-        //}
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    shell_insert_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
+<pre><code>    NSString* tempstr4 = [tempstr3 stringByReplacingOccurrencesOfString:@&quot;:&quot; withString:@&quot;&quot;];
+    NSString* tempstr5 = [tempstr4 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;];
+    NSString* tempstr6 = [tempstr5 stringByReplacingOccurrencesOfString:@&quot;/&quot; withString:@&quot;&quot;];
 </code></pre>
 
-<h4 id="toc_5">归并排序（合并排序）</h4>
+<h5 id="toc_8">字符串大小写</h5>
 
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;stdlib.h&gt;
-void merge(int* src,int *dst,int begin,int mid,int end)
-{
-    int begin1=begin;
-    int begin2=mid;
-    int index=begin;
-    while(begin1&lt;mid &amp;&amp; begin2&lt;end){
-        if(src[begin1]&lt;src[begin2]){
-            dst[index++]=src[begin1++];
-        }else{
-            dst[index++]=src[begin2++];
-        }
-    }
-    while(begin1&lt;mid){
-        dst[index++]=src[begin1++];
-    }
-    while(begin2&lt;end){
-        dst[index++]=src[begin2++];
-    }
-    memcpy(src+begin,dst+begin,(end-begin)*sizeof(int));
-}
-void _merge_sort(int *arr,int* tmp,int left,int right)
-{
-    if(left+1&gt;=right){
-        return;
-    }
-    int mid=left+(right-left)/2;
-    _merge_sort(arr,tmp,left,mid);
-    _merge_sort(arr,tmp,mid,right);
-    merge(arr,tmp,left,mid,right);
-}
-void merge_sort(int* arr,int size)
-{
-    int* tmp=(int*)malloc(size*sizeof(int));
-    _merge_sort(arr,tmp,0,size);
-    free(tmp);
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    merge_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-
-    return 0;
-}
+<pre><code>//   将字符串中的英文字符由小写转换为大写
+    NSString *bigString = [string uppercaseString];
+    NSLog(@&quot;string = %@, bigstring = %@&quot;, string, bigString); 
+       
+//   将字符串中的英文字符由大写转换为小写
+    NSString *smallString = [string lowercaseString];
+    NSLog(@&quot;string = %@, smallString = %@&quot;, string, smallString);
+    
+//  将字符串的首字母改为大写
+    NSString *firstBigString = [string capitalizedString];
+    NSLog(@&quot;%@&quot;, firstBigString);
 </code></pre>
 
-<h4 id="toc_6">堆排序</h4>
+<h5 id="toc_9">字符串拼接</h5>
 
-<pre><code>#include&lt;stdio.h&gt;
-void swap(int *a,int *b)
-{
-    int tmp=*a;
-    *a=*b;
-    *b=tmp;
-}
-void adjust_down(int arr[],int root,int size)
-{
-    int parent=root;
-    int left=root*2+1;
-    int right=left+1;
-    while(left&lt;size){
-        int max=left;
-        if(right&lt;size &amp;&amp; arr[right]&gt;arr[max]){
-            max=right;
-        }
-        if(arr[max]&gt;arr[parent]){
-            swap(&amp;arr[max],&amp;arr[parent]);
-            parent=max;
-            left=parent*2+1;
-            right=left+1;
-        }
-        else{
-            break;
-        }
-    }
-}
-//make min heap
-void heap_sort(int arr[],int size)
-{
-    int begin=0;
-    for(begin=size/2-1;begin&gt;=0;--begin){
-        adjust_down(arr,begin,size);
-    }
-    int end=size-1;
-    while(end&gt;0){
-        swap(&amp;arr[0],&amp;arr[end]);
-        adjust_down(arr,0,end);
-        --end;
-    }
-}
-int main()
-{
-    int arr[10]={3,7,1,4,2,8,5,0,9,6};
-    heap_sort(arr,10);
-    int i=0;
-    for(;i&lt;10;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-
+<pre><code>//  字符串拼接:将两个字符串拼在一起后形成一个新的字符串,原来两个字符串并未发生改变
+    NSString *string1 = @&quot;abc&quot;;
+    NSString *string2 = @&quot;123&quot;;
+    NSString *addString = [string1 stringByAppendingString:string2];
+    NSLog(@&quot;%@&quot;, addString);
 </code></pre>
 
-<p><img src="media/15198806151662/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-01%20%E4%B8%8B%E5%8D%883.45.58.png" alt="屏幕快照 2018-03-01 下午3.45.58"/></p>
+<h4 id="toc_10">字符串查找</h4>
 
-<p>选择排序、快速排序、希尔排序、堆排序不是稳定的排序算法，<br/>
-冒泡排序、插入排序、归并排序 是稳定的排序算法。</p>
+<pre><code>    NSString * string = @&quot;1234&quot;;
+    //  字符串查找：判断是否以参数给定的字符串开头。是，返回真 1 ；否，返回假 0。
+    BOOL result1 = [string hasPrefix:@&quot;1&quot;];
+    NSLog(@&quot;%d&quot;, result1);
+    
+    //  字符串查找：判断是否以参数给定的字符串结尾。是，返回真 1 ；否，返回假 0。
+    BOOL result2 = [string hasSuffix:@&quot;4&quot;];
+    NSLog(@&quot;%d&quot;, result2);
+</code></pre>
 
-<p>在原序列中，ri=rj，且ri在rj之前，而在排序后的序列中，ri仍在rj之前，则称这种排序算法是稳定的；否则称为不稳定的。</p>
+<h4 id="toc_11">反转字符串</h4>
 
-<p>稳定都是相对的，不是绝对的稳定</p>
+<pre><code>/**
+ *  @brief  反转字符串
+ *
+ *  @param strSrc 被反转字符串
+ *
+ *  @return 反转后字符串
+ */
++ (NSString *)jk_reverseString:(NSString *)strSrc
+{
+    NSMutableString* reverseString = [[NSMutableString alloc] init];
+    NSInteger charIndex = [strSrc length];
+    while (charIndex &gt; 0) {
+        charIndex --;
+        NSRange subStrRange = NSMakeRange(charIndex, 1);
+        [reverseString appendString:[strSrc substringWithRange:subStrRange]];
+    }
+    return reverseString;
+}
+</code></pre>
 
 
 		</div>
-	
-
- 
 	
 
  
