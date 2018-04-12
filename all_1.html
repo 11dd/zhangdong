@@ -51,6 +51,14 @@
           
             <li><a title="小程序登录" href="15234367737951.html">小程序登录</a></li>
           
+            <li><a title="小程序TabBar" href="15235114845539.html">小程序TabBar</a></li>
+          
+            <li><a title="小程序轮播" href="15235125175960.html">小程序轮播</a></li>
+          
+            <li><a title="小程序列表list" href="15235133751593.html">小程序列表list</a></li>
+          
+            <li><a title="小程序网络请求" href="15235164843984.html">小程序网络请求</a></li>
+          
 
       
         <li class="divider"></li>
@@ -166,6 +174,14 @@
                         
                           <li><a title="小程序登录" href="15234367737951.html">小程序登录</a></li>
                         
+                          <li><a title="小程序TabBar" href="15235114845539.html">小程序TabBar</a></li>
+                        
+                          <li><a title="小程序轮播" href="15235125175960.html">小程序轮播</a></li>
+                        
+                          <li><a title="小程序列表list" href="15235133751593.html">小程序列表list</a></li>
+                        
+                          <li><a title="小程序网络请求" href="15235164843984.html">小程序网络请求</a></li>
+                        
 
                     
                       <li class="side-title"><span>iOS开发基础手册</span></li>
@@ -262,134 +278,146 @@
 
 	
 		<div class="markdown-body">
-		<h1>AES加密打开方式...</h1>
+		<h1>建项-使用三方管理工具cocoaPods</h1>
 
-		<p>很久没写博客,Markdown牵出来遛遛</p>
+		<p>我们都用哪些三方呢？例如：<br/>
+1.  --极光的统计：可查看闪退日志（必须要有首先就要集成）<br/>
+2.  --可能用到的推送，可用极光的推送<br/>
+3.  --网络请求  AFNetWorking<br/>
+4.  --刷新  MJRefresh<br/>
+5.  --图片加载  SDWebImage<br/>
+6.  --用于加载的loading和提示框  MBProgressHUD<br/>
+7.  --用于解决输入框被键盘遮挡的问题  IQKeyBoardManager<br/>
+8.  --用于布局约束  Masonry<br/>
+9.  --加在程序中,解决NUll问题  nullSafe.m</p>
 
-<p>AES加密时需要统一的几个参数。</p>
+<pre><code>使用三方管理工具cocoapods
+1、Ruby环境搭建
+查看下当前ruby版本：打开终端输入 ruby -v
 
-<pre><code>密钥长度（Key Size）
-加密模式（Cipher Mode）
-填充方式（Padding）
-初始向量（Initialization Vector）
+如果需要更新，进行如下操作更改Ruby镜像：
+
+gem sources --remove https://rubygems.org/ 
+gem sources -a https://gems.ruby-china.org/
+gem sources -l  （用来检查使用替换镜像位置成功与否）
+
+最后 输入  rvm install 2.2.4  更新ruby
+
+
+2、下载安装CocoaPods
+终端输入：sudo gem install cocoapods 
+
+结束之后：
+终端cd 到自己的项目文件下Create a Podfile
+
+终端输入touch Podfile
+       open -a Xcode Podfile
+
+
+写上如下内容：
+target &#39;MyApp的名’ do
+  pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1’
+end
+
+执行 pod install 就OK了
+
+查询三方版本可用 pod search afnetworking  （不区分大小写）
+第一次安装完pod 进行搜索需要多等一段时间，
+会卡在Creating search index for spec repo &#39;master&#39;..    
+
+CocoaPods的基本安装及使用都详细的说明了，
+当需要同时导入多个第三方时候怎么办 ？
+这就需要修改Podfile了，就是用vim编辑的那个保存在项目根目录中的文件，
+修改完了Podfile文件，需要重新执行一次pod install命令。
 </code></pre>
+
+<h5 id="toc_0">例如</h5>
+
+<pre><code>target &#39;myApp’ do
+pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1’
+pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.1&#39;
+pod &#39;SDWebImage&#39;, &#39;~&gt; 4.2.2&#39;
+pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
+pod &#39;IQKeyboardManager&#39;, &#39;~&gt; 5.0.7&#39;
+pod &#39;Masonry&#39;, &#39;~&gt; 1.1.0&#39;
+pod &#39;NullSafe&#39;, &#39;~&gt; 1.2.3&#39;
+pod &#39;CYLTabBarController&#39;, &#39;~&gt; 1.17.4&#39;
+pod &#39;SDCycleScrollView&#39;, &#39;~&gt; 1.75&#39;
+pod &#39;MJExtension&#39;, &#39;~&gt; 3.0.13&#39;
+pod &#39;FMDB&#39;, &#39;~&gt; 2.7.2&#39;
+pod &#39;SDAutoLayout&#39;, &#39;~&gt; 2.2.0&#39;
+end
+</code></pre>
+
+<h5 id="toc_1">Podfile 如上简单的写法 会报警告 默认platform：iOS9</h5>
 
 <blockquote>
-<p>1.本例使用AES-128,</p>
-
-<p>2.AES属于块加密BlockCipher，块加密中有CBC、ECB、CTR、OFB、CFB等几种工作模式。本例使用CBC模式</p>
-
-<p>3.由于块加密只能对特定长度的数据块进行加密，因此CBC、ECB模式需要在最后一数据块加密前进行数据填充。（CFB，OFB和CTR模式由于与key进行加密操作的是上一块加密后的密文，因此不需要对最后一段明文进行填充）<br/>
-在iOS SDK中提供了PKCS7Padding</p>
+<p>The Podfile is a specification that describes the dependencies of the targets of one or more Xcode projects.</p>
 </blockquote>
 
-<p>ECB加密模式（不推荐）：容易被攻击</p>
+<p>A Podfile can be very simple:</p>
 
-<blockquote>
-<p>1.每次key,明文,密文的长度都必须是64位;<br/><br/>
-2.数据块重复排序不需要检测;<br/><br/>
-3.相同的明文块(使用相同的密钥)产生相同的密文块,容易遭受字典被攻击<br/><br/>
-4.一个错误仅仅会对一个密文块产生影响</p>
-</blockquote>
-
-<p>CBC加密方式(推荐):</p>
-
-<blockquote>
-<p>1.每次加密的密文长度为64位(8个字节);<br/><br/>
-2.当相同的明文使用相同的密钥和初始向量的时候CBC模式总是产生相同的密文;<br/><br/>
-3.密文块要依赖以前的操作结果,所以密文块不能进行重新排列;<br/><br/>
-4.可以使用不同的初始化向量来避免相同的明文产生相同的密文,一定程度上抵抗字典攻击<br/>
-5.一个错误发生后,当前和以后的密文都会被影响;</p>
-
-<p>使用PKCS5Padding/PKCS7Padding填充可以兼容多平台语言之间AES加密解密  </p>
-
-<p>注意: 这里每次产生的密文是相同的，因为设置了初试向量iv为16位个数的“0”。要产生不同的密文就要使用变化的初试向量iv</p>
-</blockquote>
-
-<p>ios使用案例  </p>
-
-<p>创建一个类AESCipher继承NSObject</p>
-
-<p>.h文件如下:</p>
-
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-NSString * aesEncryptString(NSString *content, NSString *key);
-NSString * aesDecryptString(NSString *content, NSString *key);
-NSData * aesEncryptData(NSData *data, NSData *key);
-NSData * aesDecryptData(NSData *data, NSData *key);
-
+<pre><code>target &#39;MyApp&#39;
+pod &#39;AFNetworking&#39;, &#39;~&gt; 1.0&#39;
 </code></pre>
 
-<p>.m文件如下:</p>
+<p>An example of a more complex Podfile can be:</p>
 
-<pre><code>#import &quot;AESCipher.h&quot;
-#import &lt;CommonCrypto/CommonCryptor.h&gt;
-//注意:初始向量,默认16个0(]前后端保持统一)
-NSString const *kInitVector = @&quot;0000000000000000&quot;;
-size_t const kKeySize = kCCKeySizeAES128;
-NSData * cipherOperation(NSData *contentData, NSData *keyData, CCOperation operation) {
-    NSUInteger dataLength = contentData.length;
-    void const *initVectorBytes = [kInitVector dataUsingEncoding:NSUTF8StringEncoding].bytes;
-    void const *contentBytes = contentData.bytes;
-    void const *keyBytes = keyData.bytes;
-    size_t operationSize = dataLength + kCCBlockSizeAES128;
-    void *operationBytes = malloc(operationSize);
-    size_t actualOutSize = 0;
-    CCCryptorStatus cryptStatus = CCCrypt(operation,                                   kCCAlgorithmAES,                                   kCCOptionPKCS7Padding,
- keyBytes,                                      kKeySize,                                     initVectorBytes,                                    contentBytes,                                     dataLength,                                     operationBytes,                                    operationSize,                                   &amp;actualOutSize);
-    if (cryptStatus == kCCSuccess) {
-        return [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
-    }
-    free(operationBytes);
-    return nil;
-}
-NSString * aesEncryptString(NSString *content, NSString *key) {
-    NSData *contentData = [content dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *encrptedData = aesEncryptData(contentData, keyData);
-    return [encrptedData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
-}
-NSString * aesDecryptString(NSString *content, NSString *key) {
-    NSData *contentData = [[NSData alloc] initWithBase64EncodedString:content options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *decryptedData = aesDecryptData(contentData, keyData);
-    return [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
-}
-NSData * aesEncryptData(NSData *contentData, NSData *keyData) {
-    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];
-    NSCAssert(keyData.length == kKeySize, hint);
-    return cipherOperation(contentData, keyData, kCCEncrypt);
-}
-NSData * aesDecryptData(NSData *contentData, NSData *keyData) {
-    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];
-    NSCAssert(keyData.length == kKeySize, hint);
-    return cipherOperation(contentData, keyData, kCCDecrypt);
-}
+<pre><code>platform :ios, &#39;9.0&#39;
+inhibit_all_warnings!
+
+target &#39;MyApp&#39; do
+  pod &#39;ObjectiveSugar&#39;, &#39;~&gt; 0.5&#39;
+
+  target &quot;MyAppTests&quot; do
+    inherit! :search_paths
+    pod &#39;OCMock&#39;, &#39;~&gt; 2.0.1&#39;
+  end
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    puts &quot;#{target.name}&quot;
+  end
+end
 </code></pre>
 
-<p>使用方法如下:</p>
+<h5 id="toc_2">参考如下：</h5>
 
-<pre><code>/*
- 使用案例:
- 第一: 导入头文件
- #import &quot;AESCipher.h&quot;
- 测试字符串
- NSString *TestStr = @&quot;abc&quot;;
- 设置key
- NSString *key = @&quot;1234567812345678&quot;;
- NSString *cipherText = aesEncryptString(TestStr, key);
- NSLog(@&quot;加密==%@&quot;, cipherText);
- NSString *decryptedText = aesDecryptString(cipherText, key);
- NSLog(@&quot;解密==%@&quot;, decryptedText);
- */
+<pre><code> iOS安装CocoaPods详细过程
+ 请查看:(http://www.jianshu.com/p/9e4e36ba8574)
+ 
+ cocoapods报错问题You need at least git version 1.8.5 to use CocoaPods
+ 请查看:(http://www.jianshu.com/p/a1ab3b291f55)
+ 
+ 使用cocoapods时常见错误
+ 请查看:(http://www.jianshu.com/p/dfc7b93e67eb)
+ 
+ iOS 下 Podfile 使用方法
+ 请查看:(http://www.cnblogs.com/Kennytian/p/6413734.html)
+ 
+ 如果出现下面问题,请尝试:cocoapods 出现 &quot;_OBJC_CLASS_$--&quot;, 
+ referenced from:的问题target-&gt;build setting
+  -&gt;other link flags 添加一个$(inherited) 
+  
+  
+  
 </code></pre>
-
-<p>原文查看:<br/>
- <a href="http://blog.csdn.net/u013749540/article/details/70225594">http://blog.csdn.net/u013749540/article/details/70225594</a><br/>
- <a href="http://www.cnblogs.com/dcb3688/p/4608007.html">http://www.cnblogs.com/dcb3688/p/4608007.html</a></p>
 
 
 		</div>
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
 	
 
  

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  iOS tableView 常用属性与方法 - zhangdong
+  小程序TabBar - zhangdong
   
   </title>
  <meta name="description" content="">
@@ -274,80 +274,37 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>iOS tableView 常用属性与方法</h1>
+<h1>小程序TabBar</h1>
 
-<h5 id="toc_0">tableview 常用属性如下：</h5>
+<h4 id="toc_0">创建一个标准小程序空项目</h4>
 
-<pre><code>//获取手势点击的是哪一个cell的坐标
-NSIndexPath *indexPath = [self.tableView indexPathForCell:((UITableViewCell *)longPress.view)];
+<h5 id="toc_1">在app.json文件里写入如下代码</h5>
 
-//点击button时获取button所在的cell的indexpath
-UIButton *button = sender;
-tempTableViewCell *cell = (tempTableViewCell *)[[button superview] superview];
-NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
-
-//局部刷新一个section刷新    
-NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];    
-[tableview reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];    
-
-//局部刷新一个cell刷新   
-NSIndexPath *indexPath=[NSIndexPath indexPathForRow:1 inSection:0];   
-[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone]; 
-
-//不显示分割线
-_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-
-//显示箭头
-cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
-//无选中状态
-cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-//自适应单元格高度
-tableView.rowHeight = UITableViewAutomaticDimension; 
-//先估计一个高度
-tableView.estimatedRowHeight = 50; 
+<pre><code> &quot;tabBar&quot;: {
+    &quot;color&quot;: &quot;#a9b7b7&quot;,
+    &quot;selectedColor&quot;: &quot;#000000&quot;,
+    &quot;borderStyle&quot;: &quot;black&quot;,
+    &quot;list&quot;: [
+      {
+        &quot;selectedIconPath&quot;: &quot;image/home.png&quot;,
+        &quot;iconPath&quot;: &quot;image/home.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/home/home&quot;,
+        &quot;text&quot;: &quot;首页&quot;
+      },
+      {
+        &quot;selectedIconPath&quot;: &quot;image/index.png&quot;,
+        &quot;iconPath&quot;: &quot;image/index.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/index/index&quot;,
+        &quot;text&quot;: &quot;专题&quot;
+      }
+    ]
+  }
+   
 </code></pre>
 
-<pre><code></code></pre>
+<h4 id="toc_2">运行界面 tabbar</h4>
 
-<pre><code></code></pre>
-
-<h5 id="toc_1">tableview 常用方法如下：</h5>
-
-<h6 id="toc_2">tableview 选中第几行</h6>
-
-<pre><code>NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
-[self.tableView selectRowAtIndexPath:indexpath animated:YES scrollPosition:UITableViewScrollPositionMiddle];  //选中第5行
-</code></pre>
-
-<h6 id="toc_3">滚动到指定位置</h6>
-
-<pre><code>//滚动到指定位置_偏移量
-[self.rizhiTableView setContentOffset:CGPointMake(0, OffsetY) animated:NO];
-//滚动到第几行
-NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
-[self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionTop animated:NO];
-</code></pre>
-
-<h6 id="toc_4">pragma mark  - 滑到最底部</h6>
-
-<pre><code>- (void)scrollTableToFoot
-{
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        NSInteger s = [self.tableView numberOfSections];  //有多少组
-        if (s&lt;1) return;  //无数据时不执行 要不会crash
-        NSInteger r = [self.tableView numberOfRowsInSection:s-1]; //最后一组有多少行
-        if (r&lt;1) return;
-        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:r-1 inSection:s-1];  //取最后一行数据
-        [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:NO]; //滚动到最后一行
-        
-    });
-  
-}
-</code></pre>
+<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%881.41.36.png" alt="屏幕快照 2018-04-12 下午1.41.36"/></p>
 
 
 </div>
@@ -359,15 +316,15 @@ NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15139214660338.html"  title="Previous Post: iOS tableView 基础使用说明">&laquo; iOS tableView 基础使用说明</a>
+	        <a href="15234367737951.html"  title="Previous Post: 小程序登录">&laquo; 小程序登录</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15142851752080.html" 
-	        title="Next Post: iOS UICollectionView使用详解">iOS UICollectionView使用详解 &raquo;</a>
+	        <a href="15235125175960.html" 
+	        title="Next Post: 小程序轮播">小程序轮播 &raquo;</a>
 	    
 	</div>
   </div>
@@ -380,7 +337,7 @@ NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15142851756052.html';
+		var currentURL = '15235114845539.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
