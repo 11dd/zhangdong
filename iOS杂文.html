@@ -125,8 +125,6 @@
         <li><label>iOS杂文</label></li>
 
           
-            <li><a title="排序" href="15198806151662.html">排序</a></li>
-          
             <li><a title="iOS ARKit 看我就受够了" href="15139220095625.html">iOS ARKit 看我就受够了</a></li>
           
             <li><a title="AES加密打开方式..." href="15139219514745.html">AES加密打开方式...</a></li>
@@ -140,6 +138,8 @@
             <li><a title="AR 原理与技术分析" href="15139218050505.html">AR 原理与技术分析</a></li>
           
             <li><a title="正则表达式简单说明" href="15139217121225.html">正则表达式简单说明</a></li>
+          
+            <li><a title="排序" href="15198806151662.html">排序</a></li>
           
 
       
@@ -238,8 +238,6 @@
                     
                       <li class="side-title"><span>iOS杂文</span></li>
                         
-                          <li><a title="排序" href="15198806151662.html">排序</a></li>
-                        
                           <li><a title="iOS ARKit 看我就受够了" href="15139220095625.html">iOS ARKit 看我就受够了</a></li>
                         
                           <li><a title="AES加密打开方式..." href="15139219514745.html">AES加密打开方式...</a></li>
@@ -253,6 +251,8 @@
                           <li><a title="AR 原理与技术分析" href="15139218050505.html">AR 原理与技术分析</a></li>
                         
                           <li><a title="正则表达式简单说明" href="15139217121225.html">正则表达式简单说明</a></li>
+                        
+                          <li><a title="排序" href="15198806151662.html">排序</a></li>
                         
 
                     
@@ -274,351 +274,81 @@
 
 	
 		<div class="markdown-body">
-		<h1>排序</h1>
+		<h1>iOS ARKit 看我就受够了</h1>
 
-		<pre><code> sizeof 判断数据类型长度符的关键字  简单的说其作用就是返回一个对象或者类型所占的内存字节数
-</code></pre>
+		<p>因为有项目需求ARKit，查询后反馈的文档<br/>
+现发布出来，还没注明转载出自哪里，见谅，找到地址时补齐；</p>
 
-<h4 id="toc_0">选择排序</h4>
+<p><a href="https://developer.apple.com/documentation/arkit">https://developer.apple.com/documentation/arkit</a><br/>
+<img src="http://upload-images.jianshu.io/upload_images/670820-3bdc5004b7ecbc6c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/>截图</p>
 
-<pre><code>主要思想：
- 对比数组中前一个元素跟后一个元素的大小，
- 如果后面的元素比前面的元素小则用一个变量k来记住他的位置，
- 接着第二次比较，前面“后一个元素”现变成了“前一个元素”，
- 继续跟他的“后一个元素”进行比较如果后面的元素比他要小则用变量k记住它在  数组中的位置(下标)，
- 等到循环结束的时候，我们应该找到了最小的那个数的下标了，
- 然后进行判断，如果这个元素的下标不是第一个元素的下标，
- 就让第一个元素跟他交换一下值，
- 这样就找到整个数组中最小的数了。
- 然后找到数组中第二小的数，让他跟数组中第二个元素交换一下值，以此类推。
- 
- 总之一句话，拿第一个数和后面的所有数比，谁小记录上下标，用这个小的继续和后面的比，直到比完所有。
- n个乱序-&gt;选择排序可经过n-1趟直接选择排序得到有序结果
-</code></pre>
+<h3 id="toc_0">AR增强现实技术</h3>
 
-<pre><code>#include&lt;stdio.h&gt;
-void select_sort(int arr[],int size)
-{
-    int i=0,j=0;
-    int k=0;
-    for(i=0;i&lt;size;i++){
-        k=i;
-        for(j=i+1;j&lt;size;j++){
-           //结果输出想从小到大，还是从大到小，改这个&gt; or &lt;;
-            if(arr[k]&lt;arr[j]){
-                k=j;
-            }
+<p>在即将发布的iOS11系统上，ARKit正式成为iOS系统框架，让开发者能够使用OC或swift语言开发AR类型的APP。<br/>
+ARKit的大部分计算都是在CPU上处理的，在A8处理器上的性能损耗在15%~ 25%,<br/>
+在A9处理器上的性能损耗在10% ~ 15%。为了更好的体验，所以苹果仅支持 A9 及以上处理器<br/>
+<img src="http://upload-images.jianshu.io/upload_images/670820-2eaafcbc013d5c9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/>AR支持系列</p>
 
-        }
-        if(k!=i){
-            int tmp=arr[k];
-            arr[k]=arr[i];
-            arr[i]=tmp;
-        }
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    select_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
+<h4 id="toc_1">ARKit 实现测量尺功能：</h4>
 
-<h4 id="toc_1">冒泡排序</h4>
+<p>实现该功能原理:收集相机的视觉信息，以及手机中传感器，包括陀螺仪、罗盘和加速度计来计算并确定设备的位置。<br/>
+当然，这都是基于ARKit开发的，不想深入，想深入，深入，入...</p>
 
-<pre><code> 比较相邻的元素。如果第一个比第二个大，就交换他们两个。
- 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。
- 针对所有的元素重复以上的步骤，除了最后一个。
- 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
-</code></pre>
+<blockquote>
+<p>•多媒体捕捉现实图像:如摄像头<br/>
+•三维建模:3D立体模型<br/>
+•传感器追踪:主要追踪现实世界动态物体的六轴变化，这六轴分别是X、Y、Z轴位移及旋转。其中位移三轴决定物体的方位和大小，旋转三轴决定物体显示的区域。<br/>
+•坐标识别及转换:3D模型显示在现实图像中不是单纯的坐标点，而是一个三维的矩阵坐标</p>
+</blockquote>
 
-<pre><code>#include&lt;stdio.h&gt;
-void bubble_sort(int arr[],int size)
-{
-    int i=0,j=0;
-    for(i=0;i&lt;size;i++){
-        for(j=0;j&lt;size-i-1;j++){
-            if(arr[j]&gt;arr[j+1]){
-                int tmp=arr[j];
-                arr[j]=arr[j+1];
-                arr[j+1]=tmp;
-            }
-        }
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    bubble_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
+<h4 id="toc_2">注意:</h4>
 
-<h4 id="toc_2">快速排序</h4>
+<ol>
+<li><p>如果手机中的场景越丰富，那么测量的结果也就越精确。如果想要测量一面白墙的长度，暂时还不是很准确。AR应用是通过“特征点”进行识别的,也因为是三维矩阵坐标，要求测量时必须很稳的在同一个 Z 轴高度上测量平面的长度;</p></li>
+<li><p>不要期望 AR检测的平面会完全贴合表面，虽然检测到了平面但角度可能不完全正确，所以如果开发的AR app需要获得非常精确的几何体来提供更好的效果，可能会出现问题</p></li>
+<li><p>边缘检测不是特别好，实际的平面范围有时会太大或太小，所以不要尝试做需要准确边缘的 ARapp</p></li>
+</ol>
 
-<pre><code> 第一遍快速排序不会直接得到最终结果，
- 只会把比k大和比k小的数分到k的两边。
- 为了得到最后结果，需要再次对下标2两边的数组分别执行此步骤，
- 然后再分解数组，直到数组不能再分解为止（只有一个数据），
- 才能得到正确结果。
- 
- 总结：分别从初始序列两端开始，先从右往左找一个小于“数组第一个”的数，再从左往右找一个大于“数组第一个”的数，然后交换他们；
+<h4 id="toc_3">ARKit还存在一些问题:</h4>
 
-跳跃式交换，进化了冒泡的相邻交换，数据量多的无序数组排序时才提现出效果
-二分思想
+<blockquote>
+<p>ARKit是基于惯性-视觉来做空间定位的，这项技术会将iOS设备的动作感测硬件信息，加上对可见场景的计算机视觉分析功能，然后与设备的摄像头相结合，需要平稳缓慢的移动+转向手机，才能构建更加准确的世界，这对用户来说是一种考验，需要积极提示。</p>
 
-</code></pre>
+<p>一旦刚开始检测平面失败，出现时间久，飘逸的现象，后期很难再正确检测，要强制重启。</p>
 
-<pre><code>#include&lt;stdio.h&gt;
-void quick_sort(int arr[],int left,int right)
-{
-    if(left&gt;=right){
-        return;
-    }
-    int key=arr[left];
-    int begin=left;
-    int end=right;
-    while(begin!=end){
-        while(begin&lt;end &amp;&amp; arr[end]&gt;=key){
-            end--;
-        }
-        if(end&gt;begin){
-            arr[begin]=arr[end];
-        }
-        while(begin&lt;end &amp;&amp; arr[begin]&lt;=key){
-            begin++;
-        }
-        if(begin&lt;end){
-            arr[end]=arr[begin];
-        }
-    }
-    arr[begin]=key;
-    quick_sort(arr,left,begin-1);
-    quick_sort(arr,begin+1,right);
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    quick_sort(arr,0,9);
-    int i=0;
-    for(i=0;i&lt;10;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
+<p>AVFoudation与ARSession之间的切换会有轻微的卡顿，切换后ARSession就停止摄像头采集了，但3D渲染会继续，只是丧失了空间定位与检测识别的能力.</p>
 
-<h4 id="toc_3">插入排序</h4>
+<p>不支持前置摄像头。ARKit并不是一个用于前置摄像头环境的技术，因为空间有限，能提供的信息也非常有限。100米左右是ARKit在保持较好用户体验的最大测量距离。</p>
 
-<pre><code>插入排序有以下几种方式：直接插入排序，二分插入排序（又称折半插入排序），链表插入排序，希尔排序（又称缩小增量排序）
+<p>ARKit没有计划支持连接两个不同ARKit世界。</p>
+</blockquote>
 
-示例直接插入排序，
-用数组第二个和第一个比，如果小，就插入第一位位置；
-用数组第三个和第二个比，如果小，就插入第二个位置；
-                    如果大，就留在原位置；
-                    依次类推；
-</code></pre>
+<h4 id="toc_4">要建立高品质的 AR 体验，那么请注意下述这些注意事项和提示:</h4>
 
-<pre><code>#include&lt;stdio.h&gt;
-void insert_sort(int arr[],int size)
-{
-    int i=0,j=0;
-    int tmp=0;
-    for(i=1;i&lt;size;i++){
-        tmp=arr[i];
-        j=i;
-        while(j&gt;0 &amp;&amp; arr[j-1]&gt;tmp){
-            arr[j]=arr[j-1];
-            j--;
-        }
-        arr[j]=tmp;
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    insert_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
+<blockquote>
+<p>全局追踪是一项不精确的科学 (inexact science)。<br/>
+尽管在这个过程当中，经常会产生可观的准确度，从而让AR 的体验更加真实。然而，它严重依赖于设备物理环境的相关细节，而这些细节并不总是一致，有些时候也难以实时测量，这也就导致这些物理细节往往都会存在某种程度的错误。</p>
 
-<h4 id="toc_4">希尔排序</h4>
+<p>基于可见的照明条件来设计AR场景。<br/>
+全局追踪涉及到了图像分析的相关内容，因此就需要我们提供清晰的图像。如果摄像头没有办法看到相关的物理细节，比如说摄像头拍到的是一面空空如也的墙壁，或者场景的光线实在太暗的话，那么全局追踪的质量就会大大降低。</p>
 
-<pre><code>#include&lt;stdio.h&gt;
-void shell_insert_sort(int arr[],int size)
-{
-    int gap=0;
-    int i=0,j=0,k=0;
-    for(gap=size/2;gap&gt;0;gap/=2){
-        //for(i=0;i&lt;gap;i++){
-            for(j=gap;j&lt;size;j++){
-                int tmp=arr[j];
-                k=j;
-                while(k-gap&gt;=0 &amp;&amp; arr[k-gap]&gt;tmp){
-                    arr[k]=arr[k-gap];
-                    k-=gap;
-                }
-                arr[k]=tmp;
-            }
-        //}
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    shell_insert_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
+<p>根据追踪质量的相关信息来给用户进行反馈提示。<br/>
+全局追踪会将图像分析与设备的动作模式关联起来。如果设备正在移动的话，那么ARKit 就可以更好地对场景进行建模，这样即便设备只是略微晃动，也不会影响追踪质量。但是一旦用户的动作过多、过快或者晃动过于激烈，就会导致图像变得模糊，或者导致视频帧中要追踪的特征之间的距离过大，从而致使追踪质量的降低。ARCamera类能够提供追踪状态，此外还能提供导致该状态出现的相关原因，您可以在 UI 上展示这些信息，告诉用户如何解决追踪质量低这个问题。</p>
 
-<h4 id="toc_5">归并排序（合并排序）</h4>
+<p>给水平面检测预留点时间来生成清晰的结果，一旦您获得所需的结果后，就禁用水平面检测。一开始对水平面进行检测的时候，所检测到的水平面位置和范围很可能不准确。不过随着时间的推移，只要水平面仍然保持在场景当中，<br/>
+那么 ARKit 就能够较为精确地估计水平面的位置和范围。当场景中有一个比较大的平坦表面的话，就算您已经使用过这个水平面来放置内容，那么 ARKit 可能还会继续对水平面的锚点位置、范围和变换点进行修正 。</p>
+</blockquote>
 
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;stdlib.h&gt;
-void merge(int* src,int *dst,int begin,int mid,int end)
-{
-    int begin1=begin;
-    int begin2=mid;
-    int index=begin;
-    while(begin1&lt;mid &amp;&amp; begin2&lt;end){
-        if(src[begin1]&lt;src[begin2]){
-            dst[index++]=src[begin1++];
-        }else{
-            dst[index++]=src[begin2++];
-        }
-    }
-    while(begin1&lt;mid){
-        dst[index++]=src[begin1++];
-    }
-    while(begin2&lt;end){
-        dst[index++]=src[begin2++];
-    }
-    memcpy(src+begin,dst+begin,(end-begin)*sizeof(int));
-}
-void _merge_sort(int *arr,int* tmp,int left,int right)
-{
-    if(left+1&gt;=right){
-        return;
-    }
-    int mid=left+(right-left)/2;
-    _merge_sort(arr,tmp,left,mid);
-    _merge_sort(arr,tmp,mid,right);
-    merge(arr,tmp,left,mid,right);
-}
-void merge_sort(int* arr,int size)
-{
-    int* tmp=(int*)malloc(size*sizeof(int));
-    _merge_sort(arr,tmp,0,size);
-    free(tmp);
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    merge_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
+<p>综上所述:ARKit 实现测量尺功能，对物理环境要求较高，<br/>
+第一，环境光检测，清晰的获取摄像头的帧图像;<br/>
+第二，平面检测，准确的获取水平面，如果精确测量，需要边缘化检测准确;<br/>
+第三，运动追踪稳定准确等外部因素，对环境和用户操作要求较高;</p>
 
-    return 0;
-}
-</code></pre>
+<h4 id="toc_5">后记补充：</h4>
 
-<h4 id="toc_6">堆排序</h4>
+<p>ARKit是有环境光估计的，这个功能会通过摄像头捕捉并计算捕捉到的场景中的光的总量，来给虚拟物体施加正确的光照条件，渲染效果更加真实。环境光的模拟对于AR出来的画面的真实感，还是有非常大的影响的。</p>
 
-<pre><code>#include&lt;stdio.h&gt;
-void swap(int *a,int *b)
-{
-    int tmp=*a;
-    *a=*b;
-    *b=tmp;
-}
-void adjust_down(int arr[],int root,int size)
-{
-    int parent=root;
-    int left=root*2+1;
-    int right=left+1;
-    while(left&lt;size){
-        int max=left;
-        if(right&lt;size &amp;&amp; arr[right]&gt;arr[max]){
-            max=right;
-        }
-        if(arr[max]&gt;arr[parent]){
-            swap(&amp;arr[max],&amp;arr[parent]);
-            parent=max;
-            left=parent*2+1;
-            right=left+1;
-        }
-        else{
-            break;
-        }
-    }
-}
-//make min heap
-void heap_sort(int arr[],int size)
-{
-    int begin=0;
-    for(begin=size/2-1;begin&gt;=0;--begin){
-        adjust_down(arr,begin,size);
-    }
-    int end=size-1;
-    while(end&gt;0){
-        swap(&amp;arr[0],&amp;arr[end]);
-        adjust_down(arr,0,end);
-        --end;
-    }
-}
-int main()
-{
-    int arr[10]={3,7,1,4,2,8,5,0,9,6};
-    heap_sort(arr,10);
-    int i=0;
-    for(;i&lt;10;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-
-</code></pre>
-
-<p><img src="media/15198806151662/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-01%20%E4%B8%8B%E5%8D%883.45.58.png" alt="屏幕快照 2018-03-01 下午3.45.58"/></p>
-
-<p>选择排序、快速排序、希尔排序、堆排序不是稳定的排序算法，<br/>
-冒泡排序、插入排序、归并排序 是稳定的排序算法。</p>
-
-<p>在原序列中，ri=rj，且ri在rj之前，而在排序后的序列中，ri仍在rj之前，则称这种排序算法是稳定的；否则称为不稳定的。</p>
-
-<p>稳定都是相对的，不是绝对的稳定</p>
+<h5 id="toc_6">在此说一下ARKit没有提供图像识别方面的功能，所以平时可能看到身边有的AR场景是可以识别特定的图像做其他操作类型的App，用ARKit是不能实现的；</h5>
 
 
 		</div>
