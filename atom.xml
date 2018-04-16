@@ -4,7 +4,7 @@
   <title><![CDATA[随心所欲之张东东篇]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-04-12T15:28:58+08:00</updated>
+  <updated>2018-04-16T15:01:39+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,63 @@
   </author>
   <generator uri="http://www.mweb.im">MWeb</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[CMMI3级评审]]></title>
+    <link href="www.freefook.com/15238614357604.html"/>
+    <updated>2018-04-16T14:50:35+08:00</updated>
+    <id>www.freefook.com/15238614357604.html</id>
+    <content type="html"><![CDATA[
+<h3 id="toc_0">十八个过程域</h3>
+
+<h5 id="toc_1">过程管理</h5>
+
+<h6 id="toc_2">组织过程改进（OPF）Organization Process Focus</h6>
+
+<h6 id="toc_3">组织过程定义（OPD）Organization Process Definition</h6>
+
+<h6 id="toc_4">组织培训（OT）Organization Training</h6>
+
+<h5 id="toc_5">项目管理</h5>
+
+<h6 id="toc_6">立项（PIM）</h6>
+
+<h6 id="toc_7">集成项目管理（IPM）</h6>
+
+<h6 id="toc_8">项目策划（PP）</h6>
+
+<h6 id="toc_9">项目监督和控制（PMC）</h6>
+
+<h6 id="toc_10">风险管理（RSKM）</h6>
+
+<h6 id="toc_11">结项（PCM）</h6>
+
+<h5 id="toc_12">项目研发</h5>
+
+<h6 id="toc_13">需求开发与管理（RD）</h6>
+
+<h6 id="toc_14">系统设计编码（SD）</h6>
+
+<h6 id="toc_15">测试（TS）</h6>
+
+<h6 id="toc_16">评审（TR）</h6>
+
+<h6 id="toc_17">产品发布（PI）</h6>
+
+<h6 id="toc_18">产品实施（PA）</h6>
+
+<h5 id="toc_19">过程支持</h5>
+
+<h6 id="toc_20">配置管理（CM）</h6>
+
+<h6 id="toc_21">过程和产品质量保证（PPQA）</h6>
+
+<h6 id="toc_22">测量与分析（MA）</h6>
+
+<h6 id="toc_23">决策分析和决定（DAR）</h6>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[小程序]]></title>
@@ -363,6 +420,37 @@ timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性�
 <h4 id="toc_3">运行界面 列表 list</h4>
 
 <p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%881.50.12.png" alt="屏幕快照 2018-04-12 下午1.50.12"/></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小程序横向布局及网格布局]]></title>
+    <link href="www.freefook.com/15236096586360.html"/>
+    <updated>2018-04-13T16:54:18+08:00</updated>
+    <id>www.freefook.com/15236096586360.html</id>
+    <content type="html"><![CDATA[
+<h4 id="toc_0">第一步：wxml文件代码：</h4>
+
+<pre><code>&lt;view class=&quot;layout_horizontal&quot;&gt;
+  &lt;view style=&quot;flex:1;background-color:red&quot;&gt;View1&lt;/view&gt;
+  &lt;view style=&quot;flex:1;background-color:blue&quot;&gt;View2&lt;/view&gt;
+&lt;/view&gt;
+</code></pre>
+
+<h4 id="toc_1">第二步：wxss文件代码：</h4>
+
+<pre><code>.layout_horizontal{
+  height: 100rpx;
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+}
+</code></pre>
+
+<h4 id="toc_2">运行界面：</h4>
+
+<p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-13%20%E4%B8%8B%E5%8D%884.57.13.png" alt="屏幕快照 2018-04-13 下午4.57.13"/></p>
 
 ]]></content>
   </entry>
@@ -2255,113 +2343,6 @@ return YES;
 <hr/>
 
 <p>Posted by <a href="http://weibo.com/luohanchenyilong/">微博@iOS程序犭袁</a>  </p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[项目问题汇总]]></title>
-    <link href="www.freefook.com/15139392949146.html"/>
-    <updated>2017-12-22T18:41:34+08:00</updated>
-    <id>www.freefook.com/15139392949146.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">遇到的小问题却忽略的必然问题项如下：</h5>
-
-<h6 id="toc_1">不明确问题：</h6>
-
-<ol>
-<li>项目都有哪些功能？不明确？</li>
-<li>适配的系统与屏幕大小？</li>
-<li>是否需要检测网络，无网络或者无数据页面如何处理？</li>
-<li>例如：显示无数据页面，点击按钮重新请求？</li>
-<li>某些数据内容展示不开时：显示一行即可/多行？</li>
-<li>提示语的说明?</li>
-<li>本地数据存储是否多？</li>
-<li>业务复杂逻辑流程图？各端统一，麻烦也要统一做。</li>
-</ol>
-
-<h6 id="toc_2">不明确的功能项：</h6>
-
-<ol>
-<li>列表 tableview 是否有动态行高？</li>
-<li>哪些是必须登录才可看的页面？</li>
-<li>登录后是否有页面乱push 与pop 的情况？</li>
-<li>热点问题是否有适配的价值，例如：京东曾不适配。</li>
-</ol>
-
-<h6 id="toc_3">必须有的功能项：</h6>
-
-<ol>
-<li>网络请求的日志信息，如何处理?和接口人员商议</li>
-<li>需要增加闪退统计例如：集成极光。</li>
-</ol>
-
-<h6 id="toc_4">接口问题：</h6>
-
-<ol>
-<li>有通知功能时登录接口不是必传通知获取的token/channel_id？</li>
-<li>接口返回问题返回数组的时候是空数组，还是空对象？</li>
-</ol>
-
-<h6 id="toc_5">UI问题:</h6>
-
-<ol>
-<li>设计图是根据多大屏幕作图？</li>
-<li>不规则切图用规则型的透明背景切图.</li>
-<li>如tabbar底部选项卡的图，大小统一.</li>
-<li>个人中心等同位置图标 大小统一.</li>
-</ol>
-
-<p>以上问题会在下面 建项的各个阶段给出处理方式；</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[开发辅助地址一览]]></title>
-    <link href="www.freefook.com/15142827596143.html"/>
-    <updated>2017-12-26T18:05:59+08:00</updated>
-    <id>www.freefook.com/15142827596143.html</id>
-    <content type="html"><![CDATA[
-<p>App Store<br/>
-<a href="https://developer.apple.com/cn/app-store/">https://developer.apple.com/cn/app-store/</a></p>
-
-<p>iTunes Connect 开发者指南<br/>
-<a href="https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide_zh_CN/Chapters/OverviewofiTunesConnect.html#//apple_ref/doc/uid/TP40016325-CH12-SW1">https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide_zh_CN/Chapters/OverviewofiTunesConnect.html#//apple_ref/doc/uid/TP40016325-CH12-SW1</a></p>
-
-<p>在线批量剪裁各种尺寸iOS、Android APP LOGO图标<br/>
-<a href="http://www.atool.org/ios_logo.php">http://www.atool.org/ios_logo.php</a></p>
-
-<p>json验证<br/>
-<a href="http://www.json.cn/">http://www.json.cn/</a></p>
-
-<p>极光推送：<br/>
-<a href="https://docs.jiguang.cn/jpush/client/iOS/ios_sdk/">https://docs.jiguang.cn/jpush/client/iOS/ios_sdk/</a></p>
-
-<p>接入支付宝支付：<br/>
-<a href="https://docs.open.alipay.com/204/105295/">https://docs.open.alipay.com/204/105295/</a></p>
-
-<p>接入微信支付：<br/>
-<a href="https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5">https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5</a></p>
-
-<p>三方发布平台，蒲公英与firim<br/>
-<a href="https://fir.im/">https://fir.im/</a><br/>
-<a href="https://www.pgyer.com/">https://www.pgyer.com/</a></p>
-
-<p>RabbitMQ 中文文档<br/>
-<a href="http://rabbitmq.mr-ping.com/">http://rabbitmq.mr-ping.com/</a></p>
-
-<p>网络请求及各类错误代码含义总结(Errors Code)<br/>
-<a href="http://blog.csdn.net/wangyanchang21/article/details/50932191">http://blog.csdn.net/wangyanchang21/article/details/50932191</a></p>
-
-<p>Mac端socket调试工具<br/>
-<a href="https://www.jianshu.com/p/ca1910ac691a">https://www.jianshu.com/p/ca1910ac691a</a></p>
-
-<p>iOS 系统与xcode Downloads<br/>
-<a href="https://developer.apple.com/download/">https://developer.apple.com/download/</a></p>
-
-<p>个人博客<br/>
-<a href="http://colin1994.github.io/">http://colin1994.github.io/</a></p>
 
 ]]></content>
   </entry>

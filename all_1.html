@@ -57,7 +57,17 @@
           
             <li><a title="小程序列表list" href="15235133751593.html">小程序列表list</a></li>
           
+            <li><a title="小程序横向布局及网格布局" href="15236096586360.html">小程序横向布局及网格布局</a></li>
+          
             <li><a title="小程序网络请求" href="15235164843984.html">小程序网络请求</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>CMMI3级</label></li>
+
+          
+            <li><a title="CMMI3级评审" href="15238614357604.html">CMMI3级评审</a></li>
           
 
       
@@ -114,14 +124,6 @@
 
       
         <li class="divider"></li>
-        <li><label>iOS优秀封装的学习</label></li>
-
-          
-            <li><a title="建项-快速开发 1 ->TabBar" href="15142722458623.html">建项-快速开发 1 ->TabBar</a></li>
-          
-
-      
-        <li class="divider"></li>
         <li><label>iOS杂文</label></li>
 
           
@@ -140,6 +142,14 @@
             <li><a title="正则表达式简单说明" href="15139217121225.html">正则表达式简单说明</a></li>
           
             <li><a title="排序" href="15198806151662.html">排序</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>iOS优秀封装的学习</label></li>
+
+          
+            <li><a title="建项-快速开发 1 ->TabBar" href="15142722458623.html">建项-快速开发 1 ->TabBar</a></li>
           
 
       
@@ -178,7 +188,15 @@
                         
                           <li><a title="小程序列表list" href="15235133751593.html">小程序列表list</a></li>
                         
+                          <li><a title="小程序横向布局及网格布局" href="15236096586360.html">小程序横向布局及网格布局</a></li>
+                        
                           <li><a title="小程序网络请求" href="15235164843984.html">小程序网络请求</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>CMMI3级</span></li>
+                        
+                          <li><a title="CMMI3级评审" href="15238614357604.html">CMMI3级评审</a></li>
                         
 
                     
@@ -230,12 +248,6 @@
                         
 
                     
-                      <li class="side-title"><span>iOS优秀封装的学习</span></li>
-                        
-                          <li><a title="建项-快速开发 1 ->TabBar" href="15142722458623.html">建项-快速开发 1 ->TabBar</a></li>
-                        
-
-                    
                       <li class="side-title"><span>iOS杂文</span></li>
                         
                           <li><a title="iOS ARKit 看我就受够了" href="15139220095625.html">iOS ARKit 看我就受够了</a></li>
@@ -253,6 +265,12 @@
                           <li><a title="正则表达式简单说明" href="15139217121225.html">正则表达式简单说明</a></li>
                         
                           <li><a title="排序" href="15198806151662.html">排序</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>iOS优秀封装的学习</span></li>
+                        
+                          <li><a title="建项-快速开发 1 ->TabBar" href="15142722458623.html">建项-快速开发 1 ->TabBar</a></li>
                         
 
                     
@@ -274,134 +292,65 @@
 
 	
 		<div class="markdown-body">
-		<h1>建项-使用三方管理工具cocoaPods</h1>
+		<h1>项目问题汇总</h1>
 
-		<p>我们都用哪些三方呢？例如：<br/>
-1.  --极光的统计：可查看闪退日志（必须要有首先就要集成）<br/>
-2.  --可能用到的推送，可用极光的推送<br/>
-3.  --网络请求  AFNetWorking<br/>
-4.  --刷新  MJRefresh<br/>
-5.  --图片加载  SDWebImage<br/>
-6.  --用于加载的loading和提示框  MBProgressHUD<br/>
-7.  --用于解决输入框被键盘遮挡的问题  IQKeyBoardManager<br/>
-8.  --用于布局约束  Masonry<br/>
-9.  --加在程序中,解决NUll问题  nullSafe.m</p>
+		<h5 id="toc_0">遇到的小问题却忽略的必然问题项如下：</h5>
 
-<pre><code>使用三方管理工具cocoapods
-1、Ruby环境搭建
-查看下当前ruby版本：打开终端输入 ruby -v
+<h6 id="toc_1">不明确问题：</h6>
 
-如果需要更新，进行如下操作更改Ruby镜像：
+<ol>
+<li>项目都有哪些功能？不明确？</li>
+<li>适配的系统与屏幕大小？</li>
+<li>是否需要检测网络，无网络或者无数据页面如何处理？</li>
+<li>例如：显示无数据页面，点击按钮重新请求？</li>
+<li>某些数据内容展示不开时：显示一行即可/多行？</li>
+<li>提示语的说明?</li>
+<li>本地数据存储是否多？</li>
+<li>业务复杂逻辑流程图？各端统一，麻烦也要统一做。</li>
+</ol>
 
-gem sources --remove https://rubygems.org/ 
-gem sources -a https://gems.ruby-china.org/
-gem sources -l  （用来检查使用替换镜像位置成功与否）
+<h6 id="toc_2">不明确的功能项：</h6>
 
-最后 输入  rvm install 2.2.4  更新ruby
+<ol>
+<li>列表 tableview 是否有动态行高？</li>
+<li>哪些是必须登录才可看的页面？</li>
+<li>登录后是否有页面乱push 与pop 的情况？</li>
+<li>热点问题是否有适配的价值，例如：京东曾不适配。</li>
+</ol>
 
+<h6 id="toc_3">必须有的功能项：</h6>
 
-2、下载安装CocoaPods
-终端输入：sudo gem install cocoapods 
+<ol>
+<li>网络请求的日志信息，如何处理?和接口人员商议</li>
+<li>需要增加闪退统计例如：集成极光。</li>
+</ol>
 
-结束之后：
-终端cd 到自己的项目文件下Create a Podfile
+<h6 id="toc_4">接口问题：</h6>
 
-终端输入touch Podfile
-       open -a Xcode Podfile
+<ol>
+<li>有通知功能时登录接口不是必传通知获取的token/channel_id？</li>
+<li>接口返回问题返回数组的时候是空数组，还是空对象？</li>
+</ol>
 
+<h6 id="toc_5">UI问题:</h6>
 
-写上如下内容：
-target &#39;MyApp的名’ do
-  pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1’
-end
+<ol>
+<li>设计图是根据多大屏幕作图？</li>
+<li>不规则切图用规则型的透明背景切图.</li>
+<li>如tabbar底部选项卡的图，大小统一.</li>
+<li>个人中心等同位置图标 大小统一.</li>
+</ol>
 
-执行 pod install 就OK了
-
-查询三方版本可用 pod search afnetworking  （不区分大小写）
-第一次安装完pod 进行搜索需要多等一段时间，
-会卡在Creating search index for spec repo &#39;master&#39;..    
-
-CocoaPods的基本安装及使用都详细的说明了，
-当需要同时导入多个第三方时候怎么办 ？
-这就需要修改Podfile了，就是用vim编辑的那个保存在项目根目录中的文件，
-修改完了Podfile文件，需要重新执行一次pod install命令。
-</code></pre>
-
-<h5 id="toc_0">例如</h5>
-
-<pre><code>target &#39;myApp’ do
-pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1’
-pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.1&#39;
-pod &#39;SDWebImage&#39;, &#39;~&gt; 4.2.2&#39;
-pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
-pod &#39;IQKeyboardManager&#39;, &#39;~&gt; 5.0.7&#39;
-pod &#39;Masonry&#39;, &#39;~&gt; 1.1.0&#39;
-pod &#39;NullSafe&#39;, &#39;~&gt; 1.2.3&#39;
-pod &#39;CYLTabBarController&#39;, &#39;~&gt; 1.17.4&#39;
-pod &#39;SDCycleScrollView&#39;, &#39;~&gt; 1.75&#39;
-pod &#39;MJExtension&#39;, &#39;~&gt; 3.0.13&#39;
-pod &#39;FMDB&#39;, &#39;~&gt; 2.7.2&#39;
-pod &#39;SDAutoLayout&#39;, &#39;~&gt; 2.2.0&#39;
-end
-</code></pre>
-
-<h5 id="toc_1">Podfile 如上简单的写法 会报警告 默认platform：iOS9</h5>
-
-<blockquote>
-<p>The Podfile is a specification that describes the dependencies of the targets of one or more Xcode projects.</p>
-</blockquote>
-
-<p>A Podfile can be very simple:</p>
-
-<pre><code>target &#39;MyApp&#39;
-pod &#39;AFNetworking&#39;, &#39;~&gt; 1.0&#39;
-</code></pre>
-
-<p>An example of a more complex Podfile can be:</p>
-
-<pre><code>platform :ios, &#39;9.0&#39;
-inhibit_all_warnings!
-
-target &#39;MyApp&#39; do
-  pod &#39;ObjectiveSugar&#39;, &#39;~&gt; 0.5&#39;
-
-  target &quot;MyAppTests&quot; do
-    inherit! :search_paths
-    pod &#39;OCMock&#39;, &#39;~&gt; 2.0.1&#39;
-  end
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    puts &quot;#{target.name}&quot;
-  end
-end
-</code></pre>
-
-<h5 id="toc_2">参考如下：</h5>
-
-<pre><code> iOS安装CocoaPods详细过程
- 请查看:(http://www.jianshu.com/p/9e4e36ba8574)
- 
- cocoapods报错问题You need at least git version 1.8.5 to use CocoaPods
- 请查看:(http://www.jianshu.com/p/a1ab3b291f55)
- 
- 使用cocoapods时常见错误
- 请查看:(http://www.jianshu.com/p/dfc7b93e67eb)
- 
- iOS 下 Podfile 使用方法
- 请查看:(http://www.cnblogs.com/Kennytian/p/6413734.html)
- 
- 如果出现下面问题,请尝试:cocoapods 出现 &quot;_OBJC_CLASS_$--&quot;, 
- referenced from:的问题target-&gt;build setting
-  -&gt;other link flags 添加一个$(inherited) 
-  
-  
-  
-</code></pre>
+<p>以上问题会在下面 建项的各个阶段给出处理方式；</p>
 
 
 		</div>
+	
+
+ 
+	
+
+ 
 	
 
  
