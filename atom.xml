@@ -4,7 +4,7 @@
   <title><![CDATA[随心所欲之张东东篇]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-04-16T15:02:22+08:00</updated>
+  <updated>2018-04-16T15:04:04+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -63,7 +63,7 @@
 
 <h6 id="toc_21">过程和产品质量保证（PPQA）</h6>
 
-<h6 id="toc_22">测量与分析（MA）</h6>
+<h6 id="toc_22">度量与分析（MA）</h6>
 
 <h6 id="toc_23">决策分析和决定（DAR）</h6>
 
@@ -425,7 +425,7 @@ timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性�
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小程序横向布局及网格布局]]></title>
+    <title type="html"><![CDATA[小程序网格布局]]></title>
     <link href="www.freefook.com/15236096586360.html"/>
     <updated>2018-04-13T16:54:18+08:00</updated>
     <id>www.freefook.com/15236096586360.html</id>
@@ -451,6 +451,122 @@ timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性�
 <h4 id="toc_2">运行界面：</h4>
 
 <p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-13%20%E4%B8%8B%E5%8D%884.57.13.png" alt="屏幕快照 2018-04-13 下午4.57.13"/></p>
+
+<h3 id="toc_3">网格布局</h3>
+
+<h5 id="toc_4">在wxml里加入如下代码：</h5>
+
+<pre><code>
+&lt;view class=&#39;content&#39;&gt;
+    &lt;block wx:for=&quot;{{new_products}}&quot; wx:for-item=&quot;item&quot;&gt;
+      &lt;view class=&#39;templateContainer&#39; catchtap=&#39;onGoodsTap&#39; data-goodsid=&#39;{{item.id}}&#39;&gt;
+        &lt;view class=&#39;goods-container&#39;&gt;
+          &lt;image mode=&#39;aspectFill&#39; class=&#39;goods-img&#39; src=&#39;{{item.images.large}}&#39;&gt;&lt;/image&gt;
+          &lt;text class=&#39;goods-title&#39;&gt;{{item.title}}&lt;/text&gt;
+          &lt;view class=&#39;price&#39;&gt;
+            &lt;text class=&#39;goods-price&#39;&gt;￥{{item.rating.average}}&lt;/text&gt;
+            &lt;text class=&#39;pre-goods-price&#39;&gt;￥{{item.rating.max}}&lt;/text&gt;
+          &lt;/view&gt; 
+        &lt;/view&gt;
+      &lt;/view&gt;
+    &lt;/block&gt;
+  &lt;/view&gt;
+
+</code></pre>
+
+<h5 id="toc_5">在wxss里加入如下代码：</h5>
+
+<pre><code>
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: auto;
+  background-color: #f2f2f2;
+}
+
+
+.templateContainer {
+  width: 47%;
+  background-color: white;
+  margin: 10rpx;
+}
+
+
+.goods-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30rpx;
+  text-align: center;
+}
+
+.goods-img {
+  width: 310rpx;
+  height: 310rpx;
+  padding-bottom: 20rpx;
+  margin: 0 auto;
+}
+
+.goods-title{
+    margin-bottom: 16rpx;
+    font-size: 24rpx;
+}
+
+.price{
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.goods-price{
+    margin-bottom: 16rpx;
+    font-size: 24rpx;
+    color: red;
+}
+
+.pre-goods-price{
+  text-decoration: line-through;
+  margin-left: 10rpx;
+}
+
+</code></pre>
+
+<h5 id="toc_6">在.js里加入如下代码：</h5>
+
+<pre><code>
+/**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+  
+    var that = this;
+    wx.request({
+      url: &#39;http://t.yushu.im/v2/movie/in_theaters?start=0&amp;count=4&#39;,
+      method: &#39;GET&#39;,
+      header: {
+        &quot;Content-Type&quot;: &quot;json&quot;
+      },
+      success: function (res) {
+        that.setData({
+          new_products: res.data.subjects,
+        })
+        console.log(&quot;这里打印点数据出来呗！！！&quot;);
+        console.log(res.data.subjects);
+      },
+      fail: function (error) {
+        console.log(error)
+      }
+    })
+    
+  },
+
+</code></pre>
+
+<h5 id="toc_7">运行效果</h5>
+
+<p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-17%20%E4%B8%8B%E5%8D%883.12.29.png" alt="屏幕快照 2018-04-17 下午3.12.29"/></p>
+
+<p>请求地址：来源项目 <a href="https://github.com/YhAllen/WeChat-applet-mall">https://github.com/YhAllen/WeChat-applet-mall</a></p>
 
 ]]></content>
   </entry>
