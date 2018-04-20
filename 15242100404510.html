@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  iOS  UIAlertController 提示框 - 随心所欲之张东东篇
+  小程序View的布局 - 随心所欲之张东东篇
   
   </title>
  <meta name="description" content="">
@@ -292,21 +292,90 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>iOS  UIAlertController 提示框</h1>
+<h1>小程序View的布局</h1>
 
-<h5 id="toc_0">添加提示语</h5>
+<pre><code>小程序 View 支持两种布局方式：Block 和 Flex
+所有 View 默认都是 block
+要使用 flex 布局的话需要显式的声明：
 
-<pre><code>UIAlertController *confirm = [UIAlertController alertControllerWithTitle:@&quot;是否&quot; message:@&quot;msg&quot; preferredStyle:UIAlertControllerStyleAlert];
-                
- [confirm addAction:[UIAlertAction actionWithTitle:@&quot;是&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    
-                }]];
-[confirm addAction:[UIAlertAction actionWithTitle:@&quot;否&quot; style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                    
-                }]];
-                
-[self presentViewController:confirm animated:YES completion:nil];
+display:flex;
 </code></pre>
+
+<h5 id="toc_0">在wxml文件里写如下代码：</h5>
+
+<pre><code> &lt;view class=&quot;main&quot;&gt;
+    &lt;view class=&quot;item item1&quot;&gt;1&lt;/view&gt;
+    &lt;view class=&quot;item item2&quot;&gt;2&lt;/view&gt;
+    &lt;view class=&quot;item item3&quot;&gt;3&lt;/view&gt;
+  &lt;/view&gt;
+</code></pre>
+
+<h5 id="toc_1">在wxss文件里写如下代码：</h5>
+
+<pre><code>.main {
+  width: 100%;
+  background-color: antiquewhite;
+}
+.item {
+  height: 100rpx;
+  width: 100rpx;
+}
+.item1 {
+  background-color: red;
+}
+.item2 {
+  background-color: dodgerblue;
+}
+.item3 {
+  background-color: greenyellow;
+}
+</code></pre>
+
+<h5 id="toc_2">运行效果如下：</h5>
+
+<p><img src="media/15242100404510/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-20%20%E4%B8%8B%E5%8D%883.44.35.png" alt="屏幕快照 2018-04-20 下午3.44.35"/></p>
+
+<h5 id="toc_3">接下来便可以在.main里尝试如下属性：</h5>
+
+<pre><code>//使用 flex 布局
+display: flex;
+//横向布局or竖向布局=&gt;设置属性 flex-direction
+flex-direction: row;
+{
+row：从左到右的水平方向为主轴
+row-reverse：从右到左的水平方向为主轴
+column：从上到下的垂直方向为主轴
+column-reverse：从下到上的垂直方向为主轴
+}
+//设置元素在横向上的布局方向，需要设置 justify-content 属性
+justify-content: space-around;
+{
+flex-start：主轴起点对齐(默认值)  
+flex-end：主轴结束点对齐  
+center：在主轴中居中对齐  
+space-between：两端对齐，除了两端的子元素分别靠向两端的容器之外，其他子元素之间的间隔都相等  
+space-around：每个子元素之间的距离相等，两端的子元素距离容器的距离也和其它子元素之间的距离相同  
+}
+//设置元素在纵向上的布局方向，需要设置 align-items 属性
+align-items: center;
+{
+stretch 填充整个容器(默认值)
+flex-start 侧轴的起点对齐
+flex-end 侧轴的终点对齐
+center 在侧轴中居中对齐
+baseline 以子元素的第一行文字对齐
+}
+//用于控制子 View 是否换行=&gt;设置flex-wrap 属性，
+flex-wrap: wrap;
+{
+nowrap：不换行（默认）
+wrap：换行
+wrap-reverse：换行，第一行在最下面
+}
+
+</code></pre>
+
+<p>转载：<a href="https://blog.csdn.net/weixin_36065510/article/details/73203720">https://blog.csdn.net/weixin_36065510/article/details/73203720</a></p>
 
 
 </div>
@@ -318,13 +387,16 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15142851758481.html"  title="Previous Post: iOS 信息格式验证">&laquo; iOS 信息格式验证</a>
+	        <a href="15234367737951.html"  title="Previous Post: 小程序登录">&laquo; 小程序登录</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
+	        <a href="15235114845539.html" 
+	        title="Next Post: 小程序TabBar">小程序TabBar &raquo;</a>
+	    
 	</div>
   </div>
 </div>
@@ -336,7 +408,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15142851744703.html';
+		var currentURL = '15242100404510.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
