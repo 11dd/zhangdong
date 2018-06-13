@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  iOS  UIAlertController 提示框 - 至尊宝典之备忘录
+  小程序概况 - 至尊宝典之备忘录
   
   </title>
  <meta name="description" content="">
@@ -314,20 +314,92 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>iOS  UIAlertController 提示框</h1>
+<h1>小程序概况</h1>
 
-<h5 id="toc_0">添加提示语</h5>
+<h4 id="toc_0">小程序里的四种文件</h4>
 
-<pre><code>UIAlertController *confirm = [UIAlertController alertControllerWithTitle:@&quot;是否&quot; message:@&quot;msg&quot; preferredStyle:UIAlertControllerStyleAlert];
-                
- [confirm addAction:[UIAlertAction actionWithTitle:@&quot;是&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    
-                }]];
-[confirm addAction:[UIAlertAction actionWithTitle:@&quot;否&quot; style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                    
-                }]];
-                
-[self presentViewController:confirm animated:YES completion:nil];
+<pre><code>.json 后缀的 JSON 配置文件
+.wxml 后缀的 WXML 模板文件
+.wxss 后缀的 WXSS 样式文件
+.js 后缀的 JS 脚本逻辑文件
+</code></pre>
+
+<h4 id="toc_1">小程序的启动</h4>
+
+<p>微信客户端在打开小程序之前，会把整个小程序的代码包下载到本地。</p>
+
+<p>紧接着通过 app.json 的 pages 字段就可以知道你当前小程序的所有页面路径:<br/>
+默认启动app.json 的 pages 字段下第一个文件路径</p>
+
+<h4 id="toc_2">真机预览时的用户身份</h4>
+
+<p>一个团队进行小程序的开发，那么团队成员的身份管理是很有必要的。</p>
+
+<p>管理员可在小程序管理后台统一管理项目成员（包括开发者、体验者及其他成员）、设置项目成员的权限，包括：开发者/体验者权限、登录小程序管理后台、开发管理、查看小程序数据分析等。</p>
+
+<p>管理入口位于：小程序管理后台 - 用户身份 – 成员管理</p>
+
+<h4 id="toc_3">生命周期</h4>
+
+<pre><code>onLaunch        Function    
+生命周期函数--监听小程序初始化    
+当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
+
+onShow          Function    
+生命周期函数--监听小程序显示     
+当小程序启动，或从后台进入前台显示，会触发 onShow
+
+onHide          Function    
+生命周期函数--监听小程序隐藏     
+当小程序从前台进入后台，会触发 onHide
+
+onError         Function    
+错误监听函数  
+当小程序发生脚本错误，
+或者 api 调用失败时，会触发 onError 并带上错误信息
+
+onPageNotFound  Function    
+页面不存在监听函数   
+当小程序出现要打开的页面不存在的情况，会带上页面信息回调该函数
+
+其他  Any         
+开发者可以添加任意的函数或数据到 Object 参数中，用 this 可以访问
+</code></pre>
+
+<h4 id="toc_4">路由方式</h4>
+
+<pre><code>打开新页面     调用 API wx.navigateTo
+
+页面重定向     调用 API wx.redirectTo
+
+页面返回        调用 API wx.navigateBack
+
+Tab 切换      调用 API wx.switchTab
+
+重启动         调用 API wx.reLaunch
+</code></pre>
+
+<p>Tips:</p>
+
+<pre><code>navigateTo, redirectTo 只能打开非 tabBar 页面。
+switchTab 只能打开 tabBar 页面。
+reLaunch 可以打开任意页面。
+页面底部的 tabBar 由页面决定，即只要是定义为 tabBar 的页面，底部都有 tabBar。
+调用页面路由带的参数可以在目标页面的onLoad中获取
+</code></pre>
+
+<h4 id="toc_5">数据类型</h4>
+
+<p>WXS 语言目前共有以下几种数据类型：</p>
+
+<pre><code>number ： 数值
+string ：字符串
+boolean：布尔值
+object：对象
+function：函数
+array : 数组
+date：日期
+regexp：正则
 </code></pre>
 
 
@@ -340,13 +412,16 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15142851758481.html"  title="Previous Post: iOS 信息格式验证">&laquo; iOS 信息格式验证</a>
+	        <a href="15247309861121.html"  title="Previous Post: 操作手册">&laquo; 操作手册</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
+	        <a href="15238614357604.html" 
+	        title="Next Post: CMMI3级评审">CMMI3级评审 &raquo;</a>
+	    
 	</div>
   </div>
 </div>
@@ -358,7 +433,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15142851744703.html';
+		var currentURL = '15287848933165.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

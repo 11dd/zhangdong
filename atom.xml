@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-04-26T16:24:38+08:00</updated>
+  <updated>2018-04-26T16:26:51+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,274 @@
   </author>
   <generator uri="http://www.mweb.im">MWeb</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[小程序]]></title>
+    <link href="www.freefook.com/15232437563217.html"/>
+    <updated>2018-04-09T11:15:56+08:00</updated>
+    <id>www.freefook.com/15232437563217.html</id>
+    <content type="html"><![CDATA[
+<p>介绍：<br/>
+<a href="https://developers.weixin.qq.com/miniprogram/dev/index.html">https://developers.weixin.qq.com/miniprogram/dev/index.html</a></p>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.31.04.png" alt="屏幕快照 2018-04-09 上午11.31.04"/></p>
+
+<hr/>
+
+<ol>
+<li>打开公众平台 <a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a></li>
+<li>使用未绑定微信其他产品的邮箱注册</li>
+<li>登录成功</li>
+<li>查看小程序平台</li>
+</ol>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.19.02.png" alt="屏幕快照 2018-04-09 上午11.19.02"/></p>
+
+<hr/>
+
+<p>个人账号下截图：<br/>
+<img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-19%20%E4%B8%8B%E5%8D%881.54.43.png" alt="屏幕快照 2018-04-19 下午1.54.43"/></p>
+
+<p>小程序企业认证3到5个工作日</p>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-18%20%E4%B8%8A%E5%8D%8810.31.37.png" alt="屏幕快照 2018-04-18 上午10.31.37"/></p>
+
+<p>企业小程序 侧边栏多了微信支付 支付设置 与小程序插件<br/>
+<img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-19%20%E4%B8%8B%E5%8D%881.54.00.png" alt="屏幕快照 2018-04-19 下午1.54.00"/></p>
+
+<hr/>
+
+<ol>
+<li>当开始要做一个小程序时，需通读设计指南<br/>
+设计指南：<a href="https://mp.weixin.qq.com/debug/wxadoc/design/index.html">https://mp.weixin.qq.com/debug/wxadoc/design/index.html</a></li>
+</ol>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.28.55.png" alt="屏幕快照 2018-04-09 上午11.28.55"/></p>
+
+<hr/>
+
+<ol>
+<li>微信开发者工具创建小程序工程需要AppID<br/>
+官方工具：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714</a></li>
+</ol>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.21.41.png" alt="屏幕快照 2018-04-09 上午11.21.41"/></p>
+
+<hr/>
+
+<ol>
+<li>小程序开发必读项，教程 ，框架 ，组件 ，API , 工具<br/>
+简易教程：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/">https://mp.weixin.qq.com/debug/wxadoc/dev/</a></li>
+</ol>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.23.50.png" alt="屏幕快照 2018-04-09 上午11.23.50"/></p>
+
+<p>项目经理需要了解API里面微信开放接口的信息例如：</p>
+
+<ol>
+<li>登录授权</li>
+<li>获取用户信息</li>
+<li>微信支付</li>
+<li>转发</li>
+<li>收货地址</li>
+</ol>
+
+<hr/>
+
+<p>小程序初期明确是否在运营规范里允许的，或者找一些已有小程序样例</p>
+
+<ul>
+<li>运营规范(在这里查看禁止事项)：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/index.html">https://mp.weixin.qq.com/debug/wxadoc/product/index.html</a></li>
+<li>特殊行业所需资质材料：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714</a></li>
+<li>支付文档：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1</a></li>
+<li>客服消息：<a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221">https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221</a> </li>
+<li>数据分析：<a href="https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714</a></li>
+</ul>
+
+<hr/>
+
+<p>入坑指南，疑难问题，请浏览👇<br/>
+小程序社区：<a href="http://www.wxapp-union.com/">http://www.wxapp-union.com/</a></p>
+
+<p>开发者学习已有框架可参考<br/>
+WePY框架开发小程序请移步👇<br/>
+<a href="https://tencent.github.io/wepy/index.html">https://tencent.github.io/wepy/index.html</a></p>
+
+<hr/>
+
+<p>另附一种快速注册微信小程序方法：微信商户平台里，可以添加小程序，并且是直接认证通过的，支付认证过的！！！</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小程序登录]]></title>
+    <link href="www.freefook.com/15234367737951.html"/>
+    <updated>2018-04-11T16:52:53+08:00</updated>
+    <id>www.freefook.com/15234367737951.html</id>
+    <content type="html"><![CDATA[
+<p>做小程序登录：</p>
+
+<ol>
+<li>问题一：不想在小程序里总输入自己平台的账号密码，怎么与微信关联；</li>
+<li>问题二：关联了微信也要可以切换账号使用；</li>
+<li>问题三：不注册账号也可以在小程序里体验使用，必要时提示去登录；</li>
+<li>问题四：如果打开小程序是我们项目自己的登录注册页面（体验较差）</li>
+</ol>
+
+<hr/>
+
+<p>解决方法如下：</p>
+
+<pre><code>//不需要微信授权获取童虎信息就可以调用微信小程序登录API获取code
+wx.login({
+    success: function (res) {
+    //获取code返回值如下：
+    //code:&quot;0619IaNe0L8gHz1VMINe0WgjNe09IaNC&quot;
+    //errMsg:&quot;login:ok&quot;
+    }
+})
+</code></pre>
+
+<ol>
+<li>得到code将code传给服务器</li>
+<li>服务器post请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
+</ol>
+
+<pre><code>https://api.weixin.qq.com/sns/jscode2session  
+参数{
+    appid，
+    secret，
+    js_code = code，
+    grant_type = authorization_code
+} 
+返回数据{
+    session_key，
+    openid
+}
+</code></pre>
+
+<ol>
+<li>如果授权获取用户信息</li>
+<li>得到code,iv,encryptedData,rawData,signature将code，iv，encryptedData传给服务器</li>
+<li>服务器post请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
+<li>服务端解密数据encryptedData</li>
+</ol>
+
+<blockquote>
+<pre><code>微信如何授权小程序获取用户信息:
+
+为优化用户体验，使用 wx.getUserInfo 接口直接弹出授权框的开发方式将逐步不再支持。
+从2018年4月30日开始，小程序与小游戏的体验版、开发版调用 wx.getUserInfo 接口，
+将无法弹出授权询问框，默认调用失败。正式版暂不受影响。
+开发者可使用以下方式获取或展示用户信息：
+
+一、小程序:
+1、使用 button 组件，并将 open-type 指定为 getUserInfo 类型，获取用户基本信息。
+
+详情参考文档:
+https://developers.weixin.qq.com/miniprogram/dev/component/button.html
+
+
+2、使用 open-data 展示用户基本信息。
+
+详情参考文档:
+https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html
+</code></pre>
+</blockquote>
+
+<p>还可以授权获取什么，可自行了解，比如可以授权获取绑定微信的手机号码，获取经纬度的地理位置授权，等等！！！</p>
+
+<hr/>
+
+<pre><code>
+会话密钥session_key有效性
+
+开发者如果遇到因为session_key不正确而校验签名失败或解密失败，请关注下面几个与session_key有关的注意事项。
+
+    1.wx.login()调用时，用户的session_key会被更新而致使旧session_key失效。
+    开发者应该在明确需要重新登录时才调用wx.login()，
+    及时通过登录凭证校验接口更新服务器存储的session_key。
+
+    2.微信不会把session_key的有效期告知开发者。
+    我们会根据用户使用小程序的行为对session_key进行续期。
+    用户越频繁使用小程序，session_key有效期越长。
+
+    3.开发者在session_key失效时，可以通过重新执行登录流程获取有效的session_key。
+    使用接口wx.checkSession()可以校验session_key是否有效，
+    从而避免小程序反复执行登录流程。
+
+    4.当开发者在实现自定义登录态时，
+    可以考虑以session_key有效期作为自身登录态有效期，
+    也可以实现自定义的时效性策略。
+
+
+    对称解密使用的算法为 AES-128-CBC，数据采用PKCS#7填充。
+    对称解密的目标密文为 Base64_Decode(encryptedData)。
+    对称解密秘钥 aeskey = Base64_Decode(session_key), aeskey 是16字节。
+    对称解密算法初始向量 为Base64_Decode(iv)，其中iv由数据接口返回。
+    
+解密encryptedData数据
+{
+　　&quot;openId&quot;:&quot;&quot;,
+　　&quot;nickName&quot;:&quot;ZIM東&quot;,
+　　&quot;gender&quot;:1,
+　　&quot;language&quot;:&quot;zh_CN&quot;,
+　　&quot;city&quot;:&quot;&quot;,
+　　&quot;province&quot;:&quot;&quot;,
+　　&quot;country&quot;:&quot;&quot;,
+　　&quot;avatarUrl&quot;:&quot;&quot;,
+　　&quot;unionId&quot;:&quot;&quot;,
+　　&quot;watermark&quot;:{
+　　　　&quot;timestamp&quot;:1523433831,
+　　　　&quot;appid&quot;:&quot;&quot;
+　　}
+}
+
+在登录小程序之前，既没有关注过公众号，也没有登录过公众号，
+更没有使用微信登录的方式登录过app。
+通过 wx.login 的到的 code 解密后未返回 unionid
+
+划重点：
+     初次尝试小程序登录未拿到unionid
+     小程序里关联了公众号，用微信关注了公众号未获取到unionid
+     小程序关联微信开放平台，再次登录得到了unionid
+
+另外，为了应用能校验数据的有效性，会在敏感数据加上数据水印( watermark )
+appid 敏感数据归属appid，开发者可校验此参数与自身appid是否一致
+timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性校验
+
+</code></pre>
+
+<p><img src="media/15234367737951/%E6%B5%81%E7%A8%8B.png" alt="流程"/></p>
+
+<p>👆原图地址：<a href="https://blog.csdn.net/dingjianmin/article/details/75137934">https://blog.csdn.net/dingjianmin/article/details/75137934</a></p>
+
+<p>注意：开发者后台拿到开放数据后可以对数据进行校验签名和解密，来保证数据不被篡改。 </p>
+
+<p><img src="media/15234367737951/%E6%95%B0%E6%8D%AE.png" alt="数据"/></p>
+
+<pre><code>签名校验以及数据加解密涉及用户的会话密钥session_key。 开发者应该事先通过 wx.login 登录流程获取会话密钥 session_key 并保存在服务器。为了数据不被篡改，开发者不应该把session_key传到小程序客户端等服务器外的环境。
+
+数据签名校验
+
+为了确保 开放接口 返回用户数据的安全性，微信会对明文数据进行签名。
+开发者可以根据业务需要对数据包进行签名校验，确保数据的完整性。
+
+    通过调用接口（如 wx.getUserInfo）获取数据时，接口会同时返回 rawData、signature，
+    其中 signature = sha1( rawData + session_key )
+    
+    开发者将 signature、rawData 发送到开发者服务器进行校验。
+    服务器利用用户对应的 session_key 使用相同的算法计算出签名 signature2 ，
+    比对 signature 与 signature2 即可校验数据的完整性。
+
+</code></pre>
+
+<p>官方数据签名校验<br/>
+<a href="https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject">https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject</a></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[操作手册]]></title>
@@ -240,69 +508,96 @@ NOTE: &#39;汇报任务：检查本社区的任务在系统中叫汇报任务&#3
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小程序]]></title>
-    <link href="www.freefook.com/15232437563217.html"/>
-    <updated>2018-04-09T11:15:56+08:00</updated>
-    <id>www.freefook.com/15232437563217.html</id>
+    <title type="html"><![CDATA[小程序概况]]></title>
+    <link href="www.freefook.com/15287848933165.html"/>
+    <updated>2018-06-12T14:28:13+08:00</updated>
+    <id>www.freefook.com/15287848933165.html</id>
     <content type="html"><![CDATA[
-<p>介绍：<br/>
-<a href="https://developers.weixin.qq.com/miniprogram/dev/index.html">https://developers.weixin.qq.com/miniprogram/dev/index.html</a></p>
+<h4 id="toc_0">小程序里的四种文件</h4>
 
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.31.04.png" alt="屏幕快照 2018-04-09 上午11.31.04"/></p>
+<pre><code>.json 后缀的 JSON 配置文件
+.wxml 后缀的 WXML 模板文件
+.wxss 后缀的 WXSS 样式文件
+.js 后缀的 JS 脚本逻辑文件
+</code></pre>
 
-<ol>
-<li>打开公众平台 <a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a></li>
-<li>使用未绑定微信其他产品的邮箱注册</li>
-<li>登录成功</li>
-<li>查看小程序平台</li>
-</ol>
+<h4 id="toc_1">小程序的启动</h4>
 
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.19.02.png" alt="屏幕快照 2018-04-09 上午11.19.02"/></p>
+<p>微信客户端在打开小程序之前，会把整个小程序的代码包下载到本地。</p>
 
-<ol>
-<li>微信开发者工具首次打开需要AppID<br/>
-官方工具：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714</a></li>
-</ol>
+<p>紧接着通过 app.json 的 pages 字段就可以知道你当前小程序的所有页面路径:<br/>
+默认启动app.json 的 pages 字段下第一个文件路径</p>
 
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.21.41.png" alt="屏幕快照 2018-04-09 上午11.21.41"/></p>
+<h4 id="toc_2">真机预览时的用户身份</h4>
 
-<ol>
-<li>小程序开发必读项，教程 ，框架 ，组件 ，API , 工具<br/>
-简易教程：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/">https://mp.weixin.qq.com/debug/wxadoc/dev/</a></li>
-</ol>
+<p>一个团队进行小程序的开发，那么团队成员的身份管理是很有必要的。</p>
 
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.23.50.png" alt="屏幕快照 2018-04-09 上午11.23.50"/></p>
+<p>管理员可在小程序管理后台统一管理项目成员（包括开发者、体验者及其他成员）、设置项目成员的权限，包括：开发者/体验者权限、登录小程序管理后台、开发管理、查看小程序数据分析等。</p>
 
-<ol>
-<li>当开始要做一个小程序时，需通读设计指南<br/>
-设计指南：<a href="https://mp.weixin.qq.com/debug/wxadoc/design/index.html">https://mp.weixin.qq.com/debug/wxadoc/design/index.html</a></li>
-</ol>
+<p>管理入口位于：小程序管理后台 - 用户身份 – 成员管理</p>
 
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.28.55.png" alt="屏幕快照 2018-04-09 上午11.28.55"/></p>
+<h4 id="toc_3">生命周期</h4>
 
-<ul>
-<li>运营规范(在这里查看禁止事项)：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/index.html">https://mp.weixin.qq.com/debug/wxadoc/product/index.html</a></li>
-<li>特殊行业所需资质材料：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714</a></li>
-<li>支付文档：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1</a></li>
-<li>客服消息：<a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221">https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221</a> </li>
-<li>数据分析：<a href="https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714</a></li>
-</ul>
+<pre><code>onLaunch        Function    
+生命周期函数--监听小程序初始化    
+当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
 
-<p>疑难问题，请浏览👇<br/>
-小程序社区：<a href="http://www.wxapp-union.com/">http://www.wxapp-union.com/</a></p>
+onShow          Function    
+生命周期函数--监听小程序显示     
+当小程序启动，或从后台进入前台显示，会触发 onShow
 
-<p>使用WePY框架开发小程序请移步👇<br/>
-<a href="https://tencent.github.io/wepy/index.html">https://tencent.github.io/wepy/index.html</a></p>
+onHide          Function    
+生命周期函数--监听小程序隐藏     
+当小程序从前台进入后台，会触发 onHide
 
-<p>小程序企业认证3到5个工作日</p>
+onError         Function    
+错误监听函数  
+当小程序发生脚本错误，
+或者 api 调用失败时，会触发 onError 并带上错误信息
 
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-18%20%E4%B8%8A%E5%8D%8810.31.37.png" alt="屏幕快照 2018-04-18 上午10.31.37"/></p>
+onPageNotFound  Function    
+页面不存在监听函数   
+当小程序出现要打开的页面不存在的情况，会带上页面信息回调该函数
 
-<p>企业小程序 侧边栏多了微信支付 支付设置 与小程序插件<br/>
-<img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-19%20%E4%B8%8B%E5%8D%881.54.00.png" alt="屏幕快照 2018-04-19 下午1.54.00"/></p>
+其他  Any         
+开发者可以添加任意的函数或数据到 Object 参数中，用 this 可以访问
+</code></pre>
 
-<p>个人账号下截图：<br/>
-<img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-19%20%E4%B8%8B%E5%8D%881.54.43.png" alt="屏幕快照 2018-04-19 下午1.54.43"/></p>
+<h4 id="toc_4">路由方式</h4>
+
+<pre><code>打开新页面     调用 API wx.navigateTo
+
+页面重定向     调用 API wx.redirectTo
+
+页面返回        调用 API wx.navigateBack
+
+Tab 切换      调用 API wx.switchTab
+
+重启动         调用 API wx.reLaunch
+</code></pre>
+
+<p>Tips:</p>
+
+<pre><code>navigateTo, redirectTo 只能打开非 tabBar 页面。
+switchTab 只能打开 tabBar 页面。
+reLaunch 可以打开任意页面。
+页面底部的 tabBar 由页面决定，即只要是定义为 tabBar 的页面，底部都有 tabBar。
+调用页面路由带的参数可以在目标页面的onLoad中获取
+</code></pre>
+
+<h4 id="toc_5">数据类型</h4>
+
+<p>WXS 语言目前共有以下几种数据类型：</p>
+
+<pre><code>number ： 数值
+string ：字符串
+boolean：布尔值
+object：对象
+function：函数
+array : 数组
+date：日期
+regexp：正则
+</code></pre>
 
 ]]></content>
   </entry>
@@ -360,124 +655,6 @@ NOTE: &#39;汇报任务：检查本社区的任务在系统中叫汇报任务&#3
 <h6 id="toc_22">度量与分析（MA）</h6>
 
 <h6 id="toc_23">决策分析和决定（DAR）</h6>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小程序登录]]></title>
-    <link href="www.freefook.com/15234367737951.html"/>
-    <updated>2018-04-11T16:52:53+08:00</updated>
-    <id>www.freefook.com/15234367737951.html</id>
-    <content type="html"><![CDATA[
-<ol>
-<li>授权获取用户信息</li>
-<li>得到code,iv,encryptedData,rawData,signature将code，iv，encryptedData传给服务器</li>
-<li>服务器post请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
-</ol>
-
-<pre><code>https://api.weixin.qq.com/sns/jscode2session  
-参数{
-    appid，
-    secret，
-    js_code = code，
-    grant_type = authorization_code
-} 
-返回数据{
-    session_key，
-    openid
-}
-
-会话密钥session_key有效性
-
-开发者如果遇到因为session_key不正确而校验签名失败或解密失败，请关注下面几个与session_key有关的注意事项。
-
-    1.wx.login()调用时，用户的session_key会被更新而致使旧session_key失效。
-    开发者应该在明确需要重新登录时才调用wx.login()，
-    及时通过登录凭证校验接口更新服务器存储的session_key。
-
-    2.微信不会把session_key的有效期告知开发者。
-    我们会根据用户使用小程序的行为对session_key进行续期。
-    用户越频繁使用小程序，session_key有效期越长。
-
-    3.开发者在session_key失效时，可以通过重新执行登录流程获取有效的session_key。
-    使用接口wx.checkSession()可以校验session_key是否有效，
-    从而避免小程序反复执行登录流程。
-
-    4.当开发者在实现自定义登录态时，
-    可以考虑以session_key有效期作为自身登录态有效期，
-    也可以实现自定义的时效性策略。
-
-
-</code></pre>
-
-<ol>
-<li>服务端解密数据encryptedData</li>
-</ol>
-
-<pre><code>    对称解密使用的算法为 AES-128-CBC，数据采用PKCS#7填充。
-    对称解密的目标密文为 Base64_Decode(encryptedData)。
-    对称解密秘钥 aeskey = Base64_Decode(session_key), aeskey 是16字节。
-    对称解密算法初始向量 为Base64_Decode(iv)，其中iv由数据接口返回。
-    
-解密encryptedData数据
-{
-　　&quot;openId&quot;:&quot;&quot;,
-　　&quot;nickName&quot;:&quot;ZIM東&quot;,
-　　&quot;gender&quot;:1,
-　　&quot;language&quot;:&quot;zh_CN&quot;,
-　　&quot;city&quot;:&quot;&quot;,
-　　&quot;province&quot;:&quot;&quot;,
-　　&quot;country&quot;:&quot;&quot;,
-　　&quot;avatarUrl&quot;:&quot;&quot;,
-　　&quot;unionId&quot;:&quot;&quot;,
-　　&quot;watermark&quot;:{
-　　　　&quot;timestamp&quot;:1523433831,
-　　　　&quot;appid&quot;:&quot;&quot;
-　　}
-}
-
-在登录小程序之前，既没有关注过公众号，也没有登录过公众号，
-更没有使用微信登录的方式登录过app。
-通过 wx.login 的到的 code 解密后未返回 unionid
-
-划重点：
-     初次尝试小程序登录未拿到unionid
-     小程序里关联了公众号，用微信关注了公众号未获取到unionid
-     小程序关联微信开放平台，再次登录得到了unionid
-
-另外，为了应用能校验数据的有效性，会在敏感数据加上数据水印( watermark )
-appid 敏感数据归属appid，开发者可校验此参数与自身appid是否一致
-timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性校验
-
-</code></pre>
-
-<p><img src="media/15234367737951/%E6%B5%81%E7%A8%8B.png" alt="流程"/></p>
-
-<p>👆原图地址：<a href="https://blog.csdn.net/dingjianmin/article/details/75137934">https://blog.csdn.net/dingjianmin/article/details/75137934</a></p>
-
-<p>注意：开发者后台拿到开放数据后可以对数据进行校验签名和解密，来保证数据不被篡改。 </p>
-
-<p><img src="media/15234367737951/%E6%95%B0%E6%8D%AE.png" alt="数据"/></p>
-
-<pre><code>签名校验以及数据加解密涉及用户的会话密钥session_key。 开发者应该事先通过 wx.login 登录流程获取会话密钥 session_key 并保存在服务器。为了数据不被篡改，开发者不应该把session_key传到小程序客户端等服务器外的环境。
-
-数据签名校验
-
-为了确保 开放接口 返回用户数据的安全性，微信会对明文数据进行签名。
-开发者可以根据业务需要对数据包进行签名校验，确保数据的完整性。
-
-    通过调用接口（如 wx.getUserInfo）获取数据时，接口会同时返回 rawData、signature，
-    其中 signature = sha1( rawData + session_key )
-    
-    开发者将 signature、rawData 发送到开发者服务器进行校验。
-    服务器利用用户对应的 session_key 使用相同的算法计算出签名 signature2 ，
-    比对 signature 与 signature2 即可校验数据的完整性。
-
-</code></pre>
-
-<p>官方数据签名校验<br/>
-<a href="https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject">https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject</a></p>
 
 ]]></content>
   </entry>
@@ -953,6 +1130,17 @@ wrap-reverse：换行，第一行在最下面
 <h4 id="toc_2">3.setData 后页面如下：</h4>
 
 <p><img src="media/15235164843984/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%882.26.02.png" alt="屏幕快照 2018-04-12 下午2.26.02"/></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小程序入坑锦集]]></title>
+    <link href="www.freefook.com/15288676024387.html"/>
+    <updated>2018-06-13T13:26:42+08:00</updated>
+    <id>www.freefook.com/15288676024387.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/15288676024387/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-11%20%E4%B8%8B%E5%8D%887.05.47.png" alt="屏幕快照 2018-06-11 下午7.05.47"/></p>
 
 ]]></content>
   </entry>
@@ -1789,167 +1977,6 @@ collectionViewLayout:flowLayout];
     return headView;
     
 }
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS请求方式]]></title>
-    <link href="www.freefook.com/15142851750375.html"/>
-    <updated>2017-12-26T18:46:15+08:00</updated>
-    <id>www.freefook.com/15142851750375.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">AFN请求</h5>
-
-<pre><code> AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
- 
-    //向服务器发送JSON形式的二进制数据
-    sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
-    //设置默认只返回原始的二进制数据,程序猿自己解析
-    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-     //设置非校验证书模式
-     manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-     manager.securityPolicy.allowInvalidCertificates = YES;
-    [manager.securityPolicy setValidatesDomainName:NO];
-           
-    sessionManager.requestSerializer.timeoutInterval = 10.f;
-    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@&quot;application/json&quot;, @&quot;text/json&quot;,@&quot;text/javascript&quot;, @&quot;text/html&quot;, @&quot;text/plain&quot;,  nil];
-    
-   //设置请求头 参数
-    [sessionManager.requestSerializer setValue:@&quot;Token&quot;] forHTTPHeaderField:@&quot;Authorization&quot;];
-    
-    [sessionManager POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-    
-     NSDictionary * dic=[[NetworkTool sharedNetworkTool] changeType: responseObject] ;
-        
-                
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-    }];
-</code></pre>
-
-<pre><code>-(id)changeType:(id)myObj
-{
-    if ([myObj isKindOfClass:[NSDictionary class]])
-    {
-        return [self nullDic:myObj];
-    }
-    else if([myObj isKindOfClass:[NSArray class]])
-    {
-        return [self nullArr:myObj];
-    }
-    else if([myObj isKindOfClass:[NSString class]])
-    {
-        return [self stringToString:myObj];
-    }
-    else if([myObj isKindOfClass:[NSNull class]])
-    {
-        return [self nullToString];
-    }
-    else
-    {
-        return myObj;
-    }
-}
-
-//将NSDictionary中的Null类型的项目转化成@&quot;&quot;
--(NSDictionary *)nullDic:(NSDictionary *)myDic
-{
-    NSArray *keyArr = [myDic allKeys];
-    NSMutableDictionary *resDic = [[NSMutableDictionary alloc]init];
-    for (int i = 0; i &lt; keyArr.count; i ++)
-    {
-        id obj = [myDic objectForKey:keyArr[i]];
-        obj = [self changeType:obj];
-        [resDic setObject:obj forKey:keyArr[i]];
-    }
-    return resDic;
-}
-
-//将NSArray中的Null类型的项目转化成@&quot;&quot;
--(NSArray *)nullArr:(NSArray *)myArr
-{
-    NSMutableArray *resArr = [[NSMutableArray alloc] init];
-    for (int i = 0; i &lt; myArr.count; i ++)
-    {
-        id obj = myArr[i];
-        obj = [self changeType:obj];
-        [resArr addObject:obj];
-    }
-    return resArr;
-}
-
-//将NSString类型的原路返回
--(NSString *)stringToString:(NSString *)string
-{
-    return string;
-}
-
-//将Null类型的项目转化成@&quot;&quot;
--(NSString *)nullToString
-{
-    return @&quot;&quot;;
-}
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS导航 与pop]]></title>
-    <link href="www.freefook.com/15142851748774.html"/>
-    <updated>2017-12-26T18:46:14+08:00</updated>
-    <id>www.freefook.com/15142851748774.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">BaseVC里写入</h5>
-
-<pre><code>    [self.navigationController.navigationBar setHidden:NO];
-    
-    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] init];
-    backBtn.title = @&quot;&quot;;//返回
-    self.navigationItem.backBarButtonItem = backBtn;
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    
-    [self.navigationController.navigationBar setBackgroundImage:[Helper imageWithColor:rgba(246, 246, 246, 1.0)] forBarMetrics:(UIBarMetricsDefault)];
-    
-    //设置字体大小和颜色
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
-    
-</code></pre>
-
-<h5 id="toc_1">移除navigationController.viewControllers 栈里的类</h5>
-
-<pre><code> NSMutableArray*tempMarr =[NSMutableArray arrayWithArray:self.navigationController.viewControllers];
-        NSMutableArray* temp = [[NSMutableArray alloc]init];
-        for (int i = 0; i &lt; tempMarr.count; i++) {
-            
-            if ([tempMarr[i] isKindOfClass:[SubmitOrderViewController class]]) {
-                [tempMarr removeObjectAtIndex:i];
-                
-            }else if ([tempMarr[i] isKindOfClass:[PayOrderViewController class]]) {
-                [tempMarr removeObjectAtIndex:i];
-                
-            }else{
-                [temp addObject:tempMarr[i]];
-            }
-        }
-        [self.navigationController setViewControllers:temp animated:YES];
-</code></pre>
-
-<h5 id="toc_2">pop到navigationController栈里指定的页面</h5>
-
-<pre><code> for (UIViewController *controller in self.navigationController.viewControllers) {
-         if ([controller isKindOfClass:[ShopDetailViewController class]]) {
-                    ShopDetailViewController *A =(ShopDetailViewController *)controller;
-                    [self.navigationController popToViewController:A animated:YES];
-
-         }
- }
 </code></pre>
 
 ]]></content>
