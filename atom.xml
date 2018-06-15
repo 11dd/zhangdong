@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-04-26T16:26:51+08:00</updated>
+  <updated>2018-06-15T10:56:05+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[小程序]]></title>
+    <title type="html"><![CDATA[小程序介绍]]></title>
     <link href="www.freefook.com/15232437563217.html"/>
     <updated>2018-04-09T11:15:56+08:00</updated>
     <id>www.freefook.com/15232437563217.html</id>
@@ -113,170 +113,96 @@ WePY框架开发小程序请移步👇<br/>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小程序登录]]></title>
-    <link href="www.freefook.com/15234367737951.html"/>
-    <updated>2018-04-11T16:52:53+08:00</updated>
-    <id>www.freefook.com/15234367737951.html</id>
+    <title type="html"><![CDATA[小程序概况]]></title>
+    <link href="www.freefook.com/15287848933165.html"/>
+    <updated>2018-06-12T14:28:13+08:00</updated>
+    <id>www.freefook.com/15287848933165.html</id>
     <content type="html"><![CDATA[
-<p>做小程序登录：</p>
+<h4 id="toc_0">小程序里的四种文件</h4>
 
-<ol>
-<li>问题一：不想在小程序里总输入自己平台的账号密码，怎么与微信关联；</li>
-<li>问题二：关联了微信也要可以切换账号使用；</li>
-<li>问题三：不注册账号也可以在小程序里体验使用，必要时提示去登录；</li>
-<li>问题四：如果打开小程序是我们项目自己的登录注册页面（体验较差）</li>
-</ol>
-
-<hr/>
-
-<p>解决方法如下：</p>
-
-<pre><code>//不需要微信授权获取童虎信息就可以调用微信小程序登录API获取code
-wx.login({
-    success: function (res) {
-    //获取code返回值如下：
-    //code:&quot;0619IaNe0L8gHz1VMINe0WgjNe09IaNC&quot;
-    //errMsg:&quot;login:ok&quot;
-    }
-})
+<pre><code>.json 后缀的 JSON 配置文件
+.wxml 后缀的 WXML 模板文件
+.wxss 后缀的 WXSS 样式文件
+.js 后缀的 JS 脚本逻辑文件
 </code></pre>
 
-<ol>
-<li>得到code将code传给服务器</li>
-<li>服务器post请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
-</ol>
+<h4 id="toc_1">小程序的启动</h4>
 
-<pre><code>https://api.weixin.qq.com/sns/jscode2session  
-参数{
-    appid，
-    secret，
-    js_code = code，
-    grant_type = authorization_code
-} 
-返回数据{
-    session_key，
-    openid
-}
+<p>微信客户端在打开小程序之前，会把整个小程序的代码包下载到本地。</p>
+
+<p>紧接着通过 app.json 的 pages 字段就可以知道你当前小程序的所有页面路径:<br/>
+默认启动app.json 的 pages 字段下第一个文件路径</p>
+
+<h4 id="toc_2">真机预览时的用户身份</h4>
+
+<p>一个团队进行小程序的开发，那么团队成员的身份管理是很有必要的。</p>
+
+<p>管理员可在小程序管理后台统一管理项目成员（包括开发者、体验者及其他成员）、设置项目成员的权限，包括：开发者/体验者权限、登录小程序管理后台、开发管理、查看小程序数据分析等。</p>
+
+<p>管理入口位于：小程序管理后台 - 用户身份 – 成员管理</p>
+
+<h4 id="toc_3">生命周期</h4>
+
+<pre><code>onLaunch        Function    
+生命周期函数--监听小程序初始化    
+当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
+
+onShow          Function    
+生命周期函数--监听小程序显示     
+当小程序启动，或从后台进入前台显示，会触发 onShow
+
+onHide          Function    
+生命周期函数--监听小程序隐藏     
+当小程序从前台进入后台，会触发 onHide
+
+onError         Function    
+错误监听函数  
+当小程序发生脚本错误，
+或者 api 调用失败时，会触发 onError 并带上错误信息
+
+onPageNotFound  Function    
+页面不存在监听函数   
+当小程序出现要打开的页面不存在的情况，会带上页面信息回调该函数
+
+其他  Any         
+开发者可以添加任意的函数或数据到 Object 参数中，用 this 可以访问
 </code></pre>
 
-<ol>
-<li>如果授权获取用户信息</li>
-<li>得到code,iv,encryptedData,rawData,signature将code，iv，encryptedData传给服务器</li>
-<li>服务器post请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
-<li>服务端解密数据encryptedData</li>
-</ol>
+<h4 id="toc_4">路由方式</h4>
 
-<blockquote>
-<pre><code>微信如何授权小程序获取用户信息:
+<pre><code>打开新页面     调用 API wx.navigateTo
 
-为优化用户体验，使用 wx.getUserInfo 接口直接弹出授权框的开发方式将逐步不再支持。
-从2018年4月30日开始，小程序与小游戏的体验版、开发版调用 wx.getUserInfo 接口，
-将无法弹出授权询问框，默认调用失败。正式版暂不受影响。
-开发者可使用以下方式获取或展示用户信息：
+页面重定向     调用 API wx.redirectTo
 
-一、小程序:
-1、使用 button 组件，并将 open-type 指定为 getUserInfo 类型，获取用户基本信息。
+页面返回        调用 API wx.navigateBack
 
-详情参考文档:
-https://developers.weixin.qq.com/miniprogram/dev/component/button.html
+Tab 切换      调用 API wx.switchTab
 
-
-2、使用 open-data 展示用户基本信息。
-
-详情参考文档:
-https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html
-</code></pre>
-</blockquote>
-
-<p>还可以授权获取什么，可自行了解，比如可以授权获取绑定微信的手机号码，获取经纬度的地理位置授权，等等！！！</p>
-
-<hr/>
-
-<pre><code>
-会话密钥session_key有效性
-
-开发者如果遇到因为session_key不正确而校验签名失败或解密失败，请关注下面几个与session_key有关的注意事项。
-
-    1.wx.login()调用时，用户的session_key会被更新而致使旧session_key失效。
-    开发者应该在明确需要重新登录时才调用wx.login()，
-    及时通过登录凭证校验接口更新服务器存储的session_key。
-
-    2.微信不会把session_key的有效期告知开发者。
-    我们会根据用户使用小程序的行为对session_key进行续期。
-    用户越频繁使用小程序，session_key有效期越长。
-
-    3.开发者在session_key失效时，可以通过重新执行登录流程获取有效的session_key。
-    使用接口wx.checkSession()可以校验session_key是否有效，
-    从而避免小程序反复执行登录流程。
-
-    4.当开发者在实现自定义登录态时，
-    可以考虑以session_key有效期作为自身登录态有效期，
-    也可以实现自定义的时效性策略。
-
-
-    对称解密使用的算法为 AES-128-CBC，数据采用PKCS#7填充。
-    对称解密的目标密文为 Base64_Decode(encryptedData)。
-    对称解密秘钥 aeskey = Base64_Decode(session_key), aeskey 是16字节。
-    对称解密算法初始向量 为Base64_Decode(iv)，其中iv由数据接口返回。
-    
-解密encryptedData数据
-{
-　　&quot;openId&quot;:&quot;&quot;,
-　　&quot;nickName&quot;:&quot;ZIM東&quot;,
-　　&quot;gender&quot;:1,
-　　&quot;language&quot;:&quot;zh_CN&quot;,
-　　&quot;city&quot;:&quot;&quot;,
-　　&quot;province&quot;:&quot;&quot;,
-　　&quot;country&quot;:&quot;&quot;,
-　　&quot;avatarUrl&quot;:&quot;&quot;,
-　　&quot;unionId&quot;:&quot;&quot;,
-　　&quot;watermark&quot;:{
-　　　　&quot;timestamp&quot;:1523433831,
-　　　　&quot;appid&quot;:&quot;&quot;
-　　}
-}
-
-在登录小程序之前，既没有关注过公众号，也没有登录过公众号，
-更没有使用微信登录的方式登录过app。
-通过 wx.login 的到的 code 解密后未返回 unionid
-
-划重点：
-     初次尝试小程序登录未拿到unionid
-     小程序里关联了公众号，用微信关注了公众号未获取到unionid
-     小程序关联微信开放平台，再次登录得到了unionid
-
-另外，为了应用能校验数据的有效性，会在敏感数据加上数据水印( watermark )
-appid 敏感数据归属appid，开发者可校验此参数与自身appid是否一致
-timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性校验
-
+重启动         调用 API wx.reLaunch
 </code></pre>
 
-<p><img src="media/15234367737951/%E6%B5%81%E7%A8%8B.png" alt="流程"/></p>
+<p>Tips:</p>
 
-<p>👆原图地址：<a href="https://blog.csdn.net/dingjianmin/article/details/75137934">https://blog.csdn.net/dingjianmin/article/details/75137934</a></p>
-
-<p>注意：开发者后台拿到开放数据后可以对数据进行校验签名和解密，来保证数据不被篡改。 </p>
-
-<p><img src="media/15234367737951/%E6%95%B0%E6%8D%AE.png" alt="数据"/></p>
-
-<pre><code>签名校验以及数据加解密涉及用户的会话密钥session_key。 开发者应该事先通过 wx.login 登录流程获取会话密钥 session_key 并保存在服务器。为了数据不被篡改，开发者不应该把session_key传到小程序客户端等服务器外的环境。
-
-数据签名校验
-
-为了确保 开放接口 返回用户数据的安全性，微信会对明文数据进行签名。
-开发者可以根据业务需要对数据包进行签名校验，确保数据的完整性。
-
-    通过调用接口（如 wx.getUserInfo）获取数据时，接口会同时返回 rawData、signature，
-    其中 signature = sha1( rawData + session_key )
-    
-    开发者将 signature、rawData 发送到开发者服务器进行校验。
-    服务器利用用户对应的 session_key 使用相同的算法计算出签名 signature2 ，
-    比对 signature 与 signature2 即可校验数据的完整性。
-
+<pre><code>navigateTo, redirectTo 只能打开非 tabBar 页面。
+switchTab 只能打开 tabBar 页面。
+reLaunch 可以打开任意页面。
+页面底部的 tabBar 由页面决定，即只要是定义为 tabBar 的页面，底部都有 tabBar。
+调用页面路由带的参数可以在目标页面的onLoad中获取
 </code></pre>
 
-<p>官方数据签名校验<br/>
-<a href="https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject">https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject</a></p>
+<h4 id="toc_5">数据类型</h4>
+
+<p>WXS 语言目前共有以下几种数据类型：</p>
+
+<pre><code>number ： 数值
+string ：字符串
+boolean：布尔值
+object：对象
+function：函数
+array : 数组
+date：日期
+regexp：正则
+</code></pre>
 
 ]]></content>
   </entry>
@@ -508,96 +434,172 @@ NOTE: &#39;汇报任务：检查本社区的任务在系统中叫汇报任务&#3
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小程序概况]]></title>
-    <link href="www.freefook.com/15287848933165.html"/>
-    <updated>2018-06-12T14:28:13+08:00</updated>
-    <id>www.freefook.com/15287848933165.html</id>
+    <title type="html"><![CDATA[小程序登录]]></title>
+    <link href="www.freefook.com/15234367737951.html"/>
+    <updated>2018-04-11T16:52:53+08:00</updated>
+    <id>www.freefook.com/15234367737951.html</id>
     <content type="html"><![CDATA[
-<h4 id="toc_0">小程序里的四种文件</h4>
+<p>做小程序登录：</p>
 
-<pre><code>.json 后缀的 JSON 配置文件
-.wxml 后缀的 WXML 模板文件
-.wxss 后缀的 WXSS 样式文件
-.js 后缀的 JS 脚本逻辑文件
+<ol>
+<li>问题一：不想在小程序里总输入自己平台的账号密码，怎么与微信关联；</li>
+<li>问题二：关联了微信也要可以切换账号使用；</li>
+<li>问题三：不注册账号也可以在小程序里体验使用，必要时提示去登录；</li>
+<li>问题四：如果打开小程序是我们项目自己的登录注册页面（体验较差）</li>
+</ol>
+
+<hr/>
+
+<p>解决方法如下：</p>
+
+<pre><code>//不需要微信授权获取童虎信息就可以调用微信小程序登录API获取code
+wx.login({
+    success: function (res) {
+    //获取code返回值如下：
+    //code:&quot;0619IaNe0L8gHz1VMINe0WgjNe09IaNC&quot;
+    //errMsg:&quot;login:ok&quot;
+    //code每次请求返回都不同，并且code使用一次后作废，
+    //即使不使用，下一次请求code，上一次的code也作废。
+    }
+})
 </code></pre>
 
-<h4 id="toc_1">小程序的启动</h4>
+<ol>
+<li>得到code将code传给服务器</li>
+<li>服务器post请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
+</ol>
 
-<p>微信客户端在打开小程序之前，会把整个小程序的代码包下载到本地。</p>
-
-<p>紧接着通过 app.json 的 pages 字段就可以知道你当前小程序的所有页面路径:<br/>
-默认启动app.json 的 pages 字段下第一个文件路径</p>
-
-<h4 id="toc_2">真机预览时的用户身份</h4>
-
-<p>一个团队进行小程序的开发，那么团队成员的身份管理是很有必要的。</p>
-
-<p>管理员可在小程序管理后台统一管理项目成员（包括开发者、体验者及其他成员）、设置项目成员的权限，包括：开发者/体验者权限、登录小程序管理后台、开发管理、查看小程序数据分析等。</p>
-
-<p>管理入口位于：小程序管理后台 - 用户身份 – 成员管理</p>
-
-<h4 id="toc_3">生命周期</h4>
-
-<pre><code>onLaunch        Function    
-生命周期函数--监听小程序初始化    
-当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
-
-onShow          Function    
-生命周期函数--监听小程序显示     
-当小程序启动，或从后台进入前台显示，会触发 onShow
-
-onHide          Function    
-生命周期函数--监听小程序隐藏     
-当小程序从前台进入后台，会触发 onHide
-
-onError         Function    
-错误监听函数  
-当小程序发生脚本错误，
-或者 api 调用失败时，会触发 onError 并带上错误信息
-
-onPageNotFound  Function    
-页面不存在监听函数   
-当小程序出现要打开的页面不存在的情况，会带上页面信息回调该函数
-
-其他  Any         
-开发者可以添加任意的函数或数据到 Object 参数中，用 this 可以访问
+<pre><code>https://api.weixin.qq.com/sns/jscode2session  
+参数{
+    appid，
+    secret，
+    js_code = code，
+    grant_type = authorization_code
+} 
+返回数据{
+    session_key，
+    openid
+}
 </code></pre>
 
-<h4 id="toc_4">路由方式</h4>
+<ol>
+<li>如果授权获取用户信息</li>
+<li>得到code,iv,encryptedData,rawData,signature将code，iv，encryptedData传给服务器</li>
+<li>服务器post请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
+<li>服务端解密数据encryptedData</li>
+</ol>
 
-<pre><code>打开新页面     调用 API wx.navigateTo
+<blockquote>
+<pre><code>微信如何授权小程序获取用户信息:
 
-页面重定向     调用 API wx.redirectTo
+为优化用户体验，使用 wx.getUserInfo 接口直接弹出授权框的开发方式将逐步不再支持。
+从2018年4月30日开始，小程序与小游戏的体验版、开发版调用 wx.getUserInfo 接口，
+将无法弹出授权询问框，默认调用失败。正式版暂不受影响。
+开发者可使用以下方式获取或展示用户信息：
 
-页面返回        调用 API wx.navigateBack
+一、小程序:
+1、使用 button 组件，并将 open-type 指定为 getUserInfo 类型，获取用户基本信息。
 
-Tab 切换      调用 API wx.switchTab
+详情参考文档:
+https://developers.weixin.qq.com/miniprogram/dev/component/button.html
 
-重启动         调用 API wx.reLaunch
+
+2、使用 open-data 展示用户基本信息。
+
+详情参考文档:
+https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html
+</code></pre>
+</blockquote>
+
+<p>还可以授权获取什么，可自行了解，比如可以授权获取绑定微信的手机号码，获取经纬度的地理位置授权，等等！！！</p>
+
+<hr/>
+
+<pre><code>
+会话密钥session_key有效性
+
+开发者如果遇到因为session_key不正确而校验签名失败或解密失败，请关注下面几个与session_key有关的注意事项。
+
+    1.wx.login()调用时，用户的session_key会被更新而致使旧session_key失效。
+    开发者应该在明确需要重新登录时才调用wx.login()，
+    及时通过登录凭证校验接口更新服务器存储的session_key。
+
+    2.微信不会把session_key的有效期告知开发者。
+    我们会根据用户使用小程序的行为对session_key进行续期。
+    用户越频繁使用小程序，session_key有效期越长。
+
+    3.开发者在session_key失效时，可以通过重新执行登录流程获取有效的session_key。
+    使用接口wx.checkSession()可以校验session_key是否有效，
+    从而避免小程序反复执行登录流程。
+
+    4.当开发者在实现自定义登录态时，
+    可以考虑以session_key有效期作为自身登录态有效期，
+    也可以实现自定义的时效性策略。
+
+
+    对称解密使用的算法为 AES-128-CBC，数据采用PKCS#7填充。
+    对称解密的目标密文为 Base64_Decode(encryptedData)。
+    对称解密秘钥 aeskey = Base64_Decode(session_key), aeskey 是16字节。
+    对称解密算法初始向量 为Base64_Decode(iv)，其中iv由数据接口返回。
+    
+解密encryptedData数据
+{
+　　&quot;openId&quot;:&quot;&quot;,
+　　&quot;nickName&quot;:&quot;ZIM東&quot;,
+　　&quot;gender&quot;:1,
+　　&quot;language&quot;:&quot;zh_CN&quot;,
+　　&quot;city&quot;:&quot;&quot;,
+　　&quot;province&quot;:&quot;&quot;,
+　　&quot;country&quot;:&quot;&quot;,
+　　&quot;avatarUrl&quot;:&quot;&quot;,
+　　&quot;unionId&quot;:&quot;&quot;,
+　　&quot;watermark&quot;:{
+　　　　&quot;timestamp&quot;:1523433831,
+　　　　&quot;appid&quot;:&quot;&quot;
+　　}
+}
+
+在登录小程序之前，既没有关注过公众号，也没有登录过公众号，
+更没有使用微信登录的方式登录过app。
+通过 wx.login 的到的 code 解密后未返回 unionid
+
+划重点：
+     初次尝试小程序登录未拿到unionid
+     小程序里关联了公众号，用微信关注了公众号未获取到unionid
+     小程序关联微信开放平台，再次登录得到了unionid
+
+另外，为了应用能校验数据的有效性，会在敏感数据加上数据水印( watermark )
+appid 敏感数据归属appid，开发者可校验此参数与自身appid是否一致
+timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性校验
+
 </code></pre>
 
-<p>Tips:</p>
+<p><img src="media/15234367737951/%E6%B5%81%E7%A8%8B.png" alt="流程"/></p>
 
-<pre><code>navigateTo, redirectTo 只能打开非 tabBar 页面。
-switchTab 只能打开 tabBar 页面。
-reLaunch 可以打开任意页面。
-页面底部的 tabBar 由页面决定，即只要是定义为 tabBar 的页面，底部都有 tabBar。
-调用页面路由带的参数可以在目标页面的onLoad中获取
+<p>👆原图地址：<a href="https://blog.csdn.net/dingjianmin/article/details/75137934">https://blog.csdn.net/dingjianmin/article/details/75137934</a></p>
+
+<p>注意：开发者后台拿到开放数据后可以对数据进行校验签名和解密，来保证数据不被篡改。 </p>
+
+<p><img src="media/15234367737951/%E6%95%B0%E6%8D%AE.png" alt="数据"/></p>
+
+<pre><code>签名校验以及数据加解密涉及用户的会话密钥session_key。 开发者应该事先通过 wx.login 登录流程获取会话密钥 session_key 并保存在服务器。为了数据不被篡改，开发者不应该把session_key传到小程序客户端等服务器外的环境。
+
+数据签名校验
+
+为了确保 开放接口 返回用户数据的安全性，微信会对明文数据进行签名。
+开发者可以根据业务需要对数据包进行签名校验，确保数据的完整性。
+
+    通过调用接口（如 wx.getUserInfo）获取数据时，接口会同时返回 rawData、signature，
+    其中 signature = sha1( rawData + session_key )
+    
+    开发者将 signature、rawData 发送到开发者服务器进行校验。
+    服务器利用用户对应的 session_key 使用相同的算法计算出签名 signature2 ，
+    比对 signature 与 signature2 即可校验数据的完整性。
+
 </code></pre>
 
-<h4 id="toc_5">数据类型</h4>
-
-<p>WXS 语言目前共有以下几种数据类型：</p>
-
-<pre><code>number ： 数值
-string ：字符串
-boolean：布尔值
-object：对象
-function：函数
-array : 数组
-date：日期
-regexp：正则
-</code></pre>
+<p>官方数据签名校验<br/>
+<a href="https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject">https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject</a></p>
 
 ]]></content>
   </entry>
