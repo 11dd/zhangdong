@@ -51,6 +51,10 @@
           
             <li><a title="小程序概况" href="15287848933165.html">小程序概况</a></li>
           
+            <li><a title="小程序前端开发介绍" href="15325981613625.html">小程序前端开发介绍</a></li>
+          
+            <li><a title="小程序服务器配置介绍" href="15325981038081.html">小程序服务器配置介绍</a></li>
+          
             <li><a title="小程序登录" href="15234367737951.html">小程序登录</a></li>
           
             <li><a title="小程序View的布局" href="15242100404510.html">小程序View的布局</a></li>
@@ -196,6 +200,10 @@
                         
                           <li><a title="小程序概况" href="15287848933165.html">小程序概况</a></li>
                         
+                          <li><a title="小程序前端开发介绍" href="15325981613625.html">小程序前端开发介绍</a></li>
+                        
+                          <li><a title="小程序服务器配置介绍" href="15325981038081.html">小程序服务器配置介绍</a></li>
+                        
                           <li><a title="小程序登录" href="15234367737951.html">小程序登录</a></li>
                         
                           <li><a title="小程序View的布局" href="15242100404510.html">小程序View的布局</a></li>
@@ -318,102 +326,78 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS请求方式</h1>
+		<h1>iOS tableView 常用属性与方法</h1>
 
-		<h5 id="toc_0">AFN请求</h5>
+		<h5 id="toc_0">tableview 常用属性如下：</h5>
 
-<pre><code> AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
- 
-    //向服务器发送JSON形式的二进制数据
-    sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
-    //设置默认只返回原始的二进制数据,程序猿自己解析
-    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-     //设置非校验证书模式
-     manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-     manager.securityPolicy.allowInvalidCertificates = YES;
-    [manager.securityPolicy setValidatesDomainName:NO];
-           
-    sessionManager.requestSerializer.timeoutInterval = 10.f;
-    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@&quot;application/json&quot;, @&quot;text/json&quot;,@&quot;text/javascript&quot;, @&quot;text/html&quot;, @&quot;text/plain&quot;,  nil];
-    
-   //设置请求头 参数
-    [sessionManager.requestSerializer setValue:@&quot;Token&quot;] forHTTPHeaderField:@&quot;Authorization&quot;];
-    
-    [sessionManager POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-    
-     NSDictionary * dic=[[NetworkTool sharedNetworkTool] changeType: responseObject] ;
-        
-                
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-    }];
+<pre><code>//获取手势点击的是哪一个cell的坐标
+NSIndexPath *indexPath = [self.tableView indexPathForCell:((UITableViewCell *)longPress.view)];
+
+//点击button时获取button所在的cell的indexpath
+UIButton *button = sender;
+tempTableViewCell *cell = (tempTableViewCell *)[[button superview] superview];
+NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+
+//局部刷新一个section刷新    
+NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];    
+[tableview reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];    
+
+//局部刷新一个cell刷新   
+NSIndexPath *indexPath=[NSIndexPath indexPathForRow:1 inSection:0];   
+[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone]; 
+
+//不显示分割线
+_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
+//显示箭头
+cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+//无选中状态
+cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+//自适应单元格高度
+tableView.rowHeight = UITableViewAutomaticDimension; 
+//先估计一个高度
+tableView.estimatedRowHeight = 50; 
 </code></pre>
 
-<pre><code>-(id)changeType:(id)myObj
-{
-    if ([myObj isKindOfClass:[NSDictionary class]])
-    {
-        return [self nullDic:myObj];
-    }
-    else if([myObj isKindOfClass:[NSArray class]])
-    {
-        return [self nullArr:myObj];
-    }
-    else if([myObj isKindOfClass:[NSString class]])
-    {
-        return [self stringToString:myObj];
-    }
-    else if([myObj isKindOfClass:[NSNull class]])
-    {
-        return [self nullToString];
-    }
-    else
-    {
-        return myObj;
-    }
-}
+<pre><code></code></pre>
 
-//将NSDictionary中的Null类型的项目转化成@&quot;&quot;
--(NSDictionary *)nullDic:(NSDictionary *)myDic
-{
-    NSArray *keyArr = [myDic allKeys];
-    NSMutableDictionary *resDic = [[NSMutableDictionary alloc]init];
-    for (int i = 0; i &lt; keyArr.count; i ++)
-    {
-        id obj = [myDic objectForKey:keyArr[i]];
-        obj = [self changeType:obj];
-        [resDic setObject:obj forKey:keyArr[i]];
-    }
-    return resDic;
-}
+<pre><code></code></pre>
 
-//将NSArray中的Null类型的项目转化成@&quot;&quot;
--(NSArray *)nullArr:(NSArray *)myArr
-{
-    NSMutableArray *resArr = [[NSMutableArray alloc] init];
-    for (int i = 0; i &lt; myArr.count; i ++)
-    {
-        id obj = myArr[i];
-        obj = [self changeType:obj];
-        [resArr addObject:obj];
-    }
-    return resArr;
-}
+<h5 id="toc_1">tableview 常用方法如下：</h5>
 
-//将NSString类型的原路返回
--(NSString *)stringToString:(NSString *)string
-{
-    return string;
-}
+<h6 id="toc_2">tableview 选中第几行</h6>
 
-//将Null类型的项目转化成@&quot;&quot;
--(NSString *)nullToString
+<pre><code>NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
+[self.tableView selectRowAtIndexPath:indexpath animated:YES scrollPosition:UITableViewScrollPositionMiddle];  //选中第5行
+</code></pre>
+
+<h6 id="toc_3">滚动到指定位置</h6>
+
+<pre><code>//滚动到指定位置_偏移量
+[self.rizhiTableView setContentOffset:CGPointMake(0, OffsetY) animated:NO];
+//滚动到第几行
+NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
+[self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+</code></pre>
+
+<h6 id="toc_4">pragma mark  - 滑到最底部</h6>
+
+<pre><code>- (void)scrollTableToFoot
 {
-    return @&quot;&quot;;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        NSInteger s = [self.tableView numberOfSections];  //有多少组
+        if (s&lt;1) return;  //无数据时不执行 要不会crash
+        NSInteger r = [self.tableView numberOfRowsInSection:s-1]; //最后一组有多少行
+        if (r&lt;1) return;
+        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:r-1 inSection:s-1];  //取最后一行数据
+        [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:NO]; //滚动到最后一行
+        
+    });
+  
 }
 </code></pre>
 
