@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-07-27T09:44:41+08:00</updated>
+  <updated>2018-07-27T14:39:56+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://www.mweb.im">MWeb</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[小程序实用示例]]></title>
+    <link href="www.freefook.com/15326733440349.html"/>
+    <updated>2018-07-27T14:35:44+08:00</updated>
+    <id>www.freefook.com/15326733440349.html</id>
+    <content type="html"><![CDATA[
+<p>获取系统信息 下面是屏幕宽高</p>
+
+<pre><code> wx.getSystemInfo({
+      success: function(res) {
+        that.setData({
+          windowHeight: res.windowHeight,
+          windowWidth: res.windowWidth,
+        })
+      }
+});
+</code></pre>
+
+<p>保存数据</p>
+
+<pre><code> // 同步方式存储数据
+wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
+
+//取出数据
+var token = wx.getStorageSync(&#39;userInfo&#39;)
+
+</code></pre>
+
+<p>跳页</p>
+
+<pre><code>wx.navigateTo({
+url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
+})
+</code></pre>
+
+<p>请求数据</p>
+
+<pre><code>getList: function(index) {
+    var this_ = this;
+
+    wx.showLoading({
+      title: &#39;正在加载&#39;,
+      mask: true,
+    })
+    //发起网络请求 
+    wx.request({
+      url: getApp().data.urladd + &quot;master/groups/query&quot;,
+      method: &quot;POST&quot;,
+      header: {
+        &#39;content-type&#39;: &#39;application/x-www-form-urlencoded&#39;,
+        &#39;Authorization&#39;: &#39;Bearer &#39; + token
+      },
+      data: {
+        page: index,
+        page_size: this_.data.pageSize,
+        status: this_.data.status,
+      },
+      success: function(e) {
+        console.log(e.data.data.data);
+      },
+      complete: function(res) {
+        wx.hideLoading()
+      }
+    })
+  },
+
+</code></pre>
+
+<p>数组查找数据</p>
+
+<pre><code>let newArr = t.data.ee.filter(item =&gt; item.pid === t.data.province[e.detail.value].id)
+
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[小程序介绍]]></title>
@@ -867,6 +944,8 @@ timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性�
 <p><img src="media/15234367737951/%E6%B5%81%E7%A8%8B.png" alt="流程"/></p>
 
 <p>👆原图地址：<a href="https://blog.csdn.net/dingjianmin/article/details/75137934">https://blog.csdn.net/dingjianmin/article/details/75137934</a></p>
+
+<p><img src="media/15234367737951/%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B.jpg" alt="登录流程"/></p>
 
 <p>注意：开发者后台拿到开放数据后可以对数据进行校验签名和解密，来保证数据不被篡改。 </p>
 
@@ -1845,48 +1924,6 @@ NSMutableDictionary *dataDict = [NSMutableDictionary dictionary];
 NSMutableDictionary *dataDict1 = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
 NSLog((@&quot;**start**\n[function name:%s]\n&quot; &quot;[Lines:%d]\n&quot; &quot;data-&gt;%@\n**end**\n\n&quot;), __FUNCTION__, __LINE__,dataDict1);
 
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS 从AppDelegate说起]]></title>
-    <link href="www.freefook.com/15142851543985.html"/>
-    <updated>2017-12-26T18:45:54+08:00</updated>
-    <id>www.freefook.com/15142851543985.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">创建程序窗口</h5>
-
-<pre><code>self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-self.window.backgroundColor = [UIColor whiteColor];
-[self.window setRootViewController:self.tabbarVC];
-[self.window makeKeyAndVisible];
-</code></pre>
-
-<h5 id="toc_1">生命周期</h5>
-
-<pre><code>- (void)applicationWillEnterForeground:(UIApplication *)application {
-    NSLog(@&quot;将要进入前台：%s&quot;,__func__);
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    
-    NSLog(@&quot;已经获得焦点：%s&quot;,__func__);
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    
-    NSLog(@&quot;将要释放焦点：%s&quot;,__func__);
-}
-- (void)applicationWillTerminate:(UIApplication *)application {
-    
-    NSLog(@&quot;程序将要退出：%s&quot;,__func__);
-}
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    
-    NSLog(@&quot;已经进入后台：%s&quot;,__func__);
-}
 </code></pre>
 
 ]]></content>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  小程序网格布局 - 至尊宝典之备忘录
+  小程序实用示例 - 至尊宝典之备忘录
   
   </title>
  <meta name="description" content="">
@@ -330,145 +330,75 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>小程序网格布局</h1>
+<h1>小程序实用示例</h1>
 
-<h4 id="toc_0">第一步：wxml文件代码：</h4>
+<p>获取系统信息 下面是屏幕宽高</p>
 
-<pre><code>&lt;view class=&quot;layout_horizontal&quot;&gt;
-  &lt;view style=&quot;flex:1;background-color:red&quot;&gt;View1&lt;/view&gt;
-  &lt;view style=&quot;flex:1;background-color:blue&quot;&gt;View2&lt;/view&gt;
-&lt;/view&gt;
-</code></pre>
-
-<h4 id="toc_1">第二步：wxss文件代码：</h4>
-
-<pre><code>.layout_horizontal{
-  height: 100rpx;
-  display: flex;
-  /*row 横向  column 列表  */
-  flex-direction: row;
-}
-</code></pre>
-
-<h4 id="toc_2">运行界面：</h4>
-
-<p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-13%20%E4%B8%8B%E5%8D%884.57.13.png" alt="屏幕快照 2018-04-13 下午4.57.13"/></p>
-
-<h3 id="toc_3">网格布局</h3>
-
-<h5 id="toc_4">在wxml里加入如下代码：</h5>
-
-<pre><code>
-&lt;view class=&#39;content&#39;&gt;
-    &lt;block wx:for=&quot;{{new_products}}&quot; wx:for-item=&quot;item&quot;&gt;
-      &lt;view class=&#39;templateContainer&#39; catchtap=&#39;onGoodsTap&#39; data-goodsid=&#39;{{item.id}}&#39;&gt;
-        &lt;view class=&#39;goods-container&#39;&gt;
-          &lt;image mode=&#39;aspectFill&#39; class=&#39;goods-img&#39; src=&#39;{{item.images.large}}&#39;&gt;&lt;/image&gt;
-          &lt;text class=&#39;goods-title&#39;&gt;{{item.title}}&lt;/text&gt;
-          &lt;view class=&#39;price&#39;&gt;
-            &lt;text class=&#39;goods-price&#39;&gt;￥{{item.rating.average}}&lt;/text&gt;
-            &lt;text class=&#39;pre-goods-price&#39;&gt;￥{{item.rating.max}}&lt;/text&gt;
-          &lt;/view&gt; 
-        &lt;/view&gt;
-      &lt;/view&gt;
-    &lt;/block&gt;
-  &lt;/view&gt;
-
-</code></pre>
-
-<h5 id="toc_5">在wxss里加入如下代码：</h5>
-
-<pre><code>
-.content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: auto;
-  background-color: #f2f2f2;
-}
-
-
-.templateContainer {
-  width: 47%;
-  background-color: white;
-  margin: 10rpx;
-}
-
-
-.goods-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 30rpx;
-  text-align: center;
-}
-
-.goods-img {
-  width: 310rpx;
-  height: 310rpx;
-  padding-bottom: 20rpx;
-  margin: 0 auto;
-}
-
-.goods-title{
-    margin-bottom: 16rpx;
-    font-size: 24rpx;
-}
-
-.price{
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-}
-
-.goods-price{
-    margin-bottom: 16rpx;
-    font-size: 24rpx;
-    color: red;
-}
-
-.pre-goods-price{
-  text-decoration: line-through;
-  margin-left: 10rpx;
-}
-
-</code></pre>
-
-<h5 id="toc_6">在.js里加入如下代码：</h5>
-
-<pre><code>
-/**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-    var that = this;
-    wx.request({
-      url: &#39;http://t.yushu.im/v2/movie/in_theaters?start=0&amp;count=4&#39;,
-      method: &#39;GET&#39;,
-      header: {
-        &quot;Content-Type&quot;: &quot;json&quot;
-      },
-      success: function (res) {
+<pre><code> wx.getSystemInfo({
+      success: function(res) {
         that.setData({
-          new_products: res.data.subjects,
+          windowHeight: res.windowHeight,
+          windowWidth: res.windowWidth,
         })
-        console.log(&quot;这里打印点数据出来呗！！！&quot;);
-        console.log(res.data.subjects);
+      }
+});
+</code></pre>
+
+<p>保存数据</p>
+
+<pre><code> // 同步方式存储数据
+wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
+
+//取出数据
+var token = wx.getStorageSync(&#39;userInfo&#39;)
+
+</code></pre>
+
+<p>跳页</p>
+
+<pre><code>wx.navigateTo({
+url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
+})
+</code></pre>
+
+<p>请求数据</p>
+
+<pre><code>getList: function(index) {
+    var this_ = this;
+
+    wx.showLoading({
+      title: &#39;正在加载&#39;,
+      mask: true,
+    })
+    //发起网络请求 
+    wx.request({
+      url: getApp().data.urladd + &quot;master/groups/query&quot;,
+      method: &quot;POST&quot;,
+      header: {
+        &#39;content-type&#39;: &#39;application/x-www-form-urlencoded&#39;,
+        &#39;Authorization&#39;: &#39;Bearer &#39; + token
       },
-      fail: function (error) {
-        console.log(error)
+      data: {
+        page: index,
+        page_size: this_.data.pageSize,
+        status: this_.data.status,
+      },
+      success: function(e) {
+        console.log(e.data.data.data);
+      },
+      complete: function(res) {
+        wx.hideLoading()
       }
     })
-    
   },
 
 </code></pre>
 
-<h5 id="toc_7">运行效果</h5>
+<p>数组查找数据</p>
 
-<p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-17%20%E4%B8%8B%E5%8D%883.12.29.png" alt="屏幕快照 2018-04-17 下午3.12.29"/></p>
+<pre><code>let newArr = t.data.ee.filter(item =&gt; item.pid === t.data.province[e.detail.value].id)
 
-<p>请求地址：来源项目 <a href="https://github.com/YhAllen/WeChat-applet-mall">https://github.com/YhAllen/WeChat-applet-mall</a></p>
+</code></pre>
 
 
 </div>
@@ -480,15 +410,13 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15235133751593.html"  title="Previous Post: 小程序列表list">&laquo; 小程序列表list</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15235164843984.html" 
-	        title="Next Post: 小程序网络请求">小程序网络请求 &raquo;</a>
+	        <a href="15232437563217.html" 
+	        title="Next Post: 小程序介绍">小程序介绍 &raquo;</a>
 	    
 	</div>
   </div>
@@ -501,7 +429,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15236096586360.html';
+		var currentURL = '15326733440349.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
