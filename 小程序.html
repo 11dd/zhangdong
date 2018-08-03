@@ -47,8 +47,6 @@
         <li><label>小程序</label></li>
 
           
-            <li><a title="小程序实用示例" href="15326733440349.html">小程序实用示例</a></li>
-          
             <li><a title="小程序介绍" href="15232437563217.html">小程序介绍</a></li>
           
             <li><a title="小程序概况" href="15287848933165.html">小程序概况</a></li>
@@ -58,6 +56,8 @@
             <li><a title="小程序服务器配置介绍" href="15325981038081.html">小程序服务器配置介绍</a></li>
           
             <li><a title="小程序API" href="15326548831374.html">小程序API</a></li>
+          
+            <li><a title="小程序实用示例" href="15326733440349.html">小程序实用示例</a></li>
           
             <li><a title="小程序登录" href="15234367737951.html">小程序登录</a></li>
           
@@ -200,8 +200,6 @@
                     
                       <li class="side-title"><span>小程序</span></li>
                         
-                          <li><a title="小程序实用示例" href="15326733440349.html">小程序实用示例</a></li>
-                        
                           <li><a title="小程序介绍" href="15232437563217.html">小程序介绍</a></li>
                         
                           <li><a title="小程序概况" href="15287848933165.html">小程序概况</a></li>
@@ -211,6 +209,8 @@
                           <li><a title="小程序服务器配置介绍" href="15325981038081.html">小程序服务器配置介绍</a></li>
                         
                           <li><a title="小程序API" href="15326548831374.html">小程序API</a></li>
+                        
+                          <li><a title="小程序实用示例" href="15326733440349.html">小程序实用示例</a></li>
                         
                           <li><a title="小程序登录" href="15234367737951.html">小程序登录</a></li>
                         
@@ -334,75 +334,101 @@
 
 	
 		<div class="markdown-body">
-		<h1>小程序实用示例</h1>
+		<h1>小程序介绍</h1>
 
-		<p>获取系统信息 下面是屏幕宽高</p>
+		<p>介绍：<br/>
+<a href="https://developers.weixin.qq.com/miniprogram/dev/index.html">https://developers.weixin.qq.com/miniprogram/dev/index.html</a></p>
 
-<pre><code> wx.getSystemInfo({
-      success: function(res) {
-        that.setData({
-          windowHeight: res.windowHeight,
-          windowWidth: res.windowWidth,
-        })
-      }
-});
-</code></pre>
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.31.04.png" alt="屏幕快照 2018-04-09 上午11.31.04"/></p>
 
-<p>保存数据</p>
+<hr/>
 
-<pre><code> // 同步方式存储数据
-wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
+<ol>
+<li>打开公众平台 <a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a></li>
+<li>使用未绑定微信其他产品的邮箱注册</li>
+<li>登录成功</li>
+<li>查看小程序平台</li>
+</ol>
 
-//取出数据
-var token = wx.getStorageSync(&#39;userInfo&#39;)
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.19.02.png" alt="屏幕快照 2018-04-09 上午11.19.02"/></p>
 
-</code></pre>
+<hr/>
 
-<p>跳页</p>
+<p>个人账号下截图：<br/>
+<img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-19%20%E4%B8%8B%E5%8D%881.54.43.png" alt="屏幕快照 2018-04-19 下午1.54.43"/></p>
 
-<pre><code>wx.navigateTo({
-url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
-})
-</code></pre>
+<p>小程序企业认证3到5个工作日</p>
 
-<p>请求数据</p>
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-18%20%E4%B8%8A%E5%8D%8810.31.37.png" alt="屏幕快照 2018-04-18 上午10.31.37"/></p>
 
-<pre><code>getList: function(index) {
-    var this_ = this;
+<p>企业小程序 侧边栏多了微信支付 支付设置 与小程序插件<br/>
+<img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-19%20%E4%B8%8B%E5%8D%881.54.00.png" alt="屏幕快照 2018-04-19 下午1.54.00"/></p>
 
-    wx.showLoading({
-      title: &#39;正在加载&#39;,
-      mask: true,
-    })
-    //发起网络请求 
-    wx.request({
-      url: getApp().data.urladd + &quot;master/groups/query&quot;,
-      method: &quot;POST&quot;,
-      header: {
-        &#39;content-type&#39;: &#39;application/x-www-form-urlencoded&#39;,
-        &#39;Authorization&#39;: &#39;Bearer &#39; + token
-      },
-      data: {
-        page: index,
-        page_size: this_.data.pageSize,
-        status: this_.data.status,
-      },
-      success: function(e) {
-        console.log(e.data.data.data);
-      },
-      complete: function(res) {
-        wx.hideLoading()
-      }
-    })
-  },
+<hr/>
 
-</code></pre>
+<ol>
+<li>当开始要做一个小程序时，需通读设计指南<br/>
+设计指南：<a href="https://mp.weixin.qq.com/debug/wxadoc/design/index.html">https://mp.weixin.qq.com/debug/wxadoc/design/index.html</a></li>
+</ol>
 
-<p>数组查找数据</p>
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.28.55.png" alt="屏幕快照 2018-04-09 上午11.28.55"/></p>
 
-<pre><code>let newArr = t.data.ee.filter(item =&gt; item.pid === t.data.province[e.detail.value].id)
+<hr/>
 
-</code></pre>
+<ol>
+<li>微信开发者工具创建小程序工程需要AppID<br/>
+官方工具：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714</a></li>
+</ol>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.21.41.png" alt="屏幕快照 2018-04-09 上午11.21.41"/></p>
+
+<hr/>
+
+<ol>
+<li>小程序开发必读项，教程 ，框架 ，组件 ，API , 工具<br/>
+简易教程：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/">https://mp.weixin.qq.com/debug/wxadoc/dev/</a></li>
+</ol>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.23.50.png" alt="屏幕快照 2018-04-09 上午11.23.50"/></p>
+
+<p>项目经理需要了解API里面微信开放接口的信息例如：</p>
+
+<ol>
+<li>登录授权</li>
+<li>获取用户信息</li>
+<li>微信支付</li>
+<li>转发</li>
+<li>收货地址</li>
+<li>生成小程序二维码</li>
+</ol>
+
+<hr/>
+
+<p>小程序初期明确是否在运营规范里允许的，或者找一些已有小程序样例</p>
+
+<ul>
+<li>运营规范(在这里查看禁止事项)：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/index.html">https://mp.weixin.qq.com/debug/wxadoc/product/index.html</a></li>
+<li>特殊行业所需资质材料：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714</a></li>
+<li>支付文档：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1</a></li>
+<li>客服消息：<a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221">https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221</a> </li>
+<li>数据分析：<a href="https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714</a></li>
+</ul>
+
+<hr/>
+
+<p>入坑指南，疑难问题，请浏览👇<br/>
+小程序社区：<a href="http://www.wxapp-union.com/">http://www.wxapp-union.com/</a></p>
+
+<p>开发者学习已有框架可参考<br/>
+WePY框架开发小程序请移步👇<br/>
+<a href="https://tencent.github.io/wepy/index.html">https://tencent.github.io/wepy/index.html</a></p>
+
+<p>美团一团队出的框架mpvue框架请移步👇<br/>
+<a href="http://mpvue.com/mpvue/#_2">http://mpvue.com/mpvue/#_2</a></p>
+
+<hr/>
+
+<p>另附一种快速注册微信小程序方法：微信商户平台里，可以添加小程序，并且是直接认证通过的，支付认证过的！！！</p>
 
 
 		</div>
