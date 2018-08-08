@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-08-08T16:56:20+08:00</updated>
+  <updated>2018-08-08T16:57:27+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -944,7 +944,7 @@ NOTE: &#39;汇报任务：检查本社区的任务在系统中叫汇报任务&#3
 
 <hr/>
 
-<p>解决方法如下：</p>
+<p>微信登录方法如下：</p>
 
 <pre><code>//不需要微信授权既可获取微信小程序登录API获取code
 wx.login({
@@ -977,10 +977,10 @@ wx.login({
 </code></pre>
 
 <ol>
-<li>如果授权获取用户信息</li>
-<li>得到code,iv,encryptedData,rawData,signature将code，iv，encryptedData传给服务器</li>
+<li>如果授权获可以取用户信息</li>
+<li>得到iv,encryptedData,rawData,signature将login 的code，iv，encryptedData传给服务器</li>
 <li>服务器post请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
-<li>服务端解密数据encryptedData</li>
+<li>服务端解密数据encryptedData 可以获取userinfo信息 和unionId</li>
 </ol>
 
 <blockquote>
@@ -1009,8 +1009,7 @@ https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html
 
 <hr/>
 
-<pre><code>
-会话密钥session_key有效性
+<pre><code>会话密钥session_key有效性
 
 开发者如果遇到因为session_key不正确而校验签名失败或解密失败，请关注下面几个与session_key有关的注意事项。
 
