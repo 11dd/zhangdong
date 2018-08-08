@@ -340,20 +340,23 @@
 
 <pre><code>wx.login    登录
 wx.getUserInfo  获取用户信息
-获取用户手机号
 wx.chooseAddress    获取用户收货地址
 wx.requestPayment   发起微信支付
 wx.addCard  添加卡券
 wx.openCard 打开卡券
+可以获取用户手机号
 不能获取本机IP
 </code></pre>
 
 <h5 id="toc_1">设备 API 列表：</h5>
 
-<pre><code>wx.getNetworkType   获取网络类型
-wx.onNetworkStatusChange    监听网络状态变化
+<pre><code>wx.scanCode 扫码
+wx.makePhoneCall    拨打电话
 wx.getSystemInfo    获取系统信息
 wx.getSystemInfoSync    获取系统信息
+wx.getNetworkType   获取网络类型
+wx.onNetworkStatusChange    监听网络状态变化
+
 wx.onAccelerometerChange    监听加速度数据
 wx.startAccelerometer   开始监听加速度数据
 wx.stopAccelerometer    停止监听加速度数据
@@ -362,8 +365,6 @@ wx.startCompass 开始监听罗盘数据
 wx.stopCompass  停止监听罗盘数据
 wx.setClipboardData 设置剪贴板内容
 wx.getClipboardData 获取剪贴板内容
-wx.makePhoneCall    拨打电话
-wx.scanCode 扫码
 </code></pre>
 
 <h5 id="toc_2">多数 API 的回调都是异步，你需要处理好代码逻辑的异步问题。</h5>
