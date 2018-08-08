@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-08-08T15:51:42+08:00</updated>
+  <updated>2018-08-08T15:53:42+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -427,7 +427,10 @@ Tab 切换      调用 API wx.switchTab
 <pre><code> •  域名只支持 https (request、uploadFile、downloadFile) 和 wss (connectSocket) 协议；
  •  域名不能使用 IP 地址或 localhost
  •  域名必须经过 ICP 备案；
- •  出于安全考虑，api.weixin.qq.com 不能被配置为服务器域名，相关API也不能在小程序内调用。开发者应将 appsecret 保存到后台服务器中，通过服务器使用 appsecret 获取 accesstoken，并调用相关 API。
+ •  出于安全考虑，api.weixin.qq.com 不能被配置为服务器域名，
+       相关API也不能在小程序内调用。
+       开发者应将 appsecret 保存到后台服务器中，
+       通过服务器使用 appsecret 获取 accesstoken，并调用相关 API。
  •  对于每个接口，分别可以配置最多 20 个域名
 
 </code></pre>
