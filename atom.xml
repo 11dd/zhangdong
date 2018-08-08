@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-08-08T15:57:17+08:00</updated>
+  <updated>2018-08-08T16:04:18+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -497,10 +497,12 @@ TLS版本及HTTPS证书 选项，跳过服务器域名的校验。
 
 <pre><code>wx.login    登录
 wx.getUserInfo  获取用户信息
+获取用户手机号
 wx.chooseAddress    获取用户收货地址
 wx.requestPayment   发起微信支付
 wx.addCard  添加卡券
 wx.openCard 打开卡券
+不能获取本机IP
 </code></pre>
 
 <h5 id="toc_1">设备 API 列表：</h5>
