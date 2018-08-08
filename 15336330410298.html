@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  OC 字符串操作方法说明 - 至尊宝典之备忘录
+  小程序产品定位及功能业务介绍 - 至尊宝典之备忘录
   
   </title>
  <meta name="description" content="">
@@ -334,140 +334,79 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>OC 字符串操作方法说明</h1>
+<h1>小程序产品定位及功能业务介绍</h1>
 
-<h5 id="toc_0">属性字符串常用操作</h5>
+<h4 id="toc_0">小程序的历程</h4>
 
-<pre><code>- (NSMutableAttributedString *)stringToAttributedString:(NSString*)tempStr NSMakeRange:(int)num
-{
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:tempStr];
-    //颜色
-    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0,num)];
-    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(num,tempStr.length-num)];
-    //字体
-    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:kh(14)] range:NSMakeRange(0,num)];
-    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:kh(16)] range:NSMakeRange(num,tempStr.length-num)];  
-    return attrString;
-}
+<ol>
+<li><p>16年 越来越多产品通过公众号来做，因为这里开发、获取用户和传播成本更低。拆分出来的服务号并没有提供更好的服务，所以微信内部正在研究新的形态，叫「微信小程序」。</p></li>
+<li><p>从2017年1月9日 小程序正式推出之后至 2017年12月28日 跳一跳上线火爆，传播发展的地域时间差；</p></li>
+<li><p>全面开放申请后，主体类型为企业、政府、媒体、其他组织或个人的开发者，均可申请注册小程序。小程序、订阅号、服务号、企业号是并行的体系。</p></li>
+<li><p>微信小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。</p></li>
+<li><p>2018.7.13 微信更新小程序，增加了我的小程序入口,最多可加50个；</p></li>
+<li><p>小程序入口=&gt; 微信 消息页下拉，发现页 小程序；<br/>
+小程序分享不能分享到朋友圈，分享好友或群；<br/>
+主要是线下场景扫码使用</p></li>
+</ol>
+
+<h4 id="toc_1">小程序的几点介绍</h4>
+
+<pre><code>1.小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念；
+
+2.用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。
+
+3.对于开发者而言，小程序开发门槛相对较低，难度不及APP，能够满足简单的基础应用；
+
+4.适合生活服务类线下商铺以及非刚需低频应用的转换。
+
+5.小程序能够实现消息通知、线下扫码、公众号关联等七大功能。其中，通过公众号关联，用户可以实现公众号与小程序之间相互跳转。由于小程序不存在入口。
 </code></pre>
 
-<h5 id="toc_1">将字符串分隔成数组</h5>
+<h4 id="toc_2">腾讯自家小程序全家桶</h4>
 
-<pre><code>    NSString* str = @&quot;one,two,three,four,five&quot;;
-    //分割字符创为数组，下例以“，”分割
-    NSArray* array = [str componentsSeparatedByString:@&quot;,&quot;];
-    for(NSString* obj in array)
-    {
-        NSLog(@&quot;%@&quot;, obj);
-    }
+<pre><code>小程序示例   第一个小程序
+小程序开发助手
+小程序数据助手
+小游戏数据助手
+公众平台助手
+微信发票助手
+王卡申请助手
 
-    //链接字符串,下例以空格连接
-    str = [array componentsJoinedByString:@&quot; &quot;];
-    NSLog(@&quot;%@&quot;, str);
+QQ游戏
+腾讯爱玩
+全民大乐斗
+企鹅电竞+
+腾讯动漫+
+
+腾讯+  产品体验官
+腾讯网
+腾讯文档
+腾讯企业邮箱
+
+腾讯云助手
+腾讯视频云
+腾讯AI体验中心
+腾讯云AI体验中心
+腾讯优图AI开发平台
 </code></pre>
 
-<h5 id="toc_2">判断字符串是否包含另一个字符串</h5>
+<h4 id="toc_3">其他</h4>
 
-<pre><code>//判断”abcd” 是否含有@&quot;ab&quot;
- NSString *tempStr = @&quot;abcd&quot;;
-    if([tempStr rangeOfString:@&quot;ab&quot;].location !=NSNotFound){
-        NSLog(@&quot;yes&quot;);
-    }else {
-        NSLog(@&quot;no&quot;);
-    }
-</code></pre>
+<pre><code>举例，摩拜单车的接入，
+KFC，麦当劳 的点餐
+家乐福中国的优惠，
 
-<h5 id="toc_3">字符串去掉特殊符号或改成去除数字/字母的笨方法</h5>
+一时风靡的答题类，头脑王者
 
-<pre><code>NSString * string111 = @&quot;1234、[]{}#%-*+=_\\|~＜&quot;;
-NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@&quot;@／：；（）¥「」＂、[]{}#%-*+=_\\|~＜＞$€^•&#39;@#$%^&amp;*()_+&#39;\&quot;&quot;];
-NSString *string222 = [string111 stringByTrimmingCharactersInSet:set];
-</code></pre>
+青芒杂志
+一条视频
+毒蛇电影社区
 
-<h5 id="toc_4">从字符串的开头一直截取到指定的位置，但不包括该位置的字符</h5>
+企鹅电竞+
+斗鱼直播
+虎牙直播
+YY直播+
 
-<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
-    NSString *string2 = [string1 substringToIndex:3];
-    NSLog(@&quot;string2:%@&quot;,string2);
-</code></pre>
-
-<h5 id="toc_5">以指定位置开始（包括指定位置的字符），并包括之后的全部字符</h5>
-
-<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
-    NSString *string2 = [string1 substringFromIndex:3];
-    NSLog(@&quot;string2:%@&quot;,string2);
-</code></pre>
-
-<h5 id="toc_6">按照所给出的位置，长度（截取几位而不是到哪），任意地从字符串中截取子串</h5>
-
-<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
-    NSString *string2 = [string1 substringWithRange:NSMakeRange(0, 4)];
-    NSLog(@&quot;string2:%@&quot;,string2);
-</code></pre>
-
-<h5 id="toc_7">替换字符串中字符,该方法做了copy操作，原字符串没变，需要重新赋值给原字符串</h5>
-
-<pre><code>    NSString* tempstr4 = [tempstr3 stringByReplacingOccurrencesOfString:@&quot;:&quot; withString:@&quot;&quot;];
-    NSString* tempstr5 = [tempstr4 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;];
-    NSString* tempstr6 = [tempstr5 stringByReplacingOccurrencesOfString:@&quot;/&quot; withString:@&quot;&quot;];
-</code></pre>
-
-<h5 id="toc_8">字符串大小写</h5>
-
-<pre><code>//   将字符串中的英文字符由小写转换为大写
-    NSString *bigString = [string uppercaseString];
-    NSLog(@&quot;string = %@, bigstring = %@&quot;, string, bigString); 
-       
-//   将字符串中的英文字符由大写转换为小写
-    NSString *smallString = [string lowercaseString];
-    NSLog(@&quot;string = %@, smallString = %@&quot;, string, smallString);
-    
-//  将字符串的首字母改为大写
-    NSString *firstBigString = [string capitalizedString];
-    NSLog(@&quot;%@&quot;, firstBigString);
-</code></pre>
-
-<h5 id="toc_9">字符串拼接</h5>
-
-<pre><code>//  字符串拼接:将两个字符串拼在一起后形成一个新的字符串,原来两个字符串并未发生改变
-    NSString *string1 = @&quot;abc&quot;;
-    NSString *string2 = @&quot;123&quot;;
-    NSString *addString = [string1 stringByAppendingString:string2];
-    NSLog(@&quot;%@&quot;, addString);
-</code></pre>
-
-<h4 id="toc_10">字符串查找</h4>
-
-<pre><code>    NSString * string = @&quot;1234&quot;;
-    //  字符串查找：判断是否以参数给定的字符串开头。是，返回真 1 ；否，返回假 0。
-    BOOL result1 = [string hasPrefix:@&quot;1&quot;];
-    NSLog(@&quot;%d&quot;, result1);
-    
-    //  字符串查找：判断是否以参数给定的字符串结尾。是，返回真 1 ；否，返回假 0。
-    BOOL result2 = [string hasSuffix:@&quot;4&quot;];
-    NSLog(@&quot;%d&quot;, result2);
-</code></pre>
-
-<h4 id="toc_11">反转字符串</h4>
-
-<pre><code>/**
- *  @brief  反转字符串
- *
- *  @param strSrc 被反转字符串
- *
- *  @return 反转后字符串
- */
-+ (NSString *)jk_reverseString:(NSString *)strSrc
-{
-    NSMutableString* reverseString = [[NSMutableString alloc] init];
-    NSInteger charIndex = [strSrc length];
-    while (charIndex &gt; 0) {
-        charIndex --;
-        NSRange subStrRange = NSMakeRange(charIndex, 1);
-        [reverseString appendString:[strSrc substringWithRange:subStrRange]];
-    }
-    return reverseString;
-}
 </code></pre>
 
 
@@ -480,15 +419,13 @@ NSString *string222 = [string111 stringByTrimmingCharactersInSet:set];
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15139220095625.html"  title="Previous Post: iOS ARKit 看我就受够了">&laquo; iOS ARKit 看我就受够了</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15139214500331.html" 
-	        title="Next Post: OC 数组操作方法说明">OC 数组操作方法说明 &raquo;</a>
+	        <a href="15232437563217.html" 
+	        title="Next Post: 小程序介绍">小程序介绍 &raquo;</a>
 	    
 	</div>
   </div>
@@ -501,7 +438,7 @@ NSString *string222 = [string111 stringByTrimmingCharactersInSet:set];
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15139214218497.html';
+		var currentURL = '15336330410298.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

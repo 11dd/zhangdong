@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-08-03T14:02:47+08:00</updated>
+  <updated>2018-08-07T17:07:36+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,88 @@
   </author>
   <generator uri="http://www.mweb.im">MWeb</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[小程序产品定位及功能业务介绍]]></title>
+    <link href="www.freefook.com/15336330410298.html"/>
+    <updated>2018-08-07T17:10:41+08:00</updated>
+    <id>www.freefook.com/15336330410298.html</id>
+    <content type="html"><![CDATA[
+<h4 id="toc_0">小程序的历程</h4>
+
+<ol>
+<li><p>16年 越来越多产品通过公众号来做，因为这里开发、获取用户和传播成本更低。拆分出来的服务号并没有提供更好的服务，所以微信内部正在研究新的形态，叫「微信小程序」。</p></li>
+<li><p>从2017年1月9日 小程序正式推出之后至 2017年12月28日 跳一跳上线火爆，传播发展的地域时间差；</p></li>
+<li><p>全面开放申请后，主体类型为企业、政府、媒体、其他组织或个人的开发者，均可申请注册小程序。小程序、订阅号、服务号、企业号是并行的体系。</p></li>
+<li><p>微信小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。</p></li>
+<li><p>2018.7.13 微信更新小程序，增加了我的小程序入口,最多可加50个；</p></li>
+<li><p>小程序入口=&gt; 微信 消息页下拉，发现页 小程序；<br/>
+小程序分享不能分享到朋友圈，分享好友或群；<br/>
+主要是线下场景扫码使用</p></li>
+</ol>
+
+<h4 id="toc_1">小程序的几点介绍</h4>
+
+<pre><code>1.小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念；
+
+2.用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。
+
+3.对于开发者而言，小程序开发门槛相对较低，难度不及APP，能够满足简单的基础应用；
+
+4.适合生活服务类线下商铺以及非刚需低频应用的转换。
+
+5.小程序能够实现消息通知、线下扫码、公众号关联等七大功能。其中，通过公众号关联，用户可以实现公众号与小程序之间相互跳转。由于小程序不存在入口。
+</code></pre>
+
+<h4 id="toc_2">腾讯自家小程序全家桶</h4>
+
+<pre><code>小程序示例   第一个小程序
+小程序开发助手
+小程序数据助手
+小游戏数据助手
+公众平台助手
+微信发票助手
+王卡申请助手
+
+QQ游戏
+腾讯爱玩
+全民大乐斗
+企鹅电竞+
+腾讯动漫+
+
+腾讯+  产品体验官
+腾讯网
+腾讯文档
+腾讯企业邮箱
+
+腾讯云助手
+腾讯视频云
+腾讯AI体验中心
+腾讯云AI体验中心
+腾讯优图AI开发平台
+</code></pre>
+
+<h4 id="toc_3">其他</h4>
+
+<pre><code>举例，摩拜单车的接入，
+KFC，麦当劳 的点餐
+家乐福中国的优惠，
+
+一时风靡的答题类，头脑王者
+
+青芒杂志
+一条视频
+毒蛇电影社区
+
+企鹅电竞+
+斗鱼直播
+虎牙直播
+YY直播+
+
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[小程序介绍]]></title>
@@ -46,6 +128,16 @@
 
 <p>企业小程序 侧边栏多了微信支付 支付设置 与小程序插件<br/>
 <img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-19%20%E4%B8%8B%E5%8D%881.54.00.png" alt="屏幕快照 2018-04-19 下午1.54.00"/></p>
+
+<p><img src="media/15232437563217/%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF.png" alt="基本信息"/></p>
+
+<p> 1. 公众号可关联同主体的10个小程序及不同主体的3个小程序  2. 已关联的小程序可被使用在自定义菜单和模版消息场景中。<br/>
+3. 小程序和小程序 相互跳转的必须是同一公众号下关联的。<br/>
+4. 小程序发布前，可修改2次名称。<br/>
+5. 发布后，必须通过微信认证流程改名。<br/>
+6. 小程序名称可以由中文、数字、英文。长度在4-30个字符之间，一个中文字等于2个字符。<br/>
+7. 公众号、小程序在微信公众平台上的名称是唯一的，且属于同一主体下，可以重名。<br/>
+8. 不得与不同主体的公众号名称重名。 </p>
 
 <hr/>
 
@@ -324,6 +416,8 @@ Tab 切换      调用 API wx.switchTab
  •  对于每个接口，分别可以配置最多 20 个域名
 
 </code></pre>
+
+<p><img src="media/15325981038081/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%882.58.15.png" alt="屏幕快照 2018-08-08 下午2.58.15"/></p>
 
 <h5 id="toc_1">HTTPS 证书</h5>
 
@@ -1891,39 +1985,6 @@ NSArray *sub1 = [tempArr subarrayWithRange:NSMakeRange(1, 3)];
 //3.直接删除元素
 [array removeObject:@&quot;e&quot;];
  NSLog(@&quot;%@&quot;,array);
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[OC plist文件管理(代码方式)]]></title>
-    <link href="www.freefook.com/15142856319824.html"/>
-    <updated>2017-12-26T18:53:51+08:00</updated>
-    <id>www.freefook.com/15142856319824.html</id>
-    <content type="html"><![CDATA[
-<pre><code>//获取本地沙盒路径
-NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-
-//获取完整路径
-NSString *documentsPath = [path objectAtIndex:0];
-NSString *plistPath = [documentsPath stringByAppendingPathComponent:@&quot;Test.plist&quot;];
-
-//创建数据
-NSMutableDictionary *dataDict = [NSMutableDictionary dictionary];
-
-[dataDict setObject:@&quot;zhangd&quot; forKey:@&quot;name&quot;];
-[dataDict setObject:@&quot;26&quot; forKey:@&quot;age&quot;];
-[dataDict setObject:@&quot;man&quot; forKey:@&quot;sex&quot;];
-
-//写入plist文件
-[dataDict writeToFile:plistPath atomically:YES];
-
-//读取plist文件
-//文件是什么类型，就用什么类型的数据来接收
-NSMutableDictionary *dataDict1 = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-NSLog((@&quot;**start**\n[function name:%s]\n&quot; &quot;[Lines:%d]\n&quot; &quot;data-&gt;%@\n**end**\n\n&quot;), __FUNCTION__, __LINE__,dataDict1);
-
 </code></pre>
 
 ]]></content>
