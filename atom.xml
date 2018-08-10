@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-08-09T15:54:12+08:00</updated>
+  <updated>2018-08-09T15:56:38+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://www.mweb.im">MWeb</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[一些地址记录列表]]></title>
+    <link href="www.freefook.com/15338947810168.html"/>
+    <updated>2018-08-10T17:53:01+08:00</updated>
+    <id>www.freefook.com/15338947810168.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[简易博客]]></title>
@@ -42,6 +52,430 @@ github 桌面版工具地址：<a href="https://desktop.github.com/">https://des
 <p><img src="media/15337217832111/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%885.56.47.png" alt="屏幕快照 2018-08-08 下午5.56.47"/></p>
 
 <p><img src="media/15337217832111/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-09%20%E4%B8%8B%E5%8D%882.40.04.png" alt="屏幕快照 2018-08-09 下午2.40.04"/></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[排序]]></title>
+    <link href="www.freefook.com/15198806151662.html"/>
+    <updated>2018-03-01T13:03:35+08:00</updated>
+    <id>www.freefook.com/15198806151662.html</id>
+    <content type="html"><![CDATA[
+<pre><code> sizeof 判断数据类型长度符的关键字  简单的说其作用就是返回一个对象或者类型所占的内存字节数
+</code></pre>
+
+<h4 id="toc_0">选择排序</h4>
+
+<pre><code>主要思想：
+ 对比数组中前一个元素跟后一个元素的大小，
+ 如果后面的元素比前面的元素小则用一个变量k来记住他的位置，
+ 接着第二次比较，前面“后一个元素”现变成了“前一个元素”，
+ 继续跟他的“后一个元素”进行比较如果后面的元素比他要小则用变量k记住它在  数组中的位置(下标)，
+ 等到循环结束的时候，我们应该找到了最小的那个数的下标了，
+ 然后进行判断，如果这个元素的下标不是第一个元素的下标，
+ 就让第一个元素跟他交换一下值，
+ 这样就找到整个数组中最小的数了。
+ 然后找到数组中第二小的数，让他跟数组中第二个元素交换一下值，以此类推。
+ 
+ 总之一句话，拿第一个数和后面的所有数比，谁小记录上下标，用这个小的继续和后面的比，直到比完所有。
+ n个乱序-&gt;选择排序可经过n-1趟直接选择排序得到有序结果
+</code></pre>
+
+<pre><code>#include&lt;stdio.h&gt;
+void select_sort(int arr[],int size)
+{
+    int i=0,j=0;
+    int k=0;
+    for(i=0;i&lt;size;i++){
+        k=i;
+        for(j=i+1;j&lt;size;j++){
+           //结果输出想从小到大，还是从大到小，改这个&gt; or &lt;;
+            if(arr[k]&lt;arr[j]){
+                k=j;
+            }
+
+        }
+        if(k!=i){
+            int tmp=arr[k];
+            arr[k]=arr[i];
+            arr[i]=tmp;
+        }
+    }
+}
+int main()
+{
+    int arr[]={3,6,1,9,4,2,0,5,8,7};
+    int len=sizeof(arr)/sizeof(arr[0]);
+    select_sort(arr,len);
+    int i=0;
+    for(i=0;i&lt;len;i++){
+        printf(&quot;%d &quot;,arr[i]);
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}
+</code></pre>
+
+<h4 id="toc_1">冒泡排序</h4>
+
+<pre><code> 比较相邻的元素。如果第一个比第二个大，就交换他们两个。
+ 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。
+ 针对所有的元素重复以上的步骤，除了最后一个。
+ 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
+</code></pre>
+
+<pre><code>#include&lt;stdio.h&gt;
+void bubble_sort(int arr[],int size)
+{
+    int i=0,j=0;
+    for(i=0;i&lt;size;i++){
+        for(j=0;j&lt;size-i-1;j++){
+            if(arr[j]&gt;arr[j+1]){
+                int tmp=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=tmp;
+            }
+        }
+    }
+}
+int main()
+{
+    int arr[]={3,6,1,9,4,2,0,5,8,7};
+    int len=sizeof(arr)/sizeof(arr[0]);
+    bubble_sort(arr,len);
+    int i=0;
+    for(i=0;i&lt;len;i++){
+        printf(&quot;%d &quot;,arr[i]);
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}
+</code></pre>
+
+<h4 id="toc_2">快速排序</h4>
+
+<pre><code> 第一遍快速排序不会直接得到最终结果，
+ 只会把比k大和比k小的数分到k的两边。
+ 为了得到最后结果，需要再次对下标2两边的数组分别执行此步骤，
+ 然后再分解数组，直到数组不能再分解为止（只有一个数据），
+ 才能得到正确结果。
+ 
+ 总结：分别从初始序列两端开始，先从右往左找一个小于“数组第一个”的数，再从左往右找一个大于“数组第一个”的数，然后交换他们；
+
+跳跃式交换，进化了冒泡的相邻交换，数据量多的无序数组排序时才提现出效果
+二分思想
+
+</code></pre>
+
+<pre><code>#include&lt;stdio.h&gt;
+void quick_sort(int arr[],int left,int right)
+{
+    if(left&gt;=right){
+        return;
+    }
+    int key=arr[left];
+    int begin=left;
+    int end=right;
+    while(begin!=end){
+        while(begin&lt;end &amp;&amp; arr[end]&gt;=key){
+            end--;
+        }
+        if(end&gt;begin){
+            arr[begin]=arr[end];
+        }
+        while(begin&lt;end &amp;&amp; arr[begin]&lt;=key){
+            begin++;
+        }
+        if(begin&lt;end){
+            arr[end]=arr[begin];
+        }
+    }
+    arr[begin]=key;
+    quick_sort(arr,left,begin-1);
+    quick_sort(arr,begin+1,right);
+}
+int main()
+{
+    int arr[]={3,6,1,9,4,2,0,5,8,7};
+    quick_sort(arr,0,9);
+    int i=0;
+    for(i=0;i&lt;10;i++){
+        printf(&quot;%d &quot;,arr[i]);
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}
+</code></pre>
+
+<h4 id="toc_3">插入排序</h4>
+
+<pre><code>插入排序有以下几种方式：直接插入排序，二分插入排序（又称折半插入排序），链表插入排序，希尔排序（又称缩小增量排序）
+
+示例直接插入排序，
+用数组第二个和第一个比，如果小，就插入第一位位置；
+用数组第三个和第二个比，如果小，就插入第二个位置；
+                    如果大，就留在原位置；
+                    依次类推；
+</code></pre>
+
+<pre><code>#include&lt;stdio.h&gt;
+void insert_sort(int arr[],int size)
+{
+    int i=0,j=0;
+    int tmp=0;
+    for(i=1;i&lt;size;i++){
+        tmp=arr[i];
+        j=i;
+        while(j&gt;0 &amp;&amp; arr[j-1]&gt;tmp){
+            arr[j]=arr[j-1];
+            j--;
+        }
+        arr[j]=tmp;
+    }
+}
+int main()
+{
+    int arr[]={3,6,1,9,4,2,0,5,8,7};
+    int len=sizeof(arr)/sizeof(arr[0]);
+    insert_sort(arr,len);
+    int i=0;
+    for(i=0;i&lt;len;i++){
+        printf(&quot;%d &quot;,arr[i]);
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}
+</code></pre>
+
+<h4 id="toc_4">希尔排序</h4>
+
+<pre><code>#include&lt;stdio.h&gt;
+void shell_insert_sort(int arr[],int size)
+{
+    int gap=0;
+    int i=0,j=0,k=0;
+    for(gap=size/2;gap&gt;0;gap/=2){
+        //for(i=0;i&lt;gap;i++){
+            for(j=gap;j&lt;size;j++){
+                int tmp=arr[j];
+                k=j;
+                while(k-gap&gt;=0 &amp;&amp; arr[k-gap]&gt;tmp){
+                    arr[k]=arr[k-gap];
+                    k-=gap;
+                }
+                arr[k]=tmp;
+            }
+        //}
+    }
+}
+int main()
+{
+    int arr[]={3,6,1,9,4,2,0,5,8,7};
+    int len=sizeof(arr)/sizeof(arr[0]);
+    shell_insert_sort(arr,len);
+    int i=0;
+    for(i=0;i&lt;len;i++){
+        printf(&quot;%d &quot;,arr[i]);
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}
+</code></pre>
+
+<h4 id="toc_5">归并排序（合并排序）</h4>
+
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;stdlib.h&gt;
+void merge(int* src,int *dst,int begin,int mid,int end)
+{
+    int begin1=begin;
+    int begin2=mid;
+    int index=begin;
+    while(begin1&lt;mid &amp;&amp; begin2&lt;end){
+        if(src[begin1]&lt;src[begin2]){
+            dst[index++]=src[begin1++];
+        }else{
+            dst[index++]=src[begin2++];
+        }
+    }
+    while(begin1&lt;mid){
+        dst[index++]=src[begin1++];
+    }
+    while(begin2&lt;end){
+        dst[index++]=src[begin2++];
+    }
+    memcpy(src+begin,dst+begin,(end-begin)*sizeof(int));
+}
+void _merge_sort(int *arr,int* tmp,int left,int right)
+{
+    if(left+1&gt;=right){
+        return;
+    }
+    int mid=left+(right-left)/2;
+    _merge_sort(arr,tmp,left,mid);
+    _merge_sort(arr,tmp,mid,right);
+    merge(arr,tmp,left,mid,right);
+}
+void merge_sort(int* arr,int size)
+{
+    int* tmp=(int*)malloc(size*sizeof(int));
+    _merge_sort(arr,tmp,0,size);
+    free(tmp);
+}
+int main()
+{
+    int arr[]={3,6,1,9,4,2,0,5,8,7};
+    int len=sizeof(arr)/sizeof(arr[0]);
+    merge_sort(arr,len);
+    int i=0;
+    for(i=0;i&lt;len;i++){
+        printf(&quot;%d &quot;,arr[i]);
+    }
+    printf(&quot;\n&quot;);
+
+    return 0;
+}
+</code></pre>
+
+<h4 id="toc_6">堆排序</h4>
+
+<pre><code>#include&lt;stdio.h&gt;
+void swap(int *a,int *b)
+{
+    int tmp=*a;
+    *a=*b;
+    *b=tmp;
+}
+void adjust_down(int arr[],int root,int size)
+{
+    int parent=root;
+    int left=root*2+1;
+    int right=left+1;
+    while(left&lt;size){
+        int max=left;
+        if(right&lt;size &amp;&amp; arr[right]&gt;arr[max]){
+            max=right;
+        }
+        if(arr[max]&gt;arr[parent]){
+            swap(&amp;arr[max],&amp;arr[parent]);
+            parent=max;
+            left=parent*2+1;
+            right=left+1;
+        }
+        else{
+            break;
+        }
+    }
+}
+//make min heap
+void heap_sort(int arr[],int size)
+{
+    int begin=0;
+    for(begin=size/2-1;begin&gt;=0;--begin){
+        adjust_down(arr,begin,size);
+    }
+    int end=size-1;
+    while(end&gt;0){
+        swap(&amp;arr[0],&amp;arr[end]);
+        adjust_down(arr,0,end);
+        --end;
+    }
+}
+int main()
+{
+    int arr[10]={3,7,1,4,2,8,5,0,9,6};
+    heap_sort(arr,10);
+    int i=0;
+    for(;i&lt;10;i++){
+        printf(&quot;%d &quot;,arr[i]);
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}
+
+</code></pre>
+
+<p><img src="media/15198806151662/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-01%20%E4%B8%8B%E5%8D%883.45.58.png" alt="屏幕快照 2018-03-01 下午3.45.58"/></p>
+
+<p>选择排序、快速排序、希尔排序、堆排序不是稳定的排序算法，<br/>
+冒泡排序、插入排序、归并排序 是稳定的排序算法。</p>
+
+<p>在原序列中，ri=rj，且ri在rj之前，而在排序后的序列中，ri仍在rj之前，则称这种排序算法是稳定的；否则称为不稳定的。</p>
+
+<p>稳定都是相对的，不是绝对的稳定</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[一些地址记录]]></title>
+    <link href="www.freefook.com/15338947142066.html"/>
+    <updated>2018-08-10T17:51:54+08:00</updated>
+    <id>www.freefook.com/15338947142066.html</id>
+    <content type="html"><![CDATA[
+<p>小程序开发视频环境管理地址：<br/>
+<a href="https://console.qcloud.com/lav2/dev">https://console.qcloud.com/lav2/dev</a></p>
+
+<p>在线地图经纬度查询：<br/>
+<a href="http://www.gpsspg.com/maps.htm">http://www.gpsspg.com/maps.htm</a></p>
+
+<p>nodejs 下载地址：<br/>
+<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
+
+<p>视频直播方案地址：<br/>
+<a href="http://www.easynvr.com/index.html">http://www.easynvr.com/index.html</a></p>
+
+<p>极光统计地址：<br/>
+<a href="https://www.jiguang.cn/stat/#/app/2c155c3d850ff8cb16f857a8/crash_log_list">https://www.jiguang.cn/stat/#/app/2c155c3d850ff8cb16f857a8/crash_log_list</a></p>
+
+<p>赵哲的地址：<br/>
+<a href="http://www.zhaozhepublic.com/">http://www.zhaozhepublic.com/</a></p>
+
+<p>接口管理地址：<br/>
+<a href="https://www.eolinker.com/">https://www.eolinker.com/</a></p>
+
+<p>阿里云推送地址：<br/>
+<a href="https://help.aliyun.com/document_detail/30072.html">https://help.aliyun.com/document_detail/30072.html</a></p>
+
+<p>appCode破解下载地址：<br/>
+<a href="http://www.sdifen.com/appcode201631.html">http://www.sdifen.com/appcode201631.html</a></p>
+
+<p>微信小程序开发资源汇总<br/>
+<a href="https://github.com/justjavac/awesome-wechat-weapp">https://github.com/justjavac/awesome-wechat-weapp</a></p>
+
+<p>iOS部署企业包：<br/>
+<a href="https://www.jianshu.com/p/a9db64b53607">https://www.jianshu.com/p/a9db64b53607</a></p>
+
+<p>微信小程序中使用Promise进行异步流程处理</p>
+
+<p>CMMI<br/>
+<a href="https://sas.cmmiinstitute.com/pars/pars_detail.aspx?a=32649">https://sas.cmmiinstitute.com/pars/pars_detail.aspx?a=32649</a></p>
+
+<p>微信小程序-SASS开发环境搭建(mac)<br/>
+<a href="https://blog.csdn.net/yaodong379/article/details/79305100">https://blog.csdn.net/yaodong379/article/details/79305100</a></p>
+
+<p><div>设置宽度，汉字正常换行，输入字母/数字不换行的解决方案分析<br/>
+<a href="https://www.cnblogs.com/qq278360339/archive/2012/12/11/2813395.html">https://www.cnblogs.com/qq278360339/archive/2012/12/11/2813395.html</a></p>
+
+<p>A polyfill for ES6-style Promises ：<br/>
+<a href="https://github.com/stefanpenner/es6-promise">https://github.com/stefanpenner/es6-promise</a></p>
+
+<p>weapp.qrcode.js 在 微信小程序 中，快速生成二维码 <br/>
+<a href="https://github.com/yingye/weapp-qrcode">https://github.com/yingye/weapp-qrcode</a></p>
+
+<p>ES6 map()遍历、filter()筛选<br/>
+<a href="https://blog.csdn.net/zuorishu/article/details/80958705">https://blog.csdn.net/zuorishu/article/details/80958705</a></p>
+
+<p>微信小程序编解码base64<br/>
+<a href="https://blog.csdn.net/qq_33382313/article/details/81074347">https://blog.csdn.net/qq_33382313/article/details/81074347</a></p>
+
+<p>微信小程序获取系统时间、时间戳、时间时间戳加减<br/>
+<a href="https://blog.csdn.net/ufo00001/article/details/72834437">https://blog.csdn.net/ufo00001/article/details/72834437</a></p>
+
+<p>微信小程序 sha1 实现密码加密<br/>
+<a href="https://www.cnblogs.com/mtour/p/7116415.html">https://www.cnblogs.com/mtour/p/7116415.html</a></p>
 
 ]]></content>
   </entry>
@@ -369,6 +803,9 @@ WePY框架开发小程序请移步👇<br/>
 
 <p>美团一团队出的框架mpvue框架请移步👇<br/>
 <a href="http://mpvue.com/mpvue/#_2">http://mpvue.com/mpvue/#_2</a></p>
+
+<p>weui Github 地址：<br/>
+<a href="https://github.com/Tencent/weui-wxss">https://github.com/Tencent/weui-wxss</a></p>
 
 <hr/>
 
@@ -1785,513 +2222,6 @@ url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex
 
 <pre><code>let newArr = t.data.ee.filter(item =&gt; item.pid === t.data.province[e.detail.value].id)
 
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小程序入坑锦集]]></title>
-    <link href="www.freefook.com/15288676024387.html"/>
-    <updated>2018-06-13T13:26:42+08:00</updated>
-    <id>www.freefook.com/15288676024387.html</id>
-    <content type="html"><![CDATA[
-<p><img src="media/15288676024387/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-11%20%E4%B8%8B%E5%8D%887.05.47.png" alt="屏幕快照 2018-06-11 下午7.05.47"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[排序]]></title>
-    <link href="www.freefook.com/15198806151662.html"/>
-    <updated>2018-03-01T13:03:35+08:00</updated>
-    <id>www.freefook.com/15198806151662.html</id>
-    <content type="html"><![CDATA[
-<pre><code> sizeof 判断数据类型长度符的关键字  简单的说其作用就是返回一个对象或者类型所占的内存字节数
-</code></pre>
-
-<h4 id="toc_0">选择排序</h4>
-
-<pre><code>主要思想：
- 对比数组中前一个元素跟后一个元素的大小，
- 如果后面的元素比前面的元素小则用一个变量k来记住他的位置，
- 接着第二次比较，前面“后一个元素”现变成了“前一个元素”，
- 继续跟他的“后一个元素”进行比较如果后面的元素比他要小则用变量k记住它在  数组中的位置(下标)，
- 等到循环结束的时候，我们应该找到了最小的那个数的下标了，
- 然后进行判断，如果这个元素的下标不是第一个元素的下标，
- 就让第一个元素跟他交换一下值，
- 这样就找到整个数组中最小的数了。
- 然后找到数组中第二小的数，让他跟数组中第二个元素交换一下值，以此类推。
- 
- 总之一句话，拿第一个数和后面的所有数比，谁小记录上下标，用这个小的继续和后面的比，直到比完所有。
- n个乱序-&gt;选择排序可经过n-1趟直接选择排序得到有序结果
-</code></pre>
-
-<pre><code>#include&lt;stdio.h&gt;
-void select_sort(int arr[],int size)
-{
-    int i=0,j=0;
-    int k=0;
-    for(i=0;i&lt;size;i++){
-        k=i;
-        for(j=i+1;j&lt;size;j++){
-           //结果输出想从小到大，还是从大到小，改这个&gt; or &lt;;
-            if(arr[k]&lt;arr[j]){
-                k=j;
-            }
-
-        }
-        if(k!=i){
-            int tmp=arr[k];
-            arr[k]=arr[i];
-            arr[i]=tmp;
-        }
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    select_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
-
-<h4 id="toc_1">冒泡排序</h4>
-
-<pre><code> 比较相邻的元素。如果第一个比第二个大，就交换他们两个。
- 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。
- 针对所有的元素重复以上的步骤，除了最后一个。
- 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
-</code></pre>
-
-<pre><code>#include&lt;stdio.h&gt;
-void bubble_sort(int arr[],int size)
-{
-    int i=0,j=0;
-    for(i=0;i&lt;size;i++){
-        for(j=0;j&lt;size-i-1;j++){
-            if(arr[j]&gt;arr[j+1]){
-                int tmp=arr[j];
-                arr[j]=arr[j+1];
-                arr[j+1]=tmp;
-            }
-        }
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    bubble_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
-
-<h4 id="toc_2">快速排序</h4>
-
-<pre><code> 第一遍快速排序不会直接得到最终结果，
- 只会把比k大和比k小的数分到k的两边。
- 为了得到最后结果，需要再次对下标2两边的数组分别执行此步骤，
- 然后再分解数组，直到数组不能再分解为止（只有一个数据），
- 才能得到正确结果。
- 
- 总结：分别从初始序列两端开始，先从右往左找一个小于“数组第一个”的数，再从左往右找一个大于“数组第一个”的数，然后交换他们；
-
-跳跃式交换，进化了冒泡的相邻交换，数据量多的无序数组排序时才提现出效果
-二分思想
-
-</code></pre>
-
-<pre><code>#include&lt;stdio.h&gt;
-void quick_sort(int arr[],int left,int right)
-{
-    if(left&gt;=right){
-        return;
-    }
-    int key=arr[left];
-    int begin=left;
-    int end=right;
-    while(begin!=end){
-        while(begin&lt;end &amp;&amp; arr[end]&gt;=key){
-            end--;
-        }
-        if(end&gt;begin){
-            arr[begin]=arr[end];
-        }
-        while(begin&lt;end &amp;&amp; arr[begin]&lt;=key){
-            begin++;
-        }
-        if(begin&lt;end){
-            arr[end]=arr[begin];
-        }
-    }
-    arr[begin]=key;
-    quick_sort(arr,left,begin-1);
-    quick_sort(arr,begin+1,right);
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    quick_sort(arr,0,9);
-    int i=0;
-    for(i=0;i&lt;10;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
-
-<h4 id="toc_3">插入排序</h4>
-
-<pre><code>插入排序有以下几种方式：直接插入排序，二分插入排序（又称折半插入排序），链表插入排序，希尔排序（又称缩小增量排序）
-
-示例直接插入排序，
-用数组第二个和第一个比，如果小，就插入第一位位置；
-用数组第三个和第二个比，如果小，就插入第二个位置；
-                    如果大，就留在原位置；
-                    依次类推；
-</code></pre>
-
-<pre><code>#include&lt;stdio.h&gt;
-void insert_sort(int arr[],int size)
-{
-    int i=0,j=0;
-    int tmp=0;
-    for(i=1;i&lt;size;i++){
-        tmp=arr[i];
-        j=i;
-        while(j&gt;0 &amp;&amp; arr[j-1]&gt;tmp){
-            arr[j]=arr[j-1];
-            j--;
-        }
-        arr[j]=tmp;
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    insert_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
-
-<h4 id="toc_4">希尔排序</h4>
-
-<pre><code>#include&lt;stdio.h&gt;
-void shell_insert_sort(int arr[],int size)
-{
-    int gap=0;
-    int i=0,j=0,k=0;
-    for(gap=size/2;gap&gt;0;gap/=2){
-        //for(i=0;i&lt;gap;i++){
-            for(j=gap;j&lt;size;j++){
-                int tmp=arr[j];
-                k=j;
-                while(k-gap&gt;=0 &amp;&amp; arr[k-gap]&gt;tmp){
-                    arr[k]=arr[k-gap];
-                    k-=gap;
-                }
-                arr[k]=tmp;
-            }
-        //}
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    shell_insert_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
-
-<h4 id="toc_5">归并排序（合并排序）</h4>
-
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;stdlib.h&gt;
-void merge(int* src,int *dst,int begin,int mid,int end)
-{
-    int begin1=begin;
-    int begin2=mid;
-    int index=begin;
-    while(begin1&lt;mid &amp;&amp; begin2&lt;end){
-        if(src[begin1]&lt;src[begin2]){
-            dst[index++]=src[begin1++];
-        }else{
-            dst[index++]=src[begin2++];
-        }
-    }
-    while(begin1&lt;mid){
-        dst[index++]=src[begin1++];
-    }
-    while(begin2&lt;end){
-        dst[index++]=src[begin2++];
-    }
-    memcpy(src+begin,dst+begin,(end-begin)*sizeof(int));
-}
-void _merge_sort(int *arr,int* tmp,int left,int right)
-{
-    if(left+1&gt;=right){
-        return;
-    }
-    int mid=left+(right-left)/2;
-    _merge_sort(arr,tmp,left,mid);
-    _merge_sort(arr,tmp,mid,right);
-    merge(arr,tmp,left,mid,right);
-}
-void merge_sort(int* arr,int size)
-{
-    int* tmp=(int*)malloc(size*sizeof(int));
-    _merge_sort(arr,tmp,0,size);
-    free(tmp);
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    merge_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-
-    return 0;
-}
-</code></pre>
-
-<h4 id="toc_6">堆排序</h4>
-
-<pre><code>#include&lt;stdio.h&gt;
-void swap(int *a,int *b)
-{
-    int tmp=*a;
-    *a=*b;
-    *b=tmp;
-}
-void adjust_down(int arr[],int root,int size)
-{
-    int parent=root;
-    int left=root*2+1;
-    int right=left+1;
-    while(left&lt;size){
-        int max=left;
-        if(right&lt;size &amp;&amp; arr[right]&gt;arr[max]){
-            max=right;
-        }
-        if(arr[max]&gt;arr[parent]){
-            swap(&amp;arr[max],&amp;arr[parent]);
-            parent=max;
-            left=parent*2+1;
-            right=left+1;
-        }
-        else{
-            break;
-        }
-    }
-}
-//make min heap
-void heap_sort(int arr[],int size)
-{
-    int begin=0;
-    for(begin=size/2-1;begin&gt;=0;--begin){
-        adjust_down(arr,begin,size);
-    }
-    int end=size-1;
-    while(end&gt;0){
-        swap(&amp;arr[0],&amp;arr[end]);
-        adjust_down(arr,0,end);
-        --end;
-    }
-}
-int main()
-{
-    int arr[10]={3,7,1,4,2,8,5,0,9,6};
-    heap_sort(arr,10);
-    int i=0;
-    for(;i&lt;10;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-
-</code></pre>
-
-<p><img src="media/15198806151662/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-01%20%E4%B8%8B%E5%8D%883.45.58.png" alt="屏幕快照 2018-03-01 下午3.45.58"/></p>
-
-<p>选择排序、快速排序、希尔排序、堆排序不是稳定的排序算法，<br/>
-冒泡排序、插入排序、归并排序 是稳定的排序算法。</p>
-
-<p>在原序列中，ri=rj，且ri在rj之前，而在排序后的序列中，ri仍在rj之前，则称这种排序算法是稳定的；否则称为不稳定的。</p>
-
-<p>稳定都是相对的，不是绝对的稳定</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[OC 字符串操作方法说明]]></title>
-    <link href="www.freefook.com/15139214218497.html"/>
-    <updated>2017-12-22T13:43:41+08:00</updated>
-    <id>www.freefook.com/15139214218497.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">属性字符串常用操作</h5>
-
-<pre><code>- (NSMutableAttributedString *)stringToAttributedString:(NSString*)tempStr NSMakeRange:(int)num
-{
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:tempStr];
-    //颜色
-    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0,num)];
-    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(num,tempStr.length-num)];
-    //字体
-    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:kh(14)] range:NSMakeRange(0,num)];
-    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:kh(16)] range:NSMakeRange(num,tempStr.length-num)];  
-    return attrString;
-}
-</code></pre>
-
-<h5 id="toc_1">将字符串分隔成数组</h5>
-
-<pre><code>    NSString* str = @&quot;one,two,three,four,five&quot;;
-    //分割字符创为数组，下例以“，”分割
-    NSArray* array = [str componentsSeparatedByString:@&quot;,&quot;];
-    for(NSString* obj in array)
-    {
-        NSLog(@&quot;%@&quot;, obj);
-    }
-
-    //链接字符串,下例以空格连接
-    str = [array componentsJoinedByString:@&quot; &quot;];
-    NSLog(@&quot;%@&quot;, str);
-</code></pre>
-
-<h5 id="toc_2">判断字符串是否包含另一个字符串</h5>
-
-<pre><code>//判断”abcd” 是否含有@&quot;ab&quot;
- NSString *tempStr = @&quot;abcd&quot;;
-    if([tempStr rangeOfString:@&quot;ab&quot;].location !=NSNotFound){
-        NSLog(@&quot;yes&quot;);
-    }else {
-        NSLog(@&quot;no&quot;);
-    }
-</code></pre>
-
-<h5 id="toc_3">字符串去掉特殊符号或改成去除数字/字母的笨方法</h5>
-
-<pre><code>NSString * string111 = @&quot;1234、[]{}#%-*+=_\\|~＜&quot;;
-NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@&quot;@／：；（）¥「」＂、[]{}#%-*+=_\\|~＜＞$€^•&#39;@#$%^&amp;*()_+&#39;\&quot;&quot;];
-NSString *string222 = [string111 stringByTrimmingCharactersInSet:set];
-</code></pre>
-
-<h5 id="toc_4">从字符串的开头一直截取到指定的位置，但不包括该位置的字符</h5>
-
-<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
-    NSString *string2 = [string1 substringToIndex:3];
-    NSLog(@&quot;string2:%@&quot;,string2);
-</code></pre>
-
-<h5 id="toc_5">以指定位置开始（包括指定位置的字符），并包括之后的全部字符</h5>
-
-<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
-    NSString *string2 = [string1 substringFromIndex:3];
-    NSLog(@&quot;string2:%@&quot;,string2);
-</code></pre>
-
-<h5 id="toc_6">按照所给出的位置，长度（截取几位而不是到哪），任意地从字符串中截取子串</h5>
-
-<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
-    NSString *string2 = [string1 substringWithRange:NSMakeRange(0, 4)];
-    NSLog(@&quot;string2:%@&quot;,string2);
-</code></pre>
-
-<h5 id="toc_7">替换字符串中字符,该方法做了copy操作，原字符串没变，需要重新赋值给原字符串</h5>
-
-<pre><code>    NSString* tempstr4 = [tempstr3 stringByReplacingOccurrencesOfString:@&quot;:&quot; withString:@&quot;&quot;];
-    NSString* tempstr5 = [tempstr4 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;];
-    NSString* tempstr6 = [tempstr5 stringByReplacingOccurrencesOfString:@&quot;/&quot; withString:@&quot;&quot;];
-</code></pre>
-
-<h5 id="toc_8">字符串大小写</h5>
-
-<pre><code>//   将字符串中的英文字符由小写转换为大写
-    NSString *bigString = [string uppercaseString];
-    NSLog(@&quot;string = %@, bigstring = %@&quot;, string, bigString); 
-       
-//   将字符串中的英文字符由大写转换为小写
-    NSString *smallString = [string lowercaseString];
-    NSLog(@&quot;string = %@, smallString = %@&quot;, string, smallString);
-    
-//  将字符串的首字母改为大写
-    NSString *firstBigString = [string capitalizedString];
-    NSLog(@&quot;%@&quot;, firstBigString);
-</code></pre>
-
-<h5 id="toc_9">字符串拼接</h5>
-
-<pre><code>//  字符串拼接:将两个字符串拼在一起后形成一个新的字符串,原来两个字符串并未发生改变
-    NSString *string1 = @&quot;abc&quot;;
-    NSString *string2 = @&quot;123&quot;;
-    NSString *addString = [string1 stringByAppendingString:string2];
-    NSLog(@&quot;%@&quot;, addString);
-</code></pre>
-
-<h4 id="toc_10">字符串查找</h4>
-
-<pre><code>    NSString * string = @&quot;1234&quot;;
-    //  字符串查找：判断是否以参数给定的字符串开头。是，返回真 1 ；否，返回假 0。
-    BOOL result1 = [string hasPrefix:@&quot;1&quot;];
-    NSLog(@&quot;%d&quot;, result1);
-    
-    //  字符串查找：判断是否以参数给定的字符串结尾。是，返回真 1 ；否，返回假 0。
-    BOOL result2 = [string hasSuffix:@&quot;4&quot;];
-    NSLog(@&quot;%d&quot;, result2);
-</code></pre>
-
-<h4 id="toc_11">反转字符串</h4>
-
-<pre><code>/**
- *  @brief  反转字符串
- *
- *  @param strSrc 被反转字符串
- *
- *  @return 反转后字符串
- */
-+ (NSString *)jk_reverseString:(NSString *)strSrc
-{
-    NSMutableString* reverseString = [[NSMutableString alloc] init];
-    NSInteger charIndex = [strSrc length];
-    while (charIndex &gt; 0) {
-        charIndex --;
-        NSRange subStrRange = NSMakeRange(charIndex, 1);
-        [reverseString appendString:[strSrc substringWithRange:subStrRange]];
-    }
-    return reverseString;
-}
 </code></pre>
 
 ]]></content>
