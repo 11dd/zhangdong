@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-08-23T15:17:07+08:00</updated>
+  <updated>2018-08-23T16:40:49+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[小程序历程以及消息模板和分享的介绍]]></title>
+    <title type="html"><![CDATA[历程以及消息模板和分享的介绍]]></title>
     <link href="www.freefook.com/15336330410298.html"/>
     <updated>2018-08-07T17:10:41+08:00</updated>
     <id>www.freefook.com/15336330410298.html</id>
@@ -817,7 +817,7 @@ WePY框架开发小程序请移步👇<br/>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小程序开发中运行与更新机制  和资源管理注意事项]]></title>
+    <title type="html"><![CDATA[运行与更新机制和资源管理注意事项]]></title>
     <link href="www.freefook.com/15287848933165.html"/>
     <updated>2018-06-12T14:28:13+08:00</updated>
     <id>www.freefook.com/15287848933165.html</id>
@@ -896,7 +896,7 @@ app.json 的 pages 字段就可以知道你当前小程序的所有页面路径:
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小程序开发数据类型与生命周期，路由及其数据绑定]]></title>
+    <title type="html"><![CDATA[数据类型与生命周期/路由及其数据绑定]]></title>
     <link href="www.freefook.com/15325981613625.html"/>
     <updated>2018-07-26T17:42:41+08:00</updated>
     <id>www.freefook.com/15325981613625.html</id>
