@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-08-15T11:57:12+08:00</updated>
+  <updated>2018-08-23T15:05:39+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -2260,6 +2260,45 @@ var token = wx.getStorageSync(&#39;userInfo&#39;)
 <pre><code>wx.navigateTo({
 url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
 })
+</code></pre>
+
+<p>弹出窗口提示</p>
+
+<pre><code>wx.showModal({
+    title: &#39;我是弹窗标题&#39;,
+    content: &#39;佛系弹窗详情内容&#39;,
+    success: function(res) {
+      if (res.confirm) {
+        console.log(&#39;用户点击确定&#39;)
+      } else if (res.cancel) {
+        console.log(&#39;用户点击取消&#39;)
+      }
+    }
+  })   
+</code></pre>
+
+<p>Toast提示</p>
+
+<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
+ icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
+ 
+ wx.showToast({
+        title: &#39;请输入提示语&#39;,
+        icon: &#39;none&#39;,
+        mask:true,
+        duration: 2000
+      }) 
+</code></pre>
+
+<p>加载的loading</p>
+
+<pre><code>  wx.showLoading({
+      title: &#39;正在加载&#39;,
+      mask: true,
+    })
+    
+   wx.hideLoading();
+
 </code></pre>
 
 <p>延迟执行</p>
