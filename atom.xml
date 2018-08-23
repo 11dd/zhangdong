@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-08-23T16:55:38+08:00</updated>
+  <updated>2018-08-23T16:55:45+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -1413,9 +1413,16 @@ display:flex;
 //使用 flex 布局
 display: flex;
 
-.ViewClass{
+.hengxiangClass {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.shuxiangClass {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
