@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-08-23T15:05:39+08:00</updated>
+  <updated>2018-08-23T15:17:07+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -14,78 +14,208 @@
 
   
   <entry>
-    <title type="html"><![CDATA[直播类]]></title>
-    <link href="www.freefook.com/15344710120047.html"/>
-    <updated>2018-08-17T09:56:52+08:00</updated>
-    <id>www.freefook.com/15344710120047.html</id>
+    <title type="html"><![CDATA[小程序历程以及消息模板和分享的介绍]]></title>
+    <link href="www.freefook.com/15336330410298.html"/>
+    <updated>2018-08-07T17:10:41+08:00</updated>
+    <id>www.freefook.com/15336330410298.html</id>
     <content type="html"><![CDATA[
-<p>直播类小程序：</p>
+<h3 id="toc_0">微信开发平台地址和微信自家小程序全家桶</h3>
 
-<p>第一个直播小程序体验：蘑菇街女装精选（腾讯亲儿子）直播类电商，可评论；<br/>
-分类：电商平台-&gt;公司：杭州卷瓜网络有限公司</p>
+<h4 id="toc_1">小程序的历程</h4>
 
-<p>腾讯NOW直播，首页简单的一个列表页，几个精彩推荐 ，是直播过的回放；<br/>
-公司：深圳市腾讯计算机系统有限公司</p>
+<ol>
+<li><p>16年 越来越多产品通过公众号来做，因为这里开发、获取用户和传播成本更低。拆分出来的服务号并没有提供更好的服务，所以微信内部正在研究新的形态，叫「微信小程序」。</p></li>
+<li><p>从2017年1月9日 小程序正式推出之后至 2017年12月28日 跳一跳上线火爆，传播发展的地域时间差；</p></li>
+<li><p>全面开放申请后，主体类型为企业、政府、媒体、其他组织或个人的开发者，均可申请注册小程序。小程序、订阅号、服务号、企业号是并行的体系。</p></li>
+<li><p>微信小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。</p></li>
+<li><p>2018.7.13 微信更新小程序，增加了我的小程序入口,最多可加50个；</p></li>
+<li><p>小程序入口=&gt; 微信 消息页下拉，发现页 小程序；<br/>
+小程序分享不能分享到朋友圈，分享好友或群；<br/>
+主要是线下场景扫码使用</p></li>
+</ol>
 
-<p>企鹅电竞+：无登录授权，单纯的推荐一些直播，点击播放，不能评论；<br/>
-公司：深圳市腾讯计算机系统有限公司</p>
+<h4 id="toc_2">小程序的几点介绍</h4>
 
-<p>斗鱼直播：无登录授权，单纯的播放直播视频，不能评论；<br/>
-公司：武汉瓯越网视有限公司</p>
+<pre><code>1.小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念；
 
-<p>虎牙直播：无登录授权，单纯的播放直播视频，不能评论；<br/>
-分类：直播  视频 -&gt;公司：广州华多网络科技有限公司</p>
+2.用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。
 
-<p>龙珠直播官方平台：有登录，我的页面无任何功能，单纯的播放直播视频，有评论和弹幕；<br/>
-分类：直播-&gt;公司：上海聚力传媒技术有限公司</p>
+3.对于开发者而言，小程序开发门槛相对较低，难度不及APP，能够满足简单的基础应用；
 
-<p>YY直播+：  提示微信授权，无登录信息和用户页面，单纯的播放直播视频，可评论; <br/>
-分类：视频 -&gt;公司：广州华多网络科技有限公司</p>
+4.适合生活服务类线下商铺以及非刚需低频应用的转换。
 
-<p>短视频小程序平台：</p>
+5.小程序能够实现消息通知、线下扫码、公众号关联等七大功能。其中，通过公众号关联，用户可以实现公众号与小程序之间相互跳转。由于小程序不存在入口。
+</code></pre>
 
-<p>西瓜视频集：顶部分类推荐，生活，搞笑，影视，历史，开眼 / 点击播放，可点赞评论；<br/>
-分类：视频 -&gt;公司：淮安皓威网络科技有限公司</p>
+<p>官方消息模板文档地址</p>
 
-<p>火山搞笑视频集：和西瓜视频集一样！！！<br/>
-分类：视频 -&gt;公司：淮安皓威网络科技有限公司</p>
+<pre><code>https://developers.weixin.qq.com/miniprogram/dev/api/notice.html#%E5%8F%91%E9%80%81%E6%A8%A1%E6%9D%BF%E6%B6%88%E6%81%AF
 
-<p>美拍：页面效果-&gt;上下滑动切换，可评论点赞，诱导下载app,诱导分享；<br/>
-分类：视频 -&gt;公司：厦门美图网科技有限公司</p>
+下发这个通知微信是有条件的；
+1. 支付  2. 提交表单
 
-<p>秒拍视频lite : 有登录我的页面，记录足迹和收藏，可评论， 评论页面low；<br/>
-分类：图片、音频、视频 -&gt;公司：泰和县文田创新网络工作室</p>
+    支付
+    当用户在小程序内完成过支付行为，可允许开发者向用户在7天内
+    推送有限条数的模板消息
+    （1次支付可下发3条，多次支付下发条数独立，互相不影响）
 
-<p>小咖秀lite：一个列表页，点击进详情播放，有评论列表(其他平台)，小程序内不能评论；<br/>
-分类：视频 -&gt;公司：小咖秀（北京）科技有限公司</p>
+    提交表单
+    当用户在小程序内发生过提交表单行为且该表单声明为要发模板消息的，
+    开发者需要向用户提供服务时，
+    可允许开发者向用户在7天内推送有限条数的模板消息
+    （1次提交表单可下发1条，多次提交下发条数独立，相互不影响）
 
-<p>一条视频：推荐列表，和专题分类；<br/>
-分类：资讯 -&gt;公司：上海一条网络科技有限公司</p>
 
-<p>视频平台：</p>
+用户提交一次表单，会提供给开发者一次推送权限，
+多次提交的情况下下发条数独立。
+所以如果开发者想要哎7天内无限制的为用户推送消息，
+需要做的就是--&gt;从用户那里获取&quot;足够多&quot;的推送权限
+（推送权限就是form表单的formid）。
 
-<p>腾讯视频：内容较丰富；</p>
 
-<p>腾讯视频VIP：精简版；</p>
+如果用户在一周内没有访问或点击过小程序中的任何组件，
+那我们就收集不到有效的fromid，
+也就意味着我们&quot;失去&quot;了给用户发送模板消息的权限
 
-<p>爱奇艺视频：内容较丰富；</p>
+</code></pre>
 
-<p>芒果TV视频：精简版；<br/><br/>
-分类：视频 -&gt;公司：湖南快乐阳光互动娱乐传媒有限公司</p>
+<p><img src="media/15336330410298/IMG_3195.png" alt="IMG_3195"/></p>
 
-<p>搜狐视频官方：精简版，类似西瓜视频集； <br/>
-分类：视频、时政信息 -&gt;公司：北京搜狐互联网信息服务有限公司</p>
+<p><img src="media/15336330410298/IMG_3196.png" alt="IMG_3196"/></p>
 
-<p>56视频官方：精简版，类似西瓜视频集；<br/>
-分类：视频 -&gt;公司：广州市千钧网络科技有限公司</p>
+<p><img src="media/15336330410298/IMG_3197.png" alt="IMG_3197"/></p>
 
-<p>其他：</p>
+<p>分享如下：</p>
 
-<p>VUE视频，可调用系统相机拍摄，上传！！！<br/>
-分类：图片、音频、视频 -&gt;公司：北京跃然纸上科技有有限公司</p>
+<p><img src="media/15336330410298/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-09%20%E4%B8%8B%E5%8D%882.04.34.png" alt="屏幕快照 2018-08-09 下午2.04.34"/></p>
 
-<p>火山视频影院：个人开发，内容电影，电视剧，综艺信息介绍，<br/>
-详情页：注明由于小程序限制，无法直接播放，提供的复制观看链接；</p>
+<p><img src="media/15336330410298/IMG_3212.png" alt="IMG_3212"/></p>
+
+<p><img src="media/15336330410298/IMG_3213.png" alt="IMG_3213"/></p>
+
+<p>注意事项：</p>
+
+<pre><code>1. 分享转发：不自定义转发图片的情况下，
+默认会取当前页面，从顶部开始，高度为 80% 屏幕宽度的图像作为转发图片。
+
+2. 小程序里绘制页面，和网络请求处理结是异步处理，
+所以当点击分享时，不要以为请求数据，拿到结果了去转发，
+要在转发前就准备好要转发的内容；
+
+3. 获取小程序二维码，提供了三个接口，开发者可挑选适合自己的接口。 
+A接口，生成小程序码，可接受path参数较长，生成个数受限。
+ B接口，生成小程序码，可接受页面参数较短，生成个数不受限。
+  C接口，生成二维码，可接受path参数较长，生成个数受限。
+
+</code></pre>
+
+<pre><code>接口A: 适用于需要的码数量较少的业务场景 接口地址：
+通过该接口生成的小程序码，永久有效
+
+接口C：适用于需要的码数量较少的业务场景
+通过该接口生成的小程序二维码，永久有效，数量限制
+
+数量限制接口A加上接口C，总共生成的码数量限制为100,000
+
+接口B：适用于需要的码数量极多的业务场景
+
+通过接口B生成的小程序码，永久有效，数量暂无限制。
+可以带参数最大32个可见字符，只支持数字，大小写英文
+以及部分特殊字符：!#$&amp;&#39;()*+,/:;=?@-._~，
+其它字符请自行编码为合法字符（
+因不支持%，中文无法使用 urlencode 处理，请使用其他编码方式）
+
+B接口调用分钟频率受限(目前5000次/分钟)
+
+</code></pre>
+
+<pre><code>
+1. 处理获取小程序码的业务：小程序端不做处理，可以在自己服务器上处理
+   获取二维码接口，参数使用jsonStr 存数据库，为了避免参数过长？
+   服务器：首先获取access_token
+   https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183
+   其次：调用接口B，获取小程序二维码，接口返回的是二进制流；
+   
+   如有参数，如何处理；
+   小程序扫码进入程序的时候，获取参数id
+   服务端单独出一个接口，用id请求，返回当初要编辑在二维码里的参数；
+   
+</code></pre>
+
+<h4 id="toc_3">--------------手动分割线-----------------</h4>
+
+<p>微信平台有哪些：</p>
+
+<p>微信公众平台：<br/>
+<a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a></p>
+
+<p>微信支付的商户平台：<br/>
+<a href="https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F">https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F</a><br/>
+注：小程序里支付只能用小程序支付方式，必须和小程序里开通的支付的商户一致；</p>
+
+<p>微信开放平台<br/>
+<a href="https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN">https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN</a></p>
+
+<p>微信开发者平台：<br/>
+<a href="http://weixin.qq.com/">http://weixin.qq.com/</a></p>
+
+<p>微信硬件平台：<br/>
+<a href="https://iot.weixin.qq.com/">https://iot.weixin.qq.com/</a></p>
+
+<p>腾讯的广告平台：<br/>
+<a href="http://e.qq.com/ads/">http://e.qq.com/ads/</a></p>
+
+<p>腾讯开放平台：<br/>
+<a href="http://open.tencent.com/">http://open.tencent.com/</a></p>
+
+<h4 id="toc_4">--------------手动分割线-----------------</h4>
+
+<h4 id="toc_5">腾讯自家小程序全家桶</h4>
+
+<pre><code>小程序示例   第一个小程序
+小程序开发助手
+小程序数据助手
+小游戏数据助手
+公众平台助手
+微信发票助手
+王卡申请助手
+
+QQ游戏
+腾讯爱玩
+全民大乐斗
+企鹅电竞+
+腾讯动漫+
+
+腾讯+  产品体验官
+腾讯网
+腾讯文档
+腾讯企业邮箱
+
+腾讯云助手
+腾讯视频云
+腾讯AI体验中心
+腾讯云AI体验中心
+腾讯优图AI开发平台
+</code></pre>
+
+<h4 id="toc_6">其他</h4>
+
+<pre><code>举例，摩拜单车的接入，
+KFC，麦当劳 的点餐
+家乐福中国的优惠，
+
+一时风靡的答题类，头脑王者
+
+青芒杂志
+一条视频
+毒蛇电影社区
+
+企鹅电竞+
+斗鱼直播
+虎牙直播
+YY直播+
+
+</code></pre>
 
 ]]></content>
   </entry>
@@ -551,212 +681,7 @@ A polyfill for ES6-style Promises ：<br/>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小程序]]></title>
-    <link href="www.freefook.com/15336330410298.html"/>
-    <updated>2018-08-07T17:10:41+08:00</updated>
-    <id>www.freefook.com/15336330410298.html</id>
-    <content type="html"><![CDATA[
-<h4 id="toc_0">小程序的历程</h4>
-
-<ol>
-<li><p>16年 越来越多产品通过公众号来做，因为这里开发、获取用户和传播成本更低。拆分出来的服务号并没有提供更好的服务，所以微信内部正在研究新的形态，叫「微信小程序」。</p></li>
-<li><p>从2017年1月9日 小程序正式推出之后至 2017年12月28日 跳一跳上线火爆，传播发展的地域时间差；</p></li>
-<li><p>全面开放申请后，主体类型为企业、政府、媒体、其他组织或个人的开发者，均可申请注册小程序。小程序、订阅号、服务号、企业号是并行的体系。</p></li>
-<li><p>微信小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。</p></li>
-<li><p>2018.7.13 微信更新小程序，增加了我的小程序入口,最多可加50个；</p></li>
-<li><p>小程序入口=&gt; 微信 消息页下拉，发现页 小程序；<br/>
-小程序分享不能分享到朋友圈，分享好友或群；<br/>
-主要是线下场景扫码使用</p></li>
-</ol>
-
-<h4 id="toc_1">小程序的几点介绍</h4>
-
-<pre><code>1.小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念；
-
-2.用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。
-
-3.对于开发者而言，小程序开发门槛相对较低，难度不及APP，能够满足简单的基础应用；
-
-4.适合生活服务类线下商铺以及非刚需低频应用的转换。
-
-5.小程序能够实现消息通知、线下扫码、公众号关联等七大功能。其中，通过公众号关联，用户可以实现公众号与小程序之间相互跳转。由于小程序不存在入口。
-</code></pre>
-
-<p>官方消息模板文档地址</p>
-
-<pre><code>https://developers.weixin.qq.com/miniprogram/dev/api/notice.html#%E5%8F%91%E9%80%81%E6%A8%A1%E6%9D%BF%E6%B6%88%E6%81%AF
-
-下发这个通知微信是有条件的；
-1. 支付  2. 提交表单
-
-    支付
-    当用户在小程序内完成过支付行为，可允许开发者向用户在7天内
-    推送有限条数的模板消息
-    （1次支付可下发3条，多次支付下发条数独立，互相不影响）
-
-    提交表单
-    当用户在小程序内发生过提交表单行为且该表单声明为要发模板消息的，
-    开发者需要向用户提供服务时，
-    可允许开发者向用户在7天内推送有限条数的模板消息
-    （1次提交表单可下发1条，多次提交下发条数独立，相互不影响）
-
-
-用户提交一次表单，会提供给开发者一次推送权限，
-多次提交的情况下下发条数独立。
-所以如果开发者想要哎7天内无限制的为用户推送消息，
-需要做的就是--&gt;从用户那里获取&quot;足够多&quot;的推送权限
-（推送权限就是form表单的formid）。
-
-
-如果用户在一周内没有访问或点击过小程序中的任何组件，
-那我们就收集不到有效的fromid，
-也就意味着我们&quot;失去&quot;了给用户发送模板消息的权限
-
-</code></pre>
-
-<p><img src="media/15336330410298/IMG_3195.png" alt="IMG_3195"/></p>
-
-<p><img src="media/15336330410298/IMG_3196.png" alt="IMG_3196"/></p>
-
-<p><img src="media/15336330410298/IMG_3197.png" alt="IMG_3197"/></p>
-
-<p>分享如下：</p>
-
-<p><img src="media/15336330410298/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-09%20%E4%B8%8B%E5%8D%882.04.34.png" alt="屏幕快照 2018-08-09 下午2.04.34"/></p>
-
-<p><img src="media/15336330410298/IMG_3212.png" alt="IMG_3212"/></p>
-
-<p><img src="media/15336330410298/IMG_3213.png" alt="IMG_3213"/></p>
-
-<p>注意事项：</p>
-
-<pre><code>1. 分享转发：不自定义转发图片的情况下，
-默认会取当前页面，从顶部开始，高度为 80% 屏幕宽度的图像作为转发图片。
-
-2. 小程序里绘制页面，和网络请求处理结是异步处理，
-所以当点击分享时，不要以为请求数据，拿到结果了去转发，
-要在转发前就准备好要转发的内容；
-
-3. 获取小程序二维码，提供了三个接口，开发者可挑选适合自己的接口。 
-A接口，生成小程序码，可接受path参数较长，生成个数受限。
- B接口，生成小程序码，可接受页面参数较短，生成个数不受限。
-  C接口，生成二维码，可接受path参数较长，生成个数受限。
-
-</code></pre>
-
-<pre><code>接口A: 适用于需要的码数量较少的业务场景 接口地址：
-通过该接口生成的小程序码，永久有效
-
-接口C：适用于需要的码数量较少的业务场景
-通过该接口生成的小程序二维码，永久有效，数量限制
-
-数量限制接口A加上接口C，总共生成的码数量限制为100,000
-
-接口B：适用于需要的码数量极多的业务场景
-
-通过接口B生成的小程序码，永久有效，数量暂无限制。
-可以带参数最大32个可见字符，只支持数字，大小写英文
-以及部分特殊字符：!#$&amp;&#39;()*+,/:;=?@-._~，
-其它字符请自行编码为合法字符（
-因不支持%，中文无法使用 urlencode 处理，请使用其他编码方式）
-
-B接口调用分钟频率受限(目前5000次/分钟)
-
-</code></pre>
-
-<pre><code>
-1. 处理获取小程序码的业务：小程序端不做处理，可以在自己服务器上处理
-   获取二维码接口，参数使用jsonStr 存数据库，为了避免参数过长？
-   服务器：首先获取access_token
-   https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183
-   其次：调用接口B，获取小程序二维码，接口返回的是二进制流；
-   
-   如有参数，如何处理；
-   小程序扫码进入程序的时候，获取参数id
-   服务端单独出一个接口，用id请求，返回当初要编辑在二维码里的参数；
-   
-</code></pre>
-
-<h4 id="toc_2">--------------手动分割线-----------------</h4>
-
-<p>微信平台有哪些：</p>
-
-<p>微信公众平台：<br/>
-<a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a></p>
-
-<p>微信支付的商户平台：<br/>
-<a href="https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F">https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F</a><br/>
-注：小程序里支付只能用小程序支付方式，必须和小程序里开通的支付的商户一致；</p>
-
-<p>微信开放平台<br/>
-<a href="https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN">https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN</a></p>
-
-<p>微信开发者平台：<br/>
-<a href="http://weixin.qq.com/">http://weixin.qq.com/</a></p>
-
-<p>微信硬件平台：<br/>
-<a href="https://iot.weixin.qq.com/">https://iot.weixin.qq.com/</a></p>
-
-<p>腾讯的广告平台：<br/>
-<a href="http://e.qq.com/ads/">http://e.qq.com/ads/</a></p>
-
-<p>腾讯开放平台：<br/>
-<a href="http://open.tencent.com/">http://open.tencent.com/</a></p>
-
-<h4 id="toc_3">--------------手动分割线-----------------</h4>
-
-<h4 id="toc_4">腾讯自家小程序全家桶</h4>
-
-<pre><code>小程序示例   第一个小程序
-小程序开发助手
-小程序数据助手
-小游戏数据助手
-公众平台助手
-微信发票助手
-王卡申请助手
-
-QQ游戏
-腾讯爱玩
-全民大乐斗
-企鹅电竞+
-腾讯动漫+
-
-腾讯+  产品体验官
-腾讯网
-腾讯文档
-腾讯企业邮箱
-
-腾讯云助手
-腾讯视频云
-腾讯AI体验中心
-腾讯云AI体验中心
-腾讯优图AI开发平台
-</code></pre>
-
-<h4 id="toc_5">其他</h4>
-
-<pre><code>举例，摩拜单车的接入，
-KFC，麦当劳 的点餐
-家乐福中国的优惠，
-
-一时风靡的答题类，头脑王者
-
-青芒杂志
-一条视频
-毒蛇电影社区
-
-企鹅电竞+
-斗鱼直播
-虎牙直播
-YY直播+
-
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小程序介绍]]></title>
+    <title type="html"><![CDATA[小程序注册流程介绍以及注意事项]]></title>
     <link href="www.freefook.com/15232437563217.html"/>
     <updated>2018-04-09T11:15:56+08:00</updated>
     <id>www.freefook.com/15232437563217.html</id>
@@ -892,7 +817,7 @@ WePY框架开发小程序请移步👇<br/>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小程序概况]]></title>
+    <title type="html"><![CDATA[小程序开发中运行与更新机制  和资源管理注意事项]]></title>
     <link href="www.freefook.com/15287848933165.html"/>
     <updated>2018-06-12T14:28:13+08:00</updated>
     <id>www.freefook.com/15287848933165.html</id>
@@ -971,7 +896,7 @@ app.json 的 pages 字段就可以知道你当前小程序的所有页面路径:
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小程序前端开发介绍]]></title>
+    <title type="html"><![CDATA[小程序开发数据类型与生命周期，路由及其数据绑定]]></title>
     <link href="www.freefook.com/15325981613625.html"/>
     <updated>2018-07-26T17:42:41+08:00</updated>
     <id>www.freefook.com/15325981613625.html</id>
@@ -1088,7 +1013,7 @@ Tab 切换      调用 API wx.switchTab
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小程序服务器配置介绍]]></title>
+    <title type="html"><![CDATA[小程序开发请求地址的配置介绍]]></title>
     <link href="www.freefook.com/15325981038081.html"/>
     <updated>2018-07-26T17:41:43+08:00</updated>
     <id>www.freefook.com/15325981038081.html</id>
@@ -1161,7 +1086,7 @@ TLS版本及HTTPS证书 选项，跳过服务器域名的校验。
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小程序API]]></title>
+    <title type="html"><![CDATA[小程序微信开放API]]></title>
     <link href="www.freefook.com/15326548831374.html"/>
     <updated>2018-07-27T09:28:03+08:00</updated>
     <id>www.freefook.com/15326548831374.html</id>
@@ -1290,7 +1215,7 @@ wx.createMapContext 地图组件控制
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小程序登录]]></title>
+    <title type="html"><![CDATA[小程序登录流程]]></title>
     <link href="www.freefook.com/15234367737951.html"/>
     <updated>2018-04-11T16:52:53+08:00</updated>
     <id>www.freefook.com/15234367737951.html</id>
@@ -1465,6 +1390,83 @@ timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性�
 
 <p>官方数据签名校验<br/>
 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject">https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小程序View的布局]]></title>
+    <link href="www.freefook.com/15242100404510.html"/>
+    <updated>2018-04-20T15:40:40+08:00</updated>
+    <id>www.freefook.com/15242100404510.html</id>
+    <content type="html"><![CDATA[
+<pre><code>小程序 View 支持两种布局方式：Block 和 Flex
+所有 View 默认都是 block
+要使用 flex 布局的话需要显式的声明：
+
+display:flex;
+</code></pre>
+
+<h5 id="toc_0">接下来便可以在view 的wxss里尝试如下属性：</h5>
+
+<pre><code>例如：
+//使用 flex 布局
+display: flex;
+
+.ViewClass{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+</code></pre>
+
+<p>横向布局or竖向布局=&gt;设置属性 flex-direction</p>
+
+<pre><code>flex-direction: row;
+{
+row：从左到右的水平方向为主轴
+row-reverse：从右到左的水平方向为主轴
+column：从上到下的垂直方向为主轴
+column-reverse：从下到上的垂直方向为主轴
+}
+</code></pre>
+
+<p>设置元素在横向上的布局方向，需要设置 justify-content 属性</p>
+
+<pre><code>justify-content: space-around;
+{
+flex-start：主轴起点对齐(默认值)  
+flex-end：主轴结束点对齐  
+center：在主轴中居中对齐  
+space-between：两端对齐，除了两端的子元素分别靠向两端的容器之外，其他子元素之间的间隔都相等  
+space-around：每个子元素之间的距离相等，两端的子元素距离容器的距离也和其它子元素之间的距离相同  
+}
+</code></pre>
+
+<p>设置元素在纵向上的布局方向，需要设置 align-items 属性</p>
+
+<pre><code>align-items: center;
+{
+stretch 填充整个容器(默认值)
+flex-start 侧轴的起点对齐
+flex-end 侧轴的终点对齐
+center 在侧轴中居中对齐
+baseline 以子元素的第一行文字对齐
+}
+</code></pre>
+
+<p>用于控制子 View 是否换行=&gt;设置flex-wrap 属性</p>
+
+<pre><code>flex-wrap: wrap;
+{
+nowrap：不换行（默认）
+wrap：换行
+wrap-reverse：换行，第一行在最下面
+}
+</code></pre>
+
+<p>转载：<a href="https://blog.csdn.net/weixin_36065510/article/details/73203720">https://blog.csdn.net/weixin_36065510/article/details/73203720</a></p>
 
 ]]></content>
   </entry>
@@ -1696,93 +1698,39 @@ NOTE: &#39;汇报任务：检查本社区的任务在系统中叫汇报任务&#3
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小程序View的布局]]></title>
-    <link href="www.freefook.com/15242100404510.html"/>
-    <updated>2018-04-20T15:40:40+08:00</updated>
-    <id>www.freefook.com/15242100404510.html</id>
+    <title type="html"><![CDATA[小程序TabBar]]></title>
+    <link href="www.freefook.com/15235114845539.html"/>
+    <updated>2018-04-12T13:38:04+08:00</updated>
+    <id>www.freefook.com/15235114845539.html</id>
     <content type="html"><![CDATA[
-<pre><code>小程序 View 支持两种布局方式：Block 和 Flex
-所有 View 默认都是 block
-要使用 flex 布局的话需要显式的声明：
+<h4 id="toc_0">创建一个标准小程序空项目</h4>
 
-display:flex;
+<h5 id="toc_1">在app.json文件里写入如下代码</h5>
+
+<pre><code> &quot;tabBar&quot;: {
+    &quot;color&quot;: &quot;#a9b7b7&quot;,
+    &quot;selectedColor&quot;: &quot;#000000&quot;,
+    &quot;list&quot;: [
+      {
+        &quot;selectedIconPath&quot;: &quot;image/home.png&quot;,
+        &quot;iconPath&quot;: &quot;image/home.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/home/home&quot;,
+        &quot;text&quot;: &quot;首页&quot;
+      },
+      {
+        &quot;selectedIconPath&quot;: &quot;image/index.png&quot;,
+        &quot;iconPath&quot;: &quot;image/index.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/index/index&quot;,
+        &quot;text&quot;: &quot;专题&quot;
+      }
+    ]
+  }
+   
 </code></pre>
 
-<h5 id="toc_0">在wxml文件里写如下代码：</h5>
+<h4 id="toc_2">运行界面 tabbar</h4>
 
-<pre><code> &lt;view class=&quot;main&quot;&gt;
-    &lt;view class=&quot;item item1&quot;&gt;1&lt;/view&gt;
-    &lt;view class=&quot;item item2&quot;&gt;2&lt;/view&gt;
-    &lt;view class=&quot;item item3&quot;&gt;3&lt;/view&gt;
-  &lt;/view&gt;
-</code></pre>
-
-<h5 id="toc_1">在wxss文件里写如下代码：</h5>
-
-<pre><code>.main {
-  width: 100%;
-  background-color: antiquewhite;
-}
-.item {
-  height: 100rpx;
-  width: 100rpx;
-}
-.item1 {
-  background-color: red;
-}
-.item2 {
-  background-color: dodgerblue;
-}
-.item3 {
-  background-color: greenyellow;
-}
-</code></pre>
-
-<h5 id="toc_2">运行效果如下：</h5>
-
-<p><img src="media/15242100404510/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-20%20%E4%B8%8B%E5%8D%883.44.35.png" alt="屏幕快照 2018-04-20 下午3.44.35"/></p>
-
-<h5 id="toc_3">接下来便可以在.main里尝试如下属性：</h5>
-
-<pre><code>//使用 flex 布局
-display: flex;
-//横向布局or竖向布局=&gt;设置属性 flex-direction
-flex-direction: row;
-{
-row：从左到右的水平方向为主轴
-row-reverse：从右到左的水平方向为主轴
-column：从上到下的垂直方向为主轴
-column-reverse：从下到上的垂直方向为主轴
-}
-//设置元素在横向上的布局方向，需要设置 justify-content 属性
-justify-content: space-around;
-{
-flex-start：主轴起点对齐(默认值)  
-flex-end：主轴结束点对齐  
-center：在主轴中居中对齐  
-space-between：两端对齐，除了两端的子元素分别靠向两端的容器之外，其他子元素之间的间隔都相等  
-space-around：每个子元素之间的距离相等，两端的子元素距离容器的距离也和其它子元素之间的距离相同  
-}
-//设置元素在纵向上的布局方向，需要设置 align-items 属性
-align-items: center;
-{
-stretch 填充整个容器(默认值)
-flex-start 侧轴的起点对齐
-flex-end 侧轴的终点对齐
-center 在侧轴中居中对齐
-baseline 以子元素的第一行文字对齐
-}
-//用于控制子 View 是否换行=&gt;设置flex-wrap 属性，
-flex-wrap: wrap;
-{
-nowrap：不换行（默认）
-wrap：换行
-wrap-reverse：换行，第一行在最下面
-}
-
-</code></pre>
-
-<p>转载：<a href="https://blog.csdn.net/weixin_36065510/article/details/73203720">https://blog.csdn.net/weixin_36065510/article/details/73203720</a></p>
+<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%881.41.36.png" alt="屏幕快照 2018-04-12 下午1.41.36"/></p>
 
 ]]></content>
   </entry>
@@ -1845,45 +1793,6 @@ wrap-reverse：换行，第一行在最下面
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[小程序TabBar]]></title>
-    <link href="www.freefook.com/15235114845539.html"/>
-    <updated>2018-04-12T13:38:04+08:00</updated>
-    <id>www.freefook.com/15235114845539.html</id>
-    <content type="html"><![CDATA[
-<h4 id="toc_0">创建一个标准小程序空项目</h4>
-
-<h5 id="toc_1">在app.json文件里写入如下代码</h5>
-
-<pre><code> &quot;tabBar&quot;: {
-    &quot;color&quot;: &quot;#a9b7b7&quot;,
-    &quot;selectedColor&quot;: &quot;#000000&quot;,
-    &quot;borderStyle&quot;: &quot;black&quot;,
-    &quot;list&quot;: [
-      {
-        &quot;selectedIconPath&quot;: &quot;image/home.png&quot;,
-        &quot;iconPath&quot;: &quot;image/home.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/home/home&quot;,
-        &quot;text&quot;: &quot;首页&quot;
-      },
-      {
-        &quot;selectedIconPath&quot;: &quot;image/index.png&quot;,
-        &quot;iconPath&quot;: &quot;image/index.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/index/index&quot;,
-        &quot;text&quot;: &quot;专题&quot;
-      }
-    ]
-  }
-   
-</code></pre>
-
-<h4 id="toc_2">运行界面 tabbar</h4>
-
-<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%881.41.36.png" alt="屏幕快照 2018-04-12 下午1.41.36"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[小程序轮播]]></title>
     <link href="www.freefook.com/15235125175960.html"/>
     <updated>2018-04-12T13:55:17+08:00</updated>
@@ -1891,7 +1800,14 @@ wrap-reverse：换行，第一行在最下面
     <content type="html"><![CDATA[
 <h4 id="toc_0">第一步：在.wxml文件里写入如下代码</h4>
 
-<pre><code>&lt;swiper indicator-dots=&quot;{{indicatorDots}}&quot;  
+<pre><code>
+&lt;!-- indicator-dots     Boolean     false   是否显示面板指示点 --&gt;
+    &lt;!-- autoplay   Boolean     false   是否自动切换 --&gt;
+    &lt;!-- interval   Number  5000    自动切换时间间隔 --&gt;
+    &lt;!-- duration   Number  500     滑动动画时长 --&gt;
+    &lt;!-- circular   Boolean     false   是否采用衔接滑动 --&gt;
+    
+&lt;swiper indicator-dots=&quot;{{indicatorDots}}&quot;  
         autoplay=&quot;{{autoplay}}&quot; 
         interval=&quot;{{interval}}&quot; 
         duration=&quot;{{duration}}&quot; 
@@ -2347,6 +2263,17 @@ url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex
 <pre><code>let newArr = t.data.ee.filter(item =&gt; item.pid === t.data.province[e.detail.value].id)
 
 </code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小程序入坑锦集]]></title>
+    <link href="www.freefook.com/15288676024387.html"/>
+    <updated>2018-06-13T13:26:42+08:00</updated>
+    <id>www.freefook.com/15288676024387.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/15288676024387/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-11%20%E4%B8%8B%E5%8D%887.05.47.png" alt="屏幕快照 2018-06-11 下午7.05.47"/></p>
 
 ]]></content>
   </entry>
