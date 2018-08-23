@@ -57,6 +57,8 @@
         <li><label>小程序</label></li>
 
           
+            <li><a title="直播类" href="15344710120047.html">直播类</a></li>
+          
             <li><a title="小程序" href="15336330410298.html">小程序</a></li>
           
             <li><a title="小程序介绍" href="15232437563217.html">小程序介绍</a></li>
@@ -222,6 +224,8 @@
                     
                       <li class="side-title"><span>小程序</span></li>
                         
+                          <li><a title="直播类" href="15344710120047.html">直播类</a></li>
+                        
                           <li><a title="小程序" href="15336330410298.html">小程序</a></li>
                         
                           <li><a title="小程序介绍" href="15232437563217.html">小程序介绍</a></li>
@@ -385,6 +389,14 @@ var token = wx.getStorageSync(&#39;userInfo&#39;)
 <pre><code>wx.navigateTo({
 url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
 })
+</code></pre>
+
+<p>延迟执行</p>
+
+<pre><code> setTimeout(function() {
+   wx.hideLoading()
+ }, 1000)
+          
 </code></pre>
 
 <p>请求数据</p>
