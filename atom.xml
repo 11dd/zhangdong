@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-09-13T09:57:13+08:00</updated>
+  <updated>2018-09-14T10:50:01+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -2233,7 +2233,7 @@ NOTE: &#39;汇报任务：检查本社区的任务在系统中叫汇报任务&#3
     <updated>2018-07-27T14:35:44+08:00</updated>
     <id>www.freefook.com/15326733440349.html</id>
     <content type="html"><![CDATA[
-<p>获取系统信息 下面是屏幕宽高</p>
+<h5 id="toc_0">获取系统信息 下面是屏幕宽高</h5>
 
 <pre><code> wx.getSystemInfo({
       success: function(res) {
@@ -2245,7 +2245,7 @@ NOTE: &#39;汇报任务：检查本社区的任务在系统中叫汇报任务&#3
 });
 </code></pre>
 
-<p>保存数据</p>
+<h5 id="toc_1">保存数据</h5>
 
 <pre><code> // 同步方式存储数据
 wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
@@ -2255,14 +2255,14 @@ var token = wx.getStorageSync(&#39;userInfo&#39;)
 
 </code></pre>
 
-<p>跳页</p>
+<h5 id="toc_2">跳页</h5>
 
 <pre><code>wx.navigateTo({
 url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
 })
 </code></pre>
 
-<p>弹出窗口提示</p>
+<h5 id="toc_3">弹出窗口提示</h5>
 
 <pre><code>wx.showModal({
     title: &#39;我是弹窗标题&#39;,
@@ -2277,7 +2277,7 @@ url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex
   })   
 </code></pre>
 
-<p>Toast提示</p>
+<h5 id="toc_4">Toast提示</h5>
 
 <pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
  icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
@@ -2290,7 +2290,7 @@ url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex
       }) 
 </code></pre>
 
-<p>加载的loading</p>
+<h5 id="toc_5">加载的loading</h5>
 
 <pre><code>  wx.showLoading({
       title: &#39;正在加载&#39;,
@@ -2301,7 +2301,7 @@ url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex
 
 </code></pre>
 
-<p>延迟执行</p>
+<h5 id="toc_6">延迟执行</h5>
 
 <pre><code> setTimeout(function() {
    wx.hideLoading()
@@ -2309,7 +2309,7 @@ url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex
           
 </code></pre>
 
-<p>请求数据</p>
+<h5 id="toc_7">请求数据</h5>
 
 <pre><code>getList: function(index) {
     var this_ = this;
@@ -2342,11 +2342,24 @@ url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex
 
 </code></pre>
 
-<p>数组查找数据</p>
+<h5 id="toc_8">数组查找数据</h5>
 
 <pre><code>let newArr = t.data.ee.filter(item =&gt; item.pid === t.data.province[e.detail.value].id)
 
 </code></pre>
+
+<h5 id="toc_9">点击事件</h5>
+
+<pre><code>bindtap  事件绑定不会阻止冒泡事件向上冒泡
+catchtap  事件绑定可以阻止冒泡事件向上冒泡
+
+点击事件的参数传递：
+target：触发事件的源组件
+currentTarget：事件绑定的当前事件
+
+</code></pre>
+
+<p><img src="media/15326733440349/86CC8E232275B9B77BD5728B014D3B69.png" alt="86CC8E232275B9B77BD5728B014D3B69"/></p>
 
 ]]></content>
   </entry>
