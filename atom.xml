@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-09-14T10:50:01+08:00</updated>
+  <updated>2018-09-14T10:50:09+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -2360,6 +2360,13 @@ currentTarget：事件绑定的当前事件
 </code></pre>
 
 <p><img src="media/15326733440349/86CC8E232275B9B77BD5728B014D3B69.png" alt="86CC8E232275B9B77BD5728B014D3B69"/></p>
+
+<h5 id="toc_10">设置背景图片</h5>
+
+<pre><code>&lt;view class=&quot;viewClass&quot; style=&quot;background-image: url(&#39;../../images/welcome.png&#39;)&quot;&gt;
+
+&lt;/view&gt;
+</code></pre>
 
 ]]></content>
   </entry>
