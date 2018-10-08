@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-09-14T10:50:09+08:00</updated>
+  <updated>2018-09-20T17:00:04+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -2366,6 +2366,19 @@ currentTarget：事件绑定的当前事件
 <pre><code>&lt;view class=&quot;viewClass&quot; style=&quot;background-image: url(&#39;../../images/welcome.png&#39;)&quot;&gt;
 
 &lt;/view&gt;
+</code></pre>
+
+<h5 id="toc_11">小程序button去掉自带的边框</h5>
+
+<pre><code>button::after {
+  border: none;
+}
+</code></pre>
+
+<h5 id="toc_12">小程序边框wxss设置</h5>
+
+<pre><code>  border: 2rpx solid #828282;
+
 </code></pre>
 
 ]]></content>
