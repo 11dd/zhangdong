@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-10-08T11:24:03+08:00</updated>
+  <updated>2018-10-15T10:32:19+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,88 @@
   </author>
   <generator uri="http://www.mweb.im">MWeb</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[微信全家桶]]></title>
+    <link href="www.freefook.com/15399429964472.html"/>
+    <updated>2018-10-19T17:56:36+08:00</updated>
+    <id>www.freefook.com/15399429964472.html</id>
+    <content type="html"><![CDATA[
+<p>微信平台有哪些：</p>
+
+<p>微信公众平台：<br/>
+<a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a></p>
+
+<p>微信支付的商户平台：<br/>
+<a href="https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F">https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F</a><br/>
+注：小程序里支付只能用小程序支付方式，必须和小程序里开通的支付的商户一致；</p>
+
+<p>微信开放平台<br/>
+<a href="https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN">https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN</a></p>
+
+<p>微信开发者平台：<br/>
+<a href="http://weixin.qq.com/">http://weixin.qq.com/</a></p>
+
+<p>微信硬件平台：<br/>
+<a href="https://iot.weixin.qq.com/">https://iot.weixin.qq.com/</a></p>
+
+<p>腾讯的广告平台：<br/>
+<a href="http://e.qq.com/ads/">http://e.qq.com/ads/</a></p>
+
+<p>腾讯开放平台：<br/>
+<a href="http://open.tencent.com/">http://open.tencent.com/</a></p>
+
+<h4 id="toc_0">--------------手动分割线-----------------</h4>
+
+<h4 id="toc_1">腾讯自家小程序全家桶</h4>
+
+<pre><code>小程序示例   第一个小程序
+小程序开发助手
+小程序数据助手
+小游戏数据助手
+公众平台助手
+微信发票助手
+王卡申请助手
+
+QQ游戏
+腾讯爱玩
+全民大乐斗
+企鹅电竞+
+腾讯动漫+
+
+腾讯+  产品体验官
+腾讯网
+腾讯文档
+腾讯企业邮箱
+
+腾讯云助手
+腾讯视频云
+腾讯AI体验中心
+腾讯云AI体验中心
+腾讯优图AI开发平台
+</code></pre>
+
+<h4 id="toc_2">其他</h4>
+
+<pre><code>举例，摩拜单车的接入，
+KFC，麦当劳 的点餐
+家乐福中国的优惠，
+
+一时风靡的答题类，头脑王者
+
+青芒杂志
+一条视频
+毒蛇电影社区
+
+企鹅电竞+
+斗鱼直播
+虎牙直播
+YY直播+
+
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[小程序数据统计与分析]]></title>
@@ -220,79 +302,6 @@ B接口调用分钟频率受限(目前5000次/分钟)
 </code></pre>
 
 <h4 id="toc_3">--------------手动分割线-----------------</h4>
-
-<p>微信平台有哪些：</p>
-
-<p>微信公众平台：<br/>
-<a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a></p>
-
-<p>微信支付的商户平台：<br/>
-<a href="https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F">https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F</a><br/>
-注：小程序里支付只能用小程序支付方式，必须和小程序里开通的支付的商户一致；</p>
-
-<p>微信开放平台<br/>
-<a href="https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN">https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN</a></p>
-
-<p>微信开发者平台：<br/>
-<a href="http://weixin.qq.com/">http://weixin.qq.com/</a></p>
-
-<p>微信硬件平台：<br/>
-<a href="https://iot.weixin.qq.com/">https://iot.weixin.qq.com/</a></p>
-
-<p>腾讯的广告平台：<br/>
-<a href="http://e.qq.com/ads/">http://e.qq.com/ads/</a></p>
-
-<p>腾讯开放平台：<br/>
-<a href="http://open.tencent.com/">http://open.tencent.com/</a></p>
-
-<h4 id="toc_4">--------------手动分割线-----------------</h4>
-
-<h4 id="toc_5">腾讯自家小程序全家桶</h4>
-
-<pre><code>小程序示例   第一个小程序
-小程序开发助手
-小程序数据助手
-小游戏数据助手
-公众平台助手
-微信发票助手
-王卡申请助手
-
-QQ游戏
-腾讯爱玩
-全民大乐斗
-企鹅电竞+
-腾讯动漫+
-
-腾讯+  产品体验官
-腾讯网
-腾讯文档
-腾讯企业邮箱
-
-腾讯云助手
-腾讯视频云
-腾讯AI体验中心
-腾讯云AI体验中心
-腾讯优图AI开发平台
-</code></pre>
-
-<h4 id="toc_6">其他</h4>
-
-<pre><code>举例，摩拜单车的接入，
-KFC，麦当劳 的点餐
-家乐福中国的优惠，
-
-一时风靡的答题类，头脑王者
-
-青芒杂志
-一条视频
-毒蛇电影社区
-
-企鹅电竞+
-斗鱼直播
-虎牙直播
-YY直播+
-
-</code></pre>
 
 ]]></content>
   </entry>
@@ -2223,163 +2232,6 @@ NOTE: &#39;汇报任务：检查本社区的任务在系统中叫汇报任务&#3
 <h4 id="toc_2">3.setData 后页面如下：</h4>
 
 <p><img src="media/15235164843984/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%882.26.02.png" alt="屏幕快照 2018-04-12 下午2.26.02"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小程序实用示例]]></title>
-    <link href="www.freefook.com/15326733440349.html"/>
-    <updated>2018-07-27T14:35:44+08:00</updated>
-    <id>www.freefook.com/15326733440349.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">获取系统信息 下面是屏幕宽高</h5>
-
-<pre><code> wx.getSystemInfo({
-      success: function(res) {
-        that.setData({
-          windowHeight: res.windowHeight,
-          windowWidth: res.windowWidth,
-        })
-      }
-});
-</code></pre>
-
-<h5 id="toc_1">保存数据</h5>
-
-<pre><code> // 同步方式存储数据
-wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
-
-//取出数据
-var token = wx.getStorageSync(&#39;userInfo&#39;)
-
-</code></pre>
-
-<h5 id="toc_2">跳页</h5>
-
-<pre><code>wx.navigateTo({
-url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
-})
-</code></pre>
-
-<h5 id="toc_3">弹出窗口提示</h5>
-
-<pre><code>wx.showModal({
-    title: &#39;我是弹窗标题&#39;,
-    content: &#39;佛系弹窗详情内容&#39;,
-    success: function(res) {
-      if (res.confirm) {
-        console.log(&#39;用户点击确定&#39;)
-      } else if (res.cancel) {
-        console.log(&#39;用户点击取消&#39;)
-      }
-    }
-  })   
-</code></pre>
-
-<h5 id="toc_4">Toast提示</h5>
-
-<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
- icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
- 
- wx.showToast({
-        title: &#39;请输入提示语&#39;,
-        icon: &#39;none&#39;,
-        mask:true,
-        duration: 2000
-      }) 
-</code></pre>
-
-<h5 id="toc_5">加载的loading</h5>
-
-<pre><code>  wx.showLoading({
-      title: &#39;正在加载&#39;,
-      mask: true,
-    })
-    
-   wx.hideLoading();
-
-</code></pre>
-
-<h5 id="toc_6">延迟执行</h5>
-
-<pre><code> setTimeout(function() {
-   wx.hideLoading()
- }, 1000)
-          
-</code></pre>
-
-<h5 id="toc_7">请求数据</h5>
-
-<pre><code>getList: function(index) {
-    var this_ = this;
-
-    wx.showLoading({
-      title: &#39;正在加载&#39;,
-      mask: true,
-    })
-    //发起网络请求 
-    wx.request({
-      url: getApp().data.urladd + &quot;master/groups/query&quot;,
-      method: &quot;POST&quot;,
-      header: {
-        &#39;content-type&#39;: &#39;application/x-www-form-urlencoded&#39;,
-        &#39;Authorization&#39;: &#39;Bearer &#39; + token
-      },
-      data: {
-        page: index,
-        page_size: this_.data.pageSize,
-        status: this_.data.status,
-      },
-      success: function(e) {
-        console.log(e.data.data.data);
-      },
-      complete: function(res) {
-        wx.hideLoading()
-      }
-    })
-  },
-
-</code></pre>
-
-<h5 id="toc_8">数组查找数据</h5>
-
-<pre><code>let newArr = t.data.ee.filter(item =&gt; item.pid === t.data.province[e.detail.value].id)
-
-</code></pre>
-
-<h5 id="toc_9">点击事件</h5>
-
-<pre><code>bindtap  事件绑定不会阻止冒泡事件向上冒泡
-catchtap  事件绑定可以阻止冒泡事件向上冒泡
-
-点击事件的参数传递：
-target：触发事件的源组件
-currentTarget：事件绑定的当前事件
-
-</code></pre>
-
-<p><img src="media/15326733440349/86CC8E232275B9B77BD5728B014D3B69.png" alt="86CC8E232275B9B77BD5728B014D3B69"/></p>
-
-<h5 id="toc_10">设置背景图片</h5>
-
-<pre><code>&lt;view class=&quot;viewClass&quot; style=&quot;background-image: url(&#39;../../images/welcome.png&#39;)&quot;&gt;
-
-&lt;/view&gt;
-</code></pre>
-
-<h5 id="toc_11">小程序button去掉自带的边框</h5>
-
-<pre><code>button::after {
-  border: none;
-}
-</code></pre>
-
-<h5 id="toc_12">小程序边框wxss设置</h5>
-
-<pre><code>  border: 2rpx solid #828282;
-
-</code></pre>
 
 ]]></content>
   </entry>
