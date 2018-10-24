@@ -57,6 +57,8 @@
         <li><label>小程序</label></li>
 
           
+            <li><a title="iOS审核被拒4.3" href="15403646176398.html">iOS审核被拒4.3</a></li>
+          
             <li><a title="微信全家桶" href="15399429964472.html">微信全家桶</a></li>
           
             <li><a title="小程序数据统计与分析" href="15363043648238.html">小程序数据统计与分析</a></li>
@@ -228,6 +230,8 @@
                     
                       <li class="side-title"><span>小程序</span></li>
                         
+                          <li><a title="iOS审核被拒4.3" href="15403646176398.html">iOS审核被拒4.3</a></li>
+                        
                           <li><a title="微信全家桶" href="15399429964472.html">微信全家桶</a></li>
                         
                           <li><a title="小程序数据统计与分析" href="15363043648238.html">小程序数据统计与分析</a></li>
@@ -372,155 +376,56 @@
 
 	
 		<div class="markdown-body">
-		<h1>小程序实用示例</h1>
+		<h1>小程序网络请求</h1>
 
-		<h5 id="toc_0">获取系统信息 下面是屏幕宽高</h5>
+		<h4 id="toc_0">1.在wxml文件里加上按钮点击事件 和list</h4>
 
-<pre><code> wx.getSystemInfo({
-      success: function(res) {
-        that.setData({
-          windowHeight: res.windowHeight,
-          windowWidth: res.windowWidth,
-        })
-      }
-});
-</code></pre>
+<pre><code>&lt;button bindtap=&quot;RequestData&quot; value=&quot;Button&quot;&gt;request&lt;/button&gt; 
 
-<h5 id="toc_1">保存数据</h5>
-
-<pre><code> // 同步方式存储数据
-wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
-
-//取出数据
-var token = wx.getStorageSync(&#39;userInfo&#39;)
+&lt;view&gt;  
+  &lt;scroll-view scroll-y=&quot;true&quot; style=&quot;height:100%&quot; &gt;  
+    &lt;view wx:for=&quot;{{textdata}}&quot; style=&quot;width:100%&quot;&gt;  
+      &lt;label style=&quot;width:100%;height:50px;font-family:&#39;微软雅黑&#39;&quot;&gt;  {{item.name}}&lt;/label&gt;  
+    &lt;/view&gt;  
+  &lt;/scroll-view&gt;  
+&lt;/view&gt;   
 
 </code></pre>
 
-<h5 id="toc_2">跳页</h5>
+<h4 id="toc_1">2.在.js 文件添加网络请求，点击按钮后执行代码如下：</h4>
 
-<pre><code>wx.navigateTo({
-url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
-})
-</code></pre>
-
-<h5 id="toc_3">弹出窗口提示</h5>
-
-<pre><code>wx.showModal({
-    title: &#39;我是弹窗标题&#39;,
-    content: &#39;佛系弹窗详情内容&#39;,
-    success: function(res) {
-      if (res.confirm) {
-        console.log(&#39;用户点击确定&#39;)
-      } else if (res.cancel) {
-        console.log(&#39;用户点击取消&#39;)
-      }
-    }
-  })   
-</code></pre>
-
-<h5 id="toc_4">Toast提示</h5>
-
-<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
- icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
- 
- wx.showToast({
-        title: &#39;请输入提示语&#39;,
-        icon: &#39;none&#39;,
-        mask:true,
-        duration: 2000
-      }) 
-</code></pre>
-
-<h5 id="toc_5">加载的loading</h5>
-
-<pre><code>  wx.showLoading({
-      title: &#39;正在加载&#39;,
-      mask: true,
-    })
-    
-   wx.hideLoading();
-
-</code></pre>
-
-<h5 id="toc_6">延迟执行</h5>
-
-<pre><code> setTimeout(function() {
-   wx.hideLoading()
- }, 1000)
-          
-</code></pre>
-
-<h5 id="toc_7">请求数据</h5>
-
-<pre><code>getList: function(index) {
-    var this_ = this;
-
-    wx.showLoading({
-      title: &#39;正在加载&#39;,
-      mask: true,
-    })
-    //发起网络请求 
+<pre><code> RequestData: function () {
+    var that = this;
     wx.request({
-      url: getApp().data.urladd + &quot;master/groups/query&quot;,
-      method: &quot;POST&quot;,
-      header: {
-        &#39;content-type&#39;: &#39;application/x-www-form-urlencoded&#39;,
-        &#39;Authorization&#39;: &#39;Bearer &#39; + token
+      url: &#39;http://.../serve/api/v1.0/service/communityLst&#39;,
+
+      data: {},
+      method: &#39;GET&#39;, 
+      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT 
+      // header: {}, // 设置请求的 header 默认是application/json  
+
+      success: function (res) {  
+        //划重点---&gt;setData 
+        that.setData({ textdata: res.data.query});
+        
+        // 操作json数据 遍历打印数组里name字段数据  
+        for (var i in res.data.query) {
+          console.log(res.data.query[i].name);
+        }
       },
-      data: {
-        page: index,
-        page_size: this_.data.pageSize,
-        status: this_.data.status,
+      fail: function () {
+        // fail  
       },
-      success: function(e) {
-        console.log(e.data.data.data);
-      },
-      complete: function(res) {
-        wx.hideLoading()
+      complete: function () {
+        // complete  
       }
     })
-  },
-
+  },  
 </code></pre>
 
-<h5 id="toc_8">数组查找数据</h5>
+<h4 id="toc_2">3.setData 后页面如下：</h4>
 
-<pre><code>let newArr = t.data.ee.filter(item =&gt; item.pid === t.data.province[e.detail.value].id)
-
-</code></pre>
-
-<h5 id="toc_9">点击事件</h5>
-
-<pre><code>bindtap  事件绑定不会阻止冒泡事件向上冒泡
-catchtap  事件绑定可以阻止冒泡事件向上冒泡
-
-点击事件的参数传递：
-target：触发事件的源组件
-currentTarget：事件绑定的当前事件
-
-</code></pre>
-
-<p><img src="media/15326733440349/86CC8E232275B9B77BD5728B014D3B69.png" alt="86CC8E232275B9B77BD5728B014D3B69"/></p>
-
-<h5 id="toc_10">设置背景图片</h5>
-
-<pre><code>&lt;view class=&quot;viewClass&quot; style=&quot;background-image: url(&#39;../../images/welcome.png&#39;)&quot;&gt;
-
-&lt;/view&gt;
-</code></pre>
-
-<h5 id="toc_11">小程序button去掉自带的边框</h5>
-
-<pre><code>button::after {
-  border: none;
-}
-</code></pre>
-
-<h5 id="toc_12">小程序边框wxss设置</h5>
-
-<pre><code>  border: 2rpx solid #828282;
-
-</code></pre>
+<p><img src="media/15235164843984/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%882.26.02.png" alt="屏幕快照 2018-04-12 下午2.26.02"/></p>
 
 
 		</div>

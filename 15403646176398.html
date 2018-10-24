@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  OC 数组操作方法说明 - 至尊宝典之备忘录
+  iOS审核被拒4.3 - 至尊宝典之备忘录
   
   </title>
  <meta name="description" content="">
@@ -372,151 +372,67 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>OC 数组操作方法说明</h1>
+<h1>iOS审核被拒4.3</h1>
 
-<h5 id="toc_0">获取数组的正序迭代器</h5>
+<h5 id="toc_0">一种是过不了机审关被拒，一种是过不了人审关被拒。</h5>
 
-<pre><code>    NSEnumerator *enu1 = [tempArr objectEnumerator];
-</code></pre>
+<pre><code>iOS预审核，扫描api，及plist文件字符缺失等；
+此处分两步，第一步为上传时苹果Application Loador等应用对于适配icon等的检查，
+第二步为上传后苹果的功能性检查，例如配置了Push功能但有缺失或者未打开功能，则会邮件提示等等；
 
-<h5 id="toc_1">获取数组的反序迭代器</h5>
+iOS机审，主要是对代码进行机器审核，排查APP是否重复应用，此处扫描支付SDK等，及马甲情况，机器扫描主要看代码块
 
-<pre><code>    NSEnumerator *enu2 = [tempArr reverseObjectEnumerator];
-    //数组倒序输出
-    dataArray=(NSMutableArray *)[[dataArray reverseObjectEnumerator] allObjects];
-</code></pre>
-
-<h5 id="toc_2">数组排序</h5>
-
-<pre><code>    // 返回一个排好序的数组，原来数组的元素顺序不会改变
-    // 指定元素的比较方法：compare:
-    NSArray *array1 = [NSArray arrayWithObjects:@&quot;2&quot;, @&quot;3&quot;, @&quot;1&quot;, @&quot;4&quot;, nil];
-    NSArray *array2 = [array1 sortedArrayUsingSelector:@selector(compare:)];
-    NSLog(@&quot;array2:%@&quot;, array2);(1,2,3,4)
-</code></pre>
-
-<h5 id="toc_3">选择排序-iOS常用模式tempLogArr数组里每一元素是字典，根据字典里的dic[Index]排序</h5>
-
-<pre><code>    for (int i=0; i&lt;tempLogArr.count; i++) {
-        
-        for (int j=i+1; j&lt;tempLogArr.count; j++) {
-            
-            if ([tempLogArr[i][@&quot;Index&quot;] intValue] &lt; [tempLogArr[j][@&quot;Index&quot;] intValue]) {
-                
-                [tempLogArr exchangeObjectAtIndex:i withObjectAtIndex:j];
-            }
-        }
-    }
-</code></pre>
-
-<h5 id="toc_4">数组tempLogArr元素是字典“遍历所有”去掉重复信息用（ i--）方式，避免数组越界</h5>
-
-<pre><code>    int x;
-    int y;
-    for (int i = (int)tempLogArr.count - 1; i &gt;=0 ; i--) {
-        NSString * tempStr = [NSString stringWithFormat:@&quot;%@&quot;,tempLogArr[i][@&quot;Index&quot;]];
-        x = [tempStr intValue];
-        for (int j = i-1; j &gt;=0 ; j--) {
-            y = [tempLogArr[j][@&quot;Index&quot;] intValue];
-            if (x == y) {
-                [tempLogArr removeObjectAtIndex:j];
-            }
-        }
-    }
+iOS人审，主要是由苹果审核人员对APP的内容、功能进行核验，防止APP有bug，
+防止APP模仿其他应用，内容与其他APP重复，影响用户体验，检测功能或者App体验测试，例如用测试账号登录App体验功能，或其他是否明显bug等，ipv6也在此处检测；
 
 </code></pre>
 
-<h5 id="toc_5">数组historyArray元素是字典 遍历遇到重复信息删除，停止遍历</h5>
+<h5 id="toc_1">区分机审 、人审</h5>
 
-<p>不遍历全部，针对每次增加信息的时候，都会调用这个方法，不会出现重复两次的情况</p>
+<pre><code>那么如何区分是机器审核还是人工审核呢？主要看APP被拒的信息：
 
-<pre><code>//tempStr 信息的唯一标识，tempDic是全部信息内容
--(void)saveSearchData:(NSString*)tempStr infoDic:(NSDictionary *)tempDic
-{
-    /**该模块为判断浏览的信息是否已经存在历史记录里,如果存在则删除过去的,重新添加最新的搜索记录*/
-    
-    if (self.historyArray.count&gt;0) {
-        //第一种遍历方法，数组元素为字典，字典是每条信息的全部内容
-        [self.historyArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            
-            //NSLog(@&quot;idx=%lu, id=%@&quot;, (unsigned long)idx, obj);
-            
-            if ([obj[@&quot;info_id&quot;] isEqualToString:tempStr]) {
-                [self.historyArray removeObjectAtIndex:idx];
-                *stop = YES;//停止遍历
-            }
-        }];
-    }
-    [self.historyArray addObject:tepDic];
-}
+1）如果是机器审核被拒，一般收到的被拒信息第一句话基本上是这样的：
+Guideline4.3 - Design - Spam
+Yourapp duplicates the content and functionality of apps submitted to the AppStore,
+ which is considered a form of spam.
+
+2）如果是人工审核被拒，一般收到的被拒信息第一句话基本上是这样的：
+Guideline4.3 - Design - Spam
+Wefound that your app provides the same feature set as other apps submitted tothe App Store, 
+which is not appropriate to the App Store.
 </code></pre>
 
-<h5 id="toc_6">遍历方法:快速枚举</h5>
+<h5 id="toc_2">针对审核</h5>
 
-<pre><code>    for(NSString* obj in tempArr)
-    {
-        NSLog(@&quot;%@&quot;, obj);
-    }
-</code></pre>
+<pre><code>1.原来账号里的APP的名字可以作废掉或者修改成其他的，
+同时记得移除之前的APP，重新打个空包传上去，
+icon图则用其他logo图置换掉
 
-<h5 id="toc_7">遍历方法:快速遍历</h5>
+2.增加登录日志
 
-<pre><code>//顺序遍历
-[array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSLog(@&quot;%@&quot;,array[idx]);
-        *stop = YES;//停止遍历,也可以在此增加if判断idx = 3 的时候停止。
- }];
-//倒序遍历
-[array enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSLog(@&quot;%@&quot;,array[idx]);
-        *stop = NO;//继续遍历
-}];
-</code></pre>
+3.主要的方法是添加垃圾代码，且代码的相似程度不高于45%，
+  混淆工程地址：https://github.com/JourneyYoung/iOSMixProject
 
-<h5 id="toc_8">动态数组NSMutableArray的add操作</h5>
+4.工程中的文件夹的名字全部进行修改，类名修改，方法名修改
 
-<pre><code>    NSArray * array = [NSArray arrayWithObjects:@&quot;1&quot;,@&quot;2&quot;, nil];
-    
-    //方法一
-    NSMutableArray * list = [[NSMutableArray alloc]init];
-    [list addObjectsFromArray: array]];
-    NSLog(@&quot;%@&quot;,list);//(1,2)
-    
-    //方法二arrayByAddingObjectsFromArray 该方法做了copy原数据不变
-    NSMutableArray * list = [[NSMutableArray alloc]init];
-    [list arrayByAddingObjectsFromArray: array]
-    NSLog(@&quot;%@&quot;,list);//()
-    
-</code></pre>
+5.资源图片替换修改，适当添加一些无用的资源 
 
-<h5 id="toc_9">数组的简单操作</h5>
+6.API名称，机扫二进制文件，也会对比API
 
-<pre><code>//插入索引为几的位置
-[tempArr insertObject:@&quot;two&quot; atIndex:1];
+7.换开发者账号，换不同账号提交审核
 
-//修改数组中第2个元素的内容
-[tempArr replaceObjectAtIndex:2 withObject:@&quot;aaa&quot;];
+8.换 bundle id，换一个包再提交审核；
 
-//交换数组中得内容
-[tempArr exchangeObjectAtIndex:1 withObjectAtIndex:3];
+9. 一定要关注名字,icon,启动图;修改UI风格同时进行假页面的添加;
 
-//取出连续范围的元素作为子集内容
-NSArray *sub1 = [tempArr subarrayWithRange:NSMakeRange(1, 3)];
-</code></pre>
+10.升级 version，升级一个版本号提交审核
 
-<h5 id="toc_10">数组的删除操作</h5>
+11.修改产品分类
 
-<pre><code>//1.删除最后一个元素
- [array removeLastObject];
- NSLog(@&quot;%@&quot;,array);
+12.还需要注意相同的马甲包提交至少要间隔一天以上。
 
-//2.删除指定下标的元素
-[array removeObjectAtIndex:5];
- NSLog(@&quot;%@&quot;,array);
+13.定期换电脑提包.换电脑的序列号.换VPN环境.定期换域名. 
 
-//3.直接删除元素
-[array removeObject:@&quot;e&quot;];
- NSLog(@&quot;%@&quot;,array);
 </code></pre>
 
 
@@ -529,15 +445,13 @@ NSArray *sub1 = [tempArr subarrayWithRange:NSMakeRange(1, 3)];
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15139214218497.html"  title="Previous Post: OC 字符串操作方法说明">&laquo; OC 字符串操作方法说明</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15142856319824.html" 
-	        title="Next Post: OC plist文件管理(代码方式)">OC plist文件管理(代码方式) &raquo;</a>
+	        <a href="15399429964472.html" 
+	        title="Next Post: 微信全家桶">微信全家桶 &raquo;</a>
 	    
 	</div>
   </div>
@@ -550,7 +464,7 @@ NSArray *sub1 = [tempArr subarrayWithRange:NSMakeRange(1, 3)];
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15139214500331.html';
+		var currentURL = '15403646176398.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

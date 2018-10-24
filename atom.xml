@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-10-15T10:32:19+08:00</updated>
+  <updated>2018-10-19T17:57:13+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,76 @@
   </author>
   <generator uri="http://www.mweb.im">MWeb</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS审核被拒4.3]]></title>
+    <link href="www.freefook.com/15403646176398.html"/>
+    <updated>2018-10-24T15:03:37+08:00</updated>
+    <id>www.freefook.com/15403646176398.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">一种是过不了机审关被拒，一种是过不了人审关被拒。</h5>
+
+<pre><code>iOS预审核，扫描api，及plist文件字符缺失等；
+此处分两步，第一步为上传时苹果Application Loador等应用对于适配icon等的检查，
+第二步为上传后苹果的功能性检查，例如配置了Push功能但有缺失或者未打开功能，则会邮件提示等等；
+
+iOS机审，主要是对代码进行机器审核，排查APP是否重复应用，此处扫描支付SDK等，及马甲情况，机器扫描主要看代码块
+
+iOS人审，主要是由苹果审核人员对APP的内容、功能进行核验，防止APP有bug，
+防止APP模仿其他应用，内容与其他APP重复，影响用户体验，检测功能或者App体验测试，例如用测试账号登录App体验功能，或其他是否明显bug等，ipv6也在此处检测；
+
+</code></pre>
+
+<h5 id="toc_1">区分机审 、人审</h5>
+
+<pre><code>那么如何区分是机器审核还是人工审核呢？主要看APP被拒的信息：
+
+1）如果是机器审核被拒，一般收到的被拒信息第一句话基本上是这样的：
+Guideline4.3 - Design - Spam
+Yourapp duplicates the content and functionality of apps submitted to the AppStore,
+ which is considered a form of spam.
+
+2）如果是人工审核被拒，一般收到的被拒信息第一句话基本上是这样的：
+Guideline4.3 - Design - Spam
+Wefound that your app provides the same feature set as other apps submitted tothe App Store, 
+which is not appropriate to the App Store.
+</code></pre>
+
+<h5 id="toc_2">针对审核</h5>
+
+<pre><code>1.原来账号里的APP的名字可以作废掉或者修改成其他的，
+同时记得移除之前的APP，重新打个空包传上去，
+icon图则用其他logo图置换掉
+
+2.增加登录日志
+
+3.主要的方法是添加垃圾代码，且代码的相似程度不高于45%，
+  混淆工程地址：https://github.com/JourneyYoung/iOSMixProject
+
+4.工程中的文件夹的名字全部进行修改，类名修改，方法名修改
+
+5.资源图片替换修改，适当添加一些无用的资源 
+
+6.API名称，机扫二进制文件，也会对比API
+
+7.换开发者账号，换不同账号提交审核
+
+8.换 bundle id，换一个包再提交审核；
+
+9. 一定要关注名字,icon,启动图;修改UI风格同时进行假页面的添加;
+
+10.升级 version，升级一个版本号提交审核
+
+11.修改产品分类
+
+12.还需要注意相同的马甲包提交至少要间隔一天以上。
+
+13.定期换电脑提包.换电脑的序列号.换VPN环境.定期换域名. 
+
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[微信全家桶]]></title>
@@ -27,6 +97,9 @@
 <p>微信支付的商户平台：<br/>
 <a href="https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F">https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F</a><br/>
 注：小程序里支付只能用小程序支付方式，必须和小程序里开通的支付的商户一致；</p>
+
+<p>支付接口文档<br/>
+<a href="https://pay.weixin.qq.com/wiki/doc/api/index.html">https://pay.weixin.qq.com/wiki/doc/api/index.html</a></p>
 
 <p>微信开放平台<br/>
 <a href="https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN">https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN</a></p>
@@ -2174,64 +2247,6 @@ NOTE: &#39;汇报任务：检查本社区的任务在系统中叫汇报任务&#3
 <p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-17%20%E4%B8%8B%E5%8D%883.12.29.png" alt="屏幕快照 2018-04-17 下午3.12.29"/></p>
 
 <p>请求地址：来源项目 <a href="https://github.com/YhAllen/WeChat-applet-mall">https://github.com/YhAllen/WeChat-applet-mall</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小程序网络请求]]></title>
-    <link href="www.freefook.com/15235164843984.html"/>
-    <updated>2018-04-12T15:01:24+08:00</updated>
-    <id>www.freefook.com/15235164843984.html</id>
-    <content type="html"><![CDATA[
-<h4 id="toc_0">1.在wxml文件里加上按钮点击事件 和list</h4>
-
-<pre><code>&lt;button bindtap=&quot;RequestData&quot; value=&quot;Button&quot;&gt;request&lt;/button&gt; 
-
-&lt;view&gt;  
-  &lt;scroll-view scroll-y=&quot;true&quot; style=&quot;height:100%&quot; &gt;  
-    &lt;view wx:for=&quot;{{textdata}}&quot; style=&quot;width:100%&quot;&gt;  
-      &lt;label style=&quot;width:100%;height:50px;font-family:&#39;微软雅黑&#39;&quot;&gt;  {{item.name}}&lt;/label&gt;  
-    &lt;/view&gt;  
-  &lt;/scroll-view&gt;  
-&lt;/view&gt;   
-
-</code></pre>
-
-<h4 id="toc_1">2.在.js 文件添加网络请求，点击按钮后执行代码如下：</h4>
-
-<pre><code> RequestData: function () {
-    var that = this;
-    wx.request({
-      url: &#39;http://.../serve/api/v1.0/service/communityLst&#39;,
-
-      data: {},
-      method: &#39;GET&#39;, 
-      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT 
-      // header: {}, // 设置请求的 header 默认是application/json  
-
-      success: function (res) {  
-        //划重点---&gt;setData 
-        that.setData({ textdata: res.data.query});
-        
-        // 操作json数据 遍历打印数组里name字段数据  
-        for (var i in res.data.query) {
-          console.log(res.data.query[i].name);
-        }
-      },
-      fail: function () {
-        // fail  
-      },
-      complete: function () {
-        // complete  
-      }
-    })
-  },  
-</code></pre>
-
-<h4 id="toc_2">3.setData 后页面如下：</h4>
-
-<p><img src="media/15235164843984/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%882.26.02.png" alt="屏幕快照 2018-04-12 下午2.26.02"/></p>
 
 ]]></content>
   </entry>
