@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-11-08T17:56:17+08:00</updated>
+  <updated>2018-11-08T18:01:58+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,118 @@
   </author>
   <generator uri="http://www.mweb.im">MWeb</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序开发规范]]></title>
+    <link href="www.freefook.com/15416465825836.html"/>
+    <updated>2018-11-08T11:09:42+08:00</updated>
+    <id>www.freefook.com/15416465825836.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">微信小程序里的四种文件</h5>
+
+<pre><code>.json 后缀的 JSON 配置文件
+.wxml 后缀的 WXML 模板文件
+.wxss 后缀的 WXSS 样式文件
+.js 后缀的 JS 脚本逻辑文件
+</code></pre>
+
+<h5 id="toc_1">资源管理</h5>
+
+<pre><code>### 图片资源
+目前图片资源的主要性能问题在于大图片和长列表图片上，
+这两种情况都有可能导致 iOS 客户端内存占用上升，
+从而触发系统回收小程序页面。
+### 图片对内存的影响
+在 iOS 上，小程序的页面是由多个 WKWebView 组成的，
+在系统内存紧张时，会回收掉一部分 WKWebView。
+从过去我们分析的案例来看，大图片和长列表图片的使用会引起 WKWebView 的回收。
+### 图片对页面切换的影响
+除了内存问题外，大图片也会造成页面切换的卡顿。
+我们分析过的案例中，有一部分小程序会在页面中引用大图片，
+在页面后退切换中会出现掉帧卡顿的情况。
+当前我们建议开发者尽量减少使用大图片资源。
+</code></pre>
+
+<h5 id="toc_2">资源文件</h5>
+
+<pre><code>所有资源文件(如图片)放在统一文件下及其子文件中(例如以下分类)
+resource
+  ——public
+  ——tab
+  ——home
+  ——mine
+</code></pre>
+
+<h5 id="toc_3">基础页面</h5>
+
+<pre><code>业务展示的页面放在如 pages 文件及其子文件中(例如以下分类)
+pages
+  ——index
+  ——mall
+    ——goodList
+    ——goodDetail
+  ——order
+    ——orderList
+    ——orderDetail
+  ——mine
+    ——myInfo
+    ——myAddress
+    
+如有其他子业务，单独在pages里创建新的子级文件
+</code></pre>
+
+<pre><code>注释规范
+   针对wxml页面由上到下(或由左到右)分级的模块，均需注释出其功能，
+   并在其上下空出一行与其他代码进行区分。
+</code></pre>
+
+<h5 id="toc_4">样式文件</h5>
+
+<pre><code>基础样式文件，在最外层中创建(如：weui.wxss)
+第一步：写入公共样式：如 
+1.标题字体大小，描述字体大小等项目中一二三级字号；
+2.程序中所用的公共色值；
+3.布局方式flex的横向布局，纵向布局等；
+4.公共布局中wxss样式前缀统一(如weui-开头)；
+等等
+
+第二步：在app.wxss文件最上部，引入 @import &quot;weui.wxss&quot;;
+以上公共样式便可全局使用
+</code></pre>
+
+<pre><code>wxss规范
+    1.wxss 页面可使用快捷键真理代码(Shift+Alt+F)
+    整理后代码有明显的代码缩进，对齐。每一个样式类之间空出一行；
+
+    2.在开发过程中rpx和px均可能用到，
+    如通常情况下间距使用rpx，
+    字体大小和边框等使用px，开发者根据实际情况而定；
+       
+    3.同一块的样式属性(如 .order-title 和 .order-image)放在一块；
+    
+    4.wxss 样式中同一块可以这样抒写(如 .order.title)
+    意思是.order样式下的.title,
+    其他地方的class=&#39;title&#39;不会引用到.order下的.title
+    
+    5.wxss样式之间用块状注释。请勿在代码后面直接注释。
+</code></pre>
+
+<h5 id="toc_5">JS规范</h5>
+
+<pre><code>JS规范
+    1.删除js文件中未用到的生命周期函数，保持代码的整洁
+    2.右上角不要分享的页面，删除JS文件中该方法onShareAppMessage:function()
+    3.采用ES6 关键字let定义变量，尽量不使用var
+    4.所有涉及到数据绑定的变量均需在data中初始化,禁止在不定义的情况下直接setData
+    5.变量名以及函数名统一采用驼峰命名法(或下划线分割)
+    6.正常情况下函数名前缀需加上清晰的动词表示函数功能(如getOderList)
+    7.点击事件函数命名方式为 on + 事件名 或者业务名
+    8.JS语句无需以分号结束，统一省略分号
+    9.JS中一致使用单引号&#39; &#39; , WXML中一致使用双引号&quot; &quot;
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[微信小程序的历程]]></title>
@@ -133,76 +245,6 @@
 <p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.31.04.png" alt="屏幕快照 2018-04-09 上午11.31.04"/></p>
 
 <hr/>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序运营 设计与开发]]></title>
-    <link href="www.freefook.com/15416647115012.html"/>
-    <updated>2018-11-08T16:11:51+08:00</updated>
-    <id>www.freefook.com/15416647115012.html</id>
-    <content type="html"><![CDATA[
-<h4 id="toc_0">项目经理必备</h4>
-
-<p>项目经理必要了解API里面微信开放接口的信息例如：</p>
-
-<ol>
-<li>登录授权</li>
-<li>获取用户信息</li>
-<li>微信支付</li>
-<li>转发</li>
-<li>收货地址</li>
-<li>生成小程序二维码</li>
-</ol>
-
-<p>小程序初期明确是否在运营规范里允许的，或者找一些已有小程序样例</p>
-
-<ul>
-<li>运营规范(在这里查看禁止事项)：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/index.html">https://mp.weixin.qq.com/debug/wxadoc/product/index.html</a></li>
-<li><p>特殊行业所需资质材料：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714</a><br/>
-<img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.46.27.png" alt="屏幕快照 2018-08-08 下午3.46.27"/></p></li>
-<li><p>支付文档：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1</a></p></li>
-<li><p>客服消息：<a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221">https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221</a> </p></li>
-<li><p>数据分析：<a href="https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714</a></p></li>
-</ul>
-
-<hr/>
-
-<h5 id="toc_1">当开始要做一个小程序时，需通读设计指南</h5>
-
-<p>设计指南：<a href="https://mp.weixin.qq.com/debug/wxadoc/design/index.html">https://mp.weixin.qq.com/debug/wxadoc/design/index.html</a></p>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.28.55.png" alt="屏幕快照 2018-04-09 上午11.28.55"/></p>
-
-<h4 id="toc_2">小程序开发人员必备</h4>
-
-<p>入坑指南，疑难问题，请浏览👇<br/>
-小程序社区：<a href="http://www.wxapp-union.com/">http://www.wxapp-union.com/</a></p>
-
-<p>开发者学习已有框架可参考<br/>
-WePY框架开发小程序请移步👇<br/>
-<a href="https://tencent.github.io/wepy/index.html">https://tencent.github.io/wepy/index.html</a></p>
-
-<p>美团一团队出的框架mpvue框架请移步👇<br/>
-<a href="http://mpvue.com/mpvue/#_2">http://mpvue.com/mpvue/#_2</a></p>
-
-<p>weui Github 地址：<br/>
-<a href="https://github.com/Tencent/weui-wxss">https://github.com/Tencent/weui-wxss</a></p>
-
-<hr/>
-
-<h5 id="toc_3">微信开发者工具创建小程序工程需要AppID</h5>
-
-<p>官方工具：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714</a></p>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.21.41.png" alt="屏幕快照 2018-04-09 上午11.21.41"/></p>
-
-<h5 id="toc_4">小程序开发必读项，教程 ，框架 ，组件 ，API , 工具</h5>
-
-<p>简易教程：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/">https://mp.weixin.qq.com/debug/wxadoc/dev/</a></p>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.23.50.png" alt="屏幕快照 2018-04-09 上午11.23.50"/></p>
 
 ]]></content>
   </entry>
@@ -364,113 +406,71 @@ icon图则用其他logo图置换掉
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序开发规范]]></title>
-    <link href="www.freefook.com/15416465825836.html"/>
-    <updated>2018-11-08T11:09:42+08:00</updated>
-    <id>www.freefook.com/15416465825836.html</id>
+    <title type="html"><![CDATA[微信小程序运营 设计与开发]]></title>
+    <link href="www.freefook.com/15416647115012.html"/>
+    <updated>2018-11-08T16:11:51+08:00</updated>
+    <id>www.freefook.com/15416647115012.html</id>
     <content type="html"><![CDATA[
-<h5 id="toc_0">微信小程序里的四种文件</h5>
+<h4 id="toc_0">项目经理必备</h4>
 
-<pre><code>.json 后缀的 JSON 配置文件
-.wxml 后缀的 WXML 模板文件
-.wxss 后缀的 WXSS 样式文件
-.js 后缀的 JS 脚本逻辑文件
-</code></pre>
+<p>项目经理必要了解API里面微信开放接口的信息例如：</p>
 
-<h5 id="toc_1">资源管理</h5>
+<ol>
+<li>登录授权</li>
+<li>获取用户信息</li>
+<li>微信支付</li>
+<li>转发</li>
+<li>收货地址</li>
+<li>生成小程序二维码</li>
+</ol>
 
-<pre><code>### 图片资源
-目前图片资源的主要性能问题在于大图片和长列表图片上，
-这两种情况都有可能导致 iOS 客户端内存占用上升，
-从而触发系统回收小程序页面。
-### 图片对内存的影响
-在 iOS 上，小程序的页面是由多个 WKWebView 组成的，
-在系统内存紧张时，会回收掉一部分 WKWebView。
-从过去我们分析的案例来看，大图片和长列表图片的使用会引起 WKWebView 的回收。
-### 图片对页面切换的影响
-除了内存问题外，大图片也会造成页面切换的卡顿。
-我们分析过的案例中，有一部分小程序会在页面中引用大图片，
-在页面后退切换中会出现掉帧卡顿的情况。
-当前我们建议开发者尽量减少使用大图片资源。
-</code></pre>
+<p>小程序初期明确是否在运营规范里允许的，或者找一些已有小程序样例</p>
 
-<h5 id="toc_2">资源文件</h5>
+<ul>
+<li>运营规范(在这里查看禁止事项)：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/index.html">https://mp.weixin.qq.com/debug/wxadoc/product/index.html</a></li>
+<li><p>特殊行业所需资质材料：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714</a><br/>
+<img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.46.27.png" alt="屏幕快照 2018-08-08 下午3.46.27"/></p></li>
+<li><p>支付文档：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1</a></p></li>
+<li><p>客服消息：<a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221">https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221</a> </p></li>
+<li><p>数据分析：<a href="https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714</a></p></li>
+</ul>
 
-<pre><code>所有资源文件(如图片)放在统一文件下及其子文件中(例如以下分类)
-resource
-  ——public
-  ——tab
-  ——home
-  ——mine
-</code></pre>
+<hr/>
 
-<h5 id="toc_3">基础页面</h5>
+<h5 id="toc_1">当开始要做一个小程序时，需通读设计指南</h5>
 
-<pre><code>业务展示的页面放在如 pages 文件及其子文件中(例如以下分类)
-pages
-  ——index
-  ——mall
-    ——goodList
-    ——goodDetail
-  ——order
-    ——orderList
-    ——orderDetail
-  ——mine
-    ——myInfo
-    ——myAddress
-    
-如有其他子业务，单独在pages里创建新的子级文件
-</code></pre>
+<p>设计指南：<a href="https://mp.weixin.qq.com/debug/wxadoc/design/index.html">https://mp.weixin.qq.com/debug/wxadoc/design/index.html</a></p>
 
-<pre><code>注释规范
-   针对wxml页面由上到下(或由左到右)分级的模块，均需注释出其功能，
-   并在其上下空出一行与其他代码进行区分。
-</code></pre>
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.28.55.png" alt="屏幕快照 2018-04-09 上午11.28.55"/></p>
 
-<h5 id="toc_4">样式文件</h5>
+<h4 id="toc_2">小程序开发人员必备</h4>
 
-<pre><code>基础样式文件，在最外层中创建(如：weui.wxss)
-第一步：写入公共样式：如 
-1.标题字体大小，描述字体大小等项目中一二三级字号；
-2.程序中所用的公共色值；
-3.布局方式flex的横向布局，纵向布局等；
-4.公共布局中wxss样式前缀统一(如weui-开头)；
-等等
+<p>入坑指南，疑难问题，请浏览👇<br/>
+小程序社区：<a href="http://www.wxapp-union.com/">http://www.wxapp-union.com/</a></p>
 
-第二步：在app.wxss文件最上部，引入 @import &quot;weui.wxss&quot;;
-以上公共样式便可全局使用
-</code></pre>
+<p>开发者学习已有框架可参考<br/>
+WePY框架开发小程序请移步👇<br/>
+<a href="https://tencent.github.io/wepy/index.html">https://tencent.github.io/wepy/index.html</a></p>
 
-<pre><code>wxss规范
-    1.wxss 页面可使用快捷键真理代码(Shift+Alt+F)
-    整理后代码有明显的代码缩进，对齐。每一个样式类之间空出一行；
+<p>美团一团队出的框架mpvue框架请移步👇<br/>
+<a href="http://mpvue.com/mpvue/#_2">http://mpvue.com/mpvue/#_2</a></p>
 
-    2.在开发过程中rpx和px均可能用到，
-    如通常情况下间距使用rpx，
-    字体大小和边框等使用px，开发者根据实际情况而定；
-       
-    3.同一块的样式属性(如 .order-title 和 .order-image)放在一块；
-    
-    4.wxss 样式中同一块可以这样抒写(如 .order.title)
-    意思是.order样式下的.title,
-    其他地方的class=&#39;title&#39;不会引用到.order下的.title
-    
-    5.wxss样式之间用块状注释。请勿在代码后面直接注释。
-</code></pre>
+<p>weui Github 地址：<br/>
+<a href="https://github.com/Tencent/weui-wxss">https://github.com/Tencent/weui-wxss</a></p>
 
-<h5 id="toc_5">JS规范</h5>
+<hr/>
 
-<pre><code>JS规范
-    1.删除js文件中未用到的生命周期函数，保持代码的整洁
-    2.右上角不要分享的页面，删除JS文件中该方法onShareAppMessage:function()
-    3.采用ES6 关键字let定义变量，尽量不使用var
-    4.所有涉及到数据绑定的变量均需在data中初始化,禁止在不定义的情况下直接setData
-    5.变量名以及函数名统一采用驼峰命名法(或下划线分割)
-    6.正常情况下函数名前缀需加上清晰的动词表示函数功能(如getOderList)
-    7.点击事件函数命名方式为 on + 事件名 或者业务名
-    8.JS语句无需以分号结束，统一省略分号
-    9.JS中一致使用单引号&#39; &#39; , WXML中一致使用双引号&quot; &quot;
-</code></pre>
+<h5 id="toc_3">微信开发者工具创建小程序工程需要AppID</h5>
+
+<p>官方工具：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714</a></p>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.21.41.png" alt="屏幕快照 2018-04-09 上午11.21.41"/></p>
+
+<h5 id="toc_4">小程序开发必读项，教程 ，框架 ，组件 ，API , 工具</h5>
+
+<p>简易教程：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/">https://mp.weixin.qq.com/debug/wxadoc/dev/</a></p>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.23.50.png" alt="屏幕快照 2018-04-09 上午11.23.50"/></p>
 
 ]]></content>
   </entry>
@@ -605,73 +605,70 @@ wx.createMapContext 地图组件控制
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序开发配置介绍]]></title>
-    <link href="www.freefook.com/15325981038081.html"/>
-    <updated>2018-07-26T17:41:43+08:00</updated>
-    <id>www.freefook.com/15325981038081.html</id>
+    <title type="html"><![CDATA[微信小程序机制]]></title>
+    <link href="www.freefook.com/15287848933165.html"/>
+    <updated>2018-06-12T14:28:13+08:00</updated>
+    <id>www.freefook.com/15287848933165.html</id>
     <content type="html"><![CDATA[
-<h5 id="toc_0">服务器配置</h5>
+<p>微信客户端在打开小程序之前，会把整个小程序的代码包下载到本地。</p>
 
-<p>服务器域名请在 小程序后台-设置-开发设置-服务器域名 中进行配置，配置时需要注意：</p>
+<h4 id="toc_0">小程序未发布时有权限-需添加用户身份</h4>
 
-<pre><code> •  域名只支持 https (request、uploadFile、downloadFile) 和 wss (connectSocket) 协议；
- •  域名不能使用 IP 地址或 localhost
- •  域名必须经过 ICP 备案；
- •  出于安全考虑，api.weixin.qq.com 不能被配置为服务器域名，
-       相关API也不能在小程序内调用。
-       开发者应将 appsecret 保存到后台服务器中，
-       通过服务器使用 appsecret 获取 accesstoken，并调用相关 API。
- •  对于每个接口，分别可以配置最多 20 个域名
+<pre><code>管理入口位于：小程序管理后台 - 用户身份 – 成员管理
 
+一个团队进行小程序的开发，那么团队成员的身份管理是很有必要的。
+管理员可在小程序管理后台统一管理项目成员（
+包括开发者、体验者及其他成员）、
+设置项目成员的权限，包括：开发者/体验者权限、登录小程序管理后台、开发管理、查看小程序数据分析等。
+管理入口位于：小程序管理后台 - 用户身份 – 成员管理
 </code></pre>
 
-<p><img src="media/15325981038081/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%882.58.15.png" alt="屏幕快照 2018-08-08 下午2.58.15"/></p>
+<h4 id="toc_1">小程序运行机制</h4>
 
-<p><img src="media/15325981038081/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%884.00.18.png" alt="屏幕快照 2018-08-08 下午4.00.18"/></p>
+<pre><code>热启动
+ 小程序启动会有两种情况，一种是「冷启动」，一种是「热启动」。
+ 假如用户已经打开过某小程序，然后在一定时间内再次打开该小程序，
+ 此时无需重新启动，只需将后台态的小程序切换到前台，
+冷启动
+ 冷启动指的是用户首次打开或小程序被微信主动销毁后再次打开的情况，
+ 此时小程序需要重新加载启动。
 
-<p><img src="media/15325981038081/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%884.00.09.png" alt="屏幕快照 2018-08-08 下午4.00.09"/></p>
-
-<h5 id="toc_1">HTTPS 证书</h5>
-
-<pre><code>
-小程序必须使用 HTTPS 请求。
-小程序内会对服务器域名使用的 HTTPS 证书进行校验，
-如果校验失败，则请求不能成功发起。
-由于系统限制，不同平台对于证书要求的严格程度不同。
-为了保证小程序的兼容性，建议开发者按照最高标准进行证书配置，
-并使用相关工具检查现有证书是否符合要求。
+ 当小程序进入后台，客户端会维持一段时间的运行状态，超过一定时间后
+ （目前是5分钟）会被微信主动销毁
+ 当短时间内（5s）连续收到两次以上收到系统内存告警，会进行小程序的销毁
 </code></pre>
 
-<h5 id="toc_2">对证书要求如下：</h5>
-
-<pre><code>
- •  HTTPS 证书必须有效。证书必须被系统信任，部署SSL证书的网站域名必须与证书颁发的域名一致，证书必须在有效期内;
- •  iOS 不支持自签名证书;
- •  iOS 下证书必须满足苹果 App Transport Security (ATS) 的要求;
- •  TLS 必须支持 1.2 及以上版本。部分旧 Android 机型还未支持 TLS 1.2，请确保 HTTPS 服务器的 TLS 版本支持1.2及以下版本;
- •  部分 CA 可能不被操作系统信任，请开发者在选择证书时注意小程序和各系统的相关通告。
- •  Chrome 56/57 内核对 WoSign、StartCom 证书限制周知
-
+<pre><code>小程序启动进入程序紧接着通过 
+app.json 的 pages 字段就可以知道你当前小程序的所有页面路径:
+默认启动app.json 的 pages 字段的第一个页面就是这个小程序的首页
+(打开小程序看到的第一个页面)。
 </code></pre>
 
-<h5 id="toc_3">跳过域名校验</h5>
+<p><img src="media/15287848933165/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.05.53.png" alt="屏幕快照 2018-08-08 下午3.05.53"/></p>
 
-<pre><code>
-在微信开发者工具中，可以临时开启 开发环境不校验请求域名、
-TLS版本及HTTPS证书 选项，跳过服务器域名的校验。
-此时，在微信开发者工具中及手机开启调试模式时，不会进行服务器域名的校验。
+<h4 id="toc_2">小程序更新机制</h4>
 
-
+<pre><code>小程序冷启动时如果发现有新版本，将会异步下载新版本的代码包，
+并同时用客户端本地的包进行启动，
+即新版本的小程序需要等下一次冷启动才会应用上。 
+如果需要马上应用最新版本，
+可以使用 wx.getUpdateManager API 进行处理。
 </code></pre>
 
-<h5 id="toc_4">关于请求</h5>
+<h4 id="toc_3">小程序代码包大小的优化</h4>
 
-<pre><code>     •  默认超时时间和最大超时时间都是 60s
-     •  request、uploadFile、downloadFile 的最大并发限制是 10 个
-     •  网络请求的 referer header 不可设置。
-     •  小程序进入后台运行后（非置顶聊天），如果 5s 内网络请求没有结束，会回调错误信息 fail interrupted；在回到前台之前，网络请求接口调用都会无法调用。
-     •  只要成功接收到服务器返回，无论statusCode是多少，都会进入success回调。
-     
+<pre><code>小程序一开始时代码包限制为 1MB，但我们收到了很多反馈说代码包大小不够用，
+经过评估后我们放开了这个限制，增加到 2MB 。
+代码包上限的增加对于开发者来说，能够实现更丰富的功能，
+但对于用户来说，也增加了下载流量和本地空间的占用。
+
+分包加载
+
+目前小程序分包大小有以下限制：
+ •  整个小程序所有分包大小不超过 8M
+ •  单个分包/主包大小不能超过 2M
+对小程序进行分包，可以优化小程序首次启动的下载时间，
+以及在多团队共同开发时可以更好的解耦协作。
 </code></pre>
 
 ]]></content>
@@ -1138,76 +1135,6 @@ A polyfill for ES6-style Promises ：<br/>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序机制]]></title>
-    <link href="www.freefook.com/15287848933165.html"/>
-    <updated>2018-06-12T14:28:13+08:00</updated>
-    <id>www.freefook.com/15287848933165.html</id>
-    <content type="html"><![CDATA[
-<p>微信客户端在打开小程序之前，会把整个小程序的代码包下载到本地。</p>
-
-<h4 id="toc_0">小程序未发布时有权限-需添加用户身份</h4>
-
-<pre><code>管理入口位于：小程序管理后台 - 用户身份 – 成员管理
-
-一个团队进行小程序的开发，那么团队成员的身份管理是很有必要的。
-管理员可在小程序管理后台统一管理项目成员（
-包括开发者、体验者及其他成员）、
-设置项目成员的权限，包括：开发者/体验者权限、登录小程序管理后台、开发管理、查看小程序数据分析等。
-管理入口位于：小程序管理后台 - 用户身份 – 成员管理
-</code></pre>
-
-<h4 id="toc_1">小程序运行机制</h4>
-
-<pre><code>热启动
- 小程序启动会有两种情况，一种是「冷启动」，一种是「热启动」。
- 假如用户已经打开过某小程序，然后在一定时间内再次打开该小程序，
- 此时无需重新启动，只需将后台态的小程序切换到前台，
-冷启动
- 冷启动指的是用户首次打开或小程序被微信主动销毁后再次打开的情况，
- 此时小程序需要重新加载启动。
-
- 当小程序进入后台，客户端会维持一段时间的运行状态，超过一定时间后
- （目前是5分钟）会被微信主动销毁
- 当短时间内（5s）连续收到两次以上收到系统内存告警，会进行小程序的销毁
-</code></pre>
-
-<pre><code>小程序启动进入程序紧接着通过 
-app.json 的 pages 字段就可以知道你当前小程序的所有页面路径:
-默认启动app.json 的 pages 字段的第一个页面就是这个小程序的首页
-(打开小程序看到的第一个页面)。
-</code></pre>
-
-<p><img src="media/15287848933165/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.05.53.png" alt="屏幕快照 2018-08-08 下午3.05.53"/></p>
-
-<h4 id="toc_2">小程序更新机制</h4>
-
-<pre><code>小程序冷启动时如果发现有新版本，将会异步下载新版本的代码包，
-并同时用客户端本地的包进行启动，
-即新版本的小程序需要等下一次冷启动才会应用上。 
-如果需要马上应用最新版本，
-可以使用 wx.getUpdateManager API 进行处理。
-</code></pre>
-
-<h4 id="toc_3">小程序代码包大小的优化</h4>
-
-<pre><code>小程序一开始时代码包限制为 1MB，但我们收到了很多反馈说代码包大小不够用，
-经过评估后我们放开了这个限制，增加到 2MB 。
-代码包上限的增加对于开发者来说，能够实现更丰富的功能，
-但对于用户来说，也增加了下载流量和本地空间的占用。
-
-分包加载
-
-目前小程序分包大小有以下限制：
- •  整个小程序所有分包大小不超过 8M
- •  单个分包/主包大小不能超过 2M
-对小程序进行分包，可以优化小程序首次启动的下载时间，
-以及在多团队共同开发时可以更好的解耦协作。
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[微信小程序基础介绍]]></title>
     <link href="www.freefook.com/15325981613625.html"/>
     <updated>2018-07-26T17:42:41+08:00</updated>
@@ -1310,6 +1237,236 @@ Tab 切换      调用 API wx.switchTab
 
 
 渐进式JavaScript 框架VUE 地址：&quot;https://cn.vuejs.org/&quot;
+
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序开发配置介绍]]></title>
+    <link href="www.freefook.com/15325981038081.html"/>
+    <updated>2018-07-26T17:41:43+08:00</updated>
+    <id>www.freefook.com/15325981038081.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">服务器配置</h5>
+
+<p>服务器域名请在 小程序后台-设置-开发设置-服务器域名 中进行配置，配置时需要注意：</p>
+
+<pre><code> •  域名只支持 https (request、uploadFile、downloadFile) 和 wss (connectSocket) 协议；
+ •  域名不能使用 IP 地址或 localhost
+ •  域名必须经过 ICP 备案；
+ •  出于安全考虑，api.weixin.qq.com 不能被配置为服务器域名，
+       相关API也不能在小程序内调用。
+       开发者应将 appsecret 保存到后台服务器中，
+       通过服务器使用 appsecret 获取 accesstoken，并调用相关 API。
+ •  对于每个接口，分别可以配置最多 20 个域名
+
+</code></pre>
+
+<p><img src="media/15325981038081/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%882.58.15.png" alt="屏幕快照 2018-08-08 下午2.58.15"/></p>
+
+<p><img src="media/15325981038081/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%884.00.18.png" alt="屏幕快照 2018-08-08 下午4.00.18"/></p>
+
+<p><img src="media/15325981038081/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%884.00.09.png" alt="屏幕快照 2018-08-08 下午4.00.09"/></p>
+
+<h5 id="toc_1">HTTPS 证书</h5>
+
+<pre><code>
+小程序必须使用 HTTPS 请求。
+小程序内会对服务器域名使用的 HTTPS 证书进行校验，
+如果校验失败，则请求不能成功发起。
+由于系统限制，不同平台对于证书要求的严格程度不同。
+为了保证小程序的兼容性，建议开发者按照最高标准进行证书配置，
+并使用相关工具检查现有证书是否符合要求。
+</code></pre>
+
+<h5 id="toc_2">对证书要求如下：</h5>
+
+<pre><code>
+ •  HTTPS 证书必须有效。证书必须被系统信任，部署SSL证书的网站域名必须与证书颁发的域名一致，证书必须在有效期内;
+ •  iOS 不支持自签名证书;
+ •  iOS 下证书必须满足苹果 App Transport Security (ATS) 的要求;
+ •  TLS 必须支持 1.2 及以上版本。部分旧 Android 机型还未支持 TLS 1.2，请确保 HTTPS 服务器的 TLS 版本支持1.2及以下版本;
+ •  部分 CA 可能不被操作系统信任，请开发者在选择证书时注意小程序和各系统的相关通告。
+ •  Chrome 56/57 内核对 WoSign、StartCom 证书限制周知
+
+</code></pre>
+
+<h5 id="toc_3">跳过域名校验</h5>
+
+<pre><code>
+在微信开发者工具中，可以临时开启 开发环境不校验请求域名、
+TLS版本及HTTPS证书 选项，跳过服务器域名的校验。
+此时，在微信开发者工具中及手机开启调试模式时，不会进行服务器域名的校验。
+
+
+</code></pre>
+
+<h5 id="toc_4">关于请求</h5>
+
+<pre><code>     •  默认超时时间和最大超时时间都是 60s
+     •  request、uploadFile、downloadFile 的最大并发限制是 10 个
+     •  网络请求的 referer header 不可设置。
+     •  小程序进入后台运行后（非置顶聊天），如果 5s 内网络请求没有结束，会回调错误信息 fail interrupted；在回到前台之前，网络请求接口调用都会无法调用。
+     •  只要成功接收到服务器返回，无论statusCode是多少，都会进入success回调。
+     
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序实用示例]]></title>
+    <link href="www.freefook.com/15326733440349.html"/>
+    <updated>2018-07-27T14:35:44+08:00</updated>
+    <id>www.freefook.com/15326733440349.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">获取系统信息 下面是屏幕宽高</h5>
+
+<pre><code> wx.getSystemInfo({
+      success: function(res) {
+        that.setData({
+          windowHeight: res.windowHeight,
+          windowWidth: res.windowWidth,
+        })
+      }
+});
+</code></pre>
+
+<h5 id="toc_1">保存数据</h5>
+
+<pre><code> // 同步方式存储数据
+wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
+
+//取出数据
+var token = wx.getStorageSync(&#39;userInfo&#39;)
+
+</code></pre>
+
+<h5 id="toc_2">跳页</h5>
+
+<pre><code>wx.navigateTo({
+url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
+})
+</code></pre>
+
+<h5 id="toc_3">弹出窗口提示</h5>
+
+<pre><code>wx.showModal({
+    title: &#39;我是弹窗标题&#39;,
+    content: &#39;佛系弹窗详情内容&#39;,
+    success: function(res) {
+      if (res.confirm) {
+        console.log(&#39;用户点击确定&#39;)
+      } else if (res.cancel) {
+        console.log(&#39;用户点击取消&#39;)
+      }
+    }
+  })   
+</code></pre>
+
+<h5 id="toc_4">Toast提示</h5>
+
+<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
+ icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
+ 
+ wx.showToast({
+        title: &#39;请输入提示语&#39;,
+        icon: &#39;none&#39;,
+        mask:true,
+        duration: 2000
+      }) 
+</code></pre>
+
+<h5 id="toc_5">加载的loading</h5>
+
+<pre><code>  wx.showLoading({
+      title: &#39;正在加载&#39;,
+      mask: true,
+    })
+    
+   wx.hideLoading();
+
+</code></pre>
+
+<h5 id="toc_6">延迟执行</h5>
+
+<pre><code> setTimeout(function() {
+   wx.hideLoading()
+ }, 1000)
+          
+</code></pre>
+
+<h5 id="toc_7">请求数据</h5>
+
+<pre><code>getList: function(index) {
+    var this_ = this;
+
+    wx.showLoading({
+      title: &#39;正在加载&#39;,
+      mask: true,
+    })
+    //发起网络请求 
+    wx.request({
+      url: getApp().data.urladd + &quot;master/groups/query&quot;,
+      method: &quot;POST&quot;,
+      header: {
+        &#39;content-type&#39;: &#39;application/x-www-form-urlencoded&#39;,
+        &#39;Authorization&#39;: &#39;Bearer &#39; + token
+      },
+      data: {
+        page: index,
+        page_size: this_.data.pageSize,
+        status: this_.data.status,
+      },
+      success: function(e) {
+        console.log(e.data.data.data);
+      },
+      complete: function(res) {
+        wx.hideLoading()
+      }
+    })
+  },
+
+</code></pre>
+
+<h5 id="toc_8">数组查找数据</h5>
+
+<pre><code>let newArr = t.data.ee.filter(item =&gt; item.pid === t.data.province[e.detail.value].id)
+
+</code></pre>
+
+<h5 id="toc_9">点击事件</h5>
+
+<pre><code>bindtap  事件绑定不会阻止冒泡事件向上冒泡
+catchtap  事件绑定可以阻止冒泡事件向上冒泡
+
+点击事件的参数传递：
+target：触发事件的源组件
+currentTarget：事件绑定的当前事件
+
+</code></pre>
+
+<p><img src="media/15326733440349/86CC8E232275B9B77BD5728B014D3B69.png" alt="86CC8E232275B9B77BD5728B014D3B69"/></p>
+
+<h5 id="toc_10">设置背景图片</h5>
+
+<pre><code>&lt;view class=&quot;viewClass&quot; style=&quot;background-image: url(&#39;../../images/welcome.png&#39;)&quot;&gt;
+
+&lt;/view&gt;
+</code></pre>
+
+<h5 id="toc_11">小程序button去掉自带的边框</h5>
+
+<pre><code>button::after {
+  border: none;
+}
+</code></pre>
+
+<h5 id="toc_12">小程序边框wxss设置</h5>
+
+<pre><code>  border: 2rpx solid #828282;
 
 </code></pre>
 
@@ -1486,163 +1643,6 @@ https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html
 
 <p>官方数据签名校验<br/>
 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject">https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序实用示例]]></title>
-    <link href="www.freefook.com/15326733440349.html"/>
-    <updated>2018-07-27T14:35:44+08:00</updated>
-    <id>www.freefook.com/15326733440349.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">获取系统信息 下面是屏幕宽高</h5>
-
-<pre><code> wx.getSystemInfo({
-      success: function(res) {
-        that.setData({
-          windowHeight: res.windowHeight,
-          windowWidth: res.windowWidth,
-        })
-      }
-});
-</code></pre>
-
-<h5 id="toc_1">保存数据</h5>
-
-<pre><code> // 同步方式存储数据
-wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
-
-//取出数据
-var token = wx.getStorageSync(&#39;userInfo&#39;)
-
-</code></pre>
-
-<h5 id="toc_2">跳页</h5>
-
-<pre><code>wx.navigateTo({
-url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
-})
-</code></pre>
-
-<h5 id="toc_3">弹出窗口提示</h5>
-
-<pre><code>wx.showModal({
-    title: &#39;我是弹窗标题&#39;,
-    content: &#39;佛系弹窗详情内容&#39;,
-    success: function(res) {
-      if (res.confirm) {
-        console.log(&#39;用户点击确定&#39;)
-      } else if (res.cancel) {
-        console.log(&#39;用户点击取消&#39;)
-      }
-    }
-  })   
-</code></pre>
-
-<h5 id="toc_4">Toast提示</h5>
-
-<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
- icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
- 
- wx.showToast({
-        title: &#39;请输入提示语&#39;,
-        icon: &#39;none&#39;,
-        mask:true,
-        duration: 2000
-      }) 
-</code></pre>
-
-<h5 id="toc_5">加载的loading</h5>
-
-<pre><code>  wx.showLoading({
-      title: &#39;正在加载&#39;,
-      mask: true,
-    })
-    
-   wx.hideLoading();
-
-</code></pre>
-
-<h5 id="toc_6">延迟执行</h5>
-
-<pre><code> setTimeout(function() {
-   wx.hideLoading()
- }, 1000)
-          
-</code></pre>
-
-<h5 id="toc_7">请求数据</h5>
-
-<pre><code>getList: function(index) {
-    var this_ = this;
-
-    wx.showLoading({
-      title: &#39;正在加载&#39;,
-      mask: true,
-    })
-    //发起网络请求 
-    wx.request({
-      url: getApp().data.urladd + &quot;master/groups/query&quot;,
-      method: &quot;POST&quot;,
-      header: {
-        &#39;content-type&#39;: &#39;application/x-www-form-urlencoded&#39;,
-        &#39;Authorization&#39;: &#39;Bearer &#39; + token
-      },
-      data: {
-        page: index,
-        page_size: this_.data.pageSize,
-        status: this_.data.status,
-      },
-      success: function(e) {
-        console.log(e.data.data.data);
-      },
-      complete: function(res) {
-        wx.hideLoading()
-      }
-    })
-  },
-
-</code></pre>
-
-<h5 id="toc_8">数组查找数据</h5>
-
-<pre><code>let newArr = t.data.ee.filter(item =&gt; item.pid === t.data.province[e.detail.value].id)
-
-</code></pre>
-
-<h5 id="toc_9">点击事件</h5>
-
-<pre><code>bindtap  事件绑定不会阻止冒泡事件向上冒泡
-catchtap  事件绑定可以阻止冒泡事件向上冒泡
-
-点击事件的参数传递：
-target：触发事件的源组件
-currentTarget：事件绑定的当前事件
-
-</code></pre>
-
-<p><img src="media/15326733440349/86CC8E232275B9B77BD5728B014D3B69.png" alt="86CC8E232275B9B77BD5728B014D3B69"/></p>
-
-<h5 id="toc_10">设置背景图片</h5>
-
-<pre><code>&lt;view class=&quot;viewClass&quot; style=&quot;background-image: url(&#39;../../images/welcome.png&#39;)&quot;&gt;
-
-&lt;/view&gt;
-</code></pre>
-
-<h5 id="toc_11">小程序button去掉自带的边框</h5>
-
-<pre><code>button::after {
-  border: none;
-}
-</code></pre>
-
-<h5 id="toc_12">小程序边框wxss设置</h5>
-
-<pre><code>  border: 2rpx solid #828282;
-
-</code></pre>
 
 ]]></content>
   </entry>
