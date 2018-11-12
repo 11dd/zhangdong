@@ -91,9 +91,21 @@
         <li><label>微信小程序使用示例</label></li>
 
           
-            <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-          
             <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+          
+            <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+          
+            <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+          
+            <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+          
+            <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+          
+            <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+          
+            <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+          
+            <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
           
             <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
           
@@ -276,9 +288,21 @@
                     
                       <li class="side-title"><span>微信小程序使用示例</span></li>
                         
-                          <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-                        
                           <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+                        
+                          <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+                        
+                          <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+                        
+                          <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+                        
+                          <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+                        
+                          <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+                        
+                          <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+                        
+                          <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
                         
                           <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
                         
@@ -402,151 +426,146 @@
 
 	
 		<div class="markdown-body">
-		<h1>建项-使用三方管理工具cocoaPods</h1>
+		<h1>iOS UICollectionView使用详解</h1>
 
-		<p>我们都用哪些三方呢？例如：<br/>
-1.  --极光的统计：可查看闪退日志（必须要有首先就要集成）<br/>
-2.  --可能用到的推送，可用极光的推送<br/>
-3.  --网络请求  AFNetWorking<br/>
-4.  --刷新  MJRefresh<br/>
-5.  --图片加载  SDWebImage<br/>
-6.  --用于加载的loading和提示框  MBProgressHUD<br/>
-7.  --用于解决输入框被键盘遮挡的问题  IQKeyBoardManager<br/>
-8.  --用于布局约束  Masonry<br/>
-9.  --加在程序中,解决NUll问题  nullSafe.m</p>
+		<h5 id="toc_0">添加代理</h5>
 
-<pre><code>使用三方管理工具cocoapods
-1、Ruby环境搭建
-查看下当前ruby版本：打开终端输入 ruby -v
+<pre><code>&lt;UICollectionViewDataSource,UICollectionViewDelegate&gt;
+</code></pre>
 
-如果需要更新，进行如下操作更改Ruby镜像：
+<h5 id="toc_1">初始化</h5>
 
-gem sources --remove https://rubygems.org/ 
-gem sources -a https://gems.ruby-china.com/
-gem sources -l  （用来检查使用替换镜像位置成功与否）
+<pre><code> UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    flowLayout.minimumInteritemSpacing = 0;
+    flowLayout.minimumLineSpacing = 0;
+    flowLayout.sectionInset  = UIEdgeInsetsMake(0, 5, 0, 5);
+    
+_collectionView = [[UICollectionView alloc] initWithFrame:
+CGRectMake(0, 0, self.view.frame.size.with,self.view.frame.size.height) 
+collectionViewLayout:flowLayout];
+    
+    //一定要注册
+    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@&quot;colletionCell&quot;];
+    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@&quot;HeaderIdentifier&quot;];
+    
+    _collectionView.backgroundColor = [UIColor whiteColor];
+    _collectionView.dataSource = self;
+    _collectionView.delegate = self;
+    
+    _collectionView.alwaysBounceVertical = YES;
+    _collectionView.showsVerticalScrollIndicator = NO;
+    [self.view addSubview:_collectionView];
+    
+    if (@available(iOS 11.0, *)) {
+    }else{
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+</code></pre>
 
-最后 输入  rvm install 2.2.4  更新ruby
+<h5 id="toc_2">设置_collectionView的组数</h5>
+
+<pre><code>-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 3;
+}
+</code></pre>
+
+<h5 id="toc_3">设置每组cell的个数</h5>
+
+<pre><code>//返回每组的个数
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return 3;
+    }else if (section == 1){
+        return 4;
+    }else if (section == 2){
+        return 3;
+    }
+    return 0;
+} 
 
 </code></pre>
 
-<pre><code>2、下载安装CocoaPods
-终端输入：sudo gem install cocoapods 
+<h5 id="toc_4">设置每组cell的大小</h5>
 
-如果升级系统和xcode10 需要更新cocoapods(命令行执行: xcode-select --install)
-然后在进行以下操作
-不执行该命令报错如下：
+<pre><code>- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return  CGSizeMake((KScreenWidth-10)/3, KScreenWidth/3+60);
+        
+    }else if (indexPath.section == 1){
+        return  CGSizeMake((KScreenWidth-10)/2, KScreenWidth/2+60);
 
-pod --version
- 
-/Library/Ruby/Gems/2.3.0/gems/cocoapods-1.5.3/lib/cocoapods/command.rb:118:in `git_version&#39;: Failed to extract git version from `git --version` (&quot;xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun\n&quot;) (RuntimeError)
-
-from /Library/Ruby/Gems/2.3.0/gems/cocoapods-1.5.3/lib/cocoapods/command.rb:130:in `verify_minimum_git_version!&#39;
-
-from /Library/Ruby/Gems/2.3.0/gems/cocoapods-1.5.3/lib/cocoapods/command.rb:49:in `run&#39;
-
-from /Library/Ruby/Gems/2.3.0/gems/cocoapods-1.5.3/bin/pod:55:in `&lt;top (required)&gt;&#39;
-
-from /usr/local/bin/pod:23:in `load&#39;
-
-from /usr/local/bin/pod:23:in `&lt;main&gt;&#39;
-
+    }else{
+        return  CGSizeMake((KScreenWidth-10)/3, KScreenWidth/3+60);
+    }
+}
 </code></pre>
 
-<pre><code>cocoapods 安装或更新结束之后：
-终端cd 到自己的项目文件下Create a Podfile
+<h5 id="toc_5">布局cell</h5>
 
-终端输入touch Podfile
-       open -a Xcode Podfile
+<pre><code>- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *reuseIdetify = @&quot;colletionCell&quot;;
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdetify forIndexPath:indexPath];
+    
+    cell.contentView.backgroundColor = [UIColor whiteColor];
+    //这句是每次都移除view上的控件,从新添加的;
+    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    /***********布局cell*********/
 
 
-写上如下内容：
-target &#39;MyApp的名’ do
-  pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1’
-end
-
-执行 pod install 就OK了
-
-查询三方版本可用 pod search afnetworking  （不区分大小写）
-第一次安装完pod 进行搜索需要多等一段时间，
-会卡在Creating search index for spec repo &#39;master&#39;..    
-
-CocoaPods的基本安装及使用都详细的说明了，
-当需要同时导入多个第三方时候怎么办 ？
-这就需要修改Podfile了，就是用vim编辑的那个保存在项目根目录中的文件，
-修改完了Podfile文件，需要重新执行一次pod install命令。
+    /***************************/ 
+       
+    return cell;
+}
 </code></pre>
 
-<h5 id="toc_0">例如</h5>
+<h5 id="toc_6">设置_collectionView头部header高度</h5>
 
-<pre><code>target &#39;myApp’ do
-pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1’
-pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.1&#39;
-pod &#39;SDWebImage&#39;, &#39;~&gt; 4.2.2&#39;
-pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
-pod &#39;IQKeyboardManager&#39;, &#39;~&gt; 5.0.7&#39;
-pod &#39;Masonry&#39;, &#39;~&gt; 1.1.0&#39;
-pod &#39;NullSafe&#39;, &#39;~&gt; 1.2.3&#39;
-pod &#39;CYLTabBarController&#39;, &#39;~&gt; 1.17.4&#39;
-pod &#39;SDCycleScrollView&#39;, &#39;~&gt; 1.75&#39;
-pod &#39;MJExtension&#39;, &#39;~&gt; 3.0.13&#39;
-pod &#39;FMDB&#39;, &#39;~&gt; 2.7.2&#39;
-pod &#39;SDAutoLayout&#39;, &#39;~&gt; 2.2.0&#39;
-end
+<pre><code>- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    
+    if (section == 0) {
+        CGSize size={KScreenWidth,cycHeight + 240};
+        return size;
+        
+    }else if (section == 1){
+        CGSize size={KScreenWidth,140};
+        return size;
+
+    }else{
+        CGSize size={KScreenWidth,40};
+        return size;
+
+    }
+}
 </code></pre>
 
-<h5 id="toc_1">Podfile 如上简单的写法 会报警告 默认platform：iOS9</h5>
+<h5 id="toc_7">布局_collectionView上的头部UI</h5>
 
-<blockquote>
-<p>The Podfile is a specification that describes the dependencies of the targets of one or more Xcode projects.</p>
-</blockquote>
+<pre><code>- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UICollectionReusableView *headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                                            withReuseIdentifier:@&quot;HeaderIdentifier&quot;
+                                                                                   forIndexPath:indexPath];
 
-<p>A Podfile can be very simple:</p>
+    [headView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
-<pre><code>target &#39;MyApp&#39;
-pod &#39;AFNetworking&#39;, &#39;~&gt; 1.0&#39;
-</code></pre>
-
-<p>An example of a more complex Podfile can be:</p>
-
-<pre><code>platform :ios, &#39;9.0&#39;
-inhibit_all_warnings!
-
-target &#39;MyApp&#39; do
-  pod &#39;ObjectiveSugar&#39;, &#39;~&gt; 0.5&#39;
-
-  target &quot;MyAppTests&quot; do
-    inherit! :search_paths
-    pod &#39;OCMock&#39;, &#39;~&gt; 2.0.1&#39;
-  end
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    puts &quot;#{target.name}&quot;
-  end
-end
-</code></pre>
-
-<h5 id="toc_2">参考如下：</h5>
-
-<pre><code> iOS安装CocoaPods详细过程
- 请查看:(http://www.jianshu.com/p/9e4e36ba8574)
- 
- cocoapods报错问题You need at least git version 1.8.5 to use CocoaPods
- 请查看:(http://www.jianshu.com/p/a1ab3b291f55)
- 
- 使用cocoapods时常见错误
- 请查看:(http://www.jianshu.com/p/dfc7b93e67eb)
- 
- iOS 下 Podfile 使用方法
- 请查看:(http://www.cnblogs.com/Kennytian/p/6413734.html)
- 
- 如果出现下面问题,请尝试:cocoapods 出现 &quot;_OBJC_CLASS_$--&quot;, 
- referenced from:的问题target-&gt;build setting
-  -&gt;other link flags 添加一个$(inherited) 
-  
-  
-  
+    if (indexPath.section == 0) {
+        
+        if(kind ==UICollectionElementKindSectionHeader){
+            
+        }
+     }
+    
+    return headView;
+    
+}
 </code></pre>
 
 

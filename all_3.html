@@ -91,9 +91,21 @@
         <li><label>微信小程序使用示例</label></li>
 
           
-            <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-          
             <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+          
+            <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+          
+            <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+          
+            <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+          
+            <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+          
+            <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+          
+            <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+          
+            <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
           
             <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
           
@@ -276,9 +288,21 @@
                     
                       <li class="side-title"><span>微信小程序使用示例</span></li>
                         
-                          <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-                        
                           <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+                        
+                          <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+                        
+                          <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+                        
+                          <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+                        
+                          <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+                        
+                          <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+                        
+                          <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+                        
+                          <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
                         
                           <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
                         
@@ -402,80 +426,86 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信平台与微信小程序</h1>
+		<h1>微信小程序之动画</h1>
 
-		<h5 id="toc_0">微信平台有哪些？</h5>
+		<h5 id="toc_0">---wxml文件---</h5>
 
-<p>微信公众平台：<br/>
-<a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a></p>
-
-<p>微信支付的商户平台：<br/>
-<a href="https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F">https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F</a><br/>
-注：小程序里支付只能用小程序支付方式，必须和小程序里开通的支付的商户一致；</p>
-
-<p>支付接口文档<br/>
-<a href="https://pay.weixin.qq.com/wiki/doc/api/index.html">https://pay.weixin.qq.com/wiki/doc/api/index.html</a></p>
-
-<p>微信开放平台<br/>
-<a href="https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN">https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN</a></p>
-
-<p>微信开发者平台：<br/>
-<a href="http://weixin.qq.com/">http://weixin.qq.com/</a></p>
-
-<p>微信硬件平台：<br/>
-<a href="https://iot.weixin.qq.com/">https://iot.weixin.qq.com/</a></p>
-
-<p>腾讯的广告平台：<br/>
-<a href="http://e.qq.com/ads/">http://e.qq.com/ads/</a></p>
-
-<p>腾讯开放平台：<br/>
-<a href="http://open.tencent.com/">http://open.tencent.com/</a></p>
-
-<h5 id="toc_1">腾讯自家小程序全家桶</h5>
-
-<pre><code>小程序示例   第一个小程序
-小程序开发助手
-小程序数据助手
-小游戏数据助手
-公众平台助手
-微信发票助手
-王卡申请助手
-
-QQ游戏
-腾讯爱玩
-全民大乐斗
-企鹅电竞+
-腾讯动漫+
-
-腾讯+  产品体验官
-腾讯网
-腾讯文档
-腾讯企业邮箱
-
-腾讯云助手
-腾讯视频云
-腾讯AI体验中心
-腾讯云AI体验中心
-腾讯优图AI开发平台
+<pre><code>&lt;view class=&#39;lunbo&#39; animation=&quot;{{animationItem}}&quot;
+&lt;/view&gt;
 </code></pre>
 
-<h5 id="toc_2">其他特色小程序</h5>
+<h5 id="toc_1">---JS文件---</h5>
 
-<pre><code>摩拜单车： 接入是小程序线下落地的一次大的尝试
-KFC，麦当劳： 点餐实用型的线下场景
-家乐福中国：小程序有优惠
-沃尔玛：小程序可自助结账
+<pre><code>  var that = this;
+    //动画样式
+    that.animationItem = wx.createAnimation({
+      duration: 500,
+      timingFunction: &#39;linear&#39;,
+      transformOrigin: &#39;90% 70%&#39;,
+      success: function(res) {}
+    });
+    
+    // 定时器，2S 循环一次
+    that.data.newLunbo_interval = setInterval(function() {
+      //开始动画-缩小
+      that.animationItem.scale3d(0.98, 0.98, 0.1).step();
+      that.setData({
+        animationItem: that.animationItem.export()
+      });
+      //延迟恢复到原来大小
+      setTimeout(function() {
+        that.animationItem.scale3d(1.0, 1.0, 1.0).step();
+        that.setData({
+          animationItem: that.animationItem.export(),
+        });
+      }, 500)
+    }.bind(that), 2000);
+</code></pre>
 
-一时风靡的答题类，头脑王者
+<h5 id="toc_2">清理定时器</h5>
 
-青芒杂志
-一条视频
-毒蛇电影社区
+<pre><code>    clearInterval(this.data.newLunbo_interval);
+</code></pre>
 
-企鹅电竞+
-斗鱼直播
-虎牙直播
-YY直播+
+<h5 id="toc_3">创建wx.createAnimation参数含义</h5>
+
+<pre><code>duration            动画持续时间，单位 ms 
+timingFunction      &#39;linear&#39; 动画的效果  
+delay               动画延迟时间，单位 ms 
+transformOrigin     &#39;50% 50% 0&#39;
+</code></pre>
+
+<h5 id="toc_4">timingFunction 的合法值</h5>
+
+<pre><code>&#39;linear&#39;    动画从头到尾的速度是相同的
+&#39;ease&#39;  动画以低速开始，然后加快，在结束前变慢
+&#39;ease-in&#39;   动画以低速开始
+&#39;ease-in-out&#39;   动画以低速开始和结束
+&#39;ease-out&#39;  动画以低速结束
+&#39;step-start&#39;    动画第一帧就跳至结束状态直到结束
+&#39;step-end&#39;  动画一直保持开始状态，最后一帧跳到结束状态
+</code></pre>
+
+<h5 id="toc_5">transformOrigin 的合法值</h5>
+
+<pre><code>transform-origin: x-axis y-axis z-axis;
+
+x-axis  定义视图被置于 X 轴的何处。可能的值：
+    left
+    center
+    right
+    length
+    %
+    
+y-axis  定义视图被置于 Y 轴的何处。可能的值：
+    top
+    center
+    bottom
+    length
+    %
+
+z-axis  定义视图被置于 Z 轴的何处。可能的值：
+    length
 </code></pre>
 
 

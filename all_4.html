@@ -91,9 +91,21 @@
         <li><label>微信小程序使用示例</label></li>
 
           
-            <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-          
             <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+          
+            <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+          
+            <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+          
+            <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+          
+            <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+          
+            <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+          
+            <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+          
+            <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
           
             <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
           
@@ -276,9 +288,21 @@
                     
                       <li class="side-title"><span>微信小程序使用示例</span></li>
                         
-                          <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-                        
                           <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+                        
+                          <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+                        
+                          <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+                        
+                          <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+                        
+                          <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+                        
+                          <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+                        
+                          <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+                        
+                          <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
                         
                           <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
                         
@@ -402,70 +426,25 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS审核被拒4.3</h1>
+		<h1>微信小程序之点击与跳页传参</h1>
 
-		<h5 id="toc_0">一种是过不了机审关被拒，一种是过不了人审关被拒。</h5>
+		<h5 id="toc_0">点击事件</h5>
 
-<pre><code>iOS预审核，扫描api，及plist文件字符缺失等；
-此处分两步，第一步为上传时苹果Application Loador等应用对于适配icon等的检查，
-第二步为上传后苹果的功能性检查，例如配置了Push功能但有缺失
-或者未打开功能，则会邮件提示等等；
+<pre><code>bindtap  事件绑定不会阻止冒泡事件向上冒泡
+catchtap  事件绑定可以阻止冒泡事件向上冒泡
 
-iOS机审，主要是对代码进行机器审核，排查APP是否重复应用，此处扫描支付SDK等，及马甲情况，机器扫描主要看代码块
-
-iOS人审，主要是由苹果审核人员对APP的内容、功能进行核验，防止APP有bug，
-防止APP模仿其他应用，内容与其他APP重复，影响用户体验，
-检测功能或者App体验测试，例如用测试账号登录App体验功能，
-或其他是否明显bug等，ipv6也在此处检测；
-
+点击事件的参数传递：
+target：触发事件的源组件
+currentTarget：事件绑定的当前事件
 </code></pre>
 
-<h5 id="toc_1">区分机审 、人审</h5>
+<p><img src="media/15326733440349/86CC8E232275B9B77BD5728B014D3B69.png" alt="86CC8E232275B9B77BD5728B014D3B69"/></p>
 
-<pre><code>那么如何区分是机器审核还是人工审核呢？主要看APP被拒的信息：
+<h5 id="toc_1">跳页</h5>
 
-1）如果是机器审核被拒，一般收到的被拒信息第一句话基本上是这样的：
-Guideline4.3 - Design - Spam
-Yourapp duplicates the content and functionality of apps submitted to the AppStore,
- which is considered a form of spam.
-
-2）如果是人工审核被拒，一般收到的被拒信息第一句话基本上是这样的：
-Guideline4.3 - Design - Spam
-Wefound that your app provides the same feature set as other apps submitted tothe App Store, 
-which is not appropriate to the App Store.
-</code></pre>
-
-<h5 id="toc_2">针对审核</h5>
-
-<pre><code>1.原来账号里的APP的名字可以作废掉或者修改成其他的，
-同时记得移除之前的APP，重新打个空包传上去，
-icon图则用其他logo图置换掉
-
-2.增加登录日志
-
-3.主要的方法是添加垃圾代码，且代码的相似程度不高于45%，
-  混淆工程地址：https://github.com/klaus01/KLGenerateSpamCode
-
-4.工程中的文件夹的名字全部进行修改，类名修改，方法名修改
-
-5.资源图片替换修改，适当添加一些无用的资源 
-
-6.API名称，机扫二进制文件，也会对比API
-
-7.换开发者账号，换不同账号提交审核
-
-8.换 bundle id，换一个包再提交审核；
-
-9. 一定要关注名字,icon,启动图;修改UI风格同时进行假页面的添加;
-
-10.升级 version，升级一个版本号提交审核
-
-11.修改产品分类
-
-12.还需要注意相同的马甲包提交至少要间隔一天以上。
-
-13.定期换电脑提包.换电脑的序列号.换VPN环境.定期换域名. 
-
+<pre><code>wx.navigateTo({
+url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
+})
 </code></pre>
 
 

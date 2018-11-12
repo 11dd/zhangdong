@@ -91,9 +91,21 @@
         <li><label>微信小程序使用示例</label></li>
 
           
-            <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-          
             <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+          
+            <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+          
+            <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+          
+            <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+          
+            <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+          
+            <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+          
+            <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+          
+            <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
           
             <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
           
@@ -276,9 +288,21 @@
                     
                       <li class="side-title"><span>微信小程序使用示例</span></li>
                         
-                          <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-                        
                           <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+                        
+                          <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+                        
+                          <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+                        
+                          <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+                        
+                          <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+                        
+                          <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+                        
+                          <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+                        
+                          <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
                         
                           <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
                         
@@ -402,32 +426,40 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序的历程</h1>
+		<h1>微信小程序之解析html</h1>
 
-		<h4 id="toc_0">历程</h4>
+		<h5 id="toc_0">使用wxParse解析html</h5>
 
-<ol>
-<li><p>16年 越来越多产品通过公众号来做，因为这里开发、获取用户和传播成本更低。拆分出来的服务号并没有提供更好的服务，所以微信内部正在研究新的形态，叫「微信小程序」。</p></li>
-<li><p>从2017年1月9日 小程序正式推出之后至 2017年12月28日 跳一跳上线火爆，传播发展的地域时间差；</p></li>
-<li><p>全面开放申请后，主体类型为企业、政府、媒体、其他组织或个人的开发者，均可申请注册小程序。小程序、订阅号、服务号、企业号是并行的体系。</p></li>
-<li><p>微信小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。</p></li>
-<li><p>2018.7.13 微信更新小程序，增加了我的小程序入口,最多可加50个；</p></li>
-<li><p>小程序入口=&gt; 微信 消息页下拉，发现页 小程序；<br/>
-小程序分享不能分享到朋友圈，分享好友或群；<br/>
-主要是线下场景扫码使用</p></li>
-</ol>
+<p>github地址：<a href="https://github.com/icindy/wxParse">https://github.com/icindy/wxParse</a><br/>
+下载之后，将wxParse文件夹导入自己工程与utils同级别   </p>
 
-<h4 id="toc_1">小程序的几点介绍</h4>
+<h5 id="toc_1">在app.wxss全局样式文件中，引入wxParse的样式表如:</h5>
 
-<pre><code>1.小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念；
+<pre><code>@import&quot;/wxParse/wxParse.wxss&quot;;
+</code></pre>
 
-2.用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。
+<h5 id="toc_2">在所需的JS文件中引入如:</h5>
 
-3.对于开发者而言，小程序开发门槛相对较低，难度不及APP，能够满足简单的基础应用；
+<pre><code>var WxParse = require(&#39;../../wxParse/wxParse.js&#39;);
 
-4.适合生活服务类线下商铺以及非刚需低频应用的转换。
+/**
+     * WxParse.wxParse(bindName , type, data, target,imagePadding)
+     * 1.bindName绑定的数据名(必填)
+     * 2.type可以为html或者md(必填)
+     * 3.data为传入的具体数据(必填)
+     * 4.target为Page对象,一般为this(必填)
+     * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
+     */
+     
+    WxParse.wxParse(&#39;content&#39;, &#39;html&#39;, &#39;&lt;h1&gt;我是内容&lt;/h1&gt;&#39;, this, 0);
+</code></pre>
 
-5.小程序能够实现消息通知、线下扫码、公众号关联等七大功能。其中，通过公众号关联，用户可以实现公众号与小程序之间相互跳转。由于小程序不存在入口。
+<h5 id="toc_3">在wxml所需的文件中引入如:</h5>
+
+<pre><code>&lt;import src=&quot;../../wxParse/wxParse.wxml&quot; /&gt;
+
+&lt;!-- 内容 --&gt;
+&lt;template is=&quot;wxParse&quot; data=&quot;{{wxParseData:content.nodes}}&quot; /&gt;
 </code></pre>
 
 

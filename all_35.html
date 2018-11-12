@@ -91,9 +91,21 @@
         <li><label>微信小程序使用示例</label></li>
 
           
-            <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-          
             <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+          
+            <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+          
+            <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+          
+            <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+          
+            <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+          
+            <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+          
+            <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+          
+            <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
           
             <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
           
@@ -276,9 +288,21 @@
                     
                       <li class="side-title"><span>微信小程序使用示例</span></li>
                         
-                          <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-                        
                           <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+                        
+                          <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+                        
+                          <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+                        
+                          <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+                        
+                          <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+                        
+                          <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+                        
+                          <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+                        
+                          <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
                         
                           <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
                         
@@ -402,210 +426,140 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS tableView 常用属性与方法</h1>
+		<h1>OC 字符串操作方法说明</h1>
 
-		<h5 id="toc_0">tableview 常用属性如下：</h5>
+		<h5 id="toc_0">属性字符串常用操作</h5>
 
-<pre><code> if (@available(iOS 11.0, *)) {
-            _tableView.estimatedRowHeight = 0;
-            _tableView.estimatedSectionFooterHeight = 0;
-            _tableView.estimatedSectionHeaderHeight = 0;
-            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        }else{
-            self.automaticallyAdjustsScrollViewInsets = NO;
-            
-        }
-        
-</code></pre>
-
-<pre><code>//获取手势点击的是哪一个cell的坐标
-NSIndexPath *indexPath = [self.tableView indexPathForCell:((UITableViewCell *)longPress.view)];
-
-//点击button时获取button所在的cell的indexpath
-UIButton *button = sender;
-tempTableViewCell *cell = (tempTableViewCell *)[[button superview] superview];
-NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
-
-//局部刷新一个section刷新    
-NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];    
-[tableview reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];    
-
-//局部刷新一个cell刷新   
-NSIndexPath *indexPath=[NSIndexPath indexPathForRow:1 inSection:0];   
-[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone]; 
-
-//不显示分割线
-_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-
-//显示箭头
-cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
-//无选中状态
-cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-//自适应单元格高度
-tableView.rowHeight = UITableViewAutomaticDimension; 
-//先估计一个高度
-tableView.estimatedRowHeight = 50; 
-</code></pre>
-
-<pre><code></code></pre>
-
-<pre><code></code></pre>
-
-<h5 id="toc_1">tableview 常用方法如下：</h5>
-
-<h6 id="toc_2">tableview 选中第几行</h6>
-
-<pre><code>NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
-[self.tableView selectRowAtIndexPath:indexpath animated:YES scrollPosition:UITableViewScrollPositionMiddle];  //选中第5行
-</code></pre>
-
-<h6 id="toc_3">滚动到指定位置</h6>
-
-<pre><code>//滚动到指定位置_偏移量
-[self.rizhiTableView setContentOffset:CGPointMake(0, OffsetY) animated:NO];
-//滚动到第几行
-NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
-[self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionTop animated:NO];
-</code></pre>
-
-<h6 id="toc_4">pragma mark  - 滑到最底部</h6>
-
-<pre><code>- (void)scrollTableToFoot
+<pre><code>- (NSMutableAttributedString *)stringToAttributedString:(NSString*)tempStr NSMakeRange:(int)num
 {
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        NSInteger s = [self.tableView numberOfSections];  //有多少组
-        if (s&lt;1) return;  //无数据时不执行 要不会crash
-        NSInteger r = [self.tableView numberOfRowsInSection:s-1]; //最后一组有多少行
-        if (r&lt;1) return;
-        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:r-1 inSection:s-1];  //取最后一行数据
-        [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:NO]; //滚动到最后一行
-        
-    });
-  
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:tempStr];
+    //颜色
+    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0,num)];
+    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(num,tempStr.length-num)];
+    //字体
+    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:kh(14)] range:NSMakeRange(0,num)];
+    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:kh(16)] range:NSMakeRange(num,tempStr.length-num)];  
+    return attrString;
 }
 </code></pre>
 
-<h6 id="toc_5">pragma -mark- 删除方法</h6>
+<h5 id="toc_1">将字符串分隔成数组</h5>
 
-<pre><code>//先要设Cell可编辑
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return YES;
-}
-
-//定义编辑样式
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return UITableViewCellEditingStyleDelete;
-}
-
-//修改编辑按钮文字
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return @&quot;删除&quot;;
-}
-
-//设置进入编辑状态时，Cell不会缩进
-- (BOOL)tableView: (UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
-}
-
-//点击删除
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    /**一定是先删除了数据，再执行删除的动画或者其他操作，否则会出现崩溃*/
-    
-    [self deleteAdressData:indexPath];
-    
-}
-
-</code></pre>
-
-<pre><code>
-dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        // 处理耗时操作的代码块...
-        
-    
-        //通知主线程刷新
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //回调或者说是通知主线程刷新，
-            
-        });
-        
-    });
-    
-    
-</code></pre>
-
-<pre><code>
-//同步数据
-[[NSUserDefaults standardUserDefaults]synchronize];
-
-//延时操作
- dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
- });       
-            
-</code></pre>
-
-<pre><code>//单击手势
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(TapImgView:)];
-        [tapGesture setNumberOfTapsRequired:1];
-        [imgView addGestureRecognizer:tapGesture];
-
-
-
--(void)TapImgView:(UITapGestureRecognizer*)tapGesture
-{
-    UITapGestureRecognizer *singleTap = (UITapGestureRecognizer *)tapGesture;
-    NSInteger index = singleTap.view.tag;
-
-}
-
-</code></pre>
-
-<pre><code> [_timer invalidate];//永远停止并且要置为nil
- [_timer setFireDate:[NSDate distantFuture]];//关闭定时器
-    
-</code></pre>
-
-<pre><code>*******************************跳转**********************************************
-
- for (UIViewController *controller in self.navigationController.viewControllers) {
-
-            if ([controller isKindOfClass:[SecondDetailsViewController class]]) {
-
-                SecondDetailsViewController *test =(SecondDetailsViewController *)controller;
-                [self.navigationController popToViewController:test animated:YES];
-
-            }
-  }
-
-        
-  [self.navigationController popToRootViewControllerAnimated:YES];
-
-*****************************************************************************
-
-</code></pre>
-
-<pre><code>
-  //放大过程中出现的缓慢动画
-    - (void) shakeToShow:(UIView*)aView{
-        
-        CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@&quot;transform&quot;];
-        animation.duration = 0.2;
-        NSMutableArray *values = [NSMutableArray array];
-        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
-        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
-        animation.values = values;
-        [aView.layer addAnimation:animation forKey:nil];
-        
+<pre><code>    NSString* str = @&quot;one,two,three,four,five&quot;;
+    //分割字符创为数组，下例以“，”分割
+    NSArray* array = [str componentsSeparatedByString:@&quot;,&quot;];
+    for(NSString* obj in array)
+    {
+        NSLog(@&quot;%@&quot;, obj);
     }
 
+    //链接字符串,下例以空格连接
+    str = [array componentsJoinedByString:@&quot; &quot;];
+    NSLog(@&quot;%@&quot;, str);
+</code></pre>
 
+<h5 id="toc_2">判断字符串是否包含另一个字符串</h5>
 
+<pre><code>//判断”abcd” 是否含有@&quot;ab&quot;
+ NSString *tempStr = @&quot;abcd&quot;;
+    if([tempStr rangeOfString:@&quot;ab&quot;].location !=NSNotFound){
+        NSLog(@&quot;yes&quot;);
+    }else {
+        NSLog(@&quot;no&quot;);
+    }
+</code></pre>
+
+<h5 id="toc_3">字符串去掉特殊符号或改成去除数字/字母的笨方法</h5>
+
+<pre><code>NSString * string111 = @&quot;1234、[]{}#%-*+=_\\|~＜&quot;;
+NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@&quot;@／：；（）¥「」＂、[]{}#%-*+=_\\|~＜＞$€^•&#39;@#$%^&amp;*()_+&#39;\&quot;&quot;];
+NSString *string222 = [string111 stringByTrimmingCharactersInSet:set];
+</code></pre>
+
+<h5 id="toc_4">从字符串的开头一直截取到指定的位置，但不包括该位置的字符</h5>
+
+<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
+    NSString *string2 = [string1 substringToIndex:3];
+    NSLog(@&quot;string2:%@&quot;,string2);
+</code></pre>
+
+<h5 id="toc_5">以指定位置开始（包括指定位置的字符），并包括之后的全部字符</h5>
+
+<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
+    NSString *string2 = [string1 substringFromIndex:3];
+    NSLog(@&quot;string2:%@&quot;,string2);
+</code></pre>
+
+<h5 id="toc_6">按照所给出的位置，长度（截取几位而不是到哪），任意地从字符串中截取子串</h5>
+
+<pre><code>    NSString *string1 = @&quot;This is a string&quot;;
+    NSString *string2 = [string1 substringWithRange:NSMakeRange(0, 4)];
+    NSLog(@&quot;string2:%@&quot;,string2);
+</code></pre>
+
+<h5 id="toc_7">替换字符串中字符,该方法做了copy操作，原字符串没变，需要重新赋值给原字符串</h5>
+
+<pre><code>    NSString* tempstr4 = [tempstr3 stringByReplacingOccurrencesOfString:@&quot;:&quot; withString:@&quot;&quot;];
+    NSString* tempstr5 = [tempstr4 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;];
+    NSString* tempstr6 = [tempstr5 stringByReplacingOccurrencesOfString:@&quot;/&quot; withString:@&quot;&quot;];
+</code></pre>
+
+<h5 id="toc_8">字符串大小写</h5>
+
+<pre><code>//   将字符串中的英文字符由小写转换为大写
+    NSString *bigString = [string uppercaseString];
+    NSLog(@&quot;string = %@, bigstring = %@&quot;, string, bigString); 
+       
+//   将字符串中的英文字符由大写转换为小写
+    NSString *smallString = [string lowercaseString];
+    NSLog(@&quot;string = %@, smallString = %@&quot;, string, smallString);
+    
+//  将字符串的首字母改为大写
+    NSString *firstBigString = [string capitalizedString];
+    NSLog(@&quot;%@&quot;, firstBigString);
+</code></pre>
+
+<h5 id="toc_9">字符串拼接</h5>
+
+<pre><code>//  字符串拼接:将两个字符串拼在一起后形成一个新的字符串,原来两个字符串并未发生改变
+    NSString *string1 = @&quot;abc&quot;;
+    NSString *string2 = @&quot;123&quot;;
+    NSString *addString = [string1 stringByAppendingString:string2];
+    NSLog(@&quot;%@&quot;, addString);
+</code></pre>
+
+<h4 id="toc_10">字符串查找</h4>
+
+<pre><code>    NSString * string = @&quot;1234&quot;;
+    //  字符串查找：判断是否以参数给定的字符串开头。是，返回真 1 ；否，返回假 0。
+    BOOL result1 = [string hasPrefix:@&quot;1&quot;];
+    NSLog(@&quot;%d&quot;, result1);
+    
+    //  字符串查找：判断是否以参数给定的字符串结尾。是，返回真 1 ；否，返回假 0。
+    BOOL result2 = [string hasSuffix:@&quot;4&quot;];
+    NSLog(@&quot;%d&quot;, result2);
+</code></pre>
+
+<h4 id="toc_11">反转字符串</h4>
+
+<pre><code>/**
+ *  @brief  反转字符串
+ *
+ *  @param strSrc 被反转字符串
+ *
+ *  @return 反转后字符串
+ */
++ (NSString *)jk_reverseString:(NSString *)strSrc
+{
+    NSMutableString* reverseString = [[NSMutableString alloc] init];
+    NSInteger charIndex = [strSrc length];
+    while (charIndex &gt; 0) {
+        charIndex --;
+        NSRange subStrRange = NSMakeRange(charIndex, 1);
+        [reverseString appendString:[strSrc substringWithRange:subStrRange]];
+    }
+    return reverseString;
+}
 </code></pre>
 
 

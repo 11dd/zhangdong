@@ -91,9 +91,21 @@
         <li><label>微信小程序使用示例</label></li>
 
           
-            <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-          
             <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+          
+            <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+          
+            <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+          
+            <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+          
+            <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+          
+            <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+          
+            <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+          
+            <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
           
             <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
           
@@ -276,9 +288,21 @@
                     
                       <li class="side-title"><span>微信小程序使用示例</span></li>
                         
-                          <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-                        
                           <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+                        
+                          <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+                        
+                          <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+                        
+                          <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+                        
+                          <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+                        
+                          <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+                        
+                          <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+                        
+                          <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
                         
                           <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
                         
@@ -402,87 +426,89 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序账号</h1>
+		<h1>微信小程序之跑马灯效果</h1>
 
-		<h4 id="toc_0">小程序注意事项</h4>
+		<h5 id="toc_0">实现跑马灯效果图</h5>
 
-<ol>
-<li>同一个邮箱只能申请1个公众号；</li>
-<li>同一个手机号码可注册和认证5个公众号；</li>
-<li>同一身份证注册个人类型公众号数量上限为2个；</li>
-<li>同一公司、个体工商户、事业单位、其他组织资料注册公众号数量上限为5个；</li>
-<li>同一政府、媒体类型可注册和认证50个公众号。</li>
-<li>企业、政府、媒体、其他组织主体可以注册50个小程序</li>
-<li>个体户和个人类型主体可注册5个小程序。<br/></li>
-<li>公众号可关联同主体的10个小程序及不同主体的3个小程序 </li>
-<li>已关联的小程序可被使用在自定义菜单和模版消息场景中</li>
-<li>小程序和小程序 相互跳转的必须是同一公众号下关联的</li>
-<li>小程序发布前，可修改2次名称</li>
-<li>发布后，必须通过微信认证流程改名</li>
-<li>小程序名称可以由中文、数字、英文。长度在4-30个字符之间，一个中文字等于2个字符</li>
-<li>公众号、小程序在微信公众平台上的名称是唯一的，且属于同一主体下，可以重名</li>
-<li>不得与不同主体的公众号名称重名。</li>
-</ol>
+<p><img src="media/15419923901812/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-12%20%E4%B8%8A%E5%8D%8811.45.16.png" alt="屏幕快照 2018-11-12 上午11.45.16"/></p>
 
-<p>另附一种快速注册微信小程序方法：微信商户平台里，可以添加小程序，<br/>
-并且是直接认证通过的，支付认证过的, 省600块！！！</p>
+<h5 id="toc_1">---wxml文件---</h5>
 
-<hr/>
+<pre><code>&lt;!--跑马灯中的文字信息字段:gundong_text--&gt;
+&lt;view wx:if=&#39;{{gundong_text}}&#39; class=&quot;marquee_container&quot; style=&quot;--marqueeWidth--:-12em&quot;&gt;
+  &lt;view class=&#39;marquee_text&#39;&gt;
+    &lt;view class=&#39;hengxianggundong&#39;&gt;
+      &lt;image class=&#39;gundong_image&#39; mode=&#39;aspectFit&#39; src=&#39;../../image/laba.png&#39;&gt;&lt;/image&gt;
+      &lt;view class=&#39;triangle-left&#39;&gt;&lt;/view&gt;
+      &lt;view class=&quot;gundong_textView weui-zimFont9&quot;&gt;{{gundong_text}}&lt;/view&gt;
+    &lt;/view&gt;
+  &lt;/view&gt;
+&lt;/view&gt;
+</code></pre>
 
-<h4 id="toc_1">小程序账号注册流程介绍</h4>
+<h5 id="toc_2">---wxss文件---</h5>
 
-<ol>
-<li>打开公众平台 <a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a></li>
-<li>使用未绑定微信其他产品的邮箱注册</li>
-<li>填写信息后，个人登录成功(免费且不能认证)</li>
-<li>企业需要填写企业信息需300块认证费</li>
-<li>企业有支付功能开通需300块</li>
-<li>查看小程序平台, 截图如下</li>
-</ol>
-
-<h5 id="toc_2">个人小程序账号截图</h5>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.19.02.png" alt="屏幕快照 2018-04-09 上午11.19.02"/></p>
-
-<h5 id="toc_3">个人账号下应用类截图：</h5>
-
-<p><img src="media/15232437563217/1533714194263.jpg" alt="1533714194263"/></p>
-
-<h5 id="toc_4">个人账号下游戏类截图：</h5>
-
-<p><img src="media/15232437563217/1533714051550.jpg" alt="1533714051550"/></p>
-
-<h5 id="toc_5">企业小程序认证3到5个工作日</h5>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-18%20%E4%B8%8A%E5%8D%8810.31.37.png" alt="屏幕快照 2018-04-18 上午10.31.37"/></p>
-
-<h5 id="toc_6">企业小程序基本信息设置</h5>
-
-<p><img src="media/15232437563217/%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF.png" alt="基本信息"/></p>
-
-<h5 id="toc_7">企业小程序 侧边栏多了微信支付 支付设置 与小程序插件</h5>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-19%20%E4%B8%8B%E5%8D%881.54.00.png" alt="屏幕快照 2018-04-19 下午1.54.00"/></p>
-
-<h5 id="toc_8">企业微信小程序支付</h5>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.17.14.png" alt="屏幕快照 2018-08-08 下午3.17.14"/></p>
-
-<h5 id="toc_9">小程序更新</h5>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.16.10.png" alt="屏幕快照 2018-08-08 下午3.16.10"/></p>
-
-<hr/>
-
-<h4 id="toc_10">官方微信小程序接入指南链接：</h4>
-
-<ul>
-<li><a href="https://developers.weixin.qq.com/miniprogram/introduction/">https://developers.weixin.qq.com/miniprogram/introduction/</a></li>
-</ul>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.31.04.png" alt="屏幕快照 2018-04-09 上午11.31.04"/></p>
-
-<hr/>
+<pre><code>/* 跑马灯样式 */
+@keyframes around {
+  from {
+    margin-left: 100%;
+  }
+  to {
+    /* var接受传入的变量 */
+    margin-left: var(--marqueeWidth--);
+  }
+}
+.marquee_container {
+  position: absolute;
+  top: 120rpx;
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  z-index: 1200;
+}
+.marquee_container:hover {
+  /* 不起作用 */
+  animation-play-state: paused;
+}
+.marquee_text {
+  display: inline-block;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  white-space: nowrap;
+  animation-name: around;
+  animation-duration: 10s; /*过渡时间*/
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.hengxianggundong {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.gundong_image {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.triangle-left {
+  width: 0;
+  height: 0;
+  border-right: 10rpx solid rgba(0, 0, 0, 0.8);
+  border-bottom: 10rpx solid rgba(0, 0, 0, 0);
+  border-top: 10rpx solid rgba(0, 0, 0, 0);
+}
+.gundong_textView {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border-radius: 10rpx;
+}
+</code></pre>
 
 
 		</div>

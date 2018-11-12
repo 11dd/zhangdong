@@ -91,9 +91,21 @@
         <li><label>微信小程序使用示例</label></li>
 
           
-            <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-          
             <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+          
+            <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+          
+            <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+          
+            <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+          
+            <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+          
+            <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+          
+            <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+          
+            <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
           
             <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
           
@@ -276,9 +288,21 @@
                     
                       <li class="side-title"><span>微信小程序使用示例</span></li>
                         
-                          <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-                        
                           <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+                        
+                          <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+                        
+                          <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+                        
+                          <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+                        
+                          <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+                        
+                          <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+                        
+                          <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+                        
+                          <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
                         
                           <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
                         
@@ -402,55 +426,47 @@
 
 	
 		<div class="markdown-body">
-		<h1>CMMI3级评审</h1>
+		<h1>微信小程序之样式</h1>
 
-		<h3 id="toc_0">十八个过程域</h3>
+		<h5 id="toc_0">设置背景图片，不要使用这个方式设置背景图</h5>
 
-<h5 id="toc_1">过程管理</h5>
+<pre><code>&lt;view class=&quot;viewClass&quot; style=&quot;background-image: url(&#39;../../images/welcome.png&#39;)&quot;&gt;
+&lt;/view&gt;
 
-<h6 id="toc_2">组织过程改进（OPF）Organization Process Focus</h6>
+可以使用 view布局方式中的：
+position: relative;
+position: absolute;
+</code></pre>
 
-<h6 id="toc_3">组织过程定义（OPD）Organization Process Definition</h6>
+<h5 id="toc_1">overflow 属性</h5>
 
-<h6 id="toc_4">组织培训（OT）Organization Training</h6>
+<pre><code>overflow 属性规定当内容溢出元素框时发生的事情。
 
-<h5 id="toc_5">项目管理</h5>
+visible     默认值。内容不会被修剪，会呈现在元素框之外。
+hidden      内容会被修剪，并且其余内容是不可见的。
+scroll      内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
+auto        如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
+inherit     规定应该从父元素继承 overflow 属性的值。
+</code></pre>
 
-<h6 id="toc_6">立项（PIM）</h6>
+<h5 id="toc_2">button去掉自带的边框</h5>
 
-<h6 id="toc_7">集成项目管理（IPM）</h6>
+<pre><code>button::after {
+  border: none;
+}
+</code></pre>
 
-<h6 id="toc_8">项目策划（PP）</h6>
+<h5 id="toc_3">组件设置边框</h5>
 
-<h6 id="toc_9">项目监督和控制（PMC）</h6>
+<pre><code>  border: 1px solid #FFF;
+</code></pre>
 
-<h6 id="toc_10">风险管理（RSKM）</h6>
+<h5 id="toc_4">列表中最后一个item样式</h5>
 
-<h6 id="toc_11">结项（PCM）</h6>
-
-<h5 id="toc_12">项目研发</h5>
-
-<h6 id="toc_13">需求开发与管理（RD）</h6>
-
-<h6 id="toc_14">系统设计编码（SD）</h6>
-
-<h6 id="toc_15">测试（TS）</h6>
-
-<h6 id="toc_16">评审（TR）</h6>
-
-<h6 id="toc_17">产品发布（PI）</h6>
-
-<h6 id="toc_18">产品实施（PA）</h6>
-
-<h5 id="toc_19">过程支持</h5>
-
-<h6 id="toc_20">配置管理（CM）</h6>
-
-<h6 id="toc_21">过程和产品质量保证（PPQA）</h6>
-
-<h6 id="toc_22">度量与分析（MA）</h6>
-
-<h6 id="toc_23">决策分析和决定（DAR）</h6>
+<pre><code>.foods-item:last-child {
+  margin-bottom: 10px;
+}
+</code></pre>
 
 
 		</div>

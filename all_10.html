@@ -91,9 +91,21 @@
         <li><label>微信小程序使用示例</label></li>
 
           
-            <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-          
             <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+          
+            <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+          
+            <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+          
+            <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+          
+            <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+          
+            <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+          
+            <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+          
+            <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
           
             <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
           
@@ -276,9 +288,21 @@
                     
                       <li class="side-title"><span>微信小程序使用示例</span></li>
                         
-                          <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-                        
                           <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+                        
+                          <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+                        
+                          <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+                        
+                          <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+                        
+                          <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+                        
+                          <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+                        
+                          <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+                        
+                          <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
                         
                           <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
                         
@@ -402,72 +426,71 @@
 
 	
 		<div class="markdown-body">
-		<h1>一些地址记录</h1>
+		<h1>iOS审核被拒4.3</h1>
 
-		<p>接口管理地址：<br/>
-<a href="https://www.eolinker.com/">https://www.eolinker.com/</a></p>
+		<h5 id="toc_0">一种是过不了机审关被拒，一种是过不了人审关被拒。</h5>
 
-<p>微信小程序开发资源汇总<br/>
-<a href="https://github.com/justjavac/awesome-wechat-weapp">https://github.com/justjavac/awesome-wechat-weapp</a></p>
+<pre><code>iOS预审核，扫描api，及plist文件字符缺失等；
+此处分两步，第一步为上传时苹果Application Loador等应用对于适配icon等的检查，
+第二步为上传后苹果的功能性检查，例如配置了Push功能但有缺失
+或者未打开功能，则会邮件提示等等；
 
-<p>nodejs 下载地址：<br/>
-<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
+iOS机审，主要是对代码进行机器审核，排查APP是否重复应用，此处扫描支付SDK等，及马甲情况，机器扫描主要看代码块
 
-<p>微信小程序-SASS开发环境搭建(mac)<br/>
-<a href="https://blog.csdn.net/yaodong379/article/details/79305100">https://blog.csdn.net/yaodong379/article/details/79305100</a></p>
+iOS人审，主要是由苹果审核人员对APP的内容、功能进行核验，防止APP有bug，
+防止APP模仿其他应用，内容与其他APP重复，影响用户体验，
+检测功能或者App体验测试，例如用测试账号登录App体验功能，
+或其他是否明显bug等，ipv6也在此处检测；
 
-<p>微信小程序中使用Promise进行异步流程处理<br/>
-A polyfill for ES6-style Promises ：<br/>
-<a href="https://github.com/stefanpenner/es6-promise">https://github.com/stefanpenner/es6-promise</a></p>
+</code></pre>
 
-<p>weapp.qrcode.js 在 微信小程序 中，快速生成二维码 <br/>
-<a href="https://github.com/yingye/weapp-qrcode">https://github.com/yingye/weapp-qrcode</a></p>
+<h5 id="toc_1">区分机审 、人审</h5>
 
-<p>小程序开发视频环境管理地址：<br/>
-<a href="https://console.qcloud.com/lav2/dev">https://console.qcloud.com/lav2/dev</a></p>
+<pre><code>那么如何区分是机器审核还是人工审核呢？主要看APP被拒的信息：
 
-<p>ES6 map()遍历、filter()筛选<br/>
-<a href="https://blog.csdn.net/zuorishu/article/details/80958705">https://blog.csdn.net/zuorishu/article/details/80958705</a></p>
+1）如果是机器审核被拒，一般收到的被拒信息第一句话基本上是这样的：
+Guideline4.3 - Design - Spam
+Yourapp duplicates the content and functionality of apps submitted to the AppStore,
+ which is considered a form of spam.
 
-<p>微信小程序获取系统时间、时间戳、时间时间戳加减<br/>
-<a href="https://blog.csdn.net/ufo00001/article/details/72834437">https://blog.csdn.net/ufo00001/article/details/72834437</a></p>
+2）如果是人工审核被拒，一般收到的被拒信息第一句话基本上是这样的：
+Guideline4.3 - Design - Spam
+Wefound that your app provides the same feature set as other apps submitted tothe App Store, 
+which is not appropriate to the App Store.
+</code></pre>
 
-<p>微信小程序编解码base64<br/>
-<a href="https://blog.csdn.net/qq_33382313/article/details/81074347">https://blog.csdn.net/qq_33382313/article/details/81074347</a></p>
+<h5 id="toc_2">针对审核</h5>
 
-<p>微信小程序 sha1 实现密码加密<br/>
-<a href="https://www.cnblogs.com/mtour/p/7116415.html">https://www.cnblogs.com/mtour/p/7116415.html</a></p>
+<pre><code>1.原来账号里的APP的名字可以作废掉或者修改成其他的，
+同时记得移除之前的APP，重新打个空包传上去，
+icon图则用其他logo图置换掉
 
-<p><div>设置宽度，汉字正常换行，输入字母/数字不换行的解决方案分析<br/>
-<a href="https://www.cnblogs.com/qq278360339/archive/2012/12/11/2813395.html">https://www.cnblogs.com/qq278360339/archive/2012/12/11/2813395.html</a></p>
+2.增加登录日志
 
-<h4 id="toc_0">iOS</h4>
+3.主要的方法是添加垃圾代码，且代码的相似程度不高于45%，
+  混淆工程地址：https://github.com/klaus01/KLGenerateSpamCode
 
-<p>appCode破解下载地址：<br/>
-<a href="http://www.sdifen.com/appcode201631.html">http://www.sdifen.com/appcode201631.html</a></p>
+4.工程中的文件夹的名字全部进行修改，类名修改，方法名修改
 
-<p>iOS部署企业包：<br/>
-<a href="https://www.jianshu.com/p/a9db64b53607">https://www.jianshu.com/p/a9db64b53607</a></p>
+5.资源图片替换修改，适当添加一些无用的资源 
 
-<p>极光统计地址：<br/>
-<a href="https://www.jiguang.cn/stat/#/app/2c155c3d850ff8cb16f857a8/crash_log_list">https://www.jiguang.cn/stat/#/app/2c155c3d850ff8cb16f857a8/crash_log_list</a></p>
+6.API名称，机扫二进制文件，也会对比API
 
-<p>阿里云推送地址：<br/>
-<a href="https://help.aliyun.com/document_detail/30072.html">https://help.aliyun.com/document_detail/30072.html</a></p>
+7.换开发者账号，换不同账号提交审核
 
-<h4 id="toc_1">Other</h4>
+8.换 bundle id，换一个包再提交审核；
 
-<p>在线地图经纬度查询：<br/>
-<a href="http://www.gpsspg.com/maps.htm">http://www.gpsspg.com/maps.htm</a></p>
+9. 一定要关注名字,icon,启动图;修改UI风格同时进行假页面的添加;
 
-<p>视频直播方案地址：<br/>
-<a href="http://www.easynvr.com/index.html">http://www.easynvr.com/index.html</a></p>
+10.升级 version，升级一个版本号提交审核
 
-<p>赵哲的地址：<br/>
-<a href="http://www.zhaozhepublic.com/">http://www.zhaozhepublic.com/</a></p>
+11.修改产品分类
 
-<p>CMMI<br/>
-<a href="https://sas.cmmiinstitute.com/pars/pars_detail.aspx?a=32649">https://sas.cmmiinstitute.com/pars/pars_detail.aspx?a=32649</a></p>
+12.还需要注意相同的马甲包提交至少要间隔一天以上。
+
+13.定期换电脑提包.换电脑的序列号.换VPN环境.定期换域名. 
+
+</code></pre>
 
 
 		</div>

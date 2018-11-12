@@ -91,9 +91,21 @@
         <li><label>微信小程序使用示例</label></li>
 
           
-            <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-          
             <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+          
+            <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+          
+            <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+          
+            <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+          
+            <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+          
+            <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+          
+            <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+          
+            <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
           
             <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
           
@@ -276,9 +288,21 @@
                     
                       <li class="side-title"><span>微信小程序使用示例</span></li>
                         
-                          <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-                        
                           <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+                        
+                          <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+                        
+                          <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+                        
+                          <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+                        
+                          <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+                        
+                          <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+                        
+                          <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+                        
+                          <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
                         
                           <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
                         
@@ -402,56 +426,36 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序网络请求</h1>
+		<h1>微信小程序TabBar</h1>
 
-		<h4 id="toc_0">1.在wxml文件里加上按钮点击事件 和list</h4>
+		<h4 id="toc_0">创建一个标准小程序空项目</h4>
 
-<pre><code>&lt;button bindtap=&quot;RequestData&quot; value=&quot;Button&quot;&gt;request&lt;/button&gt; 
+<h5 id="toc_1">在app.json文件里写入如下代码</h5>
 
-&lt;view&gt;  
-  &lt;scroll-view scroll-y=&quot;true&quot; style=&quot;height:100%&quot; &gt;  
-    &lt;view wx:for=&quot;{{textdata}}&quot; style=&quot;width:100%&quot;&gt;  
-      &lt;label style=&quot;width:100%;height:50px;font-family:&#39;微软雅黑&#39;&quot;&gt;  {{item.name}}&lt;/label&gt;  
-    &lt;/view&gt;  
-  &lt;/scroll-view&gt;  
-&lt;/view&gt;   
-
-</code></pre>
-
-<h4 id="toc_1">2.在.js 文件添加网络请求，点击按钮后执行代码如下：</h4>
-
-<pre><code> RequestData: function () {
-    var that = this;
-    wx.request({
-      url: &#39;http://.../serve/api/v1.0/service/communityLst&#39;,
-
-      data: {},
-      method: &#39;GET&#39;, 
-      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT 
-      // header: {}, // 设置请求的 header 默认是application/json  
-
-      success: function (res) {  
-        //划重点---&gt;setData 
-        that.setData({ textdata: res.data.query});
-        
-        // 操作json数据 遍历打印数组里name字段数据  
-        for (var i in res.data.query) {
-          console.log(res.data.query[i].name);
-        }
+<pre><code> &quot;tabBar&quot;: {
+    &quot;color&quot;: &quot;#a9b7b7&quot;,
+    &quot;selectedColor&quot;: &quot;#000000&quot;,
+    &quot;list&quot;: [
+      {
+        &quot;selectedIconPath&quot;: &quot;image/home.png&quot;,
+        &quot;iconPath&quot;: &quot;image/home.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/home/home&quot;,
+        &quot;text&quot;: &quot;首页&quot;
       },
-      fail: function () {
-        // fail  
-      },
-      complete: function () {
-        // complete  
+      {
+        &quot;selectedIconPath&quot;: &quot;image/index.png&quot;,
+        &quot;iconPath&quot;: &quot;image/index.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/index/index&quot;,
+        &quot;text&quot;: &quot;专题&quot;
       }
-    })
-  },  
+    ]
+  }
+   
 </code></pre>
 
-<h4 id="toc_2">3.setData 后页面如下：</h4>
+<h4 id="toc_2">运行界面 tabbar</h4>
 
-<p><img src="media/15235164843984/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%882.26.02.png" alt="屏幕快照 2018-04-12 下午2.26.02"/></p>
+<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%881.41.36.png" alt="屏幕快照 2018-04-12 下午1.41.36"/></p>
 
 
 		</div>

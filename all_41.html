@@ -91,9 +91,21 @@
         <li><label>微信小程序使用示例</label></li>
 
           
-            <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-          
             <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+          
+            <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+          
+            <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+          
+            <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+          
+            <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+          
+            <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+          
+            <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+          
+            <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
           
             <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
           
@@ -276,9 +288,21 @@
                     
                       <li class="side-title"><span>微信小程序使用示例</span></li>
                         
-                          <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-                        
                           <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+                        
+                          <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+                        
+                          <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+                        
+                          <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+                        
+                          <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+                        
+                          <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+                        
+                          <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+                        
+                          <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
                         
                           <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
                         
@@ -402,100 +426,211 @@
 
 	
 		<div class="markdown-body">
-		<h1>建项-屏幕适配的这几年</h1>
+		<h1>iOS tableView 常用属性与方法</h1>
 
-		<h4 id="toc_0">iOS的尺寸如下：</h4>
+		<h5 id="toc_0">tableview 常用属性如下：</h5>
 
-<p><img src="media/15141802374458/iOS%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E5%9B%BE.png" alt="iOS屏幕适配图"/></p>
+<pre><code> if (@available(iOS 11.0, *)) {
+            _tableView.estimatedRowHeight = 0;
+            _tableView.estimatedSectionFooterHeight = 0;
+            _tableView.estimatedSectionHeaderHeight = 0;
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }else{
+            self.automaticallyAdjustsScrollViewInsets = NO;
+            
+        }
+        
+</code></pre>
 
-<h5 id="toc_1">iPhone XS ：</h5>
+<pre><code>//获取手势点击的是哪一个cell的坐标
+NSIndexPath *indexPath = [self.tableView indexPathForCell:((UITableViewCell *)longPress.view)];
 
-<p>屏幕尺寸: 5.8英寸<br/>
-屏幕密度: 458 ppi<br/>
-开发尺寸: 375*812 Pt<br/>
-像素尺寸: 1125 x 2436px <br/>
-倍图: @3x</p>
+//点击button时获取button所在的cell的indexpath
+UIButton *button = sender;
+tempTableViewCell *cell = (tempTableViewCell *)[[button superview] superview];
+NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
 
-<h5 id="toc_2">iPhone XS Max ：</h5>
+//局部刷新一个section刷新    
+NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];    
+[tableview reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];    
 
-<p>屏幕尺寸: 6.5英寸<br/>
-屏幕密度: 458 ppi<br/>
-开发尺寸: 414*896 pt<br/>
-像素尺寸: 1242 x 2688px <br/>
-倍图: @3x</p>
+//局部刷新一个cell刷新   
+NSIndexPath *indexPath=[NSIndexPath indexPathForRow:1 inSection:0];   
+[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone]; 
 
-<h5 id="toc_3">iPhone XR ：</h5>
+//不显示分割线
+_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
-<p>屏幕尺寸: 6.1英寸<br/>
-屏幕密度: 326 ppi<br/>
-开发尺寸: 414*896 pt<br/>
-像素尺寸: 828 x 1792px <br/>
-倍图: @2x</p>
+//显示箭头
+cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
-<h4 id="toc_4">考虑问题如下：</h4>
+//无选中状态
+cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-<ol>
-<li>这个项目适配哪些屏幕，哪些系统版本（4寸屏及以上，iOS8/9及以上，强烈建议iOS9及以上）</li>
-<li><p>适配到哪种程度，（看设计出几套图？不存在的，只有一套，那这一套按哪个尺寸出呢？）</p>
+//自适应单元格高度
+tableView.rowHeight = UITableViewAutomaticDimension; 
+//先估计一个高度
+tableView.estimatedRowHeight = 50; 
+</code></pre>
 
-<pre><code>1.针对适配的情况，进行说明，原来的项目按照比例做的，所以大屏小屏显示的内容是一样的；  
+<pre><code></code></pre>
 
-2.按照苹果公司的逻辑与产品的使用中，也能体会到大屏是用来显示更多内容的；
-  设计的时候就应该考虑大屏要不要多显示内容，
-  但是只出一张设计图，意思也很明确按比例适配，减少各方面沟通 设计与开发的时间成本。
+<pre><code></code></pre>
 
-3.问题来了，iPhone X的特殊性，宽度和4.7寸屏一样，但是高度增加了。
-  坚持继续 按4寸屏320 X 568 或 375 X 667的比例放大，效果是不尽人意的。
-  设计图要考虑高度的差异，iPhoneX 比4.7寸屏 显示内容的区域高了了174像素；
+<h5 id="toc_1">tableview 常用方法如下：</h5>
 
-4.根据以上情况，如何选择按哪个尺寸出这一套设计图呢？
-  答案当然是选择中间尺寸 4.7寸屏的（750px/375pt）作为基准。做好一套屏幕的UI
-  这样中间尺寸舒适好看了，向上和向下适配的时候界面调整的幅度最小（不是代码改动最小）
+<h6 id="toc_2">tableview 选中第几行</h6>
 
-5.只有一套设计稿，默认用什么规则来适配？
-  横向调整间距或对齐方式，纵向类列表高度-&gt;是否有需要根据内容自适应高度的硬性要求，
-  如果没有自适应的情况如下：
-    1.按比例让列表高度变高，如果列表里内容较少，会显的很空
-    2.列表高度不变，字号跟随比例放大 如果列表里内容较多，会显得很拥挤
-      如果字号不跟随比例放大，那么整个程序的字号都不应该随比例放大。
+<pre><code>NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
+[self.tableView selectRowAtIndexPath:indexpath animated:YES scrollPosition:UITableViewScrollPositionMiddle];  //选中第5行
+</code></pre>
 
-6.当以上问题开发完，发现为什么设计图好看做出的效果总是差强人意？
+<h6 id="toc_3">滚动到指定位置</h6>
 
-  所以UI要出“设计标注图”，不能差不多了事，这差2像素，那差4像素，最后看起来就不美观了。
+<pre><code>//滚动到指定位置_偏移量
+[self.rizhiTableView setContentOffset:CGPointMake(0, OffsetY) animated:NO];
+//滚动到第几行
+NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
+[self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+</code></pre>
+
+<h6 id="toc_4">pragma mark  - 滑到最底部</h6>
+
+<pre><code>- (void)scrollTableToFoot
+{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        NSInteger s = [self.tableView numberOfSections];  //有多少组
+        if (s&lt;1) return;  //无数据时不执行 要不会crash
+        NSInteger r = [self.tableView numberOfRowsInSection:s-1]; //最后一组有多少行
+        if (r&lt;1) return;
+        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:r-1 inSection:s-1];  //取最后一行数据
+        [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:NO]; //滚动到最后一行
+        
+    });
+  
+}
+</code></pre>
+
+<h6 id="toc_5">pragma -mark- 删除方法</h6>
+
+<pre><code>//先要设Cell可编辑
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return YES;
+}
+
+//定义编辑样式
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return UITableViewCellEditingStyleDelete;
+}
+
+//修改编辑按钮文字
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @&quot;删除&quot;;
+}
+
+//设置进入编辑状态时，Cell不会缩进
+- (BOOL)tableView: (UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+
+//点击删除
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    /**一定是先删除了数据，再执行删除的动画或者其他操作，否则会出现崩溃*/
+    
+    [self deleteAdressData:indexPath];
+    
+}
 
 </code></pre>
 
-<h4 id="toc_5">iOS 启动页的适配</h4>
-
-<h5 id="toc_6">不管你是LaunchImage来管理启动页</h5>
-
-<h5 id="toc_7">还是LaunchScreen来适配的启动页</h5>
-
-<h5 id="toc_8">去找产品负责人要图吧，拉伸了启动图，测试看不出来，测试可不负责</h5>
-
-<h4 id="toc_9">iOS 适配齐刘海</h4>
-
-<blockquote>
-<p>不要在代码里面看到重复多次的数字、字符串的使用，如果重复多次，抽出来使用常量来表示；<br/>
-代码适配重点：写宏<br/>
-代码适配重点：写宏<br/>
-代码适配重点：写宏</p>
-</blockquote></li>
-</ol>
-
-<pre><code>   #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-   #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
-   //如果自定义导航和状态栏，iphoneX 高度设置 88 其他为 64
-   #define KNavHeight (SCREEN_HEIGHT == 812.0 ? 88 : 64)
+<pre><code>
+dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        // 处理耗时操作的代码块...
+        
+    
+        //通知主线程刷新
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //回调或者说是通知主线程刷新，
+            
+        });
+        
+    });
+    
+    
 </code></pre>
 
-<pre><code>  // 底部宏，iphoneX 底部留34高度，别写数字到处减34
-  #define KBottomHeight (SCREEN_HEIGHT == 812.0 ? 34 : 0)
+<pre><code>
+//同步数据
+[[NSUserDefaults standardUserDefaults]synchronize];
+
+//延时操作
+ dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+ });       
+            
 </code></pre>
 
-<p>xib的适配：齐刘海和圆角苹果不会让我们一个一个约束去拖吧?<br/>
-如果项目要求适配iOS9以下的，还没有好方法，只能一个一个好好拖了;<br/>
-如果不要求适配iOS9以下的，那么你只需要给view打开安全区域即可。</p>
+<pre><code>//单击手势
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(TapImgView:)];
+        [tapGesture setNumberOfTapsRequired:1];
+        [imgView addGestureRecognizer:tapGesture];
+
+
+
+-(void)TapImgView:(UITapGestureRecognizer*)tapGesture
+{
+    UITapGestureRecognizer *singleTap = (UITapGestureRecognizer *)tapGesture;
+    NSInteger index = singleTap.view.tag;
+
+}
+
+</code></pre>
+
+<pre><code> [_timer invalidate];//永远停止并且要置为nil
+ [_timer setFireDate:[NSDate distantFuture]];//关闭定时器
+    
+</code></pre>
+
+<pre><code>*******************************跳转**********************************************
+
+ for (UIViewController *controller in self.navigationController.viewControllers) {
+
+            if ([controller isKindOfClass:[SecondDetailsViewController class]]) {
+
+                SecondDetailsViewController *test =(SecondDetailsViewController *)controller;
+                [self.navigationController popToViewController:test animated:YES];
+
+            }
+  }
+
+        
+  [self.navigationController popToRootViewControllerAnimated:YES];
+
+*****************************************************************************
+
+</code></pre>
+
+<pre><code>
+  //放大过程中出现的缓慢动画
+    - (void) shakeToShow:(UIView*)aView{
+        
+        CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@&quot;transform&quot;];
+        animation.duration = 0.2;
+        NSMutableArray *values = [NSMutableArray array];
+        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
+        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
+        animation.values = values;
+        [aView.layer addAnimation:animation forKey:nil];
+        
+    }
+
+
+
+</code></pre>
 
 
 		</div>

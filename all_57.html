@@ -91,9 +91,21 @@
         <li><label>微信小程序使用示例</label></li>
 
           
-            <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-          
             <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+          
+            <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+          
+            <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+          
+            <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+          
+            <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+          
+            <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+          
+            <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+          
+            <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
           
             <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
           
@@ -276,9 +288,21 @@
                     
                       <li class="side-title"><span>微信小程序使用示例</span></li>
                         
-                          <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-                        
                           <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+                        
+                          <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+                        
+                          <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+                        
+                          <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+                        
+                          <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+                        
+                          <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+                        
+                          <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+                        
+                          <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
                         
                           <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
                         
@@ -402,20 +426,36 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS  UIAlertController 提示框</h1>
+		<h1>Mac下使用Apache服务</h1>
 
-		<h5 id="toc_0">添加提示语</h5>
+		<p>启动 Apache 服务</p>
 
-<pre><code>UIAlertController *confirm = [UIAlertController alertControllerWithTitle:@&quot;是否&quot; message:@&quot;msg&quot; preferredStyle:UIAlertControllerStyleAlert];
-                
- [confirm addAction:[UIAlertAction actionWithTitle:@&quot;是&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    
-                }]];
-[confirm addAction:[UIAlertAction actionWithTitle:@&quot;否&quot; style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                    
-                }]];
-                
-[self presentViewController:confirm animated:YES completion:nil];
+<pre><code>$ sudo apachectl start
+
+
+在浏览器中输入：http://localhost/
+显示：It works！
+</code></pre>
+
+<p>给当前用户设置文件读写权限</p>
+
+<pre><code>1) 打开 Apache 的默认根目录
+
+    $ open /Library/WebServer/Documents/
+
+
+2) 设置读写权限
+
+
+    右击 “Documents” -&gt; &quot;Get Info&quot;
+</code></pre>
+
+<p>测试</p>
+
+<pre><code>在 Documents 下创建站点 freefook，及文件 freefook/index.html，
+
+
+访问：http://192.168.1.123/freefook/index.html
 </code></pre>
 
 

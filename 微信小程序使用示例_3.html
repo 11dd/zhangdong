@@ -91,9 +91,21 @@
         <li><label>微信小程序使用示例</label></li>
 
           
-            <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-          
             <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+          
+            <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+          
+            <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+          
+            <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+          
+            <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+          
+            <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+          
+            <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+          
+            <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
           
             <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
           
@@ -276,9 +288,21 @@
                     
                       <li class="side-title"><span>微信小程序使用示例</span></li>
                         
-                          <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-                        
                           <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+                        
+                          <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+                        
+                          <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+                        
+                          <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+                        
+                          <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+                        
+                          <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+                        
+                          <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+                        
+                          <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
                         
                           <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
                         
@@ -402,36 +426,87 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序TabBar</h1>
+		<h1>微信小程序之动画</h1>
 
-		<h4 id="toc_0">创建一个标准小程序空项目</h4>
+		<h5 id="toc_0">---wxml文件---</h5>
 
-<h5 id="toc_1">在app.json文件里写入如下代码</h5>
-
-<pre><code> &quot;tabBar&quot;: {
-    &quot;color&quot;: &quot;#a9b7b7&quot;,
-    &quot;selectedColor&quot;: &quot;#000000&quot;,
-    &quot;list&quot;: [
-      {
-        &quot;selectedIconPath&quot;: &quot;image/home.png&quot;,
-        &quot;iconPath&quot;: &quot;image/home.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/home/home&quot;,
-        &quot;text&quot;: &quot;首页&quot;
-      },
-      {
-        &quot;selectedIconPath&quot;: &quot;image/index.png&quot;,
-        &quot;iconPath&quot;: &quot;image/index.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/index/index&quot;,
-        &quot;text&quot;: &quot;专题&quot;
-      }
-    ]
-  }
-   
+<pre><code>&lt;view class=&#39;lunbo&#39; animation=&quot;{{animationItem}}&quot;
+&lt;/view&gt;
 </code></pre>
 
-<h4 id="toc_2">运行界面 tabbar</h4>
+<h5 id="toc_1">---JS文件---</h5>
 
-<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%881.41.36.png" alt="屏幕快照 2018-04-12 下午1.41.36"/></p>
+<pre><code>  var that = this;
+    //动画样式
+    that.animationItem = wx.createAnimation({
+      duration: 500,
+      timingFunction: &#39;linear&#39;,
+      transformOrigin: &#39;90% 70%&#39;,
+      success: function(res) {}
+    });
+    
+    // 定时器，2S 循环一次
+    that.data.newLunbo_interval = setInterval(function() {
+      //开始动画-缩小
+      that.animationItem.scale3d(0.98, 0.98, 0.1).step();
+      that.setData({
+        animationItem: that.animationItem.export()
+      });
+      //延迟恢复到原来大小
+      setTimeout(function() {
+        that.animationItem.scale3d(1.0, 1.0, 1.0).step();
+        that.setData({
+          animationItem: that.animationItem.export(),
+        });
+      }, 500)
+    }.bind(that), 2000);
+</code></pre>
+
+<h5 id="toc_2">清理定时器</h5>
+
+<pre><code>    clearInterval(this.data.newLunbo_interval);
+</code></pre>
+
+<h5 id="toc_3">创建wx.createAnimation参数含义</h5>
+
+<pre><code>duration            动画持续时间，单位 ms 
+timingFunction      &#39;linear&#39; 动画的效果  
+delay               动画延迟时间，单位 ms 
+transformOrigin     &#39;50% 50% 0&#39;
+</code></pre>
+
+<h5 id="toc_4">timingFunction 的合法值</h5>
+
+<pre><code>&#39;linear&#39;    动画从头到尾的速度是相同的
+&#39;ease&#39;  动画以低速开始，然后加快，在结束前变慢
+&#39;ease-in&#39;   动画以低速开始
+&#39;ease-in-out&#39;   动画以低速开始和结束
+&#39;ease-out&#39;  动画以低速结束
+&#39;step-start&#39;    动画第一帧就跳至结束状态直到结束
+&#39;step-end&#39;  动画一直保持开始状态，最后一帧跳到结束状态
+</code></pre>
+
+<h5 id="toc_5">transformOrigin 的合法值</h5>
+
+<pre><code>transform-origin: x-axis y-axis z-axis;
+
+x-axis  定义视图被置于 X 轴的何处。可能的值：
+    left
+    center
+    right
+    length
+    %
+    
+y-axis  定义视图被置于 Y 轴的何处。可能的值：
+    top
+    center
+    bottom
+    length
+    %
+
+z-axis  定义视图被置于 Z 轴的何处。可能的值：
+    length
+</code></pre>
 
 
 		</div>

@@ -91,9 +91,21 @@
         <li><label>微信小程序使用示例</label></li>
 
           
-            <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-          
             <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+          
+            <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+          
+            <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+          
+            <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+          
+            <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+          
+            <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+          
+            <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+          
+            <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
           
             <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
           
@@ -276,9 +288,21 @@
                     
                       <li class="side-title"><span>微信小程序使用示例</span></li>
                         
-                          <li><a title="微信小程序实用示例" href="15326733440349.html">微信小程序实用示例</a></li>
-                        
                           <li><a title="微信小程序之登录篇" href="15234367737951.html">微信小程序之登录篇</a></li>
+                        
+                          <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
+                        
+                          <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
+                        
+                          <li><a title="微信小程序之动画" href="15419945000025.html">微信小程序之动画</a></li>
+                        
+                          <li><a title="微信小程序之点击与跳页传参" href="15419918698485.html">微信小程序之点击与跳页传参</a></li>
+                        
+                          <li><a title="微信小程序之提示信息" href="15326733440349.html">微信小程序之提示信息</a></li>
+                        
+                          <li><a title="微信小程序之JS操作" href="15419922791377.html">微信小程序之JS操作</a></li>
+                        
+                          <li><a title="微信小程序之样式" href="15419923901812.html">微信小程序之样式</a></li>
                         
                           <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
                         
@@ -402,56 +426,149 @@
 
 	
 		<div class="markdown-body">
-		<h1>项目问题汇总</h1>
+		<h1>iOS tableView 基础使用说明</h1>
 
-		<h5 id="toc_0">遇到的小问题却忽略的必然问题项如下：</h5>
+		<h5 id="toc_0">pragma - mark - tableview列表初始化</h5>
 
-<h6 id="toc_1">不明确问题：</h6>
+<pre><code>-(UITableView *)tableView
+{
+    if (!_tableView) {
+        
+        _tableView = [[UITableView alloc]initWithFrame:
+                      CGRectMake(, , , ) style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.backgroundColor = ;
+        //分割线的颜色
+        _tableView.separatorColor = ;
+        //隐藏滚动条
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.tableFooterView = [[UIView alloc]init];
+        
+    }
+    return _tableView;
+}
+</code></pre>
 
-<ol>
-<li>项目都有哪些功能？不明确？</li>
-<li>适配的系统与屏幕大小？</li>
-<li>是否需要检测网络，无网络或者无数据页面如何处理？</li>
-<li>例如：显示无数据页面，点击按钮重新请求？</li>
-<li>某些数据内容展示不开时：显示一行即可/多行？</li>
-<li>提示语的说明?</li>
-<li>本地数据存储是否多？</li>
-<li>业务复杂逻辑流程图？各端统一，麻烦也要统一做。</li>
-</ol>
+<h5 id="toc_1">tableview 代理方法实现如下：</h5>
 
-<h6 id="toc_2">不明确的功能项：</h6>
+<h6 id="toc_2">tableview解决常规配置的重复问题。。。</h6>
 
-<ol>
-<li>列表 tableview 是否有动态行高？</li>
-<li>哪些是必须登录才可看的页面？</li>
-<li>登录后是否有页面乱push 与pop 的情况？</li>
-<li>热点问题是否有适配的价值，例如：京东曾不适配。</li>
-</ol>
+<pre><code>//当页面拉动需要显示新数据的时候，把最后一个cell进行删除 此方案即可避免重复显示，又重用了cell相对内存管理来说是好的方案 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 定义唯一标识
+    static NSString *CellIdentifier = @&quot;Cell&quot;;
+    // 通过唯一标识创建cell实例
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    else//当页面拉动的时候 当cell存在并且最后一个存在 把它进行删除就出来一个独特的cell我们在进行数据配置即可避免
+    {
+        while ([cell.contentView.subviews lastObject] != nil) {
+            [(UIView *)[cell.contentView.subviews lastObject] removeFromSuperview];
+        }
+    }
+    
+//点击没有选中状态
+cell.selectionStyle = UITableViewCellSelectionStyleNone;  
 
-<h6 id="toc_3">必须有的功能项：</h6>
+// 对cell 进行简单地数据配置
+cell.textLabel.text = @&quot;text&quot;;
+   
+return cell;
+}
+</code></pre>
 
-<ol>
-<li>网络请求的日志信息，如何处理?和接口人员商议</li>
-<li>需要增加闪退统计例如：集成极光。</li>
-</ol>
+<h5 id="toc_3">other</h5>
 
-<h6 id="toc_4">接口问题：</h6>
+<pre><code>//行
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return &lt;#@#&gt;;
+}
+//行高
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return &lt;#@#&gt;;
+}
 
-<ol>
-<li>有通知功能时登录接口不是必传通知获取的token/channel_id？</li>
-<li>接口返回问题返回数组的时候是空数组，还是空对象？</li>
-</ol>
+#pragma - mark - 点击cell方法
 
-<h6 id="toc_5">UI问题:</h6>
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+</code></pre>
 
-<ol>
-<li>设计图是根据多大屏幕作图？</li>
-<li>不规则切图用规则型的透明背景切图.</li>
-<li>如tabbar底部选项卡的图，大小统一.</li>
-<li>个人中心等同位置图标 大小统一.</li>
-</ol>
+<h5 id="toc_4">tableview header与footer</h5>
 
-<p>以上问题会在下面 建项的各个阶段给出处理方式；</p>
+<pre><code>#pragma - mark - tableview_Header and Footer
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView * view = [[UIView alloc]init];
+    
+    return view;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    
+    return 0;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView * view = [[UIView alloc]init];
+    
+    return view;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    
+    return 0;
+    
+}
+</code></pre>
+
+<p>tableview 侧滑删除方法</p>
+
+<pre><code>//先要设Cell可编辑
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return NO;
+}
+
+//定义编辑样式
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return UITableViewCellEditingStyleDelete;
+}
+
+//修改编辑按钮文字
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @&quot;删除&quot;;
+}
+
+//设置进入编辑状态时，Cell不会缩进
+- (BOOL)tableView: (UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+
+//点击删除
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    /**一定是先删除了数据，再执行删除的动画或者其他操作，否则会出现崩溃*/
+    
+    [self deleteData:indexPath];//单个删除接口
+    
+}
+</code></pre>
 
 
 		</div>
