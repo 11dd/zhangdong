@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-11-14T17:38:55+08:00</updated>
+  <updated>2018-11-14T18:38:46+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -81,6 +81,7 @@ npm安装插件是从官网http://registry.npmjs.org下载对应的插件包
 <h4 id="toc_9">创建一个vue的项目代码</h4>
 
 <pre><code>cd 目录路径
+vue init webpack-simple demo1&lt;工程名字不能用中文&gt;
 
 安装项目依赖，执行命令：
 cnpm install
