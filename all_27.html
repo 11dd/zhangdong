@@ -54,6 +54,14 @@
 
       
         <li class="divider"></li>
+        <li><label>Vue</label></li>
+
+          
+            <li><a title="Mac下的Vue环境搭建" href="15421818269588.html">Mac下的Vue环境搭建</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>微信小程序</label></li>
 
           
@@ -254,6 +262,12 @@
                         
 
                     
+                      <li class="side-title"><span>Vue</span></li>
+                        
+                          <li><a title="Mac下的Vue环境搭建" href="15421818269588.html">Mac下的Vue环境搭建</a></li>
+                        
+
+                    
                       <li class="side-title"><span>微信小程序</span></li>
                         
                           <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
@@ -426,145 +440,55 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序网格布局</h1>
+		<h1>CMMI3级评审</h1>
 
-		<h4 id="toc_0">第一步：wxml文件代码：</h4>
+		<h3 id="toc_0">十八个过程域</h3>
 
-<pre><code>&lt;view class=&quot;layout_horizontal&quot;&gt;
-  &lt;view style=&quot;flex:1;background-color:red&quot;&gt;View1&lt;/view&gt;
-  &lt;view style=&quot;flex:1;background-color:blue&quot;&gt;View2&lt;/view&gt;
-&lt;/view&gt;
-</code></pre>
+<h5 id="toc_1">过程管理</h5>
 
-<h4 id="toc_1">第二步：wxss文件代码：</h4>
+<h6 id="toc_2">组织过程改进（OPF）Organization Process Focus</h6>
 
-<pre><code>.layout_horizontal{
-  height: 100rpx;
-  display: flex;
-  /*row 横向  column 列表  */
-  flex-direction: row;
-}
-</code></pre>
+<h6 id="toc_3">组织过程定义（OPD）Organization Process Definition</h6>
 
-<h4 id="toc_2">运行界面：</h4>
+<h6 id="toc_4">组织培训（OT）Organization Training</h6>
 
-<p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-13%20%E4%B8%8B%E5%8D%884.57.13.png" alt="屏幕快照 2018-04-13 下午4.57.13"/></p>
+<h5 id="toc_5">项目管理</h5>
 
-<h3 id="toc_3">网格布局</h3>
+<h6 id="toc_6">立项（PIM）</h6>
 
-<h5 id="toc_4">在wxml里加入如下代码：</h5>
+<h6 id="toc_7">集成项目管理（IPM）</h6>
 
-<pre><code>
-&lt;view class=&#39;content&#39;&gt;
-    &lt;block wx:for=&quot;{{new_products}}&quot; wx:for-item=&quot;item&quot;&gt;
-      &lt;view class=&#39;templateContainer&#39; catchtap=&#39;onGoodsTap&#39; data-goodsid=&#39;{{item.id}}&#39;&gt;
-        &lt;view class=&#39;goods-container&#39;&gt;
-          &lt;image mode=&#39;aspectFill&#39; class=&#39;goods-img&#39; src=&#39;{{item.images.large}}&#39;&gt;&lt;/image&gt;
-          &lt;text class=&#39;goods-title&#39;&gt;{{item.title}}&lt;/text&gt;
-          &lt;view class=&#39;price&#39;&gt;
-            &lt;text class=&#39;goods-price&#39;&gt;￥{{item.rating.average}}&lt;/text&gt;
-            &lt;text class=&#39;pre-goods-price&#39;&gt;￥{{item.rating.max}}&lt;/text&gt;
-          &lt;/view&gt; 
-        &lt;/view&gt;
-      &lt;/view&gt;
-    &lt;/block&gt;
-  &lt;/view&gt;
+<h6 id="toc_8">项目策划（PP）</h6>
 
-</code></pre>
+<h6 id="toc_9">项目监督和控制（PMC）</h6>
 
-<h5 id="toc_5">在wxss里加入如下代码：</h5>
+<h6 id="toc_10">风险管理（RSKM）</h6>
 
-<pre><code>
-.content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: auto;
-  background-color: #f2f2f2;
-}
+<h6 id="toc_11">结项（PCM）</h6>
 
+<h5 id="toc_12">项目研发</h5>
 
-.templateContainer {
-  width: 47%;
-  background-color: white;
-  margin: 10rpx;
-}
+<h6 id="toc_13">需求开发与管理（RD）</h6>
 
+<h6 id="toc_14">系统设计编码（SD）</h6>
 
-.goods-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 30rpx;
-  text-align: center;
-}
+<h6 id="toc_15">测试（TS）</h6>
 
-.goods-img {
-  width: 310rpx;
-  height: 310rpx;
-  padding-bottom: 20rpx;
-  margin: 0 auto;
-}
+<h6 id="toc_16">评审（TR）</h6>
 
-.goods-title{
-    margin-bottom: 16rpx;
-    font-size: 24rpx;
-}
+<h6 id="toc_17">产品发布（PI）</h6>
 
-.price{
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-}
+<h6 id="toc_18">产品实施（PA）</h6>
 
-.goods-price{
-    margin-bottom: 16rpx;
-    font-size: 24rpx;
-    color: red;
-}
+<h5 id="toc_19">过程支持</h5>
 
-.pre-goods-price{
-  text-decoration: line-through;
-  margin-left: 10rpx;
-}
+<h6 id="toc_20">配置管理（CM）</h6>
 
-</code></pre>
+<h6 id="toc_21">过程和产品质量保证（PPQA）</h6>
 
-<h5 id="toc_6">在.js里加入如下代码：</h5>
+<h6 id="toc_22">度量与分析（MA）</h6>
 
-<pre><code>
-/**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-    var that = this;
-    wx.request({
-      url: &#39;http://t.yushu.im/v2/movie/in_theaters?start=0&amp;count=4&#39;,
-      method: &#39;GET&#39;,
-      header: {
-        &quot;Content-Type&quot;: &quot;json&quot;
-      },
-      success: function (res) {
-        that.setData({
-          new_products: res.data.subjects,
-        })
-        console.log(&quot;这里打印点数据出来呗！！！&quot;);
-        console.log(res.data.subjects);
-      },
-      fail: function (error) {
-        console.log(error)
-      }
-    })
-    
-  },
-
-</code></pre>
-
-<h5 id="toc_7">运行效果</h5>
-
-<p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-17%20%E4%B8%8B%E5%8D%883.12.29.png" alt="屏幕快照 2018-04-17 下午3.12.29"/></p>
-
-<p>请求地址：来源项目 <a href="https://github.com/YhAllen/WeChat-applet-mall">https://github.com/YhAllen/WeChat-applet-mall</a></p>
+<h6 id="toc_23">决策分析和决定（DAR）</h6>
 
 
 		</div>

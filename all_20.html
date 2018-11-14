@@ -54,6 +54,14 @@
 
       
         <li class="divider"></li>
+        <li><label>Vue</label></li>
+
+          
+            <li><a title="Mac下的Vue环境搭建" href="15421818269588.html">Mac下的Vue环境搭建</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>微信小程序</label></li>
 
           
@@ -254,6 +262,12 @@
                         
 
                     
+                      <li class="side-title"><span>Vue</span></li>
+                        
+                          <li><a title="Mac下的Vue环境搭建" href="15421818269588.html">Mac下的Vue环境搭建</a></li>
+                        
+
+                    
                       <li class="side-title"><span>微信小程序</span></li>
                         
                           <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
@@ -426,46 +440,34 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之样式</h1>
+		<h1>微信小程序之JS操作</h1>
 
-		<h5 id="toc_0">设置背景图片，不要使用这个方式设置背景图</h5>
+		<h5 id="toc_0">获取系统信息 下面是屏幕宽高</h5>
 
-<pre><code>&lt;view class=&quot;viewClass&quot; style=&quot;background-image: url(&#39;../../images/welcome.png&#39;)&quot;&gt;
-&lt;/view&gt;
-
-可以使用 view布局方式中的：
-position: relative;
-position: absolute;
+<pre><code> wx.getSystemInfo({
+      success: function(res) {
+        that.setData({
+          windowHeight: res.windowHeight,
+          windowWidth: res.windowWidth,
+        })
+      }
+});
 </code></pre>
 
-<h5 id="toc_1">overflow 属性</h5>
+<h5 id="toc_1">保存数据</h5>
 
-<pre><code>overflow 属性规定当内容溢出元素框时发生的事情。
+<pre><code> // 同步方式存储数据
+wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
 
-visible     默认值。内容不会被修剪，会呈现在元素框之外。
-hidden      内容会被修剪，并且其余内容是不可见的。
-scroll      内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
-auto        如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
-inherit     规定应该从父元素继承 overflow 属性的值。
+//取出数据
+var token = wx.getStorageSync(&#39;userInfo&#39;)
+
 </code></pre>
 
-<h5 id="toc_2">button去掉自带的边框</h5>
+<h5 id="toc_2">数组查找数据</h5>
 
-<pre><code>button::after {
-  border: none;
-}
-</code></pre>
+<pre><code>let newArr = t.data.ee.filter(item =&gt; item.pid === t.data.province[e.detail.value].id)
 
-<h5 id="toc_3">组件设置边框</h5>
-
-<pre><code>  border: 1px solid #FFF;
-</code></pre>
-
-<h5 id="toc_4">列表中最后一个item样式</h5>
-
-<pre><code>.foods-item:last-child {
-  margin-bottom: 10px;
-}
 </code></pre>
 
 

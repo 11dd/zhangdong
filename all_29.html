@@ -54,6 +54,14 @@
 
       
         <li class="divider"></li>
+        <li><label>Vue</label></li>
+
+          
+            <li><a title="Mac下的Vue环境搭建" href="15421818269588.html">Mac下的Vue环境搭建</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>微信小程序</label></li>
 
           
@@ -254,6 +262,12 @@
                         
 
                     
+                      <li class="side-title"><span>Vue</span></li>
+                        
+                          <li><a title="Mac下的Vue环境搭建" href="15421818269588.html">Mac下的Vue环境搭建</a></li>
+                        
+
+                    
                       <li class="side-title"><span>微信小程序</span></li>
                         
                           <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
@@ -426,44 +440,56 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之消息模板</h1>
+		<h1>微信小程序网络请求</h1>
 
-		<p>官方消息模板文档地址<br/>
-<a href="https://developers.weixin.qq.com/miniprogram/dev/api/notice.html#%E5%8F%91%E9%80%81%E6%A8%A1%E6%9D%BF%E6%B6%88%E6%81%AF">https://developers.weixin.qq.com/miniprogram/dev/api/notice.html#%E5%8F%91%E9%80%81%E6%A8%A1%E6%9D%BF%E6%B6%88%E6%81%AF</a></p>
+		<h4 id="toc_0">1.在wxml文件里加上按钮点击事件 和list</h4>
 
-<pre><code>下发这个通知微信是有条件的；
-1. 支付  2. 提交表单
+<pre><code>&lt;button bindtap=&quot;RequestData&quot; value=&quot;Button&quot;&gt;request&lt;/button&gt; 
 
-    支付
-    当用户在小程序内完成过支付行为，可允许开发者向用户在7天内
-    推送有限条数的模板消息
-    （1次支付可下发3条，多次支付下发条数独立，互相不影响）
-
-    提交表单
-    当用户在小程序内发生过提交表单行为且该表单声明为要发模板消息的，
-    开发者需要向用户提供服务时，
-    可允许开发者向用户在7天内推送有限条数的模板消息
-    （1次提交表单可下发1条，多次提交下发条数独立，相互不影响）
-
-
-用户提交一次表单，会提供给开发者一次推送权限，
-多次提交的情况下下发条数独立。
-所以如果开发者想要哎7天内无限制的为用户推送消息，
-需要做的就是--&gt;从用户那里获取&quot;足够多&quot;的推送权限
-（推送权限就是form表单的formid）。
-
-
-如果用户在一周内没有访问或点击过小程序中的任何组件，
-那我们就收集不到有效的fromid，
-也就意味着我们&quot;失去&quot;了给用户发送模板消息的权限
+&lt;view&gt;  
+  &lt;scroll-view scroll-y=&quot;true&quot; style=&quot;height:100%&quot; &gt;  
+    &lt;view wx:for=&quot;{{textdata}}&quot; style=&quot;width:100%&quot;&gt;  
+      &lt;label style=&quot;width:100%;height:50px;font-family:&#39;微软雅黑&#39;&quot;&gt;  {{item.name}}&lt;/label&gt;  
+    &lt;/view&gt;  
+  &lt;/scroll-view&gt;  
+&lt;/view&gt;   
 
 </code></pre>
 
-<p><img src="media/15336330410298/IMG_3195.png" alt="IMG_3195"/></p>
+<h4 id="toc_1">2.在.js 文件添加网络请求，点击按钮后执行代码如下：</h4>
 
-<p><img src="media/15336330410298/IMG_3196.png" alt="IMG_3196"/></p>
+<pre><code> RequestData: function () {
+    var that = this;
+    wx.request({
+      url: &#39;http://.../serve/api/v1.0/service/communityLst&#39;,
 
-<p><img src="media/15336330410298/IMG_3197.png" alt="IMG_3197"/></p>
+      data: {},
+      method: &#39;GET&#39;, 
+      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT 
+      // header: {}, // 设置请求的 header 默认是application/json  
+
+      success: function (res) {  
+        //划重点---&gt;setData 
+        that.setData({ textdata: res.data.query});
+        
+        // 操作json数据 遍历打印数组里name字段数据  
+        for (var i in res.data.query) {
+          console.log(res.data.query[i].name);
+        }
+      },
+      fail: function () {
+        // fail  
+      },
+      complete: function () {
+        // complete  
+      }
+    })
+  },  
+</code></pre>
+
+<h4 id="toc_2">3.setData 后页面如下：</h4>
+
+<p><img src="media/15235164843984/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%882.26.02.png" alt="屏幕快照 2018-04-12 下午2.26.02"/></p>
 
 
 		</div>

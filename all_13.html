@@ -54,6 +54,14 @@
 
       
         <li class="divider"></li>
+        <li><label>Vue</label></li>
+
+          
+            <li><a title="Mac下的Vue环境搭建" href="15421818269588.html">Mac下的Vue环境搭建</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>微信小程序</label></li>
 
           
@@ -254,6 +262,12 @@
                         
 
                     
+                      <li class="side-title"><span>Vue</span></li>
+                        
+                          <li><a title="Mac下的Vue环境搭建" href="15421818269588.html">Mac下的Vue环境搭建</a></li>
+                        
+
+                    
                       <li class="side-title"><span>微信小程序</span></li>
                         
                           <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
@@ -426,67 +440,126 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序机制</h1>
+		<h1>微信小程序微信开放API</h1>
 
-		<p>微信客户端在打开小程序之前，会把整个小程序的代码包下载到本地。</p>
+		<h5 id="toc_0">开放接口：</h5>
 
-<h4 id="toc_0">小程序未发布时有权限-需添加用户身份</h4>
-
-<pre><code>管理入口位于：小程序管理后台 - 用户身份 – 成员管理
-
-一个团队进行小程序的开发，那么团队成员的身份管理是很有必要的。
-管理员可在小程序管理后台统一管理项目成员（
-包括开发者、体验者及其他成员）、
-设置项目成员的权限，包括：开发者/体验者权限、登录小程序管理后台、开发管理、查看小程序数据分析等。
-管理入口位于：小程序管理后台 - 用户身份 – 成员管理
+<pre><code>wx.login    登录
+wx.getUserInfo  获取用户信息
+wx.chooseAddress    获取用户收货地址
+wx.requestPayment   发起微信支付
+wx.addCard  添加卡券
+wx.openCard 打开卡券
+可以获取用户手机号
+不能获取本机IP
 </code></pre>
 
-<h4 id="toc_1">小程序运行机制</h4>
+<h5 id="toc_1">设备 API 列表：</h5>
 
-<pre><code>热启动
- 小程序启动会有两种情况，一种是「冷启动」，一种是「热启动」。
- 假如用户已经打开过某小程序，然后在一定时间内再次打开该小程序，
- 此时无需重新启动，只需将后台态的小程序切换到前台，
-冷启动
- 冷启动指的是用户首次打开或小程序被微信主动销毁后再次打开的情况，
- 此时小程序需要重新加载启动。
+<pre><code>wx.scanCode 扫码
+wx.makePhoneCall    拨打电话
+wx.getSystemInfo    获取系统信息
+wx.getSystemInfoSync    获取系统信息
+wx.getNetworkType   获取网络类型
+wx.onNetworkStatusChange    监听网络状态变化
 
- 当小程序进入后台，客户端会维持一段时间的运行状态，超过一定时间后
- （目前是5分钟）会被微信主动销毁
- 当短时间内（5s）连续收到两次以上收到系统内存告警，会进行小程序的销毁
+wx.onAccelerometerChange    监听加速度数据
+wx.startAccelerometer   开始监听加速度数据
+wx.stopAccelerometer    停止监听加速度数据
+wx.onCompassChange  监听罗盘数据
+wx.startCompass 开始监听罗盘数据
+wx.stopCompass  停止监听罗盘数据
+wx.setClipboardData 设置剪贴板内容
+wx.getClipboardData 获取剪贴板内容
 </code></pre>
 
-<pre><code>小程序启动进入程序紧接着通过 
-app.json 的 pages 字段就可以知道你当前小程序的所有页面路径:
-默认启动app.json 的 pages 字段的第一个页面就是这个小程序的首页
-(打开小程序看到的第一个页面)。
+<h5 id="toc_2">多数 API 的回调都是异步，你需要处理好代码逻辑的异步问题。</h5>
+
+<h5 id="toc_3">网络请求API</h5>
+
+<pre><code>wx.request  发起网络请求
+wx.uploadFile   上传文件
+wx.downloadFile 下载文件
 </code></pre>
 
-<p><img src="media/15287848933165/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.05.53.png" alt="屏幕快照 2018-08-08 下午3.05.53"/></p>
+<h5 id="toc_4">界面 API 列表：</h5>
 
-<h4 id="toc_2">小程序更新机制</h4>
+<pre><code>wx.navigateTo   新窗口打开页面
+wx.redirectTo   原窗口打开页面
+wx.switchTab    切换到 tabbar 页面
+wx.navigateBack 退回上一个页面
 
-<pre><code>小程序冷启动时如果发现有新版本，将会异步下载新版本的代码包，
-并同时用客户端本地的包进行启动，
-即新版本的小程序需要等下一次冷启动才会应用上。 
-如果需要马上应用最新版本，
-可以使用 wx.getUpdateManager API 进行处理。
+wx.showToast    显示提示框
+wx.hideToast    隐藏提示框
+
+wx.showLoading  显示加载提示框
+wx.hideLoading  隐藏提示框
+
+wx.showModal    显示模态弹窗
+wx.showActionSheet  显示菜单列表
+
+wx.setNavigationBarTitle    设置当前页面标题
+wx.showNavigationBarLoading 显示导航条加载动画
+wx.hideNavigationBarLoading 隐藏导航条加载动画
+wx.setBackgroundColor   动态设置窗口的背景色
+wx.setBackgroundTextStyle   动态设置下拉背景字体、loading 图的样式
+
+wx.createAnimation  动画
+wx.createContext    创建绘图上下文
+wx.drawCanvas   绘图
+wx.stopPullDownRefresh  停止下拉刷新动画
 </code></pre>
 
-<h4 id="toc_3">小程序代码包大小的优化</h4>
+<h5 id="toc_5">媒体 API 列表：</h5>
 
-<pre><code>小程序一开始时代码包限制为 1MB，但我们收到了很多反馈说代码包大小不够用，
-经过评估后我们放开了这个限制，增加到 2MB 。
-代码包上限的增加对于开发者来说，能够实现更丰富的功能，
-但对于用户来说，也增加了下载流量和本地空间的占用。
+<pre><code>wx.chooseImage  从相册选择图片，或者拍照
+wx.previewImage 预览图片
+wx.startRecord  开始录音
+wx.stopRecord   结束录音
+wx.playVoice    播放语音
+wx.pauseVoice   暂停播放语音
+wx.stopVoice    结束播放语音
+wx.getBackgroundAudioPlayerState 获取音乐播放状态
+wx.playBackgroundAudio  播放音乐
+wx.pauseBackgroundAudio 暂停播放音乐
+wx.seekBackgroundAudio  控制音乐播放进度
+wx.stopBackgroundAudio  停止播放音乐
+wx.onBackgroundAudioPlay    监听音乐开始播放
+wx.onBackgroundAudioPause   监听音乐暂停
+wx.onBackgroundAudioStop    监听音乐结束
+wx.chooseVideo  从相册选择视频，或者拍摄
+wx.loadFontFace 动态加载字体
+</code></pre>
 
-分包加载
+<h5 id="toc_6">文件 API 列表：</h5>
 
-目前小程序分包大小有以下限制：
- •  整个小程序所有分包大小不超过 8M
- •  单个分包/主包大小不能超过 2M
-对小程序进行分包，可以优化小程序首次启动的下载时间，
-以及在多团队共同开发时可以更好的解耦协作。
+<pre><code>wx.saveFile 保存文件
+wx.getSavedFileList 获取已保存的文件列表
+wx.getSavedFileInfo 获取已保存的文件信息
+wx.removeSavedFile  删除已保存的文件信息
+wx.openDocument 打开文件
+</code></pre>
+
+<h5 id="toc_7">数据 API 列表：</h5>
+
+<pre><code>wx.getStorage   获取本地数据缓存
+wx.getStorageSync   获取本地数据缓存
+wx.setStorage   设置本地数据缓存
+wx.setStorageSync   设置本地数据缓存
+wx.getStorageInfo   获取本地缓存的相关信息
+wx.getStorageInfoSync   获取本地缓存的相关信息
+wx.removeStorage    删除本地缓存内容
+wx.removeStorageSync    删除本地缓存内容
+wx.clearStorage 清理本地数据缓存
+wx.clearStorageSync 清理本地数据缓存
+</code></pre>
+
+<h5 id="toc_8">位置 API 列表：</h5>
+
+<pre><code>wx.getLocation  获取当前位置
+wx.chooseLocation   打开地图选择位置
+wx.openLocation 打开内置地图
+wx.createMapContext 地图组件控制
 </code></pre>
 
 

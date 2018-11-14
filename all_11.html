@@ -54,6 +54,14 @@
 
       
         <li class="divider"></li>
+        <li><label>Vue</label></li>
+
+          
+            <li><a title="Mac下的Vue环境搭建" href="15421818269588.html">Mac下的Vue环境搭建</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>微信小程序</label></li>
 
           
@@ -254,6 +262,12 @@
                         
 
                     
+                      <li class="side-title"><span>Vue</span></li>
+                        
+                          <li><a title="Mac下的Vue环境搭建" href="15421818269588.html">Mac下的Vue环境搭建</a></li>
+                        
+
+                    
                       <li class="side-title"><span>微信小程序</span></li>
                         
                           <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
@@ -426,68 +440,71 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序运营 设计与开发</h1>
+		<h1>iOS审核被拒4.3</h1>
 
-		<h4 id="toc_0">项目经理必备</h4>
+		<h5 id="toc_0">一种是过不了机审关被拒，一种是过不了人审关被拒。</h5>
 
-<p>项目经理必要了解API里面微信开放接口的信息例如：</p>
+<pre><code>iOS预审核，扫描api，及plist文件字符缺失等；
+此处分两步，第一步为上传时苹果Application Loador等应用对于适配icon等的检查，
+第二步为上传后苹果的功能性检查，例如配置了Push功能但有缺失
+或者未打开功能，则会邮件提示等等；
 
-<ol>
-<li>登录授权</li>
-<li>获取用户信息</li>
-<li>微信支付</li>
-<li>转发</li>
-<li>收货地址</li>
-<li>生成小程序二维码</li>
-</ol>
+iOS机审，主要是对代码进行机器审核，排查APP是否重复应用，此处扫描支付SDK等，及马甲情况，机器扫描主要看代码块
 
-<p>小程序初期明确是否在运营规范里允许的，或者找一些已有小程序样例</p>
+iOS人审，主要是由苹果审核人员对APP的内容、功能进行核验，防止APP有bug，
+防止APP模仿其他应用，内容与其他APP重复，影响用户体验，
+检测功能或者App体验测试，例如用测试账号登录App体验功能，
+或其他是否明显bug等，ipv6也在此处检测；
 
-<ul>
-<li>运营规范(在这里查看禁止事项)：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/index.html">https://mp.weixin.qq.com/debug/wxadoc/product/index.html</a></li>
-<li><p>特殊行业所需资质材料：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714</a><br/>
-<img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.46.27.png" alt="屏幕快照 2018-08-08 下午3.46.27"/></p></li>
-<li><p>支付文档：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1</a></p></li>
-<li><p>客服消息：<a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221">https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221</a> </p></li>
-<li><p>数据分析：<a href="https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714</a></p></li>
-</ul>
+</code></pre>
 
-<hr/>
+<h5 id="toc_1">区分机审 、人审</h5>
 
-<h5 id="toc_1">当开始要做一个小程序时，需通读设计指南</h5>
+<pre><code>那么如何区分是机器审核还是人工审核呢？主要看APP被拒的信息：
 
-<p>设计指南：<a href="https://mp.weixin.qq.com/debug/wxadoc/design/index.html">https://mp.weixin.qq.com/debug/wxadoc/design/index.html</a></p>
+1）如果是机器审核被拒，一般收到的被拒信息第一句话基本上是这样的：
+Guideline4.3 - Design - Spam
+Yourapp duplicates the content and functionality of apps submitted to the AppStore,
+ which is considered a form of spam.
 
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.28.55.png" alt="屏幕快照 2018-04-09 上午11.28.55"/></p>
+2）如果是人工审核被拒，一般收到的被拒信息第一句话基本上是这样的：
+Guideline4.3 - Design - Spam
+Wefound that your app provides the same feature set as other apps submitted tothe App Store, 
+which is not appropriate to the App Store.
+</code></pre>
 
-<h4 id="toc_2">小程序开发人员必备</h4>
+<h5 id="toc_2">针对审核</h5>
 
-<p>入坑指南，疑难问题，请浏览👇<br/>
-小程序社区：<a href="http://www.wxapp-union.com/">http://www.wxapp-union.com/</a></p>
+<pre><code>1.原来账号里的APP的名字可以作废掉或者修改成其他的，
+同时记得移除之前的APP，重新打个空包传上去，
+icon图则用其他logo图置换掉
 
-<p>开发者学习已有框架可参考<br/>
-WePY框架开发小程序请移步👇<br/>
-<a href="https://tencent.github.io/wepy/index.html">https://tencent.github.io/wepy/index.html</a></p>
+2.增加登录日志
 
-<p>美团一团队出的框架mpvue框架请移步👇<br/>
-<a href="http://mpvue.com/mpvue/#_2">http://mpvue.com/mpvue/#_2</a></p>
+3.主要的方法是添加垃圾代码，且代码的相似程度不高于45%，
+  混淆工程地址：https://github.com/klaus01/KLGenerateSpamCode
 
-<p>weui Github 地址：<br/>
-<a href="https://github.com/Tencent/weui-wxss">https://github.com/Tencent/weui-wxss</a></p>
+4.工程中的文件夹的名字全部进行修改，类名修改，方法名修改
 
-<hr/>
+5.资源图片替换修改，适当添加一些无用的资源 
 
-<h5 id="toc_3">微信开发者工具创建小程序工程需要AppID</h5>
+6.API名称，机扫二进制文件，也会对比API
 
-<p>官方工具：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714</a></p>
+7.换开发者账号，换不同账号提交审核
 
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.21.41.png" alt="屏幕快照 2018-04-09 上午11.21.41"/></p>
+8.换 bundle id，换一个包再提交审核；
 
-<h5 id="toc_4">小程序开发必读项，教程 ，框架 ，组件 ，API , 工具</h5>
+9. 一定要关注名字,icon,启动图;修改UI风格同时进行假页面的添加;
 
-<p>简易教程：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/">https://mp.weixin.qq.com/debug/wxadoc/dev/</a></p>
+10.升级 version，升级一个版本号提交审核
 
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.23.50.png" alt="屏幕快照 2018-04-09 上午11.23.50"/></p>
+11.修改产品分类
+
+12.还需要注意相同的马甲包提交至少要间隔一天以上。
+
+13.定期换电脑提包.换电脑的序列号.换VPN环境.定期换域名. 
+
+</code></pre>
 
 
 		</div>

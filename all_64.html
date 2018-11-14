@@ -440,74 +440,21 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序轮播</h1>
+		<h1>iOS  UIAlertController 提示框</h1>
 
-		<h4 id="toc_0">第一步：在.wxml文件里写入如下代码</h4>
+		<h5 id="toc_0">添加提示语</h5>
 
-<pre><code>
-&lt;!-- indicator-dots     Boolean     false   是否显示面板指示点 --&gt;
-    &lt;!-- autoplay   Boolean     false   是否自动切换 --&gt;
-    &lt;!-- interval   Number  5000    自动切换时间间隔 --&gt;
-    &lt;!-- duration   Number  500     滑动动画时长 --&gt;
-    &lt;!-- circular   Boolean     false   是否采用衔接滑动 --&gt;
-    
-&lt;swiper indicator-dots=&quot;{{indicatorDots}}&quot;  
-        autoplay=&quot;{{autoplay}}&quot; 
-        interval=&quot;{{interval}}&quot; 
-        duration=&quot;{{duration}}&quot; 
-        circular=&quot;true&quot;&gt;  
-
-      &lt;block wx:for=&quot;{{imgUrls}}&quot; wx:for-index=&quot;index&quot;&gt;  
-        &lt;swiper-item&gt;  
-            &lt;navigator url=&quot;{{item.link}}&quot; hover-class=&quot;navigator-hover&quot;&gt; 
-            &lt;image src=&quot;{{item.url}}&quot; 
-                   class=&quot;slide-image&quot;/&gt;  
-            &lt;/navigator&gt;  
-        &lt;/swiper-item&gt;  
-      &lt;/block&gt;  
-
-&lt;/swiper&gt; 
-
+<pre><code>UIAlertController *confirm = [UIAlertController alertControllerWithTitle:@&quot;是否&quot; message:@&quot;msg&quot; preferredStyle:UIAlertControllerStyleAlert];
+                
+ [confirm addAction:[UIAlertAction actionWithTitle:@&quot;是&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }]];
+[confirm addAction:[UIAlertAction actionWithTitle:@&quot;否&quot; style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }]];
+                
+[self presentViewController:confirm animated:YES completion:nil];
 </code></pre>
-
-<h4 id="toc_1">第二步：在.wxss文件里设置如下属性</h4>
-
-<pre><code>   swiper{
-    height: 220px;
-   } 
-
-    .slide-image{  
-        width: 100%;  
-        height: 180px;
-    }  
-</code></pre>
-
-<h4 id="toc_2">第三步：在.js文件里设置如下数据 和轮播属性设置</h4>
-
-<pre><code> imgUrls: [
-      {
-        link: &#39;/pages/logs/logs&#39;,
-        url: &#39;http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg&#39;
-      }, {
-        link: &#39;/pages/logs/logs&#39;,
-        url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
-      }, {
-        link: &#39;/pages/logs/logs&#39;,
-        url: &#39;http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg&#39;
-      }   
-
-    ],
-    indicatorDots: true,
-    autoplay: true,
-    
-    interval: 3000,
-    duration: 500,
-
-</code></pre>
-
-<h4 id="toc_3">运行界面如下：</h4>
-
-<p><img src="media/15235125175960/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%882.07.56.png" alt="屏幕快照 2018-04-12 下午2.07.56"/></p>
 
 
 		</div>
