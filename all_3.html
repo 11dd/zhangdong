@@ -61,7 +61,9 @@
           
             <li><a title="Vue项目结构" href="15422692424640.html">Vue项目结构</a></li>
           
-            <li><a title="格式化.vue文件" href="15422706001586.html">格式化.vue文件</a></li>
+            <li><a title="VSCode编译器 格式化.vue文件" href="15422706001586.html">VSCode编译器 格式化.vue文件</a></li>
+          
+            <li><a title="VSCode 前端常用插件推荐" href="15422741986731.html">VSCode 前端常用插件推荐</a></li>
           
 
       
@@ -272,7 +274,9 @@
                         
                           <li><a title="Vue项目结构" href="15422692424640.html">Vue项目结构</a></li>
                         
-                          <li><a title="格式化.vue文件" href="15422706001586.html">格式化.vue文件</a></li>
+                          <li><a title="VSCode编译器 格式化.vue文件" href="15422706001586.html">VSCode编译器 格式化.vue文件</a></li>
+                        
+                          <li><a title="VSCode 前端常用插件推荐" href="15422741986731.html">VSCode 前端常用插件推荐</a></li>
                         
 
                     
@@ -448,172 +452,40 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之登录篇</h1>
+		<h1>VSCode 前端常用插件推荐</h1>
 
-		<p>做小程序登录思考问题：</p>
+		<h4 id="toc_0">通用插件</h4>
 
-<ol>
-<li>问题一：不想在小程序里总输入自己平台的账号密码，怎么与微信关联；</li>
-<li>问题二：关联了微信也要可以切换账号使用；</li>
-<li>问题三：不注册账号也可以在小程序里体验使用，必要时提示去登录；</li>
-<li>问题四：如果打开小程序是我们项目自己的登录注册页面（体验较</li>
-</ol>
+<p>HTML Snippets ：超级实用且初级的 H5代码片段以及提示<br/>
+HTML CSS Support ：让 html 标签上写class 智能提示当前项目所支持的样式</p>
 
-<p><img src="media/15234367737951/IMG_3194.png" alt="IMG_3194"/></p>
+<p>Path Intellisense ： 自动路径补全</p>
 
-<hr/>
+<p>Project Manager ： 在多个项目之前快速切换的工具<br/>
+vscode-icon ： 让 vscode 资源树目录加上图标<br/>
+beautify ： 格式化代码的工具</p>
 
-<h4 id="toc_0">微信登录获取openID</h4>
+<h4 id="toc_1">Vue推荐插件</h4>
 
-<pre><code>//不需要微信授权既可获取微信小程序登录API获取code
-wx.login({
-    success: function (res) {
-    //获取code返回值如下：
-    //code:&quot;0619IaNe0L8gHz1VMINe0WgjNe09IaNC&quot;
-    //errMsg:&quot;login:ok&quot;
-    //code每次请求返回都不同，并且code使用一次后作废，
-    //即使不使用，下一次请求code，上一次的code也作废。
-    }
-})
-</code></pre>
+<p>vetur ： 语法高亮、智能感知、Emmet等</p>
 
-<ol>
-<li>得到code将code传给服务器</li>
-<li>服务器post请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
-</ol>
+<p>VueHelper ： snippet代码片段<br/>
+Vue 2 Snippets ：vue快捷键提示</p>
 
-<pre><code>小程序官方更新将此请求改为GET请求了
-https://api.weixin.qq.com/sns/jscode2session  
-参数{
-    appid，
-    secret，
-    js_code = code，
-    grant_type = authorization_code
-} 
-返回数据{
-    session_key，
-    openid
-}
-</code></pre>
+<p>Auto Close Tag ： 自动补全html标签<br/>
+Auto Rename Tag ：同步更改html尾标签</p>
 
-<h4 id="toc_1">还想获取更多个人信息要如何做？</h4>
+<p>ESLint ：ESlint语法提示<br/>
+JavaScript (ES6) snippets ：ES6语法快捷键支持</p>
 
-<ol>
-<li>如果授权获可以取用户信息wx.getUserInfo得到iv,encryptedData,rawData,signature</li>
-<li>将得到的iv,encryptedData 和wx.login 得到的code传给服务器</li>
-<li>服务器post请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
-<li>服务端解密数据encryptedData 可以获取userinfo信息和unionId</li>
-</ol>
+<p>Stylus ：主要支持vue文件下stylus CSS语法提示<br/>
+language-stylus ：stylus语法提示</p>
 
-<pre><code>服务端解密数据encryptedData
-    对称解密使用的算法为 AES-128-CBC，数据采用PKCS#7填充。
-    对称解密的目标密文为 Base64_Decode(encryptedData)。
-    对称解密秘钥 aeskey = Base64_Decode(session_key), aeskey 是16字节。
-    对称解密算法初始向量 为Base64_Decode(iv)，其中iv由数据接口返回。
-    
-解密encryptedData数据
-{
-　　&quot;openId&quot;:&quot;&quot;,
-　　&quot;nickName&quot;:&quot;ZIM東&quot;,
-　　&quot;gender&quot;:1,
-　　&quot;language&quot;:&quot;zh_CN&quot;,
-　　&quot;city&quot;:&quot;&quot;,
-　　&quot;province&quot;:&quot;&quot;,
-　　&quot;country&quot;:&quot;&quot;,
-　　&quot;avatarUrl&quot;:&quot;&quot;,
-　　&quot;unionId&quot;:&quot;&quot;,
-　　&quot;watermark&quot;:{
-　　　　&quot;timestamp&quot;:1523433831,
-　　　　&quot;appid&quot;:&quot;&quot;
-　　}
-}
+<p>File Peek ： 文件路径跳转<br/>
+Path Autocomplete ：文件自动路径提示</p>
 
-在登录小程序之前，既没有关注过公众号，也没有登录过公众号，
-更没有使用微信登录的方式登录过app。
-通过 wx.login 的到的 code 解密后未返回 unionid
-
-另外，为了应用能校验数据的有效性，会在敏感数据加上数据水印( watermark )
-appid 敏感数据归属appid，开发者可校验此参数与自身appid是否一致
-timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性校验
-</code></pre>
-
-<h4 id="toc_2">会话密钥session_key有效性</h4>
-
-<pre><code>开发者如果遇到因为session_key不正确而校验签名失败或解密失败，请关注下面几个与session_key有关的注意事项。
-
-    1.wx.login()调用时，用户的session_key会被更新而致使旧session_key失效。
-    开发者应该在明确需要重新登录时才调用wx.login()，
-    及时通过登录凭证校验接口更新服务器存储的session_key。
-
-    2.微信不会把session_key的有效期告知开发者。
-    我们会根据用户使用小程序的行为对session_key进行续期。
-    用户越频繁使用小程序，session_key有效期越长。
-
-    3.开发者在session_key失效时，可以通过重新执行登录流程获取有效的session_key。
-    使用接口wx.checkSession()可以校验session_key是否有效，
-    从而避免小程序反复执行登录流程。
-
-    4.当开发者在实现自定义登录态时，
-    可以考虑以session_key有效期作为自身登录态有效期，
-    也可以实现自定义的时效性策略。
-    
-    5.wx.login() 之后再获取wx.getUserInfo()
-</code></pre>
-
-<blockquote>
-<pre><code>微信如何授权小程序获取用户信息:
-
-为优化用户体验，使用 wx.getUserInfo 接口直接弹出授权框的开发方式将逐步不再支持。
-从2018年4月30日开始，小程序与小游戏的体验版、开发版调用 wx.getUserInfo 接口，
-将无法弹出授权询问框，默认调用失败。正式版暂不受影响。
-开发者可使用以下方式获取或展示用户信息：
-
-一、小程序:
-1、使用 button 组件，并将 open-type 指定为 getUserInfo 类型，获取用户基本信息。
-
-详情参考文档:
-https://developers.weixin.qq.com/miniprogram/dev/component/button.html
-
-
-2、使用 open-data 展示用户基本信息。
-
-详情参考文档:
-https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html
-</code></pre>
-</blockquote>
-
-<h4 id="toc_3">登录流程图</h4>
-
-<p><img src="media/15234367737951/%E6%B5%81%E7%A8%8B.png" alt="流程"/></p>
-
-<p>👆原图地址：<a href="https://blog.csdn.net/dingjianmin/article/details/75137934">https://blog.csdn.net/dingjianmin/article/details/75137934</a></p>
-
-<p><img src="media/15234367737951/%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B.jpg" alt="登录流程"/></p>
-
-<p>注意：开发者后台拿到开放数据后可以对数据进行校验签名和解密，来保证数据不被篡改。 </p>
-
-<p><img src="media/15234367737951/%E6%95%B0%E6%8D%AE.png" alt="数据"/></p>
-
-<pre><code>签名校验以及数据加解密涉及用户的会话密钥session_key。
- 开发者应该事先通过 wx.login 登录流程获取会话密钥 session_key 并保存在服务器。
- 为了数据不被篡改，开发者不应该把session_key传到小程序客户端等服务器外的环境。
-
-数据签名校验
-
-为了确保 开放接口 返回用户数据的安全性，微信会对明文数据进行签名。
-开发者可以根据业务需要对数据包进行签名校验，确保数据的完整性。
-
-    通过调用接口（如 wx.getUserInfo）获取数据时，接口会同时返回 rawData、signature，
-    其中 signature = sha1( rawData + session_key )
-    
-    开发者将 signature、rawData 发送到开发者服务器进行校验。
-    服务器利用用户对应的 session_key 使用相同的算法计算出签名 signature2 ，
-    比对 signature 与 signature2 即可校验数据的完整性。
-
-</code></pre>
-
-<p>官方数据签名校验<br/>
-<a href="https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject">https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject</a></p>
+<p>VS Color Picker ：color: #fff 自动提示<br/>
+Import Cost ： 引入包大小计算,对于项目打包后体积掌握很有帮助</p>
 
 
 		</div>

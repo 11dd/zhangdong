@@ -61,7 +61,9 @@
           
             <li><a title="Vue项目结构" href="15422692424640.html">Vue项目结构</a></li>
           
-            <li><a title="格式化.vue文件" href="15422706001586.html">格式化.vue文件</a></li>
+            <li><a title="VSCode编译器 格式化.vue文件" href="15422706001586.html">VSCode编译器 格式化.vue文件</a></li>
+          
+            <li><a title="VSCode 前端常用插件推荐" href="15422741986731.html">VSCode 前端常用插件推荐</a></li>
           
 
       
@@ -272,7 +274,9 @@
                         
                           <li><a title="Vue项目结构" href="15422692424640.html">Vue项目结构</a></li>
                         
-                          <li><a title="格式化.vue文件" href="15422706001586.html">格式化.vue文件</a></li>
+                          <li><a title="VSCode编译器 格式化.vue文件" href="15422706001586.html">VSCode编译器 格式化.vue文件</a></li>
+                        
+                          <li><a title="VSCode 前端常用插件推荐" href="15422741986731.html">VSCode 前端常用插件推荐</a></li>
                         
 
                     
@@ -448,93 +452,95 @@
 
 	
 		<div class="markdown-body">
-		<h1>Mac电脑清理存储空间</h1>
+		<h1>正则表达式简单说明</h1>
 
-		<p>由于今天提示空间不足1G不得不来清理一下空间</p>
+		<p>正则表达式，又称正规表示法，是对字符串操作的一种逻辑公式。<br/>
+正则表达式可以检测给定的字符串是否符合我们定义的逻辑，<br/>
+也可以从字符串中获取我们想要的特定部分。<br/>
+它可以迅速地用极简单的方式达到字符串的复杂控制。</p>
 
-<h3 id="toc_0">清理后的空间:</h3>
+<p>代码显示的部分摘自<br/>
+(摘)<a href="https://github.com/shaojiankui/JKCategories">https://github.com/shaojiankui/JKCategories</a><br/>
+NSString+JKNormalRegex.h</p>
 
-<p><img src="http://upload-images.jianshu.io/upload_images/670820-f0d2bd53eb590038.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/></p>
+<p>iOS开发的时候,Category(扩展),👆这个就是个不错的选择;<br/>
+```<br/>
+/**<br/>
+ *  正则表达式简单说明<br/>
+ *  语法：<br/>
+ .       匹配除换行符以外的任意字符<br/>
+ \w      匹配字母或数字或下划线或汉字<br/>
+ \s      匹配任意的空白符<br/>
+ \d      匹配数字<br/>
+ \b      匹配单词的开始或结束<br/>
+ ^       匹配字符串的开始<br/>
+ \(       匹配字符串的结束<br/>
+ *       重复零次或更多次<br/>
+ +       重复一次或更多次<br/>
+ ?       重复零次或一次<br/>
+ {n}    重复n次<br/>
+ {n,}   重复n次或更多次<br/>
+ {n,m}  重复n到m次<br/>
+ \W      匹配任意不是字母，数字，下划线，汉字的字符<br/>
+ \S      匹配任意不是空白符的字符<br/>
+ \D      匹配任意非数字的字符<br/>
+ \B      匹配不是单词开头或结束的位置<br/>
+ [^x]   匹配除了x以外的任意字符<br/>
+ [^aeiou]匹配除了aeiou这几个字母以外的任意字符<br/>
+ *?      重复任意次，但尽可能少重复<br/>
+ +?      重复1次或更多次，但尽可能少重复<br/>
+ ??      重复0次或1次，但尽可能少重复<br/>
+ {n,m}?     重复n到m次，但尽可能少重复<br/>
+ {n,}?  重复n次以上，但尽可能少重复<br/>
+ \a      报警字符(打印它的效果是电脑嘀一声)<br/>
+ \b      通常是单词分界位置，但如果在字符类里使用代表退格<br/>
+ \t      制表符，Tab<br/>
+ \r      回车<br/>
+ \v      竖向制表符<br/>
+ \f      换页符<br/>
+ \n      换行符<br/>
+ \e      Escape<br/>
+ \0nn   ASCII代码中八进制代码为nn的字符<br/>
+ \xnn   ASCII代码中十六进制代码为nn的字符<br/>
+ \unnnn     Unicode代码中十六进制代码为nnnn的字符<br/>
+ \cN    ASCII控制字符。比如\cC代表Ctrl+C<br/>
+ \A      字符串开头(类似^，但不受处理多行选项的影响)<br/>
+ \Z      字符串结尾或行尾(不受处理多行选项的影响)<br/>
+ \z      字符串结尾(类似\)，但不受处理多行选项的影响)<br/>
+ \G      当前搜索的开头<br/>
+ \p{name}   Unicode中命名为name的字符类，例如\p{IsGreek}<br/>
+ (?&gt;exp)    贪婪子表达式<br/>
+ (?<x>-<y>exp)  平衡组<br/>
+ (?im-nsx:exp)  在子表达式exp中改变处理选项<br/>
+ (?im-nsx)       为表达式后面的部分改变处理选项<br/>
+ (?(exp)yes|no)     把exp当作零宽正向先行断言，如果在这个位置能匹配，使用yes作为此组的表达式；否则使用no<br/>
+ (?(exp)yes)    同上，只是使用空表达式作为no<br/>
+ (?(name)yes|no) 如果命名为name的组捕获到了内容，使用yes作为表达式；否则使用no<br/>
+ (?(name)yes)   同上，只是使用空表达式作为no</p>
 
-<h3 id="toc_1">以下诉说的是120G的悲伤</h3>
+<p>捕获<br/>
+ (exp)               匹配exp,并捕获文本到自动命名的组里<br/>
+ (?<name>exp)        匹配exp,并捕获文本到名称为name的组里，也可以写成(?&#39;name&#39;exp)<br/>
+ (?:exp)             匹配exp,不捕获匹配的文本，也不给此分组分配组号<br/>
+ 零宽断言<br/>
+ (?=exp)             匹配exp前面的位置<br/>
+ (?&lt;=exp)            匹配exp后面的位置<br/>
+ (?!exp)             匹配后面跟的不是exp的位置<br/>
+ (?&lt;!exp)            匹配前面不是exp的位置<br/>
+ 注释<br/>
+ (?#comment)         这种类型的分组不对正则表达式的处理产生任何影响，用于提供注释让人阅读</p>
 
-<h4 id="toc_2">第一步:先看一下那个文件目录下空间使用</h4>
-
-<p>sudo du -sh /*</p>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/670820-742477290ff2ea3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/></p>
-
-<p>如果你使用xcode 可以做如下操作获得更多的空闲存储空间</p>
-
-<h4 id="toc_3">操作1 :xcode移除DerivedData</h4>
-
-<p>可重新生成；会删除build生成的项目索引、build输出以及日志。<br/>
-路径：~/Library/Developer/Xcode/DerivedData</p>
-
-<h4 id="toc_4">操作2 :删除DeviceSupport</h4>
-
-<p>如果你是128G的本子,用xcode开发,空间不足时,<br/>
-删除DeviceSupport里的吧,留两个自己经常使用的就够了<br/>
-~/Library/Developer/Xcode/iOS DeviceSupport</p>
-
-<h4 id="toc_5">操作3 :清除缓存文件</h4>
-
-<p>cd ~/Library/Caches/<br/>
-rm -rf ~/Library/Caches/*<br/>
-不用命令行方式:<br/>
-<img src="http://upload-images.jianshu.io/upload_images/670820-fe787cb2173e93c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/></p>
-
-<p>点击前往文件夹,输入:~/Library/Caches/<br/>
-就看到文件目录了,删除caches下的文件即可;</p>
-
-<h4 id="toc_6">操作4 :删除所有系统日志</h4>
-
-<p>可以使用下面的命令删除：<br/>
-sudo rm -rf /private/var/log/*<br/>
-也可以在操作6中截图的路径文件夹看到Log文件夹,删除下面的文件就可以;</p>
-
-<h4 id="toc_7">操作5 :删除临时文件路径</h4>
-
-<p>cd /private/var/tmp/<br/>
-也可以在操作6中截图的路径文件夹看到tmp文件夹,删除下面的文件就可以;</p>
-
-<h4 id="toc_8">操作6 :禁用SafeSleep休眠模式</h4>
-
-<p>当升级到OS X 10.9 Mavericks版本之后，显示隐藏文件命令如下：<br/>
-//显示隐藏文件<br/>
-defaults write com.apple.finder AppleShowAllFiles Yes &amp;&amp; killall Finder <br/>
-//不显示隐藏文件<br/>
-defaults write com.apple.finder AppleShowAllFiles No &amp;&amp; killall Finder </p>
-
-<p>显示隐藏文件对照截图目录寻找<br/>
-<img src="http://upload-images.jianshu.io/upload_images/670820-baedb9fac879bcb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/></p>
-
-<p>防止OS X继续创建该文件，所以我们需要下面的命令生成一个无法被替换的空文件<br/>
-1  touch sleepimage<br/>
-2  chmod 000 /private/var/vm/sleepimage<br/>
-如果你想要重新开启SafeSleep功能，只需下面的命令即可<br/>
-1  sudo pmset -a hibernatemode 3<br/>
-2  sudo rm /private/var/vm/sleepimage</p>
-
-<h4 id="toc_9">操作7 :停止TimeMachine本地备份（这个看你个人喜欢）</h4>
-
-<p>sudo tmutil disablelocal</p>
-
-<h4 id="toc_10">操作8 :嗓音文件删除</h4>
-
-<p>如果你不适用文字转语音功能，那么你肯定不会使用到OS X内置的嗓音文件。<br/>
-你可以删除这些文件重新获得硬盘空间。<br/>
-在终端应用中，使用下面的命令即可，首先定位到文件所在文件夹：<br/>
-cd /System/Library/Speech/<br/>
-然后执行删除命令，将所有嗓音文件删除<br/>
-sudo rm -rf Voices/*<br/>
-如果你执行了命令，那么你将无法使用系统的文字转语音功能。</p>
-
-<h4 id="toc_11">操作9 :不建议尝试</h4>
-
-<p>通过下面的命令移除缓存代码：<br/>
-sudo rm -rf /private/var/folders/<br/>
-但是别清除,出错了你又不知道怎么改好;</p>
+<ul>
+<li> 表达式：(?0\d{2}[) -]?\d{8}</li>
+<li> 这个表达式可以匹配几种格式的电话号码，像(010)88886666，或022-22334455，或02912345678等。</li>
+<li> 我们对它进行一些分析吧：</li>
+<li> 首先是一个转义字符(,它能出现0次或1次(?),然后是一个0，后面跟着2个数字(\d{2})，然后是)或-或空格中的一个，它出现1次或不出现(?)，</li>
+<li> 最后是8个数字(\d{8})
+*/
+```
+更多正则相关查看👇这篇文章:
+<a href="http://www.admin10000.com/document/5944.html">http://www.admin10000.com/document/5944.html</a></li>
+</ul>
 
 
 		</div>
