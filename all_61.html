@@ -61,6 +61,8 @@
           
             <li><a title="Vue项目结构" href="15422692424640.html">Vue项目结构</a></li>
           
+            <li><a title="格式化.vue文件" href="15422706001586.html">格式化.vue文件</a></li>
+          
 
       
         <li class="divider"></li>
@@ -270,6 +272,8 @@
                         
                           <li><a title="Vue项目结构" href="15422692424640.html">Vue项目结构</a></li>
                         
+                          <li><a title="格式化.vue文件" href="15422706001586.html">格式化.vue文件</a></li>
+                        
 
                     
                       <li class="side-title"><span>微信小程序</span></li>
@@ -444,74 +448,12 @@
 
 	
 		<div class="markdown-body">
-		<h1>建项-那些.pch里写了些什么？</h1>
+		<h1>建项-创建.pch文件</h1>
 
-		<h5 id="toc_0">解决打印信息不全的问题</h5>
+		<p>command+n 滑动到最底下other 里创建pch文件。<br/>
+<img src="http://upload-images.jianshu.io/upload_images/670820-06ec44085a3c68e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="箭头所指三个选中.png"/></p>
 
-<pre><code>#if DEBUG
-#define NSLog(FORMAT, ...) fprintf(stderr,&quot;[%s:%d行] %s\n&quot;,[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
-#else
-#define NSLog(FORMAT, ...) nil
-#endif
-</code></pre>
-
-<h5 id="toc_1">获取屏幕宽高</h5>
-
-<pre><code>#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
-</code></pre>
-
-<h5 id="toc_2">下面这句话你是不是写的特别多。。。</h5>
-
-<pre><code>//转换字符串
-#define KCHANGE_STR(string)     [[NSString alloc]initWithFormat:@&quot;%@&quot;,string]
-</code></pre>
-
-<h5 id="toc_3">还在用NSUserDefaults数据持久化吗？？？</h5>
-
-<pre><code>//为NSUserDefaults 添加object和key
-#define Kuserdefaultsave(object,key) [[NSUserDefaults standardUserDefaults] setObject:object forKey:key]
-//读取NSUserDefaults中key的元素
-#define Kuserdefaultread(key) [[NSUserDefaults standardUserDefaults] objectForKey:key]
-//删除NSUserDefaults中key的元素
-#define Kuserdefaultdelete(key) [[NSUserDefaults standardUserDefaults] removeObjectForKey:key]
-
-记得用NSUserDefaults时写同步这句话啊。。。
-[[NSUserDefaults standardUserDefaults]synchronize];
-</code></pre>
-
-<h5 id="toc_4">获取沙盒地址</h5>
-
-<pre><code>//获取沙盒 Document
-#define kPathDocument [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
-//获取沙盒 Cache
-#define kPathCache [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
-//获取temp
-#define kPathTemp NSTemporaryDirectory()
-</code></pre>
-
-<h5 id="toc_5">各处判断的难忘时光。。。</h5>
-
-<pre><code>/****************判空****************/
-//字符串是否为空
-#define kStringIsEmpty(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] &lt; 1 ? YES : NO )
-
-//数组是否为空
-#define kArrayIsEmpty(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0)
-
-//字典是否为空
-#define kDictIsEmpty(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0)
-
-//是否是空对象
-#define kObjectIsEmpty(_object) (_object == nil \
-|| [_object isKindOfClass:[NSNull class]] \
-|| ([_object respondsToSelector:@selector(length)] &amp;&amp; [(NSData *)_object length] == 0) \
-|| ([_object respondsToSelector:@selector(count)] &amp;&amp; [(NSArray *)_object count] == 0))
-
-字典判空用count也很好用哈。
-</code></pre>
-
-<pre><code></code></pre>
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-192ddcde4df0a66f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="加粗的两项改动test是项工程名.png"/></p>
 
 
 		</div>

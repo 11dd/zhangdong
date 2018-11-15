@@ -61,6 +61,8 @@
           
             <li><a title="Vue项目结构" href="15422692424640.html">Vue项目结构</a></li>
           
+            <li><a title="格式化.vue文件" href="15422706001586.html">格式化.vue文件</a></li>
+          
 
       
         <li class="divider"></li>
@@ -270,6 +272,8 @@
                         
                           <li><a title="Vue项目结构" href="15422692424640.html">Vue项目结构</a></li>
                         
+                          <li><a title="格式化.vue文件" href="15422706001586.html">格式化.vue文件</a></li>
+                        
 
                     
                       <li class="side-title"><span>微信小程序</span></li>
@@ -444,152 +448,100 @@
 
 	
 		<div class="markdown-body">
-		<h1>建项-使用三方管理工具cocoaPods</h1>
+		<h1>建项-屏幕适配的这几年</h1>
 
-		<p>我们都用哪些三方呢？例如：<br/>
-1.  --极光的统计：可查看闪退日志（必须要有首先就要集成）<br/>
-2.  --可能用到的推送，可用极光的推送<br/>
-3.  --网络请求  AFNetWorking<br/>
-4.  --刷新  MJRefresh<br/>
-5.  --图片加载  SDWebImage<br/>
-6.  --用于加载的loading和提示框  MBProgressHUD<br/>
-7.  --用于解决输入框被键盘遮挡的问题  IQKeyBoardManager<br/>
-8.  --用于布局约束  Masonry<br/>
-9.  --加在程序中,解决NUll问题  nullSafe.m</p>
+		<h4 id="toc_0">iOS的尺寸如下：</h4>
 
-<pre><code>使用三方管理工具cocoapods
-1、Ruby环境搭建
-查看下当前ruby版本：打开终端输入 ruby -v
+<p><img src="media/15141802374458/iOS%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E5%9B%BE.png" alt="iOS屏幕适配图"/></p>
 
-如果需要更新，进行如下操作更改Ruby镜像：
+<h5 id="toc_1">iPhone XS ：</h5>
 
-gem sources --remove https://rubygems.org/ 
-gem sources -a https://gems.ruby-china.com/
-gem sources -l  （用来检查使用替换镜像位置成功与否）
+<p>屏幕尺寸: 5.8英寸<br/>
+屏幕密度: 458 ppi<br/>
+开发尺寸: 375*812 Pt<br/>
+像素尺寸: 1125 x 2436px <br/>
+倍图: @3x</p>
 
-最后 输入  rvm install 2.2.4  更新ruby
+<h5 id="toc_2">iPhone XS Max ：</h5>
+
+<p>屏幕尺寸: 6.5英寸<br/>
+屏幕密度: 458 ppi<br/>
+开发尺寸: 414*896 pt<br/>
+像素尺寸: 1242 x 2688px <br/>
+倍图: @3x</p>
+
+<h5 id="toc_3">iPhone XR ：</h5>
+
+<p>屏幕尺寸: 6.1英寸<br/>
+屏幕密度: 326 ppi<br/>
+开发尺寸: 414*896 pt<br/>
+像素尺寸: 828 x 1792px <br/>
+倍图: @2x</p>
+
+<h4 id="toc_4">考虑问题如下：</h4>
+
+<ol>
+<li>这个项目适配哪些屏幕，哪些系统版本（4寸屏及以上，iOS8/9及以上，强烈建议iOS9及以上）</li>
+<li><p>适配到哪种程度，（看设计出几套图？不存在的，只有一套，那这一套按哪个尺寸出呢？）</p>
+
+<pre><code>1.针对适配的情况，进行说明，原来的项目按照比例做的，所以大屏小屏显示的内容是一样的；  
+
+2.按照苹果公司的逻辑与产品的使用中，也能体会到大屏是用来显示更多内容的；
+  设计的时候就应该考虑大屏要不要多显示内容，
+  但是只出一张设计图，意思也很明确按比例适配，减少各方面沟通 设计与开发的时间成本。
+
+3.问题来了，iPhone X的特殊性，宽度和4.7寸屏一样，但是高度增加了。
+  坚持继续 按4寸屏320 X 568 或 375 X 667的比例放大，效果是不尽人意的。
+  设计图要考虑高度的差异，iPhoneX 比4.7寸屏 显示内容的区域高了了174像素；
+
+4.根据以上情况，如何选择按哪个尺寸出这一套设计图呢？
+  答案当然是选择中间尺寸 4.7寸屏的（750px/375pt）作为基准。做好一套屏幕的UI
+  这样中间尺寸舒适好看了，向上和向下适配的时候界面调整的幅度最小（不是代码改动最小）
+
+5.只有一套设计稿，默认用什么规则来适配？
+  横向调整间距或对齐方式，纵向类列表高度-&gt;是否有需要根据内容自适应高度的硬性要求，
+  如果没有自适应的情况如下：
+    1.按比例让列表高度变高，如果列表里内容较少，会显的很空
+    2.列表高度不变，字号跟随比例放大 如果列表里内容较多，会显得很拥挤
+      如果字号不跟随比例放大，那么整个程序的字号都不应该随比例放大。
+
+6.当以上问题开发完，发现为什么设计图好看做出的效果总是差强人意？
+
+  所以UI要出“设计标注图”，不能差不多了事，这差2像素，那差4像素，最后看起来就不美观了。
 
 </code></pre>
 
-<pre><code>2、下载安装CocoaPods
-终端输入：sudo gem install cocoapods 
+<h4 id="toc_5">iOS 启动页的适配</h4>
 
-如果升级系统和xcode10 需要更新cocoapods(命令行执行: xcode-select --install)
-然后在进行以下操作
-不执行该命令报错如下：
+<h5 id="toc_6">不管你是LaunchImage来管理启动页</h5>
 
-pod --version
- 
-/Library/Ruby/Gems/2.3.0/gems/cocoapods-1.5.3/lib/cocoapods/command.rb:118:in `git_version&#39;: Failed to extract git version from `git --version` (&quot;xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun\n&quot;) (RuntimeError)
+<h5 id="toc_7">还是LaunchScreen来适配的启动页</h5>
 
-from /Library/Ruby/Gems/2.3.0/gems/cocoapods-1.5.3/lib/cocoapods/command.rb:130:in `verify_minimum_git_version!&#39;
+<h5 id="toc_8">去找产品负责人要图吧，拉伸了启动图，测试看不出来，测试可不负责</h5>
 
-from /Library/Ruby/Gems/2.3.0/gems/cocoapods-1.5.3/lib/cocoapods/command.rb:49:in `run&#39;
-
-from /Library/Ruby/Gems/2.3.0/gems/cocoapods-1.5.3/bin/pod:55:in `&lt;top (required)&gt;&#39;
-
-from /usr/local/bin/pod:23:in `load&#39;
-
-from /usr/local/bin/pod:23:in `&lt;main&gt;&#39;
-
-</code></pre>
-
-<pre><code>cocoapods 安装或更新结束之后：
-终端cd 到自己的项目文件下Create a Podfile
-
-终端输入touch Podfile
-       open -a Xcode Podfile
-
-
-写上如下内容：
-target &#39;MyApp的名’ do
-  pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1’
-end
-
-执行 pod install 就OK了
-
-查询三方版本可用 pod search afnetworking  （不区分大小写）
-第一次安装完pod 进行搜索需要多等一段时间，
-会卡在Creating search index for spec repo &#39;master&#39;..    
-
-CocoaPods的基本安装及使用都详细的说明了，
-当需要同时导入多个第三方时候怎么办 ？
-这就需要修改Podfile了，就是用vim编辑的那个保存在项目根目录中的文件，
-修改完了Podfile文件，需要重新执行一次pod install命令。
-</code></pre>
-
-<h5 id="toc_0">例如</h5>
-
-<pre><code>target &#39;myApp’ do
-pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1’
-pod &#39;MJRefresh&#39;, &#39;~&gt; 3.1.15.1&#39;
-pod &#39;SDWebImage&#39;, &#39;~&gt; 4.2.2&#39;
-pod &#39;MBProgressHUD&#39;, &#39;~&gt; 1.1.0&#39;
-pod &#39;IQKeyboardManager&#39;, &#39;~&gt; 5.0.7&#39;
-pod &#39;Masonry&#39;, &#39;~&gt; 1.1.0&#39;
-pod &#39;NullSafe&#39;, &#39;~&gt; 1.2.3&#39;
-pod &#39;CYLTabBarController&#39;, &#39;~&gt; 1.17.4&#39;
-pod &#39;SDCycleScrollView&#39;, &#39;~&gt; 1.75&#39;
-pod &#39;MJExtension&#39;, &#39;~&gt; 3.0.13&#39;
-pod &#39;FMDB&#39;, &#39;~&gt; 2.7.2&#39;
-pod &#39;SDAutoLayout&#39;, &#39;~&gt; 2.2.0&#39;
-end
-</code></pre>
-
-<h5 id="toc_1">Podfile 如上简单的写法 会报警告 默认platform：iOS9</h5>
+<h4 id="toc_9">iOS 适配齐刘海</h4>
 
 <blockquote>
-<p>The Podfile is a specification that describes the dependencies of the targets of one or more Xcode projects.</p>
-</blockquote>
+<p>不要在代码里面看到重复多次的数字、字符串的使用，如果重复多次，抽出来使用常量来表示；<br/>
+代码适配重点：写宏<br/>
+代码适配重点：写宏<br/>
+代码适配重点：写宏</p>
+</blockquote></li>
+</ol>
 
-<p>A Podfile can be very simple:</p>
-
-<pre><code>target &#39;MyApp&#39;
-pod &#39;AFNetworking&#39;, &#39;~&gt; 1.0&#39;
+<pre><code>   #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+   #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+   //如果自定义导航和状态栏，iphoneX 高度设置 88 其他为 64
+   #define KNavHeight (SCREEN_HEIGHT == 812.0 ? 88 : 64)
 </code></pre>
 
-<p>An example of a more complex Podfile can be:</p>
-
-<pre><code>platform :ios, &#39;9.0&#39;
-inhibit_all_warnings!
-
-target &#39;MyApp&#39; do
-  pod &#39;ObjectiveSugar&#39;, &#39;~&gt; 0.5&#39;
-
-  target &quot;MyAppTests&quot; do
-    inherit! :search_paths
-    pod &#39;OCMock&#39;, &#39;~&gt; 2.0.1&#39;
-  end
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    puts &quot;#{target.name}&quot;
-  end
-end
+<pre><code>  // 底部宏，iphoneX 底部留34高度，别写数字到处减34
+  #define KBottomHeight (SCREEN_HEIGHT == 812.0 ? 34 : 0)
 </code></pre>
 
-<h5 id="toc_2">参考如下：</h5>
-
-<pre><code> iOS安装CocoaPods详细过程
- 请查看:(http://www.jianshu.com/p/9e4e36ba8574)
- 
- cocoapods报错问题You need at least git version 1.8.5 to use CocoaPods
- 请查看:(http://www.jianshu.com/p/a1ab3b291f55)
- 
- 使用cocoapods时常见错误
- 请查看:(http://www.jianshu.com/p/dfc7b93e67eb)
- 
- iOS 下 Podfile 使用方法
- 请查看:(http://www.cnblogs.com/Kennytian/p/6413734.html)
- 
- 如果出现下面问题,请尝试:cocoapods 出现 &quot;_OBJC_CLASS_$--&quot;, 
- referenced from:的问题target-&gt;build setting
-  -&gt;other link flags 添加一个$(inherited) 
-  
-  
-  
-</code></pre>
+<p>xib的适配：齐刘海和圆角苹果不会让我们一个一个约束去拖吧?<br/>
+如果项目要求适配iOS9以下的，还没有好方法，只能一个一个好好拖了;<br/>
+如果不要求适配iOS9以下的，那么你只需要给view打开安全区域即可。</p>
 
 
 		</div>

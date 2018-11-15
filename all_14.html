@@ -61,6 +61,8 @@
           
             <li><a title="Vue项目结构" href="15422692424640.html">Vue项目结构</a></li>
           
+            <li><a title="格式化.vue文件" href="15422706001586.html">格式化.vue文件</a></li>
+          
 
       
         <li class="divider"></li>
@@ -270,6 +272,8 @@
                         
                           <li><a title="Vue项目结构" href="15422692424640.html">Vue项目结构</a></li>
                         
+                          <li><a title="格式化.vue文件" href="15422706001586.html">格式化.vue文件</a></li>
+                        
 
                     
                       <li class="side-title"><span>微信小程序</span></li>
@@ -444,127 +448,68 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序微信开放API</h1>
+		<h1>微信小程序运营 设计与开发</h1>
 
-		<h5 id="toc_0">开放接口：</h5>
+		<h4 id="toc_0">项目经理必备</h4>
 
-<pre><code>wx.login    登录
-wx.getUserInfo  获取用户信息
-wx.chooseAddress    获取用户收货地址
-wx.requestPayment   发起微信支付
-wx.addCard  添加卡券
-wx.openCard 打开卡券
-可以获取用户手机号
-不能获取本机IP
-</code></pre>
+<p>项目经理必要了解API里面微信开放接口的信息例如：</p>
 
-<h5 id="toc_1">设备 API 列表：</h5>
+<ol>
+<li>登录授权</li>
+<li>获取用户信息</li>
+<li>微信支付</li>
+<li>转发</li>
+<li>收货地址</li>
+<li>生成小程序二维码</li>
+</ol>
 
-<pre><code>wx.scanCode 扫码
-wx.makePhoneCall    拨打电话
-wx.getSystemInfo    获取系统信息
-wx.getSystemInfoSync    获取系统信息
-wx.getNetworkType   获取网络类型
-wx.onNetworkStatusChange    监听网络状态变化
+<p>小程序初期明确是否在运营规范里允许的，或者找一些已有小程序样例</p>
 
-wx.onAccelerometerChange    监听加速度数据
-wx.startAccelerometer   开始监听加速度数据
-wx.stopAccelerometer    停止监听加速度数据
-wx.onCompassChange  监听罗盘数据
-wx.startCompass 开始监听罗盘数据
-wx.stopCompass  停止监听罗盘数据
-wx.setClipboardData 设置剪贴板内容
-wx.getClipboardData 获取剪贴板内容
-</code></pre>
+<ul>
+<li>运营规范(在这里查看禁止事项)：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/index.html">https://mp.weixin.qq.com/debug/wxadoc/product/index.html</a></li>
+<li><p>特殊行业所需资质材料：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714</a><br/>
+<img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.46.27.png" alt="屏幕快照 2018-08-08 下午3.46.27"/></p></li>
+<li><p>支付文档：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1</a></p></li>
+<li><p>客服消息：<a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221">https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221</a> </p></li>
+<li><p>数据分析：<a href="https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714</a></p></li>
+</ul>
 
-<h5 id="toc_2">多数 API 的回调都是异步，你需要处理好代码逻辑的异步问题。</h5>
+<hr/>
 
-<h5 id="toc_3">网络请求API</h5>
+<h5 id="toc_1">当开始要做一个小程序时，需通读设计指南</h5>
 
-<pre><code>wx.request  发起网络请求
-wx.uploadFile   上传文件
-wx.downloadFile 下载文件
-</code></pre>
+<p>设计指南：<a href="https://mp.weixin.qq.com/debug/wxadoc/design/index.html">https://mp.weixin.qq.com/debug/wxadoc/design/index.html</a></p>
 
-<h5 id="toc_4">界面 API 列表：</h5>
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.28.55.png" alt="屏幕快照 2018-04-09 上午11.28.55"/></p>
 
-<pre><code>wx.navigateTo   新窗口打开页面
-wx.redirectTo   原窗口打开页面
-wx.switchTab    切换到 tabbar 页面
-wx.navigateBack 退回上一个页面
+<h4 id="toc_2">小程序开发人员必备</h4>
 
-wx.showToast    显示提示框
-wx.hideToast    隐藏提示框
+<p>入坑指南，疑难问题，请浏览👇<br/>
+小程序社区：<a href="http://www.wxapp-union.com/">http://www.wxapp-union.com/</a></p>
 
-wx.showLoading  显示加载提示框
-wx.hideLoading  隐藏提示框
+<p>开发者学习已有框架可参考<br/>
+WePY框架开发小程序请移步👇<br/>
+<a href="https://tencent.github.io/wepy/index.html">https://tencent.github.io/wepy/index.html</a></p>
 
-wx.showModal    显示模态弹窗
-wx.showActionSheet  显示菜单列表
+<p>美团一团队出的框架mpvue框架请移步👇<br/>
+<a href="http://mpvue.com/mpvue/#_2">http://mpvue.com/mpvue/#_2</a></p>
 
-wx.setNavigationBarTitle    设置当前页面标题
-wx.showNavigationBarLoading 显示导航条加载动画
-wx.hideNavigationBarLoading 隐藏导航条加载动画
-wx.setBackgroundColor   动态设置窗口的背景色
-wx.setBackgroundTextStyle   动态设置下拉背景字体、loading 图的样式
+<p>weui Github 地址：<br/>
+<a href="https://github.com/Tencent/weui-wxss">https://github.com/Tencent/weui-wxss</a></p>
 
-wx.createAnimation  动画
-wx.createContext    创建绘图上下文
-wx.drawCanvas   绘图
-wx.stopPullDownRefresh  停止下拉刷新动画
-</code></pre>
+<hr/>
 
-<h5 id="toc_5">媒体 API 列表：</h5>
+<h5 id="toc_3">微信开发者工具创建小程序工程需要AppID</h5>
 
-<pre><code>wx.chooseImage  从相册选择图片，或者拍照
-wx.previewImage 预览图片
-wx.startRecord  开始录音
-wx.stopRecord   结束录音
-wx.playVoice    播放语音
-wx.pauseVoice   暂停播放语音
-wx.stopVoice    结束播放语音
-wx.getBackgroundAudioPlayerState 获取音乐播放状态
-wx.playBackgroundAudio  播放音乐
-wx.pauseBackgroundAudio 暂停播放音乐
-wx.seekBackgroundAudio  控制音乐播放进度
-wx.stopBackgroundAudio  停止播放音乐
-wx.onBackgroundAudioPlay    监听音乐开始播放
-wx.onBackgroundAudioPause   监听音乐暂停
-wx.onBackgroundAudioStop    监听音乐结束
-wx.chooseVideo  从相册选择视频，或者拍摄
-wx.loadFontFace 动态加载字体
-</code></pre>
+<p>官方工具：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714</a></p>
 
-<h5 id="toc_6">文件 API 列表：</h5>
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.21.41.png" alt="屏幕快照 2018-04-09 上午11.21.41"/></p>
 
-<pre><code>wx.saveFile 保存文件
-wx.getSavedFileList 获取已保存的文件列表
-wx.getSavedFileInfo 获取已保存的文件信息
-wx.removeSavedFile  删除已保存的文件信息
-wx.openDocument 打开文件
-</code></pre>
+<h5 id="toc_4">小程序开发必读项，教程 ，框架 ，组件 ，API , 工具</h5>
 
-<h5 id="toc_7">数据 API 列表：</h5>
+<p>简易教程：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/">https://mp.weixin.qq.com/debug/wxadoc/dev/</a></p>
 
-<pre><code>wx.getStorage   获取本地数据缓存
-wx.getStorageSync   获取本地数据缓存
-wx.setStorage   设置本地数据缓存
-wx.setStorageSync   设置本地数据缓存
-wx.getStorageInfo   获取本地缓存的相关信息
-wx.getStorageInfoSync   获取本地缓存的相关信息
-wx.removeStorage    删除本地缓存内容
-wx.removeStorageSync    删除本地缓存内容
-wx.clearStorage 清理本地数据缓存
-wx.clearStorageSync 清理本地数据缓存
-</code></pre>
-
-<h5 id="toc_8">位置 API 列表：</h5>
-
-<pre><code>wx.getLocation  获取当前位置
-wx.chooseLocation   打开地图选择位置
-wx.openLocation 打开内置地图
-wx.createMapContext 地图组件控制
-</code></pre>
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.23.50.png" alt="屏幕快照 2018-04-09 上午11.23.50"/></p>
 
 
 		</div>
