@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-11-15T10:38:43+08:00</updated>
+  <updated>2018-11-15T13:03:05+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -71,7 +71,7 @@ npm安装插件是从官网http://registry.npmjs.org下载对应的插件包
 <pre><code>cnpm install webpack -g
 </code></pre>
 
-<h4 id="toc_7">全局安装vue脚手架</h4>
+<h4 id="toc_7">全局安装vue脚手架 vue-cli@2</h4>
 
 <pre><code>cnpm install vue-cli -g
 </code></pre>
@@ -80,8 +80,10 @@ npm安装插件是从官网http://registry.npmjs.org下载对应的插件包
 
 <h4 id="toc_9">创建一个vue的项目代码</h4>
 
-<pre><code>cd  路径(想把项目创建在哪个文件夹下面)
-vue init webpack-simple demo1&lt;工程名字不能用中文&gt;
+<pre><code>执行命令1. cd  路径(想把项目创建在哪个文件夹下面)
+
+vue-cli@2的初始化方式命令如下：
+执行命令2. vue init webpack-simple demo1&lt;工程名字不能用中文,不要用大写&gt;
 </code></pre>
 
 <p>当出现如下信息时，vue init已执行完毕</p>
@@ -93,16 +95,20 @@ vue init webpack-simple demo1&lt;工程名字不能用中文&gt;
 </code></pre>
 
 <pre><code>依次执行命令：
-1. cd firstVueProject(你创建的工程文件名)
-2. cnpm install (可一路回车Enter)
+执行命令3. cd firstVueProject(你创建的工程文件名)
+执行命令4. cnpm install (可一路回车Enter)
 </code></pre>
 
 <pre><code>可安装(或不安装) vue 路由模块vue-router和网络请求模块vue-resource执行命令：
 cnpm install vue-router vue-resource --save-dev
 
 启动项目
-cnpm run dev
+执行命令5. cnpm run dev
+
+至此结束
 </code></pre>
+
+<h4 id="toc_10">注解</h4>
 
 <pre><code>1. npm 开启了npm run dev以后怎么退出或关闭？
 ctrl+c
@@ -117,14 +123,13 @@ ctrl+c
 4. 在项目开发完成之后，可以输入 npm run build 来进行打包工作
 </code></pre>
 
-<h4 id="toc_10">分道扬镳之二</h4>
+<h4 id="toc_11">分道扬镳之二</h4>
 
-<h4 id="toc_11">创建一个基于mpvue的小程序项目代码</h4>
+<h4 id="toc_12">创建一个基于mpvue的小程序项目代码</h4>
 
-<pre><code>cd 目录路径
+<pre><code>执行命令1. cd  路径(想把项目创建在哪个文件夹下面)
 
-执行命令：
-vue init mpvue/mpvue-quickstart firstVueProject(不要使用中文)
+执行命令2. vue init mpvue/mpvue-quickstart firstVueProject(不要使用中文)
 </code></pre>
 
 <p>接下来是项目的一些配置信息，可一路回车Enter<br/>
@@ -140,17 +145,17 @@ Documentation can be found at http://mpvue.com
 
 <p>这时代码还缺少依赖库，继续执行</p>
 
-<pre><code>cd firstVueProject(你创建的工程文件名)
-cnpm install
+<pre><code>执行命令3. cd firstVueProject(你创建的工程文件名)
+执行命令4. cnpm install
 </code></pre>
 
-<h6 id="toc_12">cnpm install过程中---可能会出现npm update check failed</h6>
+<h6 id="toc_13">cnpm install过程中---可能会出现npm update check failed</h6>
 
-<pre><code>因为文件夹的权限问题导致的，执行如下命令
+<pre><code>因为文件夹的权限问题导致的，执行如下命令:
 sudo chown -R $USER:$(id -gn $USER) /home/{username}/.config
 </code></pre>
 
-<h6 id="toc_13">cnpm install过程中---可能会出现类似警告</h6>
+<h6 id="toc_14">cnpm install过程中---可能会出现类似警告</h6>
 
 <pre><code>npm WARN vue-loader@15.2.4 requires a peer of css-loader@* but none is installed. You must install peer dependencies yourself.
 npm WARN vue-loader@15.2.4 requires a peer of vue-template-compiler@^2.0.0 but none is installed. You must install peer dependencies yourself.
@@ -158,10 +163,11 @@ npm WARN vue-loader@15.2.4 requires a peer of vue-template-compiler@^2.0.0 but n
 
 <p>需要安装css-loader 和vue-template-compiler</p>
 
-<pre><code>cnpm i css-loader vue-template-compiler
+<pre><code>执行如下命令:
+cnpm i css-loader vue-template-compiler
 </code></pre>
 
-<p>终于到了最后，执行命令让这个代码运行起来，进入开发模式：</p>
+<p>终于到了最后，让这个代码运行起来，进入开发模式，执行命令：</p>
 
 <pre><code>cnpm run dev
 </code></pre>
