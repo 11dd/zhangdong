@@ -499,17 +499,41 @@ npm安装插件是从官网http://registry.npmjs.org下载对应的插件包
 
 <h4 id="toc_9">创建一个vue的项目代码</h4>
 
-<pre><code>cd 目录路径
+<pre><code>cd  路径(想把项目创建在哪个文件夹下面)
 vue init webpack-simple demo1&lt;工程名字不能用中文&gt;
+</code></pre>
 
-安装项目依赖，执行命令：
-cnpm install
+<p>当出现如下信息时，vue init已执行完毕</p>
 
-安装 vue 路由模块vue-router和网络请求模块vue-resource执行命令：
-cnpm install vue-router vue-resource --save
+<pre><code>To get started:
+   cd firstVueProject(你创建的工程文件名)
+   npm install
+   npm run dev 
+</code></pre>
+
+<pre><code>依次执行命令：
+1. cd firstVueProject(你创建的工程文件名)
+2. cnpm install (可一路回车Enter)
+</code></pre>
+
+<pre><code>可安装(或不安装) vue 路由模块vue-router和网络请求模块vue-resource执行命令：
+cnpm install vue-router vue-resource --save-dev
 
 启动项目
 cnpm run dev
+</code></pre>
+
+<pre><code>1. npm 开启了npm run dev以后怎么退出或关闭？
+ctrl+c
+
+2. --save-dev
+自动把模块和版本号添加到模块配置文件package.json中的依赖里devdependencies部分
+
+3. --save-dev 与 --save 的区别
+--save     安装包信息将加入到dependencies（生产阶段的依赖）
+--save-dev 安装包信息将加入到devDependencies（开发阶段的依赖），所以开发阶段一般使用它
+
+4. 在项目开发完成之后，可以输入 npm run build 来进行打包工作
 </code></pre>
 
 <h4 id="toc_10">分道扬镳之二</h4>
