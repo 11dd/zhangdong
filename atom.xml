@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-11-15T13:03:05+08:00</updated>
+  <updated>2018-11-15T15:51:35+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -84,6 +84,10 @@ npm安装插件是从官网http://registry.npmjs.org下载对应的插件包
 
 vue-cli@2的初始化方式命令如下：
 执行命令2. vue init webpack-simple demo1&lt;工程名字不能用中文,不要用大写&gt;
+
+也可执行命令: vue init webpack demo1
+这样会询问我们是否安装一些Vue依赖模块，也可以简单(webpack-simple)创建完项目,
+需要的其他模块单独安装
 </code></pre>
 
 <p>当出现如下信息时，vue init已执行完毕</p>
@@ -99,7 +103,10 @@ vue-cli@2的初始化方式命令如下：
 执行命令4. cnpm install (可一路回车Enter)
 </code></pre>
 
-<pre><code>可安装(或不安装) vue 路由模块vue-router和网络请求模块vue-resource执行命令：
+<pre><code>单独安装模块: 可安装(或不安装) 
+vue 路由模块vue-router
+网络请求模块vue-resource
+其他模块可继续加在一起执行命令：
 cnpm install vue-router vue-resource --save-dev
 
 启动项目
