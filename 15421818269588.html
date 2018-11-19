@@ -546,7 +546,20 @@ cnpm install vue-router vue-resource --save-dev
 至此结束
 </code></pre>
 
-<h4 id="toc_10">注解</h4>
+<h4 id="toc_10">打开项目</h4>
+
+<pre><code>cd 项目地址
+cnpm install
+cnpm run dev
+
+如果npm 报错,尝试
+1. cnpm cache clean --force
+2. rm -rf node_modules folder
+3. cnpm install
+4. cnpm run dev
+</code></pre>
+
+<h4 id="toc_11">注解</h4>
 
 <pre><code>1. npm 开启了npm run dev以后怎么退出或关闭？
 ctrl+c
@@ -561,9 +574,9 @@ ctrl+c
 4. 在项目开发完成之后，可以输入 npm run build 来进行打包工作
 </code></pre>
 
-<h4 id="toc_11">分道扬镳之二</h4>
+<h4 id="toc_12">分道扬镳之二</h4>
 
-<h4 id="toc_12">创建一个基于mpvue的小程序项目代码</h4>
+<h4 id="toc_13">创建一个基于mpvue的小程序项目代码</h4>
 
 <pre><code>执行命令1. cd  路径(想把项目创建在哪个文件夹下面)
 
@@ -587,13 +600,13 @@ Documentation can be found at http://mpvue.com
 执行命令4. cnpm install
 </code></pre>
 
-<h6 id="toc_13">cnpm install过程中---可能会出现npm update check failed</h6>
+<h6 id="toc_14">cnpm install过程中---可能会出现npm update check failed</h6>
 
 <pre><code>因为文件夹的权限问题导致的，执行如下命令:
 sudo chown -R $USER:$(id -gn $USER) /home/{username}/.config
 </code></pre>
 
-<h6 id="toc_14">cnpm install过程中---可能会出现类似警告</h6>
+<h6 id="toc_15">cnpm install过程中---可能会出现类似警告</h6>
 
 <pre><code>npm WARN vue-loader@15.2.4 requires a peer of css-loader@* but none is installed. You must install peer dependencies yourself.
 npm WARN vue-loader@15.2.4 requires a peer of vue-template-compiler@^2.0.0 but none is installed. You must install peer dependencies yourself.
