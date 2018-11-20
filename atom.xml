@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-11-16T09:53:07+08:00</updated>
+  <updated>2018-11-19T14:08:37+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,56 @@
   </author>
   <generator uri="http://www.mweb.im">MWeb</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序之一：JS操作]]></title>
+    <link href="www.freefook.com/15419922791377.html"/>
+    <updated>2018-11-12T11:11:19+08:00</updated>
+    <id>www.freefook.com/15419922791377.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">获取系统信息 下面是屏幕宽高</h5>
+
+<pre><code> wx.getSystemInfo({
+      success: function(res) {
+        that.setData({
+          windowHeight: res.windowHeight,
+          windowWidth: res.windowWidth,
+        })
+      }
+});
+</code></pre>
+
+<h5 id="toc_1">页面标题</h5>
+
+<pre><code>第一种：修改 .json文件
+{
+  &quot;navigationBarTitleText&quot;: &quot;标题&quot;
+}
+
+第二种：动态自定义
+wx.setNavigationBarTitle({
+  title: this.data.URLBackTitle
+})
+</code></pre>
+
+<h5 id="toc_2">保存数据</h5>
+
+<pre><code> // 同步方式存储数据
+wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
+
+//取出数据
+var token = wx.getStorageSync(&#39;userInfo&#39;)
+
+</code></pre>
+
+<h5 id="toc_3">数组查找数据</h5>
+
+<pre><code>let newArr = t.data.ee.filter(item =&gt; item.pid === t.data.province[e.detail.value].id)
+
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mac下的Vue环境搭建]]></title>
@@ -302,7 +352,138 @@ Import Cost ： 引入包大小计算,对于项目打包后体积掌握很有帮
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序之登录篇]]></title>
+    <title type="html"><![CDATA[微信小程序之二：点击与跳页传参]]></title>
+    <link href="www.freefook.com/15419918698485.html"/>
+    <updated>2018-11-12T11:04:29+08:00</updated>
+    <id>www.freefook.com/15419918698485.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">点击事件</h5>
+
+<pre><code>bindtap  事件绑定不会阻止冒泡事件向上冒泡
+catchtap  事件绑定可以阻止冒泡事件向上冒泡
+
+点击事件的参数传递：
+target：触发事件的源组件
+currentTarget：事件绑定的当前事件
+</code></pre>
+
+<p><img src="media/15326733440349/86CC8E232275B9B77BD5728B014D3B69.png" alt="86CC8E232275B9B77BD5728B014D3B69"/></p>
+
+<h5 id="toc_1">跳页</h5>
+
+<pre><code>wx.navigateTo({
+url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
+})
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序之三：提示信息]]></title>
+    <link href="www.freefook.com/15326733440349.html"/>
+    <updated>2018-07-27T14:35:44+08:00</updated>
+    <id>www.freefook.com/15326733440349.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">Toast提示</h5>
+
+<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
+ icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
+ 
+ wx.showToast({
+        title: &#39;请输入提示语&#39;,
+        icon: &#39;none&#39;,
+        mask:true,
+        duration: 2000
+      }) 
+</code></pre>
+
+<h5 id="toc_1">加载的loading</h5>
+
+<pre><code>  wx.showLoading({
+      title: &#39;正在加载&#39;,
+      mask: true,
+    })
+   wx.hideLoading();
+</code></pre>
+
+<h5 id="toc_2">延迟执行</h5>
+
+<pre><code> setTimeout(function() {
+   wx.hideLoading()
+ }, 1000)
+          
+</code></pre>
+
+<h5 id="toc_3">弹出窗口提示</h5>
+
+<pre><code>wx.showModal({
+    title: &#39;我是弹窗标题&#39;,
+    content: &#39;佛系弹窗详情内容&#39;,
+    success: function(res) {
+      if (res.confirm) {
+        console.log(&#39;用户点击确定&#39;)
+      } else if (res.cancel) {
+        console.log(&#39;用户点击取消&#39;)
+      }
+    }
+  })   
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序之四：样式]]></title>
+    <link href="www.freefook.com/15419923901812.html"/>
+    <updated>2018-11-12T11:13:10+08:00</updated>
+    <id>www.freefook.com/15419923901812.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">设置背景图片，不要使用这个方式设置背景图</h5>
+
+<pre><code>&lt;view class=&quot;viewClass&quot; style=&quot;background-image: url(&#39;../../images/welcome.png&#39;)&quot;&gt;
+&lt;/view&gt;
+
+可以使用 view布局方式中的：
+position: relative;
+position: absolute;
+</code></pre>
+
+<h5 id="toc_1">overflow 属性</h5>
+
+<pre><code>overflow 属性规定当内容溢出元素框时发生的事情。
+
+visible     默认值。内容不会被修剪，会呈现在元素框之外。
+hidden      内容会被修剪，并且其余内容是不可见的。
+scroll      内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
+auto        如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
+inherit     规定应该从父元素继承 overflow 属性的值。
+</code></pre>
+
+<h5 id="toc_2">button去掉自带的边框</h5>
+
+<pre><code>button::after {
+  border: none;
+}
+</code></pre>
+
+<h5 id="toc_3">组件设置边框</h5>
+
+<pre><code>  border: 1px solid #FFF;
+</code></pre>
+
+<h5 id="toc_4">列表中最后一个item样式</h5>
+
+<pre><code>.foods-item:last-child {
+  margin-bottom: 10px;
+}
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序之五：登录篇]]></title>
     <link href="www.freefook.com/15234367737951.html"/>
     <updated>2018-04-11T16:52:53+08:00</updated>
     <id>www.freefook.com/15234367737951.html</id>
@@ -476,7 +657,7 @@ https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序之解析html]]></title>
+    <title type="html"><![CDATA[微信小程序之六：解析html]]></title>
     <link href="www.freefook.com/15420001365512.html"/>
     <updated>2018-11-12T13:22:16+08:00</updated>
     <id>www.freefook.com/15420001365512.html</id>
@@ -519,7 +700,7 @@ https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序之跑马灯效果]]></title>
+    <title type="html"><![CDATA[微信小程序之七：跑马灯效果]]></title>
     <link href="www.freefook.com/15419994873507.html"/>
     <updated>2018-11-12T13:11:27+08:00</updated>
     <id>www.freefook.com/15419994873507.html</id>
@@ -604,177 +785,6 @@ https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html
   padding-right: 20rpx;
   border-radius: 10rpx;
 }
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序之动画]]></title>
-    <link href="www.freefook.com/15419945000025.html"/>
-    <updated>2018-11-12T11:48:20+08:00</updated>
-    <id>www.freefook.com/15419945000025.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">---wxml文件---</h5>
-
-<pre><code>&lt;view class=&#39;lunbo&#39; animation=&quot;{{animationItem}}&quot;
-&lt;/view&gt;
-</code></pre>
-
-<h5 id="toc_1">---JS文件---</h5>
-
-<pre><code>  var that = this;
-    //动画样式
-    that.animationItem = wx.createAnimation({
-      duration: 500,
-      timingFunction: &#39;linear&#39;,
-      transformOrigin: &#39;90% 70%&#39;,
-      success: function(res) {}
-    });
-    
-    // 定时器，2S 循环一次
-    that.data.newLunbo_interval = setInterval(function() {
-      //开始动画-缩小
-      that.animationItem.scale3d(0.98, 0.98, 0.1).step();
-      that.setData({
-        animationItem: that.animationItem.export()
-      });
-      //延迟恢复到原来大小
-      setTimeout(function() {
-        that.animationItem.scale3d(1.0, 1.0, 1.0).step();
-        that.setData({
-          animationItem: that.animationItem.export(),
-        });
-      }, 500)
-    }.bind(that), 2000);
-</code></pre>
-
-<h5 id="toc_2">清理定时器</h5>
-
-<pre><code>    clearInterval(this.data.newLunbo_interval);
-</code></pre>
-
-<h5 id="toc_3">创建wx.createAnimation参数含义</h5>
-
-<pre><code>duration            动画持续时间，单位 ms 
-timingFunction      &#39;linear&#39; 动画的效果  
-delay               动画延迟时间，单位 ms 
-transformOrigin     &#39;50% 50% 0&#39;
-</code></pre>
-
-<h5 id="toc_4">timingFunction 的合法值</h5>
-
-<pre><code>&#39;linear&#39;    动画从头到尾的速度是相同的
-&#39;ease&#39;  动画以低速开始，然后加快，在结束前变慢
-&#39;ease-in&#39;   动画以低速开始
-&#39;ease-in-out&#39;   动画以低速开始和结束
-&#39;ease-out&#39;  动画以低速结束
-&#39;step-start&#39;    动画第一帧就跳至结束状态直到结束
-&#39;step-end&#39;  动画一直保持开始状态，最后一帧跳到结束状态
-</code></pre>
-
-<h5 id="toc_5">transformOrigin 的合法值</h5>
-
-<pre><code>transform-origin: x-axis y-axis z-axis;
-
-x-axis  定义视图被置于 X 轴的何处。可能的值：
-    left
-    center
-    right
-    length
-    %
-    
-y-axis  定义视图被置于 Y 轴的何处。可能的值：
-    top
-    center
-    bottom
-    length
-    %
-
-z-axis  定义视图被置于 Z 轴的何处。可能的值：
-    length
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序之点击与跳页传参]]></title>
-    <link href="www.freefook.com/15419918698485.html"/>
-    <updated>2018-11-12T11:04:29+08:00</updated>
-    <id>www.freefook.com/15419918698485.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">点击事件</h5>
-
-<pre><code>bindtap  事件绑定不会阻止冒泡事件向上冒泡
-catchtap  事件绑定可以阻止冒泡事件向上冒泡
-
-点击事件的参数传递：
-target：触发事件的源组件
-currentTarget：事件绑定的当前事件
-</code></pre>
-
-<p><img src="media/15326733440349/86CC8E232275B9B77BD5728B014D3B69.png" alt="86CC8E232275B9B77BD5728B014D3B69"/></p>
-
-<h5 id="toc_1">跳页</h5>
-
-<pre><code>wx.navigateTo({
-url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
-})
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序之提示信息]]></title>
-    <link href="www.freefook.com/15326733440349.html"/>
-    <updated>2018-07-27T14:35:44+08:00</updated>
-    <id>www.freefook.com/15326733440349.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">Toast提示</h5>
-
-<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
- icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
- 
- wx.showToast({
-        title: &#39;请输入提示语&#39;,
-        icon: &#39;none&#39;,
-        mask:true,
-        duration: 2000
-      }) 
-</code></pre>
-
-<h5 id="toc_1">加载的loading</h5>
-
-<pre><code>  wx.showLoading({
-      title: &#39;正在加载&#39;,
-      mask: true,
-    })
-   wx.hideLoading();
-</code></pre>
-
-<h5 id="toc_2">延迟执行</h5>
-
-<pre><code> setTimeout(function() {
-   wx.hideLoading()
- }, 1000)
-          
-</code></pre>
-
-<h5 id="toc_3">弹出窗口提示</h5>
-
-<pre><code>wx.showModal({
-    title: &#39;我是弹窗标题&#39;,
-    content: &#39;佛系弹窗详情内容&#39;,
-    success: function(res) {
-      if (res.confirm) {
-        console.log(&#39;用户点击确定&#39;)
-      } else if (res.cancel) {
-        console.log(&#39;用户点击取消&#39;)
-      }
-    }
-  })   
 </code></pre>
 
 ]]></content>
@@ -1470,359 +1480,6 @@ github 桌面版工具地址：<a href="https://desktop.github.com/">https://des
 <p><img src="media/15337217832111/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%885.56.47.png" alt="屏幕快照 2018-08-08 下午5.56.47"/></p>
 
 <p><img src="media/15337217832111/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-09%20%E4%B8%8B%E5%8D%882.40.04.png" alt="屏幕快照 2018-08-09 下午2.40.04"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[排序]]></title>
-    <link href="www.freefook.com/15198806151662.html"/>
-    <updated>2018-03-01T13:03:35+08:00</updated>
-    <id>www.freefook.com/15198806151662.html</id>
-    <content type="html"><![CDATA[
-<pre><code> sizeof 判断数据类型长度符的关键字  简单的说其作用就是返回一个对象或者类型所占的内存字节数
-</code></pre>
-
-<h4 id="toc_0">选择排序</h4>
-
-<pre><code>主要思想：
- 对比数组中前一个元素跟后一个元素的大小，
- 如果后面的元素比前面的元素小则用一个变量k来记住他的位置，
- 接着第二次比较，前面“后一个元素”现变成了“前一个元素”，
- 继续跟他的“后一个元素”进行比较如果后面的元素比他要小则用变量k记住它在  数组中的位置(下标)，
- 等到循环结束的时候，我们应该找到了最小的那个数的下标了，
- 然后进行判断，如果这个元素的下标不是第一个元素的下标，
- 就让第一个元素跟他交换一下值，
- 这样就找到整个数组中最小的数了。
- 然后找到数组中第二小的数，让他跟数组中第二个元素交换一下值，以此类推。
- 
- 总之一句话，拿第一个数和后面的所有数比，谁小记录上下标，用这个小的继续和后面的比，直到比完所有。
- n个乱序-&gt;选择排序可经过n-1趟直接选择排序得到有序结果
-</code></pre>
-
-<pre><code>#include&lt;stdio.h&gt;
-void select_sort(int arr[],int size)
-{
-    int i=0,j=0;
-    int k=0;
-    for(i=0;i&lt;size;i++){
-        k=i;
-        for(j=i+1;j&lt;size;j++){
-           //结果输出想从小到大，还是从大到小，改这个&gt; or &lt;;
-            if(arr[k]&lt;arr[j]){
-                k=j;
-            }
-
-        }
-        if(k!=i){
-            int tmp=arr[k];
-            arr[k]=arr[i];
-            arr[i]=tmp;
-        }
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    select_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
-
-<h4 id="toc_1">冒泡排序</h4>
-
-<pre><code> 比较相邻的元素。如果第一个比第二个大，就交换他们两个。
- 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。
- 针对所有的元素重复以上的步骤，除了最后一个。
- 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
-</code></pre>
-
-<pre><code>#include&lt;stdio.h&gt;
-void bubble_sort(int arr[],int size)
-{
-    int i=0,j=0;
-    for(i=0;i&lt;size;i++){
-        for(j=0;j&lt;size-i-1;j++){
-            if(arr[j]&gt;arr[j+1]){
-                int tmp=arr[j];
-                arr[j]=arr[j+1];
-                arr[j+1]=tmp;
-            }
-        }
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    bubble_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
-
-<h4 id="toc_2">快速排序</h4>
-
-<pre><code> 第一遍快速排序不会直接得到最终结果，
- 只会把比k大和比k小的数分到k的两边。
- 为了得到最后结果，需要再次对下标2两边的数组分别执行此步骤，
- 然后再分解数组，直到数组不能再分解为止（只有一个数据），
- 才能得到正确结果。
- 
- 总结：分别从初始序列两端开始，先从右往左找一个小于“数组第一个”的数，再从左往右找一个大于“数组第一个”的数，然后交换他们；
-
-跳跃式交换，进化了冒泡的相邻交换，数据量多的无序数组排序时才提现出效果
-二分思想
-
-</code></pre>
-
-<pre><code>#include&lt;stdio.h&gt;
-void quick_sort(int arr[],int left,int right)
-{
-    if(left&gt;=right){
-        return;
-    }
-    int key=arr[left];
-    int begin=left;
-    int end=right;
-    while(begin!=end){
-        while(begin&lt;end &amp;&amp; arr[end]&gt;=key){
-            end--;
-        }
-        if(end&gt;begin){
-            arr[begin]=arr[end];
-        }
-        while(begin&lt;end &amp;&amp; arr[begin]&lt;=key){
-            begin++;
-        }
-        if(begin&lt;end){
-            arr[end]=arr[begin];
-        }
-    }
-    arr[begin]=key;
-    quick_sort(arr,left,begin-1);
-    quick_sort(arr,begin+1,right);
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    quick_sort(arr,0,9);
-    int i=0;
-    for(i=0;i&lt;10;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
-
-<h4 id="toc_3">插入排序</h4>
-
-<pre><code>插入排序有以下几种方式：直接插入排序，二分插入排序（又称折半插入排序），链表插入排序，希尔排序（又称缩小增量排序）
-
-示例直接插入排序，
-用数组第二个和第一个比，如果小，就插入第一位位置；
-用数组第三个和第二个比，如果小，就插入第二个位置；
-                    如果大，就留在原位置；
-                    依次类推；
-</code></pre>
-
-<pre><code>#include&lt;stdio.h&gt;
-void insert_sort(int arr[],int size)
-{
-    int i=0,j=0;
-    int tmp=0;
-    for(i=1;i&lt;size;i++){
-        tmp=arr[i];
-        j=i;
-        while(j&gt;0 &amp;&amp; arr[j-1]&gt;tmp){
-            arr[j]=arr[j-1];
-            j--;
-        }
-        arr[j]=tmp;
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    insert_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
-
-<h4 id="toc_4">希尔排序</h4>
-
-<pre><code>#include&lt;stdio.h&gt;
-void shell_insert_sort(int arr[],int size)
-{
-    int gap=0;
-    int i=0,j=0,k=0;
-    for(gap=size/2;gap&gt;0;gap/=2){
-        //for(i=0;i&lt;gap;i++){
-            for(j=gap;j&lt;size;j++){
-                int tmp=arr[j];
-                k=j;
-                while(k-gap&gt;=0 &amp;&amp; arr[k-gap]&gt;tmp){
-                    arr[k]=arr[k-gap];
-                    k-=gap;
-                }
-                arr[k]=tmp;
-            }
-        //}
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    shell_insert_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
-
-<h4 id="toc_5">归并排序（合并排序）</h4>
-
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;stdlib.h&gt;
-void merge(int* src,int *dst,int begin,int mid,int end)
-{
-    int begin1=begin;
-    int begin2=mid;
-    int index=begin;
-    while(begin1&lt;mid &amp;&amp; begin2&lt;end){
-        if(src[begin1]&lt;src[begin2]){
-            dst[index++]=src[begin1++];
-        }else{
-            dst[index++]=src[begin2++];
-        }
-    }
-    while(begin1&lt;mid){
-        dst[index++]=src[begin1++];
-    }
-    while(begin2&lt;end){
-        dst[index++]=src[begin2++];
-    }
-    memcpy(src+begin,dst+begin,(end-begin)*sizeof(int));
-}
-void _merge_sort(int *arr,int* tmp,int left,int right)
-{
-    if(left+1&gt;=right){
-        return;
-    }
-    int mid=left+(right-left)/2;
-    _merge_sort(arr,tmp,left,mid);
-    _merge_sort(arr,tmp,mid,right);
-    merge(arr,tmp,left,mid,right);
-}
-void merge_sort(int* arr,int size)
-{
-    int* tmp=(int*)malloc(size*sizeof(int));
-    _merge_sort(arr,tmp,0,size);
-    free(tmp);
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    merge_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-
-    return 0;
-}
-</code></pre>
-
-<h4 id="toc_6">堆排序</h4>
-
-<pre><code>#include&lt;stdio.h&gt;
-void swap(int *a,int *b)
-{
-    int tmp=*a;
-    *a=*b;
-    *b=tmp;
-}
-void adjust_down(int arr[],int root,int size)
-{
-    int parent=root;
-    int left=root*2+1;
-    int right=left+1;
-    while(left&lt;size){
-        int max=left;
-        if(right&lt;size &amp;&amp; arr[right]&gt;arr[max]){
-            max=right;
-        }
-        if(arr[max]&gt;arr[parent]){
-            swap(&amp;arr[max],&amp;arr[parent]);
-            parent=max;
-            left=parent*2+1;
-            right=left+1;
-        }
-        else{
-            break;
-        }
-    }
-}
-//make min heap
-void heap_sort(int arr[],int size)
-{
-    int begin=0;
-    for(begin=size/2-1;begin&gt;=0;--begin){
-        adjust_down(arr,begin,size);
-    }
-    int end=size-1;
-    while(end&gt;0){
-        swap(&amp;arr[0],&amp;arr[end]);
-        adjust_down(arr,0,end);
-        --end;
-    }
-}
-int main()
-{
-    int arr[10]={3,7,1,4,2,8,5,0,9,6};
-    heap_sort(arr,10);
-    int i=0;
-    for(;i&lt;10;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-
-</code></pre>
-
-<p><img src="media/15198806151662/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-01%20%E4%B8%8B%E5%8D%883.45.58.png" alt="屏幕快照 2018-03-01 下午3.45.58"/></p>
-
-<p>选择排序、快速排序、希尔排序、堆排序不是稳定的排序算法，<br/>
-冒泡排序、插入排序、归并排序 是稳定的排序算法。</p>
-
-<p>在原序列中，ri=rj，且ri在rj之前，而在排序后的序列中，ri仍在rj之前，则称这种排序算法是稳定的；否则称为不稳定的。</p>
-
-<p>稳定都是相对的，不是绝对的稳定</p>
 
 ]]></content>
   </entry>
