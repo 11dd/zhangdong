@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  微信小程序 - 至尊宝典之备忘录
+  微信小程序概述 - 至尊宝典之备忘录
   
   </title>
  <meta name="description" content="">
@@ -68,7 +68,7 @@
 
       
         <li class="divider"></li>
-        <li><label>微信小程序</label></li>
+        <li><label>微信小程序概述</label></li>
 
           
             <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
@@ -102,7 +102,7 @@
 
       
         <li class="divider"></li>
-        <li><label>微信小程序使用示例</label></li>
+        <li><label>微信小程序开发示例</label></li>
 
           
             <li><a title="微信小程序之一：JS操作" href="15419922791377.html">微信小程序之一：JS操作</a></li>
@@ -282,7 +282,7 @@
                         
 
                     
-                      <li class="side-title"><span>微信小程序</span></li>
+                      <li class="side-title"><span>微信小程序概述</span></li>
                         
                           <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
                         
@@ -314,7 +314,7 @@
                         
 
                     
-                      <li class="side-title"><span>微信小程序使用示例</span></li>
+                      <li class="side-title"><span>微信小程序开发示例</span></li>
                         
                           <li><a title="微信小程序之一：JS操作" href="15419922791377.html">微信小程序之一：JS操作</a></li>
                         
@@ -456,75 +456,127 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之数据统计与分析</h1>
+		<h1>微信小程序微信开放API</h1>
 
-		<p>公众平台登录小程序账号，在数据分析页面官方提供了数据统计与分析信息：<br/>
-注意：只统计已发布的线上版本使用数据</p>
+		<h5 id="toc_0">开放接口：</h5>
 
-<p>或扫描下方二维码，可用手机查看自己小程序数据信息，官方提供；<br/>
-<img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.47.17.png" alt="屏幕快照 2018-09-07 下午3.47.17"/></p>
+<pre><code>wx.login    登录
+wx.getUserInfo  获取用户信息
+wx.chooseAddress    获取用户收货地址
+wx.requestPayment   发起微信支付
+wx.addCard  添加卡券
+wx.openCard 打开卡券
+可以获取用户手机号
+不能获取本机IP
+</code></pre>
 
-<h4 id="toc_0">数据分析-概况：</h4>
+<h5 id="toc_1">设备 API 列表：</h5>
 
-<ol>
-<li>昨日概况，访问人数，新访问人数，总添加人数，新添加人数</li>
-<li>累计访问人数</li>
-<li>TOP受访页</li>
-</ol>
+<pre><code>wx.scanCode 扫码
+wx.makePhoneCall    拨打电话
+wx.getSystemInfo    获取系统信息
+wx.getSystemInfoSync    获取系统信息
+wx.getNetworkType   获取网络类型
+wx.onNetworkStatusChange    监听网络状态变化
 
-<h4 id="toc_1">数据分析-实时统计：</h4>
+wx.onAccelerometerChange    监听加速度数据
+wx.startAccelerometer   开始监听加速度数据
+wx.stopAccelerometer    停止监听加速度数据
+wx.onCompassChange  监听罗盘数据
+wx.startCompass 开始监听罗盘数据
+wx.stopCompass  停止监听罗盘数据
+wx.setClipboardData 设置剪贴板内容
+wx.getClipboardData 获取剪贴板内容
+</code></pre>
 
-<ol>
-<li>实时访问次数
-注：最多可查看实时统计的近7天的数据，更多大范围数据看概况；</li>
-</ol>
+<h5 id="toc_2">多数 API 的回调都是异步，你需要处理好代码逻辑的异步问题。</h5>
 
-<h4 id="toc_2">数据分析-访问分析：</h4>
+<h5 id="toc_3">网络请求API</h5>
 
-<ol>
-<li>统计每天的打开次数，可自定义时间</li>
-<li>访问分布，如会话打开，二维码打开，搜索打开等；</li>
-<li>访问时长，例如访问时长在30-50秒之间有9次</li>
-<li>访问深度，如一个人打开168次，忠实用户啊...</li>
-<li>新增留存与活跃留存，可查看留存率</li>
-<li><p>访问页面，例如index页访问次数86次，人数37，均时长，<br/><br/>
-分享次数，分享人数等；</p>
+<pre><code>wx.request  发起网络请求
+wx.uploadFile   上传文件
+wx.downloadFile 下载文件
+</code></pre>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.22.39.png" alt="屏幕快照 2018-09-07 下午3.22.39"/></p></li>
-</ol>
+<h5 id="toc_4">界面 API 列表：</h5>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.23.08.png" alt="屏幕快照 2018-09-07 下午3.23.08"/></p>
+<pre><code>wx.navigateTo   新窗口打开页面
+wx.redirectTo   原窗口打开页面
+wx.switchTab    切换到 tabbar 页面
+wx.navigateBack 退回上一个页面
 
-<h4 id="toc_3">数据分析-来源分析：</h4>
+wx.showToast    显示提示框
+wx.hideToast    隐藏提示框
 
-<ol>
-<li>整体来源分布，默认显示排名前12的来源数据，也可以自己选择，<br/>
-如会话，长按二维码，搜索，相册选取二维码，小程序历史，扫一扫等；</li>
-</ol>
+wx.showLoading  显示加载提示框
+wx.hideLoading  隐藏提示框
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.18.47.png" alt="屏幕快照 2018-09-07 下午3.18.47"/></p>
+wx.showModal    显示模态弹窗
+wx.showActionSheet  显示菜单列表
 
-<h4 id="toc_4">数据分析-用户画像：</h4>
+wx.setNavigationBarTitle    设置当前页面标题
+wx.showNavigationBarLoading 显示导航条加载动画
+wx.hideNavigationBarLoading 隐藏导航条加载动画
+wx.setBackgroundColor   动态设置窗口的背景色
+wx.setBackgroundTextStyle   动态设置下拉背景字体、loading 图的样式
 
-<ol>
-<li>性别及年龄分布</li>
-<li>地区分布</li>
-<li>终端及机型分布</li>
-<li><p>各个属性分布活跃用户以及占比</p>
+wx.createAnimation  动画
+wx.createContext    创建绘图上下文
+wx.drawCanvas   绘图
+wx.stopPullDownRefresh  停止下拉刷新动画
+</code></pre>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.20.52.png" alt="屏幕快照 2018-09-07 下午3.20.52"/></p>
+<h5 id="toc_5">媒体 API 列表：</h5>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.21.43.png" alt="屏幕快照 2018-09-07 下午3.21.43"/></p></li>
-</ol>
+<pre><code>wx.chooseImage  从相册选择图片，或者拍照
+wx.previewImage 预览图片
+wx.startRecord  开始录音
+wx.stopRecord   结束录音
+wx.playVoice    播放语音
+wx.pauseVoice   暂停播放语音
+wx.stopVoice    结束播放语音
+wx.getBackgroundAudioPlayerState 获取音乐播放状态
+wx.playBackgroundAudio  播放音乐
+wx.pauseBackgroundAudio 暂停播放音乐
+wx.seekBackgroundAudio  控制音乐播放进度
+wx.stopBackgroundAudio  停止播放音乐
+wx.onBackgroundAudioPlay    监听音乐开始播放
+wx.onBackgroundAudioPause   监听音乐暂停
+wx.onBackgroundAudioStop    监听音乐结束
+wx.chooseVideo  从相册选择视频，或者拍摄
+wx.loadFontFace 动态加载字体
+</code></pre>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.21.10.png" alt="屏幕快照 2018-09-07 下午3.21.10"/></p>
+<h5 id="toc_6">文件 API 列表：</h5>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.39.40.png" alt="屏幕快照 2018-09-07 下午3.39.40"/></p>
+<pre><code>wx.saveFile 保存文件
+wx.getSavedFileList 获取已保存的文件列表
+wx.getSavedFileInfo 获取已保存的文件信息
+wx.removeSavedFile  删除已保存的文件信息
+wx.openDocument 打开文件
+</code></pre>
 
-<p>腾讯移动分析平台：可APP接入，H5接入，小程序接入；<br/>
-<a href="http://mta.qq.com/">http://mta.qq.com/</a></p>
+<h5 id="toc_7">数据 API 列表：</h5>
 
-<p>竞品：有百度微信小程序统计，阿拉灯小程序统计分析平台</p>
+<pre><code>wx.getStorage   获取本地数据缓存
+wx.getStorageSync   获取本地数据缓存
+wx.setStorage   设置本地数据缓存
+wx.setStorageSync   设置本地数据缓存
+wx.getStorageInfo   获取本地缓存的相关信息
+wx.getStorageInfoSync   获取本地缓存的相关信息
+wx.removeStorage    删除本地缓存内容
+wx.removeStorageSync    删除本地缓存内容
+wx.clearStorage 清理本地数据缓存
+wx.clearStorageSync 清理本地数据缓存
+</code></pre>
+
+<h5 id="toc_8">位置 API 列表：</h5>
+
+<pre><code>wx.getLocation  获取当前位置
+wx.chooseLocation   打开地图选择位置
+wx.openLocation 打开内置地图
+wx.createMapContext 地图组件控制
+</code></pre>
 
 
 		</div>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  微信小程序使用示例 - 至尊宝典之备忘录
+  微信小程序开发示例 - 至尊宝典之备忘录
   
   </title>
  <meta name="description" content="">
@@ -68,7 +68,7 @@
 
       
         <li class="divider"></li>
-        <li><label>微信小程序</label></li>
+        <li><label>微信小程序概述</label></li>
 
           
             <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
@@ -102,7 +102,7 @@
 
       
         <li class="divider"></li>
-        <li><label>微信小程序使用示例</label></li>
+        <li><label>微信小程序开发示例</label></li>
 
           
             <li><a title="微信小程序之一：JS操作" href="15419922791377.html">微信小程序之一：JS操作</a></li>
@@ -282,7 +282,7 @@
                         
 
                     
-                      <li class="side-title"><span>微信小程序</span></li>
+                      <li class="side-title"><span>微信小程序概述</span></li>
                         
                           <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
                         
@@ -314,7 +314,7 @@
                         
 
                     
-                      <li class="side-title"><span>微信小程序使用示例</span></li>
+                      <li class="side-title"><span>微信小程序开发示例</span></li>
                         
                           <li><a title="微信小程序之一：JS操作" href="15419922791377.html">微信小程序之一：JS操作</a></li>
                         
@@ -456,52 +456,145 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之三：提示信息</h1>
+		<h1>微信小程序网格布局</h1>
 
-		<h5 id="toc_0">Toast提示</h5>
+		<h4 id="toc_0">第一步：wxml文件代码：</h4>
 
-<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
- icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
- 
- wx.showToast({
-        title: &#39;请输入提示语&#39;,
-        icon: &#39;none&#39;,
-        mask:true,
-        duration: 2000
-      }) 
+<pre><code>&lt;view class=&quot;layout_horizontal&quot;&gt;
+  &lt;view style=&quot;flex:1;background-color:red&quot;&gt;View1&lt;/view&gt;
+  &lt;view style=&quot;flex:1;background-color:blue&quot;&gt;View2&lt;/view&gt;
+&lt;/view&gt;
 </code></pre>
 
-<h5 id="toc_1">加载的loading</h5>
+<h4 id="toc_1">第二步：wxss文件代码：</h4>
 
-<pre><code>  wx.showLoading({
-      title: &#39;正在加载&#39;,
-      mask: true,
-    })
-   wx.hideLoading();
+<pre><code>.layout_horizontal{
+  height: 100rpx;
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+}
 </code></pre>
 
-<h5 id="toc_2">延迟执行</h5>
+<h4 id="toc_2">运行界面：</h4>
 
-<pre><code> setTimeout(function() {
-   wx.hideLoading()
- }, 1000)
-          
+<p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-13%20%E4%B8%8B%E5%8D%884.57.13.png" alt="屏幕快照 2018-04-13 下午4.57.13"/></p>
+
+<h3 id="toc_3">网格布局</h3>
+
+<h5 id="toc_4">在wxml里加入如下代码：</h5>
+
+<pre><code>
+&lt;view class=&#39;content&#39;&gt;
+    &lt;block wx:for=&quot;{{new_products}}&quot; wx:for-item=&quot;item&quot;&gt;
+      &lt;view class=&#39;templateContainer&#39; catchtap=&#39;onGoodsTap&#39; data-goodsid=&#39;{{item.id}}&#39;&gt;
+        &lt;view class=&#39;goods-container&#39;&gt;
+          &lt;image mode=&#39;aspectFill&#39; class=&#39;goods-img&#39; src=&#39;{{item.images.large}}&#39;&gt;&lt;/image&gt;
+          &lt;text class=&#39;goods-title&#39;&gt;{{item.title}}&lt;/text&gt;
+          &lt;view class=&#39;price&#39;&gt;
+            &lt;text class=&#39;goods-price&#39;&gt;￥{{item.rating.average}}&lt;/text&gt;
+            &lt;text class=&#39;pre-goods-price&#39;&gt;￥{{item.rating.max}}&lt;/text&gt;
+          &lt;/view&gt; 
+        &lt;/view&gt;
+      &lt;/view&gt;
+    &lt;/block&gt;
+  &lt;/view&gt;
+
 </code></pre>
 
-<h5 id="toc_3">弹出窗口提示</h5>
+<h5 id="toc_5">在wxss里加入如下代码：</h5>
 
-<pre><code>wx.showModal({
-    title: &#39;我是弹窗标题&#39;,
-    content: &#39;佛系弹窗详情内容&#39;,
-    success: function(res) {
-      if (res.confirm) {
-        console.log(&#39;用户点击确定&#39;)
-      } else if (res.cancel) {
-        console.log(&#39;用户点击取消&#39;)
+<pre><code>
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: auto;
+  background-color: #f2f2f2;
+}
+
+
+.templateContainer {
+  width: 47%;
+  background-color: white;
+  margin: 10rpx;
+}
+
+
+.goods-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30rpx;
+  text-align: center;
+}
+
+.goods-img {
+  width: 310rpx;
+  height: 310rpx;
+  padding-bottom: 20rpx;
+  margin: 0 auto;
+}
+
+.goods-title{
+    margin-bottom: 16rpx;
+    font-size: 24rpx;
+}
+
+.price{
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.goods-price{
+    margin-bottom: 16rpx;
+    font-size: 24rpx;
+    color: red;
+}
+
+.pre-goods-price{
+  text-decoration: line-through;
+  margin-left: 10rpx;
+}
+
+</code></pre>
+
+<h5 id="toc_6">在.js里加入如下代码：</h5>
+
+<pre><code>
+/**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+  
+    var that = this;
+    wx.request({
+      url: &#39;http://t.yushu.im/v2/movie/in_theaters?start=0&amp;count=4&#39;,
+      method: &#39;GET&#39;,
+      header: {
+        &quot;Content-Type&quot;: &quot;json&quot;
+      },
+      success: function (res) {
+        that.setData({
+          new_products: res.data.subjects,
+        })
+        console.log(&quot;这里打印点数据出来呗！！！&quot;);
+        console.log(res.data.subjects);
+      },
+      fail: function (error) {
+        console.log(error)
       }
-    }
-  })   
+    })
+    
+  },
+
 </code></pre>
+
+<h5 id="toc_7">运行效果</h5>
+
+<p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-17%20%E4%B8%8B%E5%8D%883.12.29.png" alt="屏幕快照 2018-04-17 下午3.12.29"/></p>
+
+<p>请求地址：来源项目 <a href="https://github.com/YhAllen/WeChat-applet-mall">https://github.com/YhAllen/WeChat-applet-mall</a></p>
 
 
 		</div>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  微信小程序 - 至尊宝典之备忘录
+  微信小程序概述 - 至尊宝典之备忘录
   
   </title>
  <meta name="description" content="">
@@ -68,7 +68,7 @@
 
       
         <li class="divider"></li>
-        <li><label>微信小程序</label></li>
+        <li><label>微信小程序概述</label></li>
 
           
             <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
@@ -102,7 +102,7 @@
 
       
         <li class="divider"></li>
-        <li><label>微信小程序使用示例</label></li>
+        <li><label>微信小程序开发示例</label></li>
 
           
             <li><a title="微信小程序之一：JS操作" href="15419922791377.html">微信小程序之一：JS操作</a></li>
@@ -282,7 +282,7 @@
                         
 
                     
-                      <li class="side-title"><span>微信小程序</span></li>
+                      <li class="side-title"><span>微信小程序概述</span></li>
                         
                           <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
                         
@@ -314,7 +314,7 @@
                         
 
                     
-                      <li class="side-title"><span>微信小程序使用示例</span></li>
+                      <li class="side-title"><span>微信小程序开发示例</span></li>
                         
                           <li><a title="微信小程序之一：JS操作" href="15419922791377.html">微信小程序之一：JS操作</a></li>
                         
@@ -456,66 +456,81 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之分享</h1>
+		<h1>微信平台与微信小程序</h1>
 
-		<p>分享注意事项：</p>
+		<h5 id="toc_0">微信平台有哪些？</h5>
 
-<pre><code>1. 分享转发：不自定义转发图片的情况下，
-默认会取当前页面，从顶部开始，高度为 80% 屏幕宽度的图像作为转发图片。
+<p>微信公众平台：<br/>
+<a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a></p>
 
-2. 小程序里绘制页面，和网络请求处理结是异步处理，
-所以当点击分享时，不要以为请求数据，拿到结果了去转发，
-要在转发前就准备好要转发的内容；
+<p>微信支付的商户平台：<br/>
+<a href="https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F">https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F</a><br/>
+注：小程序里支付只能用小程序支付方式，必须和小程序里开通的支付的商户一致；</p>
 
-3. 获取小程序二维码，提供了三个接口，开发者可挑选适合自己的接口。 
-A接口，生成小程序码，可接受path参数较长，生成个数受限。
- B接口，生成小程序码，可接受页面参数较短，生成个数不受限。
-  C接口，生成二维码，可接受path参数较长，生成个数受限。
+<p>支付接口文档<br/>
+<a href="https://pay.weixin.qq.com/wiki/doc/api/index.html">https://pay.weixin.qq.com/wiki/doc/api/index.html</a></p>
 
+<p>微信开放平台<br/>
+<a href="https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN">https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN</a></p>
+
+<p>微信开发者平台：<br/>
+<a href="http://weixin.qq.com/">http://weixin.qq.com/</a></p>
+
+<p>微信硬件平台：<br/>
+<a href="https://iot.weixin.qq.com/">https://iot.weixin.qq.com/</a></p>
+
+<p>腾讯的广告平台：<br/>
+<a href="http://e.qq.com/ads/">http://e.qq.com/ads/</a></p>
+
+<p>腾讯开放平台：<br/>
+<a href="http://open.tencent.com/">http://open.tencent.com/</a></p>
+
+<h5 id="toc_1">腾讯自家小程序全家桶</h5>
+
+<pre><code>小程序示例   第一个小程序
+小程序开发助手
+小程序数据助手
+小游戏数据助手
+公众平台助手
+微信发票助手
+王卡申请助手
+
+QQ游戏
+腾讯爱玩
+全民大乐斗
+企鹅电竞+
+腾讯动漫+
+
+腾讯+  产品体验官
+腾讯网
+腾讯文档
+腾讯企业邮箱
+
+腾讯云助手
+腾讯视频云
+腾讯AI体验中心
+腾讯云AI体验中心
+腾讯优图AI开发平台
 </code></pre>
 
-<pre><code>接口A: 适用于需要的码数量较少的业务场景 接口地址：
-通过该接口生成的小程序码，永久有效
+<h5 id="toc_2">其他特色小程序</h5>
 
-接口C：适用于需要的码数量较少的业务场景
-通过该接口生成的小程序二维码，永久有效，数量限制
+<pre><code>摩拜单车： 接入是小程序线下落地的一次大的尝试
+KFC，麦当劳： 点餐实用型的线下场景
+家乐福中国：小程序有优惠
+沃尔玛：小程序可自助结账
 
-数量限制接口A加上接口C，总共生成的码数量限制为100,000
+一时风靡的答题类，头脑王者
 
-接口B：适用于需要的码数量极多的业务场景
+青芒杂志
+一条视频
+毒蛇电影社区
 
-通过接口B生成的小程序码，永久有效，数量暂无限制。
-可以带参数最大32个可见字符，只支持数字，大小写英文
-以及部分特殊字符：!#$&amp;&#39;()*+,/:;=?@-._~，
-其它字符请自行编码为合法字符（
-因不支持%，中文无法使用 urlencode 处理，请使用其他编码方式）
-
-B接口调用分钟频率受限(目前5000次/分钟)
+企鹅电竞+
+斗鱼直播
+虎牙直播
+YY直播+
 </code></pre>
-
-<h4 id="toc_0">开发流程</h4>
-
-<pre><code>1. 处理获取小程序码的业务：小程序端不做处理，可以在自己服务器上处理
-   获取二维码接口，参数使用jsonStr 存数据库，为了避免参数过长？
-   服务器：首先获取access_token
-   https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183
-   其次：调用接口B，获取小程序二维码，接口返回的是二进制流；
-   
-   如有参数，如何处理；
-   小程序扫码进入程序的时候，获取参数id
-   服务端单独出一个接口，用id请求，返回当初要编辑在二维码里的参数；
-   
-</code></pre>
-
-<p>微信小程序分享时截图如下：</p>
-
-<p><img src="media/15336330410298/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-09%20%E4%B8%8B%E5%8D%882.04.34.png" alt="屏幕快照 2018-08-09 下午2.04.34"/></p>
-
-<p><img src="media/15336330410298/IMG_3212.png" alt="IMG_3212"/></p>
-
-<p>小程序画布绘制海报，可保存到相册的业务场景截图如下：</p>
-
-<p><img src="media/15336330410298/IMG_3213.png" alt="IMG_3213"/></p>
 
 
 		</div>

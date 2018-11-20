@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  微信小程序使用示例 - 至尊宝典之备忘录
+  微信小程序开发示例 - 至尊宝典之备忘录
   
   </title>
  <meta name="description" content="">
@@ -68,7 +68,7 @@
 
       
         <li class="divider"></li>
-        <li><label>微信小程序</label></li>
+        <li><label>微信小程序概述</label></li>
 
           
             <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
@@ -102,7 +102,7 @@
 
       
         <li class="divider"></li>
-        <li><label>微信小程序使用示例</label></li>
+        <li><label>微信小程序开发示例</label></li>
 
           
             <li><a title="微信小程序之一：JS操作" href="15419922791377.html">微信小程序之一：JS操作</a></li>
@@ -282,7 +282,7 @@
                         
 
                     
-                      <li class="side-title"><span>微信小程序</span></li>
+                      <li class="side-title"><span>微信小程序概述</span></li>
                         
                           <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
                         
@@ -314,7 +314,7 @@
                         
 
                     
-                      <li class="side-title"><span>微信小程序使用示例</span></li>
+                      <li class="side-title"><span>微信小程序开发示例</span></li>
                         
                           <li><a title="微信小程序之一：JS操作" href="15419922791377.html">微信小程序之一：JS操作</a></li>
                         
@@ -456,56 +456,41 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序网络请求</h1>
+		<h1>微信小程序之六：解析html</h1>
 
-		<h4 id="toc_0">1.在wxml文件里加上按钮点击事件 和list</h4>
+		<h5 id="toc_0">使用wxParse解析html</h5>
 
-<pre><code>&lt;button bindtap=&quot;RequestData&quot; value=&quot;Button&quot;&gt;request&lt;/button&gt; 
+<p>github地址：<a href="https://github.com/icindy/wxParse">https://github.com/icindy/wxParse</a><br/>
+下载之后，将wxParse文件夹导入自己工程与utils同级别   </p>
 
-&lt;view&gt;  
-  &lt;scroll-view scroll-y=&quot;true&quot; style=&quot;height:100%&quot; &gt;  
-    &lt;view wx:for=&quot;{{textdata}}&quot; style=&quot;width:100%&quot;&gt;  
-      &lt;label style=&quot;width:100%;height:50px;font-family:&#39;微软雅黑&#39;&quot;&gt;  {{item.name}}&lt;/label&gt;  
-    &lt;/view&gt;  
-  &lt;/scroll-view&gt;  
-&lt;/view&gt;   
+<h5 id="toc_1">在app.wxss全局样式文件中，引入wxParse的样式表如:</h5>
 
+<pre><code>@import&quot;/wxParse/wxParse.wxss&quot;;
 </code></pre>
 
-<h4 id="toc_1">2.在.js 文件添加网络请求，点击按钮后执行代码如下：</h4>
+<h5 id="toc_2">在所需的JS文件中引入如:</h5>
 
-<pre><code> RequestData: function () {
-    var that = this;
-    wx.request({
-      url: &#39;http://.../serve/api/v1.0/service/communityLst&#39;,
+<pre><code>var WxParse = require(&#39;../../wxParse/wxParse.js&#39;);
 
-      data: {},
-      method: &#39;GET&#39;, 
-      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT 
-      // header: {}, // 设置请求的 header 默认是application/json  
-
-      success: function (res) {  
-        //划重点---&gt;setData 
-        that.setData({ textdata: res.data.query});
-        
-        // 操作json数据 遍历打印数组里name字段数据  
-        for (var i in res.data.query) {
-          console.log(res.data.query[i].name);
-        }
-      },
-      fail: function () {
-        // fail  
-      },
-      complete: function () {
-        // complete  
-      }
-    })
-  },  
+/**
+     * WxParse.wxParse(bindName , type, data, target,imagePadding)
+     * 1.bindName绑定的数据名(必填)
+     * 2.type可以为html或者md(必填)
+     * 3.data为传入的具体数据(必填)
+     * 4.target为Page对象,一般为this(必填)
+     * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
+     */
+     
+    WxParse.wxParse(&#39;content&#39;, &#39;html&#39;, &#39;&lt;h1&gt;我是内容&lt;/h1&gt;&#39;, this, 0);
 </code></pre>
 
-<h4 id="toc_2">3.setData 后页面如下：</h4>
+<h5 id="toc_3">在wxml所需的文件中引入如:</h5>
 
-<p><img src="media/15235164843984/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%882.26.02.png" alt="屏幕快照 2018-04-12 下午2.26.02"/></p>
+<pre><code>&lt;import src=&quot;../../wxParse/wxParse.wxml&quot; /&gt;
+
+&lt;!-- 内容 --&gt;
+&lt;template is=&quot;wxParse&quot; data=&quot;{{wxParseData:content.nodes}}&quot; /&gt;
+</code></pre>
 
 
 		</div>

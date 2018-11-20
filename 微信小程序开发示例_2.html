@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  微信小程序使用示例 - 至尊宝典之备忘录
+  微信小程序开发示例 - 至尊宝典之备忘录
   
   </title>
  <meta name="description" content="">
@@ -68,7 +68,7 @@
 
       
         <li class="divider"></li>
-        <li><label>微信小程序</label></li>
+        <li><label>微信小程序概述</label></li>
 
           
             <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
@@ -102,7 +102,7 @@
 
       
         <li class="divider"></li>
-        <li><label>微信小程序使用示例</label></li>
+        <li><label>微信小程序开发示例</label></li>
 
           
             <li><a title="微信小程序之一：JS操作" href="15419922791377.html">微信小程序之一：JS操作</a></li>
@@ -282,7 +282,7 @@
                         
 
                     
-                      <li class="side-title"><span>微信小程序</span></li>
+                      <li class="side-title"><span>微信小程序概述</span></li>
                         
                           <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
                         
@@ -314,7 +314,7 @@
                         
 
                     
-                      <li class="side-title"><span>微信小程序使用示例</span></li>
+                      <li class="side-title"><span>微信小程序开发示例</span></li>
                         
                           <li><a title="微信小程序之一：JS操作" href="15419922791377.html">微信小程序之一：JS操作</a></li>
                         
@@ -456,86 +456,51 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之八：动画</h1>
+		<h1>微信小程序之三：提示信息</h1>
 
-		<h5 id="toc_0">---wxml文件---</h5>
+		<h5 id="toc_0">Toast提示</h5>
 
-<pre><code>&lt;view class=&#39;lunbo&#39; animation=&quot;{{animationItem}}&quot;
-&lt;/view&gt;
+<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
+ icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
+ 
+ wx.showToast({
+        title: &#39;请输入提示语&#39;,
+        icon: &#39;none&#39;,
+        mask:true,
+        duration: 2000
+      }) 
 </code></pre>
 
-<h5 id="toc_1">---JS文件---</h5>
+<h5 id="toc_1">加载的loading</h5>
 
-<pre><code>  var that = this;
-    //动画样式
-    that.animationItem = wx.createAnimation({
-      duration: 500,
-      timingFunction: &#39;linear&#39;,
-      transformOrigin: &#39;90% 70%&#39;,
-      success: function(res) {}
-    });
-    
-    // 定时器，2S 循环一次
-    that.data.newLunbo_interval = setInterval(function() {
-      //开始动画-缩小
-      that.animationItem.scale3d(0.98, 0.98, 0.1).step();
-      that.setData({
-        animationItem: that.animationItem.export()
-      });
-      //延迟恢复到原来大小
-      setTimeout(function() {
-        that.animationItem.scale3d(1.0, 1.0, 1.0).step();
-        that.setData({
-          animationItem: that.animationItem.export(),
-        });
-      }, 500)
-    }.bind(that), 2000);
+<pre><code>  wx.showLoading({
+      title: &#39;正在加载&#39;,
+      mask: true,
+    })
+   wx.hideLoading();
 </code></pre>
 
-<h5 id="toc_2">清理定时器</h5>
+<h5 id="toc_2">延迟执行</h5>
 
-<pre><code>    clearInterval(this.data.newLunbo_interval);
+<pre><code> setTimeout(function() {
+   wx.hideLoading()
+ }, 1000)
+          
 </code></pre>
 
-<h5 id="toc_3">创建wx.createAnimation参数含义</h5>
+<h5 id="toc_3">弹出窗口提示</h5>
 
-<pre><code>duration            动画持续时间，单位 ms 
-timingFunction      &#39;linear&#39; 动画的效果  
-delay               动画延迟时间，单位 ms 
-transformOrigin     &#39;50% 50% 0&#39;
-</code></pre>
-
-<h5 id="toc_4">timingFunction 的合法值</h5>
-
-<pre><code>&#39;linear&#39;    动画从头到尾的速度是相同的
-&#39;ease&#39;  动画以低速开始，然后加快，在结束前变慢
-&#39;ease-in&#39;   动画以低速开始
-&#39;ease-in-out&#39;   动画以低速开始和结束
-&#39;ease-out&#39;  动画以低速结束
-&#39;step-start&#39;    动画第一帧就跳至结束状态直到结束
-&#39;step-end&#39;  动画一直保持开始状态，最后一帧跳到结束状态
-</code></pre>
-
-<h5 id="toc_5">transformOrigin 的合法值</h5>
-
-<pre><code>transform-origin: x-axis y-axis z-axis;
-
-x-axis  定义视图被置于 X 轴的何处。可能的值：
-    left
-    center
-    right
-    length
-    %
-    
-y-axis  定义视图被置于 Y 轴的何处。可能的值：
-    top
-    center
-    bottom
-    length
-    %
-
-z-axis  定义视图被置于 Z 轴的何处。可能的值：
-    length
+<pre><code>wx.showModal({
+    title: &#39;我是弹窗标题&#39;,
+    content: &#39;佛系弹窗详情内容&#39;,
+    success: function(res) {
+      if (res.confirm) {
+        console.log(&#39;用户点击确定&#39;)
+      } else if (res.cancel) {
+        console.log(&#39;用户点击取消&#39;)
+      }
+    }
+  })   
 </code></pre>
 
 

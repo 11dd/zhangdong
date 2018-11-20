@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  微信小程序使用示例 - 至尊宝典之备忘录
+  微信小程序概述 - 至尊宝典之备忘录
   
   </title>
  <meta name="description" content="">
@@ -68,7 +68,7 @@
 
       
         <li class="divider"></li>
-        <li><label>微信小程序</label></li>
+        <li><label>微信小程序概述</label></li>
 
           
             <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
@@ -102,7 +102,7 @@
 
       
         <li class="divider"></li>
-        <li><label>微信小程序使用示例</label></li>
+        <li><label>微信小程序开发示例</label></li>
 
           
             <li><a title="微信小程序之一：JS操作" href="15419922791377.html">微信小程序之一：JS操作</a></li>
@@ -282,7 +282,7 @@
                         
 
                     
-                      <li class="side-title"><span>微信小程序</span></li>
+                      <li class="side-title"><span>微信小程序概述</span></li>
                         
                           <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
                         
@@ -314,7 +314,7 @@
                         
 
                     
-                      <li class="side-title"><span>微信小程序使用示例</span></li>
+                      <li class="side-title"><span>微信小程序开发示例</span></li>
                         
                           <li><a title="微信小程序之一：JS操作" href="15419922791377.html">微信小程序之一：JS操作</a></li>
                         
@@ -456,36 +456,68 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序TabBar</h1>
+		<h1>微信小程序运营 设计与开发</h1>
 
-		<h4 id="toc_0">创建一个标准小程序空项目</h4>
+		<h4 id="toc_0">项目经理必备</h4>
 
-<h5 id="toc_1">在app.json文件里写入如下代码</h5>
+<p>项目经理必要了解API里面微信开放接口的信息例如：</p>
 
-<pre><code> &quot;tabBar&quot;: {
-    &quot;color&quot;: &quot;#a9b7b7&quot;,
-    &quot;selectedColor&quot;: &quot;#000000&quot;,
-    &quot;list&quot;: [
-      {
-        &quot;selectedIconPath&quot;: &quot;image/home.png&quot;,
-        &quot;iconPath&quot;: &quot;image/home.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/home/home&quot;,
-        &quot;text&quot;: &quot;首页&quot;
-      },
-      {
-        &quot;selectedIconPath&quot;: &quot;image/index.png&quot;,
-        &quot;iconPath&quot;: &quot;image/index.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/index/index&quot;,
-        &quot;text&quot;: &quot;专题&quot;
-      }
-    ]
-  }
-   
-</code></pre>
+<ol>
+<li>登录授权</li>
+<li>获取用户信息</li>
+<li>微信支付</li>
+<li>转发</li>
+<li>收货地址</li>
+<li>生成小程序二维码</li>
+</ol>
 
-<h4 id="toc_2">运行界面 tabbar</h4>
+<p>小程序初期明确是否在运营规范里允许的，或者找一些已有小程序样例</p>
 
-<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%881.41.36.png" alt="屏幕快照 2018-04-12 下午1.41.36"/></p>
+<ul>
+<li>运营规范(在这里查看禁止事项)：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/index.html">https://mp.weixin.qq.com/debug/wxadoc/product/index.html</a></li>
+<li><p>特殊行业所需资质材料：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714</a><br/>
+<img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.46.27.png" alt="屏幕快照 2018-08-08 下午3.46.27"/></p></li>
+<li><p>支付文档：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1</a></p></li>
+<li><p>客服消息：<a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221">https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221</a> </p></li>
+<li><p>数据分析：<a href="https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714</a></p></li>
+</ul>
+
+<hr/>
+
+<h5 id="toc_1">当开始要做一个小程序时，需通读设计指南</h5>
+
+<p>设计指南：<a href="https://mp.weixin.qq.com/debug/wxadoc/design/index.html">https://mp.weixin.qq.com/debug/wxadoc/design/index.html</a></p>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.28.55.png" alt="屏幕快照 2018-04-09 上午11.28.55"/></p>
+
+<h4 id="toc_2">小程序开发人员必备</h4>
+
+<p>入坑指南，疑难问题，请浏览👇<br/>
+小程序社区：<a href="http://www.wxapp-union.com/">http://www.wxapp-union.com/</a></p>
+
+<p>开发者学习已有框架可参考<br/>
+WePY框架开发小程序请移步👇<br/>
+<a href="https://tencent.github.io/wepy/index.html">https://tencent.github.io/wepy/index.html</a></p>
+
+<p>美团一团队出的框架mpvue框架请移步👇<br/>
+<a href="http://mpvue.com/mpvue/#_2">http://mpvue.com/mpvue/#_2</a></p>
+
+<p>weui Github 地址：<br/>
+<a href="https://github.com/Tencent/weui-wxss">https://github.com/Tencent/weui-wxss</a></p>
+
+<hr/>
+
+<h5 id="toc_3">微信开发者工具创建小程序工程需要AppID</h5>
+
+<p>官方工具：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714</a></p>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.21.41.png" alt="屏幕快照 2018-04-09 上午11.21.41"/></p>
+
+<h5 id="toc_4">小程序开发必读项，教程 ，框架 ，组件 ，API , 工具</h5>
+
+<p>简易教程：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/">https://mp.weixin.qq.com/debug/wxadoc/dev/</a></p>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.23.50.png" alt="屏幕快照 2018-04-09 上午11.23.50"/></p>
 
 
 		</div>

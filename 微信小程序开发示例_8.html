@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  微信小程序使用示例 - 至尊宝典之备忘录
+  微信小程序开发示例 - 至尊宝典之备忘录
   
   </title>
  <meta name="description" content="">
@@ -68,7 +68,7 @@
 
       
         <li class="divider"></li>
-        <li><label>微信小程序</label></li>
+        <li><label>微信小程序概述</label></li>
 
           
             <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
@@ -102,7 +102,7 @@
 
       
         <li class="divider"></li>
-        <li><label>微信小程序使用示例</label></li>
+        <li><label>微信小程序开发示例</label></li>
 
           
             <li><a title="微信小程序之一：JS操作" href="15419922791377.html">微信小程序之一：JS操作</a></li>
@@ -282,7 +282,7 @@
                         
 
                     
-                      <li class="side-title"><span>微信小程序</span></li>
+                      <li class="side-title"><span>微信小程序概述</span></li>
                         
                           <li><a title="微信小程序开发规范" href="15416465825836.html">微信小程序开发规范</a></li>
                         
@@ -314,7 +314,7 @@
                         
 
                     
-                      <li class="side-title"><span>微信小程序使用示例</span></li>
+                      <li class="side-title"><span>微信小程序开发示例</span></li>
                         
                           <li><a title="微信小程序之一：JS操作" href="15419922791377.html">微信小程序之一：JS操作</a></li>
                         
@@ -456,82 +456,43 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序View的布局</h1>
+		<h1>微信小程序之九：生成二维码</h1>
 
-		<pre><code>小程序 View 支持两种布局方式：Block 和 Flex
-所有 View 默认都是 block
-要使用 flex 布局的话需要显式的声明：
+		<p>首先使用PostMan发起GET请求：</p>
 
-display:flex;
-</code></pre>
+<pre><code>https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=这里填写小程序appid&amp;secret=这里填写小程序secret
 
-<h5 id="toc_0">接下来便可以在view 的wxss里尝试如下属性：</h5>
-
-<pre><code>例如：
-//使用 flex 布局
-display: flex;
-
-.hengxiangClass {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.shuxiangClass {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-</code></pre>
-
-<p>横向布局or竖向布局=&gt;设置属性 flex-direction</p>
-
-<pre><code>flex-direction: row;
+返回参数：
 {
-row：从左到右的水平方向为主轴
-row-reverse：从右到左的水平方向为主轴
-column：从上到下的垂直方向为主轴
-column-reverse：从下到上的垂直方向为主轴
+    &quot;access_token&quot;: &quot;&quot;,
+    &quot;expires_in&quot;: 7200
 }
 </code></pre>
 
-<p>设置元素在横向上的布局方向，需要设置 justify-content 属性</p>
+<p>其次发起POST请求：</p>
 
-<pre><code>justify-content: space-around;
+<pre><code>https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=这里填写上一个接口返回的token
+
+Body中选择raw写入参数，例如
 {
-flex-start：主轴起点对齐(默认值)  
-flex-end：主轴结束点对齐  
-center：在主轴中居中对齐  
-space-between：两端对齐，除了两端的子元素分别靠向两端的容器之外，其他子元素之间的间隔都相等  
-space-around：每个子元素之间的距离相等，两端的子元素距离容器的距离也和其它子元素之间的距离相同  
+    &quot;page&quot;:&quot;pages/lengxiangui/coldfresh_index/coldfresh_index&quot;,
+    &quot;scene&quot;:&quot;1&quot;
 }
+注：场景值 scene 不得超过32位字符，并且上线已有的页面才能生成二维码
 </code></pre>
 
-<p>设置元素在纵向上的布局方向，需要设置 align-items 属性</p>
+<p><img src="media/15426946934140/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-20%20%E4%B8%8B%E5%8D%882.35.02.png" alt="屏幕快照 2018-11-20 下午2.35.02"/></p>
 
-<pre><code>align-items: center;
-{
-stretch 填充整个容器(默认值)
-flex-start 侧轴的起点对齐
-flex-end 侧轴的终点对齐
-center 在侧轴中居中对齐
-baseline 以子元素的第一行文字对齐
+<p>微信扫码进入小程序指定的页面中需要接收场景值scene</p>
+
+<pre><code>onLoad: function(options) {
+ if (options.scene) {
+    // options 中的 scene 需要使用 decodeURIComponent 才能获取到生成二维码时传入的 scene
+    var scene = decodeURIComponent(options.scene)
+    console.log(&#39;打印参数scene---&gt;&#39; + scene)
+  }
 }
 </code></pre>
-
-<p>用于控制子 View 是否换行=&gt;设置flex-wrap 属性</p>
-
-<pre><code>flex-wrap: wrap;
-{
-nowrap：不换行（默认）
-wrap：换行
-wrap-reverse：换行，第一行在最下面
-}
-</code></pre>
-
-<p>转载：<a href="https://blog.csdn.net/weixin_36065510/article/details/73203720">https://blog.csdn.net/weixin_36065510/article/details/73203720</a></p>
 
 
 		</div>
