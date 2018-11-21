@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-11-21T11:40:39+08:00</updated>
+  <updated>2018-11-21T16:21:38+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -214,6 +214,60 @@ Tab 切换      调用 API wx.switchTab
 4.页面底部的 tabBar 由页面决定，即只要是定义为 tabBar 的页面，底部都有 tabBar。
 5.tabBar只能配置最少2个、最多5个 tab
 6.调用页面路由带的参数可以在目标页面的onLoad中获取
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序之三：提示信息]]></title>
+    <link href="www.freefook.com/15326733440349.html"/>
+    <updated>2018-07-27T14:35:44+08:00</updated>
+    <id>www.freefook.com/15326733440349.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">Toast提示</h5>
+
+<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
+ icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
+ 
+ wx.showToast({
+        title: &#39;请输入提示语&#39;,
+        icon: &#39;none&#39;,
+        mask:true,
+        duration: 2000
+      }) 
+</code></pre>
+
+<h5 id="toc_1">加载的loading</h5>
+
+<pre><code>  wx.showLoading({
+      title: &#39;正在加载&#39;,
+      mask: true,
+    })
+   wx.hideLoading();
+</code></pre>
+
+<h5 id="toc_2">延迟执行</h5>
+
+<pre><code> setTimeout(function() {
+   wx.hideLoading()
+ }, 1000)
+          
+</code></pre>
+
+<h5 id="toc_3">弹出窗口提示</h5>
+
+<pre><code>wx.showModal({
+    title: &#39;我是弹窗标题&#39;,
+    content: &#39;佛系弹窗详情内容&#39;,
+    success: function(res) {
+      if (res.confirm) {
+        console.log(&#39;用户点击确定&#39;)
+      } else if (res.cancel) {
+        console.log(&#39;用户点击取消&#39;)
+      }
+    }
+  })   
 </code></pre>
 
 ]]></content>
@@ -503,60 +557,6 @@ Path Autocomplete ：文件自动路径提示</p>
 
 <p>VS Color Picker ：color: #fff 自动提示<br/>
 Import Cost ： 引入包大小计算,对于项目打包后体积掌握很有帮助</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序之三：提示信息]]></title>
-    <link href="www.freefook.com/15326733440349.html"/>
-    <updated>2018-07-27T14:35:44+08:00</updated>
-    <id>www.freefook.com/15326733440349.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">Toast提示</h5>
-
-<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
- icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
- 
- wx.showToast({
-        title: &#39;请输入提示语&#39;,
-        icon: &#39;none&#39;,
-        mask:true,
-        duration: 2000
-      }) 
-</code></pre>
-
-<h5 id="toc_1">加载的loading</h5>
-
-<pre><code>  wx.showLoading({
-      title: &#39;正在加载&#39;,
-      mask: true,
-    })
-   wx.hideLoading();
-</code></pre>
-
-<h5 id="toc_2">延迟执行</h5>
-
-<pre><code> setTimeout(function() {
-   wx.hideLoading()
- }, 1000)
-          
-</code></pre>
-
-<h5 id="toc_3">弹出窗口提示</h5>
-
-<pre><code>wx.showModal({
-    title: &#39;我是弹窗标题&#39;,
-    content: &#39;佛系弹窗详情内容&#39;,
-    success: function(res) {
-      if (res.confirm) {
-        console.log(&#39;用户点击确定&#39;)
-      } else if (res.cancel) {
-        console.log(&#39;用户点击取消&#39;)
-      }
-    }
-  })   
-</code></pre>
 
 ]]></content>
   </entry>
@@ -1003,6 +1003,71 @@ y-axis  定义视图被置于 Y 轴的何处。可能的值：
 z-axis  定义视图被置于 Z 轴的何处。可能的值：
     length
 </code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序之九：二维码]]></title>
+    <link href="www.freefook.com/15426946934140.html"/>
+    <updated>2018-11-20T14:18:13+08:00</updated>
+    <id>www.freefook.com/15426946934140.html</id>
+    <content type="html"><![CDATA[
+<pre><code>获取小程序二维码，官方提供了三个接口，开发者可挑选适合自己的接口。 
+ A接口，生成小程序码，可接受path参数较长，生成个数受限。
+  B接口，生成小程序码，可接受页面参数较短，生成个数不受限。
+   C接口，生成二维码，可接受path参数较长，生成个数受限。
+</code></pre>
+
+<pre><code>接口A: 适用于需要的码数量较少的业务场景
+通过该接口生成的小程序码，永久有效
+
+接口C：适用于需要的码数量较少的业务场景
+通过该接口生成的小程序二维码，永久有效，数量限制
+
+数量限制接口A加上接口C，总共生成的码数量限制为100,000
+
+接口B：适用于需要的码数量极多的业务场景
+
+通过接口B生成的小程序码，永久有效，数量暂无限制。
+可以带参数最大32个可见字符，只支持数字，大小写英文
+以及部分特殊字符：!#$&amp;&#39;()*+,/:;=?@-._~，
+其它字符请自行编码为合法字符（
+因不支持%，中文无法使用 urlencode 处理，请使用其他编码方式）
+
+B接口调用分钟频率受限(目前5000次/分钟)
+</code></pre>
+
+<h4 id="toc_0">首先</h4>
+
+<p>因为接口B不受数量限制，我们使用接口B生成小程序二维码<br/>
+ 使用PostMan发起GET请求获取access_token：<br/>
+ 官方文档 ：<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183">https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183</a></p>
+
+<pre><code>https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=这里填写小程序appid&amp;secret=这里填写小程序secret
+
+返回参数：
+{
+    &quot;access_token&quot;: &quot;&quot;,
+    &quot;expires_in&quot;: 7200
+}
+</code></pre>
+
+<h4 id="toc_1">其次</h4>
+
+<p>发起POST请求：</p>
+
+<pre><code>https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=这里填写上一个接口返回的token
+
+Body中选择raw写入参数，例如
+{
+    &quot;page&quot;:&quot;pages/lengxiangui/coldfresh_index/coldfresh_index&quot;,
+    &quot;scene&quot;:&quot;1&quot;
+}
+注：场景值 scene 不得超过32位字符，并且上线已有的页面才能生成二维码
+</code></pre>
+
+<p><img src="media/15426946934140/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-20%20%E4%B8%8B%E5%8D%882.35.02.png" alt="屏幕快照 2018-11-20 下午2.35.02"/></p>
 
 ]]></content>
   </entry>
@@ -1596,76 +1661,6 @@ wx.clearStorageSync 清理本地数据缓存
 wx.chooseLocation   打开地图选择位置
 wx.openLocation 打开内置地图
 wx.createMapContext 地图组件控制
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序机制]]></title>
-    <link href="www.freefook.com/15287848933165.html"/>
-    <updated>2018-06-12T14:28:13+08:00</updated>
-    <id>www.freefook.com/15287848933165.html</id>
-    <content type="html"><![CDATA[
-<p>微信客户端在打开小程序之前，会把整个小程序的代码包下载到本地。</p>
-
-<h4 id="toc_0">小程序未发布时有权限-需添加用户身份</h4>
-
-<pre><code>管理入口位于：小程序管理后台 - 用户身份 – 成员管理
-
-一个团队进行小程序的开发，那么团队成员的身份管理是很有必要的。
-管理员可在小程序管理后台统一管理项目成员（
-包括开发者、体验者及其他成员）、
-设置项目成员的权限，包括：开发者/体验者权限、登录小程序管理后台、开发管理、查看小程序数据分析等。
-管理入口位于：小程序管理后台 - 用户身份 – 成员管理
-</code></pre>
-
-<h4 id="toc_1">小程序运行机制</h4>
-
-<pre><code>热启动
- 小程序启动会有两种情况，一种是「冷启动」，一种是「热启动」。
- 假如用户已经打开过某小程序，然后在一定时间内再次打开该小程序，
- 此时无需重新启动，只需将后台态的小程序切换到前台，
-冷启动
- 冷启动指的是用户首次打开或小程序被微信主动销毁后再次打开的情况，
- 此时小程序需要重新加载启动。
-
- 当小程序进入后台，客户端会维持一段时间的运行状态，超过一定时间后
- （目前是5分钟）会被微信主动销毁
- 当短时间内（5s）连续收到两次以上收到系统内存告警，会进行小程序的销毁
-</code></pre>
-
-<pre><code>小程序启动进入程序紧接着通过 
-app.json 的 pages 字段就可以知道你当前小程序的所有页面路径:
-默认启动app.json 的 pages 字段的第一个页面就是这个小程序的首页
-(打开小程序看到的第一个页面)。
-</code></pre>
-
-<p><img src="media/15287848933165/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.05.53.png" alt="屏幕快照 2018-08-08 下午3.05.53"/></p>
-
-<h4 id="toc_2">小程序更新机制</h4>
-
-<pre><code>小程序冷启动时如果发现有新版本，将会异步下载新版本的代码包，
-并同时用客户端本地的包进行启动，
-即新版本的小程序需要等下一次冷启动才会应用上。 
-如果需要马上应用最新版本，
-可以使用 wx.getUpdateManager API 进行处理。
-</code></pre>
-
-<h4 id="toc_3">小程序代码包大小的优化</h4>
-
-<pre><code>小程序一开始时代码包限制为 1MB，但我们收到了很多反馈说代码包大小不够用，
-经过评估后我们放开了这个限制，增加到 2MB 。
-代码包上限的增加对于开发者来说，能够实现更丰富的功能，
-但对于用户来说，也增加了下载流量和本地空间的占用。
-
-分包加载
-
-目前小程序分包大小有以下限制：
- •  整个小程序所有分包大小不超过 8M
- •  单个分包/主包大小不能超过 2M
-对小程序进行分包，可以优化小程序首次启动的下载时间，
-以及在多团队共同开发时可以更好的解耦协作。
 </code></pre>
 
 ]]></content>

@@ -89,7 +89,7 @@
           
             <li><a title="微信小程序开发配置介绍" href="15325981038081.html">微信小程序开发配置介绍</a></li>
           
-            <li><a title="微信小程序之消息模板" href="15336330410298.html">微信小程序之消息模板</a></li>
+            <li><a title="微信小程序之服务通知" href="15336330410298.html">微信小程序之服务通知</a></li>
           
             <li><a title="微信小程序之数据统计与分析" href="15363043648238.html">微信小程序之数据统计与分析</a></li>
           
@@ -302,7 +302,7 @@
                         
                           <li><a title="微信小程序开发配置介绍" href="15325981038081.html">微信小程序开发配置介绍</a></li>
                         
-                          <li><a title="微信小程序之消息模板" href="15336330410298.html">微信小程序之消息模板</a></li>
+                          <li><a title="微信小程序之服务通知" href="15336330410298.html">微信小程序之服务通知</a></li>
                         
                           <li><a title="微信小程序之数据统计与分析" href="15363043648238.html">微信小程序之数据统计与分析</a></li>
                         
@@ -456,52 +456,40 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之三：提示信息</h1>
+		<h1>VSCode 前端常用插件推荐</h1>
 
-		<h5 id="toc_0">Toast提示</h5>
+		<h4 id="toc_0">通用插件</h4>
 
-<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
- icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
- 
- wx.showToast({
-        title: &#39;请输入提示语&#39;,
-        icon: &#39;none&#39;,
-        mask:true,
-        duration: 2000
-      }) 
-</code></pre>
+<p>HTML Snippets ：超级实用且初级的 H5代码片段以及提示<br/>
+HTML CSS Support ：让 html 标签上写class 智能提示当前项目所支持的样式</p>
 
-<h5 id="toc_1">加载的loading</h5>
+<p>Path Intellisense ： 自动路径补全</p>
 
-<pre><code>  wx.showLoading({
-      title: &#39;正在加载&#39;,
-      mask: true,
-    })
-   wx.hideLoading();
-</code></pre>
+<p>Project Manager ： 在多个项目之前快速切换的工具<br/>
+vscode-icon ： 让 vscode 资源树目录加上图标<br/>
+beautify ： 格式化代码的工具</p>
 
-<h5 id="toc_2">延迟执行</h5>
+<h4 id="toc_1">Vue推荐插件</h4>
 
-<pre><code> setTimeout(function() {
-   wx.hideLoading()
- }, 1000)
-          
-</code></pre>
+<p>vetur ： 语法高亮、智能感知、Emmet等</p>
 
-<h5 id="toc_3">弹出窗口提示</h5>
+<p>VueHelper ： snippet代码片段<br/>
+Vue 2 Snippets ：vue快捷键提示</p>
 
-<pre><code>wx.showModal({
-    title: &#39;我是弹窗标题&#39;,
-    content: &#39;佛系弹窗详情内容&#39;,
-    success: function(res) {
-      if (res.confirm) {
-        console.log(&#39;用户点击确定&#39;)
-      } else if (res.cancel) {
-        console.log(&#39;用户点击取消&#39;)
-      }
-    }
-  })   
-</code></pre>
+<p>Auto Close Tag ： 自动补全html标签<br/>
+Auto Rename Tag ：同步更改html尾标签</p>
+
+<p>ESLint ：ESlint语法提示<br/>
+JavaScript (ES6) snippets ：ES6语法快捷键支持</p>
+
+<p>Stylus ：主要支持vue文件下stylus CSS语法提示<br/>
+language-stylus ：stylus语法提示</p>
+
+<p>File Peek ： 文件路径跳转<br/>
+Path Autocomplete ：文件自动路径提示</p>
+
+<p>VS Color Picker ：color: #fff 自动提示<br/>
+Import Cost ： 引入包大小计算,对于项目打包后体积掌握很有帮助</p>
 
 
 		</div>

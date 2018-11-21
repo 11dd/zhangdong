@@ -89,7 +89,7 @@
           
             <li><a title="微信小程序开发配置介绍" href="15325981038081.html">微信小程序开发配置介绍</a></li>
           
-            <li><a title="微信小程序之消息模板" href="15336330410298.html">微信小程序之消息模板</a></li>
+            <li><a title="微信小程序之服务通知" href="15336330410298.html">微信小程序之服务通知</a></li>
           
             <li><a title="微信小程序之数据统计与分析" href="15363043648238.html">微信小程序之数据统计与分析</a></li>
           
@@ -302,7 +302,7 @@
                         
                           <li><a title="微信小程序开发配置介绍" href="15325981038081.html">微信小程序开发配置介绍</a></li>
                         
-                          <li><a title="微信小程序之消息模板" href="15336330410298.html">微信小程序之消息模板</a></li>
+                          <li><a title="微信小程序之服务通知" href="15336330410298.html">微信小程序之服务通知</a></li>
                         
                           <li><a title="微信小程序之数据统计与分析" href="15363043648238.html">微信小程序之数据统计与分析</a></li>
                         
@@ -456,179 +456,51 @@
 
 	
 		<div class="markdown-body">
-		<h1>Mac下的Vue环境搭建</h1>
+		<h1>微信小程序之三：提示信息</h1>
 
-		<p>官网地址：<a href="https://vuejs.org/">https://vuejs.org/</a></p>
+		<h5 id="toc_0">Toast提示</h5>
 
-<h4 id="toc_0">安装清单：</h4>
-
-<ul>
-<li><strong>Homebrew：</strong>  Mac系统下的包管理器</li>
-<li><strong>Node.js:</strong>    JavaScript运行环境(runtime)</li>
-<li><strong>npm:</strong>        Nodejs下的包管理器</li>
-<li><strong>webpack:</strong>    Vue的组件是通过 .vue自定义的组件，需要打包成 .js文件</li>
-<li><strong>Vue-cli:</strong>    用来生成模板的Vue工程</li>
-</ul>
-
-<h5 id="toc_1">打开Mac下的终端</h5>
-
-<h4 id="toc_2">安装Homebrew</h4>
-
-<pre><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-
-安装成功后查看一下版本信息输入: brew -v
+<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
+ icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
+ 
+ wx.showToast({
+        title: &#39;请输入提示语&#39;,
+        icon: &#39;none&#39;,
+        mask:true,
+        duration: 2000
+      }) 
 </code></pre>
 
-<h4 id="toc_3">安装Node.js</h4>
+<h5 id="toc_1">加载的loading</h5>
 
-<pre><code>brew install nodejs
-
-也可以下载后安装,下载地址：https://nodejs.org/en/download/
-
-安装成功后查看一下版本信息输入: node -v
+<pre><code>  wx.showLoading({
+      title: &#39;正在加载&#39;,
+      mask: true,
+    })
+   wx.hideLoading();
 </code></pre>
 
-<h4 id="toc_4">获取Nodejs安装目录访问权限</h4>
+<h5 id="toc_2">延迟执行</h5>
 
-<pre><code>sudo chmod -R 777 /usr/local/lib/node_modules/
+<pre><code> setTimeout(function() {
+   wx.hideLoading()
+ }, 1000)
+          
 </code></pre>
 
-<h4 id="toc_5">安装npm (淘宝镜像)</h4>
+<h5 id="toc_3">弹出窗口提示</h5>
 
-<pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
-
-按回车执行，就可以用淘宝团队定制的cnpm代替默认的npm了
-cnpm跟npm用法完全一致，只是在执行命令时将npm改为cnpm
-
-npm安装插件是从官网http://registry.npmjs.org下载对应的插件包
-该网站服务器位于国外，所以经常下载缓慢或出现异常
-阿里巴巴的淘宝团队,把npm官网的插件都同步到了中国的服务器
-</code></pre>
-
-<h4 id="toc_6">安装webpack</h4>
-
-<pre><code>cnpm install webpack -g
-</code></pre>
-
-<h4 id="toc_7">全局安装vue脚手架 vue-cli@2</h4>
-
-<pre><code>cnpm install vue-cli -g
-</code></pre>
-
-<h4 id="toc_8">分道扬镳之一</h4>
-
-<h4 id="toc_9">创建一个vue的项目代码</h4>
-
-<pre><code>执行命令1. cd  路径(想把项目创建在哪个文件夹下面)
-
-vue-cli@2的初始化方式命令如下：
-执行命令2. vue init webpack-simple demo1&lt;工程名字不能用中文,不要用大写&gt;
-
-也可执行命令: vue init webpack demo1
-这样会询问我们是否安装一些Vue依赖模块，也可以简单(webpack-simple)创建完项目,
-需要的其他模块单独安装
-</code></pre>
-
-<p>当出现如下信息时，vue init已执行完毕</p>
-
-<pre><code>To get started:
-   cd firstVueProject(你创建的工程文件名)
-   npm install
-   npm run dev 
-</code></pre>
-
-<pre><code>依次执行命令：
-执行命令3. cd firstVueProject(你创建的工程文件名)
-执行命令4. cnpm install (可一路回车Enter)
-</code></pre>
-
-<pre><code>单独安装模块: 可安装(或不安装) 
-vue 路由模块vue-router
-网络请求模块vue-resource
-其他模块可继续加在一起执行命令：
-cnpm install vue-router vue-resource --save-dev
-
-启动项目
-执行命令5. cnpm run dev
-
-至此结束
-</code></pre>
-
-<h4 id="toc_10">打开项目</h4>
-
-<pre><code>cd 项目地址
-cnpm install
-cnpm run dev
-
-如果npm 报错,尝试
-1. cnpm cache clean --force
-2. rm -rf node_modules folder
-3. cnpm install
-4. cnpm run dev
-</code></pre>
-
-<h4 id="toc_11">注解</h4>
-
-<pre><code>1. npm 开启了npm run dev以后怎么退出或关闭？
-ctrl+c
-
-2. --save-dev
-自动把模块和版本号添加到模块配置文件package.json中的依赖里devdependencies部分
-
-3. --save-dev 与 --save 的区别
---save     安装包信息将加入到dependencies（生产阶段的依赖）
---save-dev 安装包信息将加入到devDependencies（开发阶段的依赖），所以开发阶段一般使用它
-
-4. 在项目开发完成之后，可以输入 npm run build 来进行打包工作
-</code></pre>
-
-<h4 id="toc_12">分道扬镳之二</h4>
-
-<h4 id="toc_13">创建一个基于mpvue的小程序项目代码</h4>
-
-<pre><code>执行命令1. cd  路径(想把项目创建在哪个文件夹下面)
-
-执行命令2. vue init mpvue/mpvue-quickstart firstVueProject(不要使用中文)
-</code></pre>
-
-<p>接下来是项目的一些配置信息，可一路回车Enter<br/>
-当出现如下信息，模板代码已经下载结束</p>
-
-<pre><code>Vue-cli . Generated &quot;firstVueProject(你创建的工程文件名)&quot; .
-To get started:
-   cd firstVueProject(你创建的工程文件名)
-   npm install
-   npm run dev 
-Documentation can be found at http://mpvue.com
-</code></pre>
-
-<p>这时代码还缺少依赖库，继续执行</p>
-
-<pre><code>执行命令3. cd firstVueProject(你创建的工程文件名)
-执行命令4. cnpm install
-</code></pre>
-
-<h6 id="toc_14">cnpm install过程中---可能会出现npm update check failed</h6>
-
-<pre><code>因为文件夹的权限问题导致的，执行如下命令:
-sudo chown -R $USER:$(id -gn $USER) /home/{username}/.config
-</code></pre>
-
-<h6 id="toc_15">cnpm install过程中---可能会出现类似警告</h6>
-
-<pre><code>npm WARN vue-loader@15.2.4 requires a peer of css-loader@* but none is installed. You must install peer dependencies yourself.
-npm WARN vue-loader@15.2.4 requires a peer of vue-template-compiler@^2.0.0 but none is installed. You must install peer dependencies yourself.
-</code></pre>
-
-<p>需要安装css-loader 和vue-template-compiler</p>
-
-<pre><code>执行如下命令:
-cnpm i css-loader vue-template-compiler
-</code></pre>
-
-<p>终于到了最后，让这个代码运行起来，进入开发模式，执行命令：</p>
-
-<pre><code>cnpm run dev
+<pre><code>wx.showModal({
+    title: &#39;我是弹窗标题&#39;,
+    content: &#39;佛系弹窗详情内容&#39;,
+    success: function(res) {
+      if (res.confirm) {
+        console.log(&#39;用户点击确定&#39;)
+      } else if (res.cancel) {
+        console.log(&#39;用户点击取消&#39;)
+      }
+    }
+  })   
 </code></pre>
 
 
