@@ -91,8 +91,6 @@
           
             <li><a title="微信小程序之消息模板" href="15336330410298.html">微信小程序之消息模板</a></li>
           
-            <li><a title="微信小程序之分享" href="15416694568904.html">微信小程序之分享</a></li>
-          
             <li><a title="微信小程序之数据统计与分析" href="15363043648238.html">微信小程序之数据统计与分析</a></li>
           
             <li><a title="微信直播类小程序" href="15344710120047.html">微信直播类小程序</a></li>
@@ -121,7 +119,9 @@
           
             <li><a title="微信小程序之八：动画" href="15419945000025.html">微信小程序之八：动画</a></li>
           
-            <li><a title="微信小程序之九：生成二维码" href="15426946934140.html">微信小程序之九：生成二维码</a></li>
+            <li><a title="微信小程序之九：二维码" href="15426946934140.html">微信小程序之九：二维码</a></li>
+          
+            <li><a title="微信小程序之十：分享" href="15427653318773.html">微信小程序之十：分享</a></li>
           
             <li><a title="微信小程序TabBar" href="15235114845539.html">微信小程序TabBar</a></li>
           
@@ -304,8 +304,6 @@
                         
                           <li><a title="微信小程序之消息模板" href="15336330410298.html">微信小程序之消息模板</a></li>
                         
-                          <li><a title="微信小程序之分享" href="15416694568904.html">微信小程序之分享</a></li>
-                        
                           <li><a title="微信小程序之数据统计与分析" href="15363043648238.html">微信小程序之数据统计与分析</a></li>
                         
                           <li><a title="微信直播类小程序" href="15344710120047.html">微信直播类小程序</a></li>
@@ -332,7 +330,9 @@
                         
                           <li><a title="微信小程序之八：动画" href="15419945000025.html">微信小程序之八：动画</a></li>
                         
-                          <li><a title="微信小程序之九：生成二维码" href="15426946934140.html">微信小程序之九：生成二维码</a></li>
+                          <li><a title="微信小程序之九：二维码" href="15426946934140.html">微信小程序之九：二维码</a></li>
+                        
+                          <li><a title="微信小程序之十：分享" href="15427653318773.html">微信小程序之十：分享</a></li>
                         
                           <li><a title="微信小程序TabBar" href="15235114845539.html">微信小程序TabBar</a></li>
                         
@@ -456,70 +456,80 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS审核被拒4.3</h1>
+		<h1>微信平台与微信小程序</h1>
 
-		<h5 id="toc_0">一种是过不了机审关被拒，一种是过不了人审关被拒。</h5>
+		<h5 id="toc_0">微信平台有哪些？</h5>
 
-<pre><code>iOS预审核，扫描api，及plist文件字符缺失等；
-此处分两步，第一步为上传时苹果Application Loador等应用对于适配icon等的检查，
-第二步为上传后苹果的功能性检查，例如配置了Push功能但有缺失
-或者未打开功能，则会邮件提示等等；
+<p>微信公众平台：<br/>
+<a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a></p>
 
-iOS机审，主要是对代码进行机器审核，排查APP是否重复应用，此处扫描支付SDK等，及马甲情况，机器扫描主要看代码块
+<p>微信支付的商户平台：<br/>
+<a href="https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F">https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F</a><br/>
+注：小程序里支付只能用小程序支付方式，必须和小程序里开通的支付的商户一致；</p>
 
-iOS人审，主要是由苹果审核人员对APP的内容、功能进行核验，防止APP有bug，
-防止APP模仿其他应用，内容与其他APP重复，影响用户体验，
-检测功能或者App体验测试，例如用测试账号登录App体验功能，
-或其他是否明显bug等，ipv6也在此处检测；
+<p>支付接口文档<br/>
+<a href="https://pay.weixin.qq.com/wiki/doc/api/index.html">https://pay.weixin.qq.com/wiki/doc/api/index.html</a></p>
 
+<p>微信开放平台<br/>
+<a href="https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN">https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN</a></p>
+
+<p>微信开发者平台：<br/>
+<a href="http://weixin.qq.com/">http://weixin.qq.com/</a></p>
+
+<p>微信硬件平台：<br/>
+<a href="https://iot.weixin.qq.com/">https://iot.weixin.qq.com/</a></p>
+
+<p>腾讯的广告平台：<br/>
+<a href="http://e.qq.com/ads/">http://e.qq.com/ads/</a></p>
+
+<p>腾讯开放平台：<br/>
+<a href="http://open.tencent.com/">http://open.tencent.com/</a></p>
+
+<h5 id="toc_1">腾讯自家小程序全家桶</h5>
+
+<pre><code>小程序示例   第一个小程序
+小程序开发助手
+小程序数据助手
+小游戏数据助手
+公众平台助手
+微信发票助手
+王卡申请助手
+
+QQ游戏
+腾讯爱玩
+全民大乐斗
+企鹅电竞+
+腾讯动漫+
+
+腾讯+  产品体验官
+腾讯网
+腾讯文档
+腾讯企业邮箱
+
+腾讯云助手
+腾讯视频云
+腾讯AI体验中心
+腾讯云AI体验中心
+腾讯优图AI开发平台
 </code></pre>
 
-<h5 id="toc_1">区分机审 、人审</h5>
+<h5 id="toc_2">其他特色小程序</h5>
 
-<pre><code>那么如何区分是机器审核还是人工审核呢？主要看APP被拒的信息：
+<pre><code>摩拜单车： 接入是小程序线下落地的一次大的尝试
+KFC，麦当劳： 点餐实用型的线下场景
+家乐福中国：小程序有优惠
+沃尔玛：小程序可自助结账
 
-1）如果是机器审核被拒，一般收到的被拒信息第一句话基本上是这样的：
-Guideline4.3 - Design - Spam
-Yourapp duplicates the content and functionality of apps submitted to the AppStore,
- which is considered a form of spam.
+一时风靡的答题类，头脑王者
 
-2）如果是人工审核被拒，一般收到的被拒信息第一句话基本上是这样的：
-Guideline4.3 - Design - Spam
-Wefound that your app provides the same feature set as other apps submitted tothe App Store, 
-which is not appropriate to the App Store.
-</code></pre>
+青芒杂志
+一条视频
+毒蛇电影社区
 
-<h5 id="toc_2">针对审核</h5>
-
-<pre><code>1.原来账号里的APP的名字可以作废掉或者修改成其他的，
-同时记得移除之前的APP，重新打个空包传上去，
-icon图则用其他logo图置换掉
-
-2.增加登录日志
-
-3.主要的方法是添加垃圾代码，且代码的相似程度不高于45%，
-  混淆工程地址：https://github.com/klaus01/KLGenerateSpamCode
-
-4.工程中的文件夹的名字全部进行修改，类名修改，方法名修改
-
-5.资源图片替换修改，适当添加一些无用的资源 
-
-6.API名称，机扫二进制文件，也会对比API
-
-7.换开发者账号，换不同账号提交审核
-
-8.换 bundle id，换一个包再提交审核；
-
-9. 一定要关注名字,icon,启动图;修改UI风格同时进行假页面的添加;
-
-10.升级 version，升级一个版本号提交审核
-
-11.修改产品分类
-
-12.还需要注意相同的马甲包提交至少要间隔一天以上。
-
-13.定期换电脑提包.换电脑的序列号.换VPN环境.定期换域名. 
-
+企鹅电竞+
+斗鱼直播
+虎牙直播
+YY直播+
 </code></pre>
 
 

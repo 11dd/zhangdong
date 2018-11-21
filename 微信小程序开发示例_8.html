@@ -91,8 +91,6 @@
           
             <li><a title="微信小程序之消息模板" href="15336330410298.html">微信小程序之消息模板</a></li>
           
-            <li><a title="微信小程序之分享" href="15416694568904.html">微信小程序之分享</a></li>
-          
             <li><a title="微信小程序之数据统计与分析" href="15363043648238.html">微信小程序之数据统计与分析</a></li>
           
             <li><a title="微信直播类小程序" href="15344710120047.html">微信直播类小程序</a></li>
@@ -121,7 +119,9 @@
           
             <li><a title="微信小程序之八：动画" href="15419945000025.html">微信小程序之八：动画</a></li>
           
-            <li><a title="微信小程序之九：生成二维码" href="15426946934140.html">微信小程序之九：生成二维码</a></li>
+            <li><a title="微信小程序之九：二维码" href="15426946934140.html">微信小程序之九：二维码</a></li>
+          
+            <li><a title="微信小程序之十：分享" href="15427653318773.html">微信小程序之十：分享</a></li>
           
             <li><a title="微信小程序TabBar" href="15235114845539.html">微信小程序TabBar</a></li>
           
@@ -304,8 +304,6 @@
                         
                           <li><a title="微信小程序之消息模板" href="15336330410298.html">微信小程序之消息模板</a></li>
                         
-                          <li><a title="微信小程序之分享" href="15416694568904.html">微信小程序之分享</a></li>
-                        
                           <li><a title="微信小程序之数据统计与分析" href="15363043648238.html">微信小程序之数据统计与分析</a></li>
                         
                           <li><a title="微信直播类小程序" href="15344710120047.html">微信直播类小程序</a></li>
@@ -332,7 +330,9 @@
                         
                           <li><a title="微信小程序之八：动画" href="15419945000025.html">微信小程序之八：动画</a></li>
                         
-                          <li><a title="微信小程序之九：生成二维码" href="15426946934140.html">微信小程序之九：生成二维码</a></li>
+                          <li><a title="微信小程序之九：二维码" href="15426946934140.html">微信小程序之九：二维码</a></li>
+                        
+                          <li><a title="微信小程序之十：分享" href="15427653318773.html">微信小程序之十：分享</a></li>
                         
                           <li><a title="微信小程序TabBar" href="15235114845539.html">微信小程序TabBar</a></li>
                         
@@ -456,9 +456,38 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之九：生成二维码</h1>
+		<h1>微信小程序之九：二维码</h1>
 
-		<p>首先使用PostMan发起GET请求：</p>
+		<pre><code>获取小程序二维码，官方提供了三个接口，开发者可挑选适合自己的接口。 
+ A接口，生成小程序码，可接受path参数较长，生成个数受限。
+  B接口，生成小程序码，可接受页面参数较短，生成个数不受限。
+   C接口，生成二维码，可接受path参数较长，生成个数受限。
+</code></pre>
+
+<pre><code>接口A: 适用于需要的码数量较少的业务场景
+通过该接口生成的小程序码，永久有效
+
+接口C：适用于需要的码数量较少的业务场景
+通过该接口生成的小程序二维码，永久有效，数量限制
+
+数量限制接口A加上接口C，总共生成的码数量限制为100,000
+
+接口B：适用于需要的码数量极多的业务场景
+
+通过接口B生成的小程序码，永久有效，数量暂无限制。
+可以带参数最大32个可见字符，只支持数字，大小写英文
+以及部分特殊字符：!#$&amp;&#39;()*+,/:;=?@-._~，
+其它字符请自行编码为合法字符（
+因不支持%，中文无法使用 urlencode 处理，请使用其他编码方式）
+
+B接口调用分钟频率受限(目前5000次/分钟)
+</code></pre>
+
+<h4 id="toc_0">首先</h4>
+
+<p>因为接口B不受数量限制，我们使用接口B生成小程序二维码<br/>
+ 使用PostMan发起GET请求获取access_token：<br/>
+ 官方文档 ：<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183">https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183</a></p>
 
 <pre><code>https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=这里填写小程序appid&amp;secret=这里填写小程序secret
 
@@ -469,7 +498,9 @@
 }
 </code></pre>
 
-<p>其次发起POST请求：</p>
+<h4 id="toc_1">其次</h4>
+
+<p>发起POST请求：</p>
 
 <pre><code>https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=这里填写上一个接口返回的token
 
@@ -482,17 +513,6 @@ Body中选择raw写入参数，例如
 </code></pre>
 
 <p><img src="media/15426946934140/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-20%20%E4%B8%8B%E5%8D%882.35.02.png" alt="屏幕快照 2018-11-20 下午2.35.02"/></p>
-
-<p>微信扫码进入小程序指定的页面中需要接收场景值scene</p>
-
-<pre><code>onLoad: function(options) {
- if (options.scene) {
-    // options 中的 scene 需要使用 decodeURIComponent 才能获取到生成二维码时传入的 scene
-    var scene = decodeURIComponent(options.scene)
-    console.log(&#39;打印参数scene---&gt;&#39; + scene)
-  }
-}
-</code></pre>
 
 
 		</div>

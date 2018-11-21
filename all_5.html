@@ -91,8 +91,6 @@
           
             <li><a title="微信小程序之消息模板" href="15336330410298.html">微信小程序之消息模板</a></li>
           
-            <li><a title="微信小程序之分享" href="15416694568904.html">微信小程序之分享</a></li>
-          
             <li><a title="微信小程序之数据统计与分析" href="15363043648238.html">微信小程序之数据统计与分析</a></li>
           
             <li><a title="微信直播类小程序" href="15344710120047.html">微信直播类小程序</a></li>
@@ -121,7 +119,9 @@
           
             <li><a title="微信小程序之八：动画" href="15419945000025.html">微信小程序之八：动画</a></li>
           
-            <li><a title="微信小程序之九：生成二维码" href="15426946934140.html">微信小程序之九：生成二维码</a></li>
+            <li><a title="微信小程序之九：二维码" href="15426946934140.html">微信小程序之九：二维码</a></li>
+          
+            <li><a title="微信小程序之十：分享" href="15427653318773.html">微信小程序之十：分享</a></li>
           
             <li><a title="微信小程序TabBar" href="15235114845539.html">微信小程序TabBar</a></li>
           
@@ -304,8 +304,6 @@
                         
                           <li><a title="微信小程序之消息模板" href="15336330410298.html">微信小程序之消息模板</a></li>
                         
-                          <li><a title="微信小程序之分享" href="15416694568904.html">微信小程序之分享</a></li>
-                        
                           <li><a title="微信小程序之数据统计与分析" href="15363043648238.html">微信小程序之数据统计与分析</a></li>
                         
                           <li><a title="微信直播类小程序" href="15344710120047.html">微信直播类小程序</a></li>
@@ -332,7 +330,9 @@
                         
                           <li><a title="微信小程序之八：动画" href="15419945000025.html">微信小程序之八：动画</a></li>
                         
-                          <li><a title="微信小程序之九：生成二维码" href="15426946934140.html">微信小程序之九：生成二维码</a></li>
+                          <li><a title="微信小程序之九：二维码" href="15426946934140.html">微信小程序之九：二维码</a></li>
+                        
+                          <li><a title="微信小程序之十：分享" href="15427653318773.html">微信小程序之十：分享</a></li>
                         
                           <li><a title="微信小程序TabBar" href="15235114845539.html">微信小程序TabBar</a></li>
                         
@@ -456,26 +456,40 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之二：点击与跳页传参</h1>
+		<h1>VSCode 前端常用插件推荐</h1>
 
-		<h5 id="toc_0">点击事件</h5>
+		<h4 id="toc_0">通用插件</h4>
 
-<pre><code>bindtap  事件绑定不会阻止冒泡事件向上冒泡
-catchtap  事件绑定可以阻止冒泡事件向上冒泡
+<p>HTML Snippets ：超级实用且初级的 H5代码片段以及提示<br/>
+HTML CSS Support ：让 html 标签上写class 智能提示当前项目所支持的样式</p>
 
-点击事件的参数传递：
-target：触发事件的源组件
-currentTarget：事件绑定的当前事件
-</code></pre>
+<p>Path Intellisense ： 自动路径补全</p>
 
-<p><img src="media/15326733440349/86CC8E232275B9B77BD5728B014D3B69.png" alt="86CC8E232275B9B77BD5728B014D3B69"/></p>
+<p>Project Manager ： 在多个项目之前快速切换的工具<br/>
+vscode-icon ： 让 vscode 资源树目录加上图标<br/>
+beautify ： 格式化代码的工具</p>
 
-<h5 id="toc_1">跳页</h5>
+<h4 id="toc_1">Vue推荐插件</h4>
 
-<pre><code>wx.navigateTo({
-url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
-})
-</code></pre>
+<p>vetur ： 语法高亮、智能感知、Emmet等</p>
+
+<p>VueHelper ： snippet代码片段<br/>
+Vue 2 Snippets ：vue快捷键提示</p>
+
+<p>Auto Close Tag ： 自动补全html标签<br/>
+Auto Rename Tag ：同步更改html尾标签</p>
+
+<p>ESLint ：ESlint语法提示<br/>
+JavaScript (ES6) snippets ：ES6语法快捷键支持</p>
+
+<p>Stylus ：主要支持vue文件下stylus CSS语法提示<br/>
+language-stylus ：stylus语法提示</p>
+
+<p>File Peek ： 文件路径跳转<br/>
+Path Autocomplete ：文件自动路径提示</p>
+
+<p>VS Color Picker ：color: #fff 自动提示<br/>
+Import Cost ： 引入包大小计算,对于项目打包后体积掌握很有帮助</p>
 
 
 		</div>
