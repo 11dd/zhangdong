@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-11-21T10:50:01+08:00</updated>
+  <updated>2018-11-21T11:40:39+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -19,7 +19,32 @@
     <updated>2018-11-12T11:11:19+08:00</updated>
     <id>www.freefook.com/15419922791377.html</id>
     <content type="html"><![CDATA[
-<h5 id="toc_0">获取系统信息 下面是屏幕宽高</h5>
+<h5 id="toc_0">.map 方法示例 接口返回的imageURL拼接根地址</h5>
+
+<pre><code>var tempArray = &#39;接口返回的数组&#39;
+that.setData({
+    listArray: tempArray.map(function(item) {
+        item.imageURL = getApp().data.baseURL + item.imageURL;
+        //如果列表里没有子数组数据需要拼接根地址，就不用再次 .map 方法 直接return item
+        item.child.map(function(childItem) {
+          childItem.pic = getApp().data.baseURL + childItem.pic;
+          return childItem;
+        })
+        return item;
+    }),
+})
+</code></pre>
+
+<h5 id="toc_1">.filter方法 遍历数组数据</h5>
+
+<pre><code>示例:遍历cityArray 数组，找出cityArray数组中pid 等于
+province 数组中province[e.detail.value].id的值
+使用.filter方法 比 for 循环速度快
+
+let newArray = that.data.cityArray.filter(item =&gt; item.pid === that.data.province[e.detail.value].id)
+</code></pre>
+
+<h5 id="toc_2">获取系统信息 下面是屏幕宽高</h5>
 
 <pre><code> wx.getSystemInfo({
       success: function(res) {
@@ -31,7 +56,7 @@
 });
 </code></pre>
 
-<h5 id="toc_1">动态设置页面标题</h5>
+<h5 id="toc_3">动态设置页面标题</h5>
 
 <pre><code>第一种：定死页面标题修改 .json文件
 {
@@ -44,7 +69,7 @@ wx.setNavigationBarTitle({
 })
 </code></pre>
 
-<h5 id="toc_2">保存数据</h5>
+<h5 id="toc_4">本地数据存储</h5>
 
 <pre><code> // 同步方式存储数据
 wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
@@ -54,10 +79,90 @@ var token = wx.getStorageSync(&#39;userInfo&#39;)
 
 </code></pre>
 
-<h5 id="toc_3">数组查找数据</h5>
+<h5 id="toc_5">页面栈层级数</h5>
 
-<pre><code>let newArr = t.data.ee.filter(item =&gt; item.pid === t.data.province[e.detail.value].id)
+<pre><code>var pages = getCurrentPages();
+console.log(&#39;页面栈层数&#39; + pages.length)
+if (pages.length == 10) {
+//小程序最大10层
+}else{
+}
+</code></pre>
 
+<h5 id="toc_6">获取明天日期</h5>
+
+<pre><code>//获取当前时间
+var nowDate = new Date(new Date().toLocaleDateString()); 
+//获取明天这个时间
+var nowDate1 = new Date(nowDate.getTime() + 24 * 60 * 60 * 1000)
+
+    var date_value1 = nowDate1.getFullYear().toString()
+    var date_value2 = (nowDate1.getMonth() + 1).toString()
+    var date_value3 = nowDate1.getDate().toString()
+
+    if (date_value2.length == 1) {
+      date_value2 = &#39;0&#39; + date_value2
+    }
+    if (date_value3.length == 1) {
+      date_value3 = &#39;0&#39; + date_value3
+    }
+    
+    var tomorrow = date_value1 + &#39;-&#39; + date_value2 + &#39;-&#39; + date_value3
+</code></pre>
+
+<h5 id="toc_7">倒计时</h5>
+
+<pre><code>LastTimer: function() {
+
+var that = this;
+var totalSecond = 0;
+//start_time服务端返回的团购开始时间
+var start_time = new Date(that.data.start_time.replace(/-/g, &quot;/&quot;));
+totalSecond = Date.parse(start_time) / 1000 - Date.parse(new Date()) / 1000;
+
+    //清理掉倒计时
+    clearInterval(that.data.interval_daojishi);
+    //开始倒计时
+    that.data.interval_daojishi = setInterval(function() {
+      // 秒数
+      var second = totalSecond;
+      // 天数位
+      var day = Math.floor(second / 3600 / 24);
+      var dayStr = day.toString();
+      if (dayStr.length == 1) dayStr = &#39;0&#39; + dayStr;
+      // 小时位
+      var hr = Math.floor((second - day * 3600 * 24) / 3600);
+      var hrStr = hr.toString();
+      if (hrStr.length == 1) hrStr = &#39;0&#39; + hrStr;
+      // 分钟位
+      var min = Math.floor((second - day * 3600 * 24 - hr * 3600) / 60);
+      var minStr = min.toString();
+      if (minStr.length == 1) minStr = &#39;0&#39; + minStr;
+      // 秒位
+      var sec = second - day * 3600 * 24 - hr * 3600 - min * 60;
+      var secStr = sec.toString();
+      if (secStr.length == 1) secStr = &#39;0&#39; + secStr;
+
+      that.setData({
+        countDownDay: dayStr,
+        countDownHour: hrStr,
+        countDownMinute: minStr,
+        countDownSecond: secStr,
+      });
+      totalSecond--;
+
+      if (totalSecond &lt; 0) {
+        //倒计时结束，清理掉倒计时
+        clearInterval(that.data.interval_daojishi);
+        that.setData({
+          countDownDay: &#39;00&#39;,
+          countDownHour: &#39;00&#39;,
+          countDownMinute: &#39;00&#39;,
+          countDownSecond: &#39;00&#39;,
+        });
+      }
+    }.bind(this), 1000);
+  },
 </code></pre>
 
 ]]></content>
@@ -86,6 +191,29 @@ currentTarget：事件绑定的当前事件
 <pre><code>wx.navigateTo({
 url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
 })
+</code></pre>
+
+<h4 id="toc_2">小程序跳转方式</h4>
+
+<pre><code>打开新页面     调用 API wx.navigateTo
+
+页面重定向     调用 API wx.redirectTo
+
+页面返回        调用 API wx.navigateBack
+
+Tab 切换      调用 API wx.switchTab
+
+重启动         调用 API wx.reLaunch
+</code></pre>
+
+<p>Tips:</p>
+
+<pre><code>1.navigateTo, redirectTo 只能打开非 tabBar 页面。
+2.switchTab 只能打开 tabBar 页面。
+3.reLaunch 可以打开任意页面。
+4.页面底部的 tabBar 由页面决定，即只要是定义为 tabBar 的页面，底部都有 tabBar。
+5.tabBar只能配置最少2个、最多5个 tab
+6.调用页面路由带的参数可以在目标页面的onLoad中获取
 </code></pre>
 
 ]]></content>
@@ -1320,6 +1448,9 @@ WePY框架开发小程序请移步👇<br/>
 
 <p>美团一团队出的框架mpvue框架请移步👇<br/>
 <a href="http://mpvue.com/mpvue/#_2">http://mpvue.com/mpvue/#_2</a></p>
+
+<p>渐进式JavaScript 框架VUE 地址：<br/>
+<a href="https://cn.vuejs.org/">https://cn.vuejs.org/</a></p>
 
 <p>weui Github 地址：<br/>
 <a href="https://github.com/Tencent/weui-wxss">https://github.com/Tencent/weui-wxss</a></p>
