@@ -47,6 +47,8 @@
         <li><label>简易博客</label></li>
 
           
+            <li><a title="区块链" href="15439750080174.html">区块链</a></li>
+          
             <li><a title="简易博客" href="15337217832111.html">简易博客</a></li>
           
             <li><a title="一些地址记录" href="15338947142066.html">一些地址记录</a></li>
@@ -264,6 +266,8 @@
                     
                       <li class="side-title"><span>简易博客</span></li>
                         
+                          <li><a title="区块链" href="15439750080174.html">区块链</a></li>
+                        
                           <li><a title="简易博客" href="15337217832111.html">简易博客</a></li>
                         
                           <li><a title="一些地址记录" href="15338947142066.html">一些地址记录</a></li>
@@ -456,51 +460,48 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之三：提示信息</h1>
+		<h1>微信小程序之二：点击与跳页传参</h1>
 
-		<h5 id="toc_0">Toast提示</h5>
+		<h5 id="toc_0">点击事件</h5>
 
-<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
- icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
- 
- wx.showToast({
-        title: &#39;请输入提示语&#39;,
-        icon: &#39;none&#39;,
-        mask:true,
-        duration: 2000
-      }) 
+<pre><code>bindtap  事件绑定不会阻止冒泡事件向上冒泡
+catchtap  事件绑定可以阻止冒泡事件向上冒泡
+
+点击事件的参数传递：
+target：触发事件的源组件
+currentTarget：事件绑定的当前事件
 </code></pre>
 
-<h5 id="toc_1">加载的loading</h5>
+<p><img src="media/15326733440349/86CC8E232275B9B77BD5728B014D3B69.png" alt="86CC8E232275B9B77BD5728B014D3B69"/></p>
 
-<pre><code>  wx.showLoading({
-      title: &#39;正在加载&#39;,
-      mask: true,
-    })
-   wx.hideLoading();
+<h5 id="toc_1">跳页</h5>
+
+<pre><code>wx.navigateTo({
+url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
+})
 </code></pre>
 
-<h5 id="toc_2">延迟执行</h5>
+<h4 id="toc_2">小程序跳转方式</h4>
 
-<pre><code> setTimeout(function() {
-   wx.hideLoading()
- }, 1000)
-          
+<pre><code>打开新页面     调用 API wx.navigateTo
+
+页面重定向     调用 API wx.redirectTo
+
+页面返回        调用 API wx.navigateBack
+
+Tab 切换      调用 API wx.switchTab
+
+重启动         调用 API wx.reLaunch
 </code></pre>
 
-<h5 id="toc_3">弹出窗口提示</h5>
+<p>Tips:</p>
 
-<pre><code>wx.showModal({
-    title: &#39;我是弹窗标题&#39;,
-    content: &#39;佛系弹窗详情内容&#39;,
-    success: function(res) {
-      if (res.confirm) {
-        console.log(&#39;用户点击确定&#39;)
-      } else if (res.cancel) {
-        console.log(&#39;用户点击取消&#39;)
-      }
-    }
-  })   
+<pre><code>1.navigateTo, redirectTo 只能打开非 tabBar 页面。
+2.switchTab 只能打开 tabBar 页面。
+3.reLaunch 可以打开任意页面。
+4.页面底部的 tabBar 由页面决定，即只要是定义为 tabBar 的页面，底部都有 tabBar。
+5.tabBar只能配置最少2个、最多5个 tab
+6.调用页面路由带的参数可以在目标页面的onLoad中获取
 </code></pre>
 
 

@@ -47,6 +47,8 @@
         <li><label>简易博客</label></li>
 
           
+            <li><a title="区块链" href="15439750080174.html">区块链</a></li>
+          
             <li><a title="简易博客" href="15337217832111.html">简易博客</a></li>
           
             <li><a title="一些地址记录" href="15338947142066.html">一些地址记录</a></li>
@@ -264,6 +266,8 @@
                     
                       <li class="side-title"><span>简易博客</span></li>
                         
+                          <li><a title="区块链" href="15439750080174.html">区块链</a></li>
+                        
                           <li><a title="简易博客" href="15337217832111.html">简易博客</a></li>
                         
                           <li><a title="一些地址记录" href="15338947142066.html">一些地址记录</a></li>
@@ -456,70 +460,35 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序轮播</h1>
+		<h1>微信小程序TabBar</h1>
 
-		<h4 id="toc_0">第一步：在.wxml文件里写入如下代码</h4>
+		<h4 id="toc_0">创建一个标准小程序空项目</h4>
 
-<pre><code>
-&lt;!-- indicator-dots     Boolean     false   是否显示面板指示点 --&gt;
-    &lt;!-- autoplay   Boolean     false   是否自动切换 --&gt;
-    &lt;!-- interval   Number  5000    自动切换时间间隔 --&gt;
-    &lt;!-- duration   Number  500     滑动动画时长 --&gt;
-    &lt;!-- circular   Boolean     false   是否采用衔接滑动 --&gt;
-    
-&lt;swiper indicator-dots=&quot;{{indicatorDots}}&quot;  
-        autoplay=&quot;{{autoplay}}&quot; 
-        interval=&quot;{{interval}}&quot; 
-        duration=&quot;{{duration}}&quot; 
-        circular=&quot;true&quot;&gt;  
+<h5 id="toc_1">在app.json文件里写入如下代码</h5>
 
-      &lt;block wx:for=&quot;{{imgUrls}}&quot; wx:for-index=&quot;index&quot;&gt;  
-        &lt;swiper-item&gt;  
-            &lt;navigator url=&quot;{{item.link}}&quot; hover-class=&quot;navigator-hover&quot;&gt; 
-            &lt;image src=&quot;{{item.url}}&quot; 
-                   class=&quot;slide-image&quot;/&gt;  
-            &lt;/navigator&gt;  
-        &lt;/swiper-item&gt;  
-      &lt;/block&gt;  
-
-&lt;/swiper&gt; 
-
-</code></pre>
-
-<h4 id="toc_1">第二步：在.wxss文件里设置如下属性</h4>
-
-<pre><code>   swiper{
-    height: 220px;
-   } 
-
-    .slide-image{  
-        width: 100%;  
-        height: 180px;
-    }  
-</code></pre>
-
-<h4 id="toc_2">第三步：在.js文件里设置如下数据 和轮播属性设置</h4>
-
-<pre><code> imgUrls: [
+<pre><code> &quot;tabBar&quot;: {
+    &quot;color&quot;: &quot;#a9b7b7&quot;,
+    &quot;selectedColor&quot;: &quot;#000000&quot;,
+    &quot;list&quot;: [
       {
-        link: &#39;/pages/logs/logs&#39;,
-        url: &#39;http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg&#39;
-      }, {
-        link: &#39;/pages/logs/logs&#39;,
-        url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
-      }, {
-        link: &#39;/pages/logs/logs&#39;,
-        url: &#39;http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg&#39;
-      }   
-
-    ],
-    indicatorDots: true,
-    autoplay: true,
-    
-    interval: 3000,
-    duration: 500,
-
+        &quot;selectedIconPath&quot;: &quot;image/home.png&quot;,
+        &quot;iconPath&quot;: &quot;image/home.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/home/home&quot;,
+        &quot;text&quot;: &quot;首页&quot;
+      },
+      {
+        &quot;selectedIconPath&quot;: &quot;image/index.png&quot;,
+        &quot;iconPath&quot;: &quot;image/index.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/index/index&quot;,
+        &quot;text&quot;: &quot;专题&quot;
+      }
+    ]
+  }
 </code></pre>
+
+<h4 id="toc_2">运行界面 tabbar</h4>
+
+<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-20%20%E4%B8%8B%E5%8D%883.29.29.png" alt="屏幕快照 2018-11-20 下午3.29.29"/></p>
 
 
 		</div>

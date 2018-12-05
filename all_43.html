@@ -47,6 +47,8 @@
         <li><label>简易博客</label></li>
 
           
+            <li><a title="区块链" href="15439750080174.html">区块链</a></li>
+          
             <li><a title="简易博客" href="15337217832111.html">简易博客</a></li>
           
             <li><a title="一些地址记录" href="15338947142066.html">一些地址记录</a></li>
@@ -264,6 +266,8 @@
                     
                       <li class="side-title"><span>简易博客</span></li>
                         
+                          <li><a title="区块链" href="15439750080174.html">区块链</a></li>
+                        
                           <li><a title="简易博客" href="15337217832111.html">简易博客</a></li>
                         
                           <li><a title="一些地址记录" href="15338947142066.html">一些地址记录</a></li>
@@ -456,39 +460,30 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS 从AppDelegate说起</h1>
+		<h1>OC plist文件管理(代码方式)</h1>
 
-		<h5 id="toc_0">创建程序窗口</h5>
+		<pre><code>//获取本地沙盒路径
+NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 
-<pre><code>self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-self.window.backgroundColor = [UIColor whiteColor];
-[self.window setRootViewController:self.tabbarVC];
-[self.window makeKeyAndVisible];
-</code></pre>
+//获取完整路径
+NSString *documentsPath = [path objectAtIndex:0];
+NSString *plistPath = [documentsPath stringByAppendingPathComponent:@&quot;Test.plist&quot;];
 
-<h5 id="toc_1">生命周期</h5>
+//创建数据
+NSMutableDictionary *dataDict = [NSMutableDictionary dictionary];
 
-<pre><code>- (void)applicationWillEnterForeground:(UIApplication *)application {
-    NSLog(@&quot;将要进入前台：%s&quot;,__func__);
-}
+[dataDict setObject:@&quot;zhangd&quot; forKey:@&quot;name&quot;];
+[dataDict setObject:@&quot;26&quot; forKey:@&quot;age&quot;];
+[dataDict setObject:@&quot;man&quot; forKey:@&quot;sex&quot;];
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    
-    NSLog(@&quot;已经获得焦点：%s&quot;,__func__);
-}
+//写入plist文件
+[dataDict writeToFile:plistPath atomically:YES];
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    
-    NSLog(@&quot;将要释放焦点：%s&quot;,__func__);
-}
-- (void)applicationWillTerminate:(UIApplication *)application {
-    
-    NSLog(@&quot;程序将要退出：%s&quot;,__func__);
-}
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    
-    NSLog(@&quot;已经进入后台：%s&quot;,__func__);
-}
+//读取plist文件
+//文件是什么类型，就用什么类型的数据来接收
+NSMutableDictionary *dataDict1 = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+NSLog((@&quot;**start**\n[function name:%s]\n&quot; &quot;[Lines:%d]\n&quot; &quot;data-&gt;%@\n**end**\n\n&quot;), __FUNCTION__, __LINE__,dataDict1);
+
 </code></pre>
 
 

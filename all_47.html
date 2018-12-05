@@ -47,6 +47,8 @@
         <li><label>简易博客</label></li>
 
           
+            <li><a title="区块链" href="15439750080174.html">区块链</a></li>
+          
             <li><a title="简易博客" href="15337217832111.html">简易博客</a></li>
           
             <li><a title="一些地址记录" href="15338947142066.html">一些地址记录</a></li>
@@ -264,6 +266,8 @@
                     
                       <li class="side-title"><span>简易博客</span></li>
                         
+                          <li><a title="区块链" href="15439750080174.html">区块链</a></li>
+                        
                           <li><a title="简易博客" href="15337217832111.html">简易博客</a></li>
                         
                           <li><a title="一些地址记录" href="15338947142066.html">一些地址记录</a></li>
@@ -456,146 +460,210 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS UICollectionView使用详解</h1>
+		<h1>iOS tableView 常用属性与方法</h1>
 
-		<h5 id="toc_0">添加代理</h5>
+		<h5 id="toc_0">tableview 常用属性如下：</h5>
 
-<pre><code>&lt;UICollectionViewDataSource,UICollectionViewDelegate&gt;
-</code></pre>
-
-<h5 id="toc_1">初始化</h5>
-
-<pre><code> UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.minimumInteritemSpacing = 0;
-    flowLayout.minimumLineSpacing = 0;
-    flowLayout.sectionInset  = UIEdgeInsetsMake(0, 5, 0, 5);
-    
-_collectionView = [[UICollectionView alloc] initWithFrame:
-CGRectMake(0, 0, self.view.frame.size.with,self.view.frame.size.height) 
-collectionViewLayout:flowLayout];
-    
-    //一定要注册
-    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@&quot;colletionCell&quot;];
-    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@&quot;HeaderIdentifier&quot;];
-    
-    _collectionView.backgroundColor = [UIColor whiteColor];
-    _collectionView.dataSource = self;
-    _collectionView.delegate = self;
-    
-    _collectionView.alwaysBounceVertical = YES;
-    _collectionView.showsVerticalScrollIndicator = NO;
-    [self.view addSubview:_collectionView];
-    
-    if (@available(iOS 11.0, *)) {
-    }else{
-        self.automaticallyAdjustsScrollViewInsets = NO;
-    }
-</code></pre>
-
-<h5 id="toc_2">设置_collectionView的组数</h5>
-
-<pre><code>-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 3;
-}
-</code></pre>
-
-<h5 id="toc_3">设置每组cell的个数</h5>
-
-<pre><code>//返回每组的个数
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return 3;
-    }else if (section == 1){
-        return 4;
-    }else if (section == 2){
-        return 3;
-    }
-    return 0;
-} 
-
-</code></pre>
-
-<h5 id="toc_4">设置每组cell的大小</h5>
-
-<pre><code>- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0) {
-        return  CGSizeMake((KScreenWidth-10)/3, KScreenWidth/3+60);
-        
-    }else if (indexPath.section == 1){
-        return  CGSizeMake((KScreenWidth-10)/2, KScreenWidth/2+60);
-
-    }else{
-        return  CGSizeMake((KScreenWidth-10)/3, KScreenWidth/3+60);
-    }
-}
-</code></pre>
-
-<h5 id="toc_5">布局cell</h5>
-
-<pre><code>- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *reuseIdetify = @&quot;colletionCell&quot;;
-    
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdetify forIndexPath:indexPath];
-    
-    cell.contentView.backgroundColor = [UIColor whiteColor];
-    //这句是每次都移除view上的控件,从新添加的;
-    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
-    /***********布局cell*********/
-
-
-    /***************************/ 
-       
-    return cell;
-}
-</code></pre>
-
-<h5 id="toc_6">设置_collectionView头部header高度</h5>
-
-<pre><code>- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    
-    if (section == 0) {
-        CGSize size={KScreenWidth,cycHeight + 240};
-        return size;
-        
-    }else if (section == 1){
-        CGSize size={KScreenWidth,140};
-        return size;
-
-    }else{
-        CGSize size={KScreenWidth,40};
-        return size;
-
-    }
-}
-</code></pre>
-
-<h5 id="toc_7">布局_collectionView上的头部UI</h5>
-
-<pre><code>- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
-           viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    
-    UICollectionReusableView *headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                                                            withReuseIdentifier:@&quot;HeaderIdentifier&quot;
-                                                                                   forIndexPath:indexPath];
-
-    [headView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-
-    if (indexPath.section == 0) {
-        
-        if(kind ==UICollectionElementKindSectionHeader){
+<pre><code> if (@available(iOS 11.0, *)) {
+            _tableView.estimatedRowHeight = 0;
+            _tableView.estimatedSectionFooterHeight = 0;
+            _tableView.estimatedSectionHeaderHeight = 0;
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }else{
+            self.automaticallyAdjustsScrollViewInsets = NO;
             
         }
-     }
+        
+</code></pre>
+
+<pre><code>//获取手势点击的是哪一个cell的坐标
+NSIndexPath *indexPath = [self.tableView indexPathForCell:((UITableViewCell *)longPress.view)];
+
+//点击button时获取button所在的cell的indexpath
+UIButton *button = sender;
+tempTableViewCell *cell = (tempTableViewCell *)[[button superview] superview];
+NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+
+//局部刷新一个section刷新    
+NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];    
+[tableview reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];    
+
+//局部刷新一个cell刷新   
+NSIndexPath *indexPath=[NSIndexPath indexPathForRow:1 inSection:0];   
+[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone]; 
+
+//不显示分割线
+_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
+//显示箭头
+cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+//无选中状态
+cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+//自适应单元格高度
+tableView.rowHeight = UITableViewAutomaticDimension; 
+//先估计一个高度
+tableView.estimatedRowHeight = 50; 
+</code></pre>
+
+<pre><code></code></pre>
+
+<pre><code></code></pre>
+
+<h5 id="toc_1">tableview 常用方法如下：</h5>
+
+<h6 id="toc_2">tableview 选中第几行</h6>
+
+<pre><code>NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
+[self.tableView selectRowAtIndexPath:indexpath animated:YES scrollPosition:UITableViewScrollPositionMiddle];  //选中第5行
+</code></pre>
+
+<h6 id="toc_3">滚动到指定位置</h6>
+
+<pre><code>//滚动到指定位置_偏移量
+[self.rizhiTableView setContentOffset:CGPointMake(0, OffsetY) animated:NO];
+//滚动到第几行
+NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
+[self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+</code></pre>
+
+<h6 id="toc_4">pragma mark  - 滑到最底部</h6>
+
+<pre><code>- (void)scrollTableToFoot
+{
     
-    return headView;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        NSInteger s = [self.tableView numberOfSections];  //有多少组
+        if (s&lt;1) return;  //无数据时不执行 要不会crash
+        NSInteger r = [self.tableView numberOfRowsInSection:s-1]; //最后一组有多少行
+        if (r&lt;1) return;
+        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:r-1 inSection:s-1];  //取最后一行数据
+        [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:NO]; //滚动到最后一行
+        
+    });
+  
+}
+</code></pre>
+
+<h6 id="toc_5">pragma -mark- 删除方法</h6>
+
+<pre><code>//先要设Cell可编辑
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return YES;
+}
+
+//定义编辑样式
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return UITableViewCellEditingStyleDelete;
+}
+
+//修改编辑按钮文字
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @&quot;删除&quot;;
+}
+
+//设置进入编辑状态时，Cell不会缩进
+- (BOOL)tableView: (UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+
+//点击删除
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    /**一定是先删除了数据，再执行删除的动画或者其他操作，否则会出现崩溃*/
+    
+    [self deleteAdressData:indexPath];
     
 }
+
+</code></pre>
+
+<pre><code>
+dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        // 处理耗时操作的代码块...
+        
+    
+        //通知主线程刷新
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //回调或者说是通知主线程刷新，
+            
+        });
+        
+    });
+    
+    
+</code></pre>
+
+<pre><code>
+//同步数据
+[[NSUserDefaults standardUserDefaults]synchronize];
+
+//延时操作
+ dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+ });       
+            
+</code></pre>
+
+<pre><code>//单击手势
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(TapImgView:)];
+        [tapGesture setNumberOfTapsRequired:1];
+        [imgView addGestureRecognizer:tapGesture];
+
+
+
+-(void)TapImgView:(UITapGestureRecognizer*)tapGesture
+{
+    UITapGestureRecognizer *singleTap = (UITapGestureRecognizer *)tapGesture;
+    NSInteger index = singleTap.view.tag;
+
+}
+
+</code></pre>
+
+<pre><code> [_timer invalidate];//永远停止并且要置为nil
+ [_timer setFireDate:[NSDate distantFuture]];//关闭定时器
+    
+</code></pre>
+
+<pre><code>*******************************跳转**********************************************
+
+ for (UIViewController *controller in self.navigationController.viewControllers) {
+
+            if ([controller isKindOfClass:[SecondDetailsViewController class]]) {
+
+                SecondDetailsViewController *test =(SecondDetailsViewController *)controller;
+                [self.navigationController popToViewController:test animated:YES];
+
+            }
+  }
+
+        
+  [self.navigationController popToRootViewControllerAnimated:YES];
+
+*****************************************************************************
+
+</code></pre>
+
+<pre><code>
+  //放大过程中出现的缓慢动画
+    - (void) shakeToShow:(UIView*)aView{
+        
+        CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@&quot;transform&quot;];
+        animation.duration = 0.2;
+        NSMutableArray *values = [NSMutableArray array];
+        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
+        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
+        animation.values = values;
+        [aView.layer addAnimation:animation forKey:nil];
+        
+    }
+
+
+
 </code></pre>
 
 
