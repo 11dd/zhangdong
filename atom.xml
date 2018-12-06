@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-12-05T10:50:35+08:00</updated>
+  <updated>2018-12-06T16:30:47+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,185 @@
   </author>
   <generator uri="http://www.mweb.im">MWeb</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序建项-TabBar]]></title>
+    <link href="www.freefook.com/15235114845539.html"/>
+    <updated>2018-04-12T13:38:04+08:00</updated>
+    <id>www.freefook.com/15235114845539.html</id>
+    <content type="html"><![CDATA[
+<h4 id="toc_0">创建一个标准小程序空项目</h4>
+
+<h5 id="toc_1">在app.json文件里写入如下代码</h5>
+
+<pre><code>{
+  &quot;pages&quot;: [
+    &quot;pages/homePage/homePage&quot;,
+    &quot;pages/minePage/minePage&quot;,
+    &quot;pages/shoppingCartPage/shoppingCartPage&quot;,
+    &quot;pages/index/index&quot;
+  ],
+  &quot;window&quot;: {
+    &quot;backgroundTextStyle&quot;: &quot;light&quot;,
+    &quot;navigationBarBackgroundColor&quot;: &quot;#fff&quot;,
+    &quot;navigationBarTitleText&quot;: &quot;小程序商城&quot;,
+    &quot;navigationBarTextStyle&quot;: &quot;black&quot;
+  },
+  &quot;tabBar&quot;: {
+    &quot;color&quot;: &quot;#8a8a8a&quot;,
+    &quot;selectedColor&quot;: &quot;#000&quot;,
+    &quot;backgroundColor&quot;: &quot;#fff&quot;,
+    &quot;list&quot;: [
+      {
+        &quot;iconPath&quot;: &quot;images/tabbar/home_1.png&quot;,
+        &quot;selectedIconPath&quot;: &quot;images/tabbar/home_2.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/homePage/homePage&quot;,
+        &quot;text&quot;: &quot;首页&quot;
+      },
+      {
+        &quot;iconPath&quot;: &quot;images/tabbar/gwc_1.png&quot;,
+        &quot;selectedIconPath&quot;: &quot;images/tabbar/gwc_2.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/shoppingCartPage/shoppingCartPage&quot;,
+        &quot;text&quot;: &quot;购物车&quot;
+      },
+      {
+        &quot;iconPath&quot;: &quot;images/tabbar/wode_1.png&quot;,
+        &quot;selectedIconPath&quot;: &quot;images/tabbar/wode_2.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/minePage/minePage&quot;,
+        &quot;text&quot;: &quot;我的&quot;
+      }
+    ]
+  },
+  &quot;networkTimeout&quot;: {
+    &quot;request&quot;: 10000,
+    &quot;downloadFile&quot;: 10000
+  },
+  &quot;debug&quot;: false
+}
+</code></pre>
+
+<h4 id="toc_2">运行界面 tabbar</h4>
+
+<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-06%20%E4%B8%8B%E5%8D%884.14.36.png" alt="屏幕快照 2018-12-06 下午4.14.36"/></p>
+
+<h5 id="toc_3">在app.wxss文件里写入如下代码</h5>
+
+<pre><code>page {
+  font-size: 14px;
+  background-color: #f8f8f8;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.weui-bg-color {
+  background-color: #f8f8f8;
+}
+
+.weui-Font1 {
+  font-size: 16px;
+}
+
+.weui-Font2 {
+  font-size: 14px;
+}
+
+.weui-Font3 {
+  font-size: 12px;
+}
+
+.weui-Font4 {
+  font-size: 10px;
+}
+
+.weui-Font5 {
+  font-size: 8px;
+}
+
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序建项-轮播]]></title>
+    <link href="www.freefook.com/15235125175960.html"/>
+    <updated>2018-04-12T13:55:17+08:00</updated>
+    <id>www.freefook.com/15235125175960.html</id>
+    <content type="html"><![CDATA[
+<h4 id="toc_0">第一步：在.wxml文件里写入如下代码</h4>
+
+<pre><code>
+&lt;!-- indicator-dots     Boolean     false   是否显示面板指示点 --&gt;
+    &lt;!-- autoplay   Boolean     false   是否自动切换 --&gt;
+    &lt;!-- interval   Number  5000    自动切换时间间隔 --&gt;
+    &lt;!-- duration   Number  500     滑动动画时长 --&gt;
+    &lt;!-- circular   Boolean     false   是否采用衔接滑动 --&gt;
+    
+&lt;swiper indicator-dots=&quot;{{indicatorDots}}&quot;  
+        autoplay=&quot;{{autoplay}}&quot; 
+        interval=&quot;{{interval}}&quot; 
+        duration=&quot;{{duration}}&quot; 
+        circular=&quot;true&quot;&gt;  
+
+      &lt;block wx:for=&quot;{{imgUrls}}&quot; wx:for-index=&quot;index&quot;&gt;  
+        &lt;swiper-item&gt;  
+            &lt;navigator url=&quot;{{item.link}}&quot; hover-class=&quot;navigator-hover&quot;&gt; 
+            &lt;image src=&quot;{{item.url}}&quot; 
+                   class=&quot;slide-image&quot;/&gt;  
+            &lt;/navigator&gt;  
+        &lt;/swiper-item&gt;  
+      &lt;/block&gt;  
+
+&lt;/swiper&gt; 
+
+</code></pre>
+
+<h4 id="toc_1">第二步：在.wxss文件里设置如下属性</h4>
+
+<pre><code>   swiper{
+    height: 220px;
+   } 
+
+    .slide-image{  
+        width: 100%;  
+        height: 180px;
+    }  
+</code></pre>
+
+<h4 id="toc_2">第三步：在.js文件里设置如下数据 和轮播属性设置</h4>
+
+<pre><code> imgUrls: [
+      {
+        link: &#39;/pages/logs/logs&#39;,
+        url: &#39;http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg&#39;
+      }, {
+        link: &#39;/pages/logs/logs&#39;,
+        url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
+      }, {
+        link: &#39;/pages/logs/logs&#39;,
+        url: &#39;http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg&#39;
+      }   
+
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    
+    interval: 3000,
+    duration: 500,
+
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[区块链]]></title>
@@ -166,154 +345,189 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序之一：JS操作]]></title>
-    <link href="www.freefook.com/15419922791377.html"/>
-    <updated>2018-11-12T11:11:19+08:00</updated>
-    <id>www.freefook.com/15419922791377.html</id>
+    <title type="html"><![CDATA[微信小程序建项-分类悬停菜单]]></title>
+    <link href="www.freefook.com/15440814346317.html"/>
+    <updated>2018-12-06T15:30:34+08:00</updated>
+    <id>www.freefook.com/15440814346317.html</id>
     <content type="html"><![CDATA[
-<h5 id="toc_0">.map 方法示例 接口返回的imageURL拼接根地址</h5>
+<p>xml 文件</p>
 
-<pre><code>var tempArray = &#39;接口返回的数组&#39;
-that.setData({
-    listArray: tempArray.map(function(item) {
-        item.imageURL = getApp().data.baseURL + item.imageURL;
-        //如果列表里没有子数组数据需要拼接根地址，就不用再次 .map 方法 直接return item
-        item.child.map(function(childItem) {
-          childItem.pic = getApp().data.baseURL + childItem.pic;
-          return childItem;
-        })
-        return item;
-    }),
-})
+<pre><code> &lt;!-- 分类菜单 --&gt;
+  &lt;view id=&quot;affix&quot; wx:if=&#39;{{tabs.length &gt; 1}}&#39; class=&#39;{{typeFixed?&quot;menu-typefixed&quot;:&quot;menu-typeFixed&quot;}}&#39;&gt;
+    &lt;view class=&quot;menu-scroll-view-wrap&quot;&gt;
+      &lt;scroll-view class=&quot;menu-scroll-view-catalog&quot; scroll-x=&quot;true&quot; scroll-with-animation=&quot;true&quot;&gt;
+        &lt;view class=&quot;menu-scroll-view-item&quot; wx:for=&quot;{{tabs}}&quot; wx:key=&quot;{{index}}&quot; data-index=&quot;{{index}}&quot; bindtap=&quot;onTabSelected&quot;&gt;
+          &lt;text class=&quot;menu-text-item {{index === tabIndex ? &#39;menu-active-text-item&#39; : &#39;&#39;}} weui-zimFont11&quot; data-index=&quot;{{index}}&quot;&gt;{{item.name}}&lt;/text&gt;
+        &lt;/view&gt;
+      &lt;/scroll-view&gt;
+    &lt;/view&gt;
+  &lt;/view&gt;
 </code></pre>
 
-<h5 id="toc_1">.filter方法 遍历数组数据</h5>
+<p>wxss文件</p>
 
-<pre><code>示例:遍历cityArray 数组，找出cityArray数组中pid 等于
-province 数组中province[e.detail.value].id的值
-使用.filter方法 比 for 循环速度快
+<pre><code>/* 顶部悬停分类菜单样式 */
 
-let newArray = that.data.cityArray.filter(item =&gt; item.pid === that.data.province[e.detail.value].id)
-</code></pre>
-
-<h5 id="toc_2">获取系统信息 下面是屏幕宽高</h5>
-
-<pre><code> wx.getSystemInfo({
-      success: function(res) {
-        that.setData({
-          windowHeight: res.windowHeight,
-          windowWidth: res.windowWidth,
-        })
-      }
-});
-</code></pre>
-
-<h5 id="toc_3">动态设置页面标题</h5>
-
-<pre><code>第一种：定死页面标题修改 .json文件
-{
-  &quot;navigationBarTitleText&quot;: &quot;标题&quot;
+.menu-typeFixed {
+  top: 0px;
+  left: 0;
+  z-index: 300;
+  height: 80rpx;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-第二种：动态自定义页面标题
-wx.setNavigationBarTitle({
-  title: this.data.URLBackTitle
-})
-</code></pre>
-
-<h5 id="toc_4">本地数据存储</h5>
-
-<pre><code> // 同步方式存储数据
-wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
-
-//取出数据
-var token = wx.getStorageSync(&#39;userInfo&#39;)
-
-</code></pre>
-
-<h5 id="toc_5">页面栈层级数</h5>
-
-<pre><code>var pages = getCurrentPages();
-console.log(&#39;页面栈层数&#39; + pages.length)
-if (pages.length == 10) {
-//小程序最大10层
-}else{
+.menu-typefixed {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  z-index: 300;
+  height: 88rpx;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
+
+.menu-scroll-view-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.menu-scroll-view-catalog {
+  height: 35px;
+  width: 100%;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.menu-scroll-view-catalog::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.menu-scroll-view-item {
+  display: inline-block;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 5px 10px;
+  border-bottom: 2px solid #fff;
+}
+
+menu-text-item {
+  border-bottom: 1px #fff solid;
+}
+
+.menu-active-text-item {
+  border-bottom: 2px #dc3545 solid;
+}
+
+/* 以上-顶部悬停分类菜单样式 */
 </code></pre>
 
-<h5 id="toc_6">获取明天日期</h5>
+<p>js文件</p>
 
-<pre><code>//获取当前时间
-var nowDate = new Date(new Date().toLocaleDateString()); 
-//获取明天这个时间
-var nowDate1 = new Date(nowDate.getTime() + 24 * 60 * 60 * 1000)
+<pre><code>/**
+   * 页面的初始数据
+   */
+  data: {
+    //分类菜单
+    menuTop: 666,
+    menuBottom: 666,
+    typeFixed: false,
+    tabIndex: 0, //选择分类的第几个
+    tabs: [{
+      name: &quot;全部&quot;
+    }, {
+      name: &quot;新品&quot;
+    }, {
+      name: &quot;生鲜&quot;
+    }, {
+      name: &quot;居家&quot;
+    }, {
+      name: &quot;服装&quot;
+    }, {
+      name: &quot;美护&quot;
+    }, {
+      name: &quot;出行&quot;
+    }, {
+      name: &quot;电器&quot;
+    }, {
+      name: &quot;杂货&quot;
+    }, ],
 
-    var date_value1 = nowDate1.getFullYear().toString()
-    var date_value2 = (nowDate1.getMonth() + 1).toString()
-    var date_value3 = nowDate1.getDate().toString()
+  },
+  /**************获取分类菜单的吸顶距离**************** */
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+    var that = this;
+    setTimeout(function() {
+      // 页面加载完成时，并且当请求完商品的时候，判断吸顶菜单距离顶部的距离
+      that.testHeight();
+    }, 1000)
+  },
 
-    if (date_value2.length == 1) {
-      date_value2 = &#39;0&#39; + date_value2
-    }
-    if (date_value3.length == 1) {
-      date_value3 = &#39;0&#39; + date_value3
-    }
-    
-    var tomorrow = date_value1 + &#39;-&#39; + date_value2 + &#39;-&#39; + date_value3
-</code></pre>
-
-<h5 id="toc_7">倒计时</h5>
-
-<pre><code>LastTimer: function() {
-
-var that = this;
-var totalSecond = 0;
-//start_time服务端返回的团购开始时间
-var start_time = new Date(that.data.start_time.replace(/-/g, &quot;/&quot;));
-totalSecond = Date.parse(start_time) / 1000 - Date.parse(new Date()) / 1000;
-
-    //清理掉倒计时
-    clearInterval(that.data.interval_daojishi);
-    //开始倒计时
-    that.data.interval_daojishi = setInterval(function() {
-      // 秒数
-      var second = totalSecond;
-      // 天数位
-      var day = Math.floor(second / 3600 / 24);
-      var dayStr = day.toString();
-      if (dayStr.length == 1) dayStr = &#39;0&#39; + dayStr;
-      // 小时位
-      var hr = Math.floor((second - day * 3600 * 24) / 3600);
-      var hrStr = hr.toString();
-      if (hrStr.length == 1) hrStr = &#39;0&#39; + hrStr;
-      // 分钟位
-      var min = Math.floor((second - day * 3600 * 24 - hr * 3600) / 60);
-      var minStr = min.toString();
-      if (minStr.length == 1) minStr = &#39;0&#39; + minStr;
-      // 秒位
-      var sec = second - day * 3600 * 24 - hr * 3600 - min * 60;
-      var secStr = sec.toString();
-      if (secStr.length == 1) secStr = &#39;0&#39; + secStr;
-
+  testHeight: function() {
+    var that = this;
+    var query = wx.createSelectorQuery() //创建节点查询器 query
+    query.select(&#39;#affix&#39;).boundingClientRect() //这段代码的意思是选择Id= the - id的节点，获取节点位置信息的查询请求
+    query.exec(function(res) {
       that.setData({
-        countDownDay: dayStr,
-        countDownHour: hrStr,
-        countDownMinute: minStr,
-        countDownSecond: secStr,
-      });
-      totalSecond--;
+        menuTop: res[0].top,
+        menuBottom: res[0].bottom,
+      })
+    });
+  },
 
-      if (totalSecond &lt; 0) {
-        //倒计时结束，清理掉倒计时
-        clearInterval(that.data.interval_daojishi);
-        that.setData({
-          countDownDay: &#39;00&#39;,
-          countDownHour: &#39;00&#39;,
-          countDownMinute: &#39;00&#39;,
-          countDownSecond: &#39;00&#39;,
-        });
-      }
-    }.bind(this), 1000);
+  onPageScroll: function(e) {
+    //当滚动位置大于menuTop并且typeFixed为true时,setData不再执行，可有效避免页面的卡顿，以及吸顶时页面的抖动
+    if (e.scrollTop &gt;= this.data.menuTop &amp;&amp; !this.data.typeFixed) {
+      this.setData({
+        typeFixed: true
+      })
+    } else if (e.scrollTop &lt; this.data.menuTop &amp;&amp; this.data.typeFixed) {
+      this.setData({
+        typeFixed: false
+      })
+    }
+    //当滚动的距离到了scrollview底部的时候，触发请求方法
+    if ((this.data.menuBottom - this.data.winHeight - 55) &lt; e.scrollTop) {
+      this.lower();
+    }
+
+  },
+
+  /********************切换分类菜单时请求该分类数据******************* */
+
+  onTabSelected: function(event) {
+    var that = this;
+    // 切换tab时需要需要设置当前是第几个
+    that.setData({
+      tabIndex: event.target.dataset.index
+    });
+
   },
 </code></pre>
 
@@ -321,105 +535,130 @@ totalSecond = Date.parse(start_time) / 1000 - Date.parse(new Date()) / 1000;
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序之二：点击与跳页传参]]></title>
-    <link href="www.freefook.com/15419918698485.html"/>
-    <updated>2018-11-12T11:04:29+08:00</updated>
-    <id>www.freefook.com/15419918698485.html</id>
+    <title type="html"><![CDATA[微信小程序建项-商品网格布局]]></title>
+    <link href="www.freefook.com/15236096586360.html"/>
+    <updated>2018-04-13T16:54:18+08:00</updated>
+    <id>www.freefook.com/15236096586360.html</id>
     <content type="html"><![CDATA[
-<h5 id="toc_0">点击事件</h5>
+<h5 id="toc_0">在wxml里加入如下代码：</h5>
 
-<pre><code>bindtap  事件绑定不会阻止冒泡事件向上冒泡
-catchtap  事件绑定可以阻止冒泡事件向上冒泡
+<pre><code>
+  &lt;!-- 商品网格布局 --&gt;
+  &lt;view class=&#39;goods-grid-view&#39;&gt;
+    &lt;block wx:for=&quot;{{12}}&quot; wx:key=&quot;{{item}}&quot; wx:for-item=&quot;item&quot;&gt;
+      &lt;view class=&#39;goods-grid-blockview&#39; data-item=&#39;{{item}}&#39; catchtap=&#39;onGoodsTap&#39;&gt;
+        &lt;view class=&#39;goods-grid-container&#39;&gt;
+          &lt;image class=&#39;goods-img&#39; mode=&#39;aspectFill&#39; src=&quot;{{&#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;}}&quot;&gt;&lt;/image&gt;
+          &lt;text class=&#39;goods-title weui-Font2&#39;&gt;{{&quot;我是商品名&quot;}}&lt;/text&gt;
+          &lt;text class=&#39;goods-title weui-Font3&#39;&gt;{{&quot;我是商品介绍么&quot;}}&lt;/text&gt;
+          &lt;text class=&#39;goods-price weui-Font2&#39; style=&#39;color: #d0ae97&#39;&gt;¥{{200}}\r\t\r\t\r\t&lt;text class=&#39;goods-price weui-Font2&#39; style=&#39;text-decoration:line-through;color: lightgray&#39;&gt;¥{{260}}&lt;/text&gt;&lt;/text&gt;
+        &lt;/view&gt;
+      &lt;/view&gt;
+    &lt;/block&gt;
+  &lt;/view&gt;
 
-点击事件的参数传递：
-target：触发事件的源组件
-currentTarget：事件绑定的当前事件
 </code></pre>
 
-<p><img src="media/15326733440349/86CC8E232275B9B77BD5728B014D3B69.png" alt="86CC8E232275B9B77BD5728B014D3B69"/></p>
+<h5 id="toc_1">在wxss里加入如下代码：</h5>
 
-<h5 id="toc_1">跳页</h5>
+<pre><code>
+/* 网格布局 */
 
-<pre><code>wx.navigateTo({
-url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
-})
+.goods-grid-view {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: auto;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.goods-grid-blockview {
+  width: 50%;
+  background-color: white;
+}
+
+.goods-grid-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.goods-img {
+  width: 100%;
+  height: 340rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.goods-title {
+  margin-top: 15rpx;
+  margin-bottom: 10rpx;
+  display: -webkit-box;
+  align-content: center;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: -o-ellipsis-lastline;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  width: 340rpx;
+}
+
+.goods-price {
+  text-align: left;
+}
+
 </code></pre>
 
-<h4 id="toc_2">小程序跳转方式</h4>
+<h5 id="toc_2">运行效果</h5>
 
-<pre><code>打开新页面     调用 API wx.navigateTo
-
-页面重定向     调用 API wx.redirectTo
-
-页面返回        调用 API wx.navigateBack
-
-Tab 切换      调用 API wx.switchTab
-
-重启动         调用 API wx.reLaunch
-</code></pre>
-
-<p>Tips:</p>
-
-<pre><code>1.navigateTo, redirectTo 只能打开非 tabBar 页面。
-2.switchTab 只能打开 tabBar 页面。
-3.reLaunch 可以打开任意页面。
-4.页面底部的 tabBar 由页面决定，即只要是定义为 tabBar 的页面，底部都有 tabBar。
-5.tabBar只能配置最少2个、最多5个 tab
-6.调用页面路由带的参数可以在目标页面的onLoad中获取
-</code></pre>
+<p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-06%20%E4%B8%8B%E5%8D%884.02.21.png" alt="屏幕快照 2018-12-06 下午4.02.21"/></p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序之三：提示信息]]></title>
-    <link href="www.freefook.com/15326733440349.html"/>
-    <updated>2018-07-27T14:35:44+08:00</updated>
-    <id>www.freefook.com/15326733440349.html</id>
+    <title type="html"><![CDATA[微信小程序之解析html]]></title>
+    <link href="www.freefook.com/15420001365512.html"/>
+    <updated>2018-11-12T13:22:16+08:00</updated>
+    <id>www.freefook.com/15420001365512.html</id>
     <content type="html"><![CDATA[
-<h5 id="toc_0">Toast提示</h5>
+<h5 id="toc_0">使用wxParse解析html</h5>
 
-<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
- icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
- 
- wx.showToast({
-        title: &#39;请输入提示语&#39;,
-        icon: &#39;none&#39;,
-        mask:true,
-        duration: 2000
-      }) 
+<p>github地址：<a href="https://github.com/icindy/wxParse">https://github.com/icindy/wxParse</a><br/>
+下载之后，将wxParse文件夹导入自己工程与utils同级别   </p>
+
+<h5 id="toc_1">在app.wxss全局样式文件中，引入wxParse的样式表如:</h5>
+
+<pre><code>@import&quot;/wxParse/wxParse.wxss&quot;;
 </code></pre>
 
-<h5 id="toc_1">加载的loading</h5>
+<h5 id="toc_2">在所需的JS文件中引入如:</h5>
 
-<pre><code>  wx.showLoading({
-      title: &#39;正在加载&#39;,
-      mask: true,
-    })
-   wx.hideLoading();
+<pre><code>var WxParse = require(&#39;../../wxParse/wxParse.js&#39;);
+
+/**
+     * WxParse.wxParse(bindName , type, data, target,imagePadding)
+     * 1.bindName绑定的数据名(必填)
+     * 2.type可以为html或者md(必填)
+     * 3.data为传入的具体数据(必填)
+     * 4.target为Page对象,一般为this(必填)
+     * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
+     */
+     
+    WxParse.wxParse(&#39;content&#39;, &#39;html&#39;, &#39;&lt;h1&gt;我是内容&lt;/h1&gt;&#39;, this, 0);
 </code></pre>
 
-<h5 id="toc_2">延迟执行</h5>
+<h5 id="toc_3">在wxml所需的文件中引入如:</h5>
 
-<pre><code> setTimeout(function() {
-   wx.hideLoading()
- }, 1000)
-          
-</code></pre>
+<pre><code>&lt;import src=&quot;../../wxParse/wxParse.wxml&quot; /&gt;
 
-<h5 id="toc_3">弹出窗口提示</h5>
-
-<pre><code>wx.showModal({
-    title: &#39;我是弹窗标题&#39;,
-    content: &#39;佛系弹窗详情内容&#39;,
-    success: function(res) {
-      if (res.confirm) {
-        console.log(&#39;用户点击确定&#39;)
-      } else if (res.cancel) {
-        console.log(&#39;用户点击取消&#39;)
-      }
-    }
-  })   
+&lt;!-- 内容 --&gt;
+&lt;template is=&quot;wxParse&quot; data=&quot;{{wxParseData:content.nodes}}&quot; /&gt;
 </code></pre>
 
 ]]></content>
@@ -714,48 +953,90 @@ Import Cost ： 引入包大小计算,对于项目打包后体积掌握很有帮
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序之四：样式]]></title>
-    <link href="www.freefook.com/15419923901812.html"/>
-    <updated>2018-11-12T11:13:10+08:00</updated>
-    <id>www.freefook.com/15419923901812.html</id>
+    <title type="html"><![CDATA[微信小程序之跑马灯效果]]></title>
+    <link href="www.freefook.com/15419994873507.html"/>
+    <updated>2018-11-12T13:11:27+08:00</updated>
+    <id>www.freefook.com/15419994873507.html</id>
     <content type="html"><![CDATA[
-<h5 id="toc_0">设置背景图片，不要使用这个方式设置背景图</h5>
+<h5 id="toc_0">实现跑马灯效果图</h5>
 
-<pre><code>&lt;view class=&quot;viewClass&quot; style=&quot;background-image: url(&#39;../../images/welcome.png&#39;)&quot;&gt;
+<p><img src="media/15419923901812/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-12%20%E4%B8%8A%E5%8D%8811.45.16.png" alt="屏幕快照 2018-11-12 上午11.45.16"/></p>
+
+<h5 id="toc_1">---wxml文件---</h5>
+
+<pre><code>&lt;!--跑马灯中的文字信息字段:gundong_text--&gt;
+&lt;view wx:if=&#39;{{gundong_text}}&#39; class=&quot;marquee_container&quot; style=&quot;--marqueeWidth--:-12em&quot;&gt;
+  &lt;view class=&#39;marquee_text&#39;&gt;
+    &lt;view class=&#39;hengxianggundong&#39;&gt;
+      &lt;image class=&#39;gundong_image&#39; mode=&#39;aspectFit&#39; src=&#39;../../image/laba.png&#39;&gt;&lt;/image&gt;
+      &lt;view class=&#39;triangle-left&#39;&gt;&lt;/view&gt;
+      &lt;view class=&quot;gundong_textView weui-zimFont9&quot;&gt;{{gundong_text}}&lt;/view&gt;
+    &lt;/view&gt;
+  &lt;/view&gt;
 &lt;/view&gt;
-
-可以使用 view布局方式中的：
-position: relative;
-position: absolute;
 </code></pre>
 
-<h5 id="toc_1">overflow 属性</h5>
+<h5 id="toc_2">---wxss文件---</h5>
 
-<pre><code>overflow 属性规定当内容溢出元素框时发生的事情。
-
-visible     默认值。内容不会被修剪，会呈现在元素框之外。
-hidden      内容会被修剪，并且其余内容是不可见的。
-scroll      内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
-auto        如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
-inherit     规定应该从父元素继承 overflow 属性的值。
-</code></pre>
-
-<h5 id="toc_2">button去掉自带的边框</h5>
-
-<pre><code>button::after {
-  border: none;
+<pre><code>/* 跑马灯样式 */
+@keyframes around {
+  from {
+    margin-left: 100%;
+  }
+  to {
+    /* var接受传入的变量 */
+    margin-left: var(--marqueeWidth--);
+  }
 }
-</code></pre>
-
-<h5 id="toc_3">组件设置边框</h5>
-
-<pre><code>  border: 1px solid #FFF;
-</code></pre>
-
-<h5 id="toc_4">列表中最后一个item样式</h5>
-
-<pre><code>.foods-item:last-child {
-  margin-bottom: 10px;
+.marquee_container {
+  position: absolute;
+  top: 120rpx;
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  z-index: 1200;
+}
+.marquee_container:hover {
+  /* 不起作用 */
+  animation-play-state: paused;
+}
+.marquee_text {
+  display: inline-block;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  white-space: nowrap;
+  animation-name: around;
+  animation-duration: 10s; /*过渡时间*/
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.hengxianggundong {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.gundong_image {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.triangle-left {
+  width: 0;
+  height: 0;
+  border-right: 10rpx solid rgba(0, 0, 0, 0.8);
+  border-bottom: 10rpx solid rgba(0, 0, 0, 0);
+  border-top: 10rpx solid rgba(0, 0, 0, 0);
+}
+.gundong_textView {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border-radius: 10rpx;
 }
 </code></pre>
 
@@ -763,7 +1044,244 @@ inherit     规定应该从父元素继承 overflow 属性的值。
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序之五：登录篇]]></title>
+    <title type="html"><![CDATA[微信小程序之动画]]></title>
+    <link href="www.freefook.com/15419945000025.html"/>
+    <updated>2018-11-12T11:48:20+08:00</updated>
+    <id>www.freefook.com/15419945000025.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">---wxml文件---</h5>
+
+<pre><code>&lt;view class=&#39;lunbo&#39; animation=&quot;{{animationItem}}&quot;
+&lt;/view&gt;
+</code></pre>
+
+<h5 id="toc_1">---JS文件---</h5>
+
+<pre><code>  var that = this;
+    //动画样式
+    that.animationItem = wx.createAnimation({
+      duration: 500,
+      timingFunction: &#39;linear&#39;,
+      transformOrigin: &#39;90% 70%&#39;,
+      success: function(res) {}
+    });
+    
+    // 定时器，2S 循环一次
+    that.data.newLunbo_interval = setInterval(function() {
+      //开始动画-缩小
+      that.animationItem.scale3d(0.98, 0.98, 0.1).step();
+      that.setData({
+        animationItem: that.animationItem.export()
+      });
+      //延迟恢复到原来大小
+      setTimeout(function() {
+        that.animationItem.scale3d(1.0, 1.0, 1.0).step();
+        that.setData({
+          animationItem: that.animationItem.export(),
+        });
+      }, 500)
+    }.bind(that), 2000);
+</code></pre>
+
+<h5 id="toc_2">清理定时器</h5>
+
+<pre><code>    clearInterval(this.data.newLunbo_interval);
+</code></pre>
+
+<h5 id="toc_3">创建wx.createAnimation参数含义</h5>
+
+<pre><code>duration            动画持续时间，单位 ms 
+timingFunction      &#39;linear&#39; 动画的效果  
+delay               动画延迟时间，单位 ms 
+transformOrigin     &#39;50% 50% 0&#39;
+</code></pre>
+
+<h5 id="toc_4">timingFunction 的合法值</h5>
+
+<pre><code>&#39;linear&#39;    动画从头到尾的速度是相同的
+&#39;ease&#39;  动画以低速开始，然后加快，在结束前变慢
+&#39;ease-in&#39;   动画以低速开始
+&#39;ease-in-out&#39;   动画以低速开始和结束
+&#39;ease-out&#39;  动画以低速结束
+&#39;step-start&#39;    动画第一帧就跳至结束状态直到结束
+&#39;step-end&#39;  动画一直保持开始状态，最后一帧跳到结束状态
+</code></pre>
+
+<h5 id="toc_5">transformOrigin 的合法值</h5>
+
+<pre><code>transform-origin: x-axis y-axis z-axis;
+
+x-axis  定义视图被置于 X 轴的何处。可能的值：
+    left
+    center
+    right
+    length
+    %
+    
+y-axis  定义视图被置于 Y 轴的何处。可能的值：
+    top
+    center
+    bottom
+    length
+    %
+
+z-axis  定义视图被置于 Z 轴的何处。可能的值：
+    length
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序之二维码]]></title>
+    <link href="www.freefook.com/15426946934140.html"/>
+    <updated>2018-11-20T14:18:13+08:00</updated>
+    <id>www.freefook.com/15426946934140.html</id>
+    <content type="html"><![CDATA[
+<pre><code>获取小程序二维码，官方提供了三个接口，开发者可挑选适合自己的接口。 
+ A接口，生成小程序码，可接受path参数较长，生成个数受限。
+  B接口，生成小程序码，可接受页面参数较短，生成个数不受限。
+   C接口，生成二维码，可接受path参数较长，生成个数受限。
+</code></pre>
+
+<pre><code>接口A: 适用于需要的码数量较少的业务场景
+通过该接口生成的小程序码，永久有效
+
+接口C：适用于需要的码数量较少的业务场景
+通过该接口生成的小程序二维码，永久有效，数量限制
+
+数量限制接口A加上接口C，总共生成的码数量限制为100,000
+
+接口B：适用于需要的码数量极多的业务场景
+
+通过接口B生成的小程序码，永久有效，数量暂无限制。
+可以带参数最大32个可见字符，只支持数字，大小写英文
+以及部分特殊字符：!#$&amp;&#39;()*+,/:;=?@-._~，
+其它字符请自行编码为合法字符（
+因不支持%，中文无法使用 urlencode 处理，请使用其他编码方式）
+
+B接口调用分钟频率受限(目前5000次/分钟)
+</code></pre>
+
+<h4 id="toc_0">首先</h4>
+
+<p>因为接口B不受数量限制，我们使用接口B生成小程序二维码<br/>
+ 使用PostMan发起GET请求获取access_token：<br/>
+ 官方文档 ：<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183">https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183</a></p>
+
+<pre><code>https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=这里填写小程序appid&amp;secret=这里填写小程序secret
+
+返回参数：
+{
+    &quot;access_token&quot;: &quot;&quot;,
+    &quot;expires_in&quot;: 7200
+}
+</code></pre>
+
+<h4 id="toc_1">其次</h4>
+
+<p>发起POST请求：</p>
+
+<pre><code>https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=这里填写上一个接口返回的token
+
+Body中选择raw写入参数，例如
+{
+    &quot;page&quot;:&quot;pages/lengxiangui/coldfresh_index/coldfresh_index&quot;,
+    &quot;scene&quot;:&quot;1&quot;
+}
+注：场景值 scene 不得超过32位字符，并且上线已有的页面才能生成二维码
+</code></pre>
+
+<p><img src="media/15426946934140/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-20%20%E4%B8%8B%E5%8D%882.35.02.png" alt="屏幕快照 2018-11-20 下午2.35.02"/></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序之分享]]></title>
+    <link href="www.freefook.com/15427653318773.html"/>
+    <updated>2018-11-21T09:55:31+08:00</updated>
+    <id>www.freefook.com/15427653318773.html</id>
+    <content type="html"><![CDATA[
+<h4 id="toc_0">分享代码</h4>
+
+<pre><code>  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function(res) {
+    let that = this;
+    if (res.from === &#39;button&#39;) {
+      console.log(res.target)
+    }
+    return {
+      title: &#39;&#39;,
+      imageUrl: &#39;&#39;,
+      path: &#39;/pages/index/index&#39;,
+      success: function(res) {
+        console.log(&quot;转发成功&quot;);
+        shareAppMessage: ok;
+        wx.showShareMenu({
+          withShareTicket: true
+        });
+      },
+      fail: function(res) {
+        console.log(&quot;转发失败&quot;);
+      }
+    }
+  },
+</code></pre>
+
+<h4 id="toc_1">分享注意事项</h4>
+
+<pre><code>1. 分享转发：不自定义转发图片的情况下，
+默认会取当前页面，从顶部开始，高度为 80% 屏幕宽度的图像作为转发图片。
+测试scrollView iOS从scrollView顶部开始截图，Android是截屏有差异
+
+2. 设置的imageUrls 地址中不能有中文
+
+3. 小程序里绘制页面，和网络请求处理结是异步处理，
+所以当点击分享时，请求接口，返回数据之后去转发是行不通的，
+要在转发前就准备好要转发的内容；
+</code></pre>
+
+<h4 id="toc_2">分享小程序二维码开发流程</h4>
+
+<p><strong>二维码调用的接口，请阅读  ‘微信小程序之九：二维码’</strong></p>
+
+<pre><code>获取小程序码的业务：建议在自己服务器上处理，小程序端不做处理
+
+注意：为什么不在小程序端做处理？
+1. access_token的有效期等问题
+2. 调用接口B，获取小程序二维码，接口返回的是二进制流
+3. 加载二进制小程序码的图片，需要转base64 在image组件中可以显示
+4. 小程序canvas画布不支持绘制base64图片，模拟器可以，真机不行
+5. 参数字段scene，带参数最大32个可见字符
+
+如何解决带参数最大32个可见字符？
+1. 服务端要出这样一个接口：请求生成二维码的接口
+2. 服务端接收小程序端传来的生成二维码的参数
+3. 服务端将小程序端传来的参数scene存数据库(因为大于32字符)生成对应的id用于生成二维码
+4. 小程序端扫码进入程序的时候，可以获取参数id
+5. 小程序端用id请求服务端获取当初要编辑在二维码里的真正参数
+</code></pre>
+
+<p>微信扫码，扫描带参二维码<br/>
+进入小程序指定的页面中需要接收场景值scene</p>
+
+<pre><code>onLoad: function(options) {
+ if (options.scene) {
+    // options 中的 scene 需要使用 decodeURIComponent 才能获取到生成二维码时传入的 scene
+    var scene = decodeURIComponent(options.scene)
+    console.log(&#39;打印参数scene---&gt;&#39; + scene)
+  }
+}
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序登录篇]]></title>
     <link href="www.freefook.com/15234367737951.html"/>
     <updated>2018-04-11T16:52:53+08:00</updated>
     <id>www.freefook.com/15234367737951.html</id>
@@ -932,294 +1450,6 @@ https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html
 
 <p>官方数据签名校验<br/>
 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject">https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序之六：解析html]]></title>
-    <link href="www.freefook.com/15420001365512.html"/>
-    <updated>2018-11-12T13:22:16+08:00</updated>
-    <id>www.freefook.com/15420001365512.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">使用wxParse解析html</h5>
-
-<p>github地址：<a href="https://github.com/icindy/wxParse">https://github.com/icindy/wxParse</a><br/>
-下载之后，将wxParse文件夹导入自己工程与utils同级别   </p>
-
-<h5 id="toc_1">在app.wxss全局样式文件中，引入wxParse的样式表如:</h5>
-
-<pre><code>@import&quot;/wxParse/wxParse.wxss&quot;;
-</code></pre>
-
-<h5 id="toc_2">在所需的JS文件中引入如:</h5>
-
-<pre><code>var WxParse = require(&#39;../../wxParse/wxParse.js&#39;);
-
-/**
-     * WxParse.wxParse(bindName , type, data, target,imagePadding)
-     * 1.bindName绑定的数据名(必填)
-     * 2.type可以为html或者md(必填)
-     * 3.data为传入的具体数据(必填)
-     * 4.target为Page对象,一般为this(必填)
-     * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
-     */
-     
-    WxParse.wxParse(&#39;content&#39;, &#39;html&#39;, &#39;&lt;h1&gt;我是内容&lt;/h1&gt;&#39;, this, 0);
-</code></pre>
-
-<h5 id="toc_3">在wxml所需的文件中引入如:</h5>
-
-<pre><code>&lt;import src=&quot;../../wxParse/wxParse.wxml&quot; /&gt;
-
-&lt;!-- 内容 --&gt;
-&lt;template is=&quot;wxParse&quot; data=&quot;{{wxParseData:content.nodes}}&quot; /&gt;
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序之七：跑马灯效果]]></title>
-    <link href="www.freefook.com/15419994873507.html"/>
-    <updated>2018-11-12T13:11:27+08:00</updated>
-    <id>www.freefook.com/15419994873507.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">实现跑马灯效果图</h5>
-
-<p><img src="media/15419923901812/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-12%20%E4%B8%8A%E5%8D%8811.45.16.png" alt="屏幕快照 2018-11-12 上午11.45.16"/></p>
-
-<h5 id="toc_1">---wxml文件---</h5>
-
-<pre><code>&lt;!--跑马灯中的文字信息字段:gundong_text--&gt;
-&lt;view wx:if=&#39;{{gundong_text}}&#39; class=&quot;marquee_container&quot; style=&quot;--marqueeWidth--:-12em&quot;&gt;
-  &lt;view class=&#39;marquee_text&#39;&gt;
-    &lt;view class=&#39;hengxianggundong&#39;&gt;
-      &lt;image class=&#39;gundong_image&#39; mode=&#39;aspectFit&#39; src=&#39;../../image/laba.png&#39;&gt;&lt;/image&gt;
-      &lt;view class=&#39;triangle-left&#39;&gt;&lt;/view&gt;
-      &lt;view class=&quot;gundong_textView weui-zimFont9&quot;&gt;{{gundong_text}}&lt;/view&gt;
-    &lt;/view&gt;
-  &lt;/view&gt;
-&lt;/view&gt;
-</code></pre>
-
-<h5 id="toc_2">---wxss文件---</h5>
-
-<pre><code>/* 跑马灯样式 */
-@keyframes around {
-  from {
-    margin-left: 100%;
-  }
-  to {
-    /* var接受传入的变量 */
-    margin-left: var(--marqueeWidth--);
-  }
-}
-.marquee_container {
-  position: absolute;
-  top: 120rpx;
-  width: 100%;
-  height: 60rpx;
-  line-height: 60rpx;
-  z-index: 1200;
-}
-.marquee_container:hover {
-  /* 不起作用 */
-  animation-play-state: paused;
-}
-.marquee_text {
-  display: inline-block;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  white-space: nowrap;
-  animation-name: around;
-  animation-duration: 10s; /*过渡时间*/
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-.hengxianggundong {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-.gundong_image {
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 50rpx;
-  height: 50rpx;
-  border-radius: 50%;
-  margin-right: 20rpx;
-}
-.triangle-left {
-  width: 0;
-  height: 0;
-  border-right: 10rpx solid rgba(0, 0, 0, 0.8);
-  border-bottom: 10rpx solid rgba(0, 0, 0, 0);
-  border-top: 10rpx solid rgba(0, 0, 0, 0);
-}
-.gundong_textView {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding-left: 20rpx;
-  padding-right: 20rpx;
-  border-radius: 10rpx;
-}
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序之八：动画]]></title>
-    <link href="www.freefook.com/15419945000025.html"/>
-    <updated>2018-11-12T11:48:20+08:00</updated>
-    <id>www.freefook.com/15419945000025.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">---wxml文件---</h5>
-
-<pre><code>&lt;view class=&#39;lunbo&#39; animation=&quot;{{animationItem}}&quot;
-&lt;/view&gt;
-</code></pre>
-
-<h5 id="toc_1">---JS文件---</h5>
-
-<pre><code>  var that = this;
-    //动画样式
-    that.animationItem = wx.createAnimation({
-      duration: 500,
-      timingFunction: &#39;linear&#39;,
-      transformOrigin: &#39;90% 70%&#39;,
-      success: function(res) {}
-    });
-    
-    // 定时器，2S 循环一次
-    that.data.newLunbo_interval = setInterval(function() {
-      //开始动画-缩小
-      that.animationItem.scale3d(0.98, 0.98, 0.1).step();
-      that.setData({
-        animationItem: that.animationItem.export()
-      });
-      //延迟恢复到原来大小
-      setTimeout(function() {
-        that.animationItem.scale3d(1.0, 1.0, 1.0).step();
-        that.setData({
-          animationItem: that.animationItem.export(),
-        });
-      }, 500)
-    }.bind(that), 2000);
-</code></pre>
-
-<h5 id="toc_2">清理定时器</h5>
-
-<pre><code>    clearInterval(this.data.newLunbo_interval);
-</code></pre>
-
-<h5 id="toc_3">创建wx.createAnimation参数含义</h5>
-
-<pre><code>duration            动画持续时间，单位 ms 
-timingFunction      &#39;linear&#39; 动画的效果  
-delay               动画延迟时间，单位 ms 
-transformOrigin     &#39;50% 50% 0&#39;
-</code></pre>
-
-<h5 id="toc_4">timingFunction 的合法值</h5>
-
-<pre><code>&#39;linear&#39;    动画从头到尾的速度是相同的
-&#39;ease&#39;  动画以低速开始，然后加快，在结束前变慢
-&#39;ease-in&#39;   动画以低速开始
-&#39;ease-in-out&#39;   动画以低速开始和结束
-&#39;ease-out&#39;  动画以低速结束
-&#39;step-start&#39;    动画第一帧就跳至结束状态直到结束
-&#39;step-end&#39;  动画一直保持开始状态，最后一帧跳到结束状态
-</code></pre>
-
-<h5 id="toc_5">transformOrigin 的合法值</h5>
-
-<pre><code>transform-origin: x-axis y-axis z-axis;
-
-x-axis  定义视图被置于 X 轴的何处。可能的值：
-    left
-    center
-    right
-    length
-    %
-    
-y-axis  定义视图被置于 Y 轴的何处。可能的值：
-    top
-    center
-    bottom
-    length
-    %
-
-z-axis  定义视图被置于 Z 轴的何处。可能的值：
-    length
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序之九：二维码]]></title>
-    <link href="www.freefook.com/15426946934140.html"/>
-    <updated>2018-11-20T14:18:13+08:00</updated>
-    <id>www.freefook.com/15426946934140.html</id>
-    <content type="html"><![CDATA[
-<pre><code>获取小程序二维码，官方提供了三个接口，开发者可挑选适合自己的接口。 
- A接口，生成小程序码，可接受path参数较长，生成个数受限。
-  B接口，生成小程序码，可接受页面参数较短，生成个数不受限。
-   C接口，生成二维码，可接受path参数较长，生成个数受限。
-</code></pre>
-
-<pre><code>接口A: 适用于需要的码数量较少的业务场景
-通过该接口生成的小程序码，永久有效
-
-接口C：适用于需要的码数量较少的业务场景
-通过该接口生成的小程序二维码，永久有效，数量限制
-
-数量限制接口A加上接口C，总共生成的码数量限制为100,000
-
-接口B：适用于需要的码数量极多的业务场景
-
-通过接口B生成的小程序码，永久有效，数量暂无限制。
-可以带参数最大32个可见字符，只支持数字，大小写英文
-以及部分特殊字符：!#$&amp;&#39;()*+,/:;=?@-._~，
-其它字符请自行编码为合法字符（
-因不支持%，中文无法使用 urlencode 处理，请使用其他编码方式）
-
-B接口调用分钟频率受限(目前5000次/分钟)
-</code></pre>
-
-<h4 id="toc_0">首先</h4>
-
-<p>因为接口B不受数量限制，我们使用接口B生成小程序二维码<br/>
- 使用PostMan发起GET请求获取access_token：<br/>
- 官方文档 ：<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183">https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183</a></p>
-
-<pre><code>https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=这里填写小程序appid&amp;secret=这里填写小程序secret
-
-返回参数：
-{
-    &quot;access_token&quot;: &quot;&quot;,
-    &quot;expires_in&quot;: 7200
-}
-</code></pre>
-
-<h4 id="toc_1">其次</h4>
-
-<p>发起POST请求：</p>
-
-<pre><code>https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=这里填写上一个接口返回的token
-
-Body中选择raw写入参数，例如
-{
-    &quot;page&quot;:&quot;pages/lengxiangui/coldfresh_index/coldfresh_index&quot;,
-    &quot;scene&quot;:&quot;1&quot;
-}
-注：场景值 scene 不得超过32位字符，并且上线已有的页面才能生成二维码
-</code></pre>
-
-<p><img src="media/15426946934140/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-20%20%E4%B8%8B%E5%8D%882.35.02.png" alt="屏幕快照 2018-11-20 下午2.35.02"/></p>
 
 ]]></content>
   </entry>
@@ -1612,79 +1842,6 @@ icon图则用其他logo图置换掉
 13.定期换电脑提包.换电脑的序列号.换VPN环境.定期换域名. 
 
 </code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序运营 设计与开发]]></title>
-    <link href="www.freefook.com/15416647115012.html"/>
-    <updated>2018-11-08T16:11:51+08:00</updated>
-    <id>www.freefook.com/15416647115012.html</id>
-    <content type="html"><![CDATA[
-<h4 id="toc_0">项目经理必备</h4>
-
-<p>项目经理必要了解API里面微信开放接口的信息例如：</p>
-
-<ol>
-<li>登录授权</li>
-<li>获取用户信息</li>
-<li>微信支付</li>
-<li>转发</li>
-<li>收货地址</li>
-<li>生成小程序二维码</li>
-</ol>
-
-<p>小程序初期明确是否在运营规范里允许的，或者找一些已有小程序样例</p>
-
-<ul>
-<li>运营规范(在这里查看禁止事项)：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/index.html">https://mp.weixin.qq.com/debug/wxadoc/product/index.html</a></li>
-<li><p>特殊行业所需资质材料：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714</a><br/>
-<img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.46.27.png" alt="屏幕快照 2018-08-08 下午3.46.27"/></p></li>
-<li><p>支付文档：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1</a></p></li>
-<li><p>客服消息：<a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221">https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221</a> </p></li>
-<li><p>数据分析：<a href="https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714</a></p></li>
-</ul>
-
-<hr/>
-
-<h5 id="toc_1">当开始要做一个小程序时，需通读设计指南</h5>
-
-<p>设计指南：<a href="https://mp.weixin.qq.com/debug/wxadoc/design/index.html">https://mp.weixin.qq.com/debug/wxadoc/design/index.html</a></p>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.28.55.png" alt="屏幕快照 2018-04-09 上午11.28.55"/></p>
-
-<h4 id="toc_2">小程序开发人员必备</h4>
-
-<p>入坑指南，疑难问题，请浏览👇<br/>
-小程序社区：<a href="http://www.wxapp-union.com/">http://www.wxapp-union.com/</a></p>
-
-<p>开发者学习已有框架可参考<br/>
-WePY框架开发小程序请移步👇<br/>
-<a href="https://tencent.github.io/wepy/index.html">https://tencent.github.io/wepy/index.html</a></p>
-
-<p>美团一团队出的框架mpvue框架请移步👇<br/>
-<a href="http://mpvue.com/mpvue/#_2">http://mpvue.com/mpvue/#_2</a></p>
-
-<p>渐进式JavaScript 框架VUE 地址：<br/>
-<a href="https://cn.vuejs.org/">https://cn.vuejs.org/</a></p>
-
-<p>weui Github 地址：<br/>
-<a href="https://github.com/Tencent/weui-wxss">https://github.com/Tencent/weui-wxss</a></p>
-
-<hr/>
-
-<h5 id="toc_3">微信开发者工具创建小程序工程需要AppID</h5>
-
-<p>官方工具：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714</a></p>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.21.41.png" alt="屏幕快照 2018-04-09 上午11.21.41"/></p>
-
-<h5 id="toc_4">小程序开发必读项，教程 ，框架 ，组件 ，API , 工具</h5>
-
-<p>简易教程：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/">https://mp.weixin.qq.com/debug/wxadoc/dev/</a></p>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.23.50.png" alt="屏幕快照 2018-04-09 上午11.23.50"/></p>
 
 ]]></content>
   </entry>
