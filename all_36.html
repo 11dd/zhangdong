@@ -247,8 +247,6 @@
           
             <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
           
-            <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
-          
 
       
         <li class="divider"></li>
@@ -456,8 +454,6 @@
                         
                           <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
                         
-                          <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
-                        
 
                     
                       <li class="side-title"><span>联系方式</span></li>
@@ -478,68 +474,56 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序列表list</h1>
+		<h1>微信小程序网络请求</h1>
 
-		<h5 id="toc_0">在创建的home.wxml文件里写入如下布局</h5>
+		<h4 id="toc_0">1.在wxml文件里加上按钮点击事件 和list</h4>
 
-<pre><code>&lt;view&gt;  
+<pre><code>&lt;button bindtap=&quot;RequestData&quot; value=&quot;Button&quot;&gt;request&lt;/button&gt; 
+
+&lt;view&gt;  
   &lt;scroll-view scroll-y=&quot;true&quot; style=&quot;height:100%&quot; &gt;  
-    &lt;view wx:for=&quot;{{array}}&quot; style=&quot;width:100%&quot;&gt;  
-    &lt;image id =&quot;{{index}}&quot; 
-           src =&quot;{{item}}&quot; 
-           mode =&quot;aspectFill&quot; 
-           style =&quot;width:100%;height:150px&quot;      
-           bindtap =&quot;tapName&quot; 
-           data-img =&quot;{{item}}&quot;&gt;&lt;/image&gt; 
+    &lt;view wx:for=&quot;{{textdata}}&quot; style=&quot;width:100%&quot;&gt;  
+      &lt;label style=&quot;width:100%;height:50px;font-family:&#39;微软雅黑&#39;&quot;&gt;  {{item.name}}&lt;/label&gt;  
     &lt;/view&gt;  
   &lt;/scroll-view&gt;  
-&lt;/view&gt; 
+&lt;/view&gt;   
+
 </code></pre>
 
-<h5 id="toc_1">在home.js 文件里放入数据</h5>
+<h4 id="toc_1">2.在.js 文件添加网络请求，点击按钮后执行代码如下：</h4>
 
-<pre><code>/**
-   * 页面的初始数据
-   */
-  data: {
-    array: [
-    &quot;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&quot;,
-    &quot;http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg&quot;,
-    &quot;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&quot;
-    ]  
-  },
+<pre><code> RequestData: function () {
+    var that = this;
+    wx.request({
+      url: &#39;http://.../serve/api/v1.0/service/communityLst&#39;,
 
-  //列表上图片点击方法，跳转详情页面
-  tapName: function (event) {
-    console.log(event.target.dataset.img)
-    wx.navigateTo({
-      url: &#39;../detail/detail&#39;
+      data: {},
+      method: &#39;GET&#39;, 
+      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT 
+      // header: {}, // 设置请求的 header 默认是application/json  
+
+      success: function (res) {  
+        //划重点---&gt;setData 
+        that.setData({ textdata: res.data.query});
+        
+        // 操作json数据 遍历打印数组里name字段数据  
+        for (var i in res.data.query) {
+          console.log(res.data.query[i].name);
+        }
+      },
+      fail: function () {
+        // fail  
+      },
+      complete: function () {
+        // complete  
+      }
     })
-  },
-  
-  
-/**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-    console.log(&quot;打印参数，上个页面传过来的参数id---&gt;&quot;)
-    console.log(options.id)  
-
-  },
-  
+  },  
 </code></pre>
 
-<h5 id="toc_2">在home.json文件里写上navigationBarTitleText</h5>
+<h4 id="toc_2">3.setData 后页面如下：</h4>
 
-<pre><code>{
-  &quot;navigationBarTitleText&quot;: &quot;知之为知之&quot;
-}
-</code></pre>
-
-<h4 id="toc_3">运行界面 列表 list</h4>
-
-<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%881.50.12.png" alt="屏幕快照 2018-04-12 下午1.50.12"/></p>
+<p><img src="media/15235164843984/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%882.26.02.png" alt="屏幕快照 2018-04-12 下午2.26.02"/></p>
 
 
 		</div>

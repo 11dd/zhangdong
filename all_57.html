@@ -247,8 +247,6 @@
           
             <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
           
-            <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
-          
 
       
         <li class="divider"></li>
@@ -456,8 +454,6 @@
                         
                           <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
                         
-                          <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
-                        
 
                     
                       <li class="side-title"><span>联系方式</span></li>
@@ -478,10 +474,294 @@
 
 	
 		<div class="markdown-body">
-		<h1>联系方式</h1>
+		<h1>互动直播变身视频会议</h1>
 
-		<p>联系人：张东东<br/>
-邮箱：<a href="mailto:jsjzdd_2014@126.com">jsjzdd_2014@126.com</a></p>
+		<h2 id="toc_0">视频会议</h2>
+
+<blockquote>
+<p>初试水: 需求是13人同屏视频会议,最多进入视频会议房间的人数上线也就是13人;<br/>
+也因最大障碍网络问题,设备问题,<br/>
+很难支撑稳定的长时间连接这么多路的视频通话而被放弃;</p>
+
+<p>在思考: 用互动直播模式,改进视频会议方案<br/>
+为了视频会议的稳定性:减少至视频人员数量(4人),<br/>
+现有APP调查: QQ视频同时4人;微信支持9人;<br/>
+直播类属于连麦, YY4人 ,直播类有多的是连6人;<br/>
+淘宝旗下的产品,钉钉视频会议5人;</p>
+
+<p>方案一:因为视频人员数量只有4人,后台创建会议时应设置有权限视频的人员;<br/>
+其余人默认观众模式,只可语音;<br/>
+这就抛出了第一个问题?<br/>
+谁能视频会议,分配给谁这个权限的问题?<br/>
+所以:后台添加开会人员时;分配视频权限;(谁是视频显示,其他人默认语音)<br/>
+房间只能是有视频权限的人创建,谁是房主有最高权限,这个人是</p>
+</blockquote>
+
+<h1 id="toc_1">一. 网易云互动直播</h1>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-c7961d44fe677e47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午1.30.36.png"/></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-812f5105d2624c04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午1.36.55.png"/></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-2a227a96dae9afb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午1.32.17.png"/></p>
+
+<h4 id="toc_2">功能概述</h4>
+
+<blockquote>
+<p>网易云通信的互动直播功能，支持主播和观众实时连麦互动。<br/>
+互动直播由连麦互动和直播两部分组成，其中连麦互动基于音视频通话实现，可以实现1个主播+3个连麦者的音视频通话连麦（基于私有协议实现）。<br/>
+主播和连麦者的音视频数据在互动直播高性能服务器合成为一道流后推流到CDN流媒体服务器，普通观众拉流观看即可（RTMP推流协议)</p>
+</blockquote>
+
+<h4 id="toc_3">互动直播接入流程</h4>
+
+<blockquote>
+<p>1.接入IM账号体系：单独的直播并不需要接入账号体系，但是互动连麦是基于音视频通话做的，音视频通话是基于IM的账号体系的，所以这边需要给主播和连麦者都分配IM账号。由服务端创建IM账号;<br/>
+2.客户端接入IM的SDK，登录IM<br/>
+3.客户端接入音视频通话SDK，实现主播和连麦者的音视频通话。（互动直播基于音视频多人会议开发，通过将多人会议中用户的音视频数据处理后推送给视频流服务器实现直播和实时连麦。 在功能的提供上，互动直播复用多人音视频接口，增加互动开关、推流地址指定与切换、直播角色指定等扩展设置）<br/>
+4.接入直播，服务端创建频道后获取推流地址，在主播端设置该推流地址。<br/>
+5.观众使用该推流地址对应的拉流地址观看（支持HLS (m3u8)、RTMP、HTTP-FLV等拉流协议），可接入直播的拉流播放器。</p>
+</blockquote>
+
+<h4 id="toc_4">demo简介</h4>
+
+<blockquote>
+<p>互动直播Demo在互动连麦的基础上还接入了无人数上限的聊天室，来实现文字互动、点赞、送礼物等多种消息形式。<br/>
+1.聊天室的是由服务端创建并管理的。客户端在登录IM成功后根据服务端提供的roomid加入聊天室即可。所以聊天室也是基于IM的账号体系的。<br/>
+2.聊天室的消息收发。</p>
+</blockquote>
+
+<h4 id="toc_5">demo各功能说明：</h4>
+
+<blockquote>
+<p>1.注册，客户端获取注册信息后发给demo服务器，由demo服务器完成。（账号体系）<br/>
+2.客户端初始化SDK，登录IM<br/>
+3.demo服务器创建直播频道获取推拉流地址。<br/>
+4.demo服务器创建聊天室。<br/>
+5.主播客户端创建音视频通话房间，从demo服务器获取推流地址后，开启推流开关。<br/>
+6.各客户端加入聊天室。<br/>
+7.连麦者加入主播创建的音视频通话房间，和主播连麦互动。</p>
+</blockquote>
+
+<p>网易云互动直播地址:<a href="https://www.163yun.com/product/interact">https://www.163yun.com/product/interact</a></p>
+
+<h1 id="toc_6">二. 腾讯云 互动直播ILVB</h1>
+
+<blockquote>
+<p>互动直播（Interactive Live Video Broadcasting）是全新的一站式“多路音视频互动”解决方案，主打“连麦”、“多画面特效”等能力；通过客户端SDK可打造跨平台一对多，多对多（支持最大同时<strong>8</strong>人上麦）的超清酷炫直播场景</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-2e9adb38e8fa79b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午1.50.15.png"/></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-70b7b469c6e2cd0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午1.51.20.png"/></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-3380c4ef7ee31fb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午1.53.40.png"/></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-39dc0cb9cb7963dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午1.59.56.png"/></p>
+
+<p><strong>数据交互时序说明</strong></p>
+
+<pre><code>步骤1和2解释了独立帐号模式下，app用户完成腾讯互动直播身份认证的过程。
+
+如果采用托管帐号模式，则不需要开发者server参与，直接调互动直播sdk login接口即可；
+开播、观看、上麦等音视频接口的调用必须在进房间成功之后；
+只要app业务逻辑允许，在调用相应的接口后，任何用户都有上麦能力；
+开发者后台server可以通过腾讯互动直播给app里的用户或者群组push消息。
+</code></pre>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-3fa0edd5258cff74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午2.01.36.png"/></p>
+
+<h4 id="toc_7">后台接口已实现的功能</h4>
+
+<blockquote>
+<p>注册<br/>
+    登录<br/>
+    创建房间<br/>
+    上报创建房间结果<br/>
+    拉取直播房间列表<br/>
+    上报进入房间信息<br/>
+    拉取房间成员列表<br/>
+    心跳上报<br/>
+    申请上麦<br/>
+    申请上麦结果上报<br/>
+    录制视频完成上报<br/>
+    退出房间<br/>
+    拉取点播列表<br/>
+    拉取旁路直播地址列表<br/>
+    拉取指定房间的旁路直播地址<br/>
+    下线</p>
+</blockquote>
+
+<h4 id="toc_8">客户端开启直播接口流程:</h4>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-85bc4166c86ea4e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午2.06.47.png"/></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-1aebc166c9efbf5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午2.07.17.png"/></p>
+
+<p>腾讯云互动直播地址:<a href="https://cloud.tencent.com/document/product/268">https://cloud.tencent.com/document/product/268</a><br/>
+价格地址:<a href="https://cloud.tencent.com/document/product/268/5127">https://cloud.tencent.com/document/product/268/5127</a></p>
+
+<h1 id="toc_9">三. 阿里云直播</h1>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-20b86d34a12214b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午2.10.07.png"/></p>
+
+<h5 id="toc_10">连麦介绍:</h5>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-a69c2696e42d1554.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午2.14.32.png"/></p>
+
+<blockquote>
+<p>连麦服务提供接入测试操作，可通过连麦参数配置接入连麦服务，测试阶段连麦服务做多支持5路连麦并发流。如果您想接入阿里云连麦服务，请与客户服务人员联系或提交工单申请。<br/>
+阿里云连麦服务提供简单的配置，开通过程包括以下步骤<br/>
+Step 1: 添加直播加速域名<br/>
+Step 2: 创建连麦服务<br/>
+Step 3：配置回调地址</p>
+</blockquote>
+
+<h5 id="toc_11">连麦参与者的职责和功能</h5>
+
+<h6 id="toc_12">主播端</h6>
+
+<blockquote>
+<p>采集音视频信号并编码、推送直播流。<br/>
+拉取副麦端的直播流。<br/>
+将拉取的副麦端的直播流与本地采集的视频进行叠加播放。</p>
+</blockquote>
+
+<h6 id="toc_13">副麦端</h6>
+
+<blockquote>
+<p>采集音视频信号并编码、推送直播流。<br/>
+拉取主播及其他副麦端的直播流。<br/>
+将拉取的直播流与本地采集的视频进行叠加播放。</p>
+</blockquote>
+
+<h6 id="toc_14">观众端</h6>
+
+<blockquote>
+<p>播放混流地址中的直播流</p>
+</blockquote>
+
+<h6 id="toc_15">APP Server</h6>
+
+<blockquote>
+<p>管理直播或连麦过程中使用的地址，包括推流地址、播放地址和混流地址。<br/>
+对直播或连麦业务进行管理<br/>
+调用AliLive的混流接口和接受AliLive的回调，以实现服务端混流的功能。</p>
+</blockquote>
+
+<h6 id="toc_16">AliLive</h6>
+
+<blockquote>
+<p>接受直播流的推送<br/>
+接受直播流的拉取<br/>
+将多路直播流混合成一路，并输出<br/>
+接受混合后的直播流的拉取</p>
+</blockquote>
+
+<h6 id="toc_17">注：</h6>
+
+<blockquote>
+<p>连麦过程中APP Server需要提供三类地址：推流地址、播放地址、混流地址。<br/>
+1   推流地址是直播或副麦推送直播流的地址，仅供主播端和副麦端使用。<br/>
+2   播放地址是用于观看主播或副麦的直播视频的地址，仅在连麦的过程中使用，且仅供主播端和副麦端使用。<br/>
+3   混流地址是用于观看AliLive混合多路直播流的结果的地址，仅供观众端使用。混流地址可以在非连麦的过程中使用，此时播放的就是主播的画面（与主播的播放地址内容相同）；若在连麦过程中使用，播放的就是主播与副麦的混合画面。<br/>
+4  观众播放的一定是混流地址。当观众参与连麦、成为副麦时，会结束混流地址的播放，并开始播放主播和其他副麦的直播地址；当副麦结束连麦、成为观众时，会结束播放主播和其他副麦的直播地址，重新开始播放混流地址。</p>
+</blockquote>
+
+<h5 id="toc_18">连麦的参与者</h5>
+
+<p>连麦的过程有5种参与者：</p>
+
+<blockquote>
+<p>主播端：<br/>
+主播的客户端。<br/>
+副麦端：<br/>
+正在与主播连麦的人的客户端。<br/>
+观众端：<br/>
+未参与连麦的、观看直播或他人连麦的人的客户端。<br/>
+APP Server：<br/>
+用于接收或转发连麦信号的服务端，由直播业务方自行开发，可以根据自身的业务逻辑来控制连麦的流程，也是混流功能的唯一调用方。<br/>
+AliLive：<br/>
+阿里云直播服务器，提供整个直播或连麦过程中所有直播流的接收、分发和混流服务。<br/>
+注：当观众开始连麦后，我们称之为副麦；当副麦结束连麦后，我们称之为观众。</p>
+</blockquote>
+
+<h4 id="toc_19">典型业务流程</h4>
+
+<pre><code>
+本小节将描述一个典型业务流程的实线逻辑，从主播上线到观众加入连麦、连麦结束，最后主播退出直播为止。
+
+主播发起直播与观众观看直播
+
+    主播向APP Server发起直播请求。
+    APP Server同意主播发起直播，并分配主播的推流地址、播放地址以及混流地址。
+    主播通过推流地址开始推流。
+    APP Server收到AliLive推流成功的回调，将主播放入直播列表，表示此时观众可以播放主播的直播流。
+    观众A、B、C开始观看直播（即播放混流地址）。
+    通知AppServer,用户A、B、C正在观看
+
+主播发起连麦
+
+    主播向APP Server发出请求，希望与观众A、B连麦。
+    APP Server向观众A、B反馈主播的请求。
+    观众A、B向APP Server发送同意主播连麦请求的信号。
+    APP Server向观众A、B分配各自的推流地址，并发送主播流的播放地址。
+    观众A、B开始连麦（即结束播放混流地址，开始推流、开始播放主播的播放地址）。
+    APP Server收到AliLive给出的观众A、B推流成功的回调，将A、B的播放地址发送给主播和A、B、C。（注释1：此处观众C并不需要收到A、B的播放地址，是否收到A、B的播放地址对于观众C的播放没有任何影响。之所以收到这个消息主要是通知第三方观众有人加入连麦了。）
+    主播开始与A、B进行连麦（即播放A、B的播放地址）。
+    副麦A增加与B的连麦（即播放B的播放地址）。
+    副麦B增加与A的连麦（即播放A的播放地址）。
+    APP Server调用AliLive的混流接口，开始混流且A、B加入混流画面。至此，主播与A、B连麦成功。
+
+副麦退出连麦
+
+    副麦B向APP Server发送结束连麦的通知，然后结束连麦（即停止推流、停止播放主播和副麦A的播放地址，开始播放混流地址）。
+    APP Server调用AliLive的混流接口，B退出混流画面
+    APP Server发送副麦B退出直播的消息给主播及A、B、C。
+    主播与B停止连麦（即结束播放B的播放地址）。
+    副麦A与B停止连麦（即结束播放B的播放地址）。 
+
+观众加入连麦
+
+    观众C向APP Server发出申请，要求加入连麦。
+    APP Server向主播和副麦A转发观众C的申请。
+    主播和副麦A向APP Server发送同意连麦的信号。
+    APP Server向观众C分配推流地址，并发送主播和副麦A的播放地址。
+    观众C开始连麦（即结束播放混流地址，开始推流、开始播放主播和副麦A的播放地址）。
+    APP Server收到AliLive给出的观众C推流成功的回调，将C的播放地址发送给主播和A、B、C。
+    主播增加与C的连麦（即播放C的播放地址）。
+    副麦A增加与C的连麦（即播放C的播放地址）。
+    APP Server调用AliLive的混流接口，C加入混流画面。至此，观众C加入连麦成功。
+
+主播终止连麦
+
+    主播向APP Server发送终止连麦通知，并终止连麦（即结束播放副麦A、C的播放地址）。
+    APP Server向主播和A、B、C发送终止连麦的信号。
+    副麦A退出连麦（即结束推流、结束播放主播和副麦C的播放地址，开始播放混流地址）。
+    副麦C退出连麦（即结束推流、结束播放主播和副麦A的播放地址，开始播放混流地址）。
+    APP Server调用AliLive的混流接口，结束混流，A、C退出混流画面。至此，连麦终止。
+
+主播结束直播
+
+    主播向APP Server发送结束直播的通知，并结束推流。
+    APP Server向观众A、B、C告知直播结束。
+    观众A、B、C退出直播（即结束播放混流地址）。
+
+注：无论是直播还是连麦的过程，推流是不可缺少的。主播会推流，副麦会推流。客户端SDK中就提供了能够实现推流功能的接口，这些接口中所谓的推流成功指的是直播流可以成功的发送出去。但这并不表示此时可以从服务端下载这些直播流并观看，只有收到AliLive中推流成功的回调后，才表示可以真正开始播放。
+</code></pre>
+
+<h4 id="toc_20">连麦服务开通与配置</h4>
+
+<blockquote>
+<p>I：提供需要连麦的域名和APP（连麦需要消耗大量服务端资源，业务上需要将连麦与非连麦的业务区分）<br/>
+II：提供连麦的估计并发量<br/>
+III：提供混流回调URL：混流可用回调和混流结果回调<br/>
+IV：将上述三个信息提供给阿里云相关人员<br/>
+V：在阿里云控制台上配置直播推断流回调</p>
+</blockquote>
+
+<p>阿里云连麦文档地址:<a href="https://help.aliyun.com/document_detail/52350.html?spm=5176.doc29951.6.650.DNEVno">https://help.aliyun.com/document_detail/52350.html?spm=5176.doc29951.6.650.DNEVno</a><br/>
+价格地址:<a href="https://cn.aliyun.com/price/product#/live/detail">https://cn.aliyun.com/price/product#/live/detail</a></p>
 
 
 		</div>
