@@ -119,6 +119,8 @@
           
             <li><a title="微信小程序建项-商品网格布局" href="15236096586360.html">微信小程序建项-商品网格布局</a></li>
           
+            <li><a title="微信小程序建项-登录篇" href="15234367737951.html">微信小程序建项-登录篇</a></li>
+          
             <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
           
             <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
@@ -128,8 +130,6 @@
             <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
           
             <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
-          
-            <li><a title="微信小程序登录篇" href="15234367737951.html">微信小程序登录篇</a></li>
           
             <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
           
@@ -338,6 +338,8 @@
                         
                           <li><a title="微信小程序建项-商品网格布局" href="15236096586360.html">微信小程序建项-商品网格布局</a></li>
                         
+                          <li><a title="微信小程序建项-登录篇" href="15234367737951.html">微信小程序建项-登录篇</a></li>
+                        
                           <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
                         
                           <li><a title="微信小程序之跑马灯效果" href="15419994873507.html">微信小程序之跑马灯效果</a></li>
@@ -347,8 +349,6 @@
                           <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
                         
                           <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
-                        
-                          <li><a title="微信小程序登录篇" href="15234367737951.html">微信小程序登录篇</a></li>
                         
                           <li><a title="微信小程序View的布局" href="15242100404510.html">微信小程序View的布局</a></li>
                         
@@ -474,63 +474,87 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之二维码</h1>
+		<h1>微信小程序之动画</h1>
 
-		<pre><code>获取小程序二维码，官方提供了三个接口，开发者可挑选适合自己的接口。 
- A接口，生成小程序码，可接受path参数较长，生成个数受限。
-  B接口，生成小程序码，可接受页面参数较短，生成个数不受限。
-   C接口，生成二维码，可接受path参数较长，生成个数受限。
+		<h5 id="toc_0">---wxml文件---</h5>
+
+<pre><code>&lt;view class=&#39;lunbo&#39; animation=&quot;{{animationItem}}&quot;
+&lt;/view&gt;
 </code></pre>
 
-<pre><code>接口A: 适用于需要的码数量较少的业务场景
-通过该接口生成的小程序码，永久有效
+<h5 id="toc_1">---JS文件---</h5>
 
-接口C：适用于需要的码数量较少的业务场景
-通过该接口生成的小程序二维码，永久有效，数量限制
-
-数量限制接口A加上接口C，总共生成的码数量限制为100,000
-
-接口B：适用于需要的码数量极多的业务场景
-
-通过接口B生成的小程序码，永久有效，数量暂无限制。
-可以带参数最大32个可见字符，只支持数字，大小写英文
-以及部分特殊字符：!#$&amp;&#39;()*+,/:;=?@-._~，
-其它字符请自行编码为合法字符（
-因不支持%，中文无法使用 urlencode 处理，请使用其他编码方式）
-
-B接口调用分钟频率受限(目前5000次/分钟)
+<pre><code>  var that = this;
+    //动画样式
+    that.animationItem = wx.createAnimation({
+      duration: 500,
+      timingFunction: &#39;linear&#39;,
+      transformOrigin: &#39;90% 70%&#39;,
+      success: function(res) {}
+    });
+    
+    // 定时器，2S 循环一次
+    that.data.newLunbo_interval = setInterval(function() {
+      //开始动画-缩小
+      that.animationItem.scale3d(0.98, 0.98, 0.1).step();
+      that.setData({
+        animationItem: that.animationItem.export()
+      });
+      //延迟恢复到原来大小
+      setTimeout(function() {
+        that.animationItem.scale3d(1.0, 1.0, 1.0).step();
+        that.setData({
+          animationItem: that.animationItem.export(),
+        });
+      }, 500)
+    }.bind(that), 2000);
 </code></pre>
 
-<h4 id="toc_0">首先</h4>
+<h5 id="toc_2">清理定时器</h5>
 
-<p>因为接口B不受数量限制，我们使用接口B生成小程序二维码<br/>
- 使用PostMan发起GET请求获取access_token：<br/>
- 官方文档 ：<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183">https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183</a></p>
-
-<pre><code>https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=这里填写小程序appid&amp;secret=这里填写小程序secret
-
-返回参数：
-{
-    &quot;access_token&quot;: &quot;&quot;,
-    &quot;expires_in&quot;: 7200
-}
+<pre><code>    clearInterval(this.data.newLunbo_interval);
 </code></pre>
 
-<h4 id="toc_1">其次</h4>
+<h5 id="toc_3">创建wx.createAnimation参数含义</h5>
 
-<p>发起POST请求：</p>
-
-<pre><code>https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=这里填写上一个接口返回的token
-
-Body中选择raw写入参数，例如
-{
-    &quot;page&quot;:&quot;pages/lengxiangui/coldfresh_index/coldfresh_index&quot;,
-    &quot;scene&quot;:&quot;1&quot;
-}
-注：场景值 scene 不得超过32位字符，并且上线已有的页面才能生成二维码
+<pre><code>duration            动画持续时间，单位 ms 
+timingFunction      &#39;linear&#39; 动画的效果  
+delay               动画延迟时间，单位 ms 
+transformOrigin     &#39;50% 50% 0&#39;
 </code></pre>
 
-<p><img src="media/15426946934140/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-20%20%E4%B8%8B%E5%8D%882.35.02.png" alt="屏幕快照 2018-11-20 下午2.35.02"/></p>
+<h5 id="toc_4">timingFunction 的合法值</h5>
+
+<pre><code>&#39;linear&#39;    动画从头到尾的速度是相同的
+&#39;ease&#39;  动画以低速开始，然后加快，在结束前变慢
+&#39;ease-in&#39;   动画以低速开始
+&#39;ease-in-out&#39;   动画以低速开始和结束
+&#39;ease-out&#39;  动画以低速结束
+&#39;step-start&#39;    动画第一帧就跳至结束状态直到结束
+&#39;step-end&#39;  动画一直保持开始状态，最后一帧跳到结束状态
+</code></pre>
+
+<h5 id="toc_5">transformOrigin 的合法值</h5>
+
+<pre><code>transform-origin: x-axis y-axis z-axis;
+
+x-axis  定义视图被置于 X 轴的何处。可能的值：
+    left
+    center
+    right
+    length
+    %
+    
+y-axis  定义视图被置于 Y 轴的何处。可能的值：
+    top
+    center
+    bottom
+    length
+    %
+
+z-axis  定义视图被置于 Z 轴的何处。可能的值：
+    length
+</code></pre>
 
 
 		</div>
