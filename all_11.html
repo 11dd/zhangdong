@@ -245,6 +245,8 @@
         <li><label>辛寨子</label></li>
 
           
+            <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+          
             <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
           
 
@@ -452,6 +454,8 @@
                     
                       <li class="side-title"><span>辛寨子</span></li>
                         
+                          <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+                        
                           <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
                         
 
@@ -474,88 +478,40 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之跑马灯效果</h1>
+		<h1>微信小程序之解析html</h1>
 
-		<h5 id="toc_0">实现跑马灯效果图</h5>
+		<h5 id="toc_0">使用wxParse解析html</h5>
 
-<p><img src="media/15419923901812/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-12%20%E4%B8%8A%E5%8D%8811.45.16.png" alt="屏幕快照 2018-11-12 上午11.45.16"/></p>
+<p>github地址：<a href="https://github.com/icindy/wxParse">https://github.com/icindy/wxParse</a><br/>
+下载之后，将wxParse文件夹导入自己工程与utils同级别   </p>
 
-<h5 id="toc_1">---wxml文件---</h5>
+<h5 id="toc_1">在app.wxss全局样式文件中，引入wxParse的样式表如:</h5>
 
-<pre><code>&lt;!--跑马灯中的文字信息字段:gundong_text--&gt;
-&lt;view wx:if=&#39;{{gundong_text}}&#39; class=&quot;marquee_container&quot; style=&quot;--marqueeWidth--:-12em&quot;&gt;
-  &lt;view class=&#39;marquee_text&#39;&gt;
-    &lt;view class=&#39;hengxianggundong&#39;&gt;
-      &lt;image class=&#39;gundong_image&#39; mode=&#39;aspectFit&#39; src=&#39;../../image/laba.png&#39;&gt;&lt;/image&gt;
-      &lt;view class=&#39;triangle-left&#39;&gt;&lt;/view&gt;
-      &lt;view class=&quot;gundong_textView weui-zimFont9&quot;&gt;{{gundong_text}}&lt;/view&gt;
-    &lt;/view&gt;
-  &lt;/view&gt;
-&lt;/view&gt;
+<pre><code>@import&quot;/wxParse/wxParse.wxss&quot;;
 </code></pre>
 
-<h5 id="toc_2">---wxss文件---</h5>
+<h5 id="toc_2">在所需的JS文件中引入如:</h5>
 
-<pre><code>/* 跑马灯样式 */
-@keyframes around {
-  from {
-    margin-left: 100%;
-  }
-  to {
-    /* var接受传入的变量 */
-    margin-left: var(--marqueeWidth--);
-  }
-}
-.marquee_container {
-  position: absolute;
-  top: 120rpx;
-  width: 100%;
-  height: 60rpx;
-  line-height: 60rpx;
-  z-index: 1200;
-}
-.marquee_container:hover {
-  /* 不起作用 */
-  animation-play-state: paused;
-}
-.marquee_text {
-  display: inline-block;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  white-space: nowrap;
-  animation-name: around;
-  animation-duration: 10s; /*过渡时间*/
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-.hengxianggundong {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-.gundong_image {
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 50rpx;
-  height: 50rpx;
-  border-radius: 50%;
-  margin-right: 20rpx;
-}
-.triangle-left {
-  width: 0;
-  height: 0;
-  border-right: 10rpx solid rgba(0, 0, 0, 0.8);
-  border-bottom: 10rpx solid rgba(0, 0, 0, 0);
-  border-top: 10rpx solid rgba(0, 0, 0, 0);
-}
-.gundong_textView {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding-left: 20rpx;
-  padding-right: 20rpx;
-  border-radius: 10rpx;
-}
+<pre><code>var WxParse = require(&#39;../../wxParse/wxParse.js&#39;);
+
+/**
+     * WxParse.wxParse(bindName , type, data, target,imagePadding)
+     * 1.bindName绑定的数据名(必填)
+     * 2.type可以为html或者md(必填)
+     * 3.data为传入的具体数据(必填)
+     * 4.target为Page对象,一般为this(必填)
+     * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
+     */
+     
+    WxParse.wxParse(&#39;content&#39;, &#39;html&#39;, &#39;&lt;h1&gt;我是内容&lt;/h1&gt;&#39;, this, 0);
+</code></pre>
+
+<h5 id="toc_3">在wxml所需的文件中引入如:</h5>
+
+<pre><code>&lt;import src=&quot;../../wxParse/wxParse.wxml&quot; /&gt;
+
+&lt;!-- 内容 --&gt;
+&lt;template is=&quot;wxParse&quot; data=&quot;{{wxParseData:content.nodes}}&quot; /&gt;
 </code></pre>
 
 

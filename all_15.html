@@ -245,6 +245,8 @@
         <li><label>辛寨子</label></li>
 
           
+            <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+          
             <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
           
 
@@ -452,6 +454,8 @@
                     
                       <li class="side-title"><span>辛寨子</span></li>
                         
+                          <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+                        
                           <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
                         
 
@@ -474,109 +478,80 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序开发规范</h1>
+		<h1>微信小程序之分享</h1>
 
-		<h5 id="toc_0">微信小程序里的四种文件</h5>
+		<h4 id="toc_0">分享代码</h4>
 
-<pre><code>.json 后缀的 JSON 配置文件
-.wxml 后缀的 WXML 模板文件
-.wxss 后缀的 WXSS 样式文件
-.js 后缀的 JS 脚本逻辑文件
+<pre><code>  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function(res) {
+    let that = this;
+    if (res.from === &#39;button&#39;) {
+      console.log(res.target)
+    }
+    return {
+      title: &#39;&#39;,
+      imageUrl: &#39;&#39;,
+      path: &#39;/pages/index/index&#39;,
+      success: function(res) {
+        console.log(&quot;转发成功&quot;);
+        shareAppMessage: ok;
+        wx.showShareMenu({
+          withShareTicket: true
+        });
+      },
+      fail: function(res) {
+        console.log(&quot;转发失败&quot;);
+      }
+    }
+  },
 </code></pre>
 
-<h5 id="toc_1">资源管理</h5>
+<h4 id="toc_1">分享注意事项</h4>
 
-<pre><code>### 图片资源
-目前图片资源的主要性能问题在于大图片和长列表图片上，
-这两种情况都有可能导致 iOS 客户端内存占用上升，
-从而触发系统回收小程序页面。
-### 图片对内存的影响
-在 iOS 上，小程序的页面是由多个 WKWebView 组成的，
-在系统内存紧张时，会回收掉一部分 WKWebView。
-从过去我们分析的案例来看，大图片和长列表图片的使用会引起 WKWebView 的回收。
-### 图片对页面切换的影响
-除了内存问题外，大图片也会造成页面切换的卡顿。
-我们分析过的案例中，有一部分小程序会在页面中引用大图片，
-在页面后退切换中会出现掉帧卡顿的情况。
-当前我们建议开发者尽量减少使用大图片资源。
+<pre><code>1. 分享转发：不自定义转发图片的情况下，
+默认会取当前页面，从顶部开始，高度为 80% 屏幕宽度的图像作为转发图片。
+测试scrollView iOS从scrollView顶部开始截图，Android是截屏有差异
+
+2. 设置的imageUrls 地址中不能有中文
+
+3. 小程序里绘制页面，和网络请求处理结是异步处理，
+所以当点击分享时，请求接口，返回数据之后去转发是行不通的，
+要在转发前就准备好要转发的内容；
 </code></pre>
 
-<h5 id="toc_2">资源文件</h5>
+<h4 id="toc_2">分享小程序二维码开发流程</h4>
 
-<pre><code>所有资源文件(如图片)放在统一文件下及其子文件中(例如以下分类)
-resource
-  ——public
-  ——tab
-  ——home
-  ——mine
+<p><strong>二维码调用的接口，请阅读  ‘微信小程序之九：二维码’</strong></p>
+
+<pre><code>获取小程序码的业务：建议在自己服务器上处理，小程序端不做处理
+
+注意：为什么不在小程序端做处理？
+1. access_token的有效期等问题
+2. 调用接口B，获取小程序二维码，接口返回的是二进制流
+3. 加载二进制小程序码的图片，需要转base64 在image组件中可以显示
+4. 小程序canvas画布不支持绘制base64图片，模拟器可以，真机不行
+5. 参数字段scene，带参数最大32个可见字符
+
+如何解决带参数最大32个可见字符？
+1. 服务端要出这样一个接口：请求生成二维码的接口
+2. 服务端接收小程序端传来的生成二维码的参数
+3. 服务端将小程序端传来的参数scene存数据库(因为大于32字符)生成对应的id用于生成二维码
+4. 小程序端扫码进入程序的时候，可以获取参数id
+5. 小程序端用id请求服务端获取当初要编辑在二维码里的真正参数
 </code></pre>
 
-<h5 id="toc_3">基础页面</h5>
+<p>微信扫码，扫描带参二维码<br/>
+进入小程序指定的页面中需要接收场景值scene</p>
 
-<pre><code>业务展示的页面放在如 pages 文件及其子文件中(例如以下分类)
-pages
-  ——index
-  ——mall
-    ——goodList
-    ——goodDetail
-  ——order
-    ——orderList
-    ——orderDetail
-  ——mine
-    ——myInfo
-    ——myAddress
-    
-如有其他子业务，单独在pages里创建新的子级文件
-</code></pre>
-
-<pre><code>注释规范
-   针对wxml页面由上到下(或由左到右)分级的模块，均需注释出其功能，
-   并在其上下空出一行与其他代码进行区分。
-</code></pre>
-
-<h5 id="toc_4">样式文件</h5>
-
-<pre><code>基础样式文件，在最外层中创建(如：weui.wxss)
-第一步：写入公共样式：如 
-1.标题字体大小，描述字体大小等项目中一二三级字号；
-2.程序中所用的公共色值；
-3.布局方式flex的横向布局，纵向布局等；
-4.公共布局中wxss样式前缀统一(如weui-开头)；
-等等
-
-第二步：在app.wxss文件最上部，引入 @import &quot;weui.wxss&quot;;
-以上公共样式便可全局使用
-</code></pre>
-
-<pre><code>wxss规范
-    1.wxss 页面可使用快捷键真理代码(Shift+Alt+F)
-    整理后代码有明显的代码缩进，对齐。每一个样式类之间空出一行；
-
-    2.在开发过程中rpx和px均可能用到，
-    如通常情况下间距使用rpx，
-    字体大小和边框等使用px，开发者根据实际情况而定；
-       
-    3.同一块的样式属性(如 .order-title 和 .order-image)放在一块；
-    
-    4.wxss 样式中同一块可以这样抒写(如 .order.title)
-    意思是.order样式下的.title,
-    其他地方的class=&#39;title&#39;不会引用到.order下的.title
-    
-    5.wxss样式之间用块状注释。请勿在代码后面直接注释。
-</code></pre>
-
-<h5 id="toc_5">JS规范</h5>
-
-<pre><code>JS规范
-    1.删除js文件中未用到的生命周期函数，保持代码的整洁
-    2.右上角不要分享的页面，删除JS文件中该方法onShareAppMessage:function()
-    3.采用ES6 关键字let定义变量，尽量不使用var
-    4.所有涉及到数据绑定的变量均需在data中初始化,禁止在不定义的情况下直接setData
-    5.变量名以及函数名统一采用驼峰命名法(或下划线分割)
-    6.正常情况下函数名前缀需加上清晰的动词表示函数功能(如getOderList)
-    7.点击事件函数命名方式为 on + 事件名 或者业务名
-    8.JS语句无需以分号结束，统一省略分号
-    9.JS中一致使用单引号&#39; &#39; , WXML中一致使用双引号&quot; &quot;
+<pre><code>onLoad: function(options) {
+ if (options.scene) {
+    // options 中的 scene 需要使用 decodeURIComponent 才能获取到生成二维码时传入的 scene
+    var scene = decodeURIComponent(options.scene)
+    console.log(&#39;打印参数scene---&gt;&#39; + scene)
+  }
+}
 </code></pre>
 
 

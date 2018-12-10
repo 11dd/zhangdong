@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-12-06T16:31:53+08:00</updated>
+  <updated>2018-12-10T09:24:57+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,181 @@
   </author>
   <generator uri="http://www.mweb.im">MWeb</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[电子证照]]></title>
+    <link href="www.freefook.com/15444188311660.html"/>
+    <updated>2018-12-10T13:13:51+08:00</updated>
+    <id>www.freefook.com/15444188311660.html</id>
+    <content type="html"><![CDATA[
+<h4 id="toc_0">一、电子证照实施问题？ </h4>
+
+<p>首先明确一点电子证照要赋予与纸质证照具有同等法律效力(出台相关法律法规)</p>
+
+<ol>
+<li>电子证照的信息</li>
+<li>电子证照的生成(防伪造、防篡改)</li>
+<li>电子证照的颁发</li>
+<li>电子证照的查询</li>
+<li>电子证照的修改</li>
+<li>电子证照的作废(过期失效)</li>
+<li>电子证照的共享</li>
+<li>电子证照的验证(元数据核对,真伪验证,管理状态核对)</li>
+<li>电子证照的管理</li>
+<li>电子证照的安全</li>
+<li>电子证照持续服务能力(对外提供证照共享服务)</li>
+<li>电子证照要跨部门，跨行业，跨区域的统筹</li>
+<li>电子证照管理平台，统一管理和统一存储汇聚</li>
+<li>电子证照跨层级管理机制，实现各类证照的全局管理和分类管理</li>
+<li>电子证照形成区域内共享和同步机制，支撑各级政府服务并联审批和业务协同</li>
+</ol>
+
+<p>卫士通方案图（新标准起草单位之一成都卫士通信息产业股份有限公司）</p>
+
+<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8A%E5%8D%8811.27.41.png.png" alt="屏幕快照 2018-12-10 上午11.27.41.png"/></p>
+
+<blockquote>
+<p>签发管理系统：使用各种方式对存量证照和新增证照数据进行采集，<br/>
+基于证照元数据项及数字签名，制作数字格式电子证照，随后选取证照模板，<br/>
+嵌套版式格式，利用<strong>电子印章</strong>服务，<br/>
+制作生成<strong>OFD</strong>版式证照电子文件，满足证照签发需求；</p>
+
+<p>共享存储系统：电子文件可通过共享存储系统存入电子证照库，<br/>
+进行数据汇聚，满足数据管理要求；<br/>
+通过共享存储系统与上级电子证照库及平级政务服务数据库实现对接和数据同步，<br/>
+满足跨地区、跨层级的证照汇聚和同步需求，</p>
+
+<p>业务系统：可通过验证服务系统提交证照验证、查询、下载等各类请求，<br/>
+满足证照使用需求</p>
+</blockquote>
+
+<h4 id="toc_1">二、新发布的电子证照六项规范：</h4>
+
+<p>电子证照是指由各单位依法出具的、<br/>
+具有法律效力的各类证照、证明、批文、鉴定报告、办事结果等文件，<br/>
+比如有身份证、结婚证、银行还款流水证明、营业执照等。</p>
+
+<p>2018年11月16日，国家正式发布6项国家标准<br/>
+《电子证照 总体技术架构》<br/>
+《电子证照 目录信息规范》<br/>
+《电子证照 元数据规范》<br/>
+《电子证照 标识规范》<br/>
+《电子证照 文件技术要求》<br/>
+《电子证照 共享服务接口规范》</p>
+
+<p>电子证照应用的总体技术框架、统一的证照分类规则和证照基础信息，<br/>
+有助于推动实现全国“一网通办”，让政务信息资源共享和服务更顺畅，<br/>
+让百姓切实感受办事更便捷。<br/>
+该系列标准将于2019年1月1日起实施。 </p>
+
+<h4 id="toc_2">三、六项规范要点分析</h4>
+
+<h4 id="toc_3">总体技术架构</h4>
+
+<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104355_5sru8kqwkk.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104355_5sru8kqwkk.pdf</a></p>
+
+<p>其中针对政务服务中的共享服务部署模式，<br/>
+用于政务服务的电子证照系统一般分为：<br/>
+国家级、省部级、地市级三级</p>
+
+<p>地市级：电子证照共享服务，基于本地区证照库和下级服务的目录信息提供<br/>
+所辖地域的电子证照检索，获取和验证等功能，<br/>
+并将本级证照资源库的目录信息注册到省部级证照服务中。</p>
+
+<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%882.06.35.png" alt="屏幕快照 2018-12-10 下午2.06.35"/></p>
+
+<h4 id="toc_4">目录信息规范</h4>
+
+<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104416_r9inl86xws.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104416_r9inl86xws.pdf</a></p>
+
+<p>其中<br/>
+1. 证照定义机构<br/>
+依据法律法规或服务事项定义证照或提供业务指导的机构<br/>
+2. 证照颁发机构<br/>
+依据法律法规或服务事项颁发证照的机构<br/>
+3. 证照颁发机构级别<br/>
+定义：可颁发该类型证件照的机构的最低行政级别<br/>
+值域：国家级，省级，地市级，区县级，乡镇级，其他-缺省值为其他<br/>
+4. 证照类型代码编码规则<br/>
+采用“机构代码+机构内唯一码”编码方式</p>
+
+<p>证照目录共享流程<br/>
+<img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%883.04.32.png" alt="屏幕快照 2018-12-10 下午3.04.32"/></p>
+
+<h4 id="toc_5">元数据规范</h4>
+
+<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104434_gl0ni7ejd8.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104434_gl0ni7ejd8.pdf</a></p>
+
+<p>其中元数据信息模型</p>
+
+<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%882.18.00.png" alt="屏幕快照 2018-12-10 下午2.18.00"/></p>
+
+<p>基础信息：<br/>
+证照名称，<br/>
+证照类型代码，<br/>
+证照编号，<br/>
+证照唯一标识，<br/>
+证照颁发机构(例如：大连市高新园区住房与建设委员会)，<br/>
+证照颁发机构代码，<br/>
+证照颁发日期，<br/>
+持证主体，<br/>
+持证主体代码，<br/>
+持证主体代码类型，<br/>
+持证主体代码类型代码，<br/>
+证照有效期起始日期，<br/>
+证照有效期截止日期，<br/>
+业务信息，<br/>
+加注件信息，<br/>
+加注件制作时间，<br/>
+加注件制作者(例如：大连市行政服务中心)，<br/>
+加注件制作事由(安全生产许可证申请),<br/>
+加注件有效期截止时间，<br/>
+元数据扩展规则(参考元数据规范),</p>
+
+<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%882.28.42.png" alt="屏幕快照 2018-12-10 下午2.28.42"/></p>
+
+<h4 id="toc_6">标识规范</h4>
+
+<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104515_0ue9lxpgma.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104515_0ue9lxpgma.pdf</a></p>
+
+<p>其中证照标识结构：<br/>
+从左至右依次为：证照根代码-类型代码-颁发机构代码-流水号-版本号-校验位</p>
+
+<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%882.34.13.png" alt="屏幕快照 2018-12-10 下午2.34.13"/></p>
+
+<p>电子证照根代码取值固定为“1.2.156.3005.2”<br/>
+校验位有统一的校验公式，请参考标识规范详情</p>
+
+<h4 id="toc_7">文件技术要求</h4>
+
+<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104451_iq4x5vr0l6.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104451_iq4x5vr0l6.pdf</a></p>
+
+<p>一、其中介绍了照面样式要求</p>
+
+<p>二、其中电子证照需满足如下要求：<br/>
+1. 使用OFD文件格式<br/>
+2. 一个文件内只包含一个证照<br/>
+3. 不使用动态元素，如动画音视频等等其他要求参考文档详情内容</p>
+
+<p>三、其中介绍了对安全通用要求，原件和加注件的要求</p>
+
+<h4 id="toc_8">共享服务接口规范</h4>
+
+<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104543_sf62k790i1.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104543_sf62k790i1.pdf</a></p>
+
+<p>一、其中介绍应用场景和要求</p>
+
+<p>例如：证照检索、<br/>
+信息获取、<br/>
+证照文件下载、<br/>
+信息验证、<br/>
+文件验证、<br/>
+调用方认证、<br/>
+权限控制、<br/>
+等接口规范做了相关示例的入参，出参。</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[微信小程序建项-TabBar]]></title>
@@ -1775,79 +1950,6 @@ KFC，麦当劳： 点餐实用型的线下场景
 斗鱼直播
 虎牙直播
 YY直播+
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS审核被拒4.3]]></title>
-    <link href="www.freefook.com/15403646176398.html"/>
-    <updated>2018-10-24T15:03:37+08:00</updated>
-    <id>www.freefook.com/15403646176398.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">一种是过不了机审关被拒，一种是过不了人审关被拒。</h5>
-
-<pre><code>iOS预审核，扫描api，及plist文件字符缺失等；
-此处分两步，第一步为上传时苹果Application Loador等应用对于适配icon等的检查，
-第二步为上传后苹果的功能性检查，例如配置了Push功能但有缺失
-或者未打开功能，则会邮件提示等等；
-
-iOS机审，主要是对代码进行机器审核，排查APP是否重复应用，此处扫描支付SDK等，及马甲情况，机器扫描主要看代码块
-
-iOS人审，主要是由苹果审核人员对APP的内容、功能进行核验，防止APP有bug，
-防止APP模仿其他应用，内容与其他APP重复，影响用户体验，
-检测功能或者App体验测试，例如用测试账号登录App体验功能，
-或其他是否明显bug等，ipv6也在此处检测；
-
-</code></pre>
-
-<h5 id="toc_1">区分机审 、人审</h5>
-
-<pre><code>那么如何区分是机器审核还是人工审核呢？主要看APP被拒的信息：
-
-1）如果是机器审核被拒，一般收到的被拒信息第一句话基本上是这样的：
-Guideline4.3 - Design - Spam
-Yourapp duplicates the content and functionality of apps submitted to the AppStore,
- which is considered a form of spam.
-
-2）如果是人工审核被拒，一般收到的被拒信息第一句话基本上是这样的：
-Guideline4.3 - Design - Spam
-Wefound that your app provides the same feature set as other apps submitted tothe App Store, 
-which is not appropriate to the App Store.
-</code></pre>
-
-<h5 id="toc_2">针对审核</h5>
-
-<pre><code>1.原来账号里的APP的名字可以作废掉或者修改成其他的，
-同时记得移除之前的APP，重新打个空包传上去，
-icon图则用其他logo图置换掉
-
-2.增加登录日志
-
-3.主要的方法是添加垃圾代码，且代码的相似程度不高于45%，
-  混淆工程地址：https://github.com/klaus01/KLGenerateSpamCode
-
-4.工程中的文件夹的名字全部进行修改，类名修改，方法名修改
-
-5.资源图片替换修改，适当添加一些无用的资源 
-
-6.API名称，机扫二进制文件，也会对比API
-
-7.换开发者账号，换不同账号提交审核
-
-8.换 bundle id，换一个包再提交审核；
-
-9. 一定要关注名字,icon,启动图;修改UI风格同时进行假页面的添加;
-
-10.升级 version，升级一个版本号提交审核
-
-11.修改产品分类
-
-12.还需要注意相同的马甲包提交至少要间隔一天以上。
-
-13.定期换电脑提包.换电脑的序列号.换VPN环境.定期换域名. 
-
 </code></pre>
 
 ]]></content>

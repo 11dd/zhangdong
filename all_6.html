@@ -245,6 +245,8 @@
         <li><label>辛寨子</label></li>
 
           
+            <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+          
             <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
           
 
@@ -452,6 +454,8 @@
                     
                       <li class="side-title"><span>辛寨子</span></li>
                         
+                          <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+                        
                           <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
                         
 
@@ -474,180 +478,179 @@
 
 	
 		<div class="markdown-body">
-		<h1>Mac下的Vue环境搭建</h1>
+		<h1>微信小程序建项-登录篇</h1>
 
-		<p>官网地址：<a href="https://vuejs.org/">https://vuejs.org/</a></p>
+		<p>做小程序登录思考问题：</p>
 
-<h4 id="toc_0">安装清单：</h4>
+<ol>
+<li>问题一：不想在小程序里总输入自己平台的账号密码，怎么与微信关联；</li>
+<li>问题二：关联了微信也要可以切换账号使用；</li>
+<li>问题三：不注册账号也可以在小程序里体验使用，必要时提示去登录；</li>
+<li>问题四：如果打开小程序是我们项目自己的登录注册页面（体验较</li>
+</ol>
 
-<ul>
-<li><strong>Homebrew：</strong>  Mac系统下的包管理器</li>
-<li><strong>Node.js:</strong>    JavaScript运行环境(runtime)</li>
-<li><strong>npm:</strong>        Nodejs下的包管理器</li>
-<li><strong>webpack:</strong>    Vue的组件是通过 .vue自定义的组件，需要打包成 .js文件</li>
-<li><strong>Vue-cli:</strong>    用来生成模板的Vue工程</li>
-</ul>
+<p><img src="media/15234367737951/IMG_3194.png" alt="IMG_3194"/></p>
 
-<h5 id="toc_1">打开Mac下的终端</h5>
+<hr/>
 
-<h4 id="toc_2">安装Homebrew</h4>
+<h4 id="toc_0">微信登录获取openID</h4>
 
-<pre><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-
-安装成功后查看一下版本信息输入: brew -v
+<pre><code>//不需要微信授权既可获取微信小程序登录API获取code
+wx.login({
+    success: function (res) {
+    //获取code返回值如下：
+    //code:&quot;0619IaNe0L8gHz1VMINe0WgjNe09IaNC&quot;
+    //errMsg:&quot;login:ok&quot;
+    //code每次请求返回都不同，并且code使用一次后作废，
+    //即使不使用，下一次请求code，上一次的code也作废。
+    }
+})
 </code></pre>
 
-<h4 id="toc_3">安装Node.js</h4>
+<ol>
+<li>得到code将code传给服务器</li>
+<li>服务器GET请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
+</ol>
 
-<pre><code>brew install nodejs
+<pre><code>小程序官方更新将原POST请求改为GET请求了，返回值都是session_key，openid
 
-也可以下载后安装,下载地址：https://nodejs.org/en/download/
+新GET
+https://api.weixin.qq.com/sns/jscode2session?appid=APPID&amp;secret=SECRET&amp;js_code=JSCODE&amp;grant_type=authorization_code
 
-安装成功后查看一下版本信息输入: node -v
+原POST
+https://api.weixin.qq.com/sns/jscode2session  
+参数{
+    appid，
+    secret，
+    js_code = code，
+    grant_type = authorization_code
+} 
+返回数据{
+    session_key，
+    openid
+}
 </code></pre>
 
-<h4 id="toc_4">获取Nodejs安装目录访问权限</h4>
+<p>官方地址：<a href="https://developers.weixin.qq.com/miniprogram/dev/api/code2Session.html">https://developers.weixin.qq.com/miniprogram/dev/api/code2Session.html</a></p>
 
-<pre><code>sudo chmod -R 777 /usr/local/lib/node_modules/
+<h4 id="toc_1">还想获取更多个人信息要如何做？</h4>
+
+<ol>
+<li>如果授权获可以取用户信息wx.getUserInfo得到iv,encryptedData,rawData,signature</li>
+<li>将得到的iv,encryptedData(加密数据) 和wx.login 得到的code传给服务器</li>
+<li>使用和openID一起返回的session_key去解密</li>
+<li>服务端解密encryptedData 可以获取userinfo信息和unionId</li>
+</ol>
+
+<pre><code>服务端解密数据encryptedData
+    对称解密使用的算法为 AES-128-CBC，数据采用PKCS#7填充。
+    对称解密的目标密文为 Base64_Decode(encryptedData)。
+    对称解密秘钥 aeskey = Base64_Decode(session_key), aeskey 是16字节。
+    对称解密算法初始向量 为Base64_Decode(iv)，其中iv由数据接口返回。
+    
+解密encryptedData数据
+{
+　　&quot;openId&quot;:&quot;&quot;,
+　　&quot;nickName&quot;:&quot;ZIM東&quot;,
+　　&quot;gender&quot;:1,
+　　&quot;language&quot;:&quot;zh_CN&quot;,
+　　&quot;city&quot;:&quot;&quot;,
+　　&quot;province&quot;:&quot;&quot;,
+　　&quot;country&quot;:&quot;&quot;,
+　　&quot;avatarUrl&quot;:&quot;&quot;,
+　　&quot;unionId&quot;:&quot;&quot;,
+　　&quot;watermark&quot;:{
+　　　　&quot;timestamp&quot;:1523433831,
+　　　　&quot;appid&quot;:&quot;&quot;
+　　}
+}
+
+在登录小程序之前，既没有关注过公众号，也没有登录过公众号，
+更没有使用微信登录的方式登录过app。
+通过 wx.login 的到的 code 解密后未返回 unionid
+
+另外，为了应用能校验数据的有效性，会在敏感数据加上数据水印( watermark )
+appid 敏感数据归属appid，开发者可校验此参数与自身appid是否一致
+timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性校验
 </code></pre>
 
-<h4 id="toc_5">安装npm (淘宝镜像)</h4>
+<h4 id="toc_2">会话密钥session_key有效性</h4>
 
-<pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
+<pre><code>开发者如果遇到因为session_key不正确而校验签名失败或解密失败，请关注下面几个与session_key有关的注意事项。
 
-按回车执行，就可以用淘宝团队定制的cnpm代替默认的npm了
-cnpm跟npm用法完全一致，只是在执行命令时将npm改为cnpm
+    1.wx.login()调用时，用户的session_key会被更新而致使旧session_key失效。
+    开发者应该在明确需要重新登录时才调用wx.login()，
+    及时通过登录凭证校验接口更新服务器存储的session_key。
 
-npm安装插件是从官网http://registry.npmjs.org下载对应的插件包
-该网站服务器位于国外，所以经常下载缓慢或出现异常
-阿里巴巴的淘宝团队,把npm官网的插件都同步到了中国的服务器
+    2.微信不会把session_key的有效期告知开发者。
+    我们会根据用户使用小程序的行为对session_key进行续期。
+    用户越频繁使用小程序，session_key有效期越长。
+
+    3.开发者在session_key失效时，可以通过重新执行登录流程获取有效的session_key。
+    使用接口wx.checkSession()可以校验session_key是否有效，
+    从而避免小程序反复执行登录流程。
+
+    4.当开发者在实现自定义登录态时，
+    可以考虑以session_key有效期作为自身登录态有效期，
+    也可以实现自定义的时效性策略。
+    
+    5.wx.login() 之后再获取wx.getUserInfo()
 </code></pre>
 
-<h4 id="toc_6">安装webpack</h4>
+<blockquote>
+<pre><code>微信如何授权小程序获取用户信息:
 
-<pre><code>cnpm install webpack -g
+为优化用户体验，使用 wx.getUserInfo 接口直接弹出授权框的开发方式将逐步不再支持。
+从2018年4月30日开始，小程序与小游戏的体验版、开发版调用 wx.getUserInfo 接口，
+将无法弹出授权询问框，默认调用失败。正式版暂不受影响。
+开发者可使用以下方式获取或展示用户信息：
+
+一、小程序:
+1、使用 button 组件，并将 open-type 指定为 getUserInfo 类型，获取用户基本信息。
+
+详情参考文档:
+https://developers.weixin.qq.com/miniprogram/dev/component/button.html
+
+
+2、使用 open-data 展示用户基本信息。
+
+详情参考文档:
+https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html
+</code></pre>
+</blockquote>
+
+<h4 id="toc_3">登录流程图</h4>
+
+<p><img src="media/15234367737951/%E6%B5%81%E7%A8%8B.png" alt="流程"/></p>
+
+<p>👆原图地址：<a href="https://blog.csdn.net/dingjianmin/article/details/75137934">https://blog.csdn.net/dingjianmin/article/details/75137934</a></p>
+
+<p><img src="media/15234367737951/%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B.jpg" alt="登录流程"/></p>
+
+<p>注意：开发者后台拿到开放数据后可以对数据进行校验签名和解密，来保证数据不被篡改。 </p>
+
+<p><img src="media/15234367737951/%E6%95%B0%E6%8D%AE.png" alt="数据"/></p>
+
+<pre><code>签名校验以及数据加解密涉及用户的会话密钥session_key。
+ 开发者应该事先通过 wx.login 登录流程获取会话密钥 session_key 并保存在服务器。
+ 为了数据不被篡改，开发者不应该把session_key传到小程序客户端等服务器外的环境。
+
+数据签名校验
+
+为了确保 开放接口 返回用户数据的安全性，微信会对明文数据进行签名。
+开发者可以根据业务需要对数据包进行签名校验，确保数据的完整性。
+
+    通过调用接口（如 wx.getUserInfo）获取数据时，接口会同时返回 rawData、signature，
+    其中 signature = sha1( rawData + session_key )
+    
+    开发者将 signature、rawData 发送到开发者服务器进行校验。
+    服务器利用用户对应的 session_key 使用相同的算法计算出签名 signature2 ，
+    比对 signature 与 signature2 即可校验数据的完整性。
+
 </code></pre>
 
-<h4 id="toc_7">全局安装vue脚手架 vue-cli@2</h4>
-
-<pre><code>cnpm install vue-cli -g
-</code></pre>
-
-<h4 id="toc_8">分道扬镳之一</h4>
-
-<h4 id="toc_9">创建一个vue的项目代码</h4>
-
-<pre><code>执行命令1. cd  路径(想把项目创建在哪个文件夹下面)
-
-vue-cli@2的初始化方式命令如下：
-执行命令2. vue init webpack-simple demo1&lt;工程名字不能用中文,不要用大写&gt;
-
-也可执行命令: vue init webpack demo1
-这样会询问我们是否安装一些Vue依赖模块，也可以简单(webpack-simple)创建完项目,
-需要的其他模块单独安装
-</code></pre>
-
-<p>当出现如下信息时，vue init已执行完毕</p>
-
-<pre><code>To get started:
-   cd firstVueProject(你创建的工程文件名)
-   npm install
-   npm run dev 
-</code></pre>
-
-<pre><code>依次执行命令：
-执行命令3. cd firstVueProject(你创建的工程文件名)
-执行命令4. cnpm install (可一路回车Enter)
-</code></pre>
-
-<pre><code>单独安装模块: 可安装(或不安装) 
-vue 路由模块vue-router
-网络请求模块vue-resource
-其他模块可继续加在一起执行命令：
-cnpm install vue-router vue-resource --save-dev
-
-启动项目
-执行命令5. cnpm run dev
-
-至此结束
-</code></pre>
-
-<h4 id="toc_10">打开项目</h4>
-
-<pre><code>cd 项目地址
-cnpm install
-cnpm run dev
-
-如果npm 报错,尝试
-1. cnpm cache clean --force
-2. rm -rf node_modules folder
-3. cnpm install
-4. cnpm run dev
-</code></pre>
-
-<h4 id="toc_11">注解</h4>
-
-<pre><code>1. npm 开启了npm run dev以后怎么退出或关闭？
-ctrl+c
-
-2. --save-dev
-自动把模块和版本号添加到模块配置文件package.json中的依赖里devdependencies部分
-
-3. --save-dev 与 --save 的区别
---save     安装包信息将加入到dependencies（生产阶段的依赖）
---save-dev 安装包信息将加入到devDependencies（开发阶段的依赖），所以开发阶段一般使用它
-
-4. 在项目开发完成之后，可以输入 npm run build 来进行打包工作
-</code></pre>
-
-<h4 id="toc_12">分道扬镳之二</h4>
-
-<h4 id="toc_13">创建一个基于mpvue的小程序项目代码</h4>
-
-<pre><code>执行命令1. cd  路径(想把项目创建在哪个文件夹下面)
-
-执行命令2. vue init mpvue/mpvue-quickstart firstVueProject(不要使用中文)
-</code></pre>
-
-<p>接下来是项目的一些配置信息，可一路回车Enter<br/>
-当出现如下信息，模板代码已经下载结束</p>
-
-<pre><code>Vue-cli . Generated &quot;firstVueProject(你创建的工程文件名)&quot; .
-To get started:
-   cd firstVueProject(你创建的工程文件名)
-   npm install
-   npm run dev 
-Documentation can be found at http://mpvue.com
-</code></pre>
-
-<p>这时代码还缺少依赖库，继续执行</p>
-
-<pre><code>执行命令3. cd firstVueProject(你创建的工程文件名)
-执行命令4. cnpm install
-</code></pre>
-
-<h6 id="toc_14">cnpm install过程中---可能会出现npm update check failed</h6>
-
-<pre><code>因为文件夹的权限问题导致的，执行如下命令:
-sudo chown -R $USER:$(id -gn $USER) /home/{username}/.config
-</code></pre>
-
-<h6 id="toc_15">cnpm install过程中---可能会出现类似警告</h6>
-
-<pre><code>npm WARN vue-loader@15.2.4 requires a peer of css-loader@* but none is installed. You must install peer dependencies yourself.
-npm WARN vue-loader@15.2.4 requires a peer of vue-template-compiler@^2.0.0 but none is installed. You must install peer dependencies yourself.
-</code></pre>
-
-<p>需要安装css-loader 和vue-template-compiler</p>
-
-<pre><code>执行如下命令:
-cnpm i css-loader vue-template-compiler
-</code></pre>
-
-<p>终于到了最后，让这个代码运行起来，进入开发模式，执行命令：</p>
-
-<pre><code>cnpm run dev
-</code></pre>
+<p>官方数据签名校验<br/>
+<a href="https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject">https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject</a></p>
 
 
 		</div>

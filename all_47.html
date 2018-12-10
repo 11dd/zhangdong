@@ -245,6 +245,8 @@
         <li><label>辛寨子</label></li>
 
           
+            <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+          
             <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
           
 
@@ -452,6 +454,8 @@
                     
                       <li class="side-title"><span>辛寨子</span></li>
                         
+                          <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+                        
                           <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
                         
 
@@ -474,147 +478,102 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS tableView 基础使用说明</h1>
+		<h1>iOS请求方式</h1>
 
-		<h5 id="toc_0">pragma - mark - tableview列表初始化</h5>
+		<h5 id="toc_0">AFN请求</h5>
 
-<pre><code>-(UITableView *)tableView
-{
-    if (!_tableView) {
+<pre><code> AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+ 
+    //向服务器发送JSON形式的二进制数据
+    sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    //设置默认只返回原始的二进制数据,程序猿自己解析
+    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+     //设置非校验证书模式
+     manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+     manager.securityPolicy.allowInvalidCertificates = YES;
+    [manager.securityPolicy setValidatesDomainName:NO];
+           
+    sessionManager.requestSerializer.timeoutInterval = 10.f;
+    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@&quot;application/json&quot;, @&quot;text/json&quot;,@&quot;text/javascript&quot;, @&quot;text/html&quot;, @&quot;text/plain&quot;,  nil];
+    
+   //设置请求头 参数
+    [sessionManager.requestSerializer setValue:@&quot;Token&quot;] forHTTPHeaderField:@&quot;Authorization&quot;];
+    
+    [sessionManager POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
-        _tableView = [[UITableView alloc]initWithFrame:
-                      CGRectMake(, , , ) style:UITableViewStylePlain];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        _tableView.backgroundColor = ;
-        //分割线的颜色
-        _tableView.separatorColor = ;
-        //隐藏滚动条
-        _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.tableFooterView = [[UIView alloc]init];
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-    }
-    return _tableView;
-}
+    
+     NSDictionary * dic=[[NetworkTool sharedNetworkTool] changeType: responseObject] ;
+        
+                
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
 </code></pre>
 
-<h5 id="toc_1">tableview 代理方法实现如下：</h5>
-
-<h6 id="toc_2">tableview解决常规配置的重复问题。。。</h6>
-
-<pre><code>//当页面拉动需要显示新数据的时候，把最后一个cell进行删除 此方案即可避免重复显示，又重用了cell相对内存管理来说是好的方案 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+<pre><code>-(id)changeType:(id)myObj
 {
-    // 定义唯一标识
-    static NSString *CellIdentifier = @&quot;Cell&quot;;
-    // 通过唯一标识创建cell实例
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    else//当页面拉动的时候 当cell存在并且最后一个存在 把它进行删除就出来一个独特的cell我们在进行数据配置即可避免
+    if ([myObj isKindOfClass:[NSDictionary class]])
     {
-        while ([cell.contentView.subviews lastObject] != nil) {
-            [(UIView *)[cell.contentView.subviews lastObject] removeFromSuperview];
-        }
+        return [self nullDic:myObj];
     }
-    
-//点击没有选中状态
-cell.selectionStyle = UITableViewCellSelectionStyleNone;  
-
-// 对cell 进行简单地数据配置
-cell.textLabel.text = @&quot;text&quot;;
-   
-return cell;
+    else if([myObj isKindOfClass:[NSArray class]])
+    {
+        return [self nullArr:myObj];
+    }
+    else if([myObj isKindOfClass:[NSString class]])
+    {
+        return [self stringToString:myObj];
+    }
+    else if([myObj isKindOfClass:[NSNull class]])
+    {
+        return [self nullToString];
+    }
+    else
+    {
+        return myObj;
+    }
 }
-</code></pre>
 
-<h5 id="toc_3">other</h5>
-
-<pre><code>//行
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//将NSDictionary中的Null类型的项目转化成@&quot;&quot;
+-(NSDictionary *)nullDic:(NSDictionary *)myDic
 {
-    
-    return &lt;#@#&gt;;
+    NSArray *keyArr = [myDic allKeys];
+    NSMutableDictionary *resDic = [[NSMutableDictionary alloc]init];
+    for (int i = 0; i &lt; keyArr.count; i ++)
+    {
+        id obj = [myDic objectForKey:keyArr[i]];
+        obj = [self changeType:obj];
+        [resDic setObject:obj forKey:keyArr[i]];
+    }
+    return resDic;
 }
-//行高
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+
+//将NSArray中的Null类型的项目转化成@&quot;&quot;
+-(NSArray *)nullArr:(NSArray *)myArr
 {
-    return &lt;#@#&gt;;
+    NSMutableArray *resArr = [[NSMutableArray alloc] init];
+    for (int i = 0; i &lt; myArr.count; i ++)
+    {
+        id obj = myArr[i];
+        obj = [self changeType:obj];
+        [resArr addObject:obj];
+    }
+    return resArr;
 }
 
-#pragma - mark - 点击cell方法
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//将NSString类型的原路返回
+-(NSString *)stringToString:(NSString *)string
 {
-    
+    return string;
 }
-</code></pre>
 
-<h5 id="toc_4">tableview header与footer</h5>
-
-<pre><code>#pragma - mark - tableview_Header and Footer
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//将Null类型的项目转化成@&quot;&quot;
+-(NSString *)nullToString
 {
-    UIView * view = [[UIView alloc]init];
-    
-    return view;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    
-    return 0;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    UIView * view = [[UIView alloc]init];
-    
-    return view;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    
-    return 0;
-    
-}
-</code></pre>
-
-<p>tableview 侧滑删除方法</p>
-
-<pre><code>//先要设Cell可编辑
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return NO;
-}
-
-//定义编辑样式
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return UITableViewCellEditingStyleDelete;
-}
-
-//修改编辑按钮文字
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return @&quot;删除&quot;;
-}
-
-//设置进入编辑状态时，Cell不会缩进
-- (BOOL)tableView: (UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
-}
-
-//点击删除
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    /**一定是先删除了数据，再执行删除的动画或者其他操作，否则会出现崩溃*/
-    
-    [self deleteData:indexPath];//单个删除接口
-    
+    return @&quot;&quot;;
 }
 </code></pre>
 

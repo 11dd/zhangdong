@@ -245,6 +245,8 @@
         <li><label>辛寨子</label></li>
 
           
+            <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+          
             <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
           
 
@@ -452,6 +454,8 @@
                     
                       <li class="side-title"><span>辛寨子</span></li>
                         
+                          <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+                        
                           <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
                         
 
@@ -474,85 +478,188 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序建项-商品网格布局</h1>
+		<h1>微信小程序建项-分类悬停菜单</h1>
 
-		<h5 id="toc_0">在wxml里加入如下代码：</h5>
+		<p>xml 文件</p>
 
-<pre><code>
-  &lt;!-- 商品网格布局 --&gt;
-  &lt;view class=&#39;goods-grid-view&#39;&gt;
-    &lt;block wx:for=&quot;{{12}}&quot; wx:key=&quot;{{item}}&quot; wx:for-item=&quot;item&quot;&gt;
-      &lt;view class=&#39;goods-grid-blockview&#39; data-item=&#39;{{item}}&#39; catchtap=&#39;onGoodsTap&#39;&gt;
-        &lt;view class=&#39;goods-grid-container&#39;&gt;
-          &lt;image class=&#39;goods-img&#39; mode=&#39;aspectFill&#39; src=&quot;{{&#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;}}&quot;&gt;&lt;/image&gt;
-          &lt;text class=&#39;goods-title weui-Font2&#39;&gt;{{&quot;我是商品名&quot;}}&lt;/text&gt;
-          &lt;text class=&#39;goods-title weui-Font3&#39;&gt;{{&quot;我是商品介绍么&quot;}}&lt;/text&gt;
-          &lt;text class=&#39;goods-price weui-Font2&#39; style=&#39;color: #d0ae97&#39;&gt;¥{{200}}\r\t\r\t\r\t&lt;text class=&#39;goods-price weui-Font2&#39; style=&#39;text-decoration:line-through;color: lightgray&#39;&gt;¥{{260}}&lt;/text&gt;&lt;/text&gt;
+<pre><code> &lt;!-- 分类菜单 --&gt;
+  &lt;view id=&quot;affix&quot; wx:if=&#39;{{tabs.length &gt; 1}}&#39; class=&#39;{{typeFixed?&quot;menu-typefixed&quot;:&quot;menu-typeFixed&quot;}}&#39;&gt;
+    &lt;view class=&quot;menu-scroll-view-wrap&quot;&gt;
+      &lt;scroll-view class=&quot;menu-scroll-view-catalog&quot; scroll-x=&quot;true&quot; scroll-with-animation=&quot;true&quot;&gt;
+        &lt;view class=&quot;menu-scroll-view-item&quot; wx:for=&quot;{{tabs}}&quot; wx:key=&quot;{{index}}&quot; data-index=&quot;{{index}}&quot; bindtap=&quot;onTabSelected&quot;&gt;
+          &lt;text class=&quot;menu-text-item {{index === tabIndex ? &#39;menu-active-text-item&#39; : &#39;&#39;}} weui-zimFont11&quot; data-index=&quot;{{index}}&quot;&gt;{{item.name}}&lt;/text&gt;
         &lt;/view&gt;
-      &lt;/view&gt;
-    &lt;/block&gt;
+      &lt;/scroll-view&gt;
+    &lt;/view&gt;
   &lt;/view&gt;
-
 </code></pre>
 
-<h5 id="toc_1">在wxss里加入如下代码：</h5>
+<p>wxss文件</p>
 
-<pre><code>
-/* 网格布局 */
+<pre><code>/* 顶部悬停分类菜单样式 */
 
-.goods-grid-view {
+.menu-typeFixed {
+  top: 0px;
+  left: 0;
+  z-index: 300;
+  height: 80rpx;
+  width: 100%;
   background-color: white;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  width: auto;
-  margin-left: 10rpx;
-  margin-right: 10rpx;
+  justify-content: center;
+  align-items: center;
 }
 
-.goods-grid-blockview {
-  width: 50%;
-  background-color: white;
-}
-
-.goods-grid-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20rpx;
-  margin-left: 10rpx;
-  margin-right: 10rpx;
-}
-
-.goods-img {
+.menu-typefixed {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  z-index: 300;
+  height: 88rpx;
   width: 100%;
-  height: 340rpx;
-  border-radius: 10rpx;
-  overflow: hidden;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.goods-title {
-  margin-top: 15rpx;
-  margin-bottom: 10rpx;
-  display: -webkit-box;
-  align-content: center;
-  text-align: left;
-  overflow: hidden;
-  text-overflow: -o-ellipsis-lastline;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  width: 340rpx;
+.menu-scroll-view-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
-.goods-price {
-  text-align: left;
+.menu-scroll-view-catalog {
+  height: 35px;
+  width: 100%;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
+.menu-scroll-view-catalog::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.menu-scroll-view-item {
+  display: inline-block;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 5px 10px;
+  border-bottom: 2px solid #fff;
+}
+
+menu-text-item {
+  border-bottom: 1px #fff solid;
+}
+
+.menu-active-text-item {
+  border-bottom: 2px #dc3545 solid;
+}
+
+/* 以上-顶部悬停分类菜单样式 */
 </code></pre>
 
-<h5 id="toc_2">运行效果</h5>
+<p>js文件</p>
 
-<p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-06%20%E4%B8%8B%E5%8D%884.02.21.png" alt="屏幕快照 2018-12-06 下午4.02.21"/></p>
+<pre><code>/**
+   * 页面的初始数据
+   */
+  data: {
+    //分类菜单
+    menuTop: 666,
+    menuBottom: 666,
+    typeFixed: false,
+    tabIndex: 0, //选择分类的第几个
+    tabs: [{
+      name: &quot;全部&quot;
+    }, {
+      name: &quot;新品&quot;
+    }, {
+      name: &quot;生鲜&quot;
+    }, {
+      name: &quot;居家&quot;
+    }, {
+      name: &quot;服装&quot;
+    }, {
+      name: &quot;美护&quot;
+    }, {
+      name: &quot;出行&quot;
+    }, {
+      name: &quot;电器&quot;
+    }, {
+      name: &quot;杂货&quot;
+    }, ],
+
+  },
+  /**************获取分类菜单的吸顶距离**************** */
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+    var that = this;
+    setTimeout(function() {
+      // 页面加载完成时，并且当请求完商品的时候，判断吸顶菜单距离顶部的距离
+      that.testHeight();
+    }, 1000)
+  },
+
+  testHeight: function() {
+    var that = this;
+    var query = wx.createSelectorQuery() //创建节点查询器 query
+    query.select(&#39;#affix&#39;).boundingClientRect() //这段代码的意思是选择Id= the - id的节点，获取节点位置信息的查询请求
+    query.exec(function(res) {
+      that.setData({
+        menuTop: res[0].top,
+        menuBottom: res[0].bottom,
+      })
+    });
+  },
+
+  onPageScroll: function(e) {
+    //当滚动位置大于menuTop并且typeFixed为true时,setData不再执行，可有效避免页面的卡顿，以及吸顶时页面的抖动
+    if (e.scrollTop &gt;= this.data.menuTop &amp;&amp; !this.data.typeFixed) {
+      this.setData({
+        typeFixed: true
+      })
+    } else if (e.scrollTop &lt; this.data.menuTop &amp;&amp; this.data.typeFixed) {
+      this.setData({
+        typeFixed: false
+      })
+    }
+    //当滚动的距离到了scrollview底部的时候，触发请求方法
+    if ((this.data.menuBottom - this.data.winHeight - 55) &lt; e.scrollTop) {
+      this.lower();
+    }
+
+  },
+
+  /********************切换分类菜单时请求该分类数据******************* */
+
+  onTabSelected: function(event) {
+    var that = this;
+    // 切换tab时需要需要设置当前是第几个
+    that.setData({
+      tabIndex: event.target.dataset.index
+    });
+
+  },
+</code></pre>
 
 
 		</div>

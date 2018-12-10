@@ -245,6 +245,8 @@
         <li><label>辛寨子</label></li>
 
           
+            <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+          
             <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
           
 
@@ -452,6 +454,8 @@
                     
                       <li class="side-title"><span>辛寨子</span></li>
                         
+                          <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+                        
                           <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
                         
 
@@ -474,55 +478,52 @@
 
 	
 		<div class="markdown-body">
-		<h1>CMMI3级评审</h1>
+		<h1>微信小程序提示信息</h1>
 
-		<h3 id="toc_0">十八个过程域</h3>
+		<h5 id="toc_0">Toast提示</h5>
 
-<h5 id="toc_1">过程管理</h5>
+<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
+ icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
+ 
+ wx.showToast({
+        title: &#39;请输入提示语&#39;,
+        icon: &#39;none&#39;,
+        mask:true,
+        duration: 2000
+      }) 
+</code></pre>
 
-<h6 id="toc_2">组织过程改进（OPF）Organization Process Focus</h6>
+<h5 id="toc_1">加载的loading</h5>
 
-<h6 id="toc_3">组织过程定义（OPD）Organization Process Definition</h6>
+<pre><code>  wx.showLoading({
+      title: &#39;正在加载&#39;,
+      mask: true,
+    })
+   wx.hideLoading();
+</code></pre>
 
-<h6 id="toc_4">组织培训（OT）Organization Training</h6>
+<h5 id="toc_2">延迟执行</h5>
 
-<h5 id="toc_5">项目管理</h5>
+<pre><code> setTimeout(function() {
+   wx.hideLoading()
+ }, 1000)
+          
+</code></pre>
 
-<h6 id="toc_6">立项（PIM）</h6>
+<h5 id="toc_3">弹出窗口提示</h5>
 
-<h6 id="toc_7">集成项目管理（IPM）</h6>
-
-<h6 id="toc_8">项目策划（PP）</h6>
-
-<h6 id="toc_9">项目监督和控制（PMC）</h6>
-
-<h6 id="toc_10">风险管理（RSKM）</h6>
-
-<h6 id="toc_11">结项（PCM）</h6>
-
-<h5 id="toc_12">项目研发</h5>
-
-<h6 id="toc_13">需求开发与管理（RD）</h6>
-
-<h6 id="toc_14">系统设计编码（SD）</h6>
-
-<h6 id="toc_15">测试（TS）</h6>
-
-<h6 id="toc_16">评审（TR）</h6>
-
-<h6 id="toc_17">产品发布（PI）</h6>
-
-<h6 id="toc_18">产品实施（PA）</h6>
-
-<h5 id="toc_19">过程支持</h5>
-
-<h6 id="toc_20">配置管理（CM）</h6>
-
-<h6 id="toc_21">过程和产品质量保证（PPQA）</h6>
-
-<h6 id="toc_22">度量与分析（MA）</h6>
-
-<h6 id="toc_23">决策分析和决定（DAR）</h6>
+<pre><code>wx.showModal({
+    title: &#39;我是弹窗标题&#39;,
+    content: &#39;佛系弹窗详情内容&#39;,
+    success: function(res) {
+      if (res.confirm) {
+        console.log(&#39;用户点击确定&#39;)
+      } else if (res.cancel) {
+        console.log(&#39;用户点击取消&#39;)
+      }
+    }
+  })   
+</code></pre>
 
 
 		</div>

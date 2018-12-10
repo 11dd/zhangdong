@@ -245,6 +245,8 @@
         <li><label>辛寨子</label></li>
 
           
+            <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+          
             <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
           
 
@@ -452,6 +454,8 @@
                     
                       <li class="side-title"><span>辛寨子</span></li>
                         
+                          <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+                        
                           <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
                         
 
@@ -474,179 +478,85 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序建项-登录篇</h1>
+		<h1>微信小程序建项-商品网格布局</h1>
 
-		<p>做小程序登录思考问题：</p>
+		<h5 id="toc_0">在wxml里加入如下代码：</h5>
 
-<ol>
-<li>问题一：不想在小程序里总输入自己平台的账号密码，怎么与微信关联；</li>
-<li>问题二：关联了微信也要可以切换账号使用；</li>
-<li>问题三：不注册账号也可以在小程序里体验使用，必要时提示去登录；</li>
-<li>问题四：如果打开小程序是我们项目自己的登录注册页面（体验较</li>
-</ol>
+<pre><code>
+  &lt;!-- 商品网格布局 --&gt;
+  &lt;view class=&#39;goods-grid-view&#39;&gt;
+    &lt;block wx:for=&quot;{{12}}&quot; wx:key=&quot;{{item}}&quot; wx:for-item=&quot;item&quot;&gt;
+      &lt;view class=&#39;goods-grid-blockview&#39; data-item=&#39;{{item}}&#39; catchtap=&#39;onGoodsTap&#39;&gt;
+        &lt;view class=&#39;goods-grid-container&#39;&gt;
+          &lt;image class=&#39;goods-img&#39; mode=&#39;aspectFill&#39; src=&quot;{{&#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;}}&quot;&gt;&lt;/image&gt;
+          &lt;text class=&#39;goods-title weui-Font2&#39;&gt;{{&quot;我是商品名&quot;}}&lt;/text&gt;
+          &lt;text class=&#39;goods-title weui-Font3&#39;&gt;{{&quot;我是商品介绍么&quot;}}&lt;/text&gt;
+          &lt;text class=&#39;goods-price weui-Font2&#39; style=&#39;color: #d0ae97&#39;&gt;¥{{200}}\r\t\r\t\r\t&lt;text class=&#39;goods-price weui-Font2&#39; style=&#39;text-decoration:line-through;color: lightgray&#39;&gt;¥{{260}}&lt;/text&gt;&lt;/text&gt;
+        &lt;/view&gt;
+      &lt;/view&gt;
+    &lt;/block&gt;
+  &lt;/view&gt;
 
-<p><img src="media/15234367737951/IMG_3194.png" alt="IMG_3194"/></p>
-
-<hr/>
-
-<h4 id="toc_0">微信登录获取openID</h4>
-
-<pre><code>//不需要微信授权既可获取微信小程序登录API获取code
-wx.login({
-    success: function (res) {
-    //获取code返回值如下：
-    //code:&quot;0619IaNe0L8gHz1VMINe0WgjNe09IaNC&quot;
-    //errMsg:&quot;login:ok&quot;
-    //code每次请求返回都不同，并且code使用一次后作废，
-    //即使不使用，下一次请求code，上一次的code也作废。
-    }
-})
 </code></pre>
 
-<ol>
-<li>得到code将code传给服务器</li>
-<li>服务器GET请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
-</ol>
+<h5 id="toc_1">在wxss里加入如下代码：</h5>
 
-<pre><code>小程序官方更新将原POST请求改为GET请求了，返回值都是session_key，openid
+<pre><code>
+/* 网格布局 */
 
-新GET
-https://api.weixin.qq.com/sns/jscode2session?appid=APPID&amp;secret=SECRET&amp;js_code=JSCODE&amp;grant_type=authorization_code
-
-原POST
-https://api.weixin.qq.com/sns/jscode2session  
-参数{
-    appid，
-    secret，
-    js_code = code，
-    grant_type = authorization_code
-} 
-返回数据{
-    session_key，
-    openid
-}
-</code></pre>
-
-<p>官方地址：<a href="https://developers.weixin.qq.com/miniprogram/dev/api/code2Session.html">https://developers.weixin.qq.com/miniprogram/dev/api/code2Session.html</a></p>
-
-<h4 id="toc_1">还想获取更多个人信息要如何做？</h4>
-
-<ol>
-<li>如果授权获可以取用户信息wx.getUserInfo得到iv,encryptedData,rawData,signature</li>
-<li>将得到的iv,encryptedData(加密数据) 和wx.login 得到的code传给服务器</li>
-<li>使用和openID一起返回的session_key去解密</li>
-<li>服务端解密encryptedData 可以获取userinfo信息和unionId</li>
-</ol>
-
-<pre><code>服务端解密数据encryptedData
-    对称解密使用的算法为 AES-128-CBC，数据采用PKCS#7填充。
-    对称解密的目标密文为 Base64_Decode(encryptedData)。
-    对称解密秘钥 aeskey = Base64_Decode(session_key), aeskey 是16字节。
-    对称解密算法初始向量 为Base64_Decode(iv)，其中iv由数据接口返回。
-    
-解密encryptedData数据
-{
-　　&quot;openId&quot;:&quot;&quot;,
-　　&quot;nickName&quot;:&quot;ZIM東&quot;,
-　　&quot;gender&quot;:1,
-　　&quot;language&quot;:&quot;zh_CN&quot;,
-　　&quot;city&quot;:&quot;&quot;,
-　　&quot;province&quot;:&quot;&quot;,
-　　&quot;country&quot;:&quot;&quot;,
-　　&quot;avatarUrl&quot;:&quot;&quot;,
-　　&quot;unionId&quot;:&quot;&quot;,
-　　&quot;watermark&quot;:{
-　　　　&quot;timestamp&quot;:1523433831,
-　　　　&quot;appid&quot;:&quot;&quot;
-　　}
+.goods-grid-view {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: auto;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
 }
 
-在登录小程序之前，既没有关注过公众号，也没有登录过公众号，
-更没有使用微信登录的方式登录过app。
-通过 wx.login 的到的 code 解密后未返回 unionid
+.goods-grid-blockview {
+  width: 50%;
+  background-color: white;
+}
 
-另外，为了应用能校验数据的有效性，会在敏感数据加上数据水印( watermark )
-appid 敏感数据归属appid，开发者可校验此参数与自身appid是否一致
-timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性校验
-</code></pre>
+.goods-grid-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
 
-<h4 id="toc_2">会话密钥session_key有效性</h4>
+.goods-img {
+  width: 100%;
+  height: 340rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
 
-<pre><code>开发者如果遇到因为session_key不正确而校验签名失败或解密失败，请关注下面几个与session_key有关的注意事项。
+.goods-title {
+  margin-top: 15rpx;
+  margin-bottom: 10rpx;
+  display: -webkit-box;
+  align-content: center;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: -o-ellipsis-lastline;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  width: 340rpx;
+}
 
-    1.wx.login()调用时，用户的session_key会被更新而致使旧session_key失效。
-    开发者应该在明确需要重新登录时才调用wx.login()，
-    及时通过登录凭证校验接口更新服务器存储的session_key。
-
-    2.微信不会把session_key的有效期告知开发者。
-    我们会根据用户使用小程序的行为对session_key进行续期。
-    用户越频繁使用小程序，session_key有效期越长。
-
-    3.开发者在session_key失效时，可以通过重新执行登录流程获取有效的session_key。
-    使用接口wx.checkSession()可以校验session_key是否有效，
-    从而避免小程序反复执行登录流程。
-
-    4.当开发者在实现自定义登录态时，
-    可以考虑以session_key有效期作为自身登录态有效期，
-    也可以实现自定义的时效性策略。
-    
-    5.wx.login() 之后再获取wx.getUserInfo()
-</code></pre>
-
-<blockquote>
-<pre><code>微信如何授权小程序获取用户信息:
-
-为优化用户体验，使用 wx.getUserInfo 接口直接弹出授权框的开发方式将逐步不再支持。
-从2018年4月30日开始，小程序与小游戏的体验版、开发版调用 wx.getUserInfo 接口，
-将无法弹出授权询问框，默认调用失败。正式版暂不受影响。
-开发者可使用以下方式获取或展示用户信息：
-
-一、小程序:
-1、使用 button 组件，并将 open-type 指定为 getUserInfo 类型，获取用户基本信息。
-
-详情参考文档:
-https://developers.weixin.qq.com/miniprogram/dev/component/button.html
-
-
-2、使用 open-data 展示用户基本信息。
-
-详情参考文档:
-https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html
-</code></pre>
-</blockquote>
-
-<h4 id="toc_3">登录流程图</h4>
-
-<p><img src="media/15234367737951/%E6%B5%81%E7%A8%8B.png" alt="流程"/></p>
-
-<p>👆原图地址：<a href="https://blog.csdn.net/dingjianmin/article/details/75137934">https://blog.csdn.net/dingjianmin/article/details/75137934</a></p>
-
-<p><img src="media/15234367737951/%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B.jpg" alt="登录流程"/></p>
-
-<p>注意：开发者后台拿到开放数据后可以对数据进行校验签名和解密，来保证数据不被篡改。 </p>
-
-<p><img src="media/15234367737951/%E6%95%B0%E6%8D%AE.png" alt="数据"/></p>
-
-<pre><code>签名校验以及数据加解密涉及用户的会话密钥session_key。
- 开发者应该事先通过 wx.login 登录流程获取会话密钥 session_key 并保存在服务器。
- 为了数据不被篡改，开发者不应该把session_key传到小程序客户端等服务器外的环境。
-
-数据签名校验
-
-为了确保 开放接口 返回用户数据的安全性，微信会对明文数据进行签名。
-开发者可以根据业务需要对数据包进行签名校验，确保数据的完整性。
-
-    通过调用接口（如 wx.getUserInfo）获取数据时，接口会同时返回 rawData、signature，
-    其中 signature = sha1( rawData + session_key )
-    
-    开发者将 signature、rawData 发送到开发者服务器进行校验。
-    服务器利用用户对应的 session_key 使用相同的算法计算出签名 signature2 ，
-    比对 signature 与 signature2 即可校验数据的完整性。
+.goods-price {
+  text-align: left;
+}
 
 </code></pre>
 
-<p>官方数据签名校验<br/>
-<a href="https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject">https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject</a></p>
+<h5 id="toc_2">运行效果</h5>
+
+<p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-06%20%E4%B8%8B%E5%8D%884.02.21.png" alt="屏幕快照 2018-12-06 下午4.02.21"/></p>
 
 
 		</div>

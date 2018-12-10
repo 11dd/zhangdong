@@ -245,6 +245,8 @@
         <li><label>辛寨子</label></li>
 
           
+            <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+          
             <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
           
 
@@ -452,6 +454,8 @@
                     
                       <li class="side-title"><span>辛寨子</span></li>
                         
+                          <li><a title="电子证照" href="15444188311660.html">电子证照</a></li>
+                        
                           <li><a title="操作手册" href="15247309861121.html">操作手册</a></li>
                         
 
@@ -474,82 +478,71 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序View的布局</h1>
+		<h1>微信小程序开发配置介绍</h1>
 
-		<pre><code>小程序 View 支持两种布局方式：Block 和 Flex
-所有 View 默认都是 block
-要使用 flex 布局的话需要显式的声明：
+		<h5 id="toc_0">服务器配置</h5>
 
-display:flex;
+<p>服务器域名请在 小程序后台-设置-开发设置-服务器域名 中进行配置，配置时需要注意：</p>
+
+<pre><code> •  域名只支持 https (request、uploadFile、downloadFile) 和 wss (connectSocket) 协议；
+ •  域名不能使用 IP 地址或 localhost
+ •  域名必须经过 ICP 备案；
+ •  出于安全考虑，api.weixin.qq.com 不能被配置为服务器域名，
+       相关API也不能在小程序内调用。
+       开发者应将 appsecret 保存到后台服务器中，
+       通过服务器使用 appsecret 获取 accesstoken，并调用相关 API。
+ •  对于每个接口，分别可以配置最多 20 个域名
+
 </code></pre>
 
-<h5 id="toc_0">接下来便可以在view 的wxss里尝试如下属性：</h5>
+<p><img src="media/15325981038081/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%882.58.15.png" alt="屏幕快照 2018-08-08 下午2.58.15"/></p>
 
-<pre><code>例如：
-//使用 flex 布局
-display: flex;
+<p><img src="media/15325981038081/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%884.00.18.png" alt="屏幕快照 2018-08-08 下午4.00.18"/></p>
 
-.hengxiangClass {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
+<p><img src="media/15325981038081/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%884.00.09.png" alt="屏幕快照 2018-08-08 下午4.00.09"/></p>
 
-.shuxiangClass {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+<h5 id="toc_1">HTTPS 证书</h5>
+
+<pre><code>
+小程序必须使用 HTTPS 请求。
+小程序内会对服务器域名使用的 HTTPS 证书进行校验，
+如果校验失败，则请求不能成功发起。
+由于系统限制，不同平台对于证书要求的严格程度不同。
+为了保证小程序的兼容性，建议开发者按照最高标准进行证书配置，
+并使用相关工具检查现有证书是否符合要求。
 </code></pre>
 
-<p>横向布局or竖向布局=&gt;设置属性 flex-direction</p>
+<h5 id="toc_2">对证书要求如下：</h5>
 
-<pre><code>flex-direction: row;
-{
-row：从左到右的水平方向为主轴
-row-reverse：从右到左的水平方向为主轴
-column：从上到下的垂直方向为主轴
-column-reverse：从下到上的垂直方向为主轴
-}
+<pre><code>
+ •  HTTPS 证书必须有效。证书必须被系统信任，部署SSL证书的网站域名必须与证书颁发的域名一致，证书必须在有效期内;
+ •  iOS 不支持自签名证书;
+ •  iOS 下证书必须满足苹果 App Transport Security (ATS) 的要求;
+ •  TLS 必须支持 1.2 及以上版本。部分旧 Android 机型还未支持 TLS 1.2，请确保 HTTPS 服务器的 TLS 版本支持1.2及以下版本;
+ •  部分 CA 可能不被操作系统信任，请开发者在选择证书时注意小程序和各系统的相关通告。
+ •  Chrome 56/57 内核对 WoSign、StartCom 证书限制周知
+
 </code></pre>
 
-<p>设置元素在横向上的布局方向，需要设置 justify-content 属性</p>
+<h5 id="toc_3">跳过域名校验</h5>
 
-<pre><code>justify-content: space-around;
-{
-flex-start：主轴起点对齐(默认值)  
-flex-end：主轴结束点对齐  
-center：在主轴中居中对齐  
-space-between：两端对齐，除了两端的子元素分别靠向两端的容器之外，其他子元素之间的间隔都相等  
-space-around：每个子元素之间的距离相等，两端的子元素距离容器的距离也和其它子元素之间的距离相同  
-}
+<pre><code>
+在微信开发者工具中，可以临时开启 开发环境不校验请求域名、
+TLS版本及HTTPS证书 选项，跳过服务器域名的校验。
+此时，在微信开发者工具中及手机开启调试模式时，不会进行服务器域名的校验。
+
+
 </code></pre>
 
-<p>设置元素在纵向上的布局方向，需要设置 align-items 属性</p>
+<h5 id="toc_4">关于请求</h5>
 
-<pre><code>align-items: center;
-{
-stretch 填充整个容器(默认值)
-flex-start 侧轴的起点对齐
-flex-end 侧轴的终点对齐
-center 在侧轴中居中对齐
-baseline 以子元素的第一行文字对齐
-}
+<pre><code>     •  默认超时时间和最大超时时间都是 60s
+     •  request、uploadFile、downloadFile 的最大并发限制是 10 个
+     •  网络请求的 referer header 不可设置。
+     •  小程序进入后台运行后（非置顶聊天），如果 5s 内网络请求没有结束，会回调错误信息 fail interrupted；在回到前台之前，网络请求接口调用都会无法调用。
+     •  只要成功接收到服务器返回，无论statusCode是多少，都会进入success回调。
+     
 </code></pre>
-
-<p>用于控制子 View 是否换行=&gt;设置flex-wrap 属性</p>
-
-<pre><code>flex-wrap: wrap;
-{
-nowrap：不换行（默认）
-wrap：换行
-wrap-reverse：换行，第一行在最下面
-}
-</code></pre>
-
-<p>转载：<a href="https://blog.csdn.net/weixin_36065510/article/details/73203720">https://blog.csdn.net/weixin_36065510/article/details/73203720</a></p>
 
 
 		</div>
