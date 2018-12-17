@@ -477,7 +477,7 @@
         duration=&quot;{{duration}}&quot; 
         circular=&quot;true&quot;&gt;  
 
-      &lt;block wx:for=&quot;{{imgUrls}}&quot; wx:for-index=&quot;index&quot;&gt;  
+      &lt;block wx:for=&quot;{{imgUrls}}&quot; wx:key=&quot;{{item}}&quot; wx:for-index=&quot;index&quot;&gt;  
         &lt;swiper-item&gt;  
             &lt;navigator url=&quot;{{item.link}}&quot; hover-class=&quot;navigator-hover&quot;&gt; 
             &lt;image src=&quot;{{item.url}}&quot; 
@@ -493,12 +493,12 @@
 <h4 id="toc_1">第二步：在.wxss文件里设置如下属性</h4>
 
 <pre><code>   swiper{
-    height: 220px;
+    height: 200px;
    } 
 
     .slide-image{  
         width: 100%;  
-        height: 180px;
+        height: 200px;
     }  
 </code></pre>
 
@@ -506,14 +506,11 @@
 
 <pre><code> imgUrls: [
       {
-        link: &#39;/pages/logs/logs&#39;,
-        url: &#39;http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg&#39;
-      }, {
-        link: &#39;/pages/logs/logs&#39;,
         url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
       }, {
-        link: &#39;/pages/logs/logs&#39;,
-        url: &#39;http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg&#39;
+        url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
+      }, {
+        url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
       }   
 
     ],

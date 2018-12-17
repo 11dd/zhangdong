@@ -546,6 +546,22 @@ z-axis  定义视图被置于 Z 轴的何处。可能的值：
     length
 </code></pre>
 
+<h4 id="toc_6">微信小程序播放音频</h4>
+
+<pre><code>
+    // 音频播放
+    const innerAudioContext = wx.createInnerAudioContext()
+    innerAudioContext.autoplay = true
+    innerAudioContext.src = &#39;https://cdn.caomall.net/15290437711272352156.mp3&#39;
+    innerAudioContext.onPlay(() =&gt; {
+      console.log(&#39;开始播放&#39;)
+    })
+    innerAudioContext.onError((res) =&gt; {
+      console.log(res.errMsg)
+      console.log(res.errCode)
+    })
+</code></pre>
+
 
 		</div>
 	
