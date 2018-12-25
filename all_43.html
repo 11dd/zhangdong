@@ -89,15 +89,19 @@
           
             <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
           
-            <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+            <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
           
             <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+          
+            <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+          
+            <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
           
             <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
           
             <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
           
-            <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+            <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
           
             <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
           
@@ -300,15 +304,19 @@
                         
                           <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
                         
-                          <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+                          <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
                         
                           <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+                        
+                          <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+                        
+                          <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
                         
                           <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
                         
                           <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
                         
-                          <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+                          <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
                         
                           <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
                         
@@ -448,147 +456,38 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS tableView 基础使用说明</h1>
+		<h1>iOS 从AppDelegate说起</h1>
 
-		<h5 id="toc_0">pragma - mark - tableview列表初始化</h5>
+		<h5 id="toc_0">创建程序窗口</h5>
 
-<pre><code>-(UITableView *)tableView
-{
-    if (!_tableView) {
-        
-        _tableView = [[UITableView alloc]initWithFrame:
-                      CGRectMake(, , , ) style:UITableViewStylePlain];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        _tableView.backgroundColor = ;
-        //分割线的颜色
-        _tableView.separatorColor = ;
-        //隐藏滚动条
-        _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.tableFooterView = [[UIView alloc]init];
-        
-    }
-    return _tableView;
-}
+<pre><code>self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+self.window.backgroundColor = [UIColor whiteColor];
+[self.window setRootViewController:self.tabbarVC];
+[self.window makeKeyAndVisible];
 </code></pre>
 
-<h5 id="toc_1">tableview 代理方法实现如下：</h5>
+<h5 id="toc_1">生命周期</h5>
 
-<h6 id="toc_2">tableview解决常规配置的重复问题。。。</h6>
-
-<pre><code>//当页面拉动需要显示新数据的时候，把最后一个cell进行删除 此方案即可避免重复显示，又重用了cell相对内存管理来说是好的方案 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // 定义唯一标识
-    static NSString *CellIdentifier = @&quot;Cell&quot;;
-    // 通过唯一标识创建cell实例
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    else//当页面拉动的时候 当cell存在并且最后一个存在 把它进行删除就出来一个独特的cell我们在进行数据配置即可避免
-    {
-        while ([cell.contentView.subviews lastObject] != nil) {
-            [(UIView *)[cell.contentView.subviews lastObject] removeFromSuperview];
-        }
-    }
-    
-//点击没有选中状态
-cell.selectionStyle = UITableViewCellSelectionStyleNone;  
-
-// 对cell 进行简单地数据配置
-cell.textLabel.text = @&quot;text&quot;;
-   
-return cell;
-}
-</code></pre>
-
-<h5 id="toc_3">other</h5>
-
-<pre><code>//行
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    
-    return &lt;#@#&gt;;
-}
-//行高
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return &lt;#@#&gt;;
+<pre><code>- (void)applicationWillEnterForeground:(UIApplication *)application {
+    NSLog(@&quot;将要进入前台：%s&quot;,__func__);
 }
 
-#pragma - mark - 点击cell方法
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)applicationDidBecomeActive:(UIApplication *)application {
     
-}
-</code></pre>
-
-<h5 id="toc_4">tableview header与footer</h5>
-
-<pre><code>#pragma - mark - tableview_Header and Footer
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView * view = [[UIView alloc]init];
-    
-    return view;
+    NSLog(@&quot;已经获得焦点：%s&quot;,__func__);
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
+- (void)applicationWillResignActive:(UIApplication *)application {
     
-    return 0;
+    NSLog(@&quot;将要释放焦点：%s&quot;,__func__);
 }
-
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    UIView * view = [[UIView alloc]init];
+- (void)applicationWillTerminate:(UIApplication *)application {
     
-    return view;
+    NSLog(@&quot;程序将要退出：%s&quot;,__func__);
 }
-
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
+- (void)applicationDidEnterBackground:(UIApplication *)application {
     
-    return 0;
-    
-}
-</code></pre>
-
-<p>tableview 侧滑删除方法</p>
-
-<pre><code>//先要设Cell可编辑
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return NO;
-}
-
-//定义编辑样式
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return UITableViewCellEditingStyleDelete;
-}
-
-//修改编辑按钮文字
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return @&quot;删除&quot;;
-}
-
-//设置进入编辑状态时，Cell不会缩进
-- (BOOL)tableView: (UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
-}
-
-//点击删除
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    /**一定是先删除了数据，再执行删除的动画或者其他操作，否则会出现崩溃*/
-    
-    [self deleteData:indexPath];//单个删除接口
-    
+    NSLog(@&quot;已经进入后台：%s&quot;,__func__);
 }
 </code></pre>
 

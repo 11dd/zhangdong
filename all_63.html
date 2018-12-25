@@ -89,15 +89,19 @@
           
             <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
           
-            <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+            <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
           
             <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+          
+            <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+          
+            <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
           
             <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
           
             <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
           
-            <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+            <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
           
             <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
           
@@ -300,15 +304,19 @@
                         
                           <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
                         
-                          <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+                          <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
                         
                           <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+                        
+                          <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+                        
+                          <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
                         
                           <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
                         
                           <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
                         
-                          <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+                          <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
                         
                           <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
                         
@@ -448,46 +456,12 @@
 
 	
 		<div class="markdown-body">
-		<h1>建项-权限、网络问题</h1>
+		<h1>建项-创建.pch文件</h1>
 
-		<h5 id="toc_0">info.plist里你该知道的权限</h5>
+		<p>command+n 滑动到最底下other 里创建pch文件。<br/>
+<img src="http://upload-images.jianshu.io/upload_images/670820-06ec44085a3c68e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="箭头所指三个选中.png"/></p>
 
-<ol>
-<li>定位要写清楚用途，例如（为您导航, 到您想去的健身门店。）否则会遭拒绝的在水果商店</li>
-<li>经常使用的例如：是否允许此App使用你的相机？</li>
-<li>例如：是否允许此App访问你的媒体资料库？</li>
-</ol>
-
-<pre><code>
-定位权限：          Privacy - Location When In Use Usage Description         
-定位权限:           Privacy - Location Always Usage Description                
-相机权限：          Privacy - Camera Usage Description    
-相册权限：          Privacy - Photo Library Usage Description   
-通讯录权限：        Privacy - Contacts Usage Description                           
-麦克风权限：        Privacy - Microphone Usage Description                      
-蓝牙权限：          Privacy - Bluetooth Peripheral Usage Description           
-日历权限：          Privacy - Calendars Usage Description                         
-语音转文字权限：     Privacy - Speech Recognition Usage Description            
-健康数据分享:       Privacy - Health Share Usage Description  
-健康数据更新:       Privacy - Health Update Usage Description 
-运动传感器:         Privacy - Motion Usage Description  
-音乐:              Privacy - Music Usage Description  
-播放音乐或者视频:    Privacy - Media Library Usage Description  
-Siri:              Privacy - Siri Usage Description  
-智能家具:           Privacy - HomeKit Usage Description  
-电视提供商:         Privacy - TV Provider Usage Description  
-视频订阅:           Privacy - Video Subscriber Account Usage Description 
-备忘录:            Privacy - Reminders Usage Description
-
-</code></pre>
-
-<h5 id="toc_1">网络请求时，看看你是不是还需要做此操作啊。。。</h5>
-
-<pre><code>网络请求的ATS如下：
-App Transport Security Settings  （Type:Dictionary）
-在添加子项如下：
-Allow Arbitrary Loads            （Type:Boolean）设置为YES
-</code></pre>
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-192ddcde4df0a66f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="加粗的两项改动test是项工程名.png"/></p>
 
 
 		</div>

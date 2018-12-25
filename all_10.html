@@ -89,15 +89,19 @@
           
             <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
           
-            <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+            <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
           
             <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+          
+            <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+          
+            <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
           
             <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
           
             <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
           
-            <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+            <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
           
             <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
           
@@ -300,15 +304,19 @@
                         
                           <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
                         
-                          <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+                          <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
                         
                           <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+                        
+                          <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+                        
+                          <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
                         
                           <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
                         
                           <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
                         
-                          <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+                          <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
                         
                           <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
                         
@@ -448,105 +456,19 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序建项-TabBar</h1>
+		<h1>Vue项目结构</h1>
 
-		<h4 id="toc_0">创建一个标准小程序空项目</h4>
+		<p><img src="media/15422692424640/20171126152702891.png" alt="20171126152702891"/></p>
 
-<h5 id="toc_1">在app.json文件里写入如下代码</h5>
+<p><img src="media/15422692424640/20171126152742787.png" alt="20171126152742787"/></p>
 
-<pre><code>{
-  &quot;pages&quot;: [
-    &quot;pages/homePage/homePage&quot;,
-    &quot;pages/minePage/minePage&quot;,
-    &quot;pages/shoppingCartPage/shoppingCartPage&quot;,
-    &quot;pages/index/index&quot;
-  ],
-  &quot;window&quot;: {
-    &quot;backgroundTextStyle&quot;: &quot;light&quot;,
-    &quot;navigationBarBackgroundColor&quot;: &quot;#fff&quot;,
-    &quot;navigationBarTitleText&quot;: &quot;小程序商城&quot;,
-    &quot;navigationBarTextStyle&quot;: &quot;black&quot;
-  },
-  &quot;tabBar&quot;: {
-    &quot;color&quot;: &quot;#8a8a8a&quot;,
-    &quot;selectedColor&quot;: &quot;#000&quot;,
-    &quot;backgroundColor&quot;: &quot;#fff&quot;,
-    &quot;list&quot;: [
-      {
-        &quot;iconPath&quot;: &quot;images/tabbar/home_1.png&quot;,
-        &quot;selectedIconPath&quot;: &quot;images/tabbar/home_2.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/homePage/homePage&quot;,
-        &quot;text&quot;: &quot;首页&quot;
-      },
-      {
-        &quot;iconPath&quot;: &quot;images/tabbar/gwc_1.png&quot;,
-        &quot;selectedIconPath&quot;: &quot;images/tabbar/gwc_2.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/shoppingCartPage/shoppingCartPage&quot;,
-        &quot;text&quot;: &quot;购物车&quot;
-      },
-      {
-        &quot;iconPath&quot;: &quot;images/tabbar/wode_1.png&quot;,
-        &quot;selectedIconPath&quot;: &quot;images/tabbar/wode_2.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/minePage/minePage&quot;,
-        &quot;text&quot;: &quot;我的&quot;
-      }
-    ]
-  },
-  &quot;networkTimeout&quot;: {
-    &quot;request&quot;: 10000,
-    &quot;downloadFile&quot;: 10000
-  },
-  &quot;debug&quot;: false
-}
-</code></pre>
+<p><img src="media/15422692424640/20171126152635816.png" alt="20171126152635816"/></p>
 
-<h4 id="toc_2">运行界面 tabbar</h4>
+<p>原文地址：<a href="https://www.jianshu.com/p/7006a663fb9f">https://www.jianshu.com/p/7006a663fb9f</a></p>
 
-<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-06%20%E4%B8%8B%E5%8D%884.14.36.png" alt="屏幕快照 2018-12-06 下午4.14.36"/></p>
+<p><strong>使用的编辑器是VSCode</strong></p>
 
-<h5 id="toc_3">在app.wxss文件里写入如下代码</h5>
-
-<pre><code>page {
-  font-size: 14px;
-  background-color: #f8f8f8;
-  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
-}
-
-.container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  box-sizing: border-box;
-}
-
-.weui-bg-color {
-  background-color: #f8f8f8;
-}
-
-.weui-Font1 {
-  font-size: 16px;
-}
-
-.weui-Font2 {
-  font-size: 14px;
-}
-
-.weui-Font3 {
-  font-size: 12px;
-}
-
-.weui-Font4 {
-  font-size: 10px;
-}
-
-.weui-Font5 {
-  font-size: 8px;
-}
-
-</code></pre>
+<p><img src="media/15422692424640/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-15%20%E4%B8%8B%E5%8D%884.13.15.png" alt="屏幕快照 2018-11-15 下午4.13.15"/></p>
 
 
 		</div>

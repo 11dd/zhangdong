@@ -89,15 +89,19 @@
           
             <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
           
-            <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+            <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
           
             <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+          
+            <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+          
+            <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
           
             <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
           
             <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
           
-            <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+            <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
           
             <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
           
@@ -300,15 +304,19 @@
                         
                           <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
                         
-                          <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+                          <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
                         
                           <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+                        
+                          <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+                        
+                          <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
                         
                           <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
                         
                           <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
                         
-                          <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+                          <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
                         
                           <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
                         
@@ -448,102 +456,40 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之动画</h1>
+		<h1>微信小程序之解析html</h1>
 
-		<h5 id="toc_0">---wxml文件---</h5>
+		<h5 id="toc_0">使用wxParse解析html</h5>
 
-<pre><code>&lt;view class=&#39;lunbo&#39; animation=&quot;{{animationItem}}&quot;
-&lt;/view&gt;
+<p>github地址：<a href="https://github.com/icindy/wxParse">https://github.com/icindy/wxParse</a><br/>
+下载之后，将wxParse文件夹导入自己工程与utils同级别   </p>
+
+<h5 id="toc_1">在app.wxss全局样式文件中，引入wxParse的样式表如:</h5>
+
+<pre><code>@import&quot;/wxParse/wxParse.wxss&quot;;
 </code></pre>
 
-<h5 id="toc_1">---JS文件---</h5>
+<h5 id="toc_2">在所需的JS文件中引入如:</h5>
 
-<pre><code>  var that = this;
-    //动画样式
-    that.animationItem = wx.createAnimation({
-      duration: 500,
-      timingFunction: &#39;linear&#39;,
-      transformOrigin: &#39;90% 70%&#39;,
-      success: function(res) {}
-    });
-    
-    // 定时器，2S 循环一次
-    that.data.newLunbo_interval = setInterval(function() {
-      //开始动画-缩小
-      that.animationItem.scale3d(0.98, 0.98, 0.1).step();
-      that.setData({
-        animationItem: that.animationItem.export()
-      });
-      //延迟恢复到原来大小
-      setTimeout(function() {
-        that.animationItem.scale3d(1.0, 1.0, 1.0).step();
-        that.setData({
-          animationItem: that.animationItem.export(),
-        });
-      }, 500)
-    }.bind(that), 2000);
+<pre><code>var WxParse = require(&#39;../../wxParse/wxParse.js&#39;);
+
+/**
+     * WxParse.wxParse(bindName , type, data, target,imagePadding)
+     * 1.bindName绑定的数据名(必填)
+     * 2.type可以为html或者md(必填)
+     * 3.data为传入的具体数据(必填)
+     * 4.target为Page对象,一般为this(必填)
+     * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
+     */
+     
+    WxParse.wxParse(&#39;content&#39;, &#39;html&#39;, &#39;&lt;h1&gt;我是内容&lt;/h1&gt;&#39;, this, 0);
 </code></pre>
 
-<h5 id="toc_2">清理定时器</h5>
+<h5 id="toc_3">在wxml所需的文件中引入如:</h5>
 
-<pre><code>    clearInterval(this.data.newLunbo_interval);
-</code></pre>
+<pre><code>&lt;import src=&quot;../../wxParse/wxParse.wxml&quot; /&gt;
 
-<h5 id="toc_3">创建wx.createAnimation参数含义</h5>
-
-<pre><code>duration            动画持续时间，单位 ms 
-timingFunction      &#39;linear&#39; 动画的效果  
-delay               动画延迟时间，单位 ms 
-transformOrigin     &#39;50% 50% 0&#39;
-</code></pre>
-
-<h5 id="toc_4">timingFunction 的合法值</h5>
-
-<pre><code>&#39;linear&#39;    动画从头到尾的速度是相同的
-&#39;ease&#39;  动画以低速开始，然后加快，在结束前变慢
-&#39;ease-in&#39;   动画以低速开始
-&#39;ease-in-out&#39;   动画以低速开始和结束
-&#39;ease-out&#39;  动画以低速结束
-&#39;step-start&#39;    动画第一帧就跳至结束状态直到结束
-&#39;step-end&#39;  动画一直保持开始状态，最后一帧跳到结束状态
-</code></pre>
-
-<h5 id="toc_5">transformOrigin 的合法值</h5>
-
-<pre><code>transform-origin: x-axis y-axis z-axis;
-
-x-axis  定义视图被置于 X 轴的何处。可能的值：
-    left
-    center
-    right
-    length
-    %
-    
-y-axis  定义视图被置于 Y 轴的何处。可能的值：
-    top
-    center
-    bottom
-    length
-    %
-
-z-axis  定义视图被置于 Z 轴的何处。可能的值：
-    length
-</code></pre>
-
-<h4 id="toc_6">微信小程序播放音频</h4>
-
-<pre><code>
-    // 音频播放
-    const innerAudioContext = wx.createInnerAudioContext()
-    innerAudioContext.autoplay = true
-    innerAudioContext.src = &#39;https://cdn.caomall.net/15290437711272352156.mp3&#39;
-    innerAudioContext.onPlay(() =&gt; {
-      console.log(&#39;开始播放&#39;)
-    })
-    innerAudioContext.onError((res) =&gt; {
-      console.log(res.errMsg)
-      console.log(res.errCode)
-    })
+&lt;!-- 内容 --&gt;
+&lt;template is=&quot;wxParse&quot; data=&quot;{{wxParseData:content.nodes}}&quot; /&gt;
 </code></pre>
 
 

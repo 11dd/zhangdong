@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  微信小程序之顶部悬停菜单 - 至尊宝典之备忘录
+  微信小程序之菜单 - 至尊宝典之备忘录
   
   </title>
  <meta name="description" content="">
@@ -89,15 +89,19 @@
           
             <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
           
-            <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+            <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
           
             <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+          
+            <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+          
+            <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
           
             <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
           
             <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
           
-            <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+            <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
           
             <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
           
@@ -300,15 +304,19 @@
                         
                           <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
                         
-                          <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+                          <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
                         
                           <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+                        
+                          <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+                        
+                          <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
                         
                           <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
                         
                           <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
                         
-                          <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+                          <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
                         
                           <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
                         
@@ -444,9 +452,17 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>微信小程序之顶部悬停菜单</h1>
+<h1>微信小程序之菜单</h1>
 
-<p>xml 文件</p>
+<h4 id="toc_0">吸顶悬停菜单</h4>
+
+<p>菜单原本不在顶部，是上下滑动跟随滑动的，当滑动到顶部时，悬停在顶部</p>
+
+<p><img src="media/15440814346317/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-19%20%E4%B8%8A%E5%8D%8810.44.41.png" alt="屏幕快照 2018-12-19 上午10.44.41"/></p>
+
+<h4 id="toc_1">实现代码</h4>
+
+<p><strong>xml 文件</strong></p>
 
 <pre><code> &lt;!-- 分类菜单 --&gt;
   &lt;view id=&quot;affix&quot; wx:if=&#39;{{tabs.length &gt; 1}}&#39; class=&#39;{{typeFixed?&quot;menu-typefixed&quot;:&quot;menu-typeFixed&quot;}}&#39;&gt;
@@ -460,7 +476,7 @@
   &lt;/view&gt;
 </code></pre>
 
-<p>wxss文件</p>
+<p><strong>wxss文件</strong></p>
 
 <pre><code>/* 顶部悬停分类菜单样式 */
 
@@ -541,7 +557,7 @@ menu-text-item {
 /* 以上-顶部悬停分类菜单样式 */
 </code></pre>
 
-<p>js文件</p>
+<p><strong>js文件</strong></p>
 
 <pre><code>/**
    * 页面的初始数据
@@ -626,6 +642,8 @@ menu-text-item {
 
   },
 </code></pre>
+
+<h3 id="toc_2">普通菜单</h3>
 
 
 </div>

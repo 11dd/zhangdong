@@ -89,15 +89,19 @@
           
             <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
           
-            <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+            <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
           
             <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+          
+            <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+          
+            <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
           
             <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
           
             <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
           
-            <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+            <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
           
             <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
           
@@ -300,15 +304,19 @@
                         
                           <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
                         
-                          <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+                          <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
                         
                           <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+                        
+                          <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+                        
+                          <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
                         
                           <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
                         
                           <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
                         
-                          <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+                          <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
                         
                           <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
                         
@@ -448,75 +456,103 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之数据统计与分析</h1>
+		<h1>微信小程序之动画</h1>
 
-		<p>公众平台登录小程序账号，在数据分析页面官方提供了数据统计与分析信息：<br/>
-注意：只统计已发布的线上版本使用数据</p>
+		<h5 id="toc_0">---wxml文件---</h5>
 
-<p>或扫描下方二维码，可用手机查看自己小程序数据信息，官方提供；<br/>
-<img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.47.17.png" alt="屏幕快照 2018-09-07 下午3.47.17"/></p>
+<pre><code>&lt;view class=&#39;lunbo&#39; animation=&quot;{{animationItem}}&quot;
+&lt;/view&gt;
+</code></pre>
 
-<h4 id="toc_0">数据分析-概况：</h4>
+<h5 id="toc_1">---JS文件---</h5>
 
-<ol>
-<li>昨日概况，访问人数，新访问人数，总添加人数，新添加人数</li>
-<li>累计访问人数</li>
-<li>TOP受访页</li>
-</ol>
+<pre><code>  var that = this;
+    //动画样式
+    that.animationItem = wx.createAnimation({
+      duration: 500,
+      timingFunction: &#39;linear&#39;,
+      transformOrigin: &#39;90% 70%&#39;,
+      success: function(res) {}
+    });
+    
+    // 定时器，2S 循环一次
+    that.data.newLunbo_interval = setInterval(function() {
+      //开始动画-缩小
+      that.animationItem.scale3d(0.98, 0.98, 0.1).step();
+      that.setData({
+        animationItem: that.animationItem.export()
+      });
+      //延迟恢复到原来大小
+      setTimeout(function() {
+        that.animationItem.scale3d(1.0, 1.0, 1.0).step();
+        that.setData({
+          animationItem: that.animationItem.export(),
+        });
+      }, 500)
+    }.bind(that), 2000);
+</code></pre>
 
-<h4 id="toc_1">数据分析-实时统计：</h4>
+<h5 id="toc_2">清理定时器</h5>
 
-<ol>
-<li>实时访问次数
-注：最多可查看实时统计的近7天的数据，更多大范围数据看概况；</li>
-</ol>
+<pre><code>    clearInterval(this.data.newLunbo_interval);
+</code></pre>
 
-<h4 id="toc_2">数据分析-访问分析：</h4>
+<h5 id="toc_3">创建wx.createAnimation参数含义</h5>
 
-<ol>
-<li>统计每天的打开次数，可自定义时间</li>
-<li>访问分布，如会话打开，二维码打开，搜索打开等；</li>
-<li>访问时长，例如访问时长在30-50秒之间有9次</li>
-<li>访问深度，如一个人打开168次，忠实用户啊...</li>
-<li>新增留存与活跃留存，可查看留存率</li>
-<li><p>访问页面，例如index页访问次数86次，人数37，均时长，<br/><br/>
-分享次数，分享人数等；</p>
+<pre><code>duration            动画持续时间，单位 ms 
+timingFunction      &#39;linear&#39; 动画的效果  
+delay               动画延迟时间，单位 ms 
+transformOrigin     &#39;50% 50% 0&#39;
+</code></pre>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.22.39.png" alt="屏幕快照 2018-09-07 下午3.22.39"/></p></li>
-</ol>
+<h5 id="toc_4">timingFunction 的合法值</h5>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.23.08.png" alt="屏幕快照 2018-09-07 下午3.23.08"/></p>
+<pre><code>&#39;linear&#39;    动画从头到尾的速度是相同的
+&#39;ease&#39;  动画以低速开始，然后加快，在结束前变慢
+&#39;ease-in&#39;   动画以低速开始
+&#39;ease-in-out&#39;   动画以低速开始和结束
+&#39;ease-out&#39;  动画以低速结束
+&#39;step-start&#39;    动画第一帧就跳至结束状态直到结束
+&#39;step-end&#39;  动画一直保持开始状态，最后一帧跳到结束状态
+</code></pre>
 
-<h4 id="toc_3">数据分析-来源分析：</h4>
+<h5 id="toc_5">transformOrigin 的合法值</h5>
 
-<ol>
-<li>整体来源分布，默认显示排名前12的来源数据，也可以自己选择，<br/>
-如会话，长按二维码，搜索，相册选取二维码，小程序历史，扫一扫等；</li>
-</ol>
+<pre><code>transform-origin: x-axis y-axis z-axis;
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.18.47.png" alt="屏幕快照 2018-09-07 下午3.18.47"/></p>
+x-axis  定义视图被置于 X 轴的何处。可能的值：
+    left
+    center
+    right
+    length
+    %
+    
+y-axis  定义视图被置于 Y 轴的何处。可能的值：
+    top
+    center
+    bottom
+    length
+    %
 
-<h4 id="toc_4">数据分析-用户画像：</h4>
+z-axis  定义视图被置于 Z 轴的何处。可能的值：
+    length
+</code></pre>
 
-<ol>
-<li>性别及年龄分布</li>
-<li>地区分布</li>
-<li>终端及机型分布</li>
-<li><p>各个属性分布活跃用户以及占比</p>
+<h4 id="toc_6">微信小程序播放音频</h4>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.20.52.png" alt="屏幕快照 2018-09-07 下午3.20.52"/></p>
-
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.21.43.png" alt="屏幕快照 2018-09-07 下午3.21.43"/></p></li>
-</ol>
-
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.21.10.png" alt="屏幕快照 2018-09-07 下午3.21.10"/></p>
-
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.39.40.png" alt="屏幕快照 2018-09-07 下午3.39.40"/></p>
-
-<p>腾讯移动分析平台：可APP接入，H5接入，小程序接入；<br/>
-<a href="http://mta.qq.com/">http://mta.qq.com/</a></p>
-
-<p>竞品：有百度微信小程序统计，阿拉灯小程序统计分析平台</p>
+<pre><code>
+    // 音频播放
+    const innerAudioContext = wx.createInnerAudioContext()
+    innerAudioContext.autoplay = true
+    innerAudioContext.src = &#39;https://cdn.caomall.net/15290437711272352156.mp3&#39;
+    innerAudioContext.onPlay(() =&gt; {
+      console.log(&#39;开始播放&#39;)
+    })
+    innerAudioContext.onError((res) =&gt; {
+      console.log(res.errMsg)
+      console.log(res.errCode)
+    })
+</code></pre>
 
 
 		</div>

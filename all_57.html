@@ -89,15 +89,19 @@
           
             <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
           
-            <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+            <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
           
             <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+          
+            <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+          
+            <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
           
             <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
           
             <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
           
-            <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+            <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
           
             <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
           
@@ -300,15 +304,19 @@
                         
                           <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
                         
-                          <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+                          <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
                         
                           <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+                        
+                          <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+                        
+                          <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
                         
                           <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
                         
                           <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
                         
-                          <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+                          <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
                         
                           <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
                         
@@ -448,81 +456,283 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS ARKit 看我就受够了</h1>
+		<h1>iOS  MQTT 接入示例</h1>
 
-		<p>因为有项目需求ARKit，查询后反馈的文档<br/>
-现发布出来，还没注明转载出自哪里，见谅，找到地址时补齐；</p>
-
-<p><a href="https://developer.apple.com/documentation/arkit">https://developer.apple.com/documentation/arkit</a><br/>
-<img src="http://upload-images.jianshu.io/upload_images/670820-3bdc5004b7ecbc6c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/>截图</p>
-
-<h3 id="toc_0">AR增强现实技术</h3>
-
-<p>在即将发布的iOS11系统上，ARKit正式成为iOS系统框架，让开发者能够使用OC或swift语言开发AR类型的APP。<br/>
-ARKit的大部分计算都是在CPU上处理的，在A8处理器上的性能损耗在15%~ 25%,<br/>
-在A9处理器上的性能损耗在10% ~ 15%。为了更好的体验，所以苹果仅支持 A9 及以上处理器<br/>
-<img src="http://upload-images.jianshu.io/upload_images/670820-2eaafcbc013d5c9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/>AR支持系列</p>
-
-<h4 id="toc_1">ARKit 实现测量尺功能：</h4>
-
-<p>实现该功能原理:收集相机的视觉信息，以及手机中传感器，包括陀螺仪、罗盘和加速度计来计算并确定设备的位置。<br/>
-当然，这都是基于ARKit开发的，不想深入，想深入，深入，入...</p>
+		<h4 id="toc_0">前言</h4>
 
 <blockquote>
-<p>•多媒体捕捉现实图像:如摄像头<br/>
-•三维建模:3D立体模型<br/>
-•传感器追踪:主要追踪现实世界动态物体的六轴变化，这六轴分别是X、Y、Z轴位移及旋转。其中位移三轴决定物体的方位和大小，旋转三轴决定物体显示的区域。<br/>
-•坐标识别及转换:3D模型显示在现实图像中不是单纯的坐标点，而是一个三维的矩阵坐标</p>
+<p>需求是移动端接入MQTT,点击按钮利用MQTT给门禁上的设备发送消息;<br/>
+注:门禁设备(Android系统集成了MQTT和给硬件信息发送指令的包)<br/>
+缺陷未解决: <br/>
+1.门最后开没开成功,硬件是没有给反馈的,门禁设备也不知道;<br/>
+2.移动设备消息发送了,指定的门禁设备是否收到消息,移动端还不知道;</p>
+
+<p>该文介绍的是使用阿里的MQTT接入ios的说明<br/>
+因给的demo里没有参数说明,看👇简单说明作为了解;</p>
 </blockquote>
 
-<h4 id="toc_2">注意:</h4>
-
-<ol>
-<li><p>如果手机中的场景越丰富，那么测量的结果也就越精确。如果想要测量一面白墙的长度，暂时还不是很准确。AR应用是通过“特征点”进行识别的,也因为是三维矩阵坐标，要求测量时必须很稳的在同一个 Z 轴高度上测量平面的长度;</p></li>
-<li><p>不要期望 AR检测的平面会完全贴合表面，虽然检测到了平面但角度可能不完全正确，所以如果开发的AR app需要获得非常精确的几何体来提供更好的效果，可能会出现问题</p></li>
-<li><p>边缘检测不是特别好，实际的平面范围有时会太大或太小，所以不要尝试做需要准确边缘的 ARapp</p></li>
-</ol>
-
-<h4 id="toc_3">ARKit还存在一些问题:</h4>
+<h4 id="toc_1">MQTT协议中文版</h4>
 
 <blockquote>
-<p>ARKit是基于惯性-视觉来做空间定位的，这项技术会将iOS设备的动作感测硬件信息，加上对可见场景的计算机视觉分析功能，然后与设备的摄像头相结合，需要平稳缓慢的移动+转向手机，才能构建更加准确的世界，这对用户来说是一种考验，需要积极提示。</p>
-
-<p>一旦刚开始检测平面失败，出现时间久，飘逸的现象，后期很难再正确检测，要强制重启。</p>
-
-<p>AVFoudation与ARSession之间的切换会有轻微的卡顿，切换后ARSession就停止摄像头采集了，但3D渲染会继续，只是丧失了空间定位与检测识别的能力.</p>
-
-<p>不支持前置摄像头。ARKit并不是一个用于前置摄像头环境的技术，因为空间有限，能提供的信息也非常有限。100米左右是ARKit在保持较好用户体验的最大测量距离。</p>
-
-<p>ARKit没有计划支持连接两个不同ARKit世界。</p>
+<p>MQTT是一个客户端服务端架构的发布/订阅模式的消息传输协议。它的设计思想是轻巧、开放、简单、规范，易于实现。<br/>
+这些特点使得它对很多场景来说都是很好的选择，特别是对于受限的环境如机器与机器的通信（M2M）以及物联网环境（IoT）<br/>
+协议传送门:<a href="https://mcxiaoke.gitbooks.io/mqtt-cn/content/">https://mcxiaoke.gitbooks.io/mqtt-cn/content/</a></p>
 </blockquote>
 
-<h4 id="toc_4">要建立高品质的 AR 体验，那么请注意下述这些注意事项和提示:</h4>
+<h4 id="toc_2">MQTT应用场景</h4>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-a120f71ecd76f2e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照.png"/></p>
+
+<h4 id="toc_3">MQTT 物联套件</h4>
+
+<p>介绍 MQTT 协议基本概念，阿里巴巴 MQ 提供的 MQTT 服务的主要原理以及 MQTT 协议主要的应用场景<br/>
+地址如下:<br/>
+<a href="https://help.aliyun.com/document_detail/42419.html?spm=5176.doc47755.6.560.dcabYu">https://help.aliyun.com/document_detail/42419.html?spm=5176.doc47755.6.560.dcabYu</a></p>
+
+<h4 id="toc_4">MQTT iOS 接入示例</h4>
+
+<p>介绍如何使用 iOS 客户端收发 MQTT 消息地址如下:<br/>
+<a href="https://help.aliyun.com/document_detail/47755.html?spm=5176.doc44711.6.633.pN8AIa">https://help.aliyun.com/document_detail/47755.html?spm=5176.doc44711.6.633.pN8AIa</a></p>
+
+<h4 id="toc_5">iOS接入 非CocoaPods 安装配置</h4>
+
+<p>滑动到👆示例地址的底部: 下载demo  拿到路径pods下的MQTTClient下的MQTTClient导入工程;<br/>
+不要将LICENSE文件也导入进程序</p>
+
+<h6 id="toc_6">不是CocoaPods安装,需要将如下头文件改成双引号&quot;&quot;</h6>
+
+<pre><code>#import &lt;MQTTClient/MQTTSession.h&gt;
+#import &lt;MQTTClient/MQTTSessionLegacy.h&gt;
+#import &lt;MQTTClient/MQTTSessionSynchron.h&gt;
+#import &lt;MQTTClient/MQTTMessage.h&gt;
+#import &lt;MQTTClient/MQTTTransport.h&gt;
+#import &lt;MQTTClient/MQTTCFSocketTransport.h&gt;
+#import &lt;MQTTClient/MQTTCoreDataPersistence.h&gt;
+#import &lt;MQTTClient/MQTTSSLSecurityPolicyTransport.h&gt;
+</code></pre>
+
+<pre><code>#import &quot;MQTTSession.h&quot;
+#import &quot;MQTTSessionLegacy.h&quot;
+#import &quot;MQTTSessionSynchron.h&quot;
+#import &quot;MQTTMessage.h&quot;
+#import &quot;MQTTTransport.h&quot;
+#import &quot;MQTTCFSocketTransport.h&quot;
+#import &quot;MQTTCoreDataPersistence.h&quot;
+#import &quot;MQTTSSLSecurityPolicyTransport.h&quot;
+</code></pre>
+
+<h6 id="toc_7">在需要实现的地方导入头文件;</h6>
+
+<pre><code>/*
+ * MQTTClient: imports
+ * MQTTSessionManager.h is optional
+ */
+#import &quot;MQTTClient.h&quot;
+#import &quot;MQTTSessionManager.h&quot;
+
+/*
+ * MQTTClient: using your main view controller as the MQTTSessionManagerDelegate
+ */
+
+#import &lt;CommonCrypto/CommonHMAC.h&gt;
+</code></pre>
+
+<h6 id="toc_8">添加代理:</h6>
+
+<pre><code>MQTTSessionManagerDelegate
+</code></pre>
+
+<pre><code>/*
+ * MQTTClient: keep a strong reference to your MQTTSessionManager here
+ */
+@property (strong, nonatomic) MQTTSessionManager *manager;
+
+@property (strong, nonatomic) NSDictionary *mqttSettings;
+@property (strong, nonatomic) NSString *rootTopic;
+@property (strong, nonatomic) NSString *accessKey;
+@property (strong, nonatomic) NSString *secretKey;
+@property (strong, nonatomic) NSString *groupId;
+@property (strong, nonatomic) NSString *clientId;
+@property (assign, nonatomic) NSInteger qos;
+
+@property (strong, nonatomic) NSMutableArray *chat;
+</code></pre>
+
+<h6 id="toc_9">初始化客户端连接到host</h6>
+
+<pre><code> MQTT-Client-FrameWork 包提供的客户端类有 MQTTSession 和 MQTTSessionManager，
+ 建议使用后者维持静态资源，而且已经封装好自动重连等逻辑。
+ 初始化时需要传入相关的网络参数
+</code></pre>
+
+<p>参数在阿里提供的demo里有一个plist文件,如下:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-a7797966c33937f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017.png"/></p>
+
+<p>参数如何配置请查看👇:<br/>
+<a href="https://help.aliyun.com/document_detail/29536.html?spm=5176.doc29535.6.551.OrrVHX">https://help.aliyun.com/document_detail/29536.html?spm=5176.doc29535.6.551.OrrVHX</a></p>
+
+<h4 id="toc_10">从配置文件导入相关属性,发起连接</h4>
+
+<p>我的需求是只有一个地方使用,进到这个页面的时候,我才发起连接,<br/>
+点击按钮给门禁上的java程序发送开门消息,连接方法调用如下方法:<br/>
+```<br/>
+-(void)initMQTT{</p>
+
+<pre><code>NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
+NSURL *mqttPlistUrl = [bundleURL URLByAppendingPathComponent:@&quot;mqtt.plist&quot;];
+self.mqttSettings = [NSDictionary dictionaryWithContentsOfURL:mqttPlistUrl];
+self.rootTopic = self.mqttSettings[@&quot;rootTopic&quot;];
+self.accessKey = self.mqttSettings[@&quot;accessKey&quot;];
+self.secretKey = self.mqttSettings[@&quot;secretKey&quot;];
+self.groupId = self.mqttSettings[@&quot;groupId&quot;];
+self.qos =[self.mqttSettings[@&quot;qos&quot;] integerValue];
+
+//clientId的生成必须遵循GroupID@@@前缀，且需要保证全局唯一
+/*为了保证全局唯一,ios可以获取CFUUID,每次获取都是不一样的,
+   想保证一个设备一样,需要存本地一份;
+    但是我这里需要每次使用的时候,每次连击所以为了保证clientid全局唯一,
+    我每次都获取一次CFUUID,去掉中间的分隔线&quot; - &quot;代码如下,
+*/
+CFUUIDRef cfuuid = CFUUIDCreate(kCFAllocatorDefault);
+NSString* cfuuidString = (NSString*)CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, cfuuid));
+NSString* tempstr = [cfuuidString stringByReplacingOccurrencesOfString:@&quot;-&quot; withString:@&quot;&quot;];
+cfuuidString = tempstr;
+
+self.clientId=[NSString stringWithFormat:@&quot;%@@@@%@%@&quot;,self.groupId,@&quot;&quot;,cfuuidString];
+
+self.chat = [[NSMutableArray alloc] init];
+/*
+ * MQTTClient: create an instance of MQTTSessionManager once and connect
+ * will is set to let the broker indicate to other subscribers if the connection is lost
+ */
+if (!self.manager) {
+    self.manager = [[MQTTSessionManager alloc] init];
+    self.manager.delegate = self;
+
+    self.manager.subscriptions = [NSDictionary dictionaryWithObject:
+                                  [NSNumber numberWithLong:self.qos]forKey:
+                                  [NSString stringWithFormat:@&quot;%@/#&quot;, self.rootTopic]];
+
+    //password的计算方式是，使用secretkey对groupId做hmac签名算法，具体实现参考macSignWithText方法
+    NSString *passWord = [[self class] macSignWithText:self.groupId secretKey:self.secretKey];
+      /*
+      此处从配置文件导入的Host即为MQTT的接入点，该接入点获取方式请参考资源申请章节文档，
+       在控制台上申请MQTT实例，每个实例会分配一个接入点域名
+      */
+    [self.manager connectTo:self.mqttSettings[@&quot;host&quot;]
+                       port:[self.mqttSettings[@&quot;port&quot;] intValue]
+                        tls:[self.mqttSettings[@&quot;tls&quot;] boolValue]
+                  keepalive:60  //心跳间隔不得大于120s
+                      clean:true
+                       auth:true
+                       user:self.accessKey
+                       pass:passWord
+                       will:false
+                  willTopic:nil
+                    willMsg:nil
+                    willQos:0
+             willRetainFlag:FALSE
+               withClientId:self.clientId];
+
+} else {
+    [self.manager connectToLast];
+}
+</code></pre>
+
+<p>}</p>
+
+<p>/*<br/>
+ userName 和 passWord 的设置</p>
+
+<p>由于服务端需要对客户端进行鉴权，因此需要传入合法的 userName 和 passWord。<br/>
+ userName 设置为当前用户的 AccessKey，<br/>
+ password 则设置为 MQTT 客户端 GroupID 的签名字符串，<br/>
+ 签名计算方式是使用 SecretKey 对 GroupID 做 HmacSHA1 散列加密。<br/>
+ 具体方法请参考 👇 中的 macSignWithText 函数。<br/>
+ */<br/>
++ (NSString *)macSignWithText:(NSString *)text secretKey:(NSString *)secretKey<br/>
+{<br/>
+    NSData *saltData = [secretKey dataUsingEncoding:NSUTF8StringEncoding];<br/>
+    NSData <em>paramData = [text dataUsingEncoding:NSUTF8StringEncoding];<br/>
+    NSMutableData</em> hash = [NSMutableData dataWithLength:CC_SHA1_DIGEST_LENGTH ];<br/>
+    CCHmac(kCCHmacAlgSHA1, saltData.bytes, saltData.length, paramData.bytes, paramData.length, hash.mutableBytes);<br/>
+    NSString *base64Hash = [hash base64EncodedStringWithOptions:0];</p>
+
+<pre><code>return base64Hash;
+</code></pre>
+
+<p>}</p>
+
+<pre><code>#####connectTo方法里的参数说明:
+ &gt;  * tls:false //是否使用tls协议，mosca是支持tls的，如果使用了要设置成true
+ *  clean:false //session是否清除，这个需要注意，如果是false，代表保持登录，
+     如果客户端离线了再次登录就可以接收到离线消息。注意：QoS为1和QoS为2，并需订阅和发送一致
+ *  auth:true //是否使用登录验证，和下面的user和pass参数组合使用
+ * user:_userName //用户名
+ * pass:_passwd //密码
+ * willTopic:@&quot;&quot; //下面四个参数用来设置如果客户端异常离线发送的消息，
+    当前参数是哪个topic用来传输异常离线消息，这里的异常离线消息都指的是客户端掉线后发送的掉线消息
+ * will:@&quot;&quot; //异常离线消息体。自定义的异常离线消息，约定好格式就可以了
+ * willQos:0 //接收离线消息的级别 0、1、2
+ * willRetainFlag:false //只有在为true时，Will Qos和Will Retain才会被读取，此时消息体payload中
+     要出现Will Topic和Will   Message具体内容，否则，Will QoS和Will Retain值会被忽略掉
+ * withClientId:nil]; //客户端id，需要特别指出的是这个id需要全局唯一，因为服务端是根据这个来区分不同的客户端的，
+    默认情况下一个id登录后，假如有另外的连接以这个id登录，上一个连接会被踢下线;
+
+####发送消息(当点击按钮的时候,发送消息方法如下:)
+</code></pre>
+
+<p>[self.manager sendData:[self.scanDic.mj_JSONString dataUsingEncoding:NSUTF8StringEncoding]<br/>
+                     topic:[NSString stringWithFormat:@&quot;%@&quot;,<br/>
+                            self.rootTopic]//此处设置多级子topic<br/>
+                       qos:self.qos<br/>
+                    retain:FALSE];<br/>
+```</p>
+
+<h5 id="toc_11">发送方法注意topic的设置</h5>
 
 <blockquote>
-<p>全局追踪是一项不精确的科学 (inexact science)。<br/>
-尽管在这个过程当中，经常会产生可观的准确度，从而让AR 的体验更加真实。然而，它严重依赖于设备物理环境的相关细节，而这些细节并不总是一致，有些时候也难以实时测量，这也就导致这些物理细节往往都会存在某种程度的错误。</p>
-
-<p>基于可见的照明条件来设计AR场景。<br/>
-全局追踪涉及到了图像分析的相关内容，因此就需要我们提供清晰的图像。如果摄像头没有办法看到相关的物理细节，比如说摄像头拍到的是一面空空如也的墙壁，或者场景的光线实在太暗的话，那么全局追踪的质量就会大大降低。</p>
-
-<p>根据追踪质量的相关信息来给用户进行反馈提示。<br/>
-全局追踪会将图像分析与设备的动作模式关联起来。如果设备正在移动的话，那么ARKit 就可以更好地对场景进行建模，这样即便设备只是略微晃动，也不会影响追踪质量。但是一旦用户的动作过多、过快或者晃动过于激烈，就会导致图像变得模糊，或者导致视频帧中要追踪的特征之间的距离过大，从而致使追踪质量的降低。ARCamera类能够提供追踪状态，此外还能提供导致该状态出现的相关原因，您可以在 UI 上展示这些信息，告诉用户如何解决追踪质量低这个问题。</p>
-
-<p>给水平面检测预留点时间来生成清晰的结果，一旦您获得所需的结果后，就禁用水平面检测。一开始对水平面进行检测的时候，所检测到的水平面位置和范围很可能不准确。不过随着时间的推移，只要水平面仍然保持在场景当中，<br/>
-那么 ARKit 就能够较为精确地估计水平面的位置和范围。当场景中有一个比较大的平坦表面的话，就算您已经使用过这个水平面来放置内容，那么 ARKit 可能还会继续对水平面的锚点位置、范围和变换点进行修正 。</p>
+<p>以下为安卓代码中的注释示例:<br/>
+ios的demo中没有此说明<br/>
+消息发送到某个主题Topic，所有订阅这个Topic的设备都能收到这个消息。<br/>
+遵循MQTT的发布订阅规范，Topic也可以是多级Topic。<br/>
+此处设置了发送到二级topic如下:<br/>
+ sampleClient.publish(topic+&quot;/notice/&quot;, message);<br/>
+但是发送P2P消息，二级Topic必须是“p2p”,三级topic是目标的ClientID<br/>
+ 此处设置的三级topic需要是接收方的ClientID如下:<br/>
+ string p2pTopic =topic+&quot;/p2p/&quot;+consumerClientId;</p>
 </blockquote>
 
-<p>综上所述:ARKit 实现测量尺功能，对物理环境要求较高，<br/>
-第一，环境光检测，清晰的获取摄像头的帧图像;<br/>
-第二，平面检测，准确的获取水平面，如果精确测量，需要边缘化检测准确;<br/>
-第三，运动追踪稳定准确等外部因素，对环境和用户操作要求较高;</p>
+<h5 id="toc_12">qos:消息的传输方式</h5>
 
-<h4 id="toc_5">后记补充：</h4>
+<blockquote>
+<p>QoS说明如下：<br/>
+   *  0    代表“至多一次”，消息发布完全依赖底层 TCP/IP 网络。会发生消息丢失或重复。<br/>
+     这一级别可用于如下情况，环境传感器数据，丢失一次读记录无所谓，因为不久后还会有第二次发送。<br/>
+   *  1   代表“至少一次”，确保消息到达，但消息重复可能会发生。<br/>
+   *  2   代表“只有一次”，确保消息到达一次。这一级别可用于如下情况，在计费系统中，消息重复或丢失会导致不正确的结果。 <br/>
+   * 备注：由于服务端采用Mosca实现，Mosca目前只支持到QoS 1<br/>
+   * 如果发送的是临时的消息，例如:给某topic所有在线的设备发送一条消息，丢失的话也无所谓，0就可以了<br/>
+（客户端登录的时候要指明支持的QoS级别，同时发送消息的时候也要指明这条消息支持的QoS级别)<br/>
+   * 如果需要客户端保证能接收消息，需要指定QoS为1，如果同时需要加入客户端不在线也要能接收到消息，<br/>
+   那么客户端登录的时候要指定session的有效性，接收离线消息需要指定服务端要保留客户端的session状态。</p>
+</blockquote>
 
-<p>ARKit是有环境光估计的，这个功能会通过摄像头捕捉并计算捕捉到的场景中的光的总量，来给虚拟物体施加正确的光照条件，渲染效果更加真实。环境光的模拟对于AR出来的画面的真实感，还是有非常大的影响的。</p>
+<h4 id="toc_13">接收发送消息的回调</h4>
 
-<h5 id="toc_6">在此说一下ARKit没有提供图像识别方面的功能，所以平时可能看到身边有的AR场景是可以识别特定的图像做其他操作类型的App，用ARKit是不能实现的；</h5>
+<pre><code>/*
+ * MQTTSessionManagerDelegate
+ */
+- (void)handleMessage:(NSData *)data onTopic:(NSString *)topic retained:(BOOL)retained {
+    /*
+     * MQTTClient: process received message
+     */
+    NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    [self.chat insertObject:[NSString stringWithFormat:@&quot;RecvMsg from Topic: %@\nBody: %@&quot;, topic, dataString] atIndex:0];    
+}
+
+</code></pre>
 
 
 		</div>

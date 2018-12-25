@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-12-19T10:23:09+08:00</updated>
+  <updated>2018-12-19T10:26:34+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,183 +12,6 @@
   </author>
   <generator uri="http://www.mweb.im">MWeb</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[电子证照]]></title>
-    <link href="www.freefook.com/15444188311660.html"/>
-    <updated>2018-12-10T13:13:51+08:00</updated>
-    <id>www.freefook.com/15444188311660.html</id>
-    <content type="html"><![CDATA[
-<h4 id="toc_0">一、国家新发布的电子证照六项规范：</h4>
-
-<p>电子证照是指由各单位依法出具的、<br/>
-具有法律效力的各类证照、证明、批文、鉴定报告、办事结果等文件，<br/>
-比如有身份证、结婚证、银行还款流水证明、营业执照等。</p>
-
-<p>2018年11月16日，国家正式发布6项国家标准<br/>
-《电子证照 总体技术架构》<br/>
-《电子证照 目录信息规范》<br/>
-《电子证照 元数据规范》<br/>
-《电子证照 标识规范》<br/>
-《电子证照 文件技术要求》<br/>
-《电子证照 共享服务接口规范》</p>
-
-<p>电子证照应用的总体技术框架、统一的证照分类规则和证照基础信息，<br/>
-有助于推动实现全国“一网通办”，让政务信息资源共享和服务更顺畅，<br/>
-让百姓切实感受办事更便捷。<br/>
-该系列标准将于2019年1月1日起实施。 </p>
-
-<h4 id="toc_1">二、电子证照实施问题？ </h4>
-
-<p>首先明确一点电子证照要赋予与纸质证照具有同等法律效力(出台相关法律法规)</p>
-
-<p>做这套系统基本的点</p>
-
-<ol>
-<li>电子证照的信息</li>
-<li>电子证照的生成(防伪造、防篡改)</li>
-<li>电子证照的颁发</li>
-<li>电子证照的查询</li>
-<li>电子证照的修改</li>
-<li>电子证照的作废(过期失效)</li>
-<li>电子证照的共享</li>
-<li>电子证照的验证(元数据核对,真伪验证,管理状态核对)</li>
-<li>电子证照的管理</li>
-<li>电子证照的安全</li>
-<li>电子证照持续服务能力(对外提供证照共享服务)</li>
-<li>电子证照要跨部门，跨行业，跨区域的统筹</li>
-<li>电子证照管理平台，统一管理和统一存储汇聚</li>
-<li>电子证照跨层级管理机制，实现各类证照的全局管理和分类管理</li>
-<li>电子证照形成区域内共享和同步机制，支撑各级政府服务并联审批和业务协同</li>
-</ol>
-
-<p>卫士通方案图（新标准起草单位之一成都卫士通信息产业股份有限公司）</p>
-
-<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8A%E5%8D%8811.27.41.png.png" alt="屏幕快照 2018-12-10 上午11.27.41.png"/></p>
-
-<blockquote>
-<p>签发管理系统：使用各种方式对存量证照和新增证照数据进行采集，<br/>
-基于证照元数据项及数字签名，制作数字格式电子证照，随后选取证照模板，<br/>
-嵌套版式格式，利用<strong>电子印章</strong>服务，<br/>
-制作生成<strong>OFD</strong>版式证照电子文件，满足证照签发需求；</p>
-
-<p>共享存储系统：电子文件可通过共享存储系统存入电子证照库，<br/>
-进行数据汇聚，满足数据管理要求；<br/>
-通过共享存储系统与上级电子证照库及平级政务服务数据库实现对接和数据同步，<br/>
-满足跨地区、跨层级的证照汇聚和同步需求，</p>
-
-<p>业务系统：可通过验证服务系统提交证照验证、查询、下载等各类请求，<br/>
-满足证照使用需求</p>
-</blockquote>
-
-<h4 id="toc_2">三、六项规范要点分析</h4>
-
-<h4 id="toc_3">总体技术架构</h4>
-
-<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104355_5sru8kqwkk.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104355_5sru8kqwkk.pdf</a></p>
-
-<p>其中针对政务服务中的共享服务部署模式，<br/>
-用于政务服务的电子证照系统一般分为：<br/>
-国家级、省部级、地市级三级</p>
-
-<p>地市级：电子证照共享服务，基于本地区证照库和下级服务的目录信息提供<br/>
-所辖地域的电子证照检索，获取和验证等功能，<br/>
-并将本级证照资源库的目录信息注册到省部级证照服务中。</p>
-
-<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%882.06.35.png" alt="屏幕快照 2018-12-10 下午2.06.35"/></p>
-
-<h4 id="toc_4">目录信息规范</h4>
-
-<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104416_r9inl86xws.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104416_r9inl86xws.pdf</a></p>
-
-<p>其中<br/>
-1. 证照定义机构<br/>
-依据法律法规或服务事项定义证照或提供业务指导的机构<br/>
-2. 证照颁发机构<br/>
-依据法律法规或服务事项颁发证照的机构<br/>
-3. 证照颁发机构级别<br/>
-定义：可颁发该类型证件照的机构的最低行政级别<br/>
-值域：国家级，省级，地市级，区县级，乡镇级，其他-缺省值为其他<br/>
-4. 证照类型代码编码规则<br/>
-采用“机构代码+机构内唯一码”编码方式</p>
-
-<p>证照目录共享流程<br/>
-<img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%883.04.32.png" alt="屏幕快照 2018-12-10 下午3.04.32"/></p>
-
-<h4 id="toc_5">元数据规范</h4>
-
-<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104434_gl0ni7ejd8.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104434_gl0ni7ejd8.pdf</a></p>
-
-<p>其中元数据信息模型</p>
-
-<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%882.18.00.png" alt="屏幕快照 2018-12-10 下午2.18.00"/></p>
-
-<p>基础信息：<br/>
-证照名称，<br/>
-证照类型代码，<br/>
-证照编号，<br/>
-证照唯一标识，<br/>
-证照颁发机构(例如：大连市高新园区住房与建设委员会)，<br/>
-证照颁发机构代码，<br/>
-证照颁发日期，<br/>
-持证主体，<br/>
-持证主体代码，<br/>
-持证主体代码类型，<br/>
-持证主体代码类型代码，<br/>
-证照有效期起始日期，<br/>
-证照有效期截止日期，<br/>
-业务信息，<br/>
-加注件信息，<br/>
-加注件制作时间，<br/>
-加注件制作者(例如：大连市行政服务中心)，<br/>
-加注件制作事由(安全生产许可证申请),<br/>
-加注件有效期截止时间，<br/>
-元数据扩展规则(参考元数据规范),</p>
-
-<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%882.28.42.png" alt="屏幕快照 2018-12-10 下午2.28.42"/></p>
-
-<h4 id="toc_6">标识规范</h4>
-
-<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104515_0ue9lxpgma.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104515_0ue9lxpgma.pdf</a></p>
-
-<p>其中证照标识结构：<br/>
-从左至右依次为：证照根代码-类型代码-颁发机构代码-流水号-版本号-校验位</p>
-
-<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%882.34.13.png" alt="屏幕快照 2018-12-10 下午2.34.13"/></p>
-
-<p>电子证照根代码取值固定为“1.2.156.3005.2”<br/>
-校验位有统一的校验公式，请参考标识规范详情</p>
-
-<h4 id="toc_7">文件技术要求</h4>
-
-<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104451_iq4x5vr0l6.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104451_iq4x5vr0l6.pdf</a></p>
-
-<p>一、其中介绍了照面样式要求</p>
-
-<p>二、其中电子证照需满足如下要求：<br/>
-1. 使用OFD文件格式<br/>
-2. 一个文件内只包含一个证照<br/>
-3. 不使用动态元素，如动画音视频等等其他要求参考文档详情内容</p>
-
-<p>三、其中介绍了对安全通用要求，原件和加注件的要求</p>
-
-<h4 id="toc_8">共享服务接口规范</h4>
-
-<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104543_sf62k790i1.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104543_sf62k790i1.pdf</a></p>
-
-<p>一、其中介绍应用场景和要求</p>
-
-<p>例如：证照检索、<br/>
-信息获取、<br/>
-证照文件下载、<br/>
-信息验证、<br/>
-文件验证、<br/>
-调用方认证、<br/>
-权限控制、<br/>
-等接口规范做了相关示例的入参，出参。</p>
-
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[微信小程序建项-登录篇]]></title>
@@ -503,6 +326,588 @@ wrap-reverse：换行，第一行在最下面
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[微信小程序建项-逻辑操作JS]]></title>
+    <link href="www.freefook.com/15419922791377.html"/>
+    <updated>2018-11-12T11:11:19+08:00</updated>
+    <id>www.freefook.com/15419922791377.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">给tabBar设置角标</h5>
+
+<pre><code>wx.setTabBarBadge 这个API在非tabbar页面上调用会失效
+
+wx.setTabBarBadge({
+    index: 1,//设置第几个tabBar
+    text: &#39;&#39; + 5,//设置角标显示的数字
+})
+
+移除角标
+wx.removeTabBarBadge({
+   index: 1
+})    
+</code></pre>
+
+<h5 id="toc_1">动态设置页面标题</h5>
+
+<pre><code>第一种：定死页面标题修改 .json文件
+{
+  &quot;navigationBarTitleText&quot;: &quot;标题&quot;
+}
+
+第二种：动态自定义页面标题
+wx.setNavigationBarTitle({
+  title: this.data.URLBackTitle
+})
+</code></pre>
+
+<h5 id="toc_2">获取系统信息 下面是屏幕宽高</h5>
+
+<pre><code> wx.getSystemInfo({
+      success: function(res) {
+        that.setData({
+          windowHeight: res.windowHeight,
+          windowWidth: res.windowWidth,
+        })
+      }
+});
+</code></pre>
+
+<h5 id="toc_3">.map 方法示例 接口返回的imageURL拼接根地址</h5>
+
+<pre><code>var tempArray = &#39;接口返回的数组&#39;
+that.setData({
+    listArray: tempArray.map(function(item) {
+        item.imageURL = getApp().data.baseURL + item.imageURL;
+        //如果列表里没有子数组数据需要拼接根地址，就不用再次 .map 方法 直接return item
+        item.child.map(function(childItem) {
+          childItem.pic = getApp().data.baseURL + childItem.pic;
+          return childItem;
+        })
+        return item;
+    }),
+})
+</code></pre>
+
+<h5 id="toc_4">.filter方法 遍历数组数据</h5>
+
+<pre><code>示例:遍历cityArray 数组，找出cityArray数组中pid 等于
+province 数组中province[e.detail.value].id的值
+使用.filter方法 比 for 循环速度快
+
+let newArray = that.data.cityArray.filter(item =&gt; item.pid === that.data.province[e.detail.value].id)
+</code></pre>
+
+<h5 id="toc_5">本地数据存储</h5>
+
+<pre><code> // 同步方式存储数据
+wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
+
+//取出数据
+var token = wx.getStorageSync(&#39;userInfo&#39;)
+
+</code></pre>
+
+<h5 id="toc_6">页面栈层级数</h5>
+
+<pre><code>var pages = getCurrentPages();
+console.log(&#39;页面栈层数&#39; + pages.length)
+if (pages.length == 10) {
+//小程序最大10层
+}else{
+}
+</code></pre>
+
+<h5 id="toc_7">获取明天日期</h5>
+
+<pre><code>//获取当前时间
+var nowDate = new Date(new Date().toLocaleDateString()); 
+//获取明天这个时间
+var nowDate1 = new Date(nowDate.getTime() + 24 * 60 * 60 * 1000)
+
+    var date_value1 = nowDate1.getFullYear().toString()
+    var date_value2 = (nowDate1.getMonth() + 1).toString()
+    var date_value3 = nowDate1.getDate().toString()
+
+    if (date_value2.length == 1) {
+      date_value2 = &#39;0&#39; + date_value2
+    }
+    if (date_value3.length == 1) {
+      date_value3 = &#39;0&#39; + date_value3
+    }
+    
+    var tomorrow = date_value1 + &#39;-&#39; + date_value2 + &#39;-&#39; + date_value3
+</code></pre>
+
+<h5 id="toc_8">倒计时</h5>
+
+<pre><code>LastTimer: function() {
+
+var that = this;
+var totalSecond = 0;
+//start_time服务端返回的团购开始时间
+var start_time = new Date(that.data.start_time.replace(/-/g, &quot;/&quot;));
+totalSecond = Date.parse(start_time) / 1000 - Date.parse(new Date()) / 1000;
+
+    //清理掉倒计时
+    clearInterval(that.data.interval_daojishi);
+    //开始倒计时
+    that.data.interval_daojishi = setInterval(function() {
+      // 秒数
+      var second = totalSecond;
+      // 天数位
+      var day = Math.floor(second / 3600 / 24);
+      var dayStr = day.toString();
+      if (dayStr.length == 1) dayStr = &#39;0&#39; + dayStr;
+      // 小时位
+      var hr = Math.floor((second - day * 3600 * 24) / 3600);
+      var hrStr = hr.toString();
+      if (hrStr.length == 1) hrStr = &#39;0&#39; + hrStr;
+      // 分钟位
+      var min = Math.floor((second - day * 3600 * 24 - hr * 3600) / 60);
+      var minStr = min.toString();
+      if (minStr.length == 1) minStr = &#39;0&#39; + minStr;
+      // 秒位
+      var sec = second - day * 3600 * 24 - hr * 3600 - min * 60;
+      var secStr = sec.toString();
+      if (secStr.length == 1) secStr = &#39;0&#39; + secStr;
+
+      that.setData({
+        countDownDay: dayStr,
+        countDownHour: hrStr,
+        countDownMinute: minStr,
+        countDownSecond: secStr,
+      });
+      totalSecond--;
+
+      if (totalSecond &lt; 0) {
+        //倒计时结束，清理掉倒计时
+        clearInterval(that.data.interval_daojishi);
+        that.setData({
+          countDownDay: &#39;00&#39;,
+          countDownHour: &#39;00&#39;,
+          countDownMinute: &#39;00&#39;,
+          countDownSecond: &#39;00&#39;,
+        });
+      }
+    }.bind(this), 1000);
+  },
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[电子证照]]></title>
+    <link href="www.freefook.com/15444188311660.html"/>
+    <updated>2018-12-10T13:13:51+08:00</updated>
+    <id>www.freefook.com/15444188311660.html</id>
+    <content type="html"><![CDATA[
+<h4 id="toc_0">一、国家新发布的电子证照六项规范：</h4>
+
+<p>电子证照是指由各单位依法出具的、<br/>
+具有法律效力的各类证照、证明、批文、鉴定报告、办事结果等文件，<br/>
+比如有身份证、结婚证、银行还款流水证明、营业执照等。</p>
+
+<p>2018年11月16日，国家正式发布6项国家标准<br/>
+《电子证照 总体技术架构》<br/>
+《电子证照 目录信息规范》<br/>
+《电子证照 元数据规范》<br/>
+《电子证照 标识规范》<br/>
+《电子证照 文件技术要求》<br/>
+《电子证照 共享服务接口规范》</p>
+
+<p>电子证照应用的总体技术框架、统一的证照分类规则和证照基础信息，<br/>
+有助于推动实现全国“一网通办”，让政务信息资源共享和服务更顺畅，<br/>
+让百姓切实感受办事更便捷。<br/>
+该系列标准将于2019年1月1日起实施。 </p>
+
+<h4 id="toc_1">二、电子证照实施问题？ </h4>
+
+<p>首先明确一点电子证照要赋予与纸质证照具有同等法律效力(出台相关法律法规)</p>
+
+<p>做这套系统基本的点</p>
+
+<ol>
+<li>电子证照的信息</li>
+<li>电子证照的生成(防伪造、防篡改)</li>
+<li>电子证照的颁发</li>
+<li>电子证照的查询</li>
+<li>电子证照的修改</li>
+<li>电子证照的作废(过期失效)</li>
+<li>电子证照的共享</li>
+<li>电子证照的验证(元数据核对,真伪验证,管理状态核对)</li>
+<li>电子证照的管理</li>
+<li>电子证照的安全</li>
+<li>电子证照持续服务能力(对外提供证照共享服务)</li>
+<li>电子证照要跨部门，跨行业，跨区域的统筹</li>
+<li>电子证照管理平台，统一管理和统一存储汇聚</li>
+<li>电子证照跨层级管理机制，实现各类证照的全局管理和分类管理</li>
+<li>电子证照形成区域内共享和同步机制，支撑各级政府服务并联审批和业务协同</li>
+</ol>
+
+<p>卫士通方案图（新标准起草单位之一成都卫士通信息产业股份有限公司）</p>
+
+<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8A%E5%8D%8811.27.41.png.png" alt="屏幕快照 2018-12-10 上午11.27.41.png"/></p>
+
+<blockquote>
+<p>签发管理系统：使用各种方式对存量证照和新增证照数据进行采集，<br/>
+基于证照元数据项及数字签名，制作数字格式电子证照，随后选取证照模板，<br/>
+嵌套版式格式，利用<strong>电子印章</strong>服务，<br/>
+制作生成<strong>OFD</strong>版式证照电子文件，满足证照签发需求；</p>
+
+<p>共享存储系统：电子文件可通过共享存储系统存入电子证照库，<br/>
+进行数据汇聚，满足数据管理要求；<br/>
+通过共享存储系统与上级电子证照库及平级政务服务数据库实现对接和数据同步，<br/>
+满足跨地区、跨层级的证照汇聚和同步需求，</p>
+
+<p>业务系统：可通过验证服务系统提交证照验证、查询、下载等各类请求，<br/>
+满足证照使用需求</p>
+</blockquote>
+
+<h4 id="toc_2">三、六项规范要点分析</h4>
+
+<h4 id="toc_3">总体技术架构</h4>
+
+<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104355_5sru8kqwkk.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104355_5sru8kqwkk.pdf</a></p>
+
+<p>其中针对政务服务中的共享服务部署模式，<br/>
+用于政务服务的电子证照系统一般分为：<br/>
+国家级、省部级、地市级三级</p>
+
+<p>地市级：电子证照共享服务，基于本地区证照库和下级服务的目录信息提供<br/>
+所辖地域的电子证照检索，获取和验证等功能，<br/>
+并将本级证照资源库的目录信息注册到省部级证照服务中。</p>
+
+<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%882.06.35.png" alt="屏幕快照 2018-12-10 下午2.06.35"/></p>
+
+<h4 id="toc_4">目录信息规范</h4>
+
+<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104416_r9inl86xws.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104416_r9inl86xws.pdf</a></p>
+
+<p>其中<br/>
+1. 证照定义机构<br/>
+依据法律法规或服务事项定义证照或提供业务指导的机构<br/>
+2. 证照颁发机构<br/>
+依据法律法规或服务事项颁发证照的机构<br/>
+3. 证照颁发机构级别<br/>
+定义：可颁发该类型证件照的机构的最低行政级别<br/>
+值域：国家级，省级，地市级，区县级，乡镇级，其他-缺省值为其他<br/>
+4. 证照类型代码编码规则<br/>
+采用“机构代码+机构内唯一码”编码方式</p>
+
+<p>证照目录共享流程<br/>
+<img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%883.04.32.png" alt="屏幕快照 2018-12-10 下午3.04.32"/></p>
+
+<h4 id="toc_5">元数据规范</h4>
+
+<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104434_gl0ni7ejd8.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104434_gl0ni7ejd8.pdf</a></p>
+
+<p>其中元数据信息模型</p>
+
+<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%882.18.00.png" alt="屏幕快照 2018-12-10 下午2.18.00"/></p>
+
+<p>基础信息：<br/>
+证照名称，<br/>
+证照类型代码，<br/>
+证照编号，<br/>
+证照唯一标识，<br/>
+证照颁发机构(例如：大连市高新园区住房与建设委员会)，<br/>
+证照颁发机构代码，<br/>
+证照颁发日期，<br/>
+持证主体，<br/>
+持证主体代码，<br/>
+持证主体代码类型，<br/>
+持证主体代码类型代码，<br/>
+证照有效期起始日期，<br/>
+证照有效期截止日期，<br/>
+业务信息，<br/>
+加注件信息，<br/>
+加注件制作时间，<br/>
+加注件制作者(例如：大连市行政服务中心)，<br/>
+加注件制作事由(安全生产许可证申请),<br/>
+加注件有效期截止时间，<br/>
+元数据扩展规则(参考元数据规范),</p>
+
+<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%882.28.42.png" alt="屏幕快照 2018-12-10 下午2.28.42"/></p>
+
+<h4 id="toc_6">标识规范</h4>
+
+<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104515_0ue9lxpgma.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104515_0ue9lxpgma.pdf</a></p>
+
+<p>其中证照标识结构：<br/>
+从左至右依次为：证照根代码-类型代码-颁发机构代码-流水号-版本号-校验位</p>
+
+<p><img src="media/15444188311660/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-10%20%E4%B8%8B%E5%8D%882.34.13.png" alt="屏幕快照 2018-12-10 下午2.34.13"/></p>
+
+<p>电子证照根代码取值固定为“1.2.156.3005.2”<br/>
+校验位有统一的校验公式，请参考标识规范详情</p>
+
+<h4 id="toc_7">文件技术要求</h4>
+
+<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104451_iq4x5vr0l6.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104451_iq4x5vr0l6.pdf</a></p>
+
+<p>一、其中介绍了照面样式要求</p>
+
+<p>二、其中电子证照需满足如下要求：<br/>
+1. 使用OFD文件格式<br/>
+2. 一个文件内只包含一个证照<br/>
+3. 不使用动态元素，如动画音视频等等其他要求参考文档详情内容</p>
+
+<p>三、其中介绍了对安全通用要求，原件和加注件的要求</p>
+
+<h4 id="toc_8">共享服务接口规范</h4>
+
+<p>文档地址：<a href="http://www.echinagov.com/uploads/1/file/public/201811/20181121104543_sf62k790i1.pdf">http://www.echinagov.com/uploads/1/file/public/201811/20181121104543_sf62k790i1.pdf</a></p>
+
+<p>一、其中介绍应用场景和要求</p>
+
+<p>例如：证照检索、<br/>
+信息获取、<br/>
+证照文件下载、<br/>
+信息验证、<br/>
+文件验证、<br/>
+调用方认证、<br/>
+权限控制、<br/>
+等接口规范做了相关示例的入参，出参。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序建项-网络请求]]></title>
+    <link href="www.freefook.com/15235164843984.html"/>
+    <updated>2018-04-12T15:01:24+08:00</updated>
+    <id>www.freefook.com/15235164843984.html</id>
+    <content type="html"><![CDATA[
+<h4 id="toc_0">在.js 文件添加网络请求</h4>
+
+<pre><code> requestData: function () {
+    var that = this;
+    wx.request({
+      url: &#39;http://.../serve/api/v1.0/service/communityLst&#39;,
+      data: {},
+      method: &#39;GET&#39;, 
+      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT 
+      // header: {}, // 设置请求的 header 默认是application/json  
+      success: function (res) {  
+        //划重点---&gt;setData 
+        that.setData({ 
+          listData: res.data.query
+        })
+        // 操作json数据 遍历打印数组里name字段数据  
+        for (var i in res.data.query) {
+          console.log(res.data.query[i].name);
+        }
+      },
+      fail: function () {
+        // fail  
+      },
+      complete: function () {
+        // complete  
+      }
+    })
+  },  
+</code></pre>
+
+<h3 id="toc_1">微信小程序点击方法传参与跳页传参</h3>
+
+<h5 id="toc_2">点击事件</h5>
+
+<pre><code>bindtap  事件绑定不会阻止冒泡事件向上冒泡
+catchtap  事件绑定可以阻止冒泡事件向上冒泡
+
+点击事件的参数传递：
+target：触发事件的源组件
+currentTarget：事件绑定的当前事件
+</code></pre>
+
+<h5 id="toc_3">跳页</h5>
+
+<pre><code>wx.navigateTo({
+url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
+})
+</code></pre>
+
+<h4 id="toc_4">小程序跳转方式</h4>
+
+<pre><code>打开新页面     调用 API wx.navigateTo
+
+页面重定向     调用 API wx.redirectTo
+
+页面返回        调用 API wx.navigateBack
+
+Tab 切换      调用 API wx.switchTab
+
+重启动         调用 API wx.reLaunch
+</code></pre>
+
+<p>Tips:</p>
+
+<pre><code>1.navigateTo, redirectTo 只能打开非 tabBar 页面。
+2.switchTab 只能打开 tabBar 页面。
+3.reLaunch 可以打开任意页面。
+4.页面底部的 tabBar 由页面决定，即只要是定义为 tabBar 的页面，底部都有 tabBar。
+5.tabBar只能配置最少2个、最多5个 tab
+6.调用页面路由带的参数可以在目标页面的onLoad中获取
+</code></pre>
+
+<h3 id="toc_5">微信小程序提示信息</h3>
+
+<h5 id="toc_6">加载的loading</h5>
+
+<pre><code>  wx.showLoading({
+      title: &#39;正在加载&#39;,
+      mask: true,
+    })
+   wx.hideLoading();
+</code></pre>
+
+<h5 id="toc_7">Toast提示</h5>
+
+<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
+ icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
+ 
+ wx.showToast({
+        title: &#39;请输入提示语&#39;,
+        icon: &#39;none&#39;,
+        mask:true,
+        duration: 2000
+      }) 
+</code></pre>
+
+<h5 id="toc_8">延迟执行</h5>
+
+<pre><code> setTimeout(function() {
+   wx.hideLoading()
+ }, 1000)
+          
+</code></pre>
+
+<h5 id="toc_9">弹出窗口提示</h5>
+
+<pre><code>wx.showModal({
+    title: &#39;我是弹窗标题&#39;,
+    content: &#39;佛系弹窗详情内容&#39;,
+    success: function(res) {
+      if (res.confirm) {
+        console.log(&#39;用户点击确定&#39;)
+      } else if (res.cancel) {
+        console.log(&#39;用户点击取消&#39;)
+      }
+    }
+  })   
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序建项-TabBar]]></title>
+    <link href="www.freefook.com/15235114845539.html"/>
+    <updated>2018-04-12T13:38:04+08:00</updated>
+    <id>www.freefook.com/15235114845539.html</id>
+    <content type="html"><![CDATA[
+<h4 id="toc_0">创建一个标准小程序空项目</h4>
+
+<h5 id="toc_1">在app.json文件里写入如下代码</h5>
+
+<pre><code>{
+  &quot;pages&quot;: [
+    &quot;pages/homePage/homePage&quot;,
+    &quot;pages/minePage/minePage&quot;,
+    &quot;pages/shoppingCartPage/shoppingCartPage&quot;,
+    &quot;pages/index/index&quot;
+  ],
+  &quot;window&quot;: {
+    &quot;backgroundTextStyle&quot;: &quot;light&quot;,
+    &quot;navigationBarBackgroundColor&quot;: &quot;#fff&quot;,
+    &quot;navigationBarTitleText&quot;: &quot;小程序商城&quot;,
+    &quot;navigationBarTextStyle&quot;: &quot;black&quot;
+  },
+  &quot;tabBar&quot;: {
+    &quot;color&quot;: &quot;#8a8a8a&quot;,
+    &quot;selectedColor&quot;: &quot;#000&quot;,
+    &quot;backgroundColor&quot;: &quot;#fff&quot;,
+    &quot;list&quot;: [
+      {
+        &quot;iconPath&quot;: &quot;images/tabbar/home_1.png&quot;,
+        &quot;selectedIconPath&quot;: &quot;images/tabbar/home_2.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/homePage/homePage&quot;,
+        &quot;text&quot;: &quot;首页&quot;
+      },
+      {
+        &quot;iconPath&quot;: &quot;images/tabbar/gwc_1.png&quot;,
+        &quot;selectedIconPath&quot;: &quot;images/tabbar/gwc_2.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/shoppingCartPage/shoppingCartPage&quot;,
+        &quot;text&quot;: &quot;购物车&quot;
+      },
+      {
+        &quot;iconPath&quot;: &quot;images/tabbar/wode_1.png&quot;,
+        &quot;selectedIconPath&quot;: &quot;images/tabbar/wode_2.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/minePage/minePage&quot;,
+        &quot;text&quot;: &quot;我的&quot;
+      }
+    ]
+  },
+  &quot;networkTimeout&quot;: {
+    &quot;request&quot;: 10000,
+    &quot;downloadFile&quot;: 10000
+  },
+  &quot;debug&quot;: false
+}
+</code></pre>
+
+<h4 id="toc_2">运行界面 tabbar</h4>
+
+<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-06%20%E4%B8%8B%E5%8D%884.14.36.png" alt="屏幕快照 2018-12-06 下午4.14.36"/></p>
+
+<h5 id="toc_3">在app.wxss文件里写入如下代码</h5>
+
+<pre><code>page {
+  font-size: 14px;
+  background-color: #f8f8f8;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.weui-bg-color {
+  background-color: #f8f8f8;
+}
+
+.weui-Font1 {
+  font-size: 16px;
+}
+
+.weui-Font2 {
+  font-size: 14px;
+}
+
+.weui-Font3 {
+  font-size: 12px;
+}
+
+.weui-Font4 {
+  font-size: 10px;
+}
+
+.weui-Font5 {
+  font-size: 8px;
+}
+
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[区块链]]></title>
     <link href="www.freefook.com/15439750080174.html"/>
     <updated>2018-12-05T09:56:48+08:00</updated>
@@ -655,286 +1060,140 @@ wrap-reverse：换行，第一行在最下面
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序建项-逻辑操作JS]]></title>
-    <link href="www.freefook.com/15419922791377.html"/>
-    <updated>2018-11-12T11:11:19+08:00</updated>
-    <id>www.freefook.com/15419922791377.html</id>
+    <title type="html"><![CDATA[微信小程序建项-轮播]]></title>
+    <link href="www.freefook.com/15235125175960.html"/>
+    <updated>2018-04-12T13:55:17+08:00</updated>
+    <id>www.freefook.com/15235125175960.html</id>
     <content type="html"><![CDATA[
-<h5 id="toc_0">动态设置页面标题</h5>
+<h4 id="toc_0">第一步：在.wxml文件里写入如下代码</h4>
 
-<pre><code>第一种：定死页面标题修改 .json文件
-{
-  &quot;navigationBarTitleText&quot;: &quot;标题&quot;
-}
-
-第二种：动态自定义页面标题
-wx.setNavigationBarTitle({
-  title: this.data.URLBackTitle
-})
-</code></pre>
-
-<h5 id="toc_1">获取系统信息 下面是屏幕宽高</h5>
-
-<pre><code> wx.getSystemInfo({
-      success: function(res) {
-        that.setData({
-          windowHeight: res.windowHeight,
-          windowWidth: res.windowWidth,
-        })
-      }
-});
-</code></pre>
-
-<h5 id="toc_2">.map 方法示例 接口返回的imageURL拼接根地址</h5>
-
-<pre><code>var tempArray = &#39;接口返回的数组&#39;
-that.setData({
-    listArray: tempArray.map(function(item) {
-        item.imageURL = getApp().data.baseURL + item.imageURL;
-        //如果列表里没有子数组数据需要拼接根地址，就不用再次 .map 方法 直接return item
-        item.child.map(function(childItem) {
-          childItem.pic = getApp().data.baseURL + childItem.pic;
-          return childItem;
-        })
-        return item;
-    }),
-})
-</code></pre>
-
-<h5 id="toc_3">.filter方法 遍历数组数据</h5>
-
-<pre><code>示例:遍历cityArray 数组，找出cityArray数组中pid 等于
-province 数组中province[e.detail.value].id的值
-使用.filter方法 比 for 循环速度快
-
-let newArray = that.data.cityArray.filter(item =&gt; item.pid === that.data.province[e.detail.value].id)
-</code></pre>
-
-<h5 id="toc_4">本地数据存储</h5>
-
-<pre><code> // 同步方式存储数据
-wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
-
-//取出数据
-var token = wx.getStorageSync(&#39;userInfo&#39;)
-
-</code></pre>
-
-<h5 id="toc_5">页面栈层级数</h5>
-
-<pre><code>var pages = getCurrentPages();
-console.log(&#39;页面栈层数&#39; + pages.length)
-if (pages.length == 10) {
-//小程序最大10层
-}else{
-}
-</code></pre>
-
-<h5 id="toc_6">获取明天日期</h5>
-
-<pre><code>//获取当前时间
-var nowDate = new Date(new Date().toLocaleDateString()); 
-//获取明天这个时间
-var nowDate1 = new Date(nowDate.getTime() + 24 * 60 * 60 * 1000)
-
-    var date_value1 = nowDate1.getFullYear().toString()
-    var date_value2 = (nowDate1.getMonth() + 1).toString()
-    var date_value3 = nowDate1.getDate().toString()
-
-    if (date_value2.length == 1) {
-      date_value2 = &#39;0&#39; + date_value2
-    }
-    if (date_value3.length == 1) {
-      date_value3 = &#39;0&#39; + date_value3
-    }
+<pre><code>
+&lt;!-- indicator-dots     Boolean     false   是否显示面板指示点 --&gt;
+    &lt;!-- autoplay   Boolean     false   是否自动切换 --&gt;
+    &lt;!-- interval   Number  5000    自动切换时间间隔 --&gt;
+    &lt;!-- duration   Number  500     滑动动画时长 --&gt;
+    &lt;!-- circular   Boolean     false   是否采用衔接滑动 --&gt;
     
-    var tomorrow = date_value1 + &#39;-&#39; + date_value2 + &#39;-&#39; + date_value3
+&lt;swiper indicator-dots=&quot;{{indicatorDots}}&quot;  
+        autoplay=&quot;{{autoplay}}&quot; 
+        interval=&quot;{{interval}}&quot; 
+        duration=&quot;{{duration}}&quot; 
+        circular=&quot;true&quot;&gt;  
+
+      &lt;block wx:for=&quot;{{imgUrls}}&quot; wx:key=&quot;{{item}}&quot; wx:for-index=&quot;index&quot;&gt;  
+        &lt;swiper-item&gt;  
+            &lt;navigator url=&quot;{{item.link}}&quot; hover-class=&quot;navigator-hover&quot;&gt; 
+            &lt;image src=&quot;{{item.url}}&quot; 
+                   class=&quot;slide-image&quot;/&gt;  
+            &lt;/navigator&gt;  
+        &lt;/swiper-item&gt;  
+      &lt;/block&gt;  
+
+&lt;/swiper&gt; 
+
 </code></pre>
 
-<h5 id="toc_7">倒计时</h5>
+<h4 id="toc_1">第二步：在.wxss文件里设置如下属性</h4>
 
-<pre><code>LastTimer: function() {
+<pre><code>   swiper{
+    height: 200px;
+   } 
 
-var that = this;
-var totalSecond = 0;
-//start_time服务端返回的团购开始时间
-var start_time = new Date(that.data.start_time.replace(/-/g, &quot;/&quot;));
-totalSecond = Date.parse(start_time) / 1000 - Date.parse(new Date()) / 1000;
+    .slide-image{  
+        width: 100%;  
+        height: 200px;
+    }  
+</code></pre>
 
-    //清理掉倒计时
-    clearInterval(that.data.interval_daojishi);
-    //开始倒计时
-    that.data.interval_daojishi = setInterval(function() {
-      // 秒数
-      var second = totalSecond;
-      // 天数位
-      var day = Math.floor(second / 3600 / 24);
-      var dayStr = day.toString();
-      if (dayStr.length == 1) dayStr = &#39;0&#39; + dayStr;
-      // 小时位
-      var hr = Math.floor((second - day * 3600 * 24) / 3600);
-      var hrStr = hr.toString();
-      if (hrStr.length == 1) hrStr = &#39;0&#39; + hrStr;
-      // 分钟位
-      var min = Math.floor((second - day * 3600 * 24 - hr * 3600) / 60);
-      var minStr = min.toString();
-      if (minStr.length == 1) minStr = &#39;0&#39; + minStr;
-      // 秒位
-      var sec = second - day * 3600 * 24 - hr * 3600 - min * 60;
-      var secStr = sec.toString();
-      if (secStr.length == 1) secStr = &#39;0&#39; + secStr;
+<h4 id="toc_2">第三步：在.js文件里设置如下数据 和轮播属性设置</h4>
 
-      that.setData({
-        countDownDay: dayStr,
-        countDownHour: hrStr,
-        countDownMinute: minStr,
-        countDownSecond: secStr,
-      });
-      totalSecond--;
+<pre><code> imgUrls: [
+      {
+        url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
+      }, {
+        url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
+      }, {
+        url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
+      }   
 
-      if (totalSecond &lt; 0) {
-        //倒计时结束，清理掉倒计时
-        clearInterval(that.data.interval_daojishi);
-        that.setData({
-          countDownDay: &#39;00&#39;,
-          countDownHour: &#39;00&#39;,
-          countDownMinute: &#39;00&#39;,
-          countDownSecond: &#39;00&#39;,
-        });
-      }
-    }.bind(this), 1000);
-  },
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    
+    interval: 3000,
+    duration: 500,
+
 </code></pre>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序建项-网络请求]]></title>
-    <link href="www.freefook.com/15235164843984.html"/>
-    <updated>2018-04-12T15:01:24+08:00</updated>
-    <id>www.freefook.com/15235164843984.html</id>
+    <title type="html"><![CDATA[微信小程序建项-经典列表布局]]></title>
+    <link href="www.freefook.com/15235133751593.html"/>
+    <updated>2018-04-12T14:09:35+08:00</updated>
+    <id>www.freefook.com/15235133751593.html</id>
     <content type="html"><![CDATA[
-<h4 id="toc_0">在.js 文件添加网络请求</h4>
+<h5 id="toc_0">在创建的home.wxml文件里写入如下布局</h5>
 
-<pre><code> requestData: function () {
-    var that = this;
-    wx.request({
-      url: &#39;http://.../serve/api/v1.0/service/communityLst&#39;,
-      data: {},
-      method: &#39;GET&#39;, 
-      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT 
-      // header: {}, // 设置请求的 header 默认是application/json  
-      success: function (res) {  
-        //划重点---&gt;setData 
-        that.setData({ 
-          listData: res.data.query
-        })
-        // 操作json数据 遍历打印数组里name字段数据  
-        for (var i in res.data.query) {
-          console.log(res.data.query[i].name);
-        }
-      },
-      fail: function () {
-        // fail  
-      },
-      complete: function () {
-        // complete  
-      }
+<pre><code>&lt;view&gt;  
+  &lt;scroll-view scroll-y=&quot;true&quot; style=&quot;height:100%&quot; &gt;  
+    &lt;view wx:for=&quot;{{array}}&quot; style=&quot;width:100%&quot;&gt;  
+    &lt;image id =&quot;{{index}}&quot; 
+           src =&quot;{{item}}&quot; 
+           mode =&quot;aspectFill&quot; 
+           style =&quot;width:100%;height:150px&quot;      
+           bindtap =&quot;tapName&quot; 
+           data-img =&quot;{{item}}&quot;&gt;&lt;/image&gt; 
+    &lt;/view&gt;  
+  &lt;/scroll-view&gt;  
+&lt;/view&gt; 
+</code></pre>
+
+<h5 id="toc_1">在home.js 文件里放入数据</h5>
+
+<pre><code>/**
+   * 页面的初始数据
+   */
+  data: {
+    array: [
+    &quot;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&quot;,
+    &quot;http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg&quot;,
+    &quot;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&quot;
+    ]  
+  },
+
+  //列表上图片点击方法，跳转详情页面
+  tapName: function (event) {
+    console.log(event.target.dataset.img)
+    wx.navigateTo({
+      url: &#39;../detail/detail&#39;
     })
-  },  
+  },
+  
+  
+/**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+    console.log(&quot;打印参数，上个页面传过来的参数id---&gt;&quot;)
+    console.log(options.id)  
+
+  },
+  
 </code></pre>
 
-<h3 id="toc_1">微信小程序点击方法传参与跳页传参</h3>
+<h5 id="toc_2">在home.json文件里写上navigationBarTitleText</h5>
 
-<h5 id="toc_2">点击事件</h5>
-
-<pre><code>bindtap  事件绑定不会阻止冒泡事件向上冒泡
-catchtap  事件绑定可以阻止冒泡事件向上冒泡
-
-点击事件的参数传递：
-target：触发事件的源组件
-currentTarget：事件绑定的当前事件
+<pre><code>{
+  &quot;navigationBarTitleText&quot;: &quot;知之为知之&quot;
+}
 </code></pre>
 
-<p><img src="media/15326733440349/86CC8E232275B9B77BD5728B014D3B69.png" alt="86CC8E232275B9B77BD5728B014D3B69"/></p>
+<h4 id="toc_3">运行界面 列表 list</h4>
 
-<h5 id="toc_3">跳页</h5>
-
-<pre><code>wx.navigateTo({
-url: &#39;../Temp/Temp?province=&#39; + this.data.name + &#39;&amp;selectedindex=&#39; + index + &#39;&amp;arrayIndex=&#39; + JSON.stringify(this.data.arrayIndex),
-})
-</code></pre>
-
-<h4 id="toc_4">小程序跳转方式</h4>
-
-<pre><code>打开新页面     调用 API wx.navigateTo
-
-页面重定向     调用 API wx.redirectTo
-
-页面返回        调用 API wx.navigateBack
-
-Tab 切换      调用 API wx.switchTab
-
-重启动         调用 API wx.reLaunch
-</code></pre>
-
-<p>Tips:</p>
-
-<pre><code>1.navigateTo, redirectTo 只能打开非 tabBar 页面。
-2.switchTab 只能打开 tabBar 页面。
-3.reLaunch 可以打开任意页面。
-4.页面底部的 tabBar 由页面决定，即只要是定义为 tabBar 的页面，底部都有 tabBar。
-5.tabBar只能配置最少2个、最多5个 tab
-6.调用页面路由带的参数可以在目标页面的onLoad中获取
-</code></pre>
-
-<h3 id="toc_5">微信小程序提示信息</h3>
-
-<h5 id="toc_6">加载的loading</h5>
-
-<pre><code>  wx.showLoading({
-      title: &#39;正在加载&#39;,
-      mask: true,
-    })
-   wx.hideLoading();
-</code></pre>
-
-<h5 id="toc_7">Toast提示</h5>
-
-<pre><code> mask   Boolean     否   是否显示透明蒙层，防止触摸穿透，默认：false
- icon   String  否   图标，有效值 &quot;success&quot;, &quot;loading&quot;, &quot;none&quot;
- 
- wx.showToast({
-        title: &#39;请输入提示语&#39;,
-        icon: &#39;none&#39;,
-        mask:true,
-        duration: 2000
-      }) 
-</code></pre>
-
-<h5 id="toc_8">延迟执行</h5>
-
-<pre><code> setTimeout(function() {
-   wx.hideLoading()
- }, 1000)
-          
-</code></pre>
-
-<h5 id="toc_9">弹出窗口提示</h5>
-
-<pre><code>wx.showModal({
-    title: &#39;我是弹窗标题&#39;,
-    content: &#39;佛系弹窗详情内容&#39;,
-    success: function(res) {
-      if (res.confirm) {
-        console.log(&#39;用户点击确定&#39;)
-      } else if (res.cancel) {
-        console.log(&#39;用户点击取消&#39;)
-      }
-    }
-  })   
-</code></pre>
+<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%881.50.12.png" alt="屏幕快照 2018-04-12 下午1.50.12"/></p>
 
 ]]></content>
   </entry>
@@ -1228,247 +1487,98 @@ Import Cost ： 引入包大小计算,对于项目打包后体积掌握很有帮
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序建项-TabBar]]></title>
-    <link href="www.freefook.com/15235114845539.html"/>
-    <updated>2018-04-12T13:38:04+08:00</updated>
-    <id>www.freefook.com/15235114845539.html</id>
+    <title type="html"><![CDATA[微信小程序建项-网格布局]]></title>
+    <link href="www.freefook.com/15236096586360.html"/>
+    <updated>2018-04-13T16:54:18+08:00</updated>
+    <id>www.freefook.com/15236096586360.html</id>
     <content type="html"><![CDATA[
-<h4 id="toc_0">创建一个标准小程序空项目</h4>
-
-<h5 id="toc_1">在app.json文件里写入如下代码</h5>
-
-<pre><code>{
-  &quot;pages&quot;: [
-    &quot;pages/homePage/homePage&quot;,
-    &quot;pages/minePage/minePage&quot;,
-    &quot;pages/shoppingCartPage/shoppingCartPage&quot;,
-    &quot;pages/index/index&quot;
-  ],
-  &quot;window&quot;: {
-    &quot;backgroundTextStyle&quot;: &quot;light&quot;,
-    &quot;navigationBarBackgroundColor&quot;: &quot;#fff&quot;,
-    &quot;navigationBarTitleText&quot;: &quot;小程序商城&quot;,
-    &quot;navigationBarTextStyle&quot;: &quot;black&quot;
-  },
-  &quot;tabBar&quot;: {
-    &quot;color&quot;: &quot;#8a8a8a&quot;,
-    &quot;selectedColor&quot;: &quot;#000&quot;,
-    &quot;backgroundColor&quot;: &quot;#fff&quot;,
-    &quot;list&quot;: [
-      {
-        &quot;iconPath&quot;: &quot;images/tabbar/home_1.png&quot;,
-        &quot;selectedIconPath&quot;: &quot;images/tabbar/home_2.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/homePage/homePage&quot;,
-        &quot;text&quot;: &quot;首页&quot;
-      },
-      {
-        &quot;iconPath&quot;: &quot;images/tabbar/gwc_1.png&quot;,
-        &quot;selectedIconPath&quot;: &quot;images/tabbar/gwc_2.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/shoppingCartPage/shoppingCartPage&quot;,
-        &quot;text&quot;: &quot;购物车&quot;
-      },
-      {
-        &quot;iconPath&quot;: &quot;images/tabbar/wode_1.png&quot;,
-        &quot;selectedIconPath&quot;: &quot;images/tabbar/wode_2.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/minePage/minePage&quot;,
-        &quot;text&quot;: &quot;我的&quot;
-      }
-    ]
-  },
-  &quot;networkTimeout&quot;: {
-    &quot;request&quot;: 10000,
-    &quot;downloadFile&quot;: 10000
-  },
-  &quot;debug&quot;: false
-}
-</code></pre>
-
-<h4 id="toc_2">运行界面 tabbar</h4>
-
-<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-06%20%E4%B8%8B%E5%8D%884.14.36.png" alt="屏幕快照 2018-12-06 下午4.14.36"/></p>
-
-<h5 id="toc_3">在app.wxss文件里写入如下代码</h5>
-
-<pre><code>page {
-  font-size: 14px;
-  background-color: #f8f8f8;
-  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
-}
-
-.container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  box-sizing: border-box;
-}
-
-.weui-bg-color {
-  background-color: #f8f8f8;
-}
-
-.weui-Font1 {
-  font-size: 16px;
-}
-
-.weui-Font2 {
-  font-size: 14px;
-}
-
-.weui-Font3 {
-  font-size: 12px;
-}
-
-.weui-Font4 {
-  font-size: 10px;
-}
-
-.weui-Font5 {
-  font-size: 8px;
-}
-
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序建项-轮播]]></title>
-    <link href="www.freefook.com/15235125175960.html"/>
-    <updated>2018-04-12T13:55:17+08:00</updated>
-    <id>www.freefook.com/15235125175960.html</id>
-    <content type="html"><![CDATA[
-<h4 id="toc_0">第一步：在.wxml文件里写入如下代码</h4>
+<h5 id="toc_0">在wxml里加入如下代码：</h5>
 
 <pre><code>
-&lt;!-- indicator-dots     Boolean     false   是否显示面板指示点 --&gt;
-    &lt;!-- autoplay   Boolean     false   是否自动切换 --&gt;
-    &lt;!-- interval   Number  5000    自动切换时间间隔 --&gt;
-    &lt;!-- duration   Number  500     滑动动画时长 --&gt;
-    &lt;!-- circular   Boolean     false   是否采用衔接滑动 --&gt;
-    
-&lt;swiper indicator-dots=&quot;{{indicatorDots}}&quot;  
-        autoplay=&quot;{{autoplay}}&quot; 
-        interval=&quot;{{interval}}&quot; 
-        duration=&quot;{{duration}}&quot; 
-        circular=&quot;true&quot;&gt;  
-
-      &lt;block wx:for=&quot;{{imgUrls}}&quot; wx:key=&quot;{{item}}&quot; wx:for-index=&quot;index&quot;&gt;  
-        &lt;swiper-item&gt;  
-            &lt;navigator url=&quot;{{item.link}}&quot; hover-class=&quot;navigator-hover&quot;&gt; 
-            &lt;image src=&quot;{{item.url}}&quot; 
-                   class=&quot;slide-image&quot;/&gt;  
-            &lt;/navigator&gt;  
-        &lt;/swiper-item&gt;  
-      &lt;/block&gt;  
-
-&lt;/swiper&gt; 
+  &lt;!-- 商品网格布局 --&gt;
+  &lt;view class=&#39;goods-grid-view&#39;&gt;
+    &lt;block wx:for=&quot;{{12}}&quot; wx:key=&quot;{{item}}&quot; wx:for-item=&quot;item&quot;&gt;
+      &lt;view class=&#39;goods-grid-blockview&#39; data-item=&#39;{{item}}&#39; catchtap=&#39;onGoodsTap&#39;&gt;
+        &lt;view class=&#39;goods-grid-container&#39;&gt;
+          &lt;image class=&#39;goods-img&#39; mode=&#39;aspectFill&#39; src=&quot;{{&#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;}}&quot;&gt;&lt;/image&gt;
+          &lt;text class=&#39;goods-title weui-Font2&#39;&gt;{{&quot;我是商品名&quot;}}&lt;/text&gt;
+          &lt;text class=&#39;goods-title weui-Font3&#39;&gt;{{&quot;我是商品介绍么&quot;}}&lt;/text&gt;
+          &lt;text class=&#39;goods-price weui-Font2&#39; style=&#39;color: #d0ae97&#39;&gt;¥{{200}}\r\t\r\t\r\t&lt;text class=&#39;goods-price weui-Font2&#39; style=&#39;text-decoration:line-through;color: lightgray&#39;&gt;¥{{260}}&lt;/text&gt;&lt;/text&gt;
+        &lt;/view&gt;
+      &lt;/view&gt;
+    &lt;/block&gt;
+  &lt;/view&gt;
 
 </code></pre>
 
-<h4 id="toc_1">第二步：在.wxss文件里设置如下属性</h4>
+<h5 id="toc_1">在wxss里加入如下代码：</h5>
 
-<pre><code>   swiper{
-    height: 200px;
-   } 
+<pre><code>
+/* 网格布局 */
 
-    .slide-image{  
-        width: 100%;  
-        height: 200px;
-    }  
+.goods-grid-view {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: auto;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.goods-grid-blockview {
+  width: 50%;
+  background-color: white;
+}
+
+.goods-grid-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.goods-img {
+  width: 100%;
+  height: 340rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.goods-title {
+  margin-top: 15rpx;
+  margin-bottom: 10rpx;
+  display: -webkit-box;
+  align-content: center;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: -o-ellipsis-lastline;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  width: 340rpx;
+}
+
+.goods-price {
+  text-align: left;
+}
+
 </code></pre>
 
-<h4 id="toc_2">第三步：在.js文件里设置如下数据 和轮播属性设置</h4>
+<h5 id="toc_2">运行效果</h5>
 
-<pre><code> imgUrls: [
-      {
-        url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
-      }, {
-        url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
-      }, {
-        url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
-      }   
-
-    ],
-    indicatorDots: true,
-    autoplay: true,
-    
-    interval: 3000,
-    duration: 500,
-
-</code></pre>
+<p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-06%20%E4%B8%8B%E5%8D%884.02.21.png" alt="屏幕快照 2018-12-06 下午4.02.21"/></p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序建项-列表布局]]></title>
-    <link href="www.freefook.com/15235133751593.html"/>
-    <updated>2018-04-12T14:09:35+08:00</updated>
-    <id>www.freefook.com/15235133751593.html</id>
+    <title type="html"><![CDATA[微信小程序建项-收货地址]]></title>
+    <link href="www.freefook.com/15451872525874.html"/>
+    <updated>2018-12-19T10:40:52+08:00</updated>
+    <id>www.freefook.com/15451872525874.html</id>
     <content type="html"><![CDATA[
-<h5 id="toc_0">在创建的home.wxml文件里写入如下布局</h5>
-
-<pre><code>&lt;view&gt;  
-  &lt;scroll-view scroll-y=&quot;true&quot; style=&quot;height:100%&quot; &gt;  
-    &lt;view wx:for=&quot;{{array}}&quot; style=&quot;width:100%&quot;&gt;  
-    &lt;image id =&quot;{{index}}&quot; 
-           src =&quot;{{item}}&quot; 
-           mode =&quot;aspectFill&quot; 
-           style =&quot;width:100%;height:150px&quot;      
-           bindtap =&quot;tapName&quot; 
-           data-img =&quot;{{item}}&quot;&gt;&lt;/image&gt; 
-    &lt;/view&gt;  
-  &lt;/scroll-view&gt;  
-&lt;/view&gt; 
-</code></pre>
-
-<h5 id="toc_1">在home.js 文件里放入数据</h5>
-
-<pre><code>/**
-   * 页面的初始数据
-   */
-  data: {
-    array: [
-    &quot;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&quot;,
-    &quot;http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg&quot;,
-    &quot;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&quot;
-    ]  
-  },
-
-  //列表上图片点击方法，跳转详情页面
-  tapName: function (event) {
-    console.log(event.target.dataset.img)
-    wx.navigateTo({
-      url: &#39;../detail/detail&#39;
-    })
-  },
-  
-  
-/**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-    console.log(&quot;打印参数，上个页面传过来的参数id---&gt;&quot;)
-    console.log(options.id)  
-
-  },
-  
-</code></pre>
-
-<h5 id="toc_2">在home.json文件里写上navigationBarTitleText</h5>
-
-<pre><code>{
-  &quot;navigationBarTitleText&quot;: &quot;知之为知之&quot;
-}
-</code></pre>
-
-<h4 id="toc_3">运行界面 列表 list</h4>
-
-<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%881.50.12.png" alt="屏幕快照 2018-04-12 下午1.50.12"/></p>
 
 ]]></content>
   </entry>
@@ -2211,208 +2321,6 @@ int main()
 <p>在原序列中，ri=rj，且ri在rj之前，而在排序后的序列中，ri仍在rj之前，则称这种排序算法是稳定的；否则称为不稳定的。</p>
 
 <p>稳定都是相对的，不是绝对的稳定</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序运营 设计与开发]]></title>
-    <link href="www.freefook.com/15416647115012.html"/>
-    <updated>2018-11-08T16:11:51+08:00</updated>
-    <id>www.freefook.com/15416647115012.html</id>
-    <content type="html"><![CDATA[
-<h4 id="toc_0">项目经理必备</h4>
-
-<p>项目经理必要了解API里面微信开放接口的信息例如：</p>
-
-<ol>
-<li>登录授权</li>
-<li>获取用户信息</li>
-<li>微信支付</li>
-<li>转发</li>
-<li>收货地址</li>
-<li>生成小程序二维码</li>
-</ol>
-
-<p>小程序初期明确是否在运营规范里允许的，或者找一些已有小程序样例</p>
-
-<ul>
-<li>运营规范(在这里查看禁止事项)：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/index.html">https://mp.weixin.qq.com/debug/wxadoc/product/index.html</a></li>
-<li><p>特殊行业所需资质材料：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714</a><br/>
-<img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.46.27.png" alt="屏幕快照 2018-08-08 下午3.46.27"/></p></li>
-<li><p>支付文档：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1</a></p></li>
-<li><p>客服消息：<a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221">https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221</a> </p></li>
-<li><p>数据分析：<a href="https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714</a></p></li>
-</ul>
-
-<hr/>
-
-<h5 id="toc_1">当开始要做一个小程序时，需通读设计指南</h5>
-
-<p>设计指南：<a href="https://mp.weixin.qq.com/debug/wxadoc/design/index.html">https://mp.weixin.qq.com/debug/wxadoc/design/index.html</a></p>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.28.55.png" alt="屏幕快照 2018-04-09 上午11.28.55"/></p>
-
-<h4 id="toc_2">小程序开发人员必备</h4>
-
-<p>入坑指南，疑难问题，请浏览👇<br/>
-小程序社区：<a href="http://www.wxapp-union.com/">http://www.wxapp-union.com/</a></p>
-
-<p>开发者学习已有框架可参考<br/>
-WePY框架开发小程序请移步👇<br/>
-<a href="https://tencent.github.io/wepy/index.html">https://tencent.github.io/wepy/index.html</a></p>
-
-<p>美团一团队出的框架mpvue框架请移步👇<br/>
-<a href="http://mpvue.com/mpvue/#_2">http://mpvue.com/mpvue/#_2</a></p>
-
-<p>渐进式JavaScript 框架VUE 地址：<br/>
-<a href="https://cn.vuejs.org/">https://cn.vuejs.org/</a></p>
-
-<p>weui Github 地址：<br/>
-<a href="https://github.com/Tencent/weui-wxss">https://github.com/Tencent/weui-wxss</a></p>
-
-<hr/>
-
-<h5 id="toc_3">微信开发者工具创建小程序工程需要AppID</h5>
-
-<p>官方工具：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714</a></p>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.21.41.png" alt="屏幕快照 2018-04-09 上午11.21.41"/></p>
-
-<h5 id="toc_4">小程序开发必读项，教程 ，框架 ，组件 ，API , 工具</h5>
-
-<p>简易教程：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/">https://mp.weixin.qq.com/debug/wxadoc/dev/</a></p>
-
-<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.23.50.png" alt="屏幕快照 2018-04-09 上午11.23.50"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序微信开放API]]></title>
-    <link href="www.freefook.com/15326548831374.html"/>
-    <updated>2018-07-27T09:28:03+08:00</updated>
-    <id>www.freefook.com/15326548831374.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">开放接口：</h5>
-
-<pre><code>wx.login    登录
-wx.getUserInfo  获取用户信息
-wx.chooseAddress    获取用户收货地址
-wx.requestPayment   发起微信支付
-wx.addCard  添加卡券
-wx.openCard 打开卡券
-可以获取用户手机号
-不能获取本机IP
-</code></pre>
-
-<h5 id="toc_1">设备 API 列表：</h5>
-
-<pre><code>wx.scanCode 扫码
-wx.makePhoneCall    拨打电话
-wx.getSystemInfo    获取系统信息
-wx.getSystemInfoSync    获取系统信息
-wx.getNetworkType   获取网络类型
-wx.onNetworkStatusChange    监听网络状态变化
-
-wx.onAccelerometerChange    监听加速度数据
-wx.startAccelerometer   开始监听加速度数据
-wx.stopAccelerometer    停止监听加速度数据
-wx.onCompassChange  监听罗盘数据
-wx.startCompass 开始监听罗盘数据
-wx.stopCompass  停止监听罗盘数据
-wx.setClipboardData 设置剪贴板内容
-wx.getClipboardData 获取剪贴板内容
-</code></pre>
-
-<h5 id="toc_2">多数 API 的回调都是异步，你需要处理好代码逻辑的异步问题。</h5>
-
-<h5 id="toc_3">网络请求API</h5>
-
-<pre><code>wx.request  发起网络请求
-wx.uploadFile   上传文件
-wx.downloadFile 下载文件
-</code></pre>
-
-<h5 id="toc_4">界面 API 列表：</h5>
-
-<pre><code>wx.navigateTo   新窗口打开页面
-wx.redirectTo   原窗口打开页面
-wx.switchTab    切换到 tabbar 页面
-wx.navigateBack 退回上一个页面
-
-wx.showToast    显示提示框
-wx.hideToast    隐藏提示框
-
-wx.showLoading  显示加载提示框
-wx.hideLoading  隐藏提示框
-
-wx.showModal    显示模态弹窗
-wx.showActionSheet  显示菜单列表
-
-wx.setNavigationBarTitle    设置当前页面标题
-wx.showNavigationBarLoading 显示导航条加载动画
-wx.hideNavigationBarLoading 隐藏导航条加载动画
-wx.setBackgroundColor   动态设置窗口的背景色
-wx.setBackgroundTextStyle   动态设置下拉背景字体、loading 图的样式
-
-wx.createAnimation  动画
-wx.createContext    创建绘图上下文
-wx.drawCanvas   绘图
-wx.stopPullDownRefresh  停止下拉刷新动画
-</code></pre>
-
-<h5 id="toc_5">媒体 API 列表：</h5>
-
-<pre><code>wx.chooseImage  从相册选择图片，或者拍照
-wx.previewImage 预览图片
-wx.startRecord  开始录音
-wx.stopRecord   结束录音
-wx.playVoice    播放语音
-wx.pauseVoice   暂停播放语音
-wx.stopVoice    结束播放语音
-wx.getBackgroundAudioPlayerState 获取音乐播放状态
-wx.playBackgroundAudio  播放音乐
-wx.pauseBackgroundAudio 暂停播放音乐
-wx.seekBackgroundAudio  控制音乐播放进度
-wx.stopBackgroundAudio  停止播放音乐
-wx.onBackgroundAudioPlay    监听音乐开始播放
-wx.onBackgroundAudioPause   监听音乐暂停
-wx.onBackgroundAudioStop    监听音乐结束
-wx.chooseVideo  从相册选择视频，或者拍摄
-wx.loadFontFace 动态加载字体
-</code></pre>
-
-<h5 id="toc_6">文件 API 列表：</h5>
-
-<pre><code>wx.saveFile 保存文件
-wx.getSavedFileList 获取已保存的文件列表
-wx.getSavedFileInfo 获取已保存的文件信息
-wx.removeSavedFile  删除已保存的文件信息
-wx.openDocument 打开文件
-</code></pre>
-
-<h5 id="toc_7">数据 API 列表：</h5>
-
-<pre><code>wx.getStorage   获取本地数据缓存
-wx.getStorageSync   获取本地数据缓存
-wx.setStorage   设置本地数据缓存
-wx.setStorageSync   设置本地数据缓存
-wx.getStorageInfo   获取本地缓存的相关信息
-wx.getStorageInfoSync   获取本地缓存的相关信息
-wx.removeStorage    删除本地缓存内容
-wx.removeStorageSync    删除本地缓存内容
-wx.clearStorage 清理本地数据缓存
-wx.clearStorageSync 清理本地数据缓存
-</code></pre>
-
-<h5 id="toc_8">位置 API 列表：</h5>
-
-<pre><code>wx.getLocation  获取当前位置
-wx.chooseLocation   打开地图选择位置
-wx.openLocation 打开内置地图
-wx.createMapContext 地图组件控制
-</code></pre>
 
 ]]></content>
   </entry>

@@ -89,15 +89,19 @@
           
             <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
           
-            <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+            <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
           
             <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+          
+            <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+          
+            <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
           
             <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
           
             <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
           
-            <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+            <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
           
             <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
           
@@ -300,15 +304,19 @@
                         
                           <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
                         
-                          <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+                          <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
                         
                           <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+                        
+                          <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+                        
+                          <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
                         
                           <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
                         
                           <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
                         
-                          <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+                          <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
                         
                           <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
                         
@@ -448,152 +456,131 @@
 
 	
 		<div class="markdown-body">
-		<h1>OC 数组操作方法说明</h1>
+		<h1>AES加密打开方式...</h1>
 
-		<h5 id="toc_0">获取数组的正序迭代器</h5>
+		<p>很久没写博客,Markdown牵出来遛遛</p>
 
-<pre><code>    NSEnumerator *enu1 = [tempArr objectEnumerator];
+<p>AES加密时需要统一的几个参数。</p>
+
+<pre><code>密钥长度（Key Size）
+加密模式（Cipher Mode）
+填充方式（Padding）
+初始向量（Initialization Vector）
 </code></pre>
 
-<h5 id="toc_1">获取数组的反序迭代器</h5>
+<blockquote>
+<p>1.本例使用AES-128,</p>
 
-<pre><code>    NSEnumerator *enu2 = [tempArr reverseObjectEnumerator];
-    //数组倒序输出
-    dataArray=(NSMutableArray *)[[dataArray reverseObjectEnumerator] allObjects];
+<p>2.AES属于块加密BlockCipher，块加密中有CBC、ECB、CTR、OFB、CFB等几种工作模式。本例使用CBC模式</p>
+
+<p>3.由于块加密只能对特定长度的数据块进行加密，因此CBC、ECB模式需要在最后一数据块加密前进行数据填充。（CFB，OFB和CTR模式由于与key进行加密操作的是上一块加密后的密文，因此不需要对最后一段明文进行填充）<br/>
+在iOS SDK中提供了PKCS7Padding</p>
+</blockquote>
+
+<p>ECB加密模式（不推荐）：容易被攻击</p>
+
+<blockquote>
+<p>1.每次key,明文,密文的长度都必须是64位;<br/><br/>
+2.数据块重复排序不需要检测;<br/><br/>
+3.相同的明文块(使用相同的密钥)产生相同的密文块,容易遭受字典被攻击<br/><br/>
+4.一个错误仅仅会对一个密文块产生影响</p>
+</blockquote>
+
+<p>CBC加密方式(推荐):</p>
+
+<blockquote>
+<p>1.每次加密的密文长度为64位(8个字节);<br/><br/>
+2.当相同的明文使用相同的密钥和初始向量的时候CBC模式总是产生相同的密文;<br/><br/>
+3.密文块要依赖以前的操作结果,所以密文块不能进行重新排列;<br/><br/>
+4.可以使用不同的初始化向量来避免相同的明文产生相同的密文,一定程度上抵抗字典攻击<br/>
+5.一个错误发生后,当前和以后的密文都会被影响;</p>
+
+<p>使用PKCS5Padding/PKCS7Padding填充可以兼容多平台语言之间AES加密解密  </p>
+
+<p>注意: 这里每次产生的密文是相同的，因为设置了初试向量iv为16位个数的“0”。要产生不同的密文就要使用变化的初试向量iv</p>
+</blockquote>
+
+<p>ios使用案例  </p>
+
+<p>创建一个类AESCipher继承NSObject</p>
+
+<p>.h文件如下:</p>
+
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+NSString * aesEncryptString(NSString *content, NSString *key);
+NSString * aesDecryptString(NSString *content, NSString *key);
+NSData * aesEncryptData(NSData *data, NSData *key);
+NSData * aesDecryptData(NSData *data, NSData *key);
+
 </code></pre>
 
-<h5 id="toc_2">数组排序</h5>
+<p>.m文件如下:</p>
 
-<pre><code>    // 返回一个排好序的数组，原来数组的元素顺序不会改变
-    // 指定元素的比较方法：compare:
-    NSArray *array1 = [NSArray arrayWithObjects:@&quot;2&quot;, @&quot;3&quot;, @&quot;1&quot;, @&quot;4&quot;, nil];
-    NSArray *array2 = [array1 sortedArrayUsingSelector:@selector(compare:)];
-    NSLog(@&quot;array2:%@&quot;, array2);(1,2,3,4)
-</code></pre>
-
-<h5 id="toc_3">选择排序-iOS常用模式tempLogArr数组里每一元素是字典，根据字典里的dic[Index]排序</h5>
-
-<pre><code>    for (int i=0; i&lt;tempLogArr.count; i++) {
-        
-        for (int j=i+1; j&lt;tempLogArr.count; j++) {
-            
-            if ([tempLogArr[i][@&quot;Index&quot;] intValue] &lt; [tempLogArr[j][@&quot;Index&quot;] intValue]) {
-                
-                [tempLogArr exchangeObjectAtIndex:i withObjectAtIndex:j];
-            }
-        }
+<pre><code>#import &quot;AESCipher.h&quot;
+#import &lt;CommonCrypto/CommonCryptor.h&gt;
+//注意:初始向量,默认16个0(]前后端保持统一)
+NSString const *kInitVector = @&quot;0000000000000000&quot;;
+size_t const kKeySize = kCCKeySizeAES128;
+NSData * cipherOperation(NSData *contentData, NSData *keyData, CCOperation operation) {
+    NSUInteger dataLength = contentData.length;
+    void const *initVectorBytes = [kInitVector dataUsingEncoding:NSUTF8StringEncoding].bytes;
+    void const *contentBytes = contentData.bytes;
+    void const *keyBytes = keyData.bytes;
+    size_t operationSize = dataLength + kCCBlockSizeAES128;
+    void *operationBytes = malloc(operationSize);
+    size_t actualOutSize = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(operation,                                   kCCAlgorithmAES,                                   kCCOptionPKCS7Padding,
+ keyBytes,                                      kKeySize,                                     initVectorBytes,                                    contentBytes,                                     dataLength,                                     operationBytes,                                    operationSize,                                   &amp;actualOutSize);
+    if (cryptStatus == kCCSuccess) {
+        return [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
     }
-</code></pre>
-
-<h5 id="toc_4">数组tempLogArr元素是字典“遍历所有”去掉重复信息用（ i--）方式，避免数组越界</h5>
-
-<pre><code>    int x;
-    int y;
-    for (int i = (int)tempLogArr.count - 1; i &gt;=0 ; i--) {
-        NSString * tempStr = [NSString stringWithFormat:@&quot;%@&quot;,tempLogArr[i][@&quot;Index&quot;]];
-        x = [tempStr intValue];
-        for (int j = i-1; j &gt;=0 ; j--) {
-            y = [tempLogArr[j][@&quot;Index&quot;] intValue];
-            if (x == y) {
-                [tempLogArr removeObjectAtIndex:j];
-            }
-        }
-    }
-
-</code></pre>
-
-<h5 id="toc_5">数组historyArray元素是字典 遍历遇到重复信息删除，停止遍历</h5>
-
-<p>不遍历全部，针对每次增加信息的时候，都会调用这个方法，不会出现重复两次的情况</p>
-
-<pre><code>//tempStr 信息的唯一标识，tempDic是全部信息内容
--(void)saveSearchData:(NSString*)tempStr infoDic:(NSDictionary *)tempDic
-{
-    /**该模块为判断浏览的信息是否已经存在历史记录里,如果存在则删除过去的,重新添加最新的搜索记录*/
-    
-    if (self.historyArray.count&gt;0) {
-        //第一种遍历方法，数组元素为字典，字典是每条信息的全部内容
-        [self.historyArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            
-            //NSLog(@&quot;idx=%lu, id=%@&quot;, (unsigned long)idx, obj);
-            
-            if ([obj[@&quot;info_id&quot;] isEqualToString:tempStr]) {
-                [self.historyArray removeObjectAtIndex:idx];
-                *stop = YES;//停止遍历
-            }
-        }];
-    }
-    [self.historyArray addObject:tepDic];
+    free(operationBytes);
+    return nil;
+}
+NSString * aesEncryptString(NSString *content, NSString *key) {
+    NSData *contentData = [content dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *encrptedData = aesEncryptData(contentData, keyData);
+    return [encrptedData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+}
+NSString * aesDecryptString(NSString *content, NSString *key) {
+    NSData *contentData = [[NSData alloc] initWithBase64EncodedString:content options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *decryptedData = aesDecryptData(contentData, keyData);
+    return [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
+}
+NSData * aesEncryptData(NSData *contentData, NSData *keyData) {
+    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];
+    NSCAssert(keyData.length == kKeySize, hint);
+    return cipherOperation(contentData, keyData, kCCEncrypt);
+}
+NSData * aesDecryptData(NSData *contentData, NSData *keyData) {
+    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];
+    NSCAssert(keyData.length == kKeySize, hint);
+    return cipherOperation(contentData, keyData, kCCDecrypt);
 }
 </code></pre>
 
-<h5 id="toc_6">遍历方法:快速枚举</h5>
+<p>使用方法如下:</p>
 
-<pre><code>    for(NSString* obj in tempArr)
-    {
-        NSLog(@&quot;%@&quot;, obj);
-    }
+<pre><code>/*
+ 使用案例:
+ 第一: 导入头文件
+ #import &quot;AESCipher.h&quot;
+ 测试字符串
+ NSString *TestStr = @&quot;abc&quot;;
+ 设置key
+ NSString *key = @&quot;1234567812345678&quot;;
+ NSString *cipherText = aesEncryptString(TestStr, key);
+ NSLog(@&quot;加密==%@&quot;, cipherText);
+ NSString *decryptedText = aesDecryptString(cipherText, key);
+ NSLog(@&quot;解密==%@&quot;, decryptedText);
+ */
 </code></pre>
 
-<h5 id="toc_7">遍历方法:快速遍历</h5>
-
-<pre><code>//顺序遍历
-[array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSLog(@&quot;%@&quot;,array[idx]);
-        *stop = YES;//停止遍历,也可以在此增加if判断idx = 3 的时候停止。
- }];
-//倒序遍历
-[array enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSLog(@&quot;%@&quot;,array[idx]);
-        *stop = NO;//继续遍历
-}];
-</code></pre>
-
-<h5 id="toc_8">动态数组NSMutableArray的add操作</h5>
-
-<pre><code>    NSArray * array = [NSArray arrayWithObjects:@&quot;1&quot;,@&quot;2&quot;, nil];
-    
-    //方法一
-    NSMutableArray * list = [[NSMutableArray alloc]init];
-    [list addObjectsFromArray: array]];
-    NSLog(@&quot;%@&quot;,list);//(1,2)
-    
-    //方法二arrayByAddingObjectsFromArray 该方法做了copy原数据不变
-    NSMutableArray * list = [[NSMutableArray alloc]init];
-    [list arrayByAddingObjectsFromArray: array]
-    NSLog(@&quot;%@&quot;,list);//()
-    
-</code></pre>
-
-<h5 id="toc_9">数组的简单操作</h5>
-
-<pre><code>//插入索引为几的位置
-[tempArr insertObject:@&quot;two&quot; atIndex:1];
-
-//修改数组中第2个元素的内容
-[tempArr replaceObjectAtIndex:2 withObject:@&quot;aaa&quot;];
-
-//交换数组中得内容
-[tempArr exchangeObjectAtIndex:1 withObjectAtIndex:3];
-
-//取出连续范围的元素作为子集内容
-NSArray *sub1 = [tempArr subarrayWithRange:NSMakeRange(1, 3)];
-</code></pre>
-
-<h5 id="toc_10">数组的删除操作</h5>
-
-<pre><code>//1.删除最后一个元素
- [array removeLastObject];
- NSLog(@&quot;%@&quot;,array);
-
-//2.删除指定下标的元素
-[array removeObjectAtIndex:5];
- NSLog(@&quot;%@&quot;,array);
-
-//3.直接删除元素
-[array removeObject:@&quot;e&quot;];
- NSLog(@&quot;%@&quot;,array);
-</code></pre>
+<p>原文查看:<br/>
+ <a href="http://blog.csdn.net/u013749540/article/details/70225594">http://blog.csdn.net/u013749540/article/details/70225594</a><br/>
+ <a href="http://www.cnblogs.com/dcb3688/p/4608007.html">http://www.cnblogs.com/dcb3688/p/4608007.html</a></p>
 
 
 		</div>

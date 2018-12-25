@@ -89,15 +89,19 @@
           
             <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
           
-            <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+            <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
           
             <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+          
+            <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+          
+            <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
           
             <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
           
             <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
           
-            <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+            <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
           
             <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
           
@@ -300,15 +304,19 @@
                         
                           <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
                         
-                          <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+                          <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
                         
                           <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+                        
+                          <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+                        
+                          <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
                         
                           <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
                         
                           <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
                         
-                          <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+                          <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
                         
                           <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
                         
@@ -446,7 +454,22 @@
  <div class="markdown-body">
 <h1>微信小程序建项-逻辑操作JS</h1>
 
-<h5 id="toc_0">动态设置页面标题</h5>
+<h5 id="toc_0">给tabBar设置角标</h5>
+
+<pre><code>wx.setTabBarBadge 这个API在非tabbar页面上调用会失效
+
+wx.setTabBarBadge({
+    index: 1,//设置第几个tabBar
+    text: &#39;&#39; + 5,//设置角标显示的数字
+})
+
+移除角标
+wx.removeTabBarBadge({
+   index: 1
+})    
+</code></pre>
+
+<h5 id="toc_1">动态设置页面标题</h5>
 
 <pre><code>第一种：定死页面标题修改 .json文件
 {
@@ -459,7 +482,7 @@ wx.setNavigationBarTitle({
 })
 </code></pre>
 
-<h5 id="toc_1">获取系统信息 下面是屏幕宽高</h5>
+<h5 id="toc_2">获取系统信息 下面是屏幕宽高</h5>
 
 <pre><code> wx.getSystemInfo({
       success: function(res) {
@@ -471,7 +494,7 @@ wx.setNavigationBarTitle({
 });
 </code></pre>
 
-<h5 id="toc_2">.map 方法示例 接口返回的imageURL拼接根地址</h5>
+<h5 id="toc_3">.map 方法示例 接口返回的imageURL拼接根地址</h5>
 
 <pre><code>var tempArray = &#39;接口返回的数组&#39;
 that.setData({
@@ -487,7 +510,7 @@ that.setData({
 })
 </code></pre>
 
-<h5 id="toc_3">.filter方法 遍历数组数据</h5>
+<h5 id="toc_4">.filter方法 遍历数组数据</h5>
 
 <pre><code>示例:遍历cityArray 数组，找出cityArray数组中pid 等于
 province 数组中province[e.detail.value].id的值
@@ -496,7 +519,7 @@ province 数组中province[e.detail.value].id的值
 let newArray = that.data.cityArray.filter(item =&gt; item.pid === that.data.province[e.detail.value].id)
 </code></pre>
 
-<h5 id="toc_4">本地数据存储</h5>
+<h5 id="toc_5">本地数据存储</h5>
 
 <pre><code> // 同步方式存储数据
 wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
@@ -506,7 +529,7 @@ var token = wx.getStorageSync(&#39;userInfo&#39;)
 
 </code></pre>
 
-<h5 id="toc_5">页面栈层级数</h5>
+<h5 id="toc_6">页面栈层级数</h5>
 
 <pre><code>var pages = getCurrentPages();
 console.log(&#39;页面栈层数&#39; + pages.length)
@@ -516,7 +539,7 @@ if (pages.length == 10) {
 }
 </code></pre>
 
-<h5 id="toc_6">获取明天日期</h5>
+<h5 id="toc_7">获取明天日期</h5>
 
 <pre><code>//获取当前时间
 var nowDate = new Date(new Date().toLocaleDateString()); 
@@ -537,7 +560,7 @@ var nowDate1 = new Date(nowDate.getTime() + 24 * 60 * 60 * 1000)
     var tomorrow = date_value1 + &#39;-&#39; + date_value2 + &#39;-&#39; + date_value3
 </code></pre>
 
-<h5 id="toc_7">倒计时</h5>
+<h5 id="toc_8">倒计时</h5>
 
 <pre><code>LastTimer: function() {
 
@@ -602,15 +625,15 @@ totalSecond = Date.parse(start_time) / 1000 - Date.parse(new Date()) / 1000;
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15439750080174.html"  title="Previous Post: 区块链">&laquo; 区块链</a>
+	        <a href="15242100404510.html"  title="Previous Post: 微信小程序建项-布局样式wxss">&laquo; 微信小程序建项-布局样式wxss</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15235164843984.html" 
-	        title="Next Post: 微信小程序建项-网络请求">微信小程序建项-网络请求 &raquo;</a>
+	        <a href="15444188311660.html" 
+	        title="Next Post: 电子证照">电子证照 &raquo;</a>
 	    
 	</div>
   </div>

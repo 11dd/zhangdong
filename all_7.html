@@ -89,15 +89,19 @@
           
             <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
           
-            <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+            <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
           
             <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+          
+            <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+          
+            <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
           
             <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
           
             <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
           
-            <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+            <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
           
             <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
           
@@ -300,15 +304,19 @@
                         
                           <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
                         
-                          <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+                          <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
                         
                           <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+                        
+                          <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+                        
+                          <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
                         
                           <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
                         
                           <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
                         
-                          <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+                          <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
                         
                           <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
                         
@@ -448,19 +456,67 @@
 
 	
 		<div class="markdown-body">
-		<h1>Vue项目结构</h1>
+		<h1>微信小程序建项-轮播</h1>
 
-		<p><img src="media/15422692424640/20171126152702891.png" alt="20171126152702891"/></p>
+		<h4 id="toc_0">第一步：在.wxml文件里写入如下代码</h4>
 
-<p><img src="media/15422692424640/20171126152742787.png" alt="20171126152742787"/></p>
+<pre><code>
+&lt;!-- indicator-dots     Boolean     false   是否显示面板指示点 --&gt;
+    &lt;!-- autoplay   Boolean     false   是否自动切换 --&gt;
+    &lt;!-- interval   Number  5000    自动切换时间间隔 --&gt;
+    &lt;!-- duration   Number  500     滑动动画时长 --&gt;
+    &lt;!-- circular   Boolean     false   是否采用衔接滑动 --&gt;
+    
+&lt;swiper indicator-dots=&quot;{{indicatorDots}}&quot;  
+        autoplay=&quot;{{autoplay}}&quot; 
+        interval=&quot;{{interval}}&quot; 
+        duration=&quot;{{duration}}&quot; 
+        circular=&quot;true&quot;&gt;  
 
-<p><img src="media/15422692424640/20171126152635816.png" alt="20171126152635816"/></p>
+      &lt;block wx:for=&quot;{{imgUrls}}&quot; wx:key=&quot;{{item}}&quot; wx:for-index=&quot;index&quot;&gt;  
+        &lt;swiper-item&gt;  
+            &lt;navigator url=&quot;{{item.link}}&quot; hover-class=&quot;navigator-hover&quot;&gt; 
+            &lt;image src=&quot;{{item.url}}&quot; 
+                   class=&quot;slide-image&quot;/&gt;  
+            &lt;/navigator&gt;  
+        &lt;/swiper-item&gt;  
+      &lt;/block&gt;  
 
-<p>原文地址：<a href="https://www.jianshu.com/p/7006a663fb9f">https://www.jianshu.com/p/7006a663fb9f</a></p>
+&lt;/swiper&gt; 
 
-<p><strong>使用的编辑器是VSCode</strong></p>
+</code></pre>
 
-<p><img src="media/15422692424640/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-15%20%E4%B8%8B%E5%8D%884.13.15.png" alt="屏幕快照 2018-11-15 下午4.13.15"/></p>
+<h4 id="toc_1">第二步：在.wxss文件里设置如下属性</h4>
+
+<pre><code>   swiper{
+    height: 200px;
+   } 
+
+    .slide-image{  
+        width: 100%;  
+        height: 200px;
+    }  
+</code></pre>
+
+<h4 id="toc_2">第三步：在.js文件里设置如下数据 和轮播属性设置</h4>
+
+<pre><code> imgUrls: [
+      {
+        url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
+      }, {
+        url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
+      }, {
+        url: &#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;
+      }   
+
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    
+    interval: 3000,
+    duration: 500,
+
+</code></pre>
 
 
 		</div>

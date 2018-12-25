@@ -89,15 +89,19 @@
           
             <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
           
-            <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+            <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
           
             <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+          
+            <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+          
+            <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
           
             <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
           
             <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
           
-            <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+            <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
           
             <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
           
@@ -300,15 +304,19 @@
                         
                           <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
                         
-                          <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+                          <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
                         
                           <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+                        
+                          <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+                        
+                          <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
                         
                           <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
                         
                           <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
                         
-                          <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+                          <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
                         
                           <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
                         
@@ -448,68 +456,71 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序机制</h1>
+		<h1>微信小程序运营 设计与开发</h1>
 
-		<p>微信客户端在打开小程序之前，会把整个小程序的代码包下载到本地。</p>
+		<h4 id="toc_0">项目经理必备</h4>
 
-<h4 id="toc_0">小程序未发布时有权限-需添加用户身份</h4>
+<p>项目经理必要了解API里面微信开放接口的信息例如：</p>
 
-<pre><code>管理入口位于：小程序管理后台 - 用户身份 – 成员管理
+<ol>
+<li>登录授权</li>
+<li>获取用户信息</li>
+<li>微信支付</li>
+<li>转发</li>
+<li>收货地址</li>
+<li>生成小程序二维码</li>
+</ol>
 
-一个团队进行小程序的开发，那么团队成员的身份管理是很有必要的。
-管理员可在小程序管理后台统一管理项目成员（
-包括开发者、体验者及其他成员）、
-设置项目成员的权限，包括：开发者/体验者权限、登录小程序管理后台、开发管理、查看小程序数据分析等。
-管理入口位于：小程序管理后台 - 用户身份 – 成员管理
-</code></pre>
+<p>小程序初期明确是否在运营规范里允许的，或者找一些已有小程序样例</p>
 
-<h4 id="toc_1">小程序运行机制</h4>
+<ul>
+<li>运营规范(在这里查看禁止事项)：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/index.html">https://mp.weixin.qq.com/debug/wxadoc/product/index.html</a></li>
+<li><p>特殊行业所需资质材料：<a href="https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/product/material.html?t=201714</a><br/>
+<img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.46.27.png" alt="屏幕快照 2018-08-08 下午3.46.27"/></p></li>
+<li><p>支付文档：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1</a></p></li>
+<li><p>客服消息：<a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221">https://mp.weixin.qq.com/debug/wxadoc/introduction/custom.html?t=20161221</a> </p></li>
+<li><p>数据分析：<a href="https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/analysis/index.html?t=201714</a></p></li>
+</ul>
 
-<pre><code>热启动
- 小程序启动会有两种情况，一种是「冷启动」，一种是「热启动」。
- 假如用户已经打开过某小程序，然后在一定时间内再次打开该小程序，
- 此时无需重新启动，只需将后台态的小程序切换到前台，
-冷启动
- 冷启动指的是用户首次打开或小程序被微信主动销毁后再次打开的情况，
- 此时小程序需要重新加载启动。
+<hr/>
 
- 当小程序进入后台，客户端会维持一段时间的运行状态，超过一定时间后
- （目前是5分钟）会被微信主动销毁
- 当短时间内（5s）连续收到两次以上收到系统内存告警，会进行小程序的销毁
-</code></pre>
+<h5 id="toc_1">当开始要做一个小程序时，需通读设计指南</h5>
 
-<pre><code>小程序启动进入程序紧接着通过 
-app.json 的 pages 字段就可以知道你当前小程序的所有页面路径:
-默认启动app.json 的 pages 字段的第一个页面就是这个小程序的首页
-(打开小程序看到的第一个页面)。
-</code></pre>
+<p>设计指南：<a href="https://mp.weixin.qq.com/debug/wxadoc/design/index.html">https://mp.weixin.qq.com/debug/wxadoc/design/index.html</a></p>
 
-<p><img src="media/15287848933165/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-08%20%E4%B8%8B%E5%8D%883.05.53.png" alt="屏幕快照 2018-08-08 下午3.05.53"/></p>
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.28.55.png" alt="屏幕快照 2018-04-09 上午11.28.55"/></p>
 
-<h4 id="toc_2">小程序更新机制</h4>
+<h4 id="toc_2">小程序开发人员必备</h4>
 
-<pre><code>小程序冷启动时如果发现有新版本，将会异步下载新版本的代码包，
-并同时用客户端本地的包进行启动，
-即新版本的小程序需要等下一次冷启动才会应用上。 
-如果需要马上应用最新版本，
-可以使用 wx.getUpdateManager API 进行处理。
-</code></pre>
+<p>入坑指南，疑难问题，请浏览👇<br/>
+小程序社区：<a href="http://www.wxapp-union.com/">http://www.wxapp-union.com/</a></p>
 
-<h4 id="toc_3">小程序代码包大小的优化</h4>
+<p>开发者学习已有框架可参考<br/>
+WePY框架开发小程序请移步👇<br/>
+<a href="https://tencent.github.io/wepy/index.html">https://tencent.github.io/wepy/index.html</a></p>
 
-<pre><code>小程序一开始时代码包限制为 1MB，但我们收到了很多反馈说代码包大小不够用，
-经过评估后我们放开了这个限制，增加到 2MB 。
-代码包上限的增加对于开发者来说，能够实现更丰富的功能，
-但对于用户来说，也增加了下载流量和本地空间的占用。
+<p>美团一团队出的框架mpvue框架请移步👇<br/>
+<a href="http://mpvue.com/mpvue/#_2">http://mpvue.com/mpvue/#_2</a></p>
 
-分包加载
+<p>渐进式JavaScript 框架VUE 地址：<br/>
+<a href="https://cn.vuejs.org/">https://cn.vuejs.org/</a></p>
 
-目前小程序分包大小有以下限制：
- •  整个小程序所有分包大小不超过 8M
- •  单个分包/主包大小不能超过 2M
-对小程序进行分包，可以优化小程序首次启动的下载时间，
-以及在多团队共同开发时可以更好的解耦协作。
-</code></pre>
+<p>weui Github 地址：<br/>
+<a href="https://github.com/Tencent/weui-wxss">https://github.com/Tencent/weui-wxss</a></p>
+
+<hr/>
+
+<h5 id="toc_3">微信开发者工具创建小程序工程需要AppID</h5>
+
+<p>官方工具：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714">https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=201714</a></p>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.21.41.png" alt="屏幕快照 2018-04-09 上午11.21.41"/></p>
+
+<h5 id="toc_4">小程序开发必读项，教程 ，框架 ，组件 ，API , 工具</h5>
+
+<p>简易教程：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/">https://mp.weixin.qq.com/debug/wxadoc/dev/</a></p>
+
+<p><img src="media/15232437563217/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-09%20%E4%B8%8A%E5%8D%8811.23.50.png" alt="屏幕快照 2018-04-09 上午11.23.50"/></p>
 
 
 		</div>

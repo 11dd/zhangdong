@@ -89,15 +89,19 @@
           
             <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
           
-            <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+            <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
           
             <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+          
+            <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+          
+            <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
           
             <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
           
             <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
           
-            <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+            <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
           
             <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
           
@@ -300,15 +304,19 @@
                         
                           <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
                         
-                          <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+                          <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
                         
                           <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+                        
+                          <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+                        
+                          <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
                         
                           <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
                         
                           <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
                         
-                          <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+                          <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
                         
                           <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
                         
@@ -448,103 +456,55 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之动画</h1>
+		<h1>CMMI3级评审</h1>
 
-		<h5 id="toc_0">---wxml文件---</h5>
+		<h3 id="toc_0">十八个过程域</h3>
 
-<pre><code>&lt;view class=&#39;lunbo&#39; animation=&quot;{{animationItem}}&quot;
-&lt;/view&gt;
-</code></pre>
+<h5 id="toc_1">过程管理</h5>
 
-<h5 id="toc_1">---JS文件---</h5>
+<h6 id="toc_2">组织过程改进（OPF）Organization Process Focus</h6>
 
-<pre><code>  var that = this;
-    //动画样式
-    that.animationItem = wx.createAnimation({
-      duration: 500,
-      timingFunction: &#39;linear&#39;,
-      transformOrigin: &#39;90% 70%&#39;,
-      success: function(res) {}
-    });
-    
-    // 定时器，2S 循环一次
-    that.data.newLunbo_interval = setInterval(function() {
-      //开始动画-缩小
-      that.animationItem.scale3d(0.98, 0.98, 0.1).step();
-      that.setData({
-        animationItem: that.animationItem.export()
-      });
-      //延迟恢复到原来大小
-      setTimeout(function() {
-        that.animationItem.scale3d(1.0, 1.0, 1.0).step();
-        that.setData({
-          animationItem: that.animationItem.export(),
-        });
-      }, 500)
-    }.bind(that), 2000);
-</code></pre>
+<h6 id="toc_3">组织过程定义（OPD）Organization Process Definition</h6>
 
-<h5 id="toc_2">清理定时器</h5>
+<h6 id="toc_4">组织培训（OT）Organization Training</h6>
 
-<pre><code>    clearInterval(this.data.newLunbo_interval);
-</code></pre>
+<h5 id="toc_5">项目管理</h5>
 
-<h5 id="toc_3">创建wx.createAnimation参数含义</h5>
+<h6 id="toc_6">立项（PIM）</h6>
 
-<pre><code>duration            动画持续时间，单位 ms 
-timingFunction      &#39;linear&#39; 动画的效果  
-delay               动画延迟时间，单位 ms 
-transformOrigin     &#39;50% 50% 0&#39;
-</code></pre>
+<h6 id="toc_7">集成项目管理（IPM）</h6>
 
-<h5 id="toc_4">timingFunction 的合法值</h5>
+<h6 id="toc_8">项目策划（PP）</h6>
 
-<pre><code>&#39;linear&#39;    动画从头到尾的速度是相同的
-&#39;ease&#39;  动画以低速开始，然后加快，在结束前变慢
-&#39;ease-in&#39;   动画以低速开始
-&#39;ease-in-out&#39;   动画以低速开始和结束
-&#39;ease-out&#39;  动画以低速结束
-&#39;step-start&#39;    动画第一帧就跳至结束状态直到结束
-&#39;step-end&#39;  动画一直保持开始状态，最后一帧跳到结束状态
-</code></pre>
+<h6 id="toc_9">项目监督和控制（PMC）</h6>
 
-<h5 id="toc_5">transformOrigin 的合法值</h5>
+<h6 id="toc_10">风险管理（RSKM）</h6>
 
-<pre><code>transform-origin: x-axis y-axis z-axis;
+<h6 id="toc_11">结项（PCM）</h6>
 
-x-axis  定义视图被置于 X 轴的何处。可能的值：
-    left
-    center
-    right
-    length
-    %
-    
-y-axis  定义视图被置于 Y 轴的何处。可能的值：
-    top
-    center
-    bottom
-    length
-    %
+<h5 id="toc_12">项目研发</h5>
 
-z-axis  定义视图被置于 Z 轴的何处。可能的值：
-    length
-</code></pre>
+<h6 id="toc_13">需求开发与管理（RD）</h6>
 
-<h4 id="toc_6">微信小程序播放音频</h4>
+<h6 id="toc_14">系统设计编码（SD）</h6>
 
-<pre><code>
-    // 音频播放
-    const innerAudioContext = wx.createInnerAudioContext()
-    innerAudioContext.autoplay = true
-    innerAudioContext.src = &#39;https://cdn.caomall.net/15290437711272352156.mp3&#39;
-    innerAudioContext.onPlay(() =&gt; {
-      console.log(&#39;开始播放&#39;)
-    })
-    innerAudioContext.onError((res) =&gt; {
-      console.log(res.errMsg)
-      console.log(res.errCode)
-    })
-</code></pre>
+<h6 id="toc_15">测试（TS）</h6>
+
+<h6 id="toc_16">评审（TR）</h6>
+
+<h6 id="toc_17">产品发布（PI）</h6>
+
+<h6 id="toc_18">产品实施（PA）</h6>
+
+<h5 id="toc_19">过程支持</h5>
+
+<h6 id="toc_20">配置管理（CM）</h6>
+
+<h6 id="toc_21">过程和产品质量保证（PPQA）</h6>
+
+<h6 id="toc_22">度量与分析（MA）</h6>
+
+<h6 id="toc_23">决策分析和决定（DAR）</h6>
 
 
 		</div>

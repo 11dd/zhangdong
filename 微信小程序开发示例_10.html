@@ -89,15 +89,19 @@
           
             <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
           
-            <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+            <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
           
             <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+          
+            <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+          
+            <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
           
             <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
           
             <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
           
-            <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+            <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
           
             <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
           
@@ -300,15 +304,19 @@
                         
                           <li><a title="微信小程序建项-轮播" href="15235125175960.html">微信小程序建项-轮播</a></li>
                         
-                          <li><a title="微信小程序建项-列表布局" href="15235133751593.html">微信小程序建项-列表布局</a></li>
+                          <li><a title="微信小程序建项-经典列表布局" href="15235133751593.html">微信小程序建项-经典列表布局</a></li>
                         
                           <li><a title="微信小程序建项-网格布局" href="15236096586360.html">微信小程序建项-网格布局</a></li>
+                        
+                          <li><a title="微信小程序建项-收货地址" href="15451872525874.html">微信小程序建项-收货地址</a></li>
+                        
+                          <li><a title="微信小程序之更新API的使用" href="15451870610956.html">微信小程序之更新API的使用</a></li>
                         
                           <li><a title="微信小程序之二维码" href="15426946934140.html">微信小程序之二维码</a></li>
                         
                           <li><a title="微信小程序之分享" href="15427653318773.html">微信小程序之分享</a></li>
                         
-                          <li><a title="微信小程序之顶部悬停菜单" href="15440814346317.html">微信小程序之顶部悬停菜单</a></li>
+                          <li><a title="微信小程序之菜单" href="15440814346317.html">微信小程序之菜单</a></li>
                         
                           <li><a title="微信小程序之解析html" href="15420001365512.html">微信小程序之解析html</a></li>
                         
@@ -448,188 +456,63 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之顶部悬停菜单</h1>
+		<h1>微信小程序之二维码</h1>
 
-		<p>xml 文件</p>
-
-<pre><code> &lt;!-- 分类菜单 --&gt;
-  &lt;view id=&quot;affix&quot; wx:if=&#39;{{tabs.length &gt; 1}}&#39; class=&#39;{{typeFixed?&quot;menu-typefixed&quot;:&quot;menu-typeFixed&quot;}}&#39;&gt;
-    &lt;view class=&quot;menu-scroll-view-wrap&quot;&gt;
-      &lt;scroll-view class=&quot;menu-scroll-view-catalog&quot; scroll-x=&quot;true&quot; scroll-with-animation=&quot;true&quot;&gt;
-        &lt;view class=&quot;menu-scroll-view-item&quot; wx:for=&quot;{{tabs}}&quot; wx:key=&quot;{{index}}&quot; data-index=&quot;{{index}}&quot; bindtap=&quot;onTabSelected&quot;&gt;
-          &lt;text class=&quot;menu-text-item {{index === tabIndex ? &#39;menu-active-text-item&#39; : &#39;&#39;}} weui-zimFont11&quot; data-index=&quot;{{index}}&quot;&gt;{{item.name}}&lt;/text&gt;
-        &lt;/view&gt;
-      &lt;/scroll-view&gt;
-    &lt;/view&gt;
-  &lt;/view&gt;
+		<pre><code>获取小程序二维码，官方提供了三个接口，开发者可挑选适合自己的接口。 
+ A接口，生成小程序码，可接受path参数较长，生成个数受限。
+  B接口，生成小程序码，可接受页面参数较短，生成个数不受限。
+   C接口，生成二维码，可接受path参数较长，生成个数受限。
 </code></pre>
 
-<p>wxss文件</p>
+<pre><code>接口A: 适用于需要的码数量较少的业务场景
+通过该接口生成的小程序码，永久有效
 
-<pre><code>/* 顶部悬停分类菜单样式 */
+接口C：适用于需要的码数量较少的业务场景
+通过该接口生成的小程序二维码，永久有效，数量限制
 
-.menu-typeFixed {
-  top: 0px;
-  left: 0;
-  z-index: 300;
-  height: 80rpx;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
+数量限制接口A加上接口C，总共生成的码数量限制为100,000
 
-.menu-typefixed {
-  position: fixed;
-  top: 0px;
-  left: 0;
-  z-index: 300;
-  height: 88rpx;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
+接口B：适用于需要的码数量极多的业务场景
 
-.menu-scroll-view-wrap {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
+通过接口B生成的小程序码，永久有效，数量暂无限制。
+可以带参数最大32个可见字符，只支持数字，大小写英文
+以及部分特殊字符：!#$&amp;&#39;()*+,/:;=?@-._~，
+其它字符请自行编码为合法字符（
+因不支持%，中文无法使用 urlencode 处理，请使用其他编码方式）
 
-.menu-scroll-view-catalog {
-  height: 35px;
-  width: 100%;
-  white-space: nowrap;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.menu-scroll-view-catalog::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
-}
-
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
-}
-
-.menu-scroll-view-item {
-  display: inline-block;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 5px 10px;
-  border-bottom: 2px solid #fff;
-}
-
-menu-text-item {
-  border-bottom: 1px #fff solid;
-}
-
-.menu-active-text-item {
-  border-bottom: 2px #dc3545 solid;
-}
-
-/* 以上-顶部悬停分类菜单样式 */
+B接口调用分钟频率受限(目前5000次/分钟)
 </code></pre>
 
-<p>js文件</p>
+<h4 id="toc_0">首先</h4>
 
-<pre><code>/**
-   * 页面的初始数据
-   */
-  data: {
-    //分类菜单
-    menuTop: 666,
-    menuBottom: 666,
-    typeFixed: false,
-    tabIndex: 0, //选择分类的第几个
-    tabs: [{
-      name: &quot;全部&quot;
-    }, {
-      name: &quot;新品&quot;
-    }, {
-      name: &quot;生鲜&quot;
-    }, {
-      name: &quot;居家&quot;
-    }, {
-      name: &quot;服装&quot;
-    }, {
-      name: &quot;美护&quot;
-    }, {
-      name: &quot;出行&quot;
-    }, {
-      name: &quot;电器&quot;
-    }, {
-      name: &quot;杂货&quot;
-    }, ],
+<p>因为接口B不受数量限制，我们使用接口B生成小程序二维码<br/>
+ 使用PostMan发起GET请求获取access_token：<br/>
+ 官方文档 ：<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183">https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183</a></p>
 
-  },
-  /**************获取分类菜单的吸顶距离**************** */
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-    var that = this;
-    setTimeout(function() {
-      // 页面加载完成时，并且当请求完商品的时候，判断吸顶菜单距离顶部的距离
-      that.testHeight();
-    }, 1000)
-  },
+<pre><code>https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=这里填写小程序appid&amp;secret=这里填写小程序secret
 
-  testHeight: function() {
-    var that = this;
-    var query = wx.createSelectorQuery() //创建节点查询器 query
-    query.select(&#39;#affix&#39;).boundingClientRect() //这段代码的意思是选择Id= the - id的节点，获取节点位置信息的查询请求
-    query.exec(function(res) {
-      that.setData({
-        menuTop: res[0].top,
-        menuBottom: res[0].bottom,
-      })
-    });
-  },
-
-  onPageScroll: function(e) {
-    //当滚动位置大于menuTop并且typeFixed为true时,setData不再执行，可有效避免页面的卡顿，以及吸顶时页面的抖动
-    if (e.scrollTop &gt;= this.data.menuTop &amp;&amp; !this.data.typeFixed) {
-      this.setData({
-        typeFixed: true
-      })
-    } else if (e.scrollTop &lt; this.data.menuTop &amp;&amp; this.data.typeFixed) {
-      this.setData({
-        typeFixed: false
-      })
-    }
-    //当滚动的距离到了scrollview底部的时候，触发请求方法
-    if ((this.data.menuBottom - this.data.winHeight - 55) &lt; e.scrollTop) {
-      this.lower();
-    }
-
-  },
-
-  /********************切换分类菜单时请求该分类数据******************* */
-
-  onTabSelected: function(event) {
-    var that = this;
-    // 切换tab时需要需要设置当前是第几个
-    that.setData({
-      tabIndex: event.target.dataset.index
-    });
-
-  },
+返回参数：
+{
+    &quot;access_token&quot;: &quot;&quot;,
+    &quot;expires_in&quot;: 7200
+}
 </code></pre>
+
+<h4 id="toc_1">其次</h4>
+
+<p>发起POST请求：</p>
+
+<pre><code>https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=这里填写上一个接口返回的token
+
+Body中选择raw写入参数，例如
+{
+    &quot;page&quot;:&quot;pages/lengxiangui/coldfresh_index/coldfresh_index&quot;,
+    &quot;scene&quot;:&quot;1&quot;
+}
+注：场景值 scene 不得超过32位字符，并且上线已有的页面才能生成二维码
+</code></pre>
+
+<p><img src="media/15426946934140/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-20%20%E4%B8%8B%E5%8D%882.35.02.png" alt="屏幕快照 2018-11-20 下午2.35.02"/></p>
 
 
 		</div>
