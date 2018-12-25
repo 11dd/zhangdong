@@ -47,6 +47,8 @@
         <li><label>微信小程序概述</label></li>
 
           
+            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
+          
             <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
           
             <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
@@ -236,6 +238,8 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
+                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
+                        
                           <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
                         
                           <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
@@ -406,63 +410,50 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之二维码</h1>
+		<h1>微信小程序之更新API的使用</h1>
 
-		<pre><code>获取小程序二维码，官方提供了三个接口，开发者可挑选适合自己的接口。 
- A接口，生成小程序码，可接受path参数较长，生成个数受限。
-  B接口，生成小程序码，可接受页面参数较短，生成个数不受限。
-   C接口，生成二维码，可接受path参数较长，生成个数受限。
+		<h5 id="toc_0">在打开小程序的主页，调用如下方法，检查更新小程序</h5>
+
+<pre><code> updateFunction: function() {
+    console.log(&#39;------------检查更新方法--------------&#39;)
+    // 获取小程序更新机制兼容
+    if (wx.canIUse(&#39;getUpdateManager&#39;)) {
+      const updateManager = wx.getUpdateManager()
+      updateManager.onCheckForUpdate(function(res) {
+        console.log(&#39;请求完新版本信息的回调&#39;)
+        console.log(res.hasUpdate)
+        if (res.hasUpdate) {
+          updateManager.onUpdateReady(function() {
+            wx.showModal({
+              title: &#39;更新提示&#39;,
+              content: &#39;新版本已经准备好，是否重启应用？&#39;,
+              success: function(res) {
+                if (res.confirm) {
+                  // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+                  updateManager.applyUpdate()
+                }
+              },
+              showCancel: false
+            })
+          })
+          updateManager.onUpdateFailed(function() {
+            // 新的版本下载失败
+            wx.showModal({
+              title: &#39;已经有新版本了哟~&#39;,
+              content: &#39;新版本已经上线啦~，请您删除当前小程序，重新搜索打开哟~&#39;,
+            })
+          })
+        }
+      })
+    } else {
+      // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
+      wx.showModal({
+        title: &#39;提示&#39;,
+        content: &#39;当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。&#39;
+      })
+    }
+  },
 </code></pre>
-
-<pre><code>接口A: 适用于需要的码数量较少的业务场景
-通过该接口生成的小程序码，永久有效
-
-接口C：适用于需要的码数量较少的业务场景
-通过该接口生成的小程序二维码，永久有效，数量限制
-
-数量限制接口A加上接口C，总共生成的码数量限制为100,000
-
-接口B：适用于需要的码数量极多的业务场景
-
-通过接口B生成的小程序码，永久有效，数量暂无限制。
-可以带参数最大32个可见字符，只支持数字，大小写英文
-以及部分特殊字符：!#$&amp;&#39;()*+,/:;=?@-._~，
-其它字符请自行编码为合法字符（
-因不支持%，中文无法使用 urlencode 处理，请使用其他编码方式）
-
-B接口调用分钟频率受限(目前5000次/分钟)
-</code></pre>
-
-<h4 id="toc_0">首先</h4>
-
-<p>因为接口B不受数量限制，我们使用接口B生成小程序二维码<br/>
- 使用PostMan发起GET请求获取access_token：<br/>
- 官方文档 ：<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183">https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183</a></p>
-
-<pre><code>https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=这里填写小程序appid&amp;secret=这里填写小程序secret
-
-返回参数：
-{
-    &quot;access_token&quot;: &quot;&quot;,
-    &quot;expires_in&quot;: 7200
-}
-</code></pre>
-
-<h4 id="toc_1">其次</h4>
-
-<p>发起POST请求：</p>
-
-<pre><code>https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=这里填写上一个接口返回的token
-
-Body中选择raw写入参数，例如
-{
-    &quot;page&quot;:&quot;pages/lengxiangui/coldfresh_index/coldfresh_index&quot;,
-    &quot;scene&quot;:&quot;1&quot;
-}
-注：场景值 scene 不得超过32位字符，并且上线已有的页面才能生成二维码
-</code></pre>
-
-<p><img src="media/15426946934140/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-20%20%E4%B8%8B%E5%8D%882.35.02.png" alt="屏幕快照 2018-11-20 下午2.35.02"/></p>
 
 
 		</div>

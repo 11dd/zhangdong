@@ -47,6 +47,8 @@
         <li><label>微信小程序概述</label></li>
 
           
+            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
+          
             <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
           
             <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
@@ -236,6 +238,8 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
+                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
+                        
                           <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
                         
                           <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
@@ -406,99 +410,123 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS tableView 常用属性与方法</h1>
+		<h1>iOS tableView 基础使用说明</h1>
 
-		<h5 id="toc_0">tableview 常用属性如下：</h5>
+		<h5 id="toc_0">pragma - mark - tableview列表初始化</h5>
 
-<pre><code> if (@available(iOS 11.0, *)) {
-            _tableView.estimatedRowHeight = 0;
-            _tableView.estimatedSectionFooterHeight = 0;
-            _tableView.estimatedSectionHeaderHeight = 0;
-            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        }else{
-            self.automaticallyAdjustsScrollViewInsets = NO;
-            
-        }
-        
-</code></pre>
-
-<pre><code>//获取手势点击的是哪一个cell的坐标
-NSIndexPath *indexPath = [self.tableView indexPathForCell:((UITableViewCell *)longPress.view)];
-
-//点击button时获取button所在的cell的indexpath
-UIButton *button = sender;
-tempTableViewCell *cell = (tempTableViewCell *)[[button superview] superview];
-NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
-
-//局部刷新一个section刷新    
-NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];    
-[tableview reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];    
-
-//局部刷新一个cell刷新   
-NSIndexPath *indexPath=[NSIndexPath indexPathForRow:1 inSection:0];   
-[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone]; 
-
-//不显示分割线
-_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-
-//显示箭头
-cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
-//无选中状态
-cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-//自适应单元格高度
-tableView.rowHeight = UITableViewAutomaticDimension; 
-//先估计一个高度
-tableView.estimatedRowHeight = 50; 
-</code></pre>
-
-<pre><code></code></pre>
-
-<pre><code></code></pre>
-
-<h5 id="toc_1">tableview 常用方法如下：</h5>
-
-<h6 id="toc_2">tableview 选中第几行</h6>
-
-<pre><code>NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
-[self.tableView selectRowAtIndexPath:indexpath animated:YES scrollPosition:UITableViewScrollPositionMiddle];  //选中第5行
-</code></pre>
-
-<h6 id="toc_3">滚动到指定位置</h6>
-
-<pre><code>//滚动到指定位置_偏移量
-[self.rizhiTableView setContentOffset:CGPointMake(0, OffsetY) animated:NO];
-//滚动到第几行
-NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
-[self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionTop animated:NO];
-</code></pre>
-
-<h6 id="toc_4">pragma mark  - 滑到最底部</h6>
-
-<pre><code>- (void)scrollTableToFoot
+<pre><code>-(UITableView *)tableView
 {
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
+    if (!_tableView) {
         
-        NSInteger s = [self.tableView numberOfSections];  //有多少组
-        if (s&lt;1) return;  //无数据时不执行 要不会crash
-        NSInteger r = [self.tableView numberOfRowsInSection:s-1]; //最后一组有多少行
-        if (r&lt;1) return;
-        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:r-1 inSection:s-1];  //取最后一行数据
-        [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:NO]; //滚动到最后一行
+        _tableView = [[UITableView alloc]initWithFrame:
+                      CGRectMake(, , , ) style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.backgroundColor = ;
+        //分割线的颜色
+        _tableView.separatorColor = ;
+        //隐藏滚动条
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.tableFooterView = [[UIView alloc]init];
         
-    });
-  
+    }
+    return _tableView;
 }
 </code></pre>
 
-<h6 id="toc_5">pragma -mark- 删除方法</h6>
+<h5 id="toc_1">tableview 代理方法实现如下：</h5>
+
+<h6 id="toc_2">tableview解决常规配置的重复问题。。。</h6>
+
+<pre><code>//当页面拉动需要显示新数据的时候，把最后一个cell进行删除 此方案即可避免重复显示，又重用了cell相对内存管理来说是好的方案 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 定义唯一标识
+    static NSString *CellIdentifier = @&quot;Cell&quot;;
+    // 通过唯一标识创建cell实例
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    else//当页面拉动的时候 当cell存在并且最后一个存在 把它进行删除就出来一个独特的cell我们在进行数据配置即可避免
+    {
+        while ([cell.contentView.subviews lastObject] != nil) {
+            [(UIView *)[cell.contentView.subviews lastObject] removeFromSuperview];
+        }
+    }
+    
+//点击没有选中状态
+cell.selectionStyle = UITableViewCellSelectionStyleNone;  
+
+// 对cell 进行简单地数据配置
+cell.textLabel.text = @&quot;text&quot;;
+   
+return cell;
+}
+</code></pre>
+
+<h5 id="toc_3">other</h5>
+
+<pre><code>//行
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return &lt;#@#&gt;;
+}
+//行高
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return &lt;#@#&gt;;
+}
+
+#pragma - mark - 点击cell方法
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+</code></pre>
+
+<h5 id="toc_4">tableview header与footer</h5>
+
+<pre><code>#pragma - mark - tableview_Header and Footer
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView * view = [[UIView alloc]init];
+    
+    return view;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    
+    return 0;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView * view = [[UIView alloc]init];
+    
+    return view;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    
+    return 0;
+    
+}
+</code></pre>
+
+<p>tableview 侧滑删除方法</p>
 
 <pre><code>//先要设Cell可编辑
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return YES;
+    return NO;
 }
 
 //定义编辑样式
@@ -521,95 +549,9 @@ NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:0];
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     /**一定是先删除了数据，再执行删除的动画或者其他操作，否则会出现崩溃*/
     
-    [self deleteAdressData:indexPath];
+    [self deleteData:indexPath];//单个删除接口
     
 }
-
-</code></pre>
-
-<pre><code>
-dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        // 处理耗时操作的代码块...
-        
-    
-        //通知主线程刷新
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //回调或者说是通知主线程刷新，
-            
-        });
-        
-    });
-    
-    
-</code></pre>
-
-<pre><code>
-//同步数据
-[[NSUserDefaults standardUserDefaults]synchronize];
-
-//延时操作
- dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
- });       
-            
-</code></pre>
-
-<pre><code>//单击手势
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(TapImgView:)];
-        [tapGesture setNumberOfTapsRequired:1];
-        [imgView addGestureRecognizer:tapGesture];
-
-
-
--(void)TapImgView:(UITapGestureRecognizer*)tapGesture
-{
-    UITapGestureRecognizer *singleTap = (UITapGestureRecognizer *)tapGesture;
-    NSInteger index = singleTap.view.tag;
-
-}
-
-</code></pre>
-
-<pre><code> [_timer invalidate];//永远停止并且要置为nil
- [_timer setFireDate:[NSDate distantFuture]];//关闭定时器
-    
-</code></pre>
-
-<pre><code>*******************************跳转**********************************************
-
- for (UIViewController *controller in self.navigationController.viewControllers) {
-
-            if ([controller isKindOfClass:[SecondDetailsViewController class]]) {
-
-                SecondDetailsViewController *test =(SecondDetailsViewController *)controller;
-                [self.navigationController popToViewController:test animated:YES];
-
-            }
-  }
-
-        
-  [self.navigationController popToRootViewControllerAnimated:YES];
-
-*****************************************************************************
-
-</code></pre>
-
-<pre><code>
-  //放大过程中出现的缓慢动画
-    - (void) shakeToShow:(UIView*)aView{
-        
-        CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@&quot;transform&quot;];
-        animation.duration = 0.2;
-        NSMutableArray *values = [NSMutableArray array];
-        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
-        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
-        animation.values = values;
-        [aView.layer addAnimation:animation forKey:nil];
-        
-    }
-
-
-
 </code></pre>
 
 

@@ -47,6 +47,8 @@
         <li><label>微信小程序概述</label></li>
 
           
+            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
+          
             <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
           
             <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
@@ -236,6 +238,8 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
+                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
+                        
                           <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
                         
                           <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
@@ -406,33 +410,85 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序的历程</h1>
+		<h1>微信小程序建项-网格布局</h1>
 
-		<h4 id="toc_0">历程</h4>
+		<h5 id="toc_0">在wxml里加入如下代码：</h5>
 
-<ol>
-<li><p>16年 越来越多产品通过公众号来做，因为这里开发、获取用户和传播成本更低。拆分出来的服务号并没有提供更好的服务，所以微信内部正在研究新的形态，叫「微信小程序」。</p></li>
-<li><p>从2017年1月9日 小程序正式推出之后至 2017年12月28日 跳一跳上线火爆，传播发展的地域时间差；</p></li>
-<li><p>全面开放申请后，主体类型为企业、政府、媒体、其他组织或个人的开发者，均可申请注册小程序。小程序、订阅号、服务号、企业号是并行的体系。</p></li>
-<li><p>微信小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。</p></li>
-<li><p>2018.7.13 微信更新小程序，增加了我的小程序入口,最多可加50个；</p></li>
-<li><p>小程序入口=&gt; 微信 消息页下拉，发现页 小程序；<br/>
-小程序分享不能分享到朋友圈，分享好友或群；<br/>
-主要是线下场景扫码使用</p></li>
-</ol>
+<pre><code>
+  &lt;!-- 商品网格布局 --&gt;
+  &lt;view class=&#39;goods-grid-view&#39;&gt;
+    &lt;block wx:for=&quot;{{12}}&quot; wx:key=&quot;{{item}}&quot; wx:for-item=&quot;item&quot;&gt;
+      &lt;view class=&#39;goods-grid-blockview&#39; data-item=&#39;{{item}}&#39; catchtap=&#39;onGoodsTap&#39;&gt;
+        &lt;view class=&#39;goods-grid-container&#39;&gt;
+          &lt;image class=&#39;goods-img&#39; mode=&#39;aspectFill&#39; src=&quot;{{&#39;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&#39;}}&quot;&gt;&lt;/image&gt;
+          &lt;text class=&#39;goods-title weui-Font2&#39;&gt;{{&quot;我是商品名&quot;}}&lt;/text&gt;
+          &lt;text class=&#39;goods-title weui-Font3&#39;&gt;{{&quot;我是商品介绍么&quot;}}&lt;/text&gt;
+          &lt;text class=&#39;goods-price weui-Font2&#39; style=&#39;color: #d0ae97&#39;&gt;¥{{200}}\r\t\r\t\r\t&lt;text class=&#39;goods-price weui-Font2&#39; style=&#39;text-decoration:line-through;color: lightgray&#39;&gt;¥{{260}}&lt;/text&gt;&lt;/text&gt;
+        &lt;/view&gt;
+      &lt;/view&gt;
+    &lt;/block&gt;
+  &lt;/view&gt;
 
-<h4 id="toc_1">小程序的几点介绍</h4>
-
-<pre><code>1.小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念；
-
-2.用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。
-
-3.对于开发者而言，小程序开发门槛相对较低，难度不及APP，能够满足简单的基础应用；
-
-4.适合生活服务类线下商铺以及非刚需低频应用的转换。
-
-5.小程序能够实现消息通知、线下扫码、公众号关联等七大功能。其中，通过公众号关联，用户可以实现公众号与小程序之间相互跳转。由于小程序不存在入口。
 </code></pre>
+
+<h5 id="toc_1">在wxss里加入如下代码：</h5>
+
+<pre><code>
+/* 网格布局 */
+
+.goods-grid-view {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: auto;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.goods-grid-blockview {
+  width: 50%;
+  background-color: white;
+}
+
+.goods-grid-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.goods-img {
+  width: 100%;
+  height: 340rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.goods-title {
+  margin-top: 15rpx;
+  margin-bottom: 10rpx;
+  display: -webkit-box;
+  align-content: center;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: -o-ellipsis-lastline;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  width: 340rpx;
+}
+
+.goods-price {
+  text-align: left;
+}
+
+</code></pre>
+
+<h5 id="toc_2">运行效果</h5>
+
+<p><img src="media/15236096586360/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-06%20%E4%B8%8B%E5%8D%884.02.21.png" alt="屏幕快照 2018-12-06 下午4.02.21"/></p>
 
 
 		</div>

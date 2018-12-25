@@ -47,6 +47,8 @@
         <li><label>微信小程序概述</label></li>
 
           
+            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
+          
             <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
           
             <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
@@ -236,6 +238,8 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
+                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
+                        
                           <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
                         
                           <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
@@ -406,68 +410,40 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序建项-经典列表布局</h1>
+		<h1>VSCode 前端常用插件推荐</h1>
 
-		<h5 id="toc_0">在创建的home.wxml文件里写入如下布局</h5>
+		<h4 id="toc_0">通用插件</h4>
 
-<pre><code>&lt;view&gt;  
-  &lt;scroll-view scroll-y=&quot;true&quot; style=&quot;height:100%&quot; &gt;  
-    &lt;view wx:for=&quot;{{array}}&quot; style=&quot;width:100%&quot;&gt;  
-    &lt;image id =&quot;{{index}}&quot; 
-           src =&quot;{{item}}&quot; 
-           mode =&quot;aspectFill&quot; 
-           style =&quot;width:100%;height:150px&quot;      
-           bindtap =&quot;tapName&quot; 
-           data-img =&quot;{{item}}&quot;&gt;&lt;/image&gt; 
-    &lt;/view&gt;  
-  &lt;/scroll-view&gt;  
-&lt;/view&gt; 
-</code></pre>
+<p>HTML Snippets ：超级实用且初级的 H5代码片段以及提示<br/>
+HTML CSS Support ：让 html 标签上写class 智能提示当前项目所支持的样式</p>
 
-<h5 id="toc_1">在home.js 文件里放入数据</h5>
+<p>Path Intellisense ： 自动路径补全</p>
 
-<pre><code>/**
-   * 页面的初始数据
-   */
-  data: {
-    array: [
-    &quot;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&quot;,
-    &quot;http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg&quot;,
-    &quot;http://img0.imgtn.bdimg.com/it/u=3069472720,3661376600&amp;fm=214&amp;gp=0.jpg&quot;
-    ]  
-  },
+<p>Project Manager ： 在多个项目之前快速切换的工具<br/>
+vscode-icon ： 让 vscode 资源树目录加上图标<br/>
+beautify ： 格式化代码的工具</p>
 
-  //列表上图片点击方法，跳转详情页面
-  tapName: function (event) {
-    console.log(event.target.dataset.img)
-    wx.navigateTo({
-      url: &#39;../detail/detail&#39;
-    })
-  },
-  
-  
-/**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+<h4 id="toc_1">Vue推荐插件</h4>
 
-    console.log(&quot;打印参数，上个页面传过来的参数id---&gt;&quot;)
-    console.log(options.id)  
+<p>vetur ： 语法高亮、智能感知、Emmet等</p>
 
-  },
-  
-</code></pre>
+<p>VueHelper ： snippet代码片段<br/>
+Vue 2 Snippets ：vue快捷键提示</p>
 
-<h5 id="toc_2">在home.json文件里写上navigationBarTitleText</h5>
+<p>Auto Close Tag ： 自动补全html标签<br/>
+Auto Rename Tag ：同步更改html尾标签</p>
 
-<pre><code>{
-  &quot;navigationBarTitleText&quot;: &quot;知之为知之&quot;
-}
-</code></pre>
+<p>ESLint ：ESlint语法提示<br/>
+JavaScript (ES6) snippets ：ES6语法快捷键支持</p>
 
-<h4 id="toc_3">运行界面 列表 list</h4>
+<p>Stylus ：主要支持vue文件下stylus CSS语法提示<br/>
+language-stylus ：stylus语法提示</p>
 
-<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-12%20%E4%B8%8B%E5%8D%881.50.12.png" alt="屏幕快照 2018-04-12 下午1.50.12"/></p>
+<p>File Peek ： 文件路径跳转<br/>
+Path Autocomplete ：文件自动路径提示</p>
+
+<p>VS Color Picker ：color: #fff 自动提示<br/>
+Import Cost ： 引入包大小计算,对于项目打包后体积掌握很有帮助</p>
 
 
 		</div>

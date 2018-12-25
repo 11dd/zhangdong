@@ -47,6 +47,8 @@
         <li><label>微信小程序概述</label></li>
 
           
+            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
+          
             <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
           
             <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
@@ -236,6 +238,8 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
+                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
+                        
                           <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
                         
                           <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
@@ -406,58 +410,103 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之服务通知</h1>
+		<h1>微信小程序之动画</h1>
 
-		<h4 id="toc_0">小程序端表单提交获取formid</h4>
+		<h5 id="toc_0">---wxml文件---</h5>
 
-<pre><code>wxml文件：
-&lt;form bindsubmit=&#39;requestOrder&#39; report-submit=&#39;true&#39;&gt;
-  &lt;button formType=&quot;submit&quot; class=&#39;market_cart_pay&#39;&gt;立即支付&lt;/button&gt;
-&lt;/form&gt;
+<pre><code>&lt;view class=&#39;lunbo&#39; animation=&quot;{{animationItem}}&quot;
+&lt;/view&gt;
 </code></pre>
 
-<pre><code>JS文件：
- requestOrder: function(e) {
-    console.log(&#39;点击立即支付触发表单提交获取formid&#39;)
-    console.log(e.detail.formId)
- }
+<h5 id="toc_1">---JS文件---</h5>
+
+<pre><code>  var that = this;
+    //动画样式
+    that.animationItem = wx.createAnimation({
+      duration: 500,
+      timingFunction: &#39;linear&#39;,
+      transformOrigin: &#39;90% 70%&#39;,
+      success: function(res) {}
+    });
+    
+    // 定时器，2S 循环一次
+    that.data.newLunbo_interval = setInterval(function() {
+      //开始动画-缩小
+      that.animationItem.scale3d(0.98, 0.98, 0.1).step();
+      that.setData({
+        animationItem: that.animationItem.export()
+      });
+      //延迟恢复到原来大小
+      setTimeout(function() {
+        that.animationItem.scale3d(1.0, 1.0, 1.0).step();
+        that.setData({
+          animationItem: that.animationItem.export(),
+        });
+      }, 500)
+    }.bind(that), 2000);
 </code></pre>
 
-<h4 id="toc_1">官方模板消息文档地址</h4>
+<h5 id="toc_2">清理定时器</h5>
 
-<p><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/template-message.html">https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/template-message.html</a></p>
-
-<pre><code>注意事项：下发这个通知微信是有条件的；
-1. 支付  2. 提交表单
-
-    支付
-    当用户在小程序内完成过支付行为，可允许开发者向用户在7天内
-    推送有限条数的模板消息
-    （1次支付可下发3条，多次支付下发条数独立，互相不影响）
-
-    提交表单
-    当用户在小程序内发生过提交表单行为且该表单声明为要发模板消息的，
-    开发者需要向用户提供服务时，
-    可允许开发者向用户在7天内推送有限条数的模板消息
-    （1次提交表单可下发1条，多次提交下发条数独立，相互不影响）
-
-
-用户提交一次表单，会提供给开发者一次推送权限，
-多次提交的情况下下发条数独立。
-所以如果开发者想要哎7天内无限制的为用户推送消息，
-需要做的就是--&gt;从用户那里获取&quot;足够多&quot;的推送权限
-（推送权限就是form表单的formid）。
-
-
-如果用户在一周内没有访问或点击过小程序中的任何组件，
-那我们就收集不到有效的fromid，
-也就意味着我们&quot;失去&quot;了给用户发送模板消息的权限
-
+<pre><code>    clearInterval(this.data.newLunbo_interval);
 </code></pre>
 
-<p><img src="media/15336330410298/IMG_3195.png" alt="IMG_3195"/></p>
+<h5 id="toc_3">创建wx.createAnimation参数含义</h5>
 
-<p><img src="media/15336330410298/IMG_3196.png" alt="IMG_3196"/></p>
+<pre><code>duration            动画持续时间，单位 ms 
+timingFunction      &#39;linear&#39; 动画的效果  
+delay               动画延迟时间，单位 ms 
+transformOrigin     &#39;50% 50% 0&#39;
+</code></pre>
+
+<h5 id="toc_4">timingFunction 的合法值</h5>
+
+<pre><code>&#39;linear&#39;    动画从头到尾的速度是相同的
+&#39;ease&#39;  动画以低速开始，然后加快，在结束前变慢
+&#39;ease-in&#39;   动画以低速开始
+&#39;ease-in-out&#39;   动画以低速开始和结束
+&#39;ease-out&#39;  动画以低速结束
+&#39;step-start&#39;    动画第一帧就跳至结束状态直到结束
+&#39;step-end&#39;  动画一直保持开始状态，最后一帧跳到结束状态
+</code></pre>
+
+<h5 id="toc_5">transformOrigin 的合法值</h5>
+
+<pre><code>transform-origin: x-axis y-axis z-axis;
+
+x-axis  定义视图被置于 X 轴的何处。可能的值：
+    left
+    center
+    right
+    length
+    %
+    
+y-axis  定义视图被置于 Y 轴的何处。可能的值：
+    top
+    center
+    bottom
+    length
+    %
+
+z-axis  定义视图被置于 Z 轴的何处。可能的值：
+    length
+</code></pre>
+
+<h4 id="toc_6">微信小程序播放音频</h4>
+
+<pre><code>
+    // 音频播放
+    const innerAudioContext = wx.createInnerAudioContext()
+    innerAudioContext.autoplay = true
+    innerAudioContext.src = &#39;https://cdn.caomall.net/15290437711272352156.mp3&#39;
+    innerAudioContext.onPlay(() =&gt; {
+      console.log(&#39;开始播放&#39;)
+    })
+    innerAudioContext.onError((res) =&gt; {
+      console.log(res.errMsg)
+      console.log(res.errCode)
+    })
+</code></pre>
 
 
 		</div>

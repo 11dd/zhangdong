@@ -47,6 +47,8 @@
         <li><label>微信小程序概述</label></li>
 
           
+            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
+          
             <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
           
             <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
@@ -236,6 +238,8 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
+                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
+                        
                           <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
                         
                           <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
@@ -406,102 +410,69 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序基础介绍</h1>
+		<h1>iOS审核被拒4.3</h1>
 
-		<h5 id="toc_0">小程序里的四种文件</h5>
+		<h5 id="toc_0">一种是过不了机审关被拒，一种是过不了人审关被拒。</h5>
 
-<pre><code>.json 后缀的 JSON 配置文件
-.wxml 后缀的 WXML 模板文件
-.wxss 后缀的 WXSS 样式文件
-.js 后缀的 JS 脚本逻辑文件
+<pre><code>iOS预审核，扫描api，及plist文件字符缺失等；
+此处分两步，第一步为上传时苹果Application Loador等应用对于适配icon等的检查，
+第二步为上传后苹果的功能性检查，例如配置了Push功能但有缺失
+或者未打开功能，则会邮件提示等等；
+
+iOS机审，主要是对代码进行机器审核，排查APP是否重复应用，此处扫描支付SDK等，及马甲情况，机器扫描主要看代码块
+
+iOS人审，主要是由苹果审核人员对APP的内容、功能进行核验，防止APP有bug，
+防止APP模仿其他应用，内容与其他APP重复，影响用户体验，
+检测功能或者App体验测试，例如用测试账号登录App体验功能，
+或其他是否明显bug等，ipv6也在此处检测；
+
 </code></pre>
 
-<h4 id="toc_1">小程序数据类型</h4>
+<h5 id="toc_1">区分机审 、人审</h5>
 
-<p>WXS 语言目前共有以下几种数据类型：</p>
+<pre><code>那么如何区分是机器审核还是人工审核呢？主要看APP被拒的信息：
 
-<pre><code>number ： 数值
-string ：字符串
-boolean：布尔值
-object：对象
-function：函数
-array : 数组
-date：日期
-regexp：正则
+1）如果是机器审核被拒，一般收到的被拒信息第一句话基本上是这样的：
+Guideline4.3 - Design - Spam
+Yourapp duplicates the content and functionality of apps submitted to the AppStore,
+ which is considered a form of spam.
+
+2）如果是人工审核被拒，一般收到的被拒信息第一句话基本上是这样的：
+Guideline4.3 - Design - Spam
+Wefound that your app provides the same feature set as other apps submitted tothe App Store, 
+which is not appropriate to the App Store.
 </code></pre>
 
-<h4 id="toc_2">小程序生命周期</h4>
+<h5 id="toc_2">针对审核</h5>
 
-<pre><code>onLaunch        Function    
-生命周期函数--监听小程序初始化    
-当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
+<pre><code>1.原来账号里的APP的名字可以作废掉或者修改成其他的，
+同时记得移除之前的APP，重新打个空包传上去，
+icon图则用其他logo图置换掉
 
-onShow          Function    
-生命周期函数--监听小程序显示     
-当小程序启动，或从后台进入前台显示，会触发 onShow
+2.增加登录日志
 
-onHide          Function    
-生命周期函数--监听小程序隐藏     
-当小程序从前台进入后台，会触发 onHide
+3.主要的方法是添加垃圾代码，且代码的相似程度不高于45%，
+  混淆工程地址：https://github.com/klaus01/KLGenerateSpamCode
 
-onError         Function    
-错误监听函数  
-当小程序发生脚本错误，
-或者 api 调用失败时，会触发 onError 并带上错误信息
+4.工程中的文件夹的名字全部进行修改，类名修改，方法名修改
 
-onPageNotFound  Function    
-页面不存在监听函数   
-当小程序出现要打开的页面不存在的情况，会带上页面信息回调该函数
+5.资源图片替换修改，适当添加一些无用的资源 
 
-其他  Any         
-开发者可以添加任意的函数或数据到 Object 参数中，用 this 可以访问
-</code></pre>
+6.API名称，机扫二进制文件，也会对比API
 
-<h4 id="toc_3">小程序路由方式</h4>
+7.换开发者账号，换不同账号提交审核
 
-<pre><code>打开新页面     调用 API wx.navigateTo
+8.换 bundle id，换一个包再提交审核；
 
-页面重定向     调用 API wx.redirectTo
+9. 一定要关注名字,icon,启动图;修改UI风格同时进行假页面的添加;
 
-页面返回        调用 API wx.navigateBack
+10.升级 version，升级一个版本号提交审核
 
-Tab 切换      调用 API wx.switchTab
+11.修改产品分类
 
-重启动         调用 API wx.reLaunch
-</code></pre>
+12.还需要注意相同的马甲包提交至少要间隔一天以上。
 
-<p>Tips:</p>
-
-<pre><code>1.navigateTo, redirectTo 只能打开非 tabBar 页面。
-2.switchTab 只能打开 tabBar 页面。
-3.reLaunch 可以打开任意页面。
-4.页面底部的 tabBar 由页面决定，即只要是定义为 tabBar 的页面，底部都有 tabBar。
-5.tabBar只能配置最少2个、最多5个 tab
-6.调用页面路由带的参数可以在目标页面的onLoad中获取
-</code></pre>
-
-<h4 id="toc_4">小程序响应的数据绑定</h4>
-
-<pre><code>框架的核心是一个响应的数据绑定系统。
-整个系统分为两块视图层（View）和逻辑层（App Service）
-框架可以让数据与视图非常简单地保持同步。当做数据修改的时候，
-只需要在逻辑层修改数据，视图层就会做相应的更新。
-</code></pre>
-
-<h5 id="toc_5">工作原理</h5>
-
-<pre><code> setData 是小程序开发中使用最频繁的接口，也是最容易引发性能问题的接口。
-
-小程序的视图层目前使用 WebView 作为渲染载体，
-而逻辑层是由独立的 JavascriptCore 作为运行环境。
-在架构上，WebView 和 JavascriptCore 都是独立的模块，
-并不具备数据直接共享的通道。
-当前，视图层和逻辑层的数据传输，实际上通过两边提供的 evaluateJavascript 所实现。
-即用户传输的数据，需要将其转换为字符串形式传递，
-同时把转换后的数据内容拼接成一份 JS 脚本，
-再通过执行 JS 脚本的形式传递到两边独立环境。
-而 evaluateJavascript 的执行会受很多方面的影响，
-数据到达视图层并不是实时的。
+13.定期换电脑提包.换电脑的序列号.换VPN环境.定期换域名. 
 
 </code></pre>
 
