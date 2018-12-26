@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-12-26T13:40:10+08:00</updated>
+  <updated>2018-12-26T13:57:52+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -323,6 +323,45 @@ wx.downloadFile 下载文件
 
 <hr/>
 
+<p><strong>时刻关注小程序动向</strong></p>
+
+<p>开放的能力在快速的新增，已有的能力在快速迭代，更新，淘汰等公告地址：<br/>
+<a href="https://developers.weixin.qq.com/community/develop/list/2">https://developers.weixin.qq.com/community/develop/list/2</a></p>
+
+<p>1、分享监听接口</p>
+
+<pre><code>10月10日起新提交的版本，用户从小程序、小游戏中分享消息给好友时，
+开发者将无法获知用户是否分享完成，也无法在分享后立即获得群ID。
+</code></pre>
+
+<p>2、getUserInfo接口</p>
+
+<pre><code>10月10日起新提交的版本，用户在小程序、小游戏中需要点击组件后，
+才可以触发登录授权弹窗、授权自己的昵称头像等数据。
+</code></pre>
+
+<p>3、获取用户位置信息时需填写用途说明</p>
+
+<pre><code>在一些小程序/小游戏的业务逻辑中，有时需要依赖用户所在的地理位置来提供服务，
+当前开发者可以通过 调用 wx.getLocation / wx.authorize 等接口
+获取用户的地理位置信息或授权。
+
+根据 iOS 系统对用户隐私保护的要求，
+同时我们也为了让用户可以更好的判断是否要将地理位置信息提供给开发者，
+故调整为当小程序/小游戏获取用户地理位置信息时，
+开发者需要填写获取用户地理位置的用途说明。
+填写的说明将在地理位置授权弹窗中展示
+
+2019年1月14日起新提交发布的版本若未填写地理位置用途说明，
+则将无法正常调用地理位置相关接口，
+请及时填写地理位置用途说明。
+该调整策略在微信客户端 7.0.0 版本生效。另外，考虑到兼容性等问题，
+在微信客户端 7.0.0 版本以下的环境中不受此策略影响。
+
+</code></pre>
+
+<hr/>
+
 <p>登录的设计<br/>
 <a href="https://www.freefook.com/15234367737951.html">https://www.freefook.com/15234367737951.html</a><br/>
 二维码的使用<br/>
@@ -475,11 +514,25 @@ wx.downloadFile 下载文件
 <li><p>测试时跳过域名校验</p></li>
 </ol>
 
-<pre><code>在微信开发者工具中，可以临时开启 开发环境不校验请求域名、
+<pre><code>在微信开发者工具中，可以临时开启 不校验请求域名、
 不校验TLS版本及不校验HTTPS证书选项，跳过服务器域名的校验。
 
 在真机微信小程序中开启调试模式时，不会进行服务器域名的校验。
 </code></pre>
+
+<p><strong>小程序很年轻，问题整理，待续</strong></p>
+
+<ol>
+<li>手机型号</li>
+<li>系统版本</li>
+<li>浏览器</li>
+<li>微信版本</li>
+<li>小程序基础库版本</li>
+<li>小程序开发环境</li>
+<li>小程序线上环境</li>
+</ol>
+
+<p>不同的环境，产生不同的bug，小程序一直在快速更新，我们在转圈圈</p>
 
 <h2 id="toc_14">温馨提示篇——合法且遵守平台规则运营</h2>
 
@@ -520,7 +573,12 @@ wx.downloadFile 下载文件
 <p><strong>(3)封禁的危害</strong>：禁封的不是一个小程序，而是你这个小程序的主体；<br/>
                 缺陷：微信小程序对于审核和规范还有很长的路要走；</p>
 
-<h3 id="toc_15">总结</h3>
+<p><strong>(4)运营专区</strong><br/>
+被处理的小程序分类<br/>
+违法、外挂、过度营销、滥用分享、类目不符、iOS虚拟支付<br/>
+<a href="https://developers.weixin.qq.com/community/operate">https://developers.weixin.qq.com/community/operate</a></p>
+
+<h2 id="toc_15">总结</h2>
 
 <p>当了解了小程序是什么？能干什么？准备什么？规则是什么？<br/>
 开始做小程序项目时，<br/>
