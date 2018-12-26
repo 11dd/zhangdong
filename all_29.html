@@ -47,19 +47,11 @@
         <li><label>微信小程序概述</label></li>
 
           
-            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-          
-            <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-          
-            <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+            <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
           
             <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
           
-            <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-          
-            <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-          
-            <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+            <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
           
             <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
           
@@ -238,19 +230,11 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
-                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-                        
-                          <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-                        
-                          <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+                          <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
                         
                           <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
                         
-                          <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-                        
-                          <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-                        
-                          <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+                          <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
                         
                           <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
                         
@@ -410,198 +394,58 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之菜单</h1>
+		<h1>微信小程序之服务通知</h1>
 
-		<h4 id="toc_0">吸顶悬停菜单</h4>
+		<h4 id="toc_0">小程序端表单提交获取formid</h4>
 
-<p>菜单原本不在顶部，是上下滑动跟随滑动的，当滑动到顶部时，悬停在顶部</p>
-
-<p><img src="media/15440814346317/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-19%20%E4%B8%8A%E5%8D%8810.44.41.png" alt="屏幕快照 2018-12-19 上午10.44.41"/></p>
-
-<h4 id="toc_1">实现代码</h4>
-
-<p><strong>xml 文件</strong></p>
-
-<pre><code> &lt;!-- 分类菜单 --&gt;
-  &lt;view id=&quot;affix&quot; wx:if=&#39;{{tabs.length &gt; 1}}&#39; class=&#39;{{typeFixed?&quot;menu-typefixed&quot;:&quot;menu-typeFixed&quot;}}&#39;&gt;
-    &lt;view class=&quot;menu-scroll-view-wrap&quot;&gt;
-      &lt;scroll-view class=&quot;menu-scroll-view-catalog&quot; scroll-x=&quot;true&quot; scroll-with-animation=&quot;true&quot;&gt;
-        &lt;view class=&quot;menu-scroll-view-item&quot; wx:for=&quot;{{tabs}}&quot; wx:key=&quot;{{index}}&quot; data-index=&quot;{{index}}&quot; bindtap=&quot;onTabSelected&quot;&gt;
-          &lt;text class=&quot;menu-text-item {{index === tabIndex ? &#39;menu-active-text-item&#39; : &#39;&#39;}} weui-zimFont11&quot; data-index=&quot;{{index}}&quot;&gt;{{item.name}}&lt;/text&gt;
-        &lt;/view&gt;
-      &lt;/scroll-view&gt;
-    &lt;/view&gt;
-  &lt;/view&gt;
+<pre><code>wxml文件：
+&lt;form bindsubmit=&#39;requestOrder&#39; report-submit=&#39;true&#39;&gt;
+  &lt;button formType=&quot;submit&quot; class=&#39;market_cart_pay&#39;&gt;立即支付&lt;/button&gt;
+&lt;/form&gt;
 </code></pre>
 
-<p><strong>wxss文件</strong></p>
-
-<pre><code>/* 顶部悬停分类菜单样式 */
-
-.menu-typeFixed {
-  top: 0px;
-  left: 0;
-  z-index: 300;
-  height: 80rpx;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.menu-typefixed {
-  position: fixed;
-  top: 0px;
-  left: 0;
-  z-index: 300;
-  height: 88rpx;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.menu-scroll-view-wrap {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.menu-scroll-view-catalog {
-  height: 35px;
-  width: 100%;
-  white-space: nowrap;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.menu-scroll-view-catalog::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
-}
-
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
-}
-
-.menu-scroll-view-item {
-  display: inline-block;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 5px 10px;
-  border-bottom: 2px solid #fff;
-}
-
-menu-text-item {
-  border-bottom: 1px #fff solid;
-}
-
-.menu-active-text-item {
-  border-bottom: 2px #dc3545 solid;
-}
-
-/* 以上-顶部悬停分类菜单样式 */
+<pre><code>JS文件：
+ requestOrder: function(e) {
+    console.log(&#39;点击立即支付触发表单提交获取formid&#39;)
+    console.log(e.detail.formId)
+ }
 </code></pre>
 
-<p><strong>js文件</strong></p>
+<h4 id="toc_1">官方模板消息文档地址</h4>
 
-<pre><code>/**
-   * 页面的初始数据
-   */
-  data: {
-    //分类菜单
-    menuTop: 666,
-    menuBottom: 666,
-    typeFixed: false,
-    tabIndex: 0, //选择分类的第几个
-    tabs: [{
-      name: &quot;全部&quot;
-    }, {
-      name: &quot;新品&quot;
-    }, {
-      name: &quot;生鲜&quot;
-    }, {
-      name: &quot;居家&quot;
-    }, {
-      name: &quot;服装&quot;
-    }, {
-      name: &quot;美护&quot;
-    }, {
-      name: &quot;出行&quot;
-    }, {
-      name: &quot;电器&quot;
-    }, {
-      name: &quot;杂货&quot;
-    }, ],
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/template-message.html">https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/template-message.html</a></p>
 
-  },
-  /**************获取分类菜单的吸顶距离**************** */
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-    var that = this;
-    setTimeout(function() {
-      // 页面加载完成时，并且当请求完商品的时候，判断吸顶菜单距离顶部的距离
-      that.testHeight();
-    }, 1000)
-  },
+<pre><code>注意事项：下发这个通知微信是有条件的；
+1. 支付  2. 提交表单
 
-  testHeight: function() {
-    var that = this;
-    var query = wx.createSelectorQuery() //创建节点查询器 query
-    query.select(&#39;#affix&#39;).boundingClientRect() //这段代码的意思是选择Id= the - id的节点，获取节点位置信息的查询请求
-    query.exec(function(res) {
-      that.setData({
-        menuTop: res[0].top,
-        menuBottom: res[0].bottom,
-      })
-    });
-  },
+    支付
+    当用户在小程序内完成过支付行为，可允许开发者向用户在7天内
+    推送有限条数的模板消息
+    （1次支付可下发3条，多次支付下发条数独立，互相不影响）
 
-  onPageScroll: function(e) {
-    //当滚动位置大于menuTop并且typeFixed为true时,setData不再执行，可有效避免页面的卡顿，以及吸顶时页面的抖动
-    if (e.scrollTop &gt;= this.data.menuTop &amp;&amp; !this.data.typeFixed) {
-      this.setData({
-        typeFixed: true
-      })
-    } else if (e.scrollTop &lt; this.data.menuTop &amp;&amp; this.data.typeFixed) {
-      this.setData({
-        typeFixed: false
-      })
-    }
-    //当滚动的距离到了scrollview底部的时候，触发请求方法
-    if ((this.data.menuBottom - this.data.winHeight - 55) &lt; e.scrollTop) {
-      this.lower();
-    }
+    提交表单
+    当用户在小程序内发生过提交表单行为且该表单声明为要发模板消息的，
+    开发者需要向用户提供服务时，
+    可允许开发者向用户在7天内推送有限条数的模板消息
+    （1次提交表单可下发1条，多次提交下发条数独立，相互不影响）
 
-  },
 
-  /********************切换分类菜单时请求该分类数据******************* */
+用户提交一次表单，会提供给开发者一次推送权限，
+多次提交的情况下下发条数独立。
+所以如果开发者想要哎7天内无限制的为用户推送消息，
+需要做的就是--&gt;从用户那里获取&quot;足够多&quot;的推送权限
+（推送权限就是form表单的formid）。
 
-  onTabSelected: function(event) {
-    var that = this;
-    // 切换tab时需要需要设置当前是第几个
-    that.setData({
-      tabIndex: event.target.dataset.index
-    });
 
-  },
+如果用户在一周内没有访问或点击过小程序中的任何组件，
+那我们就收集不到有效的fromid，
+也就意味着我们&quot;失去&quot;了给用户发送模板消息的权限
+
 </code></pre>
 
-<h3 id="toc_2">普通菜单</h3>
+<p><img src="media/15336330410298/IMG_3195.png" alt="IMG_3195"/></p>
+
+<p><img src="media/15336330410298/IMG_3196.png" alt="IMG_3196"/></p>
 
 
 		</div>

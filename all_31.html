@@ -47,19 +47,11 @@
         <li><label>微信小程序概述</label></li>
 
           
-            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-          
-            <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-          
-            <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+            <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
           
             <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
           
-            <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-          
-            <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-          
-            <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+            <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
           
             <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
           
@@ -238,19 +230,11 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
-                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-                        
-                          <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-                        
-                          <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+                          <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
                         
                           <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
                         
-                          <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-                        
-                          <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-                        
-                          <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+                          <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
                         
                           <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
                         
@@ -410,87 +394,9 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之跑马灯效果</h1>
+		<h1>微信小程序入坑锦集</h1>
 
-		<h5 id="toc_0">实现跑马灯效果图</h5>
-
-<h5 id="toc_1">---wxml文件---</h5>
-
-<pre><code>&lt;!--跑马灯中的文字信息字段:gundong_text--&gt;
-&lt;view wx:if=&#39;{{gundong_text}}&#39; class=&quot;marquee_container&quot; style=&quot;--marqueeWidth--:-12em&quot;&gt;
-  &lt;view class=&#39;marquee_text&#39;&gt;
-    &lt;view class=&#39;hengxianggundong&#39;&gt;
-      &lt;image class=&#39;gundong_image&#39; mode=&#39;aspectFit&#39; src=&#39;../../image/laba.png&#39;&gt;&lt;/image&gt;
-      &lt;view class=&#39;triangle-left&#39;&gt;&lt;/view&gt;
-      &lt;view class=&quot;gundong_textView weui-zimFont9&quot;&gt;{{gundong_text}}&lt;/view&gt;
-    &lt;/view&gt;
-  &lt;/view&gt;
-&lt;/view&gt;
-</code></pre>
-
-<h5 id="toc_2">---wxss文件---</h5>
-
-<pre><code>/* 跑马灯样式 */
-@keyframes around {
-  from {
-    margin-left: 100%;
-  }
-  to {
-    /* var接受传入的变量 */
-    margin-left: var(--marqueeWidth--);
-  }
-}
-.marquee_container {
-  position: absolute;
-  top: 120rpx;
-  width: 100%;
-  height: 60rpx;
-  line-height: 60rpx;
-  z-index: 1200;
-}
-.marquee_container:hover {
-  /* 不起作用 */
-  animation-play-state: paused;
-}
-.marquee_text {
-  display: inline-block;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  white-space: nowrap;
-  animation-name: around;
-  animation-duration: 10s; /*过渡时间*/
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-.hengxianggundong {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-.gundong_image {
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 50rpx;
-  height: 50rpx;
-  border-radius: 50%;
-  margin-right: 20rpx;
-}
-.triangle-left {
-  width: 0;
-  height: 0;
-  border-right: 10rpx solid rgba(0, 0, 0, 0.8);
-  border-bottom: 10rpx solid rgba(0, 0, 0, 0);
-  border-top: 10rpx solid rgba(0, 0, 0, 0);
-}
-.gundong_textView {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding-left: 20rpx;
-  padding-right: 20rpx;
-  border-radius: 10rpx;
-}
-</code></pre>
+		<p><img src="media/15288676024387/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-11%20%E4%B8%8B%E5%8D%887.05.47.png" alt="屏幕快照 2018-06-11 下午7.05.47"/></p>
 
 
 		</div>

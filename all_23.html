@@ -47,19 +47,11 @@
         <li><label>微信小程序概述</label></li>
 
           
-            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-          
-            <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-          
-            <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+            <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
           
             <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
           
-            <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-          
-            <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-          
-            <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+            <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
           
             <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
           
@@ -238,19 +230,11 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
-                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-                        
-                          <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-                        
-                          <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+                          <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
                         
                           <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
                         
-                          <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-                        
-                          <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-                        
-                          <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+                          <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
                         
                           <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
                         
@@ -410,71 +394,63 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS审核被拒4.3</h1>
+		<h1>微信小程序之二维码</h1>
 
-		<h5 id="toc_0">一种是过不了机审关被拒，一种是过不了人审关被拒。</h5>
-
-<pre><code>iOS预审核，扫描api，及plist文件字符缺失等；
-此处分两步，第一步为上传时苹果Application Loador等应用对于适配icon等的检查，
-第二步为上传后苹果的功能性检查，例如配置了Push功能但有缺失
-或者未打开功能，则会邮件提示等等；
-
-iOS机审，主要是对代码进行机器审核，排查APP是否重复应用，此处扫描支付SDK等，及马甲情况，机器扫描主要看代码块
-
-iOS人审，主要是由苹果审核人员对APP的内容、功能进行核验，防止APP有bug，
-防止APP模仿其他应用，内容与其他APP重复，影响用户体验，
-检测功能或者App体验测试，例如用测试账号登录App体验功能，
-或其他是否明显bug等，ipv6也在此处检测；
-
+		<pre><code>获取小程序二维码，官方提供了三个接口，开发者可挑选适合自己的接口。 
+ A接口，生成小程序码，可接受path参数较长，生成个数受限。
+  B接口，生成小程序码，可接受页面参数较短，生成个数不受限。
+   C接口，生成二维码，可接受path参数较长，生成个数受限。
 </code></pre>
 
-<h5 id="toc_1">区分机审 、人审</h5>
+<pre><code>接口A: 适用于需要的码数量较少的业务场景
+通过该接口生成的小程序码，永久有效
 
-<pre><code>那么如何区分是机器审核还是人工审核呢？主要看APP被拒的信息：
+接口C：适用于需要的码数量较少的业务场景
+通过该接口生成的小程序二维码，永久有效，数量限制
 
-1）如果是机器审核被拒，一般收到的被拒信息第一句话基本上是这样的：
-Guideline4.3 - Design - Spam
-Yourapp duplicates the content and functionality of apps submitted to the AppStore,
- which is considered a form of spam.
+数量限制接口A加上接口C，总共生成的码数量限制为100,000
 
-2）如果是人工审核被拒，一般收到的被拒信息第一句话基本上是这样的：
-Guideline4.3 - Design - Spam
-Wefound that your app provides the same feature set as other apps submitted tothe App Store, 
-which is not appropriate to the App Store.
+接口B：适用于需要的码数量极多的业务场景
+
+通过接口B生成的小程序码，永久有效，数量暂无限制。
+可以带参数最大32个可见字符，只支持数字，大小写英文
+以及部分特殊字符：!#$&amp;&#39;()*+,/:;=?@-._~，
+其它字符请自行编码为合法字符（
+因不支持%，中文无法使用 urlencode 处理，请使用其他编码方式）
+
+B接口调用分钟频率受限(目前5000次/分钟)
 </code></pre>
 
-<h5 id="toc_2">针对审核</h5>
+<h4 id="toc_0">首先</h4>
 
-<pre><code>1.原来账号里的APP的名字可以作废掉或者修改成其他的，
-同时记得移除之前的APP，重新打个空包传上去，
-icon图则用其他logo图置换掉
+<p>因为接口B不受数量限制，我们使用接口B生成小程序二维码<br/>
+ 使用PostMan发起GET请求获取access_token：<br/>
+ 官方文档 ：<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183">https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183</a></p>
 
-2.增加登录日志
+<pre><code>https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=这里填写小程序appid&amp;secret=这里填写小程序secret
 
-3.主要的方法是添加垃圾代码，且代码的相似程度不高于45%，
-  混淆工程地址：https://github.com/klaus01/KLGenerateSpamCode
-
-4.工程中的文件夹的名字全部进行修改，类名修改，方法名修改
-
-5.资源图片替换修改，适当添加一些无用的资源 
-
-6.API名称，机扫二进制文件，也会对比API
-
-7.换开发者账号，换不同账号提交审核
-
-8.换 bundle id，换一个包再提交审核；
-
-9. 一定要关注名字,icon,启动图;修改UI风格同时进行假页面的添加;
-
-10.升级 version，升级一个版本号提交审核
-
-11.修改产品分类
-
-12.还需要注意相同的马甲包提交至少要间隔一天以上。
-
-13.定期换电脑提包.换电脑的序列号.换VPN环境.定期换域名. 
-
+返回参数：
+{
+    &quot;access_token&quot;: &quot;&quot;,
+    &quot;expires_in&quot;: 7200
+}
 </code></pre>
+
+<h4 id="toc_1">其次</h4>
+
+<p>发起POST请求：</p>
+
+<pre><code>https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=这里填写上一个接口返回的token
+
+Body中选择raw写入参数，例如
+{
+    &quot;page&quot;:&quot;pages/lengxiangui/coldfresh_index/coldfresh_index&quot;,
+    &quot;scene&quot;:&quot;1&quot;
+}
+注：场景值 scene 不得超过32位字符，并且上线已有的页面才能生成二维码
+</code></pre>
+
+<p><img src="media/15426946934140/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-20%20%E4%B8%8B%E5%8D%882.35.02.png" alt="屏幕快照 2018-11-20 下午2.35.02"/></p>
 
 
 		</div>

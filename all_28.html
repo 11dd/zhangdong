@@ -47,19 +47,11 @@
         <li><label>微信小程序概述</label></li>
 
           
-            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-          
-            <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-          
-            <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+            <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
           
             <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
           
-            <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-          
-            <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-          
-            <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+            <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
           
             <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
           
@@ -238,19 +230,11 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
-                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-                        
-                          <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-                        
-                          <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+                          <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
                         
                           <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
                         
-                          <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-                        
-                          <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-                        
-                          <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+                          <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
                         
                           <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
                         
@@ -410,80 +394,102 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之分享</h1>
+		<h1>微信小程序之动画</h1>
 
-		<h4 id="toc_0">分享代码</h4>
+		<h5 id="toc_0">---wxml文件---</h5>
 
-<pre><code>  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function(res) {
-    let that = this;
-    if (res.from === &#39;button&#39;) {
-      console.log(res.target)
-    }
-    return {
-      title: &#39;&#39;,
-      imageUrl: &#39;&#39;,
-      path: &#39;/pages/index/index&#39;,
-      success: function(res) {
-        console.log(&quot;转发成功&quot;);
-        shareAppMessage: ok;
-        wx.showShareMenu({
-          withShareTicket: true
+<pre><code>&lt;view class=&#39;lunbo&#39; animation=&quot;{{animationItem}}&quot;
+&lt;/view&gt;
+</code></pre>
+
+<h5 id="toc_1">---JS文件---</h5>
+
+<pre><code>  var that = this;
+    //动画样式
+    that.animationItem = wx.createAnimation({
+      duration: 500,
+      timingFunction: &#39;linear&#39;,
+      transformOrigin: &#39;90% 70%&#39;,
+      success: function(res) {}
+    });
+    
+    // 定时器，2S 循环一次
+    that.data.newLunbo_interval = setInterval(function() {
+      //开始动画-缩小
+      that.animationItem.scale3d(0.98, 0.98, 0.1).step();
+      that.setData({
+        animationItem: that.animationItem.export()
+      });
+      //延迟恢复到原来大小
+      setTimeout(function() {
+        that.animationItem.scale3d(1.0, 1.0, 1.0).step();
+        that.setData({
+          animationItem: that.animationItem.export(),
         });
-      },
-      fail: function(res) {
-        console.log(&quot;转发失败&quot;);
-      }
-    }
-  },
+      }, 500)
+    }.bind(that), 2000);
 </code></pre>
 
-<h4 id="toc_1">分享注意事项</h4>
+<h5 id="toc_2">清理定时器</h5>
 
-<pre><code>1. 分享转发：不自定义转发图片的情况下，
-默认会取当前页面，从顶部开始，高度为 80% 屏幕宽度的图像作为转发图片。
-测试scrollView iOS从scrollView顶部开始截图，Android是截屏有差异
-
-2. 设置的imageUrls 地址中不能有中文
-
-3. 小程序里绘制页面，和网络请求处理结是异步处理，
-所以当点击分享时，请求接口，返回数据之后去转发是行不通的，
-要在转发前就准备好要转发的内容；
+<pre><code>    clearInterval(this.data.newLunbo_interval);
 </code></pre>
 
-<h4 id="toc_2">分享小程序二维码开发流程</h4>
+<h5 id="toc_3">创建wx.createAnimation参数含义</h5>
 
-<p><strong>二维码调用的接口，请阅读  ‘微信小程序之九：二维码’</strong></p>
-
-<pre><code>获取小程序码的业务：建议在自己服务器上处理，小程序端不做处理
-
-注意：为什么不在小程序端做处理？
-1. access_token的有效期等问题
-2. 调用接口B，获取小程序二维码，接口返回的是二进制流
-3. 加载二进制小程序码的图片，需要转base64 在image组件中可以显示
-4. 小程序canvas画布不支持绘制base64图片，模拟器可以，真机不行
-5. 参数字段scene，带参数最大32个可见字符
-
-如何解决带参数最大32个可见字符？
-1. 服务端要出这样一个接口：请求生成二维码的接口
-2. 服务端接收小程序端传来的生成二维码的参数
-3. 服务端将小程序端传来的参数scene存数据库(因为大于32字符)生成对应的id用于生成二维码
-4. 小程序端扫码进入程序的时候，可以获取参数id
-5. 小程序端用id请求服务端获取当初要编辑在二维码里的真正参数
+<pre><code>duration            动画持续时间，单位 ms 
+timingFunction      &#39;linear&#39; 动画的效果  
+delay               动画延迟时间，单位 ms 
+transformOrigin     &#39;50% 50% 0&#39;
 </code></pre>
 
-<p>微信扫码，扫描带参二维码<br/>
-进入小程序指定的页面中需要接收场景值scene</p>
+<h5 id="toc_4">timingFunction 的合法值</h5>
 
-<pre><code>onLoad: function(options) {
- if (options.scene) {
-    // options 中的 scene 需要使用 decodeURIComponent 才能获取到生成二维码时传入的 scene
-    var scene = decodeURIComponent(options.scene)
-    console.log(&#39;打印参数scene---&gt;&#39; + scene)
-  }
-}
+<pre><code>&#39;linear&#39;    动画从头到尾的速度是相同的
+&#39;ease&#39;  动画以低速开始，然后加快，在结束前变慢
+&#39;ease-in&#39;   动画以低速开始
+&#39;ease-in-out&#39;   动画以低速开始和结束
+&#39;ease-out&#39;  动画以低速结束
+&#39;step-start&#39;    动画第一帧就跳至结束状态直到结束
+&#39;step-end&#39;  动画一直保持开始状态，最后一帧跳到结束状态
+</code></pre>
+
+<h5 id="toc_5">transformOrigin 的合法值</h5>
+
+<pre><code>transform-origin: x-axis y-axis z-axis;
+
+x-axis  定义视图被置于 X 轴的何处。可能的值：
+    left
+    center
+    right
+    length
+    %
+    
+y-axis  定义视图被置于 Y 轴的何处。可能的值：
+    top
+    center
+    bottom
+    length
+    %
+
+z-axis  定义视图被置于 Z 轴的何处。可能的值：
+    length
+</code></pre>
+
+<h4 id="toc_6">微信小程序播放音频</h4>
+
+<pre><code>
+    // 音频播放
+    const innerAudioContext = wx.createInnerAudioContext()
+    innerAudioContext.autoplay = true
+    innerAudioContext.src = &#39;https://cdn.caomall.net/15290437711272352156.mp3&#39;
+    innerAudioContext.onPlay(() =&gt; {
+      console.log(&#39;开始播放&#39;)
+    })
+    innerAudioContext.onError((res) =&gt; {
+      console.log(res.errMsg)
+      console.log(res.errCode)
+    })
 </code></pre>
 
 

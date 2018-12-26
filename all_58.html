@@ -47,19 +47,11 @@
         <li><label>微信小程序概述</label></li>
 
           
-            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-          
-            <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-          
-            <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+            <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
           
             <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
           
-            <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-          
-            <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-          
-            <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+            <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
           
             <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
           
@@ -238,19 +230,11 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
-                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-                        
-                          <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-                        
-                          <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+                          <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
                         
                           <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
                         
-                          <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-                        
-                          <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-                        
-                          <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+                          <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
                         
                           <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
                         
@@ -410,36 +394,61 @@
 
 	
 		<div class="markdown-body">
-		<h1>Mac下使用Apache服务</h1>
+		<h1>iOS 计算时间差</h1>
 
-		<p>启动 Apache 服务</p>
+		<h5 id="toc_0">延迟操作</h5>
 
-<pre><code>$ sudo apachectl start
-
-
-在浏览器中输入：http://localhost/
-显示：It works！
+<pre><code>  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+    });
+    
 </code></pre>
 
-<p>给当前用户设置文件读写权限</p>
+<h5 id="toc_1">计算时间差,刚刚,几分钟,几小时,昨天,前天</h5>
 
-<pre><code>1) 打开 Apache 的默认根目录
+<pre><code>
++(NSString *)CreatedTimeToNowTime:(NSString *)CreatTime
+{
+    //时间
+    NSString *createdTimeStr = @&quot;2017-12-27 09:09:10&quot;;
+    
+    //把字符串转为NSdate
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@&quot;yyyy-MM-dd HH:mm:ss&quot;];
+    NSDate *timeDate = [dateFormatter dateFromString:createdTimeStr];
+    
+    //得到与当前时间差
+    NSTimeInterval timeInterval = [timeDate timeIntervalSinceNow];
+    timeInterval = -timeInterval;
+    
+    long temp = 0;
+    
+    NSString *result;
+    
+    if (timeInterval &lt; 60) {
+        result = [NSString stringWithFormat:@&quot;刚刚&quot;];
+        
+    }else if((temp = timeInterval/60) &lt; 60){
+        result = [NSString stringWithFormat:@&quot;%ld分钟前&quot;,temp];
+        
+    }else if((temp = timeInterval/3600) &gt; 1 &amp;&amp; (temp = timeInterval/3600) &lt;24){
+        result = [NSString stringWithFormat:@&quot;%ld小时前&quot;,temp];
+        
+    }else if ((temp = timeInterval/3600) &gt; 24 &amp;&amp; (temp = timeInterval/3600) &lt; 48){
+        result = [NSString stringWithFormat:@&quot;昨天&quot;];
+        
+    }else if ((temp = timeInterval/3600) &gt; 48 &amp;&amp; (temp = timeInterval/3600) &lt; 72){
+        result = [NSString stringWithFormat:@&quot;前天&quot;];
+        
+    }else{
+        result = createdTimeStr;//返回具体时间日期
+        
+    }
+    
+    NSLog(@&quot;%@&quot;,result);
 
-    $ open /Library/WebServer/Documents/
-
-
-2) 设置读写权限
-
-
-    右击 “Documents” -&gt; &quot;Get Info&quot;
-</code></pre>
-
-<p>测试</p>
-
-<pre><code>在 Documents 下创建站点 freefook，及文件 freefook/index.html，
-
-
-访问：http://192.168.1.123/freefook/index.html
+    return result;
+}
 </code></pre>
 
 

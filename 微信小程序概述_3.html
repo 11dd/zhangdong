@@ -47,19 +47,11 @@
         <li><label>微信小程序概述</label></li>
 
           
-            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-          
-            <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-          
-            <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+            <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
           
             <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
           
-            <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-          
-            <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-          
-            <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+            <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
           
             <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
           
@@ -238,19 +230,11 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
-                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-                        
-                          <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-                        
-                          <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+                          <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
                         
                           <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
                         
-                          <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-                        
-                          <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-                        
-                          <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+                          <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
                         
                           <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
                         
@@ -410,151 +394,104 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信平台与微信小程序</h1>
+		<h1>微信小程序基础介绍</h1>
 
-		<h5 id="toc_0">微信平台有哪些？</h5>
+		<h5 id="toc_0">小程序里的四种文件</h5>
 
-<p>微信公众平台：<br/>
-<a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a></p>
-
-<p>微信支付的商户平台：<br/>
-<a href="https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F">https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F</a><br/>
-注：小程序里支付只能用小程序支付方式，必须和小程序里开通的支付的商户一致；</p>
-
-<p>支付接口文档<br/>
-<a href="https://pay.weixin.qq.com/wiki/doc/api/index.html">https://pay.weixin.qq.com/wiki/doc/api/index.html</a></p>
-
-<p>微信开放平台<br/>
-<a href="https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN">https://open.weixin.qq.com/cgi-bin/index?t=home/index&amp;lang=zh_CN</a></p>
-
-<p>微信开发者平台：<br/>
-<a href="http://weixin.qq.com/">http://weixin.qq.com/</a></p>
-
-<p>微信硬件平台：<br/>
-<a href="https://iot.weixin.qq.com/">https://iot.weixin.qq.com/</a></p>
-
-<p>腾讯的广告平台：<br/>
-<a href="http://e.qq.com/ads/">http://e.qq.com/ads/</a></p>
-
-<p>腾讯开放平台：<br/>
-<a href="http://open.tencent.com/">http://open.tencent.com/</a></p>
-
-<h5 id="toc_1">腾讯自家小程序全家桶</h5>
-
-<pre><code>小程序示例   第一个小程序
-小程序开发助手
-小程序数据助手
-小游戏数据助手
-公众平台助手
-微信发票助手
-王卡申请助手
-
-QQ游戏
-腾讯爱玩
-全民大乐斗
-企鹅电竞+
-腾讯动漫+
-
-腾讯+  产品体验官
-腾讯网
-腾讯文档
-腾讯企业邮箱
-
-腾讯云助手
-腾讯视频云
-腾讯AI体验中心
-腾讯云AI体验中心
-腾讯优图AI开发平台
+<pre><code>.json 后缀的 JSON 配置文件
+.wxml 后缀的 WXML 模板文件
+.wxss 后缀的 WXSS 样式文件
+.js 后缀的 JS 脚本逻辑文件
 </code></pre>
 
-<h5 id="toc_2">其他特色小程序</h5>
+<h4 id="toc_1">小程序数据类型</h4>
 
-<pre><code>摩拜单车： 接入是小程序线下落地的一次大的尝试
-KFC，麦当劳： 点餐实用型的线下场景
-家乐福中国：小程序有优惠
-沃尔玛：小程序可自助结账
+<p>WXS 语言目前共有以下几种数据类型：</p>
 
-一时风靡的答题类，头脑王者
-
-青芒杂志
-一条视频
-毒蛇电影社区
-
-企鹅电竞+
-斗鱼直播
-虎牙直播
-YY直播+
+<pre><code>number ： 数值
+string ：字符串
+boolean：布尔值
+object：对象
+function：函数
+array : 数组
+date：日期
+regexp：正则
 </code></pre>
 
-<h3 id="toc_3">微信直播类小程序</h3>
+<h4 id="toc_2">小程序生命周期</h4>
 
-<p>直播类小程序：</p>
+<pre><code>onLaunch        Function    
+生命周期函数--监听小程序初始化    
+当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
 
-<p>第一个直播小程序体验：蘑菇街女装精选（腾讯亲儿子）直播类电商，可评论；<br/>
-分类：电商平台-&gt;公司：杭州卷瓜网络有限公司</p>
+onShow          Function    
+生命周期函数--监听小程序显示     
+当小程序启动，或从后台进入前台显示，会触发 onShow
 
-<p>腾讯NOW直播，首页简单的一个列表页，几个精彩推荐 ，是直播过的回放；<br/>
-公司：深圳市腾讯计算机系统有限公司</p>
+onHide          Function    
+生命周期函数--监听小程序隐藏     
+当小程序从前台进入后台，会触发 onHide
 
-<p>企鹅电竞+：无登录授权，单纯的推荐一些直播，点击播放，不能评论；<br/>
-公司：深圳市腾讯计算机系统有限公司</p>
+onError         Function    
+错误监听函数  
+当小程序发生脚本错误，
+或者 api 调用失败时，会触发 onError 并带上错误信息
 
-<p>斗鱼直播：无登录授权，单纯的播放直播视频，不能评论；<br/>
-公司：武汉瓯越网视有限公司</p>
+onPageNotFound  Function    
+页面不存在监听函数   
+当小程序出现要打开的页面不存在的情况，会带上页面信息回调该函数
 
-<p>虎牙直播：无登录授权，单纯的播放直播视频，不能评论；<br/>
-分类：直播  视频 -&gt;公司：广州华多网络科技有限公司</p>
+其他  Any         
+开发者可以添加任意的函数或数据到 Object 参数中，用 this 可以访问
+</code></pre>
 
-<p>龙珠直播官方平台：有登录，我的页面无任何功能，单纯的播放直播视频，有评论和弹幕；<br/>
-分类：直播-&gt;公司：上海聚力传媒技术有限公司</p>
+<h4 id="toc_3">小程序路由方式</h4>
 
-<p>YY直播+：  提示微信授权，无登录信息和用户页面，单纯的播放直播视频，可评论; <br/>
-分类：视频 -&gt;公司：广州华多网络科技有限公司</p>
+<pre><code>打开新页面     调用 API wx.navigateTo
 
-<p>短视频小程序平台：</p>
+页面重定向     调用 API wx.redirectTo
 
-<p>西瓜视频集：顶部分类推荐，生活，搞笑，影视，历史，开眼 / 点击播放，可点赞评论；<br/>
-分类：视频 -&gt;公司：淮安皓威网络科技有限公司</p>
+页面返回        调用 API wx.navigateBack
 
-<p>火山搞笑视频集：和西瓜视频集一样！！！<br/>
-分类：视频 -&gt;公司：淮安皓威网络科技有限公司</p>
+Tab 切换      调用 API wx.switchTab
 
-<p>美拍：页面效果-&gt;上下滑动切换，可评论点赞，诱导下载app,诱导分享；<br/>
-分类：视频 -&gt;公司：厦门美图网科技有限公司</p>
+重启动         调用 API wx.reLaunch
+</code></pre>
 
-<p>秒拍视频lite : 有登录我的页面，记录足迹和收藏，可评论， 评论页面low；<br/>
-分类：图片、音频、视频 -&gt;公司：泰和县文田创新网络工作室</p>
+<p>Tips:</p>
 
-<p>小咖秀lite：一个列表页，点击进详情播放，有评论列表(其他平台)，小程序内不能评论；<br/>
-分类：视频 -&gt;公司：小咖秀（北京）科技有限公司</p>
+<pre><code>1.navigateTo, redirectTo 只能打开非 tabBar 页面。
+2.switchTab 只能打开 tabBar 页面。
+3.reLaunch 可以打开任意页面。
+4.页面底部的 tabBar 由页面决定，即只要是定义为 tabBar 的页面，底部都有 tabBar。
+5.tabBar只能配置最少2个、最多5个 tab
+6.调用页面路由带的参数可以在目标页面的onLoad中获取
+</code></pre>
 
-<p>一条视频：推荐列表，和专题分类；<br/>
-分类：资讯 -&gt;公司：上海一条网络科技有限公司</p>
+<h4 id="toc_4">小程序响应的数据绑定</h4>
 
-<p>视频平台：</p>
+<pre><code>框架的核心是一个响应的数据绑定系统。
+整个系统分为两块视图层（View）和逻辑层（App Service）
+框架可以让数据与视图非常简单地保持同步。当做数据修改的时候，
+只需要在逻辑层修改数据，视图层就会做相应的更新。
+</code></pre>
 
-<p>腾讯视频：内容较丰富；</p>
+<h5 id="toc_5">工作原理</h5>
 
-<p>腾讯视频VIP：精简版；</p>
+<pre><code> setData 是小程序开发中使用最频繁的接口，也是最容易引发性能问题的接口。
 
-<p>爱奇艺视频：内容较丰富；</p>
+小程序的视图层目前使用 WebView 作为渲染载体，
+而逻辑层是由独立的 JavascriptCore 作为运行环境。
+在架构上，WebView 和 JavascriptCore 都是独立的模块，
+并不具备数据直接共享的通道。
+当前，视图层和逻辑层的数据传输，实际上通过两边提供的 evaluateJavascript 所实现。
+即用户传输的数据，需要将其转换为字符串形式传递，
+同时把转换后的数据内容拼接成一份 JS 脚本，
+再通过执行 JS 脚本的形式传递到两边独立环境。
+而 evaluateJavascript 的执行会受很多方面的影响，
+数据到达视图层并不是实时的。
 
-<p>芒果TV视频：精简版；<br/><br/>
-分类：视频 -&gt;公司：湖南快乐阳光互动娱乐传媒有限公司</p>
-
-<p>搜狐视频官方：精简版，类似西瓜视频集； <br/>
-分类：视频、时政信息 -&gt;公司：北京搜狐互联网信息服务有限公司</p>
-
-<p>56视频官方：精简版，类似西瓜视频集；<br/>
-分类：视频 -&gt;公司：广州市千钧网络科技有限公司</p>
-
-<p>其他：</p>
-
-<p>VUE视频，可调用系统相机拍摄，上传！！！<br/>
-分类：图片、音频、视频 -&gt;公司：北京跃然纸上科技有有限公司</p>
-
-<p>火山视频影院：个人开发，内容电影，电视剧，综艺信息介绍，<br/>
-详情页：注明由于小程序限制，无法直接播放，提供的复制观看链接；</p>
+</code></pre>
 
 
 		</div>

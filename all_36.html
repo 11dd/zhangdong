@@ -47,19 +47,11 @@
         <li><label>微信小程序概述</label></li>
 
           
-            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-          
-            <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-          
-            <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+            <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
           
             <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
           
-            <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-          
-            <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-          
-            <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+            <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
           
             <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
           
@@ -238,19 +230,11 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
-                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-                        
-                          <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-                        
-                          <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+                          <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
                         
                           <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
                         
-                          <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-                        
-                          <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-                        
-                          <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+                          <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
                         
                           <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
                         
@@ -410,131 +394,40 @@
 
 	
 		<div class="markdown-body">
-		<h1>AES加密打开方式...</h1>
+		<h1>iOS 从AppDelegate说起</h1>
 
-		<p>很久没写博客,Markdown牵出来遛遛</p>
+		<h5 id="toc_0">创建程序窗口</h5>
 
-<p>AES加密时需要统一的几个参数。</p>
-
-<pre><code>密钥长度（Key Size）
-加密模式（Cipher Mode）
-填充方式（Padding）
-初始向量（Initialization Vector）
+<pre><code>self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+self.window.backgroundColor = [UIColor whiteColor];
+[self.window setRootViewController:self.tabbarVC];
+[self.window makeKeyAndVisible];
 </code></pre>
 
-<blockquote>
-<p>1.本例使用AES-128,</p>
+<h5 id="toc_1">生命周期</h5>
 
-<p>2.AES属于块加密BlockCipher，块加密中有CBC、ECB、CTR、OFB、CFB等几种工作模式。本例使用CBC模式</p>
-
-<p>3.由于块加密只能对特定长度的数据块进行加密，因此CBC、ECB模式需要在最后一数据块加密前进行数据填充。（CFB，OFB和CTR模式由于与key进行加密操作的是上一块加密后的密文，因此不需要对最后一段明文进行填充）<br/>
-在iOS SDK中提供了PKCS7Padding</p>
-</blockquote>
-
-<p>ECB加密模式（不推荐）：容易被攻击</p>
-
-<blockquote>
-<p>1.每次key,明文,密文的长度都必须是64位;<br/><br/>
-2.数据块重复排序不需要检测;<br/><br/>
-3.相同的明文块(使用相同的密钥)产生相同的密文块,容易遭受字典被攻击<br/><br/>
-4.一个错误仅仅会对一个密文块产生影响</p>
-</blockquote>
-
-<p>CBC加密方式(推荐):</p>
-
-<blockquote>
-<p>1.每次加密的密文长度为64位(8个字节);<br/><br/>
-2.当相同的明文使用相同的密钥和初始向量的时候CBC模式总是产生相同的密文;<br/><br/>
-3.密文块要依赖以前的操作结果,所以密文块不能进行重新排列;<br/><br/>
-4.可以使用不同的初始化向量来避免相同的明文产生相同的密文,一定程度上抵抗字典攻击<br/>
-5.一个错误发生后,当前和以后的密文都会被影响;</p>
-
-<p>使用PKCS5Padding/PKCS7Padding填充可以兼容多平台语言之间AES加密解密  </p>
-
-<p>注意: 这里每次产生的密文是相同的，因为设置了初试向量iv为16位个数的“0”。要产生不同的密文就要使用变化的初试向量iv</p>
-</blockquote>
-
-<p>ios使用案例  </p>
-
-<p>创建一个类AESCipher继承NSObject</p>
-
-<p>.h文件如下:</p>
-
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-NSString * aesEncryptString(NSString *content, NSString *key);
-NSString * aesDecryptString(NSString *content, NSString *key);
-NSData * aesEncryptData(NSData *data, NSData *key);
-NSData * aesDecryptData(NSData *data, NSData *key);
-
-</code></pre>
-
-<p>.m文件如下:</p>
-
-<pre><code>#import &quot;AESCipher.h&quot;
-#import &lt;CommonCrypto/CommonCryptor.h&gt;
-//注意:初始向量,默认16个0(]前后端保持统一)
-NSString const *kInitVector = @&quot;0000000000000000&quot;;
-size_t const kKeySize = kCCKeySizeAES128;
-NSData * cipherOperation(NSData *contentData, NSData *keyData, CCOperation operation) {
-    NSUInteger dataLength = contentData.length;
-    void const *initVectorBytes = [kInitVector dataUsingEncoding:NSUTF8StringEncoding].bytes;
-    void const *contentBytes = contentData.bytes;
-    void const *keyBytes = keyData.bytes;
-    size_t operationSize = dataLength + kCCBlockSizeAES128;
-    void *operationBytes = malloc(operationSize);
-    size_t actualOutSize = 0;
-    CCCryptorStatus cryptStatus = CCCrypt(operation,                                   kCCAlgorithmAES,                                   kCCOptionPKCS7Padding,
- keyBytes,                                      kKeySize,                                     initVectorBytes,                                    contentBytes,                                     dataLength,                                     operationBytes,                                    operationSize,                                   &amp;actualOutSize);
-    if (cryptStatus == kCCSuccess) {
-        return [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
-    }
-    free(operationBytes);
-    return nil;
+<pre><code>- (void)applicationWillEnterForeground:(UIApplication *)application {
+    NSLog(@&quot;将要进入前台：%s&quot;,__func__);
 }
-NSString * aesEncryptString(NSString *content, NSString *key) {
-    NSData *contentData = [content dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *encrptedData = aesEncryptData(contentData, keyData);
-    return [encrptedData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+    NSLog(@&quot;已经获得焦点：%s&quot;,__func__);
 }
-NSString * aesDecryptString(NSString *content, NSString *key) {
-    NSData *contentData = [[NSData alloc] initWithBase64EncodedString:content options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *decryptedData = aesDecryptData(contentData, keyData);
-    return [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    
+    NSLog(@&quot;将要释放焦点：%s&quot;,__func__);
 }
-NSData * aesEncryptData(NSData *contentData, NSData *keyData) {
-    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];
-    NSCAssert(keyData.length == kKeySize, hint);
-    return cipherOperation(contentData, keyData, kCCEncrypt);
+- (void)applicationWillTerminate:(UIApplication *)application {
+    
+    NSLog(@&quot;程序将要退出：%s&quot;,__func__);
 }
-NSData * aesDecryptData(NSData *contentData, NSData *keyData) {
-    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];
-    NSCAssert(keyData.length == kKeySize, hint);
-    return cipherOperation(contentData, keyData, kCCDecrypt);
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    
+    NSLog(@&quot;已经进入后台：%s&quot;,__func__);
 }
 </code></pre>
-
-<p>使用方法如下:</p>
-
-<pre><code>/*
- 使用案例:
- 第一: 导入头文件
- #import &quot;AESCipher.h&quot;
- 测试字符串
- NSString *TestStr = @&quot;abc&quot;;
- 设置key
- NSString *key = @&quot;1234567812345678&quot;;
- NSString *cipherText = aesEncryptString(TestStr, key);
- NSLog(@&quot;加密==%@&quot;, cipherText);
- NSString *decryptedText = aesDecryptString(cipherText, key);
- NSLog(@&quot;解密==%@&quot;, decryptedText);
- */
-</code></pre>
-
-<p>原文查看:<br/>
- <a href="http://blog.csdn.net/u013749540/article/details/70225594">http://blog.csdn.net/u013749540/article/details/70225594</a><br/>
- <a href="http://www.cnblogs.com/dcb3688/p/4608007.html">http://www.cnblogs.com/dcb3688/p/4608007.html</a></p>
 
 
 		</div>

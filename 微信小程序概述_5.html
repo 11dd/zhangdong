@@ -47,19 +47,11 @@
         <li><label>微信小程序概述</label></li>
 
           
-            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-          
-            <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-          
-            <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+            <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
           
             <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
           
-            <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-          
-            <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-          
-            <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+            <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
           
             <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
           
@@ -238,19 +230,11 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
-                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-                        
-                          <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-                        
-                          <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+                          <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
                         
                           <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
                         
-                          <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-                        
-                          <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-                        
-                          <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+                          <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
                         
                           <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
                         
@@ -410,127 +394,58 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序微信开放API</h1>
+		<h1>微信小程序之服务通知</h1>
 
-		<h5 id="toc_0">开放接口：</h5>
+		<h4 id="toc_0">小程序端表单提交获取formid</h4>
 
-<pre><code>wx.login    登录
-wx.getUserInfo  获取用户信息
-wx.chooseAddress    获取用户收货地址
-wx.requestPayment   发起微信支付
-wx.addCard  添加卡券
-wx.openCard 打开卡券
-可以获取用户手机号
-不能获取本机IP
+<pre><code>wxml文件：
+&lt;form bindsubmit=&#39;requestOrder&#39; report-submit=&#39;true&#39;&gt;
+  &lt;button formType=&quot;submit&quot; class=&#39;market_cart_pay&#39;&gt;立即支付&lt;/button&gt;
+&lt;/form&gt;
 </code></pre>
 
-<h5 id="toc_1">设备 API 列表：</h5>
-
-<pre><code>wx.scanCode 扫码
-wx.makePhoneCall    拨打电话
-wx.getSystemInfo    获取系统信息
-wx.getSystemInfoSync    获取系统信息
-wx.getNetworkType   获取网络类型
-wx.onNetworkStatusChange    监听网络状态变化
-
-wx.onAccelerometerChange    监听加速度数据
-wx.startAccelerometer   开始监听加速度数据
-wx.stopAccelerometer    停止监听加速度数据
-wx.onCompassChange  监听罗盘数据
-wx.startCompass 开始监听罗盘数据
-wx.stopCompass  停止监听罗盘数据
-wx.setClipboardData 设置剪贴板内容
-wx.getClipboardData 获取剪贴板内容
+<pre><code>JS文件：
+ requestOrder: function(e) {
+    console.log(&#39;点击立即支付触发表单提交获取formid&#39;)
+    console.log(e.detail.formId)
+ }
 </code></pre>
 
-<h5 id="toc_2">多数 API 的回调都是异步，你需要处理好代码逻辑的异步问题。</h5>
+<h4 id="toc_1">官方模板消息文档地址</h4>
 
-<h5 id="toc_3">网络请求API</h5>
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/template-message.html">https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/template-message.html</a></p>
 
-<pre><code>wx.request  发起网络请求
-wx.uploadFile   上传文件
-wx.downloadFile 下载文件
+<pre><code>注意事项：下发这个通知微信是有条件的；
+1. 支付  2. 提交表单
+
+    支付
+    当用户在小程序内完成过支付行为，可允许开发者向用户在7天内
+    推送有限条数的模板消息
+    （1次支付可下发3条，多次支付下发条数独立，互相不影响）
+
+    提交表单
+    当用户在小程序内发生过提交表单行为且该表单声明为要发模板消息的，
+    开发者需要向用户提供服务时，
+    可允许开发者向用户在7天内推送有限条数的模板消息
+    （1次提交表单可下发1条，多次提交下发条数独立，相互不影响）
+
+
+用户提交一次表单，会提供给开发者一次推送权限，
+多次提交的情况下下发条数独立。
+所以如果开发者想要哎7天内无限制的为用户推送消息，
+需要做的就是--&gt;从用户那里获取&quot;足够多&quot;的推送权限
+（推送权限就是form表单的formid）。
+
+
+如果用户在一周内没有访问或点击过小程序中的任何组件，
+那我们就收集不到有效的fromid，
+也就意味着我们&quot;失去&quot;了给用户发送模板消息的权限
+
 </code></pre>
 
-<h5 id="toc_4">界面 API 列表：</h5>
+<p><img src="media/15336330410298/IMG_3195.png" alt="IMG_3195"/></p>
 
-<pre><code>wx.navigateTo   新窗口打开页面
-wx.redirectTo   原窗口打开页面
-wx.switchTab    切换到 tabbar 页面
-wx.navigateBack 退回上一个页面
-
-wx.showToast    显示提示框
-wx.hideToast    隐藏提示框
-
-wx.showLoading  显示加载提示框
-wx.hideLoading  隐藏提示框
-
-wx.showModal    显示模态弹窗
-wx.showActionSheet  显示菜单列表
-
-wx.setNavigationBarTitle    设置当前页面标题
-wx.showNavigationBarLoading 显示导航条加载动画
-wx.hideNavigationBarLoading 隐藏导航条加载动画
-wx.setBackgroundColor   动态设置窗口的背景色
-wx.setBackgroundTextStyle   动态设置下拉背景字体、loading 图的样式
-
-wx.createAnimation  动画
-wx.createContext    创建绘图上下文
-wx.drawCanvas   绘图
-wx.stopPullDownRefresh  停止下拉刷新动画
-</code></pre>
-
-<h5 id="toc_5">媒体 API 列表：</h5>
-
-<pre><code>wx.chooseImage  从相册选择图片，或者拍照
-wx.previewImage 预览图片
-wx.startRecord  开始录音
-wx.stopRecord   结束录音
-wx.playVoice    播放语音
-wx.pauseVoice   暂停播放语音
-wx.stopVoice    结束播放语音
-wx.getBackgroundAudioPlayerState 获取音乐播放状态
-wx.playBackgroundAudio  播放音乐
-wx.pauseBackgroundAudio 暂停播放音乐
-wx.seekBackgroundAudio  控制音乐播放进度
-wx.stopBackgroundAudio  停止播放音乐
-wx.onBackgroundAudioPlay    监听音乐开始播放
-wx.onBackgroundAudioPause   监听音乐暂停
-wx.onBackgroundAudioStop    监听音乐结束
-wx.chooseVideo  从相册选择视频，或者拍摄
-wx.loadFontFace 动态加载字体
-</code></pre>
-
-<h5 id="toc_6">文件 API 列表：</h5>
-
-<pre><code>wx.saveFile 保存文件
-wx.getSavedFileList 获取已保存的文件列表
-wx.getSavedFileInfo 获取已保存的文件信息
-wx.removeSavedFile  删除已保存的文件信息
-wx.openDocument 打开文件
-</code></pre>
-
-<h5 id="toc_7">数据 API 列表：</h5>
-
-<pre><code>wx.getStorage   获取本地数据缓存
-wx.getStorageSync   获取本地数据缓存
-wx.setStorage   设置本地数据缓存
-wx.setStorageSync   设置本地数据缓存
-wx.getStorageInfo   获取本地缓存的相关信息
-wx.getStorageInfoSync   获取本地缓存的相关信息
-wx.removeStorage    删除本地缓存内容
-wx.removeStorageSync    删除本地缓存内容
-wx.clearStorage 清理本地数据缓存
-wx.clearStorageSync 清理本地数据缓存
-</code></pre>
-
-<h5 id="toc_8">位置 API 列表：</h5>
-
-<pre><code>wx.getLocation  获取当前位置
-wx.chooseLocation   打开地图选择位置
-wx.openLocation 打开内置地图
-wx.createMapContext 地图组件控制
-</code></pre>
+<p><img src="media/15336330410298/IMG_3196.png" alt="IMG_3196"/></p>
 
 
 		</div>

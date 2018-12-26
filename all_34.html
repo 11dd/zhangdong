@@ -47,19 +47,11 @@
         <li><label>微信小程序概述</label></li>
 
           
-            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-          
-            <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-          
-            <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+            <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
           
             <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
           
-            <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-          
-            <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-          
-            <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+            <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
           
             <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
           
@@ -238,19 +230,11 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
-                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-                        
-                          <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-                        
-                          <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+                          <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
                         
                           <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
                         
-                          <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-                        
-                          <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-                        
-                          <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+                          <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
                         
                           <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
                         
@@ -410,75 +394,152 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之数据统计与分析</h1>
+		<h1>OC 数组操作方法说明</h1>
 
-		<p>公众平台登录小程序账号，在数据分析页面官方提供了数据统计与分析信息：<br/>
-注意：只统计已发布的线上版本使用数据</p>
+		<h5 id="toc_0">获取数组的正序迭代器</h5>
 
-<p>或扫描下方二维码，可用手机查看自己小程序数据信息，官方提供；<br/>
-<img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.47.17.png" alt="屏幕快照 2018-09-07 下午3.47.17"/></p>
+<pre><code>    NSEnumerator *enu1 = [tempArr objectEnumerator];
+</code></pre>
 
-<h4 id="toc_0">数据分析-概况：</h4>
+<h5 id="toc_1">获取数组的反序迭代器</h5>
 
-<ol>
-<li>昨日概况，访问人数，新访问人数，总添加人数，新添加人数</li>
-<li>累计访问人数</li>
-<li>TOP受访页</li>
-</ol>
+<pre><code>    NSEnumerator *enu2 = [tempArr reverseObjectEnumerator];
+    //数组倒序输出
+    dataArray=(NSMutableArray *)[[dataArray reverseObjectEnumerator] allObjects];
+</code></pre>
 
-<h4 id="toc_1">数据分析-实时统计：</h4>
+<h5 id="toc_2">数组排序</h5>
 
-<ol>
-<li>实时访问次数
-注：最多可查看实时统计的近7天的数据，更多大范围数据看概况；</li>
-</ol>
+<pre><code>    // 返回一个排好序的数组，原来数组的元素顺序不会改变
+    // 指定元素的比较方法：compare:
+    NSArray *array1 = [NSArray arrayWithObjects:@&quot;2&quot;, @&quot;3&quot;, @&quot;1&quot;, @&quot;4&quot;, nil];
+    NSArray *array2 = [array1 sortedArrayUsingSelector:@selector(compare:)];
+    NSLog(@&quot;array2:%@&quot;, array2);(1,2,3,4)
+</code></pre>
 
-<h4 id="toc_2">数据分析-访问分析：</h4>
+<h5 id="toc_3">选择排序-iOS常用模式tempLogArr数组里每一元素是字典，根据字典里的dic[Index]排序</h5>
 
-<ol>
-<li>统计每天的打开次数，可自定义时间</li>
-<li>访问分布，如会话打开，二维码打开，搜索打开等；</li>
-<li>访问时长，例如访问时长在30-50秒之间有9次</li>
-<li>访问深度，如一个人打开168次，忠实用户啊...</li>
-<li>新增留存与活跃留存，可查看留存率</li>
-<li><p>访问页面，例如index页访问次数86次，人数37，均时长，<br/><br/>
-分享次数，分享人数等；</p>
+<pre><code>    for (int i=0; i&lt;tempLogArr.count; i++) {
+        
+        for (int j=i+1; j&lt;tempLogArr.count; j++) {
+            
+            if ([tempLogArr[i][@&quot;Index&quot;] intValue] &lt; [tempLogArr[j][@&quot;Index&quot;] intValue]) {
+                
+                [tempLogArr exchangeObjectAtIndex:i withObjectAtIndex:j];
+            }
+        }
+    }
+</code></pre>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.22.39.png" alt="屏幕快照 2018-09-07 下午3.22.39"/></p></li>
-</ol>
+<h5 id="toc_4">数组tempLogArr元素是字典“遍历所有”去掉重复信息用（ i--）方式，避免数组越界</h5>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.23.08.png" alt="屏幕快照 2018-09-07 下午3.23.08"/></p>
+<pre><code>    int x;
+    int y;
+    for (int i = (int)tempLogArr.count - 1; i &gt;=0 ; i--) {
+        NSString * tempStr = [NSString stringWithFormat:@&quot;%@&quot;,tempLogArr[i][@&quot;Index&quot;]];
+        x = [tempStr intValue];
+        for (int j = i-1; j &gt;=0 ; j--) {
+            y = [tempLogArr[j][@&quot;Index&quot;] intValue];
+            if (x == y) {
+                [tempLogArr removeObjectAtIndex:j];
+            }
+        }
+    }
 
-<h4 id="toc_3">数据分析-来源分析：</h4>
+</code></pre>
 
-<ol>
-<li>整体来源分布，默认显示排名前12的来源数据，也可以自己选择，<br/>
-如会话，长按二维码，搜索，相册选取二维码，小程序历史，扫一扫等；</li>
-</ol>
+<h5 id="toc_5">数组historyArray元素是字典 遍历遇到重复信息删除，停止遍历</h5>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.18.47.png" alt="屏幕快照 2018-09-07 下午3.18.47"/></p>
+<p>不遍历全部，针对每次增加信息的时候，都会调用这个方法，不会出现重复两次的情况</p>
 
-<h4 id="toc_4">数据分析-用户画像：</h4>
+<pre><code>//tempStr 信息的唯一标识，tempDic是全部信息内容
+-(void)saveSearchData:(NSString*)tempStr infoDic:(NSDictionary *)tempDic
+{
+    /**该模块为判断浏览的信息是否已经存在历史记录里,如果存在则删除过去的,重新添加最新的搜索记录*/
+    
+    if (self.historyArray.count&gt;0) {
+        //第一种遍历方法，数组元素为字典，字典是每条信息的全部内容
+        [self.historyArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            
+            //NSLog(@&quot;idx=%lu, id=%@&quot;, (unsigned long)idx, obj);
+            
+            if ([obj[@&quot;info_id&quot;] isEqualToString:tempStr]) {
+                [self.historyArray removeObjectAtIndex:idx];
+                *stop = YES;//停止遍历
+            }
+        }];
+    }
+    [self.historyArray addObject:tepDic];
+}
+</code></pre>
 
-<ol>
-<li>性别及年龄分布</li>
-<li>地区分布</li>
-<li>终端及机型分布</li>
-<li><p>各个属性分布活跃用户以及占比</p>
+<h5 id="toc_6">遍历方法:快速枚举</h5>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.20.52.png" alt="屏幕快照 2018-09-07 下午3.20.52"/></p>
+<pre><code>    for(NSString* obj in tempArr)
+    {
+        NSLog(@&quot;%@&quot;, obj);
+    }
+</code></pre>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.21.43.png" alt="屏幕快照 2018-09-07 下午3.21.43"/></p></li>
-</ol>
+<h5 id="toc_7">遍历方法:快速遍历</h5>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.21.10.png" alt="屏幕快照 2018-09-07 下午3.21.10"/></p>
+<pre><code>//顺序遍历
+[array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@&quot;%@&quot;,array[idx]);
+        *stop = YES;//停止遍历,也可以在此增加if判断idx = 3 的时候停止。
+ }];
+//倒序遍历
+[array enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@&quot;%@&quot;,array[idx]);
+        *stop = NO;//继续遍历
+}];
+</code></pre>
 
-<p><img src="media/15363043648238/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-07%20%E4%B8%8B%E5%8D%883.39.40.png" alt="屏幕快照 2018-09-07 下午3.39.40"/></p>
+<h5 id="toc_8">动态数组NSMutableArray的add操作</h5>
 
-<p>腾讯移动分析平台：可APP接入，H5接入，小程序接入；<br/>
-<a href="http://mta.qq.com/">http://mta.qq.com/</a></p>
+<pre><code>    NSArray * array = [NSArray arrayWithObjects:@&quot;1&quot;,@&quot;2&quot;, nil];
+    
+    //方法一
+    NSMutableArray * list = [[NSMutableArray alloc]init];
+    [list addObjectsFromArray: array]];
+    NSLog(@&quot;%@&quot;,list);//(1,2)
+    
+    //方法二arrayByAddingObjectsFromArray 该方法做了copy原数据不变
+    NSMutableArray * list = [[NSMutableArray alloc]init];
+    [list arrayByAddingObjectsFromArray: array]
+    NSLog(@&quot;%@&quot;,list);//()
+    
+</code></pre>
 
-<p>竞品：有百度微信小程序统计，阿拉灯小程序统计分析平台</p>
+<h5 id="toc_9">数组的简单操作</h5>
+
+<pre><code>//插入索引为几的位置
+[tempArr insertObject:@&quot;two&quot; atIndex:1];
+
+//修改数组中第2个元素的内容
+[tempArr replaceObjectAtIndex:2 withObject:@&quot;aaa&quot;];
+
+//交换数组中得内容
+[tempArr exchangeObjectAtIndex:1 withObjectAtIndex:3];
+
+//取出连续范围的元素作为子集内容
+NSArray *sub1 = [tempArr subarrayWithRange:NSMakeRange(1, 3)];
+</code></pre>
+
+<h5 id="toc_10">数组的删除操作</h5>
+
+<pre><code>//1.删除最后一个元素
+ [array removeLastObject];
+ NSLog(@&quot;%@&quot;,array);
+
+//2.删除指定下标的元素
+[array removeObjectAtIndex:5];
+ NSLog(@&quot;%@&quot;,array);
+
+//3.直接删除元素
+[array removeObject:@&quot;e&quot;];
+ NSLog(@&quot;%@&quot;,array);
+</code></pre>
 
 
 		</div>

@@ -47,19 +47,11 @@
         <li><label>微信小程序概述</label></li>
 
           
-            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-          
-            <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-          
-            <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+            <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
           
             <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
           
-            <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-          
-            <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-          
-            <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+            <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
           
             <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
           
@@ -238,19 +230,11 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
-                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-                        
-                          <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-                        
-                          <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+                          <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
                         
                           <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
                         
-                          <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-                        
-                          <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-                        
-                          <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+                          <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
                         
                           <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
                         
@@ -410,9 +394,31 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序入坑锦集</h1>
+		<h1>OC plist文件管理(代码方式)</h1>
 
-		<p><img src="media/15288676024387/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-11%20%E4%B8%8B%E5%8D%887.05.47.png" alt="屏幕快照 2018-06-11 下午7.05.47"/></p>
+		<pre><code>//获取本地沙盒路径
+NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+
+//获取完整路径
+NSString *documentsPath = [path objectAtIndex:0];
+NSString *plistPath = [documentsPath stringByAppendingPathComponent:@&quot;Test.plist&quot;];
+
+//创建数据
+NSMutableDictionary *dataDict = [NSMutableDictionary dictionary];
+
+[dataDict setObject:@&quot;zhangd&quot; forKey:@&quot;name&quot;];
+[dataDict setObject:@&quot;26&quot; forKey:@&quot;age&quot;];
+[dataDict setObject:@&quot;man&quot; forKey:@&quot;sex&quot;];
+
+//写入plist文件
+[dataDict writeToFile:plistPath atomically:YES];
+
+//读取plist文件
+//文件是什么类型，就用什么类型的数据来接收
+NSMutableDictionary *dataDict1 = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+NSLog((@&quot;**start**\n[function name:%s]\n&quot; &quot;[Lines:%d]\n&quot; &quot;data-&gt;%@\n**end**\n\n&quot;), __FUNCTION__, __LINE__,dataDict1);
+
+</code></pre>
 
 
 		</div>

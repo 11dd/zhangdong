@@ -47,19 +47,11 @@
         <li><label>微信小程序概述</label></li>
 
           
-            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-          
-            <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-          
-            <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+            <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
           
             <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
           
-            <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-          
-            <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-          
-            <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+            <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
           
             <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
           
@@ -238,19 +230,11 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
-                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-                        
-                          <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-                        
-                          <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+                          <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
                         
                           <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
                         
-                          <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-                        
-                          <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-                        
-                          <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+                          <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
                         
                           <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
                         
@@ -410,63 +394,87 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之二维码</h1>
+		<h1>微信小程序之跑马灯效果</h1>
 
-		<pre><code>获取小程序二维码，官方提供了三个接口，开发者可挑选适合自己的接口。 
- A接口，生成小程序码，可接受path参数较长，生成个数受限。
-  B接口，生成小程序码，可接受页面参数较短，生成个数不受限。
-   C接口，生成二维码，可接受path参数较长，生成个数受限。
+		<h5 id="toc_0">实现跑马灯效果图</h5>
+
+<h5 id="toc_1">---wxml文件---</h5>
+
+<pre><code>&lt;!--跑马灯中的文字信息字段:gundong_text--&gt;
+&lt;view wx:if=&#39;{{gundong_text}}&#39; class=&quot;marquee_container&quot; style=&quot;--marqueeWidth--:-12em&quot;&gt;
+  &lt;view class=&#39;marquee_text&#39;&gt;
+    &lt;view class=&#39;hengxianggundong&#39;&gt;
+      &lt;image class=&#39;gundong_image&#39; mode=&#39;aspectFit&#39; src=&#39;../../image/laba.png&#39;&gt;&lt;/image&gt;
+      &lt;view class=&#39;triangle-left&#39;&gt;&lt;/view&gt;
+      &lt;view class=&quot;gundong_textView weui-zimFont9&quot;&gt;{{gundong_text}}&lt;/view&gt;
+    &lt;/view&gt;
+  &lt;/view&gt;
+&lt;/view&gt;
 </code></pre>
 
-<pre><code>接口A: 适用于需要的码数量较少的业务场景
-通过该接口生成的小程序码，永久有效
+<h5 id="toc_2">---wxss文件---</h5>
 
-接口C：适用于需要的码数量较少的业务场景
-通过该接口生成的小程序二维码，永久有效，数量限制
-
-数量限制接口A加上接口C，总共生成的码数量限制为100,000
-
-接口B：适用于需要的码数量极多的业务场景
-
-通过接口B生成的小程序码，永久有效，数量暂无限制。
-可以带参数最大32个可见字符，只支持数字，大小写英文
-以及部分特殊字符：!#$&amp;&#39;()*+,/:;=?@-._~，
-其它字符请自行编码为合法字符（
-因不支持%，中文无法使用 urlencode 处理，请使用其他编码方式）
-
-B接口调用分钟频率受限(目前5000次/分钟)
-</code></pre>
-
-<h4 id="toc_0">首先</h4>
-
-<p>因为接口B不受数量限制，我们使用接口B生成小程序二维码<br/>
- 使用PostMan发起GET请求获取access_token：<br/>
- 官方文档 ：<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183">https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183</a></p>
-
-<pre><code>https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=这里填写小程序appid&amp;secret=这里填写小程序secret
-
-返回参数：
-{
-    &quot;access_token&quot;: &quot;&quot;,
-    &quot;expires_in&quot;: 7200
+<pre><code>/* 跑马灯样式 */
+@keyframes around {
+  from {
+    margin-left: 100%;
+  }
+  to {
+    /* var接受传入的变量 */
+    margin-left: var(--marqueeWidth--);
+  }
+}
+.marquee_container {
+  position: absolute;
+  top: 120rpx;
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  z-index: 1200;
+}
+.marquee_container:hover {
+  /* 不起作用 */
+  animation-play-state: paused;
+}
+.marquee_text {
+  display: inline-block;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  white-space: nowrap;
+  animation-name: around;
+  animation-duration: 10s; /*过渡时间*/
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.hengxianggundong {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.gundong_image {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.triangle-left {
+  width: 0;
+  height: 0;
+  border-right: 10rpx solid rgba(0, 0, 0, 0.8);
+  border-bottom: 10rpx solid rgba(0, 0, 0, 0);
+  border-top: 10rpx solid rgba(0, 0, 0, 0);
+}
+.gundong_textView {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border-radius: 10rpx;
 }
 </code></pre>
-
-<h4 id="toc_1">其次</h4>
-
-<p>发起POST请求：</p>
-
-<pre><code>https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=这里填写上一个接口返回的token
-
-Body中选择raw写入参数，例如
-{
-    &quot;page&quot;:&quot;pages/lengxiangui/coldfresh_index/coldfresh_index&quot;,
-    &quot;scene&quot;:&quot;1&quot;
-}
-注：场景值 scene 不得超过32位字符，并且上线已有的页面才能生成二维码
-</code></pre>
-
-<p><img src="media/15426946934140/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-20%20%E4%B8%8B%E5%8D%882.35.02.png" alt="屏幕快照 2018-11-20 下午2.35.02"/></p>
 
 
 		</div>

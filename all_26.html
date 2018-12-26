@@ -47,19 +47,11 @@
         <li><label>微信小程序概述</label></li>
 
           
-            <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-          
-            <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-          
-            <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+            <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
           
             <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
           
-            <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-          
-            <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-          
-            <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+            <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
           
             <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
           
@@ -238,19 +230,11 @@
                     
                       <li class="side-title"><span>微信小程序概述</span></li>
                         
-                          <li><a title="2018-12-26 小程序分享内容" href="15457085182294.html">2018-12-26 小程序分享内容</a></li>
-                        
-                          <li><a title="微信小程序的历程" href="15416695471017.html">微信小程序的历程</a></li>
-                        
-                          <li><a title="微信小程序账号申请" href="15232437563217.html">微信小程序账号申请</a></li>
+                          <li><a title="追着微信小程序的尾巴,转圈圈" href="15457085182294.html">追着微信小程序的尾巴,转圈圈</a></li>
                         
                           <li><a title="微信平台与微信小程序" href="15399429964472.html">微信平台与微信小程序</a></li>
                         
-                          <li><a title="微信小程序运营 设计与开发" href="15416647115012.html">微信小程序运营 设计与开发</a></li>
-                        
-                          <li><a title="微信小程序微信开放API" href="15326548831374.html">微信小程序微信开放API</a></li>
-                        
-                          <li><a title="微信小程序机制" href="15287848933165.html">微信小程序机制</a></li>
+                          <li><a title="微信小程序运行机制" href="15287848933165.html">微信小程序运行机制</a></li>
                         
                           <li><a title="微信小程序基础介绍" href="15325981613625.html">微信小程序基础介绍</a></li>
                         
@@ -410,49 +394,40 @@
 
 	
 		<div class="markdown-body">
-		<h1>微信小程序之更新API的使用</h1>
+		<h1>微信小程序之解析html</h1>
 
-		<h5 id="toc_0">在打开小程序的主页，调用如下方法，检查更新小程序</h5>
+		<h5 id="toc_0">使用wxParse解析html</h5>
 
-<pre><code> updateFunction: function() {
-    console.log(&#39;------------检查更新方法--------------&#39;)
-    // 获取小程序更新机制兼容
-    if (wx.canIUse(&#39;getUpdateManager&#39;)) {
-      const updateManager = wx.getUpdateManager()
-      updateManager.onCheckForUpdate(function(res) {
-        console.log(&#39;请求完新版本信息的回调&#39;)
-        console.log(res.hasUpdate)
-        if (res.hasUpdate) {
-          updateManager.onUpdateReady(function() {
-            wx.showModal({
-              title: &#39;更新提示&#39;,
-              content: &#39;新版本已经准备好，是否重启应用？&#39;,
-              success: function(res) {
-                if (res.confirm) {
-                  // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
-                  updateManager.applyUpdate()
-                }
-              },
-              showCancel: false
-            })
-          })
-          updateManager.onUpdateFailed(function() {
-            // 新的版本下载失败
-            wx.showModal({
-              title: &#39;已经有新版本了哟~&#39;,
-              content: &#39;新版本已经上线啦~，请您删除当前小程序，重新搜索打开哟~&#39;,
-            })
-          })
-        }
-      })
-    } else {
-      // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
-      wx.showModal({
-        title: &#39;提示&#39;,
-        content: &#39;当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。&#39;
-      })
-    }
-  },
+<p>github地址：<a href="https://github.com/icindy/wxParse">https://github.com/icindy/wxParse</a><br/>
+下载之后，将wxParse文件夹导入自己工程与utils同级别   </p>
+
+<h5 id="toc_1">在app.wxss全局样式文件中，引入wxParse的样式表如:</h5>
+
+<pre><code>@import&quot;/wxParse/wxParse.wxss&quot;;
+</code></pre>
+
+<h5 id="toc_2">在所需的JS文件中引入如:</h5>
+
+<pre><code>var WxParse = require(&#39;../../wxParse/wxParse.js&#39;);
+
+/**
+     * WxParse.wxParse(bindName , type, data, target,imagePadding)
+     * 1.bindName绑定的数据名(必填)
+     * 2.type可以为html或者md(必填)
+     * 3.data为传入的具体数据(必填)
+     * 4.target为Page对象,一般为this(必填)
+     * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
+     */
+     
+    WxParse.wxParse(&#39;content&#39;, &#39;html&#39;, &#39;&lt;h1&gt;我是内容&lt;/h1&gt;&#39;, this, 0);
+</code></pre>
+
+<h5 id="toc_3">在wxml所需的文件中引入如:</h5>
+
+<pre><code>&lt;import src=&quot;../../wxParse/wxParse.wxml&quot; /&gt;
+
+&lt;!-- 内容 --&gt;
+&lt;template is=&quot;wxParse&quot; data=&quot;{{wxParseData:content.nodes}}&quot; /&gt;
 </code></pre>
 
 
