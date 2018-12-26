@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-12-26T11:40:03+08:00</updated>
+  <updated>2018-12-26T13:40:10+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -383,6 +383,8 @@ wx.downloadFile 下载文件
 我们分析过的案例中，有一部分小程序会在页面中引用大图片，
 在页面后退切换中会出现掉帧卡顿的情况。
 当前我们建议开发者尽量减少使用大图片资源。
+
+### 网络图片URL 不要带有中文，分享时会不显示图片
 </code></pre>
 
 <p><strong>小程序运行机制</strong></p>
