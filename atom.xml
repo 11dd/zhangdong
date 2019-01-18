@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2018-12-29T16:54:57+08:00</updated>
+  <updated>2019-01-18T13:40:45+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[追着小程序的尾巴,转圈圈]]></title>
+    <title type="html"><![CDATA[小程序概述]]></title>
     <link href="www.freefook.com/15457085182294.html"/>
     <updated>2018-12-25T11:28:38+08:00</updated>
     <id>www.freefook.com/15457085182294.html</id>
@@ -607,294 +607,171 @@ wx.downloadFile 下载文件
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序开发规范]]></title>
-    <link href="www.freefook.com/15416465825836.html"/>
-    <updated>2018-11-08T11:09:42+08:00</updated>
-    <id>www.freefook.com/15416465825836.html</id>
+    <title type="html"><![CDATA[微信小程序建项-逻辑操作JS]]></title>
+    <link href="www.freefook.com/15419922791377.html"/>
+    <updated>2018-11-12T11:11:19+08:00</updated>
+    <id>www.freefook.com/15419922791377.html</id>
     <content type="html"><![CDATA[
-<h5 id="toc_0">微信小程序里的四种文件</h5>
+<h5 id="toc_0">给tabBar设置角标</h5>
 
-<pre><code>.json 后缀的 JSON 配置文件
-.wxml 后缀的 WXML 模板文件
-.wxss 后缀的 WXSS 样式文件
-.js 后缀的 JS 脚本逻辑文件
+<pre><code>wx.setTabBarBadge 这个API在非tabbar页面上调用会失效
+
+wx.setTabBarBadge({
+    index: 1,//设置第几个tabBar
+    text: &#39;&#39; + 5,//设置角标显示的数字
+})
+
+移除角标
+wx.removeTabBarBadge({
+   index: 1
+})    
 </code></pre>
 
-<h5 id="toc_1">资源管理</h5>
+<h5 id="toc_1">动态设置页面标题</h5>
 
-<pre><code>### 图片资源
-目前图片资源的主要性能问题在于大图片和长列表图片上，
-这两种情况都有可能导致 iOS 客户端内存占用上升，
-从而触发系统回收小程序页面。
-### 图片对内存的影响
-在 iOS 上，小程序的页面是由多个 WKWebView 组成的，
-在系统内存紧张时，会回收掉一部分 WKWebView。
-从过去我们分析的案例来看，大图片和长列表图片的使用会引起 WKWebView 的回收。
-### 图片对页面切换的影响
-除了内存问题外，大图片也会造成页面切换的卡顿。
-我们分析过的案例中，有一部分小程序会在页面中引用大图片，
-在页面后退切换中会出现掉帧卡顿的情况。
-当前我们建议开发者尽量减少使用大图片资源。
-</code></pre>
+<pre><code>第一种：定死页面标题修改 .json文件
+{
+  &quot;navigationBarTitleText&quot;: &quot;标题&quot;
+}
 
-<h5 id="toc_2">资源文件</h5>
-
-<pre><code>所有资源文件(如图片)放在统一文件下及其子文件中(例如以下分类)
-resource
-  ——public
-  ——tab
-  ——home
-  ——mine
-</code></pre>
-
-<h5 id="toc_3">基础页面</h5>
-
-<pre><code>业务展示的页面放在如 pages 文件及其子文件中(例如以下分类)
-pages
-  ——index
-  ——mall
-    ——goodList
-    ——goodDetail
-  ——order
-    ——orderList
-    ——orderDetail
-  ——mine
-    ——myInfo
-    ——myAddress
-    
-如有其他子业务，单独在pages里创建新的子级文件
-</code></pre>
-
-<pre><code>注释规范
-   针对wxml页面由上到下(或由左到右)分级的模块，均需注释出其功能，
-   并在其上下空出一行与其他代码进行区分。
-</code></pre>
-
-<h5 id="toc_4">样式文件</h5>
-
-<pre><code>基础样式文件，在最外层中创建(如：weui.wxss)
-第一步：写入公共样式：如 
-1.标题字体大小，描述字体大小等项目中一二三级字号；
-2.程序中所用的公共色值；
-3.布局方式flex的横向布局，纵向布局等；
-4.公共布局中wxss样式前缀统一(如weui-开头)；
-等等
-
-第二步：在app.wxss文件最上部，引入 @import &quot;weui.wxss&quot;;
-以上公共样式便可全局使用
-</code></pre>
-
-<pre><code>wxss规范
-    1.wxss 页面可使用快捷键真理代码(Shift+Alt+F)
-    整理后代码有明显的代码缩进，对齐。每一个样式类之间空出一行；
-
-    2.在开发过程中rpx和px均可能用到，
-    如通常情况下间距使用rpx，
-    字体大小和边框等使用px，开发者根据实际情况而定；
-       
-    3.同一块的样式属性(如 .order-title 和 .order-image)放在一块；
-    
-    4.wxss 样式中同一块可以这样抒写(如 .order.title)
-    意思是.order样式下的.title,
-    其他地方的class=&#39;title&#39;不会引用到.order下的.title
-    
-    5.wxss样式之间用块状注释。请勿在代码后面直接注释。
-</code></pre>
-
-<h5 id="toc_5">JS规范</h5>
-
-<pre><code>JS规范
-    1.删除js文件中未用到的生命周期函数，保持代码的整洁
-    2.右上角不要分享的页面，删除JS文件中该方法onShareAppMessage:function()
-    3.采用ES6 关键字let定义变量，尽量不使用var
-    4.所有涉及到数据绑定的变量均需在data中初始化,禁止在不定义的情况下直接setData
-    5.变量名以及函数名统一采用驼峰命名法(或下划线分割)
-    6.正常情况下函数名前缀需加上清晰的动词表示函数功能(如getOderList)
-    7.点击事件函数命名方式为 on + 事件名 或者业务名
-    8.JS语句无需以分号结束，统一省略分号
-    9.JS中一致使用单引号&#39; &#39; , WXML中一致使用双引号&quot; &quot;
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[微信小程序建项-登录篇]]></title>
-    <link href="www.freefook.com/15234367737951.html"/>
-    <updated>2018-04-11T16:52:53+08:00</updated>
-    <id>www.freefook.com/15234367737951.html</id>
-    <content type="html"><![CDATA[
-<p>做小程序登录思考问题：</p>
-
-<ol>
-<li>问题一：不想在小程序里总输入自己平台的账号密码，怎么与微信关联；</li>
-<li>问题二：关联了微信也要可以切换账号使用；</li>
-<li>问题三：不注册账号也可以在小程序里体验使用，必要时提示去登录；</li>
-<li>问题四：如果打开小程序是我们项目自己的登录注册页面(体验很差)</li>
-</ol>
-
-<p><img src="media/15234367737951/IMG_3194.png" alt="IMG_3194"/></p>
-
-<hr/>
-
-<h4 id="toc_0">微信登录获取openID</h4>
-
-<pre><code>//不需要微信授权既可获取微信小程序登录API获取code
-wx.login({
-    success: function (res) {
-    //获取code返回值如下：
-    //code:&quot;0619IaNe0L8gHz1VMINe0WgjNe09IaNC&quot;
-    //errMsg:&quot;login:ok&quot;
-    //code每次请求返回都不同，并且code使用一次后作废，
-    //即使不使用，下一次请求code，上一次的code也作废。
-    }
+第二种：动态自定义页面标题
+wx.setNavigationBarTitle({
+  title: this.data.URLBackTitle
 })
 </code></pre>
 
-<ol>
-<li>得到code将code传给服务器</li>
-<li>服务器GET请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
-</ol>
+<h5 id="toc_2">获取系统信息 下面是屏幕宽高</h5>
 
-<pre><code>小程序官方更新将原POST请求改为GET请求了，返回值都是session_key，openid
+<pre><code> wx.getSystemInfo({
+      success: function(res) {
+        that.setData({
+          windowHeight: res.windowHeight,
+          windowWidth: res.windowWidth,
+        })
+      }
+});
+</code></pre>
 
-新GET
-https://api.weixin.qq.com/sns/jscode2session?appid=APPID&amp;secret=SECRET&amp;js_code=JSCODE&amp;grant_type=authorization_code
+<h5 id="toc_3">.map 方法示例 接口返回的imageURL拼接根地址</h5>
 
-原POST
-https://api.weixin.qq.com/sns/jscode2session  
-参数{
-    appid，
-    secret，
-    js_code = code，
-    grant_type = authorization_code
-} 
-返回数据{
-    session_key，
-    openid
+<pre><code>var tempArray = &#39;接口返回的数组&#39;
+that.setData({
+    listArray: tempArray.map(function(item) {
+        item.imageURL = getApp().data.baseURL + item.imageURL;
+        //如果列表里没有子数组数据需要拼接根地址，就不用再次 .map 方法 直接return item
+        item.child.map(function(childItem) {
+          childItem.pic = getApp().data.baseURL + childItem.pic;
+          return childItem;
+        })
+        return item;
+    }),
+})
+</code></pre>
+
+<h5 id="toc_4">.filter方法 遍历数组数据</h5>
+
+<pre><code>示例:遍历cityArray 数组，找出cityArray数组中pid 等于
+province 数组中province[e.detail.value].id的值
+使用.filter方法 比 for 循环速度快
+
+let newArray = that.data.cityArray.filter(item =&gt; item.pid === that.data.province[e.detail.value].id)
+</code></pre>
+
+<h5 id="toc_5">本地数据存储</h5>
+
+<pre><code> // 同步方式存储数据
+wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
+
+//取出数据
+var token = wx.getStorageSync(&#39;userInfo&#39;)
+
+</code></pre>
+
+<h5 id="toc_6">页面栈层级数</h5>
+
+<pre><code>var pages = getCurrentPages();
+console.log(&#39;页面栈层数&#39; + pages.length)
+if (pages.length == 10) {
+//小程序最大10层
+}else{
 }
 </code></pre>
 
-<p>官方地址：<a href="https://developers.weixin.qq.com/miniprogram/dev/api/code2Session.html">https://developers.weixin.qq.com/miniprogram/dev/api/code2Session.html</a></p>
+<h5 id="toc_7">获取明天日期</h5>
 
-<h4 id="toc_1">还想获取更多个人信息要如何做？</h4>
+<pre><code>//获取当前时间
+var nowDate = new Date(new Date().toLocaleDateString()); 
+//获取明天这个时间
+var nowDate1 = new Date(nowDate.getTime() + 24 * 60 * 60 * 1000)
 
-<ol>
-<li>如果授权获可以取用户信息wx.getUserInfo得到iv,encryptedData,rawData,signature</li>
-<li>将得到的iv,encryptedData(加密数据) 和wx.login 得到的code传给服务器</li>
-<li>使用和openID一起返回的session_key去解密</li>
-<li>服务端解密encryptedData 可以获取userinfo信息和unionId</li>
-</ol>
+    var date_value1 = nowDate1.getFullYear().toString()
+    var date_value2 = (nowDate1.getMonth() + 1).toString()
+    var date_value3 = nowDate1.getDate().toString()
 
-<pre><code>服务端解密数据encryptedData
-    对称解密使用的算法为 AES-128-CBC，数据采用PKCS#7填充。
-    对称解密的目标密文为 Base64_Decode(encryptedData)。
-    对称解密秘钥 aeskey = Base64_Decode(session_key), aeskey 是16字节。
-    对称解密算法初始向量 为Base64_Decode(iv)，其中iv由数据接口返回。
+    if (date_value2.length == 1) {
+      date_value2 = &#39;0&#39; + date_value2
+    }
+    if (date_value3.length == 1) {
+      date_value3 = &#39;0&#39; + date_value3
+    }
     
-解密encryptedData数据
-{
-　　&quot;openId&quot;:&quot;&quot;,
-　　&quot;nickName&quot;:&quot;ZIM東&quot;,
-　　&quot;gender&quot;:1,
-　　&quot;language&quot;:&quot;zh_CN&quot;,
-　　&quot;city&quot;:&quot;&quot;,
-　　&quot;province&quot;:&quot;&quot;,
-　　&quot;country&quot;:&quot;&quot;,
-　　&quot;avatarUrl&quot;:&quot;&quot;,
-　　&quot;unionId&quot;:&quot;&quot;,
-　　&quot;watermark&quot;:{
-　　　　&quot;timestamp&quot;:1523433831,
-　　　　&quot;appid&quot;:&quot;&quot;
-　　}
-}
-
-在登录小程序之前，既没有关注过公众号，也没有登录过公众号，
-更没有使用微信登录的方式登录过app。
-通过 wx.login 的到的 code 解密后未返回 unionid
-
-另外，为了应用能校验数据的有效性，会在敏感数据加上数据水印( watermark )
-appid 敏感数据归属appid，开发者可校验此参数与自身appid是否一致
-timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性校验
+    var tomorrow = date_value1 + &#39;-&#39; + date_value2 + &#39;-&#39; + date_value3
 </code></pre>
 
-<h4 id="toc_2">会话密钥session_key有效性</h4>
+<h5 id="toc_8">倒计时</h5>
 
-<pre><code>开发者如果遇到因为session_key不正确而校验签名失败或解密失败，请关注下面几个与session_key有关的注意事项。
+<pre><code>LastTimer: function() {
 
-    1.wx.login()调用时，用户的session_key会被更新而致使旧session_key失效。
-    开发者应该在明确需要重新登录时才调用wx.login()，
-    及时通过登录凭证校验接口更新服务器存储的session_key。
+var that = this;
+var totalSecond = 0;
+//start_time服务端返回的团购开始时间
+var start_time = new Date(that.data.start_time.replace(/-/g, &quot;/&quot;));
+totalSecond = Date.parse(start_time) / 1000 - Date.parse(new Date()) / 1000;
 
-    2.微信不会把session_key的有效期告知开发者。
-    我们会根据用户使用小程序的行为对session_key进行续期。
-    用户越频繁使用小程序，session_key有效期越长。
+    //清理掉倒计时
+    clearInterval(that.data.interval_daojishi);
+    //开始倒计时
+    that.data.interval_daojishi = setInterval(function() {
+      // 秒数
+      var second = totalSecond;
+      // 天数位
+      var day = Math.floor(second / 3600 / 24);
+      var dayStr = day.toString();
+      if (dayStr.length == 1) dayStr = &#39;0&#39; + dayStr;
+      // 小时位
+      var hr = Math.floor((second - day * 3600 * 24) / 3600);
+      var hrStr = hr.toString();
+      if (hrStr.length == 1) hrStr = &#39;0&#39; + hrStr;
+      // 分钟位
+      var min = Math.floor((second - day * 3600 * 24 - hr * 3600) / 60);
+      var minStr = min.toString();
+      if (minStr.length == 1) minStr = &#39;0&#39; + minStr;
+      // 秒位
+      var sec = second - day * 3600 * 24 - hr * 3600 - min * 60;
+      var secStr = sec.toString();
+      if (secStr.length == 1) secStr = &#39;0&#39; + secStr;
 
-    3.开发者在session_key失效时，可以通过重新执行登录流程获取有效的session_key。
-    使用接口wx.checkSession()可以校验session_key是否有效，
-    从而避免小程序反复执行登录流程。
+      that.setData({
+        countDownDay: dayStr,
+        countDownHour: hrStr,
+        countDownMinute: minStr,
+        countDownSecond: secStr,
+      });
+      totalSecond--;
 
-    4.当开发者在实现自定义登录态时，
-    可以考虑以session_key有效期作为自身登录态有效期，
-    也可以实现自定义的时效性策略。
-    
-    5.wx.login() 之后再获取wx.getUserInfo()
+      if (totalSecond &lt; 0) {
+        //倒计时结束，清理掉倒计时
+        clearInterval(that.data.interval_daojishi);
+        that.setData({
+          countDownDay: &#39;00&#39;,
+          countDownHour: &#39;00&#39;,
+          countDownMinute: &#39;00&#39;,
+          countDownSecond: &#39;00&#39;,
+        });
+      }
+    }.bind(this), 1000);
+  },
 </code></pre>
-
-<blockquote>
-<pre><code>微信如何授权小程序获取用户信息:
-
-为优化用户体验，使用 wx.getUserInfo 接口直接弹出授权框的开发方式将逐步不再支持。
-从2018年4月30日开始，小程序与小游戏的体验版、开发版调用 wx.getUserInfo 接口，
-将无法弹出授权询问框，默认调用失败。正式版暂不受影响。
-开发者可使用以下方式获取或展示用户信息：
-
-一、小程序:
-1、使用 button 组件，并将 open-type 指定为 getUserInfo 类型，获取用户基本信息。
-
-详情参考文档:
-https://developers.weixin.qq.com/miniprogram/dev/component/button.html
-
-
-2、使用 open-data 展示用户基本信息。
-
-详情参考文档:
-https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html
-</code></pre>
-</blockquote>
-
-<h4 id="toc_3">登录流程图</h4>
-
-<p><img src="media/15234367737951/%E6%B5%81%E7%A8%8B.png" alt="流程"/></p>
-
-<p>👆原图地址：<a href="https://blog.csdn.net/dingjianmin/article/details/75137934">https://blog.csdn.net/dingjianmin/article/details/75137934</a></p>
-
-<p><img src="media/15234367737951/%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B.jpg" alt="登录流程"/></p>
-
-<p>注意：开发者后台拿到开放数据后可以对数据进行校验签名和解密，来保证数据不被篡改。 </p>
-
-<p><img src="media/15234367737951/%E6%95%B0%E6%8D%AE.png" alt="数据"/></p>
-
-<pre><code>签名校验以及数据加解密涉及用户的会话密钥session_key。
- 开发者应该事先通过 wx.login 登录流程获取会话密钥 session_key 并保存在服务器。
- 为了数据不被篡改，开发者不应该把session_key传到小程序客户端等服务器外的环境。
-
-数据签名校验
-
-为了确保 开放接口 返回用户数据的安全性，微信会对明文数据进行签名。
-开发者可以根据业务需要对数据包进行签名校验，确保数据的完整性。
-
-    通过调用接口（如 wx.getUserInfo）获取数据时，接口会同时返回 rawData、signature，
-    其中 signature = sha1( rawData + session_key )
-    
-    开发者将 signature、rawData 发送到开发者服务器进行校验。
-    服务器利用用户对应的 session_key 使用相同的算法计算出签名 signature2 ，
-    比对 signature 与 signature2 即可校验数据的完整性。
-
-</code></pre>
-
-<p>官方数据签名校验<br/>
-<a href="https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject">https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject</a></p>
 
 ]]></content>
   </entry>
@@ -1026,6 +903,118 @@ wrap-reverse：换行，第一行在最下面
 </code></pre>
 
 <p>转载：<a href="https://blog.csdn.net/weixin_36065510/article/details/73203720">https://blog.csdn.net/weixin_36065510/article/details/73203720</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序开发规范]]></title>
+    <link href="www.freefook.com/15416465825836.html"/>
+    <updated>2018-11-08T11:09:42+08:00</updated>
+    <id>www.freefook.com/15416465825836.html</id>
+    <content type="html"><![CDATA[
+<h5 id="toc_0">微信小程序里的四种文件</h5>
+
+<pre><code>.json 后缀的 JSON 配置文件
+.wxml 后缀的 WXML 模板文件
+.wxss 后缀的 WXSS 样式文件
+.js 后缀的 JS 脚本逻辑文件
+</code></pre>
+
+<h5 id="toc_1">资源管理</h5>
+
+<pre><code>### 图片资源
+目前图片资源的主要性能问题在于大图片和长列表图片上，
+这两种情况都有可能导致 iOS 客户端内存占用上升，
+从而触发系统回收小程序页面。
+### 图片对内存的影响
+在 iOS 上，小程序的页面是由多个 WKWebView 组成的，
+在系统内存紧张时，会回收掉一部分 WKWebView。
+从过去我们分析的案例来看，大图片和长列表图片的使用会引起 WKWebView 的回收。
+### 图片对页面切换的影响
+除了内存问题外，大图片也会造成页面切换的卡顿。
+我们分析过的案例中，有一部分小程序会在页面中引用大图片，
+在页面后退切换中会出现掉帧卡顿的情况。
+当前我们建议开发者尽量减少使用大图片资源。
+</code></pre>
+
+<h5 id="toc_2">资源文件</h5>
+
+<pre><code>所有资源文件(如图片)放在统一文件下及其子文件中(例如以下分类)
+resource
+  ——public
+  ——tab
+  ——home
+  ——mine
+</code></pre>
+
+<h5 id="toc_3">基础页面</h5>
+
+<pre><code>业务展示的页面放在如 pages 文件及其子文件中(例如以下分类)
+pages
+  ——index
+  ——mall
+    ——goodList
+    ——goodDetail
+  ——order
+    ——orderList
+    ——orderDetail
+  ——mine
+    ——myInfo
+    ——myAddress
+    
+如有其他子业务，单独在pages里创建新的子级文件
+</code></pre>
+
+<pre><code>注释规范
+   针对wxml页面由上到下(或由左到右)分级的模块，均需注释出其功能，
+   并在其上下空出一行与其他代码进行区分。
+</code></pre>
+
+<h5 id="toc_4">样式文件</h5>
+
+<pre><code>基础样式文件，在最外层中创建(如：weui.wxss)
+第一步：写入公共样式：如 
+1.标题字体大小，描述字体大小等项目中一二三级字号；
+2.程序中所用的公共色值；
+3.布局方式flex的横向布局，纵向布局等；
+4.公共布局中wxss样式前缀统一(如weui-开头)；
+等等
+
+第二步：在app.wxss文件最上部，引入 @import &quot;weui.wxss&quot;;
+以上公共样式便可全局使用
+</code></pre>
+
+<pre><code>wxss规范
+    1.wxss 页面可使用快捷键真理代码(Shift+Alt+F)
+    整理后代码有明显的代码缩进，对齐。每一个样式类之间空出一行；
+
+    2.在开发过程中rpx和px均可能用到，
+    如通常情况下间距使用rpx，
+    字体大小和边框等使用px，开发者根据实际情况而定；
+       
+    3.同一块的样式属性(如 .order-title 和 .order-image)放在一块；
+    
+    4.wxss 样式中同一块可以这样抒写(如 .order.title)
+    意思是.order样式下的.title,
+    其他地方的class=&#39;title&#39;不会引用到.order下的.title
+    
+    5.wxss样式之间用块状注释。请勿在代码后面直接注释。
+</code></pre>
+
+<h5 id="toc_5">JS规范</h5>
+
+<pre><code>JS规范
+    1.删除js文件中未用到的生命周期函数，保持代码的整洁
+    2.右上角不要分享的页面，删除JS文件中该方法onShareAppMessage:function()
+    3.采用ES6 关键字let定义变量，尽量不使用var
+    4.所有涉及到数据绑定的变量均需在data中初始化,禁止在不定义的情况下直接setData
+    5.变量名以及函数名统一采用驼峰命名法(或下划线分割)
+    6.正常情况下函数名前缀需加上清晰的动词表示函数功能(如getOderList)
+    7.点击事件函数命名方式为 on + 事件名 或者业务名
+    8.JS语句无需以分号结束，统一省略分号
+    9.JS中一致使用单引号&#39; &#39; , WXML中一致使用双引号&quot; &quot;
+</code></pre>
 
 ]]></content>
   </entry>
@@ -1208,176 +1197,6 @@ wrap-reverse：换行，第一行在最下面
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序建项-逻辑操作JS]]></title>
-    <link href="www.freefook.com/15419922791377.html"/>
-    <updated>2018-11-12T11:11:19+08:00</updated>
-    <id>www.freefook.com/15419922791377.html</id>
-    <content type="html"><![CDATA[
-<h5 id="toc_0">给tabBar设置角标</h5>
-
-<pre><code>wx.setTabBarBadge 这个API在非tabbar页面上调用会失效
-
-wx.setTabBarBadge({
-    index: 1,//设置第几个tabBar
-    text: &#39;&#39; + 5,//设置角标显示的数字
-})
-
-移除角标
-wx.removeTabBarBadge({
-   index: 1
-})    
-</code></pre>
-
-<h5 id="toc_1">动态设置页面标题</h5>
-
-<pre><code>第一种：定死页面标题修改 .json文件
-{
-  &quot;navigationBarTitleText&quot;: &quot;标题&quot;
-}
-
-第二种：动态自定义页面标题
-wx.setNavigationBarTitle({
-  title: this.data.URLBackTitle
-})
-</code></pre>
-
-<h5 id="toc_2">获取系统信息 下面是屏幕宽高</h5>
-
-<pre><code> wx.getSystemInfo({
-      success: function(res) {
-        that.setData({
-          windowHeight: res.windowHeight,
-          windowWidth: res.windowWidth,
-        })
-      }
-});
-</code></pre>
-
-<h5 id="toc_3">.map 方法示例 接口返回的imageURL拼接根地址</h5>
-
-<pre><code>var tempArray = &#39;接口返回的数组&#39;
-that.setData({
-    listArray: tempArray.map(function(item) {
-        item.imageURL = getApp().data.baseURL + item.imageURL;
-        //如果列表里没有子数组数据需要拼接根地址，就不用再次 .map 方法 直接return item
-        item.child.map(function(childItem) {
-          childItem.pic = getApp().data.baseURL + childItem.pic;
-          return childItem;
-        })
-        return item;
-    }),
-})
-</code></pre>
-
-<h5 id="toc_4">.filter方法 遍历数组数据</h5>
-
-<pre><code>示例:遍历cityArray 数组，找出cityArray数组中pid 等于
-province 数组中province[e.detail.value].id的值
-使用.filter方法 比 for 循环速度快
-
-let newArray = that.data.cityArray.filter(item =&gt; item.pid === that.data.province[e.detail.value].id)
-</code></pre>
-
-<h5 id="toc_5">本地数据存储</h5>
-
-<pre><code> // 同步方式存储数据
-wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
-
-//取出数据
-var token = wx.getStorageSync(&#39;userInfo&#39;)
-
-</code></pre>
-
-<h5 id="toc_6">页面栈层级数</h5>
-
-<pre><code>var pages = getCurrentPages();
-console.log(&#39;页面栈层数&#39; + pages.length)
-if (pages.length == 10) {
-//小程序最大10层
-}else{
-}
-</code></pre>
-
-<h5 id="toc_7">获取明天日期</h5>
-
-<pre><code>//获取当前时间
-var nowDate = new Date(new Date().toLocaleDateString()); 
-//获取明天这个时间
-var nowDate1 = new Date(nowDate.getTime() + 24 * 60 * 60 * 1000)
-
-    var date_value1 = nowDate1.getFullYear().toString()
-    var date_value2 = (nowDate1.getMonth() + 1).toString()
-    var date_value3 = nowDate1.getDate().toString()
-
-    if (date_value2.length == 1) {
-      date_value2 = &#39;0&#39; + date_value2
-    }
-    if (date_value3.length == 1) {
-      date_value3 = &#39;0&#39; + date_value3
-    }
-    
-    var tomorrow = date_value1 + &#39;-&#39; + date_value2 + &#39;-&#39; + date_value3
-</code></pre>
-
-<h5 id="toc_8">倒计时</h5>
-
-<pre><code>LastTimer: function() {
-
-var that = this;
-var totalSecond = 0;
-//start_time服务端返回的团购开始时间
-var start_time = new Date(that.data.start_time.replace(/-/g, &quot;/&quot;));
-totalSecond = Date.parse(start_time) / 1000 - Date.parse(new Date()) / 1000;
-
-    //清理掉倒计时
-    clearInterval(that.data.interval_daojishi);
-    //开始倒计时
-    that.data.interval_daojishi = setInterval(function() {
-      // 秒数
-      var second = totalSecond;
-      // 天数位
-      var day = Math.floor(second / 3600 / 24);
-      var dayStr = day.toString();
-      if (dayStr.length == 1) dayStr = &#39;0&#39; + dayStr;
-      // 小时位
-      var hr = Math.floor((second - day * 3600 * 24) / 3600);
-      var hrStr = hr.toString();
-      if (hrStr.length == 1) hrStr = &#39;0&#39; + hrStr;
-      // 分钟位
-      var min = Math.floor((second - day * 3600 * 24 - hr * 3600) / 60);
-      var minStr = min.toString();
-      if (minStr.length == 1) minStr = &#39;0&#39; + minStr;
-      // 秒位
-      var sec = second - day * 3600 * 24 - hr * 3600 - min * 60;
-      var secStr = sec.toString();
-      if (secStr.length == 1) secStr = &#39;0&#39; + secStr;
-
-      that.setData({
-        countDownDay: dayStr,
-        countDownHour: hrStr,
-        countDownMinute: minStr,
-        countDownSecond: secStr,
-      });
-      totalSecond--;
-
-      if (totalSecond &lt; 0) {
-        //倒计时结束，清理掉倒计时
-        clearInterval(that.data.interval_daojishi);
-        that.setData({
-          countDownDay: &#39;00&#39;,
-          countDownHour: &#39;00&#39;,
-          countDownMinute: &#39;00&#39;,
-          countDownSecond: &#39;00&#39;,
-        });
-      }
-    }.bind(this), 1000);
-  },
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[微信小程序建项-网络请求]]></title>
     <link href="www.freefook.com/15235164843984.html"/>
     <updated>2018-04-12T15:01:24+08:00</updated>
@@ -1500,6 +1319,113 @@ Tab 切换      调用 API wx.switchTab
       }
     }
   })   
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[微信小程序建项-TabBar]]></title>
+    <link href="www.freefook.com/15235114845539.html"/>
+    <updated>2018-04-12T13:38:04+08:00</updated>
+    <id>www.freefook.com/15235114845539.html</id>
+    <content type="html"><![CDATA[
+<h4 id="toc_0">创建一个标准小程序空项目</h4>
+
+<h5 id="toc_1">在app.json文件里写入如下代码</h5>
+
+<pre><code>{
+  &quot;pages&quot;: [
+    &quot;pages/homePage/homePage&quot;,
+    &quot;pages/minePage/minePage&quot;,
+    &quot;pages/shoppingCartPage/shoppingCartPage&quot;,
+    &quot;pages/index/index&quot;
+  ],
+  &quot;window&quot;: {
+    &quot;backgroundTextStyle&quot;: &quot;light&quot;,
+    &quot;navigationBarBackgroundColor&quot;: &quot;#fff&quot;,
+    &quot;navigationBarTitleText&quot;: &quot;小程序商城&quot;,
+    &quot;navigationBarTextStyle&quot;: &quot;black&quot;
+  },
+  &quot;tabBar&quot;: {
+    &quot;color&quot;: &quot;#8a8a8a&quot;,
+    &quot;selectedColor&quot;: &quot;#000&quot;,
+    &quot;backgroundColor&quot;: &quot;#fff&quot;,
+    &quot;list&quot;: [
+      {
+        &quot;iconPath&quot;: &quot;images/tabbar/home_1.png&quot;,
+        &quot;selectedIconPath&quot;: &quot;images/tabbar/home_2.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/homePage/homePage&quot;,
+        &quot;text&quot;: &quot;首页&quot;
+      },
+      {
+        &quot;iconPath&quot;: &quot;images/tabbar/gwc_1.png&quot;,
+        &quot;selectedIconPath&quot;: &quot;images/tabbar/gwc_2.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/shoppingCartPage/shoppingCartPage&quot;,
+        &quot;text&quot;: &quot;购物车&quot;
+      },
+      {
+        &quot;iconPath&quot;: &quot;images/tabbar/wode_1.png&quot;,
+        &quot;selectedIconPath&quot;: &quot;images/tabbar/wode_2.png&quot;,
+        &quot;pagePath&quot;: &quot;pages/minePage/minePage&quot;,
+        &quot;text&quot;: &quot;我的&quot;
+      }
+    ]
+  },
+  &quot;networkTimeout&quot;: {
+    &quot;request&quot;: 10000,
+    &quot;downloadFile&quot;: 10000
+  },
+  &quot;debug&quot;: false
+}
+</code></pre>
+
+<h4 id="toc_2">运行界面 tabbar</h4>
+
+<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-06%20%E4%B8%8B%E5%8D%884.14.36.png" alt="屏幕快照 2018-12-06 下午4.14.36"/></p>
+
+<h5 id="toc_3">在app.wxss文件里写入如下代码</h5>
+
+<pre><code>page {
+  font-size: 14px;
+  background-color: #f8f8f8;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.weui-bg-color {
+  background-color: #f8f8f8;
+}
+
+.weui-Font1 {
+  font-size: 16px;
+}
+
+.weui-Font2 {
+  font-size: 14px;
+}
+
+.weui-Font3 {
+  font-size: 12px;
+}
+
+.weui-Font4 {
+  font-size: 10px;
+}
+
+.weui-Font5 {
+  font-size: 8px;
+}
+
 </code></pre>
 
 ]]></content>
@@ -1658,108 +1584,182 @@ Tab 切换      调用 API wx.switchTab
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[微信小程序建项-TabBar]]></title>
-    <link href="www.freefook.com/15235114845539.html"/>
-    <updated>2018-04-12T13:38:04+08:00</updated>
-    <id>www.freefook.com/15235114845539.html</id>
+    <title type="html"><![CDATA[微信小程序建项-登录篇]]></title>
+    <link href="www.freefook.com/15234367737951.html"/>
+    <updated>2018-04-11T16:52:53+08:00</updated>
+    <id>www.freefook.com/15234367737951.html</id>
     <content type="html"><![CDATA[
-<h4 id="toc_0">创建一个标准小程序空项目</h4>
+<p>做小程序登录思考问题：</p>
 
-<h5 id="toc_1">在app.json文件里写入如下代码</h5>
+<ol>
+<li>问题一：不想在小程序里总输入自己平台的账号密码，怎么与微信关联；</li>
+<li>问题二：关联了微信也要可以切换账号使用；</li>
+<li>问题三：不注册账号也可以在小程序里体验使用，必要时提示去登录；</li>
+<li>问题四：如果打开小程序是我们项目自己的登录注册页面(体验很差)</li>
+</ol>
 
-<pre><code>{
-  &quot;pages&quot;: [
-    &quot;pages/homePage/homePage&quot;,
-    &quot;pages/minePage/minePage&quot;,
-    &quot;pages/shoppingCartPage/shoppingCartPage&quot;,
-    &quot;pages/index/index&quot;
-  ],
-  &quot;window&quot;: {
-    &quot;backgroundTextStyle&quot;: &quot;light&quot;,
-    &quot;navigationBarBackgroundColor&quot;: &quot;#fff&quot;,
-    &quot;navigationBarTitleText&quot;: &quot;小程序商城&quot;,
-    &quot;navigationBarTextStyle&quot;: &quot;black&quot;
-  },
-  &quot;tabBar&quot;: {
-    &quot;color&quot;: &quot;#8a8a8a&quot;,
-    &quot;selectedColor&quot;: &quot;#000&quot;,
-    &quot;backgroundColor&quot;: &quot;#fff&quot;,
-    &quot;list&quot;: [
-      {
-        &quot;iconPath&quot;: &quot;images/tabbar/home_1.png&quot;,
-        &quot;selectedIconPath&quot;: &quot;images/tabbar/home_2.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/homePage/homePage&quot;,
-        &quot;text&quot;: &quot;首页&quot;
-      },
-      {
-        &quot;iconPath&quot;: &quot;images/tabbar/gwc_1.png&quot;,
-        &quot;selectedIconPath&quot;: &quot;images/tabbar/gwc_2.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/shoppingCartPage/shoppingCartPage&quot;,
-        &quot;text&quot;: &quot;购物车&quot;
-      },
-      {
-        &quot;iconPath&quot;: &quot;images/tabbar/wode_1.png&quot;,
-        &quot;selectedIconPath&quot;: &quot;images/tabbar/wode_2.png&quot;,
-        &quot;pagePath&quot;: &quot;pages/minePage/minePage&quot;,
-        &quot;text&quot;: &quot;我的&quot;
-      }
-    ]
-  },
-  &quot;networkTimeout&quot;: {
-    &quot;request&quot;: 10000,
-    &quot;downloadFile&quot;: 10000
-  },
-  &quot;debug&quot;: false
+<p><img src="media/15234367737951/IMG_3194.png" alt="IMG_3194"/></p>
+
+<hr/>
+
+<h4 id="toc_0">微信登录获取openID</h4>
+
+<pre><code>//不需要微信授权既可获取微信小程序登录API获取code
+wx.login({
+    success: function (res) {
+    //获取code返回值如下：
+    //code:&quot;0619IaNe0L8gHz1VMINe0WgjNe09IaNC&quot;
+    //errMsg:&quot;login:ok&quot;
+    //code每次请求返回都不同，并且code使用一次后作废，
+    //即使不使用，下一次请求code，上一次的code也作废。
+    }
+})
+</code></pre>
+
+<ol>
+<li>得到code将code传给服务器</li>
+<li>服务器GET请求接口<a href="https://api.weixin.qq.com/sns/jscode2session">https://api.weixin.qq.com/sns/jscode2session</a></li>
+</ol>
+
+<pre><code>小程序官方更新将原POST请求改为GET请求了，返回值都是session_key，openid
+
+新GET
+https://api.weixin.qq.com/sns/jscode2session?appid=APPID&amp;secret=SECRET&amp;js_code=JSCODE&amp;grant_type=authorization_code
+
+原POST
+https://api.weixin.qq.com/sns/jscode2session  
+参数{
+    appid，
+    secret，
+    js_code = code，
+    grant_type = authorization_code
+} 
+返回数据{
+    session_key，
+    openid
 }
 </code></pre>
 
-<h4 id="toc_2">运行界面 tabbar</h4>
+<p>官方地址：<a href="https://developers.weixin.qq.com/miniprogram/dev/api/code2Session.html">https://developers.weixin.qq.com/miniprogram/dev/api/code2Session.html</a></p>
 
-<p><img src="media/15235114845539/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-06%20%E4%B8%8B%E5%8D%884.14.36.png" alt="屏幕快照 2018-12-06 下午4.14.36"/></p>
+<h4 id="toc_1">还想获取更多个人信息要如何做？</h4>
 
-<h5 id="toc_3">在app.wxss文件里写入如下代码</h5>
+<ol>
+<li>如果授权获可以取用户信息wx.getUserInfo得到iv,encryptedData,rawData,signature</li>
+<li>将得到的iv,encryptedData(加密数据) 和wx.login 得到的code传给服务器</li>
+<li>使用和openID一起返回的session_key去解密</li>
+<li>服务端解密encryptedData 可以获取userinfo信息和unionId</li>
+</ol>
 
-<pre><code>page {
-  font-size: 14px;
-  background-color: #f8f8f8;
-  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+<pre><code>服务端解密数据encryptedData
+    对称解密使用的算法为 AES-128-CBC，数据采用PKCS#7填充。
+    对称解密的目标密文为 Base64_Decode(encryptedData)。
+    对称解密秘钥 aeskey = Base64_Decode(session_key), aeskey 是16字节。
+    对称解密算法初始向量 为Base64_Decode(iv)，其中iv由数据接口返回。
+    
+解密encryptedData数据
+{
+　　&quot;openId&quot;:&quot;&quot;,
+　　&quot;nickName&quot;:&quot;ZIM東&quot;,
+　　&quot;gender&quot;:1,
+　　&quot;language&quot;:&quot;zh_CN&quot;,
+　　&quot;city&quot;:&quot;&quot;,
+　　&quot;province&quot;:&quot;&quot;,
+　　&quot;country&quot;:&quot;&quot;,
+　　&quot;avatarUrl&quot;:&quot;&quot;,
+　　&quot;unionId&quot;:&quot;&quot;,
+　　&quot;watermark&quot;:{
+　　　　&quot;timestamp&quot;:1523433831,
+　　　　&quot;appid&quot;:&quot;&quot;
+　　}
 }
 
-.container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  box-sizing: border-box;
-}
+在登录小程序之前，既没有关注过公众号，也没有登录过公众号，
+更没有使用微信登录的方式登录过app。
+通过 wx.login 的到的 code 解密后未返回 unionid
 
-.weui-bg-color {
-  background-color: #f8f8f8;
-}
+另外，为了应用能校验数据的有效性，会在敏感数据加上数据水印( watermark )
+appid 敏感数据归属appid，开发者可校验此参数与自身appid是否一致
+timestamp 敏感数据获取的时间戳, 开发者可以用于数据时效性校验
+</code></pre>
 
-.weui-Font1 {
-  font-size: 16px;
-}
+<h4 id="toc_2">会话密钥session_key有效性</h4>
 
-.weui-Font2 {
-  font-size: 14px;
-}
+<pre><code>开发者如果遇到因为session_key不正确而校验签名失败或解密失败，请关注下面几个与session_key有关的注意事项。
 
-.weui-Font3 {
-  font-size: 12px;
-}
+    1.wx.login()调用时，用户的session_key会被更新而致使旧session_key失效。
+    开发者应该在明确需要重新登录时才调用wx.login()，
+    及时通过登录凭证校验接口更新服务器存储的session_key。
 
-.weui-Font4 {
-  font-size: 10px;
-}
+    2.微信不会把session_key的有效期告知开发者。
+    我们会根据用户使用小程序的行为对session_key进行续期。
+    用户越频繁使用小程序，session_key有效期越长。
 
-.weui-Font5 {
-  font-size: 8px;
-}
+    3.开发者在session_key失效时，可以通过重新执行登录流程获取有效的session_key。
+    使用接口wx.checkSession()可以校验session_key是否有效，
+    从而避免小程序反复执行登录流程。
+
+    4.当开发者在实现自定义登录态时，
+    可以考虑以session_key有效期作为自身登录态有效期，
+    也可以实现自定义的时效性策略。
+    
+    5.wx.login() 之后再获取wx.getUserInfo()
+</code></pre>
+
+<blockquote>
+<pre><code>微信如何授权小程序获取用户信息:
+
+为优化用户体验，使用 wx.getUserInfo 接口直接弹出授权框的开发方式将逐步不再支持。
+从2018年4月30日开始，小程序与小游戏的体验版、开发版调用 wx.getUserInfo 接口，
+将无法弹出授权询问框，默认调用失败。正式版暂不受影响。
+开发者可使用以下方式获取或展示用户信息：
+
+一、小程序:
+1、使用 button 组件，并将 open-type 指定为 getUserInfo 类型，获取用户基本信息。
+
+详情参考文档:
+https://developers.weixin.qq.com/miniprogram/dev/component/button.html
+
+
+2、使用 open-data 展示用户基本信息。
+
+详情参考文档:
+https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html
+</code></pre>
+</blockquote>
+
+<h4 id="toc_3">登录流程图</h4>
+
+<p><img src="media/15234367737951/%E6%B5%81%E7%A8%8B.png" alt="流程"/></p>
+
+<p>👆原图地址：<a href="https://blog.csdn.net/dingjianmin/article/details/75137934">https://blog.csdn.net/dingjianmin/article/details/75137934</a></p>
+
+<p><img src="media/15234367737951/%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B.jpg" alt="登录流程"/></p>
+
+<p>注意：开发者后台拿到开放数据后可以对数据进行校验签名和解密，来保证数据不被篡改。 </p>
+
+<p><img src="media/15234367737951/%E6%95%B0%E6%8D%AE.png" alt="数据"/></p>
+
+<pre><code>签名校验以及数据加解密涉及用户的会话密钥session_key。
+ 开发者应该事先通过 wx.login 登录流程获取会话密钥 session_key 并保存在服务器。
+ 为了数据不被篡改，开发者不应该把session_key传到小程序客户端等服务器外的环境。
+
+数据签名校验
+
+为了确保 开放接口 返回用户数据的安全性，微信会对明文数据进行签名。
+开发者可以根据业务需要对数据包进行签名校验，确保数据的完整性。
+
+    通过调用接口（如 wx.getUserInfo）获取数据时，接口会同时返回 rawData、signature，
+    其中 signature = sha1( rawData + session_key )
+    
+    开发者将 signature、rawData 发送到开发者服务器进行校验。
+    服务器利用用户对应的 session_key 使用相同的算法计算出签名 signature2 ，
+    比对 signature 与 signature2 即可校验数据的完整性。
 
 </code></pre>
+
+<p>官方数据签名校验<br/>
+<a href="https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject">https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject</a></p>
 
 ]]></content>
   </entry>
