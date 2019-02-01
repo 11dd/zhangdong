@@ -4,7 +4,7 @@
   <title><![CDATA[至尊宝典之备忘录]]></title>
   <link href="www.freefook.com/atom.xml" rel="self"/>
   <link href="www.freefook.com/"/>
-  <updated>2019-01-18T13:45:27+08:00</updated>
+  <updated>2019-01-18T17:06:06+08:00</updated>
   <id>www.freefook.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -627,7 +627,17 @@ wx.removeTabBarBadge({
 })    
 </code></pre>
 
-<h5 id="toc_1">动态设置页面标题</h5>
+<h5 id="toc_1">传参时有特殊符号需要encode 接参数时在decode</h5>
+
+<pre><code>传参
+var tempData = JSON.stringify(this.data.detailData);
+var encodeData = encodeURIComponent(tempData);
+接参
+var tempData = decodeURIComponent(options.data);
+var data = JSON.parse(tempData);
+</code></pre>
+
+<h5 id="toc_2">动态设置页面标题</h5>
 
 <pre><code>第一种：定死页面标题修改 .json文件
 {
@@ -640,7 +650,7 @@ wx.setNavigationBarTitle({
 })
 </code></pre>
 
-<h5 id="toc_2">获取系统信息 下面是屏幕宽高</h5>
+<h5 id="toc_3">获取系统信息 下面是屏幕宽高</h5>
 
 <pre><code> wx.getSystemInfo({
       success: function(res) {
@@ -652,7 +662,7 @@ wx.setNavigationBarTitle({
 });
 </code></pre>
 
-<h5 id="toc_3">.map 方法示例 接口返回的imageURL拼接根地址</h5>
+<h5 id="toc_4">.map 方法示例 接口返回的imageURL拼接根地址</h5>
 
 <pre><code>var tempArray = &#39;接口返回的数组&#39;
 that.setData({
@@ -668,7 +678,7 @@ that.setData({
 })
 </code></pre>
 
-<h5 id="toc_4">.filter方法 遍历数组数据</h5>
+<h5 id="toc_5">.filter方法 遍历数组数据</h5>
 
 <pre><code>示例:遍历cityArray 数组，找出cityArray数组中pid 等于
 province 数组中province[e.detail.value].id的值
@@ -677,7 +687,7 @@ province 数组中province[e.detail.value].id的值
 let newArray = that.data.cityArray.filter(item =&gt; item.pid === that.data.province[e.detail.value].id)
 </code></pre>
 
-<h5 id="toc_5">本地数据存储</h5>
+<h5 id="toc_6">本地数据存储</h5>
 
 <pre><code> // 同步方式存储数据
 wx.setStorageSync(&#39;userInfo&#39;, this.data.userInfo);
@@ -687,7 +697,7 @@ var token = wx.getStorageSync(&#39;userInfo&#39;)
 
 </code></pre>
 
-<h5 id="toc_6">页面栈层级数</h5>
+<h5 id="toc_7">页面栈层级数</h5>
 
 <pre><code>var pages = getCurrentPages();
 console.log(&#39;页面栈层数&#39; + pages.length)
@@ -697,7 +707,7 @@ if (pages.length == 10) {
 }
 </code></pre>
 
-<h5 id="toc_7">获取明天日期</h5>
+<h5 id="toc_8">获取明天日期</h5>
 
 <pre><code>//获取当前时间
 var nowDate = new Date(new Date().toLocaleDateString()); 
@@ -718,7 +728,7 @@ var nowDate1 = new Date(nowDate.getTime() + 24 * 60 * 60 * 1000)
     var tomorrow = date_value1 + &#39;-&#39; + date_value2 + &#39;-&#39; + date_value3
 </code></pre>
 
-<h5 id="toc_8">倒计时</h5>
+<h5 id="toc_9">倒计时</h5>
 
 <pre><code>LastTimer: function() {
 
@@ -2432,354 +2442,134 @@ YY直播+
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[排序]]></title>
-    <link href="www.freefook.com/15198806151662.html"/>
-    <updated>2018-03-01T13:03:35+08:00</updated>
-    <id>www.freefook.com/15198806151662.html</id>
+    <title type="html"><![CDATA[AES加密打开方式...]]></title>
+    <link href="www.freefook.com/15139219514745.html"/>
+    <updated>2017-12-22T13:52:31+08:00</updated>
+    <id>www.freefook.com/15139219514745.html</id>
     <content type="html"><![CDATA[
-<pre><code> sizeof 判断数据类型长度符的关键字  简单的说其作用就是返回一个对象或者类型所占的内存字节数
+<p>很久没写博客,Markdown牵出来遛遛</p>
+
+<p>AES加密时需要统一的几个参数。</p>
+
+<pre><code>密钥长度（Key Size）
+加密模式（Cipher Mode）
+填充方式（Padding）
+初始向量（Initialization Vector）
 </code></pre>
 
-<h4 id="toc_0">选择排序</h4>
+<blockquote>
+<p>1.本例使用AES-128,</p>
 
-<pre><code>主要思想：
- 对比数组中前一个元素跟后一个元素的大小，
- 如果后面的元素比前面的元素小则用一个变量k来记住他的位置，
- 接着第二次比较，前面“后一个元素”现变成了“前一个元素”，
- 继续跟他的“后一个元素”进行比较如果后面的元素比他要小则用变量k记住它在  数组中的位置(下标)，
- 等到循环结束的时候，我们应该找到了最小的那个数的下标了，
- 然后进行判断，如果这个元素的下标不是第一个元素的下标，
- 就让第一个元素跟他交换一下值，
- 这样就找到整个数组中最小的数了。
- 然后找到数组中第二小的数，让他跟数组中第二个元素交换一下值，以此类推。
- 
- 总之一句话，拿第一个数和后面的所有数比，谁小记录上下标，用这个小的继续和后面的比，直到比完所有。
- n个乱序-&gt;选择排序可经过n-1趟直接选择排序得到有序结果
-</code></pre>
+<p>2.AES属于块加密BlockCipher，块加密中有CBC、ECB、CTR、OFB、CFB等几种工作模式。本例使用CBC模式</p>
 
-<pre><code>#include&lt;stdio.h&gt;
-void select_sort(int arr[],int size)
-{
-    int i=0,j=0;
-    int k=0;
-    for(i=0;i&lt;size;i++){
-        k=i;
-        for(j=i+1;j&lt;size;j++){
-           //结果输出想从小到大，还是从大到小，改这个&gt; or &lt;;
-            if(arr[k]&lt;arr[j]){
-                k=j;
-            }
+<p>3.由于块加密只能对特定长度的数据块进行加密，因此CBC、ECB模式需要在最后一数据块加密前进行数据填充。（CFB，OFB和CTR模式由于与key进行加密操作的是上一块加密后的密文，因此不需要对最后一段明文进行填充）<br/>
+在iOS SDK中提供了PKCS7Padding</p>
+</blockquote>
 
-        }
-        if(k!=i){
-            int tmp=arr[k];
-            arr[k]=arr[i];
-            arr[i]=tmp;
-        }
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    select_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
+<p>ECB加密模式（不推荐）：容易被攻击</p>
 
-<h4 id="toc_1">冒泡排序</h4>
+<blockquote>
+<p>1.每次key,明文,密文的长度都必须是64位;<br/><br/>
+2.数据块重复排序不需要检测;<br/><br/>
+3.相同的明文块(使用相同的密钥)产生相同的密文块,容易遭受字典被攻击<br/><br/>
+4.一个错误仅仅会对一个密文块产生影响</p>
+</blockquote>
 
-<pre><code> 比较相邻的元素。如果第一个比第二个大，就交换他们两个。
- 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。
- 针对所有的元素重复以上的步骤，除了最后一个。
- 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
-</code></pre>
+<p>CBC加密方式(推荐):</p>
 
-<pre><code>#include&lt;stdio.h&gt;
-void bubble_sort(int arr[],int size)
-{
-    int i=0,j=0;
-    for(i=0;i&lt;size;i++){
-        for(j=0;j&lt;size-i-1;j++){
-            if(arr[j]&gt;arr[j+1]){
-                int tmp=arr[j];
-                arr[j]=arr[j+1];
-                arr[j+1]=tmp;
-            }
-        }
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    bubble_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
+<blockquote>
+<p>1.每次加密的密文长度为64位(8个字节);<br/><br/>
+2.当相同的明文使用相同的密钥和初始向量的时候CBC模式总是产生相同的密文;<br/><br/>
+3.密文块要依赖以前的操作结果,所以密文块不能进行重新排列;<br/><br/>
+4.可以使用不同的初始化向量来避免相同的明文产生相同的密文,一定程度上抵抗字典攻击<br/>
+5.一个错误发生后,当前和以后的密文都会被影响;</p>
 
-<h4 id="toc_2">快速排序</h4>
+<p>使用PKCS5Padding/PKCS7Padding填充可以兼容多平台语言之间AES加密解密  </p>
 
-<pre><code> 第一遍快速排序不会直接得到最终结果，
- 只会把比k大和比k小的数分到k的两边。
- 为了得到最后结果，需要再次对下标2两边的数组分别执行此步骤，
- 然后再分解数组，直到数组不能再分解为止（只有一个数据），
- 才能得到正确结果。
- 
- 总结：分别从初始序列两端开始，先从右往左找一个小于“数组第一个”的数，再从左往右找一个大于“数组第一个”的数，然后交换他们；
+<p>注意: 这里每次产生的密文是相同的，因为设置了初试向量iv为16位个数的“0”。要产生不同的密文就要使用变化的初试向量iv</p>
+</blockquote>
 
-跳跃式交换，进化了冒泡的相邻交换，数据量多的无序数组排序时才提现出效果
-二分思想
+<p>ios使用案例  </p>
+
+<p>创建一个类AESCipher继承NSObject</p>
+
+<p>.h文件如下:</p>
+
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+NSString * aesEncryptString(NSString *content, NSString *key);
+NSString * aesDecryptString(NSString *content, NSString *key);
+NSData * aesEncryptData(NSData *data, NSData *key);
+NSData * aesDecryptData(NSData *data, NSData *key);
 
 </code></pre>
 
-<pre><code>#include&lt;stdio.h&gt;
-void quick_sort(int arr[],int left,int right)
-{
-    if(left&gt;=right){
-        return;
+<p>.m文件如下:</p>
+
+<pre><code>#import &quot;AESCipher.h&quot;
+#import &lt;CommonCrypto/CommonCryptor.h&gt;
+//注意:初始向量,默认16个0(]前后端保持统一)
+NSString const *kInitVector = @&quot;0000000000000000&quot;;
+size_t const kKeySize = kCCKeySizeAES128;
+NSData * cipherOperation(NSData *contentData, NSData *keyData, CCOperation operation) {
+    NSUInteger dataLength = contentData.length;
+    void const *initVectorBytes = [kInitVector dataUsingEncoding:NSUTF8StringEncoding].bytes;
+    void const *contentBytes = contentData.bytes;
+    void const *keyBytes = keyData.bytes;
+    size_t operationSize = dataLength + kCCBlockSizeAES128;
+    void *operationBytes = malloc(operationSize);
+    size_t actualOutSize = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(operation,                                   kCCAlgorithmAES,                                   kCCOptionPKCS7Padding,
+ keyBytes,                                      kKeySize,                                     initVectorBytes,                                    contentBytes,                                     dataLength,                                     operationBytes,                                    operationSize,                                   &amp;actualOutSize);
+    if (cryptStatus == kCCSuccess) {
+        return [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
     }
-    int key=arr[left];
-    int begin=left;
-    int end=right;
-    while(begin!=end){
-        while(begin&lt;end &amp;&amp; arr[end]&gt;=key){
-            end--;
-        }
-        if(end&gt;begin){
-            arr[begin]=arr[end];
-        }
-        while(begin&lt;end &amp;&amp; arr[begin]&lt;=key){
-            begin++;
-        }
-        if(begin&lt;end){
-            arr[end]=arr[begin];
-        }
-    }
-    arr[begin]=key;
-    quick_sort(arr,left,begin-1);
-    quick_sort(arr,begin+1,right);
+    free(operationBytes);
+    return nil;
 }
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    quick_sort(arr,0,9);
-    int i=0;
-    for(i=0;i&lt;10;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
+NSString * aesEncryptString(NSString *content, NSString *key) {
+    NSData *contentData = [content dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *encrptedData = aesEncryptData(contentData, keyData);
+    return [encrptedData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
 }
-</code></pre>
-
-<h4 id="toc_3">插入排序</h4>
-
-<pre><code>插入排序有以下几种方式：直接插入排序，二分插入排序（又称折半插入排序），链表插入排序，希尔排序（又称缩小增量排序）
-
-示例直接插入排序，
-用数组第二个和第一个比，如果小，就插入第一位位置；
-用数组第三个和第二个比，如果小，就插入第二个位置；
-                    如果大，就留在原位置；
-                    依次类推；
-</code></pre>
-
-<pre><code>#include&lt;stdio.h&gt;
-void insert_sort(int arr[],int size)
-{
-    int i=0,j=0;
-    int tmp=0;
-    for(i=1;i&lt;size;i++){
-        tmp=arr[i];
-        j=i;
-        while(j&gt;0 &amp;&amp; arr[j-1]&gt;tmp){
-            arr[j]=arr[j-1];
-            j--;
-        }
-        arr[j]=tmp;
-    }
+NSString * aesDecryptString(NSString *content, NSString *key) {
+    NSData *contentData = [[NSData alloc] initWithBase64EncodedString:content options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *decryptedData = aesDecryptData(contentData, keyData);
+    return [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
 }
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    insert_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
+NSData * aesEncryptData(NSData *contentData, NSData *keyData) {
+    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];
+    NSCAssert(keyData.length == kKeySize, hint);
+    return cipherOperation(contentData, keyData, kCCEncrypt);
+}
+NSData * aesDecryptData(NSData *contentData, NSData *keyData) {
+    NSString *hint = [NSString stringWithFormat:@&quot;The key size of AES-%lu should be %lu bytes!&quot;, kKeySize * 8, kKeySize];
+    NSCAssert(keyData.length == kKeySize, hint);
+    return cipherOperation(contentData, keyData, kCCDecrypt);
 }
 </code></pre>
 
-<h4 id="toc_4">希尔排序</h4>
+<p>使用方法如下:</p>
 
-<pre><code>#include&lt;stdio.h&gt;
-void shell_insert_sort(int arr[],int size)
-{
-    int gap=0;
-    int i=0,j=0,k=0;
-    for(gap=size/2;gap&gt;0;gap/=2){
-        //for(i=0;i&lt;gap;i++){
-            for(j=gap;j&lt;size;j++){
-                int tmp=arr[j];
-                k=j;
-                while(k-gap&gt;=0 &amp;&amp; arr[k-gap]&gt;tmp){
-                    arr[k]=arr[k-gap];
-                    k-=gap;
-                }
-                arr[k]=tmp;
-            }
-        //}
-    }
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    shell_insert_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
+<pre><code>/*
+ 使用案例:
+ 第一: 导入头文件
+ #import &quot;AESCipher.h&quot;
+ 测试字符串
+ NSString *TestStr = @&quot;abc&quot;;
+ 设置key
+ NSString *key = @&quot;1234567812345678&quot;;
+ NSString *cipherText = aesEncryptString(TestStr, key);
+ NSLog(@&quot;加密==%@&quot;, cipherText);
+ NSString *decryptedText = aesDecryptString(cipherText, key);
+ NSLog(@&quot;解密==%@&quot;, decryptedText);
+ */
 </code></pre>
 
-<h4 id="toc_5">归并排序（合并排序）</h4>
-
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;stdlib.h&gt;
-void merge(int* src,int *dst,int begin,int mid,int end)
-{
-    int begin1=begin;
-    int begin2=mid;
-    int index=begin;
-    while(begin1&lt;mid &amp;&amp; begin2&lt;end){
-        if(src[begin1]&lt;src[begin2]){
-            dst[index++]=src[begin1++];
-        }else{
-            dst[index++]=src[begin2++];
-        }
-    }
-    while(begin1&lt;mid){
-        dst[index++]=src[begin1++];
-    }
-    while(begin2&lt;end){
-        dst[index++]=src[begin2++];
-    }
-    memcpy(src+begin,dst+begin,(end-begin)*sizeof(int));
-}
-void _merge_sort(int *arr,int* tmp,int left,int right)
-{
-    if(left+1&gt;=right){
-        return;
-    }
-    int mid=left+(right-left)/2;
-    _merge_sort(arr,tmp,left,mid);
-    _merge_sort(arr,tmp,mid,right);
-    merge(arr,tmp,left,mid,right);
-}
-void merge_sort(int* arr,int size)
-{
-    int* tmp=(int*)malloc(size*sizeof(int));
-    _merge_sort(arr,tmp,0,size);
-    free(tmp);
-}
-int main()
-{
-    int arr[]={3,6,1,9,4,2,0,5,8,7};
-    int len=sizeof(arr)/sizeof(arr[0]);
-    merge_sort(arr,len);
-    int i=0;
-    for(i=0;i&lt;len;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-
-    return 0;
-}
-</code></pre>
-
-<h4 id="toc_6">堆排序</h4>
-
-<pre><code>#include&lt;stdio.h&gt;
-void swap(int *a,int *b)
-{
-    int tmp=*a;
-    *a=*b;
-    *b=tmp;
-}
-void adjust_down(int arr[],int root,int size)
-{
-    int parent=root;
-    int left=root*2+1;
-    int right=left+1;
-    while(left&lt;size){
-        int max=left;
-        if(right&lt;size &amp;&amp; arr[right]&gt;arr[max]){
-            max=right;
-        }
-        if(arr[max]&gt;arr[parent]){
-            swap(&amp;arr[max],&amp;arr[parent]);
-            parent=max;
-            left=parent*2+1;
-            right=left+1;
-        }
-        else{
-            break;
-        }
-    }
-}
-//make min heap
-void heap_sort(int arr[],int size)
-{
-    int begin=0;
-    for(begin=size/2-1;begin&gt;=0;--begin){
-        adjust_down(arr,begin,size);
-    }
-    int end=size-1;
-    while(end&gt;0){
-        swap(&amp;arr[0],&amp;arr[end]);
-        adjust_down(arr,0,end);
-        --end;
-    }
-}
-int main()
-{
-    int arr[10]={3,7,1,4,2,8,5,0,9,6};
-    heap_sort(arr,10);
-    int i=0;
-    for(;i&lt;10;i++){
-        printf(&quot;%d &quot;,arr[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-
-</code></pre>
-
-<p><img src="media/15198806151662/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-01%20%E4%B8%8B%E5%8D%883.45.58.png" alt="屏幕快照 2018-03-01 下午3.45.58"/></p>
-
-<p>选择排序、快速排序、希尔排序、堆排序不是稳定的排序算法，<br/>
-冒泡排序、插入排序、归并排序 是稳定的排序算法。</p>
-
-<p>在原序列中，ri=rj，且ri在rj之前，而在排序后的序列中，ri仍在rj之前，则称这种排序算法是稳定的；否则称为不稳定的。</p>
-
-<p>稳定都是相对的，不是绝对的稳定</p>
+<p>原文查看:<br/>
+ <a href="http://blog.csdn.net/u013749540/article/details/70225594">http://blog.csdn.net/u013749540/article/details/70225594</a><br/>
+ <a href="http://www.cnblogs.com/dcb3688/p/4608007.html">http://www.cnblogs.com/dcb3688/p/4608007.html</a></p>
 
 ]]></content>
   </entry>
@@ -2852,74 +2642,297 @@ app.json 的 pages 字段就可以知道你当前小程序的所有页面路径:
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[iOS审核被拒4.3]]></title>
-    <link href="www.freefook.com/15403646176398.html"/>
-    <updated>2018-10-24T15:03:37+08:00</updated>
-    <id>www.freefook.com/15403646176398.html</id>
+    <title type="html"><![CDATA[互动直播变身视频会议]]></title>
+    <link href="www.freefook.com/15139219144104.html"/>
+    <updated>2017-12-22T13:51:54+08:00</updated>
+    <id>www.freefook.com/15139219144104.html</id>
     <content type="html"><![CDATA[
-<h5 id="toc_0">一种是过不了机审关被拒，一种是过不了人审关被拒。</h5>
+<h2 id="toc_0">视频会议</h2>
 
-<pre><code>iOS预审核，扫描api，及plist文件字符缺失等；
-此处分两步，第一步为上传时苹果Application Loador等应用对于适配icon等的检查，
-第二步为上传后苹果的功能性检查，例如配置了Push功能但有缺失
-或者未打开功能，则会邮件提示等等；
+<blockquote>
+<p>初试水: 需求是13人同屏视频会议,最多进入视频会议房间的人数上线也就是13人;<br/>
+也因最大障碍网络问题,设备问题,<br/>
+很难支撑稳定的长时间连接这么多路的视频通话而被放弃;</p>
 
-iOS机审，主要是对代码进行机器审核，排查APP是否重复应用，此处扫描支付SDK等，及马甲情况，机器扫描主要看代码块
+<p>在思考: 用互动直播模式,改进视频会议方案<br/>
+为了视频会议的稳定性:减少至视频人员数量(4人),<br/>
+现有APP调查: QQ视频同时4人;微信支持9人;<br/>
+直播类属于连麦, YY4人 ,直播类有多的是连6人;<br/>
+淘宝旗下的产品,钉钉视频会议5人;</p>
 
-iOS人审，主要是由苹果审核人员对APP的内容、功能进行核验，防止APP有bug，
-防止APP模仿其他应用，内容与其他APP重复，影响用户体验，
-检测功能或者App体验测试，例如用测试账号登录App体验功能，
-或其他是否明显bug等，ipv6也在此处检测；
+<p>方案一:因为视频人员数量只有4人,后台创建会议时应设置有权限视频的人员;<br/>
+其余人默认观众模式,只可语音;<br/>
+这就抛出了第一个问题?<br/>
+谁能视频会议,分配给谁这个权限的问题?<br/>
+所以:后台添加开会人员时;分配视频权限;(谁是视频显示,其他人默认语音)<br/>
+房间只能是有视频权限的人创建,谁是房主有最高权限,这个人是</p>
+</blockquote>
 
+<h1 id="toc_1">一. 网易云互动直播</h1>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-c7961d44fe677e47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午1.30.36.png"/></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-812f5105d2624c04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午1.36.55.png"/></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-2a227a96dae9afb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午1.32.17.png"/></p>
+
+<h4 id="toc_2">功能概述</h4>
+
+<blockquote>
+<p>网易云通信的互动直播功能，支持主播和观众实时连麦互动。<br/>
+互动直播由连麦互动和直播两部分组成，其中连麦互动基于音视频通话实现，可以实现1个主播+3个连麦者的音视频通话连麦（基于私有协议实现）。<br/>
+主播和连麦者的音视频数据在互动直播高性能服务器合成为一道流后推流到CDN流媒体服务器，普通观众拉流观看即可（RTMP推流协议)</p>
+</blockquote>
+
+<h4 id="toc_3">互动直播接入流程</h4>
+
+<blockquote>
+<p>1.接入IM账号体系：单独的直播并不需要接入账号体系，但是互动连麦是基于音视频通话做的，音视频通话是基于IM的账号体系的，所以这边需要给主播和连麦者都分配IM账号。由服务端创建IM账号;<br/>
+2.客户端接入IM的SDK，登录IM<br/>
+3.客户端接入音视频通话SDK，实现主播和连麦者的音视频通话。（互动直播基于音视频多人会议开发，通过将多人会议中用户的音视频数据处理后推送给视频流服务器实现直播和实时连麦。 在功能的提供上，互动直播复用多人音视频接口，增加互动开关、推流地址指定与切换、直播角色指定等扩展设置）<br/>
+4.接入直播，服务端创建频道后获取推流地址，在主播端设置该推流地址。<br/>
+5.观众使用该推流地址对应的拉流地址观看（支持HLS (m3u8)、RTMP、HTTP-FLV等拉流协议），可接入直播的拉流播放器。</p>
+</blockquote>
+
+<h4 id="toc_4">demo简介</h4>
+
+<blockquote>
+<p>互动直播Demo在互动连麦的基础上还接入了无人数上限的聊天室，来实现文字互动、点赞、送礼物等多种消息形式。<br/>
+1.聊天室的是由服务端创建并管理的。客户端在登录IM成功后根据服务端提供的roomid加入聊天室即可。所以聊天室也是基于IM的账号体系的。<br/>
+2.聊天室的消息收发。</p>
+</blockquote>
+
+<h4 id="toc_5">demo各功能说明：</h4>
+
+<blockquote>
+<p>1.注册，客户端获取注册信息后发给demo服务器，由demo服务器完成。（账号体系）<br/>
+2.客户端初始化SDK，登录IM<br/>
+3.demo服务器创建直播频道获取推拉流地址。<br/>
+4.demo服务器创建聊天室。<br/>
+5.主播客户端创建音视频通话房间，从demo服务器获取推流地址后，开启推流开关。<br/>
+6.各客户端加入聊天室。<br/>
+7.连麦者加入主播创建的音视频通话房间，和主播连麦互动。</p>
+</blockquote>
+
+<p>网易云互动直播地址:<a href="https://www.163yun.com/product/interact">https://www.163yun.com/product/interact</a></p>
+
+<h1 id="toc_6">二. 腾讯云 互动直播ILVB</h1>
+
+<blockquote>
+<p>互动直播（Interactive Live Video Broadcasting）是全新的一站式“多路音视频互动”解决方案，主打“连麦”、“多画面特效”等能力；通过客户端SDK可打造跨平台一对多，多对多（支持最大同时<strong>8</strong>人上麦）的超清酷炫直播场景</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-2e9adb38e8fa79b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午1.50.15.png"/></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-70b7b469c6e2cd0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午1.51.20.png"/></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-3380c4ef7ee31fb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午1.53.40.png"/></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-39dc0cb9cb7963dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午1.59.56.png"/></p>
+
+<p><strong>数据交互时序说明</strong></p>
+
+<pre><code>步骤1和2解释了独立帐号模式下，app用户完成腾讯互动直播身份认证的过程。
+
+如果采用托管帐号模式，则不需要开发者server参与，直接调互动直播sdk login接口即可；
+开播、观看、上麦等音视频接口的调用必须在进房间成功之后；
+只要app业务逻辑允许，在调用相应的接口后，任何用户都有上麦能力；
+开发者后台server可以通过腾讯互动直播给app里的用户或者群组push消息。
 </code></pre>
 
-<h5 id="toc_1">区分机审 、人审</h5>
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-3fa0edd5258cff74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午2.01.36.png"/></p>
 
-<pre><code>那么如何区分是机器审核还是人工审核呢？主要看APP被拒的信息：
+<h4 id="toc_7">后台接口已实现的功能</h4>
 
-1）如果是机器审核被拒，一般收到的被拒信息第一句话基本上是这样的：
-Guideline4.3 - Design - Spam
-Yourapp duplicates the content and functionality of apps submitted to the AppStore,
- which is considered a form of spam.
+<blockquote>
+<p>注册<br/>
+    登录<br/>
+    创建房间<br/>
+    上报创建房间结果<br/>
+    拉取直播房间列表<br/>
+    上报进入房间信息<br/>
+    拉取房间成员列表<br/>
+    心跳上报<br/>
+    申请上麦<br/>
+    申请上麦结果上报<br/>
+    录制视频完成上报<br/>
+    退出房间<br/>
+    拉取点播列表<br/>
+    拉取旁路直播地址列表<br/>
+    拉取指定房间的旁路直播地址<br/>
+    下线</p>
+</blockquote>
 
-2）如果是人工审核被拒，一般收到的被拒信息第一句话基本上是这样的：
-Guideline4.3 - Design - Spam
-Wefound that your app provides the same feature set as other apps submitted tothe App Store, 
-which is not appropriate to the App Store.
+<h4 id="toc_8">客户端开启直播接口流程:</h4>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-85bc4166c86ea4e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午2.06.47.png"/></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-1aebc166c9efbf5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午2.07.17.png"/></p>
+
+<p>腾讯云互动直播地址:<a href="https://cloud.tencent.com/document/product/268">https://cloud.tencent.com/document/product/268</a><br/>
+价格地址:<a href="https://cloud.tencent.com/document/product/268/5127">https://cloud.tencent.com/document/product/268/5127</a></p>
+
+<h1 id="toc_9">三. 阿里云直播</h1>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-20b86d34a12214b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午2.10.07.png"/></p>
+
+<h5 id="toc_10">连麦介绍:</h5>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/670820-a69c2696e42d1554.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-05-27 下午2.14.32.png"/></p>
+
+<blockquote>
+<p>连麦服务提供接入测试操作，可通过连麦参数配置接入连麦服务，测试阶段连麦服务做多支持5路连麦并发流。如果您想接入阿里云连麦服务，请与客户服务人员联系或提交工单申请。<br/>
+阿里云连麦服务提供简单的配置，开通过程包括以下步骤<br/>
+Step 1: 添加直播加速域名<br/>
+Step 2: 创建连麦服务<br/>
+Step 3：配置回调地址</p>
+</blockquote>
+
+<h5 id="toc_11">连麦参与者的职责和功能</h5>
+
+<h6 id="toc_12">主播端</h6>
+
+<blockquote>
+<p>采集音视频信号并编码、推送直播流。<br/>
+拉取副麦端的直播流。<br/>
+将拉取的副麦端的直播流与本地采集的视频进行叠加播放。</p>
+</blockquote>
+
+<h6 id="toc_13">副麦端</h6>
+
+<blockquote>
+<p>采集音视频信号并编码、推送直播流。<br/>
+拉取主播及其他副麦端的直播流。<br/>
+将拉取的直播流与本地采集的视频进行叠加播放。</p>
+</blockquote>
+
+<h6 id="toc_14">观众端</h6>
+
+<blockquote>
+<p>播放混流地址中的直播流</p>
+</blockquote>
+
+<h6 id="toc_15">APP Server</h6>
+
+<blockquote>
+<p>管理直播或连麦过程中使用的地址，包括推流地址、播放地址和混流地址。<br/>
+对直播或连麦业务进行管理<br/>
+调用AliLive的混流接口和接受AliLive的回调，以实现服务端混流的功能。</p>
+</blockquote>
+
+<h6 id="toc_16">AliLive</h6>
+
+<blockquote>
+<p>接受直播流的推送<br/>
+接受直播流的拉取<br/>
+将多路直播流混合成一路，并输出<br/>
+接受混合后的直播流的拉取</p>
+</blockquote>
+
+<h6 id="toc_17">注：</h6>
+
+<blockquote>
+<p>连麦过程中APP Server需要提供三类地址：推流地址、播放地址、混流地址。<br/>
+1   推流地址是直播或副麦推送直播流的地址，仅供主播端和副麦端使用。<br/>
+2   播放地址是用于观看主播或副麦的直播视频的地址，仅在连麦的过程中使用，且仅供主播端和副麦端使用。<br/>
+3   混流地址是用于观看AliLive混合多路直播流的结果的地址，仅供观众端使用。混流地址可以在非连麦的过程中使用，此时播放的就是主播的画面（与主播的播放地址内容相同）；若在连麦过程中使用，播放的就是主播与副麦的混合画面。<br/>
+4  观众播放的一定是混流地址。当观众参与连麦、成为副麦时，会结束混流地址的播放，并开始播放主播和其他副麦的直播地址；当副麦结束连麦、成为观众时，会结束播放主播和其他副麦的直播地址，重新开始播放混流地址。</p>
+</blockquote>
+
+<h5 id="toc_18">连麦的参与者</h5>
+
+<p>连麦的过程有5种参与者：</p>
+
+<blockquote>
+<p>主播端：<br/>
+主播的客户端。<br/>
+副麦端：<br/>
+正在与主播连麦的人的客户端。<br/>
+观众端：<br/>
+未参与连麦的、观看直播或他人连麦的人的客户端。<br/>
+APP Server：<br/>
+用于接收或转发连麦信号的服务端，由直播业务方自行开发，可以根据自身的业务逻辑来控制连麦的流程，也是混流功能的唯一调用方。<br/>
+AliLive：<br/>
+阿里云直播服务器，提供整个直播或连麦过程中所有直播流的接收、分发和混流服务。<br/>
+注：当观众开始连麦后，我们称之为副麦；当副麦结束连麦后，我们称之为观众。</p>
+</blockquote>
+
+<h4 id="toc_19">典型业务流程</h4>
+
+<pre><code>
+本小节将描述一个典型业务流程的实线逻辑，从主播上线到观众加入连麦、连麦结束，最后主播退出直播为止。
+
+主播发起直播与观众观看直播
+
+    主播向APP Server发起直播请求。
+    APP Server同意主播发起直播，并分配主播的推流地址、播放地址以及混流地址。
+    主播通过推流地址开始推流。
+    APP Server收到AliLive推流成功的回调，将主播放入直播列表，表示此时观众可以播放主播的直播流。
+    观众A、B、C开始观看直播（即播放混流地址）。
+    通知AppServer,用户A、B、C正在观看
+
+主播发起连麦
+
+    主播向APP Server发出请求，希望与观众A、B连麦。
+    APP Server向观众A、B反馈主播的请求。
+    观众A、B向APP Server发送同意主播连麦请求的信号。
+    APP Server向观众A、B分配各自的推流地址，并发送主播流的播放地址。
+    观众A、B开始连麦（即结束播放混流地址，开始推流、开始播放主播的播放地址）。
+    APP Server收到AliLive给出的观众A、B推流成功的回调，将A、B的播放地址发送给主播和A、B、C。（注释1：此处观众C并不需要收到A、B的播放地址，是否收到A、B的播放地址对于观众C的播放没有任何影响。之所以收到这个消息主要是通知第三方观众有人加入连麦了。）
+    主播开始与A、B进行连麦（即播放A、B的播放地址）。
+    副麦A增加与B的连麦（即播放B的播放地址）。
+    副麦B增加与A的连麦（即播放A的播放地址）。
+    APP Server调用AliLive的混流接口，开始混流且A、B加入混流画面。至此，主播与A、B连麦成功。
+
+副麦退出连麦
+
+    副麦B向APP Server发送结束连麦的通知，然后结束连麦（即停止推流、停止播放主播和副麦A的播放地址，开始播放混流地址）。
+    APP Server调用AliLive的混流接口，B退出混流画面
+    APP Server发送副麦B退出直播的消息给主播及A、B、C。
+    主播与B停止连麦（即结束播放B的播放地址）。
+    副麦A与B停止连麦（即结束播放B的播放地址）。 
+
+观众加入连麦
+
+    观众C向APP Server发出申请，要求加入连麦。
+    APP Server向主播和副麦A转发观众C的申请。
+    主播和副麦A向APP Server发送同意连麦的信号。
+    APP Server向观众C分配推流地址，并发送主播和副麦A的播放地址。
+    观众C开始连麦（即结束播放混流地址，开始推流、开始播放主播和副麦A的播放地址）。
+    APP Server收到AliLive给出的观众C推流成功的回调，将C的播放地址发送给主播和A、B、C。
+    主播增加与C的连麦（即播放C的播放地址）。
+    副麦A增加与C的连麦（即播放C的播放地址）。
+    APP Server调用AliLive的混流接口，C加入混流画面。至此，观众C加入连麦成功。
+
+主播终止连麦
+
+    主播向APP Server发送终止连麦通知，并终止连麦（即结束播放副麦A、C的播放地址）。
+    APP Server向主播和A、B、C发送终止连麦的信号。
+    副麦A退出连麦（即结束推流、结束播放主播和副麦C的播放地址，开始播放混流地址）。
+    副麦C退出连麦（即结束推流、结束播放主播和副麦A的播放地址，开始播放混流地址）。
+    APP Server调用AliLive的混流接口，结束混流，A、C退出混流画面。至此，连麦终止。
+
+主播结束直播
+
+    主播向APP Server发送结束直播的通知，并结束推流。
+    APP Server向观众A、B、C告知直播结束。
+    观众A、B、C退出直播（即结束播放混流地址）。
+
+注：无论是直播还是连麦的过程，推流是不可缺少的。主播会推流，副麦会推流。客户端SDK中就提供了能够实现推流功能的接口，这些接口中所谓的推流成功指的是直播流可以成功的发送出去。但这并不表示此时可以从服务端下载这些直播流并观看，只有收到AliLive中推流成功的回调后，才表示可以真正开始播放。
 </code></pre>
 
-<h5 id="toc_2">针对审核</h5>
+<h4 id="toc_20">连麦服务开通与配置</h4>
 
-<pre><code>1.原来账号里的APP的名字可以作废掉或者修改成其他的，
-同时记得移除之前的APP，重新打个空包传上去，
-icon图则用其他logo图置换掉
+<blockquote>
+<p>I：提供需要连麦的域名和APP（连麦需要消耗大量服务端资源，业务上需要将连麦与非连麦的业务区分）<br/>
+II：提供连麦的估计并发量<br/>
+III：提供混流回调URL：混流可用回调和混流结果回调<br/>
+IV：将上述三个信息提供给阿里云相关人员<br/>
+V：在阿里云控制台上配置直播推断流回调</p>
+</blockquote>
 
-2.增加登录日志
-
-3.主要的方法是添加垃圾代码，且代码的相似程度不高于45%，
-  混淆工程地址：https://github.com/klaus01/KLGenerateSpamCode
-
-4.工程中的文件夹的名字全部进行修改，类名修改，方法名修改
-
-5.资源图片替换修改，适当添加一些无用的资源 
-
-6.API名称，机扫二进制文件，也会对比API
-
-7.换开发者账号，换不同账号提交审核
-
-8.换 bundle id，换一个包再提交审核；
-
-9. 一定要关注名字,icon,启动图;修改UI风格同时进行假页面的添加;
-
-10.升级 version，升级一个版本号提交审核
-
-11.修改产品分类
-
-12.还需要注意相同的马甲包提交至少要间隔一天以上。
-
-13.定期换电脑提包.换电脑的序列号.换VPN环境.定期换域名. 
-
-</code></pre>
+<p>阿里云连麦文档地址:<a href="https://help.aliyun.com/document_detail/52350.html?spm=5176.doc29951.6.650.DNEVno">https://help.aliyun.com/document_detail/52350.html?spm=5176.doc29951.6.650.DNEVno</a><br/>
+价格地址:<a href="https://cn.aliyun.com/price/product#/live/detail">https://cn.aliyun.com/price/product#/live/detail</a></p>
 
 ]]></content>
   </entry>
