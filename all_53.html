@@ -51,13 +51,13 @@
           
             <li><a title="建项-iOS屏幕适配" href="15141802374458.html">建项-iOS屏幕适配</a></li>
           
-            <li><a title="建项-iOS使用三方管理工具cocoaPods" href="15139117675584.html">建项-iOS使用三方管理工具cocoaPods</a></li>
+            <li><a title="建项-iOS之cocoaPods" href="15139117675584.html">建项-iOS之cocoaPods</a></li>
           
             <li><a title="建项-iOS创建.pch文件" href="15139119793020.html">建项-iOS创建.pch文件</a></li>
           
             <li><a title="建项-权限、网络问题" href="15139219822825.html">建项-权限、网络问题</a></li>
           
-            <li><a title="建项-快速开发 1 ->TabBar" href="15142722458623.html">建项-快速开发 1 ->TabBar</a></li>
+            <li><a title="建项-快速开发TabBar" href="15142722458623.html">建项-快速开发TabBar</a></li>
           
 
       
@@ -109,11 +109,11 @@
           
             <li><a title="Mac下使用Apache服务" href="15338926115451.html">Mac下使用Apache服务</a></li>
           
-            <li><a title="排序" href="15198806151662.html">排序</a></li>
-          
             <li><a title="Mac电脑清理存储空间" href="15139218767623.html">Mac电脑清理存储空间</a></li>
           
             <li><a title="iOS审核被拒4.3" href="15403646176398.html">iOS审核被拒4.3</a></li>
+          
+            <li><a title="排序" href="15198806151662.html">排序</a></li>
           
 
       
@@ -228,13 +228,13 @@
                         
                           <li><a title="建项-iOS屏幕适配" href="15141802374458.html">建项-iOS屏幕适配</a></li>
                         
-                          <li><a title="建项-iOS使用三方管理工具cocoaPods" href="15139117675584.html">建项-iOS使用三方管理工具cocoaPods</a></li>
+                          <li><a title="建项-iOS之cocoaPods" href="15139117675584.html">建项-iOS之cocoaPods</a></li>
                         
                           <li><a title="建项-iOS创建.pch文件" href="15139119793020.html">建项-iOS创建.pch文件</a></li>
                         
                           <li><a title="建项-权限、网络问题" href="15139219822825.html">建项-权限、网络问题</a></li>
                         
-                          <li><a title="建项-快速开发 1 ->TabBar" href="15142722458623.html">建项-快速开发 1 ->TabBar</a></li>
+                          <li><a title="建项-快速开发TabBar" href="15142722458623.html">建项-快速开发TabBar</a></li>
                         
 
                     
@@ -282,11 +282,11 @@
                         
                           <li><a title="Mac下使用Apache服务" href="15338926115451.html">Mac下使用Apache服务</a></li>
                         
-                          <li><a title="排序" href="15198806151662.html">排序</a></li>
-                        
                           <li><a title="Mac电脑清理存储空间" href="15139218767623.html">Mac电脑清理存储空间</a></li>
                         
                           <li><a title="iOS审核被拒4.3" href="15403646176398.html">iOS审核被拒4.3</a></li>
+                        
+                          <li><a title="排序" href="15198806151662.html">排序</a></li>
                         
 
                     
@@ -382,71 +382,351 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS审核被拒4.3</h1>
+		<h1>排序</h1>
 
-		<h5 id="toc_0">一种是过不了机审关被拒，一种是过不了人审关被拒。</h5>
+		<pre><code> sizeof 判断数据类型长度符的关键字  简单的说其作用就是返回一个对象或者类型所占的内存字节数
+</code></pre>
 
-<pre><code>iOS预审核，扫描api，及plist文件字符缺失等；
-此处分两步，第一步为上传时苹果Application Loador等应用对于适配icon等的检查，
-第二步为上传后苹果的功能性检查，例如配置了Push功能但有缺失
-或者未打开功能，则会邮件提示等等；
+<h4 id="toc_0">选择排序</h4>
 
-iOS机审，主要是对代码进行机器审核，排查APP是否重复应用，此处扫描支付SDK等，及马甲情况，机器扫描主要看代码块
+<pre><code>主要思想：
+ 对比数组中前一个元素跟后一个元素的大小，
+ 如果后面的元素比前面的元素小则用一个变量k来记住他的位置，
+ 接着第二次比较，前面“后一个元素”现变成了“前一个元素”，
+ 继续跟他的“后一个元素”进行比较如果后面的元素比他要小则用变量k记住它在  数组中的位置(下标)，
+ 等到循环结束的时候，我们应该找到了最小的那个数的下标了，
+ 然后进行判断，如果这个元素的下标不是第一个元素的下标，
+ 就让第一个元素跟他交换一下值，
+ 这样就找到整个数组中最小的数了。
+ 然后找到数组中第二小的数，让他跟数组中第二个元素交换一下值，以此类推。
+ 
+ 总之一句话，拿第一个数和后面的所有数比，谁小记录上下标，用这个小的继续和后面的比，直到比完所有。
+ n个乱序-&gt;选择排序可经过n-1趟直接选择排序得到有序结果
+</code></pre>
 
-iOS人审，主要是由苹果审核人员对APP的内容、功能进行核验，防止APP有bug，
-防止APP模仿其他应用，内容与其他APP重复，影响用户体验，
-检测功能或者App体验测试，例如用测试账号登录App体验功能，
-或其他是否明显bug等，ipv6也在此处检测；
+<pre><code>#include&lt;stdio.h&gt;
+void select_sort(int arr[],int size)
+{
+    int i=0,j=0;
+    int k=0;
+    for(i=0;i&lt;size;i++){
+        k=i;
+        for(j=i+1;j&lt;size;j++){
+           //结果输出想从小到大，还是从大到小，改这个&gt; or &lt;;
+            if(arr[k]&lt;arr[j]){
+                k=j;
+            }
+
+        }
+        if(k!=i){
+            int tmp=arr[k];
+            arr[k]=arr[i];
+            arr[i]=tmp;
+        }
+    }
+}
+int main()
+{
+    int arr[]={3,6,1,9,4,2,0,5,8,7};
+    int len=sizeof(arr)/sizeof(arr[0]);
+    select_sort(arr,len);
+    int i=0;
+    for(i=0;i&lt;len;i++){
+        printf(&quot;%d &quot;,arr[i]);
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}
+</code></pre>
+
+<h4 id="toc_1">冒泡排序</h4>
+
+<pre><code> 比较相邻的元素。如果第一个比第二个大，就交换他们两个。
+ 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。
+ 针对所有的元素重复以上的步骤，除了最后一个。
+ 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
+</code></pre>
+
+<pre><code>#include&lt;stdio.h&gt;
+void bubble_sort(int arr[],int size)
+{
+    int i=0,j=0;
+    for(i=0;i&lt;size;i++){
+        for(j=0;j&lt;size-i-1;j++){
+            if(arr[j]&gt;arr[j+1]){
+                int tmp=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=tmp;
+            }
+        }
+    }
+}
+int main()
+{
+    int arr[]={3,6,1,9,4,2,0,5,8,7};
+    int len=sizeof(arr)/sizeof(arr[0]);
+    bubble_sort(arr,len);
+    int i=0;
+    for(i=0;i&lt;len;i++){
+        printf(&quot;%d &quot;,arr[i]);
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}
+</code></pre>
+
+<h4 id="toc_2">快速排序</h4>
+
+<pre><code> 第一遍快速排序不会直接得到最终结果，
+ 只会把比k大和比k小的数分到k的两边。
+ 为了得到最后结果，需要再次对下标2两边的数组分别执行此步骤，
+ 然后再分解数组，直到数组不能再分解为止（只有一个数据），
+ 才能得到正确结果。
+ 
+ 总结：分别从初始序列两端开始，先从右往左找一个小于“数组第一个”的数，再从左往右找一个大于“数组第一个”的数，然后交换他们；
+
+跳跃式交换，进化了冒泡的相邻交换，数据量多的无序数组排序时才提现出效果
+二分思想
 
 </code></pre>
 
-<h5 id="toc_1">区分机审 、人审</h5>
-
-<pre><code>那么如何区分是机器审核还是人工审核呢？主要看APP被拒的信息：
-
-1）如果是机器审核被拒，一般收到的被拒信息第一句话基本上是这样的：
-Guideline4.3 - Design - Spam
-Yourapp duplicates the content and functionality of apps submitted to the AppStore,
- which is considered a form of spam.
-
-2）如果是人工审核被拒，一般收到的被拒信息第一句话基本上是这样的：
-Guideline4.3 - Design - Spam
-Wefound that your app provides the same feature set as other apps submitted tothe App Store, 
-which is not appropriate to the App Store.
+<pre><code>#include&lt;stdio.h&gt;
+void quick_sort(int arr[],int left,int right)
+{
+    if(left&gt;=right){
+        return;
+    }
+    int key=arr[left];
+    int begin=left;
+    int end=right;
+    while(begin!=end){
+        while(begin&lt;end &amp;&amp; arr[end]&gt;=key){
+            end--;
+        }
+        if(end&gt;begin){
+            arr[begin]=arr[end];
+        }
+        while(begin&lt;end &amp;&amp; arr[begin]&lt;=key){
+            begin++;
+        }
+        if(begin&lt;end){
+            arr[end]=arr[begin];
+        }
+    }
+    arr[begin]=key;
+    quick_sort(arr,left,begin-1);
+    quick_sort(arr,begin+1,right);
+}
+int main()
+{
+    int arr[]={3,6,1,9,4,2,0,5,8,7};
+    quick_sort(arr,0,9);
+    int i=0;
+    for(i=0;i&lt;10;i++){
+        printf(&quot;%d &quot;,arr[i]);
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}
 </code></pre>
 
-<h5 id="toc_2">针对审核</h5>
+<h4 id="toc_3">插入排序</h4>
 
-<pre><code>1.原来账号里的APP的名字可以作废掉或者修改成其他的，
-同时记得移除之前的APP，重新打个空包传上去，
-icon图则用其他logo图置换掉
+<pre><code>插入排序有以下几种方式：直接插入排序，二分插入排序（又称折半插入排序），链表插入排序，希尔排序（又称缩小增量排序）
 
-2.增加登录日志
+示例直接插入排序，
+用数组第二个和第一个比，如果小，就插入第一位位置；
+用数组第三个和第二个比，如果小，就插入第二个位置；
+                    如果大，就留在原位置；
+                    依次类推；
+</code></pre>
 
-3.主要的方法是添加垃圾代码，且代码的相似程度不高于45%，
-  混淆工程地址：https://github.com/klaus01/KLGenerateSpamCode
+<pre><code>#include&lt;stdio.h&gt;
+void insert_sort(int arr[],int size)
+{
+    int i=0,j=0;
+    int tmp=0;
+    for(i=1;i&lt;size;i++){
+        tmp=arr[i];
+        j=i;
+        while(j&gt;0 &amp;&amp; arr[j-1]&gt;tmp){
+            arr[j]=arr[j-1];
+            j--;
+        }
+        arr[j]=tmp;
+    }
+}
+int main()
+{
+    int arr[]={3,6,1,9,4,2,0,5,8,7};
+    int len=sizeof(arr)/sizeof(arr[0]);
+    insert_sort(arr,len);
+    int i=0;
+    for(i=0;i&lt;len;i++){
+        printf(&quot;%d &quot;,arr[i]);
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}
+</code></pre>
 
-4.工程中的文件夹的名字全部进行修改，类名修改，方法名修改
+<h4 id="toc_4">希尔排序</h4>
 
-5.资源图片替换修改，适当添加一些无用的资源 
+<pre><code>#include&lt;stdio.h&gt;
+void shell_insert_sort(int arr[],int size)
+{
+    int gap=0;
+    int i=0,j=0,k=0;
+    for(gap=size/2;gap&gt;0;gap/=2){
+        //for(i=0;i&lt;gap;i++){
+            for(j=gap;j&lt;size;j++){
+                int tmp=arr[j];
+                k=j;
+                while(k-gap&gt;=0 &amp;&amp; arr[k-gap]&gt;tmp){
+                    arr[k]=arr[k-gap];
+                    k-=gap;
+                }
+                arr[k]=tmp;
+            }
+        //}
+    }
+}
+int main()
+{
+    int arr[]={3,6,1,9,4,2,0,5,8,7};
+    int len=sizeof(arr)/sizeof(arr[0]);
+    shell_insert_sort(arr,len);
+    int i=0;
+    for(i=0;i&lt;len;i++){
+        printf(&quot;%d &quot;,arr[i]);
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}
+</code></pre>
 
-6.API名称，机扫二进制文件，也会对比API
+<h4 id="toc_5">归并排序（合并排序）</h4>
 
-7.换开发者账号，换不同账号提交审核
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;stdlib.h&gt;
+void merge(int* src,int *dst,int begin,int mid,int end)
+{
+    int begin1=begin;
+    int begin2=mid;
+    int index=begin;
+    while(begin1&lt;mid &amp;&amp; begin2&lt;end){
+        if(src[begin1]&lt;src[begin2]){
+            dst[index++]=src[begin1++];
+        }else{
+            dst[index++]=src[begin2++];
+        }
+    }
+    while(begin1&lt;mid){
+        dst[index++]=src[begin1++];
+    }
+    while(begin2&lt;end){
+        dst[index++]=src[begin2++];
+    }
+    memcpy(src+begin,dst+begin,(end-begin)*sizeof(int));
+}
+void _merge_sort(int *arr,int* tmp,int left,int right)
+{
+    if(left+1&gt;=right){
+        return;
+    }
+    int mid=left+(right-left)/2;
+    _merge_sort(arr,tmp,left,mid);
+    _merge_sort(arr,tmp,mid,right);
+    merge(arr,tmp,left,mid,right);
+}
+void merge_sort(int* arr,int size)
+{
+    int* tmp=(int*)malloc(size*sizeof(int));
+    _merge_sort(arr,tmp,0,size);
+    free(tmp);
+}
+int main()
+{
+    int arr[]={3,6,1,9,4,2,0,5,8,7};
+    int len=sizeof(arr)/sizeof(arr[0]);
+    merge_sort(arr,len);
+    int i=0;
+    for(i=0;i&lt;len;i++){
+        printf(&quot;%d &quot;,arr[i]);
+    }
+    printf(&quot;\n&quot;);
 
-8.换 bundle id，换一个包再提交审核；
+    return 0;
+}
+</code></pre>
 
-9. 一定要关注名字,icon,启动图;修改UI风格同时进行假页面的添加;
+<h4 id="toc_6">堆排序</h4>
 
-10.升级 version，升级一个版本号提交审核
-
-11.修改产品分类
-
-12.还需要注意相同的马甲包提交至少要间隔一天以上。
-
-13.定期换电脑提包.换电脑的序列号.换VPN环境.定期换域名. 
+<pre><code>#include&lt;stdio.h&gt;
+void swap(int *a,int *b)
+{
+    int tmp=*a;
+    *a=*b;
+    *b=tmp;
+}
+void adjust_down(int arr[],int root,int size)
+{
+    int parent=root;
+    int left=root*2+1;
+    int right=left+1;
+    while(left&lt;size){
+        int max=left;
+        if(right&lt;size &amp;&amp; arr[right]&gt;arr[max]){
+            max=right;
+        }
+        if(arr[max]&gt;arr[parent]){
+            swap(&amp;arr[max],&amp;arr[parent]);
+            parent=max;
+            left=parent*2+1;
+            right=left+1;
+        }
+        else{
+            break;
+        }
+    }
+}
+//make min heap
+void heap_sort(int arr[],int size)
+{
+    int begin=0;
+    for(begin=size/2-1;begin&gt;=0;--begin){
+        adjust_down(arr,begin,size);
+    }
+    int end=size-1;
+    while(end&gt;0){
+        swap(&amp;arr[0],&amp;arr[end]);
+        adjust_down(arr,0,end);
+        --end;
+    }
+}
+int main()
+{
+    int arr[10]={3,7,1,4,2,8,5,0,9,6};
+    heap_sort(arr,10);
+    int i=0;
+    for(;i&lt;10;i++){
+        printf(&quot;%d &quot;,arr[i]);
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}
 
 </code></pre>
+
+<p><img src="media/15198806151662/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-01%20%E4%B8%8B%E5%8D%883.45.58.png" alt="屏幕快照 2018-03-01 下午3.45.58"/></p>
+
+<p>选择排序、快速排序、希尔排序、堆排序不是稳定的排序算法，<br/>
+冒泡排序、插入排序、归并排序 是稳定的排序算法。</p>
+
+<p>在原序列中，ri=rj，且ri在rj之前，而在排序后的序列中，ri仍在rj之前，则称这种排序算法是稳定的；否则称为不稳定的。</p>
+
+<p>稳定都是相对的，不是绝对的稳定</p>
 
 
 		</div>
